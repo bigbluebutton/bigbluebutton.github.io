@@ -1,0 +1,1 @@
+../_posts/2015-04-04-client-configuration.md
