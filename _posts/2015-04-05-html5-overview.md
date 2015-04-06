@@ -17,7 +17,7 @@ With the adoption of HTML5, the web browser is becoming the platform for rich cl
 
 Furthermore, with the recent progress in WebRTC, an HTML5-based application can access the user's webcam and microphone _without_ the need for plugins.
 
-The long-term vision for the BigBlueButton HTML5 client is to enable users on all platforms supporting an HTML5 browser -- including mobile and tablets to -- to fully access to all of BigBlueButton’s features.
+The long-term vision for the BigBlueButton HTML5 client is to enable users on all platforms supporting an HTML5 browser -- including mobile and tablets to -- to fully access all of BigBlueButton’s features.
 
 This means the HTML5 client will completely implement the current Flash-based functionality, including the ability to broadcast audio and video from within the browser using WebRTC.
 
