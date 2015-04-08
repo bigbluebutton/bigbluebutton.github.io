@@ -11,7 +11,7 @@ To setup Jekyll, you need to have ruby and the bundler gem installed.  Once setu
  This will install all the Jekyll components.  Next, type
 
  ```
- jekll serve
+ jekyll serve
  ```
 
 Jekyll will run a server on port 4000 that lets you see a live update of the site after you make a save of any file.
