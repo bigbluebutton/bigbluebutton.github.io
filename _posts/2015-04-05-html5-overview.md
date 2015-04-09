@@ -53,7 +53,11 @@ Coffeescript is a language that compiles into Javascript. It offers several adva
 
 A significant amount of the code of the client is related to the whiteboard. We use a library called [Raphaël](http://raphaeljs.com/) to work with vector graphics.
 
+### LESS and Media Queries
 
+We use [LESS](http://lesscss.org/) precompiler to keep the stylesheets short and readable. LESS is a stylesheet language that is compiled into CSS. It allows us to use variables and mixins. Selectors can be nested, thus making it easier to read the code.
+
+The responsive UI of HTML5 client is constructed using media queries. Each LESS expression is tied to some specific range of devices and window sizes. HTML5 client provides four different views depending on your device (desktop/mobile) and browser orientation (landscape/portrait).
 
 ## API
 
