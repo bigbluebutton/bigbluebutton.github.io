@@ -42,18 +42,22 @@ The following describes our efforts to implement phase 1: viewing a live BigBlue
 
 
 ## Implementation of the HTML5 client
-The HTML5 client is implemented using [Meteor.js](http://meteor.com) in [Coffeescript](http://coffeescript.org/)
+The HTML5 client is implemented using [Meteor.js](http://meteor.com) in [CoffeeScript](http://coffeescript.org/)
 
-All the code for the HTML5 client is inside the `bigbluebutton/bigbluebutton-html5/app` folder. It mainly consists of CSS, HTML and Coffeescript files.
+All the code for the HTML5 client is inside the `bigbluebutton/bigbluebutton-html5/app` folder. It mainly consists of LESS, HTML and CoffeeScript files.
 
-### Coffeescript
-Coffeescript is a language that compiles into Javascript. It offers several advantages over Javascript, especially that the code is usually a lot smaller and easier to maintain. Code in coffeescript can be run by Meteor.js thanks to a Coffeescript plugin
+### CoffeeScript
+CoffeeScript is a language that compiles into JavaScript. It offers several advantages over JavaScript, especially that the code is usually a lot smaller and easier to maintain. Code in CoffeeScript can be run by Meteor.js thanks to a CoffeeScript [package](https://atmospherejs.com/meteor/coffeescript).
 
 ### WhiteboardPaperModel and Raphaël
 
 A significant amount of the code of the client is related to the whiteboard. We use a library called [Raphaël](http://raphaeljs.com/) to work with vector graphics.
 
+### LESS and Media Queries
 
+We use [LESS](http://lesscss.org/) precompiler to keep the stylesheets short and readable. LESS is a stylesheet language that is compiled into CSS. It allows us to use variables and mixins. Selectors can be nested, thus making it easier to read the code.
+
+The responsive UI of HTML5 client is constructed using media queries. Each LESS expression is tied to some specific range of devices and window sizes. HTML5 client provides four different views depending on your device (desktop/mobile) and browser orientation (landscape/portrait).
 
 ## API
 
