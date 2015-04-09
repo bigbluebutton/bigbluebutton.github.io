@@ -77,3 +77,8 @@ body.rtl .row-fluid [class*="span"]:first-child {
 body.rtl ul, body.rtl ol {
     margin: 0 25px 10px 0;
 }
+
+td, th {
+	border: 1px solid #ccc; padding: 5px;
+}
+
