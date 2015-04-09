@@ -47,7 +47,7 @@ The HTML5 client is implemented using [Meteor.js](http://meteor.com) in [CoffeeS
 All the code for the HTML5 client is inside the `bigbluebutton/bigbluebutton-html5/app` folder. It mainly consists of LESS, HTML and CoffeeScript files.
 
 ### CoffeeScript
-CoffeeScript is a language that compiles into JavaScript. It offers several advantages over JavaScript, especially that the code is usually a lot smaller and easier to maintain. Code in CoffeeScript can be run by Meteor.js thanks to a CoffeeScript plugin
+CoffeeScript is a language that compiles into JavaScript. It offers several advantages over JavaScript, especially that the code is usually a lot smaller and easier to maintain. Code in CoffeeScript can be run by Meteor.js thanks to a CoffeeScript [package](https://atmospherejs.com/meteor/coffeescript).
 
 ### WhiteboardPaperModel and Raphaël
 
