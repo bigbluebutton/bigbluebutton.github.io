@@ -42,12 +42,12 @@ The following describes our efforts to implement phase 1: viewing a live BigBlue
 
 
 ## Implementation of the HTML5 client
-The HTML5 client is implemented using [Meteor.js](http://meteor.com) in [Coffeescript](http://coffeescript.org/)
+The HTML5 client is implemented using [Meteor.js](http://meteor.com) in [CoffeeScript](http://coffeescript.org/)
 
-All the code for the HTML5 client is inside the `bigbluebutton/bigbluebutton-html5/app` folder. It mainly consists of CSS, HTML and Coffeescript files.
+All the code for the HTML5 client is inside the `bigbluebutton/bigbluebutton-html5/app` folder. It mainly consists of LESS, HTML and CoffeeScript files.
 
-### Coffeescript
-Coffeescript is a language that compiles into Javascript. It offers several advantages over Javascript, especially that the code is usually a lot smaller and easier to maintain. Code in coffeescript can be run by Meteor.js thanks to a Coffeescript plugin
+### CoffeeScript
+CoffeeScript is a language that compiles into JavaScript. It offers several advantages over JavaScript, especially that the code is usually a lot smaller and easier to maintain. Code in CoffeeScript can be run by Meteor.js thanks to a CoffeeScript plugin
 
 ### WhiteboardPaperModel and Raphaël
 
