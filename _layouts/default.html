@@ -13,6 +13,11 @@
         <link rel="stylesheet" href="{{ site.baseurl }}/css/main.css">
         <link rel="stylesheet" href="{{ site.baseurl }}/css/anchor.css">
 
+	<script src="{{ site.baseurl }}/js/anchor.js"></script>
+<script>
+ addAnchors('h1, h2, h3');
+</script>
+
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="/js/jquery.toc.min.js"></script>
     </head>
@@ -112,14 +117,17 @@
             }
 
             if (document.querySelectorAll) orderNav();
+	    // addAnchors('h1, h2, h3');
         </script>
         {% if site.google_analytics_id != "" %}
         {% include google_analytics.html %}
         {% endif %}
 
-<script src="{{ site.baseurl }}/js/anchor.js"></script>
-<script>
-addAnchors('h1, h2, h3');
-</script>
+	<script>
+	$( document ).ready(function() {
+  		addAnchors('h1, h2, h3');
+	});
+	</script>
+
     </body>
 </html>
