@@ -18,7 +18,7 @@ The master branch of the [GIT repository](http://github.com/bigbluebutton/bigblu
   * deskshare-app - The Desktop Sharing server side red5 web-app (written in Java)
   * deskshare-applet - The Applet program used to capture the screen on the client (written in Java).
 
-Other languages used in BigBlueButton are ruby (for [record and playback](Recording.md) processing) and bash (for [administrative tools](BBBConf.md)).
+Other languages used in BigBlueButton are ruby (for [record and playback](/dev/recording.html) processing) and bash (for [administrative tools](/install/bbb-conf.html)).
 
 There are over a dozen [open source components](http://bigbluebutton.org/components/) that comprise BigBlueButton, along with the above parts.  The following diagrams describe how they all work together.
 
@@ -50,8 +50,9 @@ We think Red5 rocks, and we use it as the core server for handling all the real-
 
 ## BigBlueButton Client
 
-We've written the real-time client in Flash.  Since Flash 10, Flash is now available on Mac, Unix, and PCs, and it provides the interface for collaboration with other users.
+We've written the real-time client in Flash.  It provides the interface for collaboration with other users. 
 
+Flash is available on Mac, Unix, and PCs.
 
 
 ---
@@ -79,7 +80,7 @@ The following diagram shows the steps that occur when a presenter uploads a pres
 
 ## Desktop Sharing
 
-The diagram bellow shows the main components of our screen sharing solution.
+The diagram bellow shows the main components of our screen sharing component.
 
 ![bbb-deskshare](/images/bbb-deskshare.png)
 
@@ -89,7 +90,7 @@ The diagram bellow shows the main components of our screen sharing solution.
 
 ## Integrated VOIP (red5 Phone)
 
-The diagram bellow shows the main components of our integrated VOIP(red5 Phone) solution.
+The diagram bellow shows the main components of our integrated VOIP (red5 Phone) solution.
 
 ![bbb_voip](/images/bbb_voip.png)
 
