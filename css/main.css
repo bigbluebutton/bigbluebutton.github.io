@@ -1,6 +1,12 @@
 body {
     font-weight: 400;
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
+
+    // font-family: "Source Sans Pro",Helvetica,Arial,sans-serif;
+    // font-family: arial, sans-serif;
+    line-height: 1.5;
+    // font-size: 1.00em;
+    font-size: 18px; 
 }
 
 pre, code {
@@ -80,4 +86,12 @@ body.rtl ul, body.rtl ol {
 
 td, th {
 	border: 1px solid #ccc; padding: 5px;
+}
+
+li {
+	line-height: 1.5;
+}
+
+h1, h2, h3 {
+	margin-top: 20px;
 }
