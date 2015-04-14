@@ -28,6 +28,8 @@ We want to expand our accessibility support to include closed captioning support
         * Need to be able to edit any past text
         * Need to be able to add lines in-between published text
         * Has to handle cut, copy, and paste
+* Layout
+  * Make sure that closed caption window is excluded from layout sync so as not to hide/move window when presenter/moderator decides to change the layout.
 
 ### Recording
 * Processing
