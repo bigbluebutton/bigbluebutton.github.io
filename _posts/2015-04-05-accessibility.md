@@ -23,10 +23,10 @@ BigBlueButton already has an established core tab order, with each module given 
 the ChatOptions class at dev\bigbluebutton\bigbluebutton-client\src\org\bigbluebutton\modules\chat\model\ChatOptions.as.
 
 Within the Options class, declare the baseTabIndex instance variable like so:
-{% highlight actionscript %}[Bindable] public var baseTabIndex:int;{% endhighlight %}
+{% highlight as3 %}[Bindable] public var baseTabIndex:int;{% endhighlight %}
 
 In the constructor, make a link to your module's entry in BigBlueButton's config.xml. You can add a baseTabIndex property to the config entry if you want, to allow customization later. This code includes a default value in the event that baseTabIndex is not defined in your module configuration:
-{% highlight actionscript %}
+{% highlight as3 %}
 public function ChatOptions() {
     var cxml:XML =     BBB.getConfigForModule("ChatModule");
     if (cxml != null) {
@@ -48,7 +48,7 @@ The core BigBlueButton modules have baseTabIndex values 100 elements apart, to a
 For the existing default baseTabIndex values of the core BigBlueButton client, check \dev\bigbluebutton\bigbluebutton-client\README.
 
 Lastly, determine which MXML file in your module is the "main" file. Continuing with the example of the Chat module, this is dev\bigbluebutton\bigbluebutton-client\src\org\bigbluebutton\modules\chat\views\ChatWindow.mxml. Import your Options class into that MXML with a standard import statement, and declare a baseIndex instance variable just as you did in your Options class, as well as an instance of your Options class, like so:
-{% highlight actionscript %}
+{% highlight as3 %}
 [Bindable] private var baseIndex:int;
 [Bindable] public var chatOptions:ChatOptions;
 {% endhighlight %}
@@ -62,7 +62,7 @@ If your MXML does not already call a method on initialization, add an initialize
 Your MDIWindow will likely have far more properties than shown, these have been removed for clarity's sake.
 
 In your initialize method (in this example, init()) initialize baseIndex with the getBaseTabIndex() method from your Options class:
-{% highlight actionscript %}
+{% highlight as3 %}
 private function init():void {
     baseIndex = chatOptions.baseTabIndex;
 }
@@ -81,7 +81,7 @@ If the MDIWindow you are working in doesn't have a creationComplete method, add 
 Your MDIWindow will likely have far more properties than shown, these have been removed for clarity's sake.
 
 Each MDIWindow has a titlebar overlay, also known as the "main bar" of the window, showing the window's title. Generally, there is also a minimize button, maximize button, and close button. These items will come first in the internal tab order of the module, so in the creationComplete method, give each of them a tabIndex property:
-{% highlight actionscript %}
+{% highlight as3 %}
 private function onCreationComplete():void {
     titleBarOverlay.tabIndex = baseIndex;
     minimizeBtn.tabIndex = baseIndex+1;
@@ -95,7 +95,7 @@ You'll also want to add the accessibilityDescriptions to each item here, but ign
 Now that you have put the titlebar and control buttons into the tab order, continue through each element in the module and continue assigning tabIndex properties based on the baseIndex. The tab order within the module is up to your discretion, as long as the order is as sensible to a user who cannot see the screen as it is to a fully-sighted user.
 
 You have already seen how to assign a tabIndex dynamically above. To assign a static tabIndex within the Flash component itself, write the property like so:
-{% highlight actionscript %}
+{% highlight as3 %}
 tabIndex="{baseIndex+4}"
 {% endhighlight %}
 
@@ -112,7 +112,7 @@ Adding screen-reader compatibility is relatively simple, and revolves around the
 One last thing to consider, is localization. All of your accessibilityNames must be in the locale file, so that the community can translate them to other languages and your module can be used worldwide.
 
 The titlebar component of your MDIWindow needs an accessibilityName, as do the control buttons. See the Tab Order section above for the section were titleBarOverlay is given a tabIndex. In the same place, add this code:
-{% highlight actionscript %}
+{% highlight as3 %}
 titleBarOverlay.accessibilityName = ResourceUtil.getInstance().getString('bbb.exampleModule.titleBar.accessName');
 minimizeBtn.accessibilityName = ResourceUtil.getInstance().getString('bbb.exampleModule.minBtn.accessName');
 maximizeRestoreBtn.accessibilityName = ResourceUtil.getInstance().getString('bbb.exampleModule.maxBtn.accessName');
@@ -120,7 +120,7 @@ closeBtn.accessibilityName = ResourceUtil.getInstance().getString('bbb.exampleMo
 {% endhighlight %}
 
 Dynamic accessibilityNames can be assigned the same way. For static components, the accessibilityName can be set within the component itself:
-{% highlight actionscript %}
+{% highlight as3 %}
 accessibilityName="{ResourceUtil.getInstance().getString('bbb.exampleModule.exampleComponent.accessName')}"
 {% endhighlight %}
 
@@ -163,7 +163,7 @@ bbb.shortcuthelp.dropdown.opinion = Opinion shortcuts
 **REMINDER:** After any change to the locale file, you will need to recompile with ant locales.
 
 Now, we edit the ShortcutWindow.mxml itself. First, in the instance variables you will see a set of ArrayLists (genKeys, presKeys, chatKeys, etc) and a set of corresponding Arrays. You want to create one of each, following the pattern you'll be able to see in the file. For example, let's say that your Opinion module lets a user fill in a text box and then click a button to submit their text. The instance variables in your ShortcutWindow.mxml should look like this:
-{% highlight actionscript %}
+{% highlight as3 %}
 private var genKeys:ArrayList;
 private var presKeys:ArrayList;
 private var chatKeys:ArrayList;
@@ -195,9 +195,9 @@ private var viewerResource:Array = ['bbb.shortcutkey.viewers.makePresenter'];
 private var opinionResource:Array = ['bbb.shortcutkey.opinion.focusInput', 'bbb.shortcutkey.opinion.submit'];
 {% endhighlight %}
 
-Now, look at the reloadKeys() method, and add {% highlight actionscript %}opinionKeys = loadKeys(opinionResource);{% endhighlight %}
+Now, look at the reloadKeys() method, and add {% highlight as3 %}opinionKeys = loadKeys(opinionResource);{% endhighlight %}
  Also, in the changeArray() method, add a case to the switch-case clause for your module to add its hotkeys to the shownKeys ArrayCollection:
-{% highlight actionscript %}
+{% highlight as3 %}
 private function changeArray():void {
     shownKeys = new ArrayCollection();
     switch(categories.selectedIndex) {
@@ -239,7 +239,7 @@ Global shortcuts, in the context of BigBlueButton, are hotkeys that can be used 
 All global shortcuts begin in /bigbluebutton-client/src/BigBlueButton.mxml. The framework for shortcut keys is already present, so all you need to worry about is adding your hotkeys to that framework. Moving forward, we will continue the example from the Shortcut Help Window section of the fictional Opinion module.
 
 In BigBlueButton.mxml, find the loadKeyCombos() method. This collects all available global shortcuts into an object called keyCombos. The Opinion module has only one global shortcut, so the only line we need to add to this method is:
-{% highlight actionscript %}keyCombos[modifier+(ResourceUtil.getInstance().getString('bbb.shortcutkey.focus.opinion') as String)] = ShortcutEvent.FOCUS_OPINION_MODULE;{% endhighlight %}
+{% highlight as3 %}keyCombos[modifier+(ResourceUtil.getInstance().getString('bbb.shortcutkey.focus.opinion') as String)] = ShortcutEvent.FOCUS_OPINION_MODULE;{% endhighlight %}
 
 **NOTE: Generally, your module's only global shortcut will be to move the applications focus into your module, although this is not a rule by any means.**
 
@@ -261,7 +261,7 @@ Now, you need to set up a listener for that event you've just dispatched. Assumi
 {% highlight mxml %}<mate:Listener type="{ShortcutEvent.FOCUS_OPINION_MODULE}" method="focusWindow" />{% endhighlight %}
 
 Then define the method to be called when the Listener picks up the ShortcutEvent. In this case, the method draws focus to the window's titlebar, from which the user can quickly tab into the module itself. Make sure that you have imported org.bigbluebutton.main.events.ShortcutEvent into the target MXML:
-{% highlight actionscript %}
+{% highlight as3 %}
 private function focusWindow(e:ShortcutEvent):void {
     focusManager.setFocus(titleBarOverlay);
 }
@@ -273,7 +273,7 @@ Adding local shortcuts to your module is a more involved process, as you need to
 **NOTE: Some modules, like the Chat module, have a more complex structure with specific hotkeys for each one. If your module is built in a similar manner, you will need to repeat this for each MXML in your module which dispatches it's own shortcuts.**
 
 Make sure you've imported org.bigbluebutton.main.events.ShortcutEvent into the MXML file, and declare an instance variable of class Dispatcher. You've already set up a method bound to creationComplete of your MDIWindow when you set up the Tab Order earlier in this guide; instantiate the Dispatcher to new Dispatcher() in that method. Now, make sure that your MXML has a loadKeyCombos method. If not, add one like so: (still working with our example of the Opinion module)
-{% highlight actionscript %}
+{% highlight as3 %}
 private function loadKeyCombos(modifier:String):void {
     keyCombos = new Object(); // always start with a fresh array
     keyCombos[modifier+(ResourceUtil.getInstance().getString('bbb.shortcutkey.opinion.focusInput') as String)] =
@@ -284,7 +284,7 @@ private function loadKeyCombos(modifier:String):void {
 {% endhighlight %}
 
 Notice that we are still using the string from the locale file that contains the ASCII code for whichever key is used in the shortcut. Much like how we set up an array to populate the Help window DataGrid to display information about our hotkeys, this sets up this part of your module with an Object full of keycodes to watch out for. Next, add a hotKeyCapture() method which will add a keyDown listener to the module, as well as a locale-change listener in case the user switches the language they're operating in:
-{% highlight actionscript %}
+{% highlight as3 %}
 private function hotkeyCapture():void {
     this.addEventListener(KeyboardEvent.KEY_DOWN, handleKeyDown);
     ResourceUtil.getInstance().addEventListener(Event.CHANGE, localeChanged); // Listen for locale changing
@@ -294,7 +294,7 @@ private function hotkeyCapture():void {
 Return to your creationComplete method, and after the Dispatcher has been instantiated, call your new hotKeyCapture() method. This makes sure the listeners are in place as soon as the application is done loading.
 
 Finally, one last method to bring everything together: the handleKeyDown() method from the keyDown listener:
-{% highlight actionscript %}
+{% highlight as3 %}
 private function handleKeyDown(e:KeyboardEvent):void {
     var modifier:String = ExternalInterface.call("determineLocalModifier");
     loadKeyCombos(modifier);
