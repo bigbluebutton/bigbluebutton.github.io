@@ -8,10 +8,6 @@ date: 2015-04-05 11:41:36
 
 # Overview
 
-**Note**: These instructions are DRAFT and currently under construction.  
-Last update April 15 2015.
-
-
 This document provides information about the HTML5 client that is integrated into the BigBlueButton platform for providing an additional entry point for users to join a BigBlueButton session.
 
 ## Vision

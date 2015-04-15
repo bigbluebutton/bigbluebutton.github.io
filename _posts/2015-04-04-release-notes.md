@@ -8,9 +8,9 @@ date: 2015-04-04 22:26:10
 
 # Release 0.9.0-beta
 
-Updated: March 27, 2015 ([Installation Instructions](090InstallationUbuntu.md))
+Updated: March 27, 2015 ([Installation Instructions](/install/install.html))
 
-This release of BigBlueButton 0.9.0-beta is a significant towards the release of 0.9.0 final (see [development process](https://code.google.com/p/bigbluebutton/wiki/FAQ#BigBlueButton_Development_Process)).
+This release of BigBlueButton 0.9.0-beta is a significant towards the release of 0.9.0 final (see [development process](/support/faq.html#bigbluebutton-development-process)).
 
 ## Major Features
 
@@ -24,7 +24,7 @@ This release of BigBlueButton 0.9.0-beta is a significant towards the release of
 
   * **Ubuntu 14.04 64-bit** - BigBlueButton now installs on Ubuntu 14.04 64-bit.
 
-For details of the new features (with screen shots) see [BigBlueButton 0.9.0 Overview](090Overview.md).  See also [0.9.0 Documentation](090Docs.md)
+For details of the new features (with screen shots) see [0.9.0 overview](/overview/090overview.html).
 
 ## Fixed Issues
 
@@ -33,7 +33,7 @@ See [issues fixed in BigBlueButton 0.9.0](https://code.google.com/p/bigbluebutto
 
 # Release 0.81
 
-Released: November 7, 2013 ([Installation Instructions](InstallationUbuntu.md))
+Released: November 7, 2013 
 
 This is our eleventh release of BigBlueButton.  For a quick summary of what's new since the previous release, see this [overview video](http://youtu.be/4C-rOd8bi6s).
 
@@ -68,28 +68,28 @@ See [issues fixed in BigBlueButton 0.81](https://code.google.com/p/bigbluebutton
 
 _Code named in honor of [Tony Bailetti](http://www.sce.carleton.ca/faculty/bailetti.html), head of the Technology Information Management program (Carleton University) who inspired the creation of BigBlueButton.  For more information, see [History of the BigBlueButton Project](http://www.bigbluebutton.org/history/)._
 
-Released: June 18, 2012 ([Installation](Installation.md))
+Released: June 18, 2012 
 
 ## Major Features
   * **Reduced latency in audio** - The BigBlueButton server sets the audio codec for Flash to speex and passes through the packets to FreeSWITCH for processing.
 
-  * **Recording of a session** - BigBlueButton now record events (join, leave, who's talking, chat) and media (audio, webcam, presentations, and desktop sharing) for later playback.  After the session ends, the BigBlueButton server will run one (or more) ingest and processing scripts to convert the recorded events + media into playback formats (see [Record and Playback Specification](RecordPlaybackSpecification.md)).
+  * **Recording of a session** - BigBlueButton now record events (join, leave, who's talking, chat) and media (audio, webcam, presentations, and desktop sharing) for later playback.  After the session ends, the BigBlueButton server will run one (or more) ingest and processing scripts to convert the recorded events + media into playback formats (see [Record and Playback Specification](/dev/recording.html)).
 
   * **Playback of recordings in HTML 5** - The default playback format will playback synchronized slides, audio, and chat.  Playback uses  [popcorn.js](http://popcornjs.org/) for playback within an HTML5 browser.  Current supported browsers are Chrome, Firefox, and IE using the Google Chrome Frame.  Playback of desktop sharing and webcam is supported through the Matterhorn integration.
 
-  * **New API calls** - The API now includes calls for recording a meeting (pass record=true to the 'create' API call) and for accessing recordings: getRecordings, publishRecordings, deleteRecordings (see [API updates for 0.8](API#Version_0.8.md)).
+  * **New API calls** - The API now includes calls for recording a meeting (pass record=true to the 'create' API call) and for accessing recordings: getRecordings, publishRecordings, deleteRecordings.
 
-  * **Matterhorn integration** -  When integrated with Matterhorn, BigBlueButton can capture and process the desktop and webcam for automatic submission to a Matterhorn server (see [Matterhorn integration](Matterhorn.md)).
+  * **Matterhorn integration** -  When integrated with Matterhorn, BigBlueButton can capture and process the desktop and webcam for automatic submission to a Matterhorn server.
 
 
 ## Usability Updates
-  * **Audio Settings dialog** -  To assist users in checking their audio setup **before** joining the voice conference, BigBlueButton now displays an Audio Settings dialog box to enable the user to verify that audio and microphone are correctly configured for a headset.  See [audio settings screenshot](http://code.google.com/p/bigbluebutton/wiki/08Overview#Audio_Settings_Dialog).
+  * **Audio Settings dialog** -  To assist users in checking their audio setup **before** joining the voice conference, BigBlueButton now displays an Audio Settings dialog box to enable the user to verify that audio and microphone are correctly configured for a headset. 
 
-  * **Video Dock** -  To help users view webcams from multiple sources, a new video dock window now 'docks' all the webcams.  The user can drag individual windows in and out of the dock.  See [video dock screenshot](http://code.google.com/p/bigbluebutton/wiki/08Overview#Video_Dock).
+  * **Video Dock** -  To help users view webcams from multiple sources, a new video dock window now 'docks' all the webcams.  The user can drag individual windows in and out of the dock.  
 
-  * **Fit-to-Width for layout of portrait documents** -  Presentation module now enables presenter to switch between fit-to-width and fit-to-page layout for best viewing of  portrait and landscape documents.  See  [screenshot](http://code.google.com/p/bigbluebutton/wiki/08Overview#Fit-to-width).
+  * **Fit-to-Width for layout of portrait documents** -  Presentation module now enables presenter to switch between fit-to-width and fit-to-page layout for best viewing of  portrait and landscape documents.  
 
-  * **Push to Talk** -  Remote students can now mute/unmute themselves with a 'push to talk' button.  See  [screenshot](http://code.google.com/p/bigbluebutton/wiki/08Overview#Push_To_Talk).
+  * **Push to Talk** -  Remote students can now mute/unmute themselves with a 'push to talk' button.  
 
 
 ## Configuration Updates
@@ -101,7 +101,7 @@ Released: June 18, 2012 ([Installation](Installation.md))
 
   * **Auto-translate disabled** -  Google Translate APIs are [no longer free](http://code.google.com/apis/language/translate/overview.html) so the auto translate feature is now disabled by default until we can determine the best way to support their new model (see [1079](http://code.google.com/p/bigbluebutton/issues/detail?id=1079))
 
-  * **bbb-conf now Installs development tools** - To make it easer to develop BigBlueButton, `bbb-conf` can now install a build environment on a BigBlueButton server within any account with sudo privileges.  See [setting development tools](08SettingDevEnvironment#Setting_up_the_development_tools.md).
+  * **bbb-conf now Installs development tools** - To make it easer to develop BigBlueButton, `bbb-conf` can now install a build environment on a BigBlueButton server within any account with sudo privileges.  
 
   * **Under the hood** -  Replaced activemq with redis.  Updated red5 to RC1.  Updated FreeSWITCH to a snapshot of 1.0.7.  BigBlueButton no longer requires installation of mysql.
 
@@ -113,7 +113,7 @@ See [detailed list of issues fixed in BigBlueButton 0.8](http://code.google.com/
 
 Released: January 13, 2011
 
-  * **Maintenance Release** - We spent six weeks profiling and testing the server code to speed handling of VoIP packets and lower memory usage on the server.  See documentation to [install](InstallationUbuntu.md) or [for upgrade](InstallationUbuntu#Upgrading_to_BigBlueButton_0.71a.md) your Ubuntu 10.04 server to BigBlueButton 0.71a.
+  * **Maintenance Release** - We spent six weeks profiling and testing the server code to speed handling of VoIP packets and lower memory usage on the server.  
 
 ## Fixed Issues
 See [detailed list of issues fixed in BigBlueButton 0.71a](http://code.google.com/p/bigbluebutton/issues/list?can=1&q=milestone=Release0.71a)
@@ -137,9 +137,9 @@ Released: November 9, 2010
 
   * **Client Localization** -  The user can change their locale now through a drop-down menu on-the-fly.  This also triggers a change in the locale language for automatic chat translation.
 
-  * **Client Branding** - Administrators can now [skin](Branding.md) the BigBlueButton using cascading style sheets.
+  * **Client Branding** - Administrators can now [skin](/dev/branding.html) the BigBlueButton using cascading style sheets.
 
-  * **Client Configuration** - Administrators can configure, on a server basis, specific capabilities of the BigBlueButton client.  For example, you can change the video quality, define who can share video, and allow moderators to kick users.   See [Client Configuration](ClientConfiguration.md) for the full list of configuration parameters.
+  * **Client Configuration** - Administrators can configure, on a server basis, specific capabilities of the BigBlueButton client.  For example, you can change the video quality, define who can share video, and allow moderators to kick users.   See [Client Configuration](/dev/client-configuration.html) for the full list of configuration parameters.
 
   * **Mate** - The BigBlueButton client is now fully migrated to the [mate](http://mate.asfusion.com/) framework.
 
@@ -159,7 +159,7 @@ _Code named in honor of the Nobel prize winning physicist Richard Feynman._
 
 Released: July 15, 2010
 
-  * **Whiteboard** - Yes, BigBlueButton 0.7 comes with an integrated whiteboard. The whiteboard is overlaid over the presentation, and enables the presenter to draw freehand as well as simple shapes on top of the presentation slides. Each slide has it's own whiteboard instance, which is persistent as the presenter moves across the slides. Everything drawn on the whiteboard is synchronized in real time across all the conference participants.  See [whiteboard overview video](http://bigbluebutton.org/sites/all/videos/whiteboard/index.html).
+  * **Whiteboard** - Yes, BigBlueButton 0.7 comes with an integrated whiteboard. The whiteboard is overlaid over the presentation, and enables the presenter to draw freehand as well as simple shapes on top of the presentation slides. Each slide has it's own whiteboard instance, which is persistent as the presenter moves across the slides. Everything drawn on the whiteboard is synchronized in real time across all the conference participants.  
 
   * **Desktop Sharing** - The mouse pointer is now visible to the viewers when the presenter is sharing their desktop.  The presenter also has 'b' system tray icon when desktop sharing is active.
 
@@ -167,7 +167,7 @@ Released: July 15, 2010
 
   * **Font size in chat** -  You can now increase the font size in the chat window.
 
-  * **Ubuntu 10.04 32-bit and 64-bit support** - While we maintain support for Ubuntu 9.04 32-bit with this release, we are adding support for installation via packages on [Ubuntu 10.04 32-bit and 64-bit](http://code.google.com/p/bigbluebutton/wiki/InstallationUbuntu).
+  * **Ubuntu 10.04 32-bit and 64-bit support** - While we maintain support for Ubuntu 9.04 32-bit with this release, we are adding support for installation via packages on Ubuntu 10.04 32-bit and 64-bit.
 
   * **Desktop Sharing is now LGPL** - We've remove the AGPL license from the desktop sharing module.  This means that all the BigBlueButton code is available under the LGPL license.
 
@@ -175,9 +175,9 @@ Released: July 15, 2010
 
   * **Source code moved to Github** - As the developer community grows, better source code control becomes more important. The entire source code repository has been moved to [Github](http://github.com/bigbluebutton/bigbluebutton). This enables developers to more easily branch and merge the BigBlueButton source, and maintain feature branches.
 
-  * **API Updates** - Removed the redundant meetingToken parameter.  See [what's new in 0.7 API](http://code.google.com/p/bigbluebutton/wiki/API#What's_New) for more details.
+  * **API Updates** - Removed the redundant meetingToken parameter. 
 
-  * **Improved Documentation** - There is a new, simpler, [Example module](SampleModule.md) for bbb-client. As well, the [Developer documentation](DevelopingBBB.md) has been updated to reflect the move to git.
+  * **Improved Documentation** - There is a new, simpler, [Developer documentation](/dev/setup.html) has been updated to reflect the move to git.
 
 ## Fixed Issues
 See [detailed list of issues fixed in BigBlueButton 0.7](http://code.google.com/p/bigbluebutton/issues/list?can=1&q=milestone=Release0.7)
@@ -197,15 +197,15 @@ Released: April 3, 2010
 
   * **Fine-grain listener management** - To make it easier for the moderator to manage listeners, such as "mute everyone except the presenter", the moderator can now "lock" a participant's mute/unmuted state in the Listener's window.  When locked, a listener is unaffected by the global mute all/unmute all buttons in the lower left-hand corner of the Listener window.  This lets the moderator lock the presenter as unmuted, then click the global mute all button to mute everyone else.  In addition, after clicking the mute all button, new listeners join as muted (this is good when a class has started and you don't want latecomers to disturb the lecture).
 
-  * **API Additions** - Jeremy Thomerson has added three new API calls: getMeetings (returns an XML file listing all the active meetings), getMeetingInfo (get information on a specific meeting), and end (end a specific meeting).  In particular, getMeetingInfo enables external applications to query the list of users in a conference. See this [api example](http://demo.bigbluebutton.org/bigbluebutton/demo/demo4.jsp) that uses getMeetingInfo.
+  * **API Additions** - Jeremy Thomerson has added three new API calls: getMeetings (returns an XML file listing all the active meetings), getMeetingInfo (get information on a specific meeting), and end (end a specific meeting).  In particular, getMeetingInfo enables external applications to query the list of users in a conference. See this [api example](http://demo.bigbluebutton.org/demo/demo4.jsp) that uses getMeetingInfo.
 
   * **Show number of participants** - When there are more than five participants in either the Users or Listeners window, the title of the window will show a count (i.e. Users: 7, Listeners: 9).
 
   * **New method for slide selection** - The presenter can now jump to a particular slide by clicking the page number button (located between the left and right arrows) and clicking on the slide from the film strip of thumbnails.
 
-  * **Localization** - Thanks to members of the mailing list -- and to DJP for checking in language contributions -- there are now [sixteen localizations](LocalizationOfBBB.md) for BigBlueButton.
+  * **Localization** - Thanks to members of the mailing list -- and to DJP for checking in language contributions -- there are now [sixteen localizations](/dev/localization.html) for BigBlueButton.
 
-  * **RPM packages for CentOS 5.4** - We now provide [RPM packages](RPMPackaging.md) for installation on CentOS 5.4 (32-bit and 64-bit).
+  * **RPM packages for CentOS 5.4** - We now provide RMP for installation on CentOS 5.4 (32-bit and 64-bit) for this release.
 
 ## Fixed Issues
 
@@ -226,9 +226,9 @@ Released: January 25, 2010
 
 ## New Features
 
-  * **API for Third-Party Integration** - Thanks to Jeremy Thomerson, we now have a [BigBlueButton API](http://code.google.com/p/bigbluebutton/wiki/API) that makes it easy to create and join meetings, and integrate BigBlueButton with third-party applications.
+  * **API for Third-Party Integration** - Thanks to Jeremy Thomerson, we now have a [BigBlueButton API](/dev/api.html) that makes it easy to create and join meetings, and integrate BigBlueButton with third-party applications.
 
-  * **Localization Support** - Another big contribution to this release is work done by Xie Yan Qing and Chen Guangtao from China, who made [localization of the BBB Client](LocalizationOfBBB.md) possible.
+  * **Localization Support** - Another big contribution to this release is work done by Xie Yan Qing and Chen Guangtao from China, who made [localization of the BBB Client](/dev/localization.html) possible.
 
   * **Support for other file formats** - Jean-Philippe Guiot, a contributor from France, submitted a patch months ago that allows uploading of different file formats for the presentation module.  Now, we've finally integrated his work into BBB, so from version 0.63 you will be able to upload not only .pdf, but also .ppt, doc, txt, and other file formats!
 
@@ -236,9 +236,9 @@ Released: January 25, 2010
 
   * **VoIP stability** - VoIP is now more stable, with fewer dropped calls than ever, and better voice quality. And no system-access fee either!
 
-  * **Distribution** - You now longer need to compile a kernel module for VoIP.  This means that you can now [install BigBlueButton](InstallationUbuntu.md) 0.63 on any Ubuntu 9.04 32-bit (server or desktop) with just five commands.
+  * **Distribution** - You now longer need to compile a kernel module for VoIP.  This means that you can now install BigBlueButton 0.63 on any Ubuntu 9.04 32-bit (server or desktop) with just five commands.
 
-  * **Updated Install instructions** - If you want to install BigBlueButton's components, we've provided step-by-step instructions for [Ubuntu 9.04](InstallingBigBlueButton.md), [CentOS 5.03](InstallingBigBlueButtonCentOS.md), and [Fedora 12](InstallingBigBlueButtonFedora.md).
+  * **Updated Install instructions** - If you want to install BigBlueButton's components, we've provided step-by-step instructions for Ubuntu 9.04, CentOS 5.03, and Fedora 12.
 
 ## Fixed Issues
   * [See Issues Fixed in BigBlueButton 0.63](http://code.google.com/p/bigbluebutton/issues/list?can=1&q=milestone=Release0.63%20status=Fixed&colspec=ID%20Type%20Status%20Priority%20Milestone%20Owner%20Component%20Summary)
@@ -259,13 +259,13 @@ Released: November 11, 2009
 
   * **Better Desktop Sharing!** - We've made our Desktop Sharing much better by reverse engineering the Adobe Screen Codec from specs.  The result is much faster, platform independent implementation for desktop sharing.   To share their desktop, the presenter must have Java (1.6) installed to run a Java applet.   There is no changes required for the viewers to view the presenter's desktop.  We've also simplified the user interface for both presenter and viewer
 
-  * **Full built-in development environment** - The BigBlueButton VM makes it easier to modify and build your own versions of BigBlueButton.  See [developing in BigBlueButton](http://code.google.com/p/bigbluebutton/wiki/Developing_BigBlueButton).
+  * **Full built-in development environment** - The BigBlueButton VM makes it easier to modify and build your own versions of BigBlueButton.  
 
   * **Updated command-line tools** - The command-line tools `bbb-setip` and `bbb-setupdev` have been consolidated into a single script `bbb-conf`. If you modify your setup, typing `bbb-conf --check` will perform some checks on your setup to look for common configuration problems with running BigBlueButton
 
 ## To upgrade your BigBlueButton 0.61 installation to 0.62
 
-If you are running  BigBlueButton VM 0.61 -- either from VM or from [apt-get packages](InstallationUbuntu.md) -- you can upgrade your installation to BigBlueButton 0.62 with with three commands.
+If you are running  BigBlueButton VM 0.61 -- either from VM or from apt-get packages -- you can upgrade your installation to BigBlueButton 0.62 with with three commands.
 
 ```
   sudo apt-get update
@@ -274,8 +274,6 @@ If you are running  BigBlueButton VM 0.61 -- either from VM or from [apt-get pac
 ```
 
 **Note**: Be sure to do `sudo apt-get update` _before_ `sudo apt-get dist-upgrade`.  We've moved out a lot of configuration files into a new package called `bbb-common`.  If you skip doing an `upgrade` and go directly to `dist-upgrade`, the package manager will complain that `bbb-common` is trying to overwrite files owned by another package.
-
-**Note**: If you had desktop sharing installed, you can upgrade the apt-get install command described in InstallingDesktopSharing.
 
 
 ## Fixed Issues
@@ -324,7 +322,6 @@ In preparation for schools and universities that are using BigBlueButton for the
 
   * **Desktop Sharing and Xuggler** - The sharing capture applet now divides the presenter's screen into distinct tiles and only sends to the server the tiles that have changed since the last frame.  The desktop sharing also uses Xuggler re-assemble the tiles and compress the images into a flash video stream.  Because desktop sharing incorporates Xuggler, which is licensed under the AGPL, we've had to make desktop sharing a separate module (don't worry, you can install it with a single command).
 However, if you choose to incorporate desktop sharing into BigBlueButton, you must accept the AGPL license for BigBlueButton. This has similar implications for any web application that, in turn, incorporates BigBlueButton.
-For information on installing desktop sharing in BigBlueButton and how it changes the licensing, please see [how to install desktop sharing](http://code.google.com/p/bigbluebutton/wiki/InstallingDesktopSharing).
 
 
 ## To upgrade your installation
@@ -452,7 +449,7 @@ Here are the list of issues we fixed on this release:
 
 Released: June 12, 2009
 
-Much of the effort in this release was on creating individual packages for the components and distributing the entire package as a [downloadable virtual machine](http://code.google.com/p/bigbluebutton/wiki/BigBlueButtonVM).
+Much of the effort in this release was on creating individual packages for the components and distributing the entire package as a downloadable virtual machine.
 
 Other updates include:
   * BigBlueButton client now supports tunneling through a firewall via port 80

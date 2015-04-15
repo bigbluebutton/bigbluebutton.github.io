@@ -10,17 +10,17 @@ Note: This page is currently under development and the instructions not finished
 
 
 
-This document assumes the reader understands the current [BigBlueButton architecture](http://code.google.com/p/bigbluebutton/wiki/ArchitectureOverview).
+This document assumes the reader understands the current [BigBlueButton architecture](/overview/architecture.html).
 
 
 # Overview
 
 BigBlueButton records all the events and media data generated during a BigBlueButton session for later playback.
 
-If you want to see the Record and Playback feature in action there is a [demo](http://demo.bigbluebutton.org/demo/demo10.jsp), you can use it to record a BigBlueButton session and play it after it is listed under "Recorded Sessions" on the same page, you should wait a few minutes after your session ends while the media is processed and published for playback. This demo is also available on your server if you have [installed it](https://code.google.com/p/bigbluebutton/wiki/081InstallationUbuntu#6._Install_API_Demos).
+If you want to see the Record and Playback feature in action there is a [demo](http://demo.bigbluebutton.org/demo/demo10.jsp), you can use it to record a BigBlueButton session and play it after it is listed under "Recorded Sessions" on the same page, you should wait a few minutes after your session ends while the media is processed and published for playback. This demo is also available on your server if you have [installed it](/install/install.html#6.-install-api-demos).
 
 
-Like BigBlueButton sessions, management of recordings should be handled by [third party software](http://www.bigbluebutton.org/open-source-integrations/).  Third party software consumes the [BigBlueButton API](https://code.google.com/p/bigbluebutton/wiki/API) to accomplish that.  As user you may want to use third party software which sets the right value to the parameter "record". As developer you may want to use a (not official) library which implements the api calls in your preferred language, or implement it by yourself.
+Like BigBlueButton sessions, management of recordings should be handled by [third party software](http://www.bigbluebutton.org/open-source-integrations/).  Third party software consumes the [BigBlueButton API](/dev/api.html) to accomplish that.  As user you may want to use third party software which sets the right value to the parameter "record". As developer you may want to use a (not official) library which implements the api calls in your preferred language, or implement it by yourself.
 
 From a technical point of view, in the BigBlueButton API, when you pass the parameter 'record=true' with [create](/dev/api.html#create), BigBlueButton will create a session that has recording enabled. In this case, it will add a new button to the toolbar at the top of the window with a circle icon which a moderator in the session can use to indicate sections of the meeting to be recorded.
 
@@ -92,35 +92,26 @@ Some Record and Playback phases store the media they handle in different directo
 
 ## Captured files
 
-_AUDIO_:
-/var/freeswitch/meetings
-
-_WEBCAM_:
-/usr/share/red5/webapps/video/streams
-
-_DESKTOP SHARING_:
-/var/bigbluebutton/deskshare
-
-_SLIDES_:
-/var/bigbluebutton
-
-_EVENTS_:
-Redis
+  * AUDIO: `/var/freeswitch/meetings`
+  * WEBCAM: `/usr/share/red5/webapps/video/streams`
+  * DESKTOP SHARING: `/var/bigbluebutton/deskshare`
+  * SLIDES: `/var/bigbluebutton`
+  * EVENTS: `Redis`
 
 ### Archived files
-/var/bigbluebutton/recording/raw/_**internal-meeting-id**_/
+The archived file are located in `/var/bigbluebutton/recording/raw/<internal-meeting-id>/`
 
 ### Sanity checked files
-Same for archived files
+The sanity files are store in the same place as the archived files
 
 ### Processed files
-/var/bigbluebutton/recording/process/presentation/_**internal-meeting-id**_/
+The processed files can be found in `/var/bigbluebutton/recording/process/presentation/<internal-meeting-id>/`
 
 ### Published files
-/var/bigbluebutton/recording/publish/presentation/_**internal-meeting-id**_/
+The published files are in `/var/bigbluebutton/recording/publish/presentation/<internal-meeting-id>/`
 
 ### Playback files
-/var/bigbluebutton/published/presentation/_**internal-meeting-id**_/
+The playback files are found in `/var/bigbluebutton/published/presentation/<internal-meeting-id>/`
 
 
 
@@ -159,13 +150,11 @@ Administration:
 ```
 
 ### Useful terms
-_**workflow**_ is the way a recording is processed, published and played . In BigBlueButton 0.81 the unique workflow out of the box is the "presentation".
 
-_**internal meetingId**_ is an alphanumeric string that internally identifies your recorded meeting. It is created internally by BigBlueButton. For example "183f0bf3a0982a127bdb8161e0c44eb696b3e75c-1379693236230".
-
-_**external meetingID**_  is the id you set to the meeting, like "English 201" or "My Awesome class", "Chemistry 2". It is passed through the create API call.
-
-_**recording**_ is recorded meeting in BigBlueButton.
+  * workflow - is the way a recording is processed, published and played . In BigBlueButton 0.81 the unique workflow out of the box is the "presentation".
+  * internal meetingId - is an alphanumeric string that internally identifies your recorded meeting. It is created internally by BigBlueButton. For example "183f0bf3a0982a127bdb8161e0c44eb696b3e75c-1379693236230".
+  * external meetingID -  is the id you set to the meeting, like "English 201" or "My Awesome class", "Chemistry 2". It is passed through the create API call. 
+  * recording -  is recorded meeting in BigBlueButton. 
 
 In BigBlueButton you can use the same external meeting ID (for example "English 101") in many recordings but each recording will have a different internal meeting id. One external meeting id is associated with **one or many** internal meeting ids.
 
@@ -304,26 +293,25 @@ sudo bbb-record --republish 6e35e3b2778883f5db637d7a5dba0a427f692e91-13799651226
 ```
 
 
-
 ## For Developers
 
-Here you will find more details about the Record and Playback feature.
+Here you will find more details about the Record and Playback.
 
 
-The unique way to start a recorded session in BigBlueButton is setting the value "true" to the parameter "record" in the[create API call](https://code.google.com/p/bigbluebutton/wiki/API#Create_Meeting), which usually is handled by third party software.
+The way to start a recorded session in BigBlueButton is setting the "record" parameter value to "true" in the [create API](/dev/api.html#create) call, which usually is handled by third party software.
 
 
 
 ### Capture phase
 
-The Capture phase is handled by many components, to understand how it works you should have basic, intermediate or advanced understanding about tools like Freeswitch, Flex, Red5 , Redis, dig into the [BigBlueButton source code](https://github.com/bigbluebutton/bigbluebutton), or search for information in the [BigBlueButton mailing list for developers](https://groups.google.com/forum/?hl=es#!forum/bigbluebutton-dev)
+The Capture phase is handled by many components. 
 
-
+To understand how it works, you should have basic, intermediate or advanced understanding about tools like Freeswitch, Flex, Red5 , Redis, dig into the [BigBlueButton source code](https://github.com/bigbluebutton/bigbluebutton). Search for information in the [BigBlueButton mailing list for developers](https://groups.google.com/forum/#!forum/bigbluebutton-dev) if you have more questions.
 
 
 ### Archive, Sanity, Process and Publish
 
-These phases are handled by Ruby scripts. The  directory for those files is /usr/local/bigbluebutton/core/
+These phases are handled by Ruby scripts. The directory for those files is `/usr/local/bigbluebutton/core/`
 
 ```
 /usr/local/bigbluebutton/core/
@@ -367,17 +355,17 @@ These phases are handled by Ruby scripts. The  directory for those files is /usr
 
 ```
 
-The main file is rap-worker.rb, it executes all the Record and Playback phases
+The main file is `rap-worker.rb`, it executes all the Record and Playback phases
 
   1. Detects when new captured media from a session is available.
-  1. Go through the Archive phase (/usr/local/bigbluebutton/core/scripts/archive/archive.rb)
-  1. Go through the Sanity phase executing (/usr/local/bigbluebutton/core/scripts/sanity/sanity.rb)
-  1. Go through the Process phase executing all the scripts under /usr/local/bigbluebutton/core/scripts/process/
-  1. Go through the Publish phase executing all the scripts under /usr/local/bigbluebutton/core/scripts/publish/
+  1. Go through the Archive phase (`/usr/local/bigbluebutton/core/scripts/archive/archive.rb`)
+  1. Go through the Sanity phase executing (`/usr/local/bigbluebutton/core/scripts/sanity/sanity.rb`)
+  1. Go through the Process phase executing all the scripts under `/usr/local/bigbluebutton/core/scripts/process/`
+  1. Go through the Publish phase executing all the scripts under `/usr/local/bigbluebutton/core/scripts/publish/`
 
   * Files ending with "archiver.rb" contain scripts with logic to archive media.
 
-  * Files under /usr/local/bigbluebutton/core/lib/generators/ contains scripts with logic, classes and methods used by other scripts which archive or process  media.
+  * Files under `/usr/local/bigbluebutton/core/lib/generators/` contains scripts with logic, classes and methods used by other scripts which archive or process  media.
 
   * Yml files contain information used by process and publish scripts.
 
@@ -417,12 +405,13 @@ You are free to do anything you like inside the post scripts, including modifyin
 
 ### Playback phase
 
-Playback works with the javascript library Popcorn.js which shows the slides, chat and webcam according to the current time played in the audio file. Playback files are located in /var/bigbluebutton/playback/presentation/ and used to play any published recording.
+Playback works with the javascript library Popcorn.js which shows the slides, chat and webcam according to the current time played in the audio file. Playback files are located in `/var/bigbluebutton/playback/presentation/` and used to play any published recording.
 
 
 ## Troubleshooting
 
 Apart from the command
+
 ```
 sudo bbb-record --debug
 ```
@@ -465,9 +454,7 @@ Record and Playback component of BigBlueButton, watching the output of the comma
 bbb-record --watch
 ```
 
-which output is explained [here](https://code.google.com/p/bigbluebutton/wiki/RecordPlaybackSpecification#--watch).
-
-##### RAS ( RECORDED - ARCHIVED - SANITY CHECK )
+#### RAS ( RECORDED - ARCHIVED - SANITY CHECKED )
 
 Below **RAS** you won't see any **_X_** until the meeting has finished.
 
@@ -475,15 +462,15 @@ Once the meeting has finished, an **_X_** under **R** appears, if it does not ap
 
   * Be sure all users left the meeting.
 
-  * Check out that the parameter _defaultMeetingExpireDuration_ in _/var/lib/tomcat6/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties_ does not have a big value (default to 1).
+  * Check out that the parameter `defaultMeetingExpireDuration` in `/var/lib/tomcat6/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties` does not have a big value (default to 1).
 
-  * Be sure the parameter _record=true_ was passed in the _create_ api call. If not, you didn't record the meeting.
+  * Be sure the parameter `record=true` was passed in the `create` api call. If not, you didn't record the meeting.
 
 Once the recording is archived, an **_X_** under **A** appears, if it does not appear:
 
   * Verify this this file exists
 
-_/var/bigbluebutton/recording/status/recorded/INTERNAL-MEETING-ID.done_
+`/var/bigbluebutton/recording/status/recorded/<internal meeting id>.done`
 
 that means that the meeting was recorded.
 
@@ -492,40 +479,40 @@ Once the recording passed the sanity check , an **_X_** appears under **S**, if 
   * A media file was not properly archived, find the cause of the problem in the sanity log
 
 ```
-grep INTERNAL-MEETING-ID /var/log/bigbluebutton/sanity.log
+grep <internal meeting id> /var/log/bigbluebutton/sanity.log
 ```
 
 
-##### APVD
+#### APVD (Audio, Presentation, Video, Deskshare)
 
 This section is related to recorded media. By default Audio and Presentation are recorded, if you don't see any **_X_** under **V** or **D**, then you haven't
 shared your webcam or desktop, or you haven't enabled webcam or deskshare to be recorded.
 
-##### APVDE
+##### APVDE (Audio, Presentation, Video, Deskshare, Events)
 
 This section is related to archived media. If you don't see an **_X_** under a media you are sure that was recorded, check out
 the sanity log. Execute this command to find the problem:
 
 ```
-grep INTERNAL-MEETING-ID /var/log/bigbluebutton/sanity.log
+grep <internal meeting id> /var/log/bigbluebutton/sanity.log
 ```
 
 
-##### Processed
+#### Processed
 
 If a script was applied to process your recording, its name should be listed under the column 'Processed', by default you should see "slides" and
 "presentation", if you don't see one of them, find the problem in the log file of the processed recording:
 
 ```
-grep -B 3 "status: 1" /var/log/bigbluebutton/presentation/process-INTERNAL-MEETING-ID.log | grep ERROR
+grep -B 3 "status: 1" /var/log/bigbluebutton/presentation/process-<internal meeting id>.log | grep ERROR
 ```
 
 ```
-grep -B 3 "status: 1" /var/log/bigbluebutton/slides/process-INTERNAL-MEETING-ID.log | grep ERROR
+grep -B 3 "status: 1" /var/log/bigbluebutton/slides/process-<internal meeting id>.log | grep ERROR
 ```
 
-If there is some output it should show the problem. If there is not any output then tail the file to see which is the
-latest executed task , sure that is the one that failed and an error message with the problem is described few lines after.
+If there is some output, it should show the problem. If there is no output then tail the file to see which is the
+latest executed task. Make sure that is the one that failed and an error message with the problem is described few lines after.
 
 ##### Published
 
@@ -533,20 +520,22 @@ If a script is applied to publish your recording, its name should be listed unde
 "presentation", if you don't see one of them, find the problem in the log file of the published recording .
 
 ```
-grep -B 3 "status: 1" /var/log/bigbluebutton/presentation/publish-INTERNAL-MEETING-ID.log | grep ERROR
+grep -B 3 "status: 1" /var/log/bigbluebutton/presentation/publish-<internal meeting id>.log | grep ERROR
 ```
 
 ```
-grep -B 3 "status: 1" /var/log/bigbluebutton/slides/publish-INTERNAL-MEETING-ID.log | grep ERROR
+grep -B 3 "status: 1" /var/log/bigbluebutton/slides/publish-<internal meeting id>.log | grep ERROR
 ```
 
 If there is some output then you found the problem, if there is not any output then tail the file to see which is the
-latest executed task , sure that is the one that failed and an error message with the problem is described few lines after.
+last executed task, sure that is the one that failed and an error message with the problem is described few lines after.
 
 # FAQS
 
-## Is the recording activated automatically ?
-No, when creating the meeting the parameters must include record="true" to enable recording.  In BigBlueButton 0.9.0, to have a recorded session create a playback file, a moderator must click the Start/Stop Record button during the session; otherwise, BigBlueButton not create a playback file and delete the recorded session.
+## Is the recording activated automatically?
 
-## How to delete recordings before storage device is full ?
-> _/etc/cron.daily/bigbluebutton_ deletes the archived media. Edit the file and add more rules if you need to delete others like raw files or processed files.
+No, when creating the meeting the parameters must include `record=true` to enable recording.  In BigBlueButton 0.9.0, to have a recorded session create a playback file, a moderator must click the Start/Stop Record button during the session. Otherwise, BigBlueButton will not create a playback file and delete the recorded session.
+
+## How to delete recordings before storage device is full?
+
+`/etc/cron.daily/bigbluebutton` deletes the archived media. Edit the file and add more rules if you need to delete others like raw files or processed files.

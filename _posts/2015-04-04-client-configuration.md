@@ -233,7 +233,7 @@ The Video Conferencing Module. Allows users to share their webcams with the room
 | h264Level              | 2.1                           | See [H264 Level](http://help.adobe.com/en_US/FlashPlatform/beta/reference/actionscript/3/flash/media/H264Level.html) |
 | h264Profile            | main                          | See [H264 Profile](http://help.adobe.com/en_US/FlashPlatform/beta/reference/actionscript/3/flash/media/H264Profile.html) |
 | displayAvatar          | false                         | Display avatar in webcam window. |
-| focusTalking           | false                         | |
+| focusTalking           | false                         | Make speaker window bigger.|
 | glowColor              | 0x4A931D                      | Glow color surrounding webcam window of user that's talking. |
 | glowBlurSize           | 30.0                          | How much to glow. | 
 

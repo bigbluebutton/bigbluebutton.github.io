@@ -7,15 +7,15 @@ date: 2015-04-04 22:11:11
 
 # Overview
 
-BigBlueButton is comprised of over a dozen [open source components](http://bigbluebutton.org/components/). This page describes how they all work together.
-
-You can get access to BigBlueButton repository located at [Github](http://github.com/bigbluebutton/bigbluebutton). 
+BigBlueButton is build upon some amazing [open source components](http://bigbluebutton.org/components/). This page describes how they work together.
 
 # High-level Architecture Overview
 
 The following diagram provides a high-level overview of the BigBlueButton architecture.
 
 ![Architecture Overview](/images/bbb-arch-overview.png)
+
+We'll break down each component below.
 
 ### Client
 
@@ -24,17 +24,19 @@ When it needs to connect using RTMPT, it connects through Nginx which proxies th
 
 The Client also uploads presentations to Web API.
 
-### 3rd-party Applications
+### Third-party Applications
 
-3rd-party applications (Moodle, Wordpress, Canvas, Sakai, etc.) integrates with BigBlueButton using the Web API. From within the 3rd-party apps, users are able to create and join meetings as well as access the recordings.
+Every access to BigBlueButton comes through a front-end portal (we refer to as a third-party application).  BigBlueButton integrates Moodle, Wordpress, Canvas, Sakai, and others (see [third-party integrations](http://bigbluebutton.org/open-source-integrations/)).  From a learning management system (LMS) such as Moodle, teachers can setup BigBlueButton rooms within their course and students can access the rooms and their recordings. 
+
+The BigBlueButton comes with some simple [API demos](http://demo.bigbluebutton.org/demo/demo1.jsp), but you really want to use an existing front-end or develop your own using the [BigBlueButton API](/dev/api.html).
 
 ### Nginx
 
-Nginx proxies calls to different server side applications through port 80. Nginx allows the Flash client to connect using RTMPT for users who can't connect to Red5 on port 1935. It also front-ends the Web API which runs on Tomcat7 listening on port 8080. For users joining the voice conference using WebRTC, nginx proxies the WebRTC connection to FreeSWITCH.
+Nginx proxies calls to different server side applications through port 80. Nginx also allows Flash client to connect using RTMPT for users behind a firewall that preents their client from connecting directly to Red5 on port 1935. It also front-ends the Web API which runs on Tomcat7 listening on port 8080. For users joining the voice conference using WebRTC, nginx proxies the WebRTC connection to FreeSWITCH.
 
 ### Web API
 
-The Web [API](/dev/api.html) provides an integration endpoint for 3rd-party applications (Moodle, Wordpress, Canvas, Sakai, etc.).
+The Web [API](/dev/api.html) provides the integration endpoint for third-party applications -- such Moodle, Wordpress, Canvas, Sakai, etc. -- to control the BigBlueButton server. 
 
 ### Presentation Conversion
 
