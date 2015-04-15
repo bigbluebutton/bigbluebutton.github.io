@@ -2,7 +2,7 @@ This is the developer documentation web site for BigBlueButton.
 
 This site uses Jekyll to build the documentation site.  You can setup Jekyll to build the website locally so you can preview the site before pushing changes.
 
-On a Ubuntu 14.0.4 machine, install ruby 2.2.1 following the instructions at https://gorails.com/setup/ubuntu/14.04
+On a Ubuntu 14.04 machine, install ruby 2.2.1 following the instructions at https://gorails.com/setup/ubuntu/14.04
 
 To setup Jekyll, you need to have ruby and the bundler gem installed.  Once setup, enter the directory bigbluebutton.github.io and type
 
