@@ -11,7 +11,9 @@ title: "BigBlueButton"
 
 We believe every student with a web browser should have access to a high-quality on-line learning experience.  We intend to make that possible with BigBlueButton.
 
-This site is for administrators and developers wanting to install, customize, and enhance BigBlueButton. For an end-user overview of BigBlueButton (with videos) visit [bigbluebutton.org](http://bigbluebutton.org). The source code for BigBlueButton is on [GitHub](http://github.com/bigbluebutton/bigbluebutton).
+We created this documentation for administrators and developers who want to install, customize, and enhance BigBlueButton. For an end-user overview of BigBlueButton (with videos) visit [bigbluebutton.org](http://bigbluebutton.org). 
+
+The source code for BigBlueButton is on [GitHub](http://github.com/bigbluebutton/bigbluebutton).
 
 ## Getting started
 
@@ -36,3 +38,10 @@ Interested in helping to improve BigBlueButton?  See [Contributing to BigBlueBut
 The latest version of BigBlueButton is 0.9.0-beta (our 12th release).  BigBlueButton 0.9.0-beta has had over eleven months of development and over five months of stress testing (we have very high standards for a release).  To follow its development, subscribe to our [developer mailing list](https://groups.google.com/forum/#!forum/bigbluebutton-dev).
 
 Enjoy!
+
+---
+
+![yourkit](/images/yourkit.png)
+
+YourKit is kindly supporting open source projects with its full-featured Java Profiler. YourKit, LLC is the creator of innovative and intelligent tools for profiling Java and .NET applications. Take a look at YourKit's leading software products: [YourKit Java Profiler](https://www.yourkit.com/java/profiler/index.jsp) and [YourKit .NET Profiler](https://www.yourkit.com/.net/profiler/index.jsp).
+
