@@ -6,10 +6,6 @@ date: 2015-04-04 22:47:38
 ---
 
 
-Note: This page is currently under development and the instructions not finished.  We'll post to bigbluebutton-dev when 0.9.0-beta (referred to as 0.9.0 in this document) is ready for use.
-
-
-
 This document assumes the reader understands the current [BigBlueButton architecture](/overview/architecture.html).
 
 
@@ -29,9 +25,6 @@ In a session with recording enabled, BigBlueButton will save the slides, chat, a
 After the session finishes, the BigBlueButton server will run an archive script that copies all of the related files to a single directory. It then checks to see if the moderator has clicked the "Record" button during the session to indicate a section of the meeting that should be turned into a recording. If the recording button was not clicked during the session, the files are queued to be deleted after a period of time. (You can override this and force a recording to be processed; see the bbb-record --rebuild command below.)
 
 After the recording is archived, BigBlueButton will run one (or more) ingest and processing scripts, named workflows, that will _process_ and _publish_ the captured data into a format for _playback_.
-
-In BigBlueButton 0.9.0 there is one supported workflow, **presentation**, which is installed by default. You can have multiple workflows working in your server and at the end you will have multiple formats for playback.
-
 
 
 # Record and Playback Phases
@@ -123,7 +116,7 @@ In the terminal of your server you can execute "bbb-record", which will show you
 
 ```
 
-BigBlueButton Recording Diagnostic Utility (BigBlueButton Version 0.9.0-beta)
+BigBlueButton Recording Diagnostic Utility (BigBlueButton Version 0.9.0)
 
    bbb-record [options]
 
@@ -500,15 +493,11 @@ grep <internal meeting id> /var/log/bigbluebutton/sanity.log
 
 #### Processed
 
-If a script was applied to process your recording, its name should be listed under the column 'Processed', by default you should see "slides" and
+If a script was applied to process your recording, its name should be listed under the column 'Processed', by default you should see 
 "presentation", if you don't see one of them, find the problem in the log file of the processed recording:
 
 ```
 grep -B 3 "status: 1" /var/log/bigbluebutton/presentation/process-<internal meeting id>.log | grep ERROR
-```
-
-```
-grep -B 3 "status: 1" /var/log/bigbluebutton/slides/process-<internal meeting id>.log | grep ERROR
 ```
 
 If there is some output, it should show the problem. If there is no output then tail the file to see which is the
@@ -516,16 +505,12 @@ latest executed task. Make sure that is the one that failed and an error message
 
 ##### Published
 
-If a script is applied to publish your recording, its name should be listed under the column 'Published', by default you should see "slides" and
-"presentation", if you don't see one of them, find the problem in the log file of the published recording .
+If a script is applied to publish your recording, its name should be listed under the column 'Published'.
 
 ```
 grep -B 3 "status: 1" /var/log/bigbluebutton/presentation/publish-<internal meeting id>.log | grep ERROR
 ```
 
-```
-grep -B 3 "status: 1" /var/log/bigbluebutton/slides/publish-<internal meeting id>.log | grep ERROR
-```
 
 If there is some output then you found the problem, if there is not any output then tail the file to see which is the
 last executed task, sure that is the one that failed and an error message with the problem is described few lines after.
