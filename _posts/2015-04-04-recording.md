@@ -10,17 +10,17 @@ Note: This page is currently under development and the instructions not finished
 
 
 
-This document assumes the reader understands the current [BigBlueButton architecture](http://code.google.com/p/bigbluebutton/wiki/ArchitectureOverview).
+This document assumes the reader understands the current [BigBlueButton architecture](/overview/architecture.html).
 
 
 # Overview
 
 BigBlueButton records all the events and media data generated during a BigBlueButton session for later playback.
 
-If you want to see the Record and Playback feature in action there is a [demo](http://demo.bigbluebutton.org/demo/demo10.jsp), you can use it to record a BigBlueButton session and play it after it is listed under "Recorded Sessions" on the same page, you should wait a few minutes after your session ends while the media is processed and published for playback. This demo is also available on your server if you have [installed it](https://code.google.com/p/bigbluebutton/wiki/081InstallationUbuntu#6._Install_API_Demos).
+If you want to see the Record and Playback feature in action there is a [demo](http://demo.bigbluebutton.org/demo/demo10.jsp), you can use it to record a BigBlueButton session and play it after it is listed under "Recorded Sessions" on the same page, you should wait a few minutes after your session ends while the media is processed and published for playback. This demo is also available on your server if you have [installed it](/install/install.html#6.-install-api-demos).
 
 
-Like BigBlueButton sessions, management of recordings should be handled by [third party software](http://www.bigbluebutton.org/open-source-integrations/).  Third party software consumes the [BigBlueButton API](https://code.google.com/p/bigbluebutton/wiki/API) to accomplish that.  As user you may want to use third party software which sets the right value to the parameter "record". As developer you may want to use a (not official) library which implements the api calls in your preferred language, or implement it by yourself.
+Like BigBlueButton sessions, management of recordings should be handled by [third party software](http://www.bigbluebutton.org/open-source-integrations/).  Third party software consumes the [BigBlueButton API](/dev/api.html) to accomplish that.  As user you may want to use third party software which sets the right value to the parameter "record". As developer you may want to use a (not official) library which implements the api calls in your preferred language, or implement it by yourself.
 
 From a technical point of view, in the BigBlueButton API, when you pass the parameter 'record=true' with [create](/dev/api.html#create), BigBlueButton will create a session that has recording enabled. In this case, it will add a new button to the toolbar at the top of the window with a circle icon which a moderator in the session can use to indicate sections of the meeting to be recorded.
 
