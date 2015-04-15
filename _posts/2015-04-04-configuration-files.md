@@ -129,7 +129,7 @@ Configure how to handle calls to join the voice conference.
 # BigBlueButton Client (Flash)
 
 ## Enabling and Disabling client features
-Check the [client configuration](/overview/client-configuration.html) page.
+Check the [client configuration](/install/configuration-files.html) page.
 
 ## Configuration File
 

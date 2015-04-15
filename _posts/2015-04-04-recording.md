@@ -306,7 +306,7 @@ The way to start a recorded session in BigBlueButton is setting the "record" par
 
 The Capture phase is handled by many components. 
 
-To understand how it works, you should have basic, intermediate or advanced understanding about tools like Freeswitch, Flex, Red5 , Redis, dig into the [BigBlueButton source code](https://github.com/bigbluebutton/bigbluebutton). Search for information in the [BigBlueButton mailing list for developers](https://groups.google.com/forum/?hl=es#!forum/bigbluebutton-dev) if you have more questions.
+To understand how it works, you should have basic, intermediate or advanced understanding about tools like Freeswitch, Flex, Red5 , Redis, dig into the [BigBlueButton source code](https://github.com/bigbluebutton/bigbluebutton). Search for information in the [BigBlueButton mailing list for developers](https://groups.google.com/forum/#!forum/bigbluebutton-dev) if you have more questions.
 
 
 ### Archive, Sanity, Process and Publish
