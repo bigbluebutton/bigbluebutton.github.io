@@ -11,13 +11,13 @@ title: "BigBlueButton"
 
 We believe every student with a web browser should have access to a high-quality on-line learning experience.  We intend to make that possible with BigBlueButton.
 
-This documentation for administrators and developers who want to install, customize, and enhance BigBlueButton. For an end-user overview of BigBlueButton (with videos) visit [bigbluebutton.org](http://bigbluebutton.org). 
+This documentation is for administrators and developers who want to install, customize, and enhance BigBlueButton. For an end-user overview of BigBlueButton (with videos) visit [bigbluebutton.org](http://bigbluebutton.org). 
 
 The source code for BigBlueButton is hosted on [GitHub](http://github.com/bigbluebutton/bigbluebutton).
 
 ## Getting started
 
-If your getting started with BigBlueButton we recommend the following:
+If you are getting started with BigBlueButton we recommend the following:
 
   1. Watch the [overview videos](http://bigbluebutton.org/videos) for moderator/presenter and viewer.
   1. Try out BigBlueButton using our [Demo Server](http://demo.bigbluebutton.org/).
