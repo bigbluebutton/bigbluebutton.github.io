@@ -32,7 +32,7 @@ The BigBlueButton comes with some simple [API demos](http://demo.bigbluebutton.o
 
 ### Nginx
 
-Nginx proxies calls to different server side applications through port 80. Nginx also allows Flash client to connect using RTMPT for users behind a firewall that preents their client from connecting directly to Red5 on port 1935. It also front-ends the Web API which runs on Tomcat7 listening on port 8080. For users joining the voice conference using WebRTC, nginx proxies the WebRTC connection to FreeSWITCH.
+Nginx proxies calls to different server side applications through port 80. Nginx also allows Flash client to connect using RTMPT for users behind a firewall that presents their client from connecting directly to Red5 on port 1935. It also front-ends the Web API which runs on Tomcat7 listening on port 8080. For users joining the voice conference using WebRTC, nginx proxies the WebRTC connection to FreeSWITCH.
 
 ### Web API
 
@@ -89,6 +89,6 @@ The conversion process sends progress messages to the client through the Redis p
 
 ## BigBlueButton Client
 
-BigBlueButton client runs inside the browser. The main application is in Flash. There are Javascript libraries that provides connection to FreeSWITCH, launch the desktop sharing applet, etc. The Flash client connects to BigBlueButton App to send and recieve messages. The client internally uses a event bus for the components to talk to each other.
+BigBlueButton client runs inside the browser. The main application is in Flash. There are Javascript libraries that provides connection to FreeSWITCH, launch the desktop sharing applet, etc. The Flash client connects to BigBlueButton App to send and receive messages. The client internally uses a event bus for the components to talk to each other.
 
 ![Client Architecture](/images/bbb-client-arch.png)

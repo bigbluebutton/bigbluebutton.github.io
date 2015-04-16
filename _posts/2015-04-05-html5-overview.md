@@ -36,7 +36,7 @@ The overall design of the HTML5 client [in landscape view] aims to resemble what
 
 <img src="/images/html5-client-landscape.png" width="900" />
 
-The HTML5 client also has a portrait view where the interface was modified to better accomodate devices with smaller screens (mobile devices). 
+The HTML5 client also has a portrait view where the interface was modified to better accommodate devices with smaller screens (mobile devices). 
 
 <img src="/images/html5-client-mobile-view.png" width="350" />
 <img src="/images/html5-client-mobile-menu.png" width="350" />
@@ -131,7 +131,7 @@ We have disabled autopublishing. We publish manually inside server/publish.coffe
 ### HTML5 Client's client side:
 
 We rely heavily on the fact that MongoDB on the server side automatically pushes updates to MiniMongo on the client side.
-The client side subscribes to the published collections on the server side. During the subscription, the userId and auth_token of the user logged in the client are required. Providing these 2 identifiers, together with the meetingId, gived the publishing mechanism enough information to decide what subset of the collections the user logged in the client is authorized to view.
+The client side subscribes to the published collections on the server side. During the subscription, the userId and auth_token of the user logged in the client are required. Providing these 2 identifiers, together with the meetingId, the publishing mechanism is enough information to decide what subset of the collections the user logged in the client is authorized to view.
 
 When an event in the meeting occurs the database on the server side is updated and the information is propagated to the client side MiniMongo database. The templates are automatically rendered with the most recent information so the user interface is updated.
 
@@ -149,8 +149,8 @@ The result should be ```{"html5clientStatus":"running"}```
 
 ## Current stage
 ### Implemented:
-  * two way pyblic and private chat
-  * viewing presentation with slides, cursor, anotations
+  * two way public and private chat
+  * viewing presentation with slides, cursor, whiteboard annotations
   * audio using WebRTC (listen and speak)
 
 ### Not yet implemented (see more information about these features in the existing Flash client):

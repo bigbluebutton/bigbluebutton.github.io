@@ -14,7 +14,7 @@ This release of BigBlueButton 0.9.0-RC (hearafter referred to as 0.9.0) represen
 
 ## Major Features
 
-  * **WebRTC Audio** - BigBlueButton now uses web real-time communications (WebRTC) audio for users of FireFox and Chrome.  WebRTC audio is sampled at 48 Khz, encoded in [OPUS](http://www.opus-codec.org/) codec, uses UDP for transport, and communicates directly with [FreeSWITCH](http://freeswitch.org/) on the BigBlueButton server –- all this combines to give users high quality, low latency audio.
+  * **webRTC Audio** - BigBlueButton now uses web real-time communications (webRTC) audio for users of FireFox and Chrome.  WebRTC audio is sampled at 48 Khz, encoded in [OPUS](http://www.opus-codec.org/) codec, uses UDP for transport, and communicates directly with [FreeSWITCH](http://freeswitch.org/) on the BigBlueButton server –- all this combines to give users high quality, low latency audio.
 
   * **Audio Check** - To ensure users have a functioning microphone when joining a session, BigBlueButton now provides a microphone check for users _before_ they join the session.
 
@@ -101,7 +101,7 @@ Released: June 18, 2012
 
   * **Auto-translate disabled** -  Google Translate APIs are [no longer free](http://code.google.com/apis/language/translate/overview.html) so the auto translate feature is now disabled by default until we can determine the best way to support their new model (see [1079](http://code.google.com/p/bigbluebutton/issues/detail?id=1079))
 
-  * **bbb-conf now Installs development tools** - To make it easer to develop BigBlueButton, `bbb-conf` can now install a build environment on a BigBlueButton server within any account with sudo privileges.  
+  * **bbb-conf now Installs development tools** - To make it easier to develop BigBlueButton, `bbb-conf` can now install a build environment on a BigBlueButton server within any account with sudo privileges.  
 
   * **Under the hood** -  Replaced activemq with redis.  Updated red5 to RC1.  Updated FreeSWITCH to a snapshot of 1.0.7.  BigBlueButton no longer requires installation of mysql.
 
@@ -283,7 +283,7 @@ If you are running  BigBlueButton VM 0.61 -- either from VM or from apt-get pack
   * [Issue 168](http://code.google.com/p/bigbluebutton/issues/detail?id=168) One one deskshare usage per session
   * [Issue 170](http://code.google.com/p/bigbluebutton/issues/detail?id=170) Switching presenter while screensharing results in old presenter seeing screenshare viewer window
   * [Issue 177](http://code.google.com/p/bigbluebutton/issues/detail?id=177) When selecting a slide from the fisheye control, the cursor becomes an i-beam
-  * [Issue 179](http://code.google.com/p/bigbluebutton/issues/detail?id=179) Zooming can cause a slide to disapper when clicking next
+  * [Issue 179](http://code.google.com/p/bigbluebutton/issues/detail?id=179) Zooming can cause a slide to disappear when clicking next
   * [Issue 180](http://code.google.com/p/bigbluebutton/issues/detail?id=180) Deskshare can leave a stream open
   * [Issue 187](http://code.google.com/p/bigbluebutton/issues/detail?id=187) Improve slide navigation from keyboard
   * [Issue 189](http://code.google.com/p/bigbluebutton/issues/detail?id=189) Improve speed of Desktop Sharing
@@ -360,7 +360,7 @@ If you are running a BigBlueButton VM or had installed BigBlueButton using packa
 ## Known Issues
   * [Issue 181](http://code.google.com/p/bigbluebutton/issues/detail?id=181) Stopping deskshare crashes Safari
   * ~~[Issue 180](http://code.google.com/p/bigbluebutton/issues/detail?id=180) Deskshare can leave a stream open~~
-  * ~~[Issue 179](http://code.google.com/p/bigbluebutton/issues/detail?id=179) Zooming can cause a slide to disapper when clicking next~~
+  * ~~[Issue 179](http://code.google.com/p/bigbluebutton/issues/detail?id=179) Zooming can cause a slide to disappear when clicking next~~
   * ~~[Issue 170](http://code.google.com/p/bigbluebutton/issues/detail?id=170) Switching presenter while screensharing results in old presenter seeing screenshare viewer window~~
   * [Issue 153](http://code.google.com/p/bigbluebutton/issues/detail?id=153)  The Show button on the Upload Window doesn't work
 

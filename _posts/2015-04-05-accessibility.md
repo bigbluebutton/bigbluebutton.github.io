@@ -103,7 +103,7 @@ tabIndex="{baseIndex+4}"
 Testing the tab order is very easy, simply focus into the application and continue pressing the Tab key until you see the focus indicator in the general vicinity of your contribution. Continue tabbing, and observe how the movement of the indicator lines up with how you expected it to move.
 
 ## Screen Reader Compatibility
-According to CDOT's research, there are two main screen-reader applications to be aware of: JAWS and NVDA. JAWS is proprietary software available for a fee; use your own judgement as far as acquiring a license for the software or ignoring it in your testing. NVDA, on the other hand, is the leading open-source screen-reader and completely free to download, use, and test with.
+According to CDOT's research, there are two main screen-reader applications to be aware of: JAWS and NVDA. JAWS is proprietary software available for a fee; use your own judgment as far as acquiring a license for the software or ignoring it in your testing. NVDA, on the other hand, is the leading open-source screen-reader and completely free to download, use, and test with.
 
 Before you can get any meaningful results from the screen-reader, you'll need to have your tab order sorted out. If you have not done so, please refer to the previous part of this guide.
 

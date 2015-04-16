@@ -16,7 +16,7 @@ If you would like to help translate BigBlueButton into your language, or you see
   1. Visit the [BigBlueButton project](https://www.transifex.com/projects/p/bigbluebutton/) on Transifex. You'll see a list of languages ready for translation.
   1. Click the name of the language you wish to translate
 
-    If you don't find your langauge, please post on the [BigBlueButton Mailing List](http://groups.google.com/group/bigbluebutton-dev/topics?gvc=2) requesting it be added.
+    If you don't find your language, please post on the [BigBlueButton Mailing List](http://groups.google.com/group/bigbluebutton-dev/topics?gvc=2) requesting it be added.
 
   1. Click 'Join team' to join the localization team for your language
 
@@ -60,7 +60,7 @@ Thanks again for your help in localizing BigBlueButton into other languages!
 
 BigBlueButton localization follows the i18n standard. BigBlueButton Client will detect the locale of the language of the browser running it and attempt to load that language file.
 
-Language files are compiled into swf files and loaded dynamically based on the browser locale. This reduces the size of the client. Language codes follow the convention of a two letter lowercase language name, followed by an underscore, followed by two upper-case latters signifying the country code. So, for example, the default english for the United States would be: **en\_US**
+Language files are compiled into swf files and loaded dynamically based on the browser locale. This reduces the size of the client. Language codes follow the convention of a two letter lowercase language name, followed by an underscore, followed by two upper-case letters signifying the country code. So, for example, the default English for the United States would be: **en\_US**
 
 ![I18N](/images/I18N.png)
 
@@ -70,7 +70,7 @@ Language files are compiled into swf files and loaded dynamically based on the b
 If you created a custom language file but do not wish to contribute back to the project, here are the instructions on how to compile the language files yourself.
 
   1. Put the template file into a new folder. The folder name should follow the language code convention stated above for the language/country the language file is written for.  Put the folder under `bigbluebutton-client/locale`.
-  1. The file will be loaded whenever the user's browser is set to that language/country code. Optionally, you could overwrite the english language files if you think that most of your users are running english language broswers, but would still like them to load a specific language.
+  1. The file will be loaded whenever the user's browser is set to that language/country code. Optionally, you could overwrite the English language files if you think that most of your users are running english language browsers, but would still like them to load a specific language.
 
 
 Rebuild the client. Go to the client source directory - on the VM usually `/home/firstuser/dev/bigbluebutton/bigbluebutton-client/`, and run the command

@@ -42,7 +42,7 @@ BigBlueButton processes the recordings in the following :
 ## Capture
 The Capture phase involves enabling the BigBlueButton modules (chat, presentation, video, voice, etc.) to emit events over an event bus for capture on the BigBlueButton server. Components that generate media (webcam, voice, desktop sharing) must also store their data streams on the server as well.
 
-Whiteboard, cursor, chat and other events are stored on Redis. Webcam videos (.flv) and desktop sharing videos (.flv)  are recorded by Red5. The audio conference file (.wav) is recorded by Freeswitch.
+Whiteboard, cursor, chat and other events are stored on Redis. Webcam videos (.flv) and desktop sharing videos (.flv)  are recorded by Red5. The audio conference file (.wav) is recorded by FreeSWITCH.
 
 
 ## Archive
@@ -299,7 +299,7 @@ The way to start a recorded session in BigBlueButton is setting the "record" par
 
 The Capture phase is handled by many components. 
 
-To understand how it works, you should have basic, intermediate or advanced understanding about tools like Freeswitch, Flex, Red5 , Redis, dig into the [BigBlueButton source code](https://github.com/bigbluebutton/bigbluebutton). Search for information in the [BigBlueButton mailing list for developers](https://groups.google.com/forum/#!forum/bigbluebutton-dev) if you have more questions.
+To understand how it works, you should have basic, intermediate or advanced understanding about tools like FreeSWITCH, Flex, Red5 , Redis, dig into the [BigBlueButton source code](https://github.com/bigbluebutton/bigbluebutton). Search for information in the [BigBlueButton mailing list for developers](https://groups.google.com/forum/#!forum/bigbluebutton-dev) if you have more questions.
 
 
 ### Archive, Sanity, Process and Publish
