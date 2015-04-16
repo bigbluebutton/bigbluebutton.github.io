@@ -7,8 +7,6 @@ title: "BigBlueButton"
   <img src="/images/logo.png"/>
 </p><br>
 
-Welcome to the administrator and developer documentation for BigBlueButton.
-
 **BigBlueButton** is an open source web conferencing system for on-line learning.  
 
 We believe every student with a web browser should have access to a high-quality on-line learning experience.  We intend to make that possible with BigBlueButton.
@@ -27,17 +25,19 @@ If this is your first time visiting this site, we recommend the following:
      * [bigbluebutton-setup](https://groups.google.com/forum/#!forum/bigbluebutton-setup) – Get help with installation, setup and configuration of a BigBlueButton server.
      * [bigbluebutton-users](https://groups.google.com/forum/#!forum/bigbluebutton-users) – Get help and give feedback about using BigBlueButton.
      * [bigbluebutton-dev](https://groups.google.com/forum/#!forum/bigbluebutton-dev) – Ask questions and share experiences with other BigBlueButton developers.
-
+  1. Follow us: [twitter](https://twitter.com/bigbluebutton), [FaceBook](https://www.facebook.com/bigbluebutton), [YouTube](https://www.youtube.com/user/bigbluebuttonshare), and [Google +](https://plus.google.com/+bigbluebutton).
+      
 Next, depending on whether you are a developer or administrator, we recommend:
 
   1. [Install BigBlueButton](/install/install.html) on your own server.
   1. [Setup](/dev/setup.html) a development environment to modify and improve BigBlueButton.
 
-Interested in helping to improve BigBlueButton?  See [Contributing to BigBlueButton](/support/faq.html#contributing-to-bigbluebutton) in our [FAQ](/support/faq.html).
+Like what you see happening in the BigBlueButton project?  Spread the word to others!
+
 
 ## Latest version
 
-The latest version of BigBlueButton is 0.9.0-RC (our 12th release).  BigBlueButton 0.9.0 has had over eleven months of development and over five months of stress testing (we have very high standards for a release).  To follow its development, subscribe to our [BigBlueButton-Dev](https://groups.google.com/forum/#!forum/bigbluebutton-dev) mailing lis mailing list.
+The latest version of BigBlueButton is 0.9.0-RC (Release Candidate).  This is our 12th release of BigBlueButton.  We invested eleven months of development and over five months of beta testing into this release -- we have very high standards before delivering a release.  To follow the development of BigBlueButton subscribe to our [BigBlueButton-Dev](https://groups.google.com/forum/#!forum/bigbluebutton-dev) mailing list.
 
 Enjoy!
 
