@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "HTML5 Overview"
-category: html
+# category: html
 date: 2015-04-05 11:41:36
 ---
 
