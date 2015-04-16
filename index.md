@@ -30,7 +30,7 @@ If your getting started with BigBlueButton we recommend the following:
 Next, depending on whether you are a developer or administrator, we recommend:
 
   1. [Install](/install/install.html) BigBlueButton your server (Ubuntu 14.04 64-bit).
-  1. [Integrate](http://bigbluebutton.org/open-source-integrations/) it or use the [API](/dev/api.html) to create/customize your integratione.
+  1. [Integrate](http://bigbluebutton.org/open-source-integrations/) it or use the [API](/dev/api.html) to create/customize your integration.
   1. [Setup](/dev/setup.html) a development environment to modify and extend BigBlueButton itself.
 
 If you like the BigBlueButton project, spread the word!  We're [localized](/dev/localization.html) into over 35 languages.  We believe our project can help students world-wide.
