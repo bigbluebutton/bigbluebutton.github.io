@@ -7,9 +7,7 @@ title: "BigBlueButton"
   <img src="/images/logo.png"/>
 </p><br>
 
-**BigBlueButton** is an open source web conferencing system for on-line learning.
-
-We believe every student with a web browser should have access to a high-quality on-line learning experience.  We intend to make that possible with BigBlueButton.
+**BigBlueButton** is an open source web conferencing system for on-line learning.  We believe every student with a web browser should have access to a high-quality on-line learning experience.  We intend to make that possible with BigBlueButton.
 
 This documentation is for administrators and developers who want to install, customize, and enhance BigBlueButton. For an end-user overview of BigBlueButton (with videos) visit [bigbluebutton.org](http://bigbluebutton.org). 
 
@@ -33,7 +31,7 @@ Next, depending on whether you are a developer or administrator, we recommend:
   1. [Integrate](http://bigbluebutton.org/open-source-integrations/) it or use the [API](/dev/api.html) to create/customize your integration.
   1. [Setup](/dev/setup.html) a development environment to modify and extend BigBlueButton itself.
 
-If you like the BigBlueButton project, spread the word!  We're [localized](/dev/localization.html) into over 35 languages.  We believe our project can help students world-wide.
+If you like the BigBlueButton project, spread the word!  We're [localized](/dev/localization.html) into over 35 languages and we love seeing it in use around the world to help remote students learn on-line.
 
 
 ## Latest version
