@@ -6,11 +6,11 @@ date: 2015-04-04 22:26:10
 ---
 
 
-# Release 0.9.0-RC
+# Release 0.9.0
 
-Updated: April 15, 2015 ([Installation Instructions](/install/install.html))
+Updated: April 30, 2015 ([Installation Instructions](/install/install.html))
 
-This release of BigBlueButton 0.9.0-RC (hearafter referred to as 0.9.0) represents a significant upgrade on the ability to deliver remote students a high-quality on-line learning experience.
+This release of BigBlueButton 0.9.0 represents a significant upgrade on the ability to deliver remote students a high-quality on-line learning experience.
 
 ## Major Features
 

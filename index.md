@@ -17,7 +17,7 @@ The source code for BigBlueButton is hosted on [GitHub](http://github.com/bigblu
 
 If you are getting started with BigBlueButton we recommend the following:
 
-  1. Watch the [overview videos](http://bigbluebutton.org/videos) for moderator/presenter and viewer.
+  1. Watch the [overview videos](http://bigbluebutton.org/videos) to understand the capabilities of a moderator/presenter and viewer.
   1. Try out BigBlueButton using our [Demo Server](http://demo.bigbluebutton.org/).
   1. Join the BigBlueButton community
      * [bigbluebutton-setup](https://groups.google.com/forum/#!forum/bigbluebutton-setup) – Get help with installation, setup and configuration of a BigBlueButton server.
@@ -28,15 +28,15 @@ If you are getting started with BigBlueButton we recommend the following:
 Next, depending on whether you are a developer or administrator, we recommend:
 
   1. [Install](/install/install.html) BigBlueButton your server (Ubuntu 14.04 64-bit).
-  1. [Integrate](http://bigbluebutton.org/open-source-integrations/) it or use the [API](/dev/api.html) to create/customize your integration.
+  1. [Integrate](http://bigbluebutton.org/open-source-integrations/) it or use the [API](/dev/api.html) to create/customize an integration with your system.
   1. [Setup](/dev/setup.html) a development environment to modify and extend BigBlueButton itself.
 
-If you like the BigBlueButton project, spread the word!  We're [localized](/dev/localization.html) into over 35 languages and we love seeing it in use around the world to help remote students learn on-line.
+If your an educational or commercial institution using (or building) on BigBlueButton, spread the word (blog, tweet, upload a video to YouTube, etc.).  We're [localized](/dev/localization.html) into over 35 languages and love seeing it used to help remote students around the world.  
 
 
 ## Latest version
 
-The latest version of BigBlueButton is 0.9.0-RC (our twelfth release). See [release notes](/support/release-notes.html), [overview](/overview/090overview.html), and [architecture](/overview/architecture.html) for more details.  
+The latest version of BigBlueButton is 0.9.0 (our twelfth release). See [release notes](/support/release-notes.html), [overview](/overview/090overview.html), and [architecture](/overview/architecture.html) for more details.  
 
 Enjoy!
 
