@@ -144,7 +144,7 @@ Please note that you might be using a different java version.
 And add the cert to your cacerts
 
 ```
-keytool -import -alias "F5DeskshareCert" -file CERT_LOCATION -keystore ..\lib\security\cacerts
+keytool -import -alias "DeskshareCert" -file CERT_LOCATION -keystore ..\lib\security\cacerts
 ```
 
 Replace `CERT_LOCATION` with the location of the cert on your machine
