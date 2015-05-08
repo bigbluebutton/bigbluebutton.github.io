@@ -184,4 +184,4 @@ Advantages to SVG:
 
 ## Set up a Development Environment
 
-If you want to explore, develop and improve the HTML5 client, please follow the instructions on [setting up HTML5 development environment](/html/html5-dev.html)
+If you want to explore, develop and improve the HTML5 client, please follow the instructions on [setting up HTML5 development environment](/labs/html5-dev.html)
