@@ -143,7 +143,11 @@ Losing connection:
 
 ### Check
 Check if the HTML5 client is running and ready to serve users:
-```http://<your_ip>/html5client/check```
+
+```
+http://<your_ip>/html5client/check
+```
+
 The result should be ```{"html5clientStatus":"running"}```
 
 
