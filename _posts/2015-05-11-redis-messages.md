@@ -8,13 +8,6 @@ date: 2015-05-11 17:34:41
 
 # Redis Messages (from bbb-app's perspective)
 
-## Incomming messages
-
-
-
-## Outgoing messages
-
-
 
 
 
@@ -73,13 +66,12 @@ permisssion_setting_initialized_message:
 {
     "payload": {
         "settings": "Permissions(false,false,false,false,false,true,false)",
-        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431371342091"
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367"
     },
     "header": {
-        "timestamp": 21983022,
+        "timestamp": 26222918,
         "name": "permisssion_setting_initialized_message",
-        "current_time": 1431371343638,
-        "version": "0.0.1"
+        "current_time": 1431375583534
     }
 }
 ```
@@ -110,15 +102,15 @@ user_status_changed_message:
 {
     "payload": {
         "status": "presenter",
-        "value": "true",
-        "userid": "stgsriyaa58n_2",
-        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431371342091"
+        "value": true,
+        "userid": "qd53ydwfes0p_2",
+        "recorded": false,
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367"
     },
     "header": {
-        "timestamp": 21983082,
+        "timestamp": 26423065,
         "name": "user_status_changed_message",
-        "current_time": 1431371343698,
-        "version": "0.0.1"
+        "current_time": 1431375783680
     }
 }
 ```
@@ -128,17 +120,15 @@ validate_auth_token_reply:
 ```
 {
     "payload": {
-        "valid": "true",
-        "reply_to": "d84a8b82330af852db9af76582276ae84a6ffc33-1431371342091/kxxcvswxsfxa_2",
-        "userid": "kxxcvswxsfxa_2",
-        "auth_token": "xypktxbjjaqi",
-        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431371342091"
+        "valid": true,
+        "auth_token": "2skb0pcntovd",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "requester_id": "eibo1pfjodkx_2"
     },
     "header": {
-        "timestamp": 22009039,
+        "timestamp": 26222953,
         "name": "validate_auth_token_reply",
-        "current_time": 1431371369655,
-        "version": "RED5-4HNKFLSCFWCWM-kxxcvswxsfxa_2"
+        "current_time": 1431375583568
     }
 }
 ```
@@ -148,37 +138,35 @@ user_joined_message:
 ```
 {
     "payload": {
-        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431371342091",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
         "user": {
             "presenter": false,
-            "userid": "kxxcvswxsfxa_2",
+            "userid": "eibo1pfjodkx_2",
             "phone_user": false,
-            "name": "Student",
+            "name": "Student002",
             "has_stream": false,
             "raise_hand": false,
             "listenOnly": false,
             "role": "VIEWER",
-            "extern_userid": "kxxcvswxsfxa",
+            "extern_userid": "eibo1pfjodkx",
             "voiceUser": {
-                "web_userid": "kxxcvswxsfxa_2",
-                "callernum": "Student",
-                "userid": "kxxcvswxsfxa_2",
+                "web_userid": "eibo1pfjodkx_2",
+                "callernum": "Student002",
+                "userid": "eibo1pfjodkx_2",
                 "talking": false,
                 "joined": false,
-                "callername": "Student",
+                "callername": "Student002",
                 "locked": false,
                 "muted": false
             },
             "locked": true,
-            "webcam_stream": {
-                
-            }
+            "webcam_stream": {}
         }
     },
     "header": {
-        "timestamp": 22009040,
+        "timestamp": 26222964,
         "name": "user_joined_message",
-        "current_time": 1431371369656,
+        "current_time": 1431375583580,
         "version": "0.0.1"
     }
 }
@@ -670,7 +658,7 @@ user_voice_muted_message:
 }
 ```
 
-eject_voice_user_message
+eject_voice_user_message:
 
 ```
 {
@@ -730,4 +718,888 @@ user_left_message:
 }
 ```
 
+create_meeting_request:
+
+```
+{
+    "payload": {
+        "duration": 0,
+        "create_date": "Mon May 11 20:19:42 UTC 2015",
+        "create_time": 1431375582367,
+        "moderator_pass": "prof123",
+        "voice_conf": "72013",
+        "recorded": false,
+        "external_meeting_id": "ENGL-2013: Research Methods in English",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "viewer_pass": "student123",
+        "meeting_name": "ENGL-2013: Research Methods in English"
+    },
+    "header": {
+        "timestamp": 26221805,
+        "name": "create_meeting_request",
+        "current_time": 1431375582420
+    }
+}
+```
+
+presentation_conversion_update_message:
+
+```
+{
+    "payload": {
+        "presentation_id": "d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427",
+        "code": "CONVERT",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "presentation_name": "default.pdf",
+        "message_key": "SUPPORTED_DOCUMENT"
+    },
+    "header": {
+        "timestamp": 26222845,
+        "name": "presentation_conversion_update_message",
+        "current_time": 1431375583461
+    }
+}
+```
+
+presentation_conversion_progress_message:
+
+```
+{
+    "payload": {
+        "presentation_id": "d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427",
+        "code": "CONVERT",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "presentation_name": "default.pdf",
+        "message_key": "SUPPORTED_DOCUMENT"
+    },
+    "header": {
+        "timestamp": 26222849,
+        "name": "presentation_conversion_progress_message",
+        "current_time": 1431375583465,
+        "version": "0.0.1"
+    }
+}
+```
+
+presentation_page_generated_message:
+
+```
+{
+    "payload": {
+        "presentation_id": "d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427",
+        "num_pages": 5,
+        "code": "CONVERT",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "presentation_name": "default.pdf",
+        "message_key": "GENERATED_SLIDE",
+        "pages_completed": 2
+    },
+    "header": {
+        "timestamp": 26222896,
+        "name": "presentation_page_generated_message",
+        "current_time": 1431375583512
+    }
+}
+```
+
+get_presentation_info_reply:
+
+```
+{
+    "payload": {
+        "presentations": [
+            
+        ],
+        "presentation_info": {
+            "presenter": {
+                "userId": "system",
+                "name": "system",
+                "assignedBy": "system"
+            },
+            "presentations": {
+                
+            }
+        },
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "presenter": {
+            "name": "system",
+            "userid": "system",
+            "assigned_by": "system"
+        },
+        "requester_id": "eibo1pfjodkx_2"
+    },
+    "header": {
+        "timestamp": 26224571,
+        "reply_to": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/eibo1pfjodkx_2",
+        "name": "get_presentation_info_reply",
+        "current_time": 1431375585187,
+        "version": "0.0.1"
+    }
+}
+```
+
+presentation_conversion_completed_message:
+
+```
+{
+    "payload": {
+        "presentation_id": {
+            "id": "d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427",
+            "name": "default.pdf",
+            "current": false,
+            "pages": {
+                
+            }
+        },
+        "code": "CONVERT",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "message_key": "CONVERSION_COMPLETED"
+    },
+    "header": {
+        "timestamp": 26232546,
+        "name": "presentation_conversion_completed_message",
+        "current_time": 1431375593162
+    }
+}
+```
+
+presentation_conversion_done_message:
+
+```
+{
+    "payload": {
+        "presentation": {
+            "id": "d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427",
+            "pages": [
+                {
+                    "height_ratio": 100.0,
+                    "y_offset": 0.0,
+                    "num": 3,
+                    "x_offset": 0.0,
+                    "current": false,
+                    "png_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/png/3",
+                    "txt_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/textfiles/3",
+                    "id": "d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/3",
+                    "width_ratio": 100.0,
+                    "swf_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/slide/3",
+                    "thumb_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/thumbnail/3"
+                },
+                {
+                    "height_ratio": 100.0,
+                    "y_offset": 0.0,
+                    "num": 1,
+                    "x_offset": 0.0,
+                    "current": true,
+                    "png_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/png/1",
+                    "txt_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/textfiles/1",
+                    "id": "d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/1",
+                    "width_ratio": 100.0,
+                    "swf_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/slide/1",
+                    "thumb_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/thumbnail/1"
+                },
+                {
+                    "height_ratio": 100.0,
+                    "y_offset": 0.0,
+                    "num": 2,
+                    "x_offset": 0.0,
+                    "current": false,
+                    "png_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/png/2",
+                    "txt_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/textfiles/2",
+                    "id": "d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/2",
+                    "width_ratio": 100.0,
+                    "swf_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/slide/2",
+                    "thumb_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/thumbnail/2"
+                },
+                {
+                    "height_ratio": 100.0,
+                    "y_offset": 0.0,
+                    "num": 4,
+                    "x_offset": 0.0,
+                    "current": false,
+                    "png_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/png/4",
+                    "txt_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/textfiles/4",
+                    "id": "d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/4",
+                    "width_ratio": 100.0,
+                    "swf_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/slide/4",
+                    "thumb_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/thumbnail/4"
+                },
+                {
+                    "height_ratio": 100.0,
+                    "y_offset": 0.0,
+                    "num": 5,
+                    "x_offset": 0.0,
+                    "current": false,
+                    "png_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/png/5",
+                    "txt_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/textfiles/5",
+                    "id": "d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/5",
+                    "width_ratio": 100.0,
+                    "swf_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/slide/5",
+                    "thumb_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/thumbnail/5"
+                }
+            ],
+            "name": "default.pdf",
+            "current": false
+        },
+        "code": "CONVERT",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "message_key": "CONVERSION_COMPLETED"
+    },
+    "header": {
+        "timestamp": 26232554,
+        "name": "presentation_conversion_done_message",
+        "current_time": 1431375593170,
+        "version": "0.0.1"
+    }
+}
+```
+
+presentation_shared_message:
+
+```
+{
+    "payload": {
+        "presentation": {
+            "id": "d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427",
+            "pages": [
+                {
+                    "height_ratio": 100.0,
+                    "y_offset": 0.0,
+                    "num": 3,
+                    "x_offset": 0.0,
+                    "current": false,
+                    "png_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/png/3",
+                    "txt_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/textfiles/3",
+                    "id": "d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/3",
+                    "width_ratio": 100.0,
+                    "swf_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/slide/3",
+                    "thumb_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/thumbnail/3"
+                },
+                {
+                    "height_ratio": 100.0,
+                    "y_offset": 0.0,
+                    "num": 1,
+                    "x_offset": 0.0,
+                    "current": true,
+                    "png_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/png/1",
+                    "txt_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/textfiles/1",
+                    "id": "d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/1",
+                    "width_ratio": 100.0,
+                    "swf_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/slide/1",
+                    "thumb_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/thumbnail/1"
+                },
+                {
+                    "height_ratio": 100.0,
+                    "y_offset": 0.0,
+                    "num": 2,
+                    "x_offset": 0.0,
+                    "current": false,
+                    "png_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/png/2",
+                    "txt_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/textfiles/2",
+                    "id": "d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/2",
+                    "width_ratio": 100.0,
+                    "swf_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/slide/2",
+                    "thumb_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/thumbnail/2"
+                },
+                {
+                    "height_ratio": 100.0,
+                    "y_offset": 0.0,
+                    "num": 4,
+                    "x_offset": 0.0,
+                    "current": false,
+                    "png_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/png/4",
+                    "txt_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/textfiles/4",
+                    "id": "d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/4",
+                    "width_ratio": 100.0,
+                    "swf_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/slide/4",
+                    "thumb_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/thumbnail/4"
+                },
+                {
+                    "height_ratio": 100.0,
+                    "y_offset": 0.0,
+                    "num": 5,
+                    "x_offset": 0.0,
+                    "current": false,
+                    "png_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/png/5",
+                    "txt_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/textfiles/5",
+                    "id": "d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/5",
+                    "width_ratio": 100.0,
+                    "swf_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/slide/5",
+                    "thumb_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/thumbnail/5"
+                }
+            ],
+            "name": "default.pdf",
+            "current": true
+        },
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367"
+    },
+    "header": {
+        "timestamp": 26232559,
+        "name": "presentation_shared_message",
+        "current_time": 1431375593175,
+        "version": "0.0.1"
+    }
+}
+```
+
+presentation_page_changed_message:
+
+```
+{
+    "payload": {
+        "page": {
+            "height_ratio": 100.0,
+            "y_offset": 0.0,
+            "num": 1,
+            "x_offset": 0.0,
+            "current": true,
+            "png_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/png/1",
+            "txt_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/textfiles/1",
+            "id": "d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/1",
+            "width_ratio": 100.0,
+            "swf_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/slide/1",
+            "thumb_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/thumbnail/1"
+        },
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367"
+    },
+    "header": {
+        "timestamp": 26232562,
+        "name": "presentation_page_changed_message",
+        "current_time": 1431375593178,
+        "version": "0.0.1"
+    }
+}
+```
+
+register_user_request:
+
+```
+{
+    "payload": {
+        "name": "Prof002",
+        "userid": "qd53ydwfes0p",
+        "role": "MODERATOR",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "external_user_id": "qd53ydwfes0p"
+    },
+    "header": {
+        "timestamp": 26311972,
+        "name": "register_user_request",
+        "current_time": 1431375672588
+    }
+}
+```
+init_lock_settings:
+
+```
+{
+    "payload": {
+        "settings": "Permissions(false,false,false,false,false,true,false)",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367"
+    },
+    "header": {
+        "timestamp": 26312849,
+        "name": "init_lock_settings",
+        "current_time": 1431375673465
+    }
+}
+```
+
+init_audio_settings:
+
+```
+{
+    "payload": {
+        "muted": "false",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367"
+    },
+    "header": {
+        "timestamp": 26312850,
+        "name": "init_audio_settings",
+        "current_time": 1431375673465
+    }
+}
+```
+
+validate_auth_token_request:
+
+```
+{
+    "payload": {
+        "userid": "qd53ydwfes0p_2",
+        "auth_token": "0jzoxrdumz0u",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367"
+    },
+    "header": {
+        "timestamp": 26312863,
+        "name": "validate_auth_token_request",
+        "current_time": 1431375673479
+    }
+}
+```
+
+get_users_request:
+
+```
+{
+    "payload": {
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "requester_id": "qd53ydwfes0p_2"
+    },
+    "header": {
+        "timestamp": 26312979,
+        "reply_to": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/qd53ydwfes0p_2",
+        "name": "get_users_request",
+        "current_time": 1431375673595
+    }
+}
+```
+get_current_layout_request:
+
+```
+{
+    "payload": {
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "requester_id": "qd53ydwfes0p_2"
+    },
+    "header": {
+        "timestamp": 26313259,
+        "name": "get_current_layout_request",
+        "current_time": 1431375673874
+    }
+}
+```
+get_current_layout_reply:
+
+```
+{
+    "payload": {
+        "layout_id": "",
+        "recorded": false,
+        "set_by_user_id": "system",
+        "locked": false,
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "requester_id": "qd53ydwfes0p_2"
+    },
+    "header": {
+        "timestamp": 26313259,
+        "name": "get_current_layout_reply",
+        "current_time": 1431375673875
+    }
+}
+```
+
+resize_and_move_slide_request:
+
+```
+{
+    "payload": {
+        "y_offset": 0.0,
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "height_ratio": 100.0,
+        "width_ratio": 100.0,
+        "x_offset": 0.0
+    },
+    "header": {
+        "timestamp": 26314570,
+        "name": "resize_and_move_slide_request",
+        "current_time": 1431375675185
+    }
+}
+```
+
+get_presentation_info_request:
+
+```
+{
+    "payload": {
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "requester_id": "qd53ydwfes0p_2"
+    },
+    "header": {
+        "timestamp": 26314602,
+        "name": "get_presentation_info_request",
+        "current_time": 1431375675218
+    }
+}
+```
+
+get_whiteboard_shapes_request:
+
+```
+{
+    "payload": {
+        "whiteboard_id": "d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/1",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "requester_id": "qd53ydwfes0p_2"
+    },
+    "header": {
+        "timestamp": 26315598,
+        "name": "get_whiteboard_shapes_request",
+        "current_time": 1431375676214
+    }
+}
+```
+
+get_chat_history_request:
+
+```
+{
+    "payload": {
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "requester_id": "qd53ydwfes0p_2"
+    },
+    "header": {
+        "timestamp": 26319504,
+        "name": "get_chat_history_request",
+        "current_time": 1431375680119
+    }
+}
+```
+
+get_chat_history_reply:
+
+```
+{
+    "payload": {
+        "chat_history": [
+            
+        ],
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "requester_id": "qd53ydwfes0p_2"
+    },
+    "header": {
+        "timestamp": 26319504,
+        "reply_to": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/qd53ydwfes0p_2",
+        "name": "get_chat_history_reply",
+        "current_time": 1431375680120,
+        "version": "0.0.1"
+    }
+}
+```
+
+voice_user_joined:
+
+```
+{
+    "payload": {
+        "voice_user": {
+            "userId": "2",
+            "webUserId": "qd53ydwfes0p_2",
+            "callerName": "Prof002",
+            "callerNum": "qd53ydwfes0p-bbbID-Prof002",
+            "joined": true,
+            "locked": false,
+            "muted": false,
+            "talking": false
+        },
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367"
+    },
+    "header": {
+        "timestamp": 26386618,
+        "name": "voice_user_joined",
+        "current_time": 1431375747234
+    }
+}
+```
+
+voice_user_talking_message:
+
+```
+{
+    "payload": {
+        "talking": false,
+        "userid": "qd53ydwfes0p_2",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367"
+    },
+    "header": {
+        "timestamp": 26388766,
+        "name": "voice_user_talking_message",
+        "current_time": 1431375749382
+    }
+}
+```
+
+mute_voice_user_request:
+
+```
+{
+    "payload": {
+        "userid": "qd53ydwfes0p_2",
+        "recorded": false,
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "mute": true,
+        "requester_id": "qd53ydwfes0p_2"
+    },
+    "header": {
+        "timestamp": 26389139,
+        "name": "mute_voice_user_request",
+        "current_time": 1431375749755
+    }
+}
+```
+
+voice_user_muted_message:
+
+```
+{
+    "payload": {
+        "muted": false,
+        "userid": "qd53ydwfes0p_2",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367"
+    },
+    "header": {
+        "timestamp": 26390070,
+        "name": "voice_user_muted_message",
+        "current_time": 1431375750686
+    }
+}
+```
+
+user_left_voice_message:
+
+```
+{
+    "payload": {
+        "voice_conf": "72013",
+        "recorded": false,
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "user": "UserVO(qd53ydwfes0p_2,qd53ydwfes0p,Prof002,MODERATOR,false,false,false,false,ListSet(),false,VoiceUser(qd53ydwfes0p_2,qd53ydwfes0p_2,Prof002,Prof002,false,false,false,false),false)"
+    },
+    "header": {
+        "timestamp": 26391101,
+        "name": "user_left_voice_message",
+        "current_time": 1431375751717
+    }
+}
+```
+
+mute_meeting_request:
+
+```
+{
+    "payload": {
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "mute": true,
+        "requester_id": "qd53ydwfes0p_2"
+    },
+    "header": {
+        "timestamp": 26394562,
+        "name": "mute_meeting_request",
+        "current_time": 1431375755177
+    }
+}
+
+```
+
+user_raise_hand_request:
+
+```
+{
+    "payload": {
+        "userid": "qd53ydwfes0p_2",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367"
+    },
+    "header": {
+        "timestamp": 26400792,
+        "name": "user_raise_hand_request",
+        "current_time": 1431375761408
+    }
+}
+```
+
+user_lower_hand_request:
+
+```
+{
+    "payload": {
+        "lowered_by": "qd53ydwfes0p_2",
+        "userid": "qd53ydwfes0p_2",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367"
+    },
+    "header": {
+        "timestamp": 26401559,
+        "name": "user_lower_hand_request",
+        "current_time": 1431375762175
+    }
+}
+```
+
+set_lock_settings:
+
+```
+{
+    "payload": {
+        "settings": "Permissions(false,true,false,false,false,true,false)",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367"
+    },
+    "header": {
+        "timestamp": 26406544,
+        "name": "set_lock_settings",
+        "current_time": 1431375767160
+    }
+}
+
+```
+
+broadcast_layout_reply:
+
+```
+{
+    "payload": {
+        "layout_id": "",
+        "recorded": false,
+        "set_by_user_id": "system",
+        "locked": false,
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "requester_id": "qd53ydwfes0p_2"
+    },
+    "header": {
+        "timestamp": 26406548,
+        "name": "broadcast_layout_reply",
+        "current_time": 1431375767164
+    }
+}
+```
+
+lock_user_request:
+
+```
+{
+    "payload": {
+        "lock": false,
+        "userid": "eibo1pfjodkx_2",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "requester_id": "qd53ydwfes0p_2"
+    },
+    "header": {
+        "timestamp": 26410521,
+        "name": "lock_user_request",
+        "current_time": 1431375771136
+    }
+}
+```
+assign_presenter_request:
+
+```
+{
+    "payload": {
+        "new_presenter_id": "qd53ydwfes0p_2",
+        "new_presenter_name": "Prof002",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "assigned_by": "1"
+    },
+    "header": {
+        "timestamp": 26423063,
+        "name": "assign_presenter_request",
+        "current_time": 1431375783679
+    }
+}
+```
+
+presentation_page_resized_message:
+
+```
+{
+    "payload": {
+        "page": {
+            "height_ratio": 100.0,
+            "y_offset": 0.0,
+            "num": 1,
+            "x_offset": 0.0,
+            "current": true,
+            "png_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/png/1",
+            "txt_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/textfiles/1",
+            "id": "d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/1",
+            "width_ratio": 100.0,
+            "swf_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/slide/1",
+            "thumb_uri": "http://192.168.0.119/bigbluebutton/presentation/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367/d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/thumbnail/1"
+        },
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367"
+    },
+    "header": {
+        "timestamp": 26423093,
+        "name": "presentation_page_resized_message",
+        "current_time": 1431375783709,
+        "version": "0.0.1"
+    }
+}
+```
+
+mute_user_request:
+
+```
+{
+    "payload": {
+        "userid": "eibo1pfjodkx_2",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "mute": true,
+        "requester_id": "eibo1pfjodkx_2"
+    },
+    "header": {
+        "timestamp": 26423413,
+        "name": "mute_user_request",
+        "current_time": 1431375784029
+    }
+}
+
+```
+
+send_whiteboard_annotation_request:
+
+```
+{
+    "payload": {
+        "annotation": {
+            "id": "qd53ydwfes0p_2-5-1431375792376",
+            "status": "textPublished",
+            "shapeType": "text",
+            "shape": {
+                
+            },
+            "wbId": "d2d9a672040fbde2a47a10bf6c37b6a4b5ae187f-1431375582427/1"
+        },
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367",
+        "requester_id": "qd53ydwfes0p_2"
+    },
+    "header": {
+        "timestamp": 26434928,
+        "name": "send_whiteboard_annotation_request",
+        "current_time": 1431375795543
+    }
+}
+
+```
+
+disconnect_user_message:
+
+```
+{
+    "payload": {
+        "userid": "eibo1pfjodkx_2",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367"
+    },
+    "header": {
+        "timestamp": 26445750,
+        "name": "disconnect_user_message",
+        "current_time": 1431375806366
+    }
+}
+
+```
+
+user_leaving_request:
+
+```
+{
+    "payload": {
+        "userid": "eibo1pfjodkx_2",
+        "meeting_id": "d84a8b82330af852db9af76582276ae84a6ffc33-1431375582367"
+    },
+    "header": {
+        "timestamp": 26445752,
+        "name": "user_leaving_request",
+        "current_time": 1431375806367
+    }
+}
+```
 
