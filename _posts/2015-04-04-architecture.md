@@ -58,7 +58,7 @@ The Apps is the main BigBlueButton application that handles users, chat, whitebo
 
 ### FreeSWITCH
 
-FreeSWITCH provides the voice conferencing capability in BigBlueButton. Users are able to join the voice conference through the headset. Those who use a browser (Chrome, Firefox) is able to take advantage of higher quality audio by connecting using WebRTC. FreeSWITCH can also be integrated with VOIP providers so that users who are not able to joining using the headset will be able to call in using their phone.
+FreeSWITCH provides the voice conferencing capability in BigBlueButton. Users are able to join the voice conference through the headset. Users joining through Google Chrome or Mozilla Firefox are able to take advantage of higher quality audio by connecting using WebRTC. FreeSWITCH can also be integrated with VOIP providers so that users who are not able to join using the headset will be able to call in using their phone.
 
 ## BigBlueButton Apps
 
