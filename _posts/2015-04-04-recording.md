@@ -116,7 +116,7 @@ In the terminal of your server you can execute "bbb-record", which will show you
 
 ```
 
-BigBlueButton Recording Diagnostic Utility (BigBlueButton Version 0.9.0)
+BigBlueButton Recording Diagnostic Utility (BigBlueButton Version 0.9.1)
 
    bbb-record [options]
 
@@ -519,7 +519,7 @@ last executed task, sure that is the one that failed and an error message with t
 
 ## Is the recording activated automatically?
 
-No, when creating the meeting the parameters must include `record=true` to enable recording.  In BigBlueButton 0.9.0, to have a recorded session create a playback file, a moderator must click the Start/Stop Record button during the session. Otherwise, BigBlueButton will not create a playback file and delete the recorded session.
+No, when creating the meeting the parameters must include `record=true` to enable recording.  In BigBlueButton 0.9.1, to have a recorded session create a playback file, a moderator must click the Start/Stop Record button during the session. Otherwise, BigBlueButton will not create a playback file and delete the recorded session.
 
 ## How to delete recordings before storage device is full?
 

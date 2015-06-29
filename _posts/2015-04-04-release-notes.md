@@ -5,16 +5,23 @@ category: support
 date: 2015-04-04 22:26:10
 ---
 
+# Release 0.9.1
 
-# Release 0.9.0-RC
+June 29, 2015 ([Installation Instructions](/install/install.html))
 
-Updated: April 15, 2015 ([Installation Instructions](/install/install.html))
+This was a maintenance release to 0.9 to fix issue [1953](https://code.google.com/p/bigbluebutton/issues/detail?id=1953)
+with FireFox and Desktop Sharing.
 
-This release of BigBlueButton 0.9.0-RC (hearafter referred to as 0.9.0) represents a significant upgrade on the ability to deliver remote students a high-quality on-line learning experience.
+
+# Release 0.9.0
+
+Updated: April 30, 2015 ([Installation Instructions](/install/install.html))
+
+This release of BigBlueButton 0.9.0 represents a significant upgrade on the ability to deliver remote students a high-quality on-line learning experience.
 
 ## Major Features
 
-  * **webRTC Audio** - BigBlueButton now uses web real-time communications (webRTC) audio for users of FireFox and Chrome.  WebRTC audio is sampled at 48 Khz, encoded in [OPUS](http://www.opus-codec.org/) codec, uses UDP for transport, and communicates directly with [FreeSWITCH](http://freeswitch.org/) on the BigBlueButton server –- all this combines to give users high quality, low latency audio.
+  * **WebRTC Audio** - BigBlueButton now uses web real-time communications (WebRTC) audio for users of FireFox and Chrome.  WebRTC audio is sampled at 48 Khz, encoded in [OPUS](http://www.opus-codec.org/) codec, uses UDP for transport, and communicates directly with [FreeSWITCH](http://freeswitch.org/) on the BigBlueButton server –- all this combines to give users high quality, low latency audio.
 
   * **Audio Check** - To ensure users have a functioning microphone when joining a session, BigBlueButton now provides a microphone check for users _before_ they join the session.
 
@@ -24,7 +31,7 @@ This release of BigBlueButton 0.9.0-RC (hearafter referred to as 0.9.0) represen
 
   * **Ubuntu 14.04 64-bit** - BigBlueButton now installs on Ubuntu 14.04 64-bit.
 
-For details of the new features (with screen shots) see [0.9.0 overview](/overview/090overview.html).
+For details of the new features (with screen shots) see [0.9.0 overview](/overview/09overview.html).
 
 ## Fixed Issues
 

@@ -32,11 +32,11 @@ The BigBlueButton comes with some simple [API demos](http://demo.bigbluebutton.o
 
 ### Nginx
 
-Nginx proxies calls to different server side applications through port 80. Nginx also allows Flash client to connect using RTMPT for users behind a firewall that presents their client from connecting directly to Red5 on port 1935. It also front-ends the Web API which runs on Tomcat7 listening on port 8080. For users joining the voice conference using WebRTC, nginx proxies the WebRTC connection to FreeSWITCH.
+Nginx proxies calls to different server side applications through port 80. Nginx also allows Flash client to connect using RTMPT for users behind a firewall that prevents their client from connecting directly to Red5 on port 1935. It also front-ends the Web API which runs on Tomcat7 listening on port 8080. For users joining the voice conference using WebRTC, nginx proxies the WebRTC connection to FreeSWITCH.
 
 ### Web API
 
-The Web [API](/dev/api.html) provides the integration endpoint for third-party applications -- such Moodle, Wordpress, Canvas, Sakai, etc. -- to control the BigBlueButton server. 
+The Web [API](/dev/api.html) provides the integration endpoint for third-party applications -- such as Moodle, Wordpress, Canvas, Sakai, etc. -- to control the BigBlueButton server. 
 
 ### Presentation Conversion
 
@@ -58,7 +58,7 @@ The Apps is the main BigBlueButton application that handles users, chat, whitebo
 
 ### FreeSWITCH
 
-FreeSWITCH provides the voice conferencing capability in BigBlueButton. Users are able to join the voice conference through the headset. Those who use a browser (Chrome, Firefox) is able to take advantage of higher quality audio by connecting using WebRTC. FreeSWITCH can also be integrated with VOIP providers so that users who are not able to joining using the headset will be able to call in using their phone.
+FreeSWITCH provides the voice conferencing capability in BigBlueButton. Users are able to join the voice conference through the headset. Users joining through Google Chrome or Mozilla Firefox are able to take advantage of higher quality audio by connecting using WebRTC. FreeSWITCH can also be integrated with VOIP providers so that users who are not able to join using the headset will be able to call in using their phone.
 
 ## BigBlueButton Apps
 
