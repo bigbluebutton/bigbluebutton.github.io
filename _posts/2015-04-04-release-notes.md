@@ -5,6 +5,13 @@ category: support
 date: 2015-04-04 22:26:10
 ---
 
+# Release 0.9.1
+
+June 29, 2015 ([Installation Instructions](/install/install.html))
+
+This was a maintenance release to 0.9 to fix issue [1953](https://code.google.com/p/bigbluebutton/issues/detail?id=1953)
+with FireFox and Desktop Sharing.
+
 
 # Release 0.9.0
 
@@ -24,7 +31,7 @@ This release of BigBlueButton 0.9.0 represents a significant upgrade on the abil
 
   * **Ubuntu 14.04 64-bit** - BigBlueButton now installs on Ubuntu 14.04 64-bit.
 
-For details of the new features (with screen shots) see [0.9.0 overview](/overview/090overview.html).
+For details of the new features (with screen shots) see [0.9.0 overview](/overview/09overview.html).
 
 ## Fixed Issues
 

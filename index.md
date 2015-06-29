@@ -36,7 +36,7 @@ If your an educational or commercial institution using (or building) on BigBlueB
 
 ## Latest version
 
-The latest version of BigBlueButton is 0.9.0 (our twelfth release). See [release notes](/support/release-notes.html), [overview](/overview/090overview.html), and [architecture](/overview/architecture.html) for more details.  
+The latest version of BigBlueButton is 0.9.1 (our twelfth release). See [release notes](/support/release-notes.html), [overview](/overview/09overview.html), and [architecture](/overview/architecture.html) for more details.  
 
 Enjoy!
 
