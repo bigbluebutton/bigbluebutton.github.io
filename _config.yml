@@ -58,3 +58,7 @@ redcarpet:
         'tables',
         'hardwrap'
     ]
+
+# Load additional plugins
+gems:
+  - jekyll-redirect-from
