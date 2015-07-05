@@ -15,11 +15,12 @@ The source code for BigBlueButton is hosted on [GitHub](http://github.com/bigblu
 
 ## Getting started
 
-If you are getting started with BigBlueButton we recommend the following:
+BigBlueButton enables real-time sharing of audio, video, slides, chat, and desktop.  Users join a BigBlueButton session either as a viewer (share webcam, audio, and chat), or as a a moderator.  A moderator can mute/unmute other viewers, lock down viewers, or make anyone (including themselves) the presenter.  
+If you are new to BigBlueButton, we recommend the following (in order):
 
   1. Watch the [overview videos](http://bigbluebutton.org/videos) to understand the capabilities of a moderator/presenter and viewer.
   1. Try out BigBlueButton using our [Demo Server](http://demo.bigbluebutton.org/).
-  1. Join the BigBlueButton community
+  1. Join the BigBlueButton community 
      * [bigbluebutton-setup](https://groups.google.com/forum/#!forum/bigbluebutton-setup) – Get help with installation, setup and configuration of a BigBlueButton server.
      * [bigbluebutton-users](https://groups.google.com/forum/#!forum/bigbluebutton-users) – Get help and give feedback about using BigBlueButton.
      * [bigbluebutton-dev](https://groups.google.com/forum/#!forum/bigbluebutton-dev) – Ask questions and share experiences with other BigBlueButton developers.
@@ -31,7 +32,7 @@ Next, depending on whether you are a developer or administrator, we recommend:
   1. [Integrate](http://bigbluebutton.org/open-source-integrations/) it or use the [API](/dev/api.html) to create/customize an integration with your system.
   1. [Setup](/dev/setup.html) a development environment to modify and extend BigBlueButton itself.
 
-If your an educational or commercial institution using (or building) on BigBlueButton, spread the word (blog, tweet, upload a video to YouTube, etc.).  We're [localized](/dev/localization.html) into over 35 languages and love seeing it used to help remote students around the world.  
+If your an educational or commercial institution using (or building upon) BigBlueButton, we encourage you to spread the word (blog, tweet, upload a video to YouTube, etc.) about the project.  With the help of our community, BigBlueButton is [localized](/dev/localization.html) into over 35 languages and used to help teach students around the world.
 
 
 ## Latest version
