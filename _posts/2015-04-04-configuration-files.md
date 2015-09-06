@@ -14,15 +14,13 @@ Like any large open source project, this may seem complicated at first, but when
 
 The configuration files show an IP address of `192.168.0.100` -- you'll need to change it to match your local IP address when setting up BigBlueButton.
 
-Note: We used to have lots of detailed comments in this wiki page, but we found ourselves duplicating the comments in the code, so (as not to duplicate docs), we have moved most of the comments into the configuration files themselves, so do follow the links to see the comments in the configuration files.
-
 # nginx
 
 ## Configuration files
 
 Located in `/etc/nginx/sites-enabled/bigbluebutton`
 
-http://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-client/config/bigbluebutton.nginx
+This configures nginx to use ```/var/www/bigbluebutton-default``` as the default site.  ([src](http://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-client/config/bigbluebutton.nginx))
 
 ## Log files
 
@@ -40,14 +38,13 @@ http://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-client/c
  /usr/share/red5/conf/red5-core.xml
 ```
 
-Uncommented RTMPT section. This was commented out by default starting on Red5 0.8 release.
-Follow this thread http://osflash.org/pipermail/red5_osflash.org/2009-June/033842.html for the reason.
+The main configuation file for red5.  You shouldn't need to modify this file.
 
 ```
  /usr/share/red5/webapps/bigbluebutton/WEB-INF/bigbluebutton.properties
 ```
 
-Properties for bbb-apps, the core BigBlueButton red5 module.
+Properties for bbb-apps, the core BigBlueButton red5 module (
 
 http://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-apps/src/main/webapp/WEB-INF/bigbluebutton.properties
 
