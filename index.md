@@ -9,13 +9,15 @@ title: "BigBlueButton"
 
 **BigBlueButton** is an open source web conferencing system for on-line learning.  We believe every student with a web browser should have access to a high-quality on-line learning experience.  We intend to make that possible with BigBlueButton.
 
-This documentation is for administrators and developers who want to install, customize, and enhance BigBlueButton. For an end-user overview of BigBlueButton (with videos) visit [bigbluebutton.org](http://bigbluebutton.org). 
+This documentation is for administrators and developers who want to install, customize, and enhance BigBlueButton. For an end-user overview of how to use BigBlueButton (with videos) visit [bigbluebutton.org](http://bigbluebutton.org). 
 
 The source code for BigBlueButton is hosted on [GitHub](http://github.com/bigbluebutton/bigbluebutton).
 
 ## Getting started
 
-BigBlueButton enables real-time sharing of audio, video, slides, chat, and the presenter's desktop.  Users join a BigBlueButton session either as a viewer or moderator.  A viewer can chat and send/receive audio and video.  A moderator can mute/unmute other viewers, lock down viewers, or make anyone (including themselves) the presenter.  A user who is the current presenter can upload slides and annotate them for all to see.
+BigBlueButton enables real-time sharing of audio, video, presentation (with whiteboard markup), chat, and the presenter's desktop.  
+
+A user joins a BigBlueButton session either as a _viewer_ or _moderator_.  A viewer (typically the student) can chat and send/receive audio and video.  A moderator (typically the instructor) can mute/unmute other viewers, lock down viewers, or make anyone (including themselves) the presenter.  A user who is the current presenter can upload slides and annotate them for all to see.
 
 If you are new to BigBlueButton, to get started we recommend (in order): 
 
