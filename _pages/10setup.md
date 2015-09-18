@@ -1,1 +1,1 @@
-_posts/2015-09-18-10setup.md
+../_posts/2015-09-18-10setup.md
