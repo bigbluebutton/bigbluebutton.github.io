@@ -5,13 +5,11 @@ category: labs
 date: 2015-05-11 17:34:41
 ---
 
+# Redis Messages 
 
-# Redis Messages (from bbb-app's perspective)
+The following list is an enumeration of the messages sent/received through redis from the perspective of bbb-akka-apps.  These messages are present in BigBlueButton 1.0-beta (or later).  With these messages, you can integrate your own server-side logic for monitoring the messages in a BigBlueButton session.
 
-
-
-
-meeting_created_message:
+## meeting_created_message
 
 ```
 {
@@ -36,7 +34,7 @@ meeting_created_message:
 }
 ```
 
-user_registered_message:
+## user_registered_message
 
 ```
 {
@@ -60,7 +58,7 @@ user_registered_message:
 }
 ```
 
-permisssion_setting_initialized_message:
+## permisssion_setting_initialized_message
 
 ```
 {
@@ -76,7 +74,7 @@ permisssion_setting_initialized_message:
 }
 ```
 
-presenter_assigned_message:
+## presenter_assigned_message
 
 ```
 {
@@ -96,7 +94,7 @@ presenter_assigned_message:
 }
 ```
 
-user_status_changed_message:
+## user_status_changed_message
 
 ```
 {
@@ -115,7 +113,7 @@ user_status_changed_message:
 }
 ```
 
-validate_auth_token_reply:
+## validate_auth_token_reply
 
 ```
 {
@@ -133,7 +131,7 @@ validate_auth_token_reply:
 }
 ```
 
-user_joined_message:
+## user_joined_message
 
 ```
 {
@@ -172,7 +170,7 @@ user_joined_message:
 }
 ```
 
-get_users_reply:
+## get_users_reply
 
 ```
 {
@@ -241,7 +239,7 @@ get_users_reply:
 }
 ```
 
-get_recording_status_reply:
+## get_recording_status_reply
 
 ```
 {
@@ -260,7 +258,7 @@ get_recording_status_reply:
 }
 ```
 
-user_raised_hand_message:
+## user_raised_hand_message
 
 ```
 {
@@ -278,7 +276,7 @@ user_raised_hand_message:
 }
 ```
 
-user_lowered_hand_message:
+## user_lowered_hand_message
 
 ```
 {
@@ -297,7 +295,7 @@ user_lowered_hand_message:
 }
 ```
 
-new_permission_settings:
+## new_permission_settings
 
 ```
 {
@@ -372,7 +370,7 @@ new_permission_settings:
 }
 ```
 
-user_locked_message:
+## user_locked_message
 
 ```
 {
@@ -390,7 +388,7 @@ user_locked_message:
 }
 ```
 
-user_joined_voice_message:
+## user_joined_voice_message
 
 ```
 {
@@ -433,7 +431,7 @@ user_joined_voice_message:
 }
 ```
 
-user_voice_talking_message:
+## user_voice_talking_message
 
 ```
 {
@@ -476,7 +474,7 @@ user_voice_talking_message:
 }
 ```
 
-send_public_chat_message:
+## send_public_chat_message
 
 ```
 {
@@ -503,7 +501,7 @@ send_public_chat_message:
 }
 ```
 
-send_private_chat_message:
+## send_private_chat_message
 
 ```
 {
@@ -530,7 +528,7 @@ send_private_chat_message:
 }
 ```
 
-send_whiteboard_shape_message:
+## send_whiteboard_shape_message
 
 ```
 {
@@ -597,7 +595,7 @@ send_whiteboard_shape_message:
 }
 ```
 
-whiteboard_cleared_message:
+## whiteboard_cleared_message
 
 ```
 {
@@ -615,7 +613,7 @@ whiteboard_cleared_message:
 }
 ```
 
-user_voice_muted_message:
+## user_voice_muted_message
 
 ```
 {
@@ -658,7 +656,7 @@ user_voice_muted_message:
 }
 ```
 
-eject_voice_user_message:
+## eject_voice_user_message
 
 ```
 {
@@ -677,7 +675,7 @@ eject_voice_user_message:
 }
 ```
 
-user_left_message:
+## user_left_message
 
 ```
 {
@@ -718,7 +716,7 @@ user_left_message:
 }
 ```
 
-create_meeting_request:
+## create_meeting_request
 
 ```
 {
@@ -742,7 +740,7 @@ create_meeting_request:
 }
 ```
 
-presentation_conversion_update_message:
+## presentation_conversion_update_message
 
 ```
 {
@@ -761,7 +759,7 @@ presentation_conversion_update_message:
 }
 ```
 
-presentation_conversion_progress_message:
+## presentation_conversion_progress_message
 
 ```
 {
@@ -781,7 +779,7 @@ presentation_conversion_progress_message:
 }
 ```
 
-presentation_page_generated_message:
+## presentation_page_generated_message
 
 ```
 {
@@ -802,7 +800,7 @@ presentation_page_generated_message:
 }
 ```
 
-get_presentation_info_reply:
+## get_presentation_info_reply
 
 ```
 {
@@ -838,7 +836,7 @@ get_presentation_info_reply:
 }
 ```
 
-presentation_conversion_completed_message:
+## presentation_conversion_completed_message
 
 ```
 {
@@ -863,7 +861,7 @@ presentation_conversion_completed_message:
 }
 ```
 
-presentation_conversion_done_message:
+## presentation_conversion_done_message
 
 ```
 {
@@ -953,7 +951,7 @@ presentation_conversion_done_message:
 }
 ```
 
-presentation_shared_message:
+## presentation_shared_message
 
 ```
 {
@@ -1041,7 +1039,7 @@ presentation_shared_message:
 }
 ```
 
-presentation_page_changed_message:
+## presentation_page_changed_message
 
 ```
 {
@@ -1070,7 +1068,7 @@ presentation_page_changed_message:
 }
 ```
 
-register_user_request:
+## register_user_request
 
 ```
 {
@@ -1088,7 +1086,7 @@ register_user_request:
     }
 }
 ```
-init_lock_settings:
+## init_lock_settings
 
 ```
 {
@@ -1104,7 +1102,7 @@ init_lock_settings:
 }
 ```
 
-init_audio_settings:
+## init_audio_settings
 
 ```
 {
@@ -1120,7 +1118,7 @@ init_audio_settings:
 }
 ```
 
-validate_auth_token_request:
+## validate_auth_token_request
 
 ```
 {
@@ -1137,7 +1135,7 @@ validate_auth_token_request:
 }
 ```
 
-get_users_request:
+## get_users_request
 
 ```
 {
@@ -1153,7 +1151,7 @@ get_users_request:
     }
 }
 ```
-get_current_layout_request:
+## get_current_layout_request
 
 ```
 {
@@ -1168,7 +1166,7 @@ get_current_layout_request:
     }
 }
 ```
-get_current_layout_reply:
+## get_current_layout_reply
 
 ```
 {
@@ -1188,7 +1186,7 @@ get_current_layout_reply:
 }
 ```
 
-resize_and_move_slide_request:
+## resize_and_move_slide_request
 
 ```
 {
@@ -1207,7 +1205,7 @@ resize_and_move_slide_request:
 }
 ```
 
-get_presentation_info_request:
+## get_presentation_info_request
 
 ```
 {
@@ -1223,7 +1221,7 @@ get_presentation_info_request:
 }
 ```
 
-get_whiteboard_shapes_request:
+## get_whiteboard_shapes_request
 
 ```
 {
@@ -1240,7 +1238,7 @@ get_whiteboard_shapes_request:
 }
 ```
 
-get_chat_history_request:
+## get_chat_history_request
 
 ```
 {
@@ -1256,7 +1254,7 @@ get_chat_history_request:
 }
 ```
 
-get_chat_history_reply:
+## get_chat_history_reply
 
 ```
 {
@@ -1277,7 +1275,7 @@ get_chat_history_reply:
 }
 ```
 
-voice_user_joined:
+## voice_user_joined
 
 ```
 {
@@ -1302,7 +1300,7 @@ voice_user_joined:
 }
 ```
 
-voice_user_talking_message:
+## voice_user_talking_message
 
 ```
 {
@@ -1319,7 +1317,7 @@ voice_user_talking_message:
 }
 ```
 
-mute_voice_user_request:
+## mute_voice_user_request
 
 ```
 {
@@ -1338,7 +1336,7 @@ mute_voice_user_request:
 }
 ```
 
-voice_user_muted_message:
+## voice_user_muted_message
 
 ```
 {
@@ -1355,7 +1353,7 @@ voice_user_muted_message:
 }
 ```
 
-user_left_voice_message:
+## user_left_voice_message
 
 ```
 {
@@ -1373,7 +1371,7 @@ user_left_voice_message:
 }
 ```
 
-mute_meeting_request:
+## mute_meeting_request
 
 ```
 {
@@ -1391,7 +1389,7 @@ mute_meeting_request:
 
 ```
 
-user_raise_hand_request:
+## user_raise_hand_request
 
 ```
 {
@@ -1407,7 +1405,7 @@ user_raise_hand_request:
 }
 ```
 
-user_lower_hand_request:
+## user_lower_hand_request
 
 ```
 {
@@ -1424,7 +1422,7 @@ user_lower_hand_request:
 }
 ```
 
-set_lock_settings:
+## set_lock_settings
 
 ```
 {
@@ -1441,7 +1439,7 @@ set_lock_settings:
 
 ```
 
-broadcast_layout_reply:
+## broadcast_layout_reply
 
 ```
 {
@@ -1461,7 +1459,7 @@ broadcast_layout_reply:
 }
 ```
 
-lock_user_request:
+## lock_user_request
 
 ```
 {
@@ -1478,7 +1476,7 @@ lock_user_request:
     }
 }
 ```
-assign_presenter_request:
+## assign_presenter_request
 
 ```
 {
@@ -1496,7 +1494,7 @@ assign_presenter_request:
 }
 ```
 
-presentation_page_resized_message:
+## presentation_page_resized_message
 
 ```
 {
@@ -1525,7 +1523,7 @@ presentation_page_resized_message:
 }
 ```
 
-mute_user_request:
+## mute_user_request
 
 ```
 {
@@ -1544,7 +1542,7 @@ mute_user_request:
 
 ```
 
-send_whiteboard_annotation_request:
+## send_whiteboard_annotation_request
 
 ```
 {
@@ -1570,7 +1568,7 @@ send_whiteboard_annotation_request:
 
 ```
 
-disconnect_user_message:
+## disconnect_user_message
 
 ```
 {
@@ -1587,7 +1585,7 @@ disconnect_user_message:
 
 ```
 
-user_leaving_request:
+## user_leaving_request
 
 ```
 {
