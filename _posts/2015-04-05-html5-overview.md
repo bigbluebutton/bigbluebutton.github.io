@@ -19,7 +19,7 @@ The long-term vision for the BigBlueButton HTML5 client is to enable users on al
 
 This means the HTML5 client will completely implement the current Flash-based functionality, including the ability to broadcast audio and video from within the browser using web real-time communications (WebRTC) framework.
 
-Google Chrome on Android devices support WebRTC (we use these devices for development and testing); however, Apple's Safari browser on iOS devices does not.  It would be great if Apple were to support WebRTC -- or to enable other browser to use their own rendering engine on iOS -- but until then we (and you) are restricted to using the HTML5 client platforms that support WebRTC.
+Google Chrome on Android devices supports WebRTC (we use these devices for development and testing); however, Apple's Safari browser on iOS devices does not.  It would be great if Apple were to support WebRTC -- or to enable other browsers to use their own rendering engine on iOS -- but until then we (and you) are restricted to using the HTML5 client platforms that support WebRTC.
 
 The existing Flash client will not be replaced by the HTML5 client -- all current functionality of BigBlueButton will remain intact.  We are adding to the functionality by providing users with the ability to join a session (and increasingly participate) through an HTML5 interface (no Flash required).
 
@@ -34,16 +34,23 @@ We’ve mapped out the development of the HTML5 client in three phases:
 The following describes our efforts to implement phase 1: viewing a live BigBlueButton session using an HTML5 browser.  The current builds support webRTC audio and we are working on adding video support through webRTC.
 
 ## UI
-The overall design of the HTML5 client [in landscape view] aims to resemble what the users are familiar with from the existing Flash client.
 
-<img src="/images/html5-client-landscape.png" width="900" />
+<p>The overall design of the HTML5 client [in landscape view] aims to resemble what the users are familiar with from the existing Flash client.</p>
+<img src="/images/html5_client_20150922_desktop.png" width="800" />
+<p>The HTML5 client also has a portrait view where the interface was modified to better accommodate devices with smaller/narrow screens (mobile devices).</p>
 
-The HTML5 client also has a portrait view where the interface was modified to better accommodate devices with smaller screens (mobile devices). 
 
-<img src="/images/html5-client-mobile-view.png" width="350" />
-<img src="/images/html5-client-mobile-menu.png" width="350" />
+<img src="/images/html5_client_20150922_vertical.png" width="600" style="" />
+<p>Notice the large raiseHand and fullScreen buttons designed to be easy to tap on a touch screen. Two expansions are accessible via the buttons in the top left and right hand corners. The left wing displays the users while the right one brings up the settings, and the controls for chat display and logout.</p>
 
-Other interface differences include:
+<img src="/images/html5_client_20150922_settings.png" width="800" />
+<p>The settings dialog provides a way to join the audio as listenOnly or with a microphone as well as other settings.</p>
+
+<img src="/images/html5_client_20150922_full_screen.png" width="800" />
+<p>The full-screen capability allows a distraction free mode aimed at handheld devices.</p>
+
+
+The interface differences include:
 
   * toggle for controlling which modules are visible (Users, Presentation, Chat)
   * an additional button for displaying the presentation in full screen (on a mobile device)
@@ -133,7 +140,7 @@ We have disabled autopublishing. We publish manually inside server/publish.coffe
 ### HTML5 Client's client side:
 
 We rely heavily on the fact that MongoDB on the server side automatically pushes updates to MiniMongo on the client side.
-The client side subscribes to the published collections on the server side. During the subscription, the userId and auth_token of the user logged in the client are required. Providing these 2 identifiers, together with the meetingId, the publishing mechanism is enough information to decide what subset of the collections the user logged in the client is authorized to view.
+The client side subscribes to the published collections on the server side. During the subscription, the userId and authToken of the user logged in the client are required. These 2 identifiers together with the meetingId provide enough information for the publishing mechanism to decide what subset of the collections the user logged in the client is authorized to view.
 
 When an event in the meeting occurs the database on the server side is updated and the information is propagated to the client side MiniMongo database. The templates are automatically rendered with the most recent information so the user interface is updated.
 
@@ -146,9 +153,7 @@ Losing connection:
 ### Check
 Check if the HTML5 client is running and ready to serve users:
 
-```
-http://<your_ip>/html5client/check
-```
+`http://your_ip>/html5client/check`
 
 The result should be ```{"html5clientStatus":"running"}```
 
@@ -158,13 +163,14 @@ The result should be ```{"html5clientStatus":"running"}```
   * two way public and private chat
   * viewing presentation with slides, cursor, whiteboard annotations
   * audio using WebRTC (listen and speak)
-
-### Not yet implemented (see more information about these features in the existing Flash client):
-  * video
   * lock settings
   * listen Only audio
 
+### Not yet implemented (see more information about these features in the existing Flash client):
+  * viewing of desktop sharing video
+
 ### Planned features:
+  * webcam video
   * presenter mode
   * accessibility
   * localization
@@ -173,7 +179,7 @@ The result should be ```{"html5clientStatus":"running"}```
 
 ## Whiteboard
 
-The whiteboard is an SVG element embedded in the page, composed of images, a small red cursor and any shapes drawn by the presenter. Raphaël.js is used to automate most of the SVG manipulation but lots of math is still required on the client side. The information for all of the slides and shapes in the meeting are stored in a collection and are used to keep the whiteboard in the Presenter module up to date so that it matches what all other viewers (and the presenter) see.
+The whiteboard is an SVG element (or PNG if working with BigBlueButton version 0.9) embedded in the page, composed of images, a small red cursor and any shapes drawn by the presenter. Raphaël.js is used to automate most of the SVG manipulation but lots of math is still required on the client side. The information for all of the slides and shapes in the meeting are stored in a collection and are used to keep the whiteboard in the Presenter module up to date so that it matches what all other viewers (and the presenter) see.
 
 Advantages to SVG:
 
