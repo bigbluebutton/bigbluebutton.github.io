@@ -190,6 +190,29 @@ Advantages to SVG:
   * SVG is in the DOM, which means that we can control them through JavaScript. This will make using the HTML5 client for presenting relatively easy to implement at a later stage.
 
 
+## Try out the HTML5 client by installing it from packages
+You can easily add the HTML5 client to your server so you can try it out. These are the steps to add it:
+
+```
+$ sudo apt-get install bbb-html5
+$ sudo bbb-conf --restart
+```
+
+From now on the HTML5 client's package (bbb-html5) will update when you update BigBlueButton, will restart with the other components when you perform `bbb-conf --restart` or `bbb-conf --clean`.
+If you want to manually restart (or stop) it you can do so with the command
+
+```
+$ sudo service bbb-html5 restart
+```
+
+Note that the logs for the component are located at `/var/log/bigbluebutton/html5/html5.log` and the code for the client can be found at `/usr/share/meteor/html5/app/`.
+
+Later on if you wish to remove the HTML5 client, you can enter the command
+
+```
+$ sudo apt-get purge bbb-html5
+```
+
 ## Set up a Development Environment
 
 If you want to explore, develop and improve the HTML5 client, please follow the instructions on [setting up HTML5 development environment](/labs/html5-dev.html)
