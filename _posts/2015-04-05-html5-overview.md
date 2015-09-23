@@ -191,6 +191,9 @@ Advantages to SVG:
 
 
 ## Try out the HTML5 client by installing it from packages
+
+<b>!! DRAFT - this section will be updated when BigBlueButton 1.0-beta is released</b>
+
 You can easily add the HTML5 client to your server so you can try it out. These are the steps to add it:
 
 ```
