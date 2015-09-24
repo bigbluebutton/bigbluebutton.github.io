@@ -5,6 +5,25 @@ category: support
 date: 2015-04-04 22:26:10
 ---
 
+# Release 1.0.0-beta
+
+Updated: September XX, 2015 ([Installation Instructions](/labs/10install.html))
+
+This release of BigBlueButton 1.0.0-beta focused on increasing the interactivity betweent the instructor and student.
+
+## Major Features
+
+  * **Polling** - The instructor can poll the students for imediate feedback.  The polling includes a Smart Polling feature that can automatically suggest the proper polling choices based on the content of the slide.
+
+  * **Improved Video Dock** - The improved video dock removes all boarders from webcams so you can see more of the user's videos.
+
+  * **Emoji** - Students can display emoji icons (happy, netural, sad, confused, and away) in addition to raise hand.
+
+For details of the new features (with screen shots) see [1.0.0 overview](/labs/10overview.html).
+
+See [issues fixed in BigBlueButton 1.0.0](https://github.com/bigbluebutton/bigbluebutton/milestones/Release%201.0.0)
+
+
 # Release 0.9.1
 
 June 29, 2015 ([Installation Instructions](/install/install.html))

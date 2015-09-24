@@ -7,7 +7,7 @@ date: 2015-05-07 16:29:25
 
 ## Overview
 
-Sending the deskshare stream over TLS to the server, will allow for added security that will make it harder for someone eavesdrop over the stream sent to the server.
+Sending the deskshare stream over TLS to the server, will allow for added security that will make it harder for someone eavesdrop over the stream sent to the server.  Note: This will not work if you setup HTTPS on BigBlueButton as they will conflict with port 443.
 
 To achieve this, a new SSL termination proxy (Stunnel) needs to be added.
 

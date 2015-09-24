@@ -26,6 +26,7 @@ sections: [
     ['mobile', 'Mobile (dev)'],
     ['support', 'Support'],
     ['labs', 'Labs'],
+    ['1.0', '1.0-beta'],
     ['post', 'Posts']
 ]
 

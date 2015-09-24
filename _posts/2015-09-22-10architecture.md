@@ -1,7 +1,7 @@
 ---
 layout: page
-title: "1.0 Architecture"
-category: labs
+title: "Architecture"
+category: "1.0"
 date: 2015-09-20 17:34:41
 ---
 

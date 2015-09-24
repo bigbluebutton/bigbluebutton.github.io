@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Redis Messages"
-category: labs
+#category: labs
 date: 2015-05-11 17:34:41
 ---
 
