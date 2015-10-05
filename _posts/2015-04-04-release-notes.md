@@ -7,7 +7,7 @@ date: 2015-04-04 22:26:10
 
 # Release 1.0-beta
 
-Updated: October XX, 2015 ([Installation Instructions](/1.0/10install.html))
+Updated: October 5, 2015 ([Installation Instructions](/1.0/10install.html))
 
 This release focused on increasing the interactivity between instructors and students.
 
