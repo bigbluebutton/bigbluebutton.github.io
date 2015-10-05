@@ -5,23 +5,26 @@ category: support
 date: 2015-04-04 22:26:10
 ---
 
-# Release 1.0.0-beta
+# Release 1.0-beta
 
-Updated: September XX, 2015 ([Installation Instructions](/labs/10install.html))
+Updated: October XX, 2015 ([Installation Instructions](/1.0/10install.html))
 
-This release of BigBlueButton 1.0.0-beta focused on increasing the interactivity betweent the instructor and student.
+This release focused on increasing the interactivity between instructors and students.
 
 ## Major Features
 
-  * **Polling** - The instructor can poll the students for imediate feedback.  The polling includes a Smart Polling feature that can automatically suggest the proper polling choices based on the content of the slide.
+  * **Polling** - Presenters can now poll students for imediate feedback.  The BigBlueButton client includes a feature that can automatically suggest the proper polling choices based on the content of the slide (we call this _Smart Polling_).
 
-  * **Improved Video Dock** - The improved video dock removes all boarders from webcams so you can see more of the user's videos.
+  * **Improved video dock** - The video dock now shows the webcams without boarders to give more visibility.
 
-  * **Emoji** - Students can display emoji icons (happy, netural, sad, confused, and away) in addition to raise hand.
+  * **Emoji** - Students can now use emoji icons (happy, netural, sad, confused, and away) to give feedback in addition current raise hand.
 
-For details of the new features (with screen shots) see [1.0.0 overview](/labs/10overview.html).
+  * **Puffin Browser** - BigBlueButton detects Puffin version 4.6 (or later) and enables broadcasting of microphone and webcam in a BigBlueButton session.
+The [Puffin Browser](https://www.puffinbrowser.com/index.php) is a mobile web browser supports the latest Flash engine over the cloud for iPad, iPhone and Android.  
 
-See [issues fixed in BigBlueButton 1.0.0](https://github.com/bigbluebutton/bigbluebutton/milestones/Release%201.0.0)
+For details of these updates and others (with screen shots) see [1.0 overview](/1.0/10overview.html).
+
+See [issues fixed in BigBlueButton 1.0-beta](https://github.com/bigbluebutton/bigbluebutton/issues?q=milestone%3A%22Release+1.0.0%22+is%3Aclosed).  
 
 
 # Release 0.9.1
