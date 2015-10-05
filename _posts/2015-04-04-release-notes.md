@@ -13,14 +13,13 @@ This release focused on increasing the interactivity between instructors and stu
 
 ## Major Features
 
-  * **Polling** - Presenters can now poll students for imediate feedback.  The BigBlueButton client includes a feature that can automatically suggest the proper polling choices based on the content of the slide (we call this _Smart Polling_).
+  * **Polling** - Presenters can now poll students for immediate feedback.  The BigBlueButton client includes a feature that can automatically suggest the proper polling choices based on the content of the slide (we call this _Smart Polling_).
 
   * **Improved video dock** - The video dock now shows the webcams without boarders to give more visibility.
 
-  * **Emoji** - Students can now use emoji icons (happy, netural, sad, confused, and away) to give feedback in addition current raise hand.
+  * **Emoji** - Students can now use emoji icons (happy, neutral, sad, confused, and away) to give feedback in addition current raise hand.
 
-  * **Puffin Browser** - BigBlueButton detects Puffin version 4.6 (or later) and enables broadcasting of microphone and webcam in a BigBlueButton session.
-The [Puffin Browser](https://www.puffinbrowser.com/index.php) is a mobile web browser supports the latest Flash engine over the cloud for iPad, iPhone and Android.  
+  * **Puffin Browser support** - BigBlueButton detects [Puffin Browser](https://www.puffinbrowser.com/index.php) version 4.6 (or later) and enables the user to broadcast their microphone and/or webcam in a BigBlueButton session on a mobile device.
 
 For details of these updates and others (with screen shots) see [1.0 overview](/1.0/10overview.html).
 
