@@ -8,7 +8,9 @@ date: 2015-04-05 11:41:36
 
 # Overview
 
-This document provides information about the HTML5 client that is integrated into the BigBlueButton platform for providing an additional entry point for users to join a BigBlueButton session.
+This document provides information about the BigBlueButton HTML5 client that provides users an additional entry point for users to join a BigBlueButton session.
+
+The BigBlueButton HTML5 client is under development.  
 
 ## Vision
 With the adoption of HTML5, the web browser is becoming the platform for rich client interfaces.
@@ -17,7 +19,7 @@ Furthermore, with the recent progress in WebRTC, an HTML5-based application can 
 
 The long-term vision for the BigBlueButton HTML5 client is to enable users on all platforms supporting an HTML5 browser -- including smartphones and tablets to -- to fully access all of BigBlueButton’s features.
 
-This means the HTML5 client will completely implement the current Flash-based functionality, including the ability to broadcast audio and video from within the browser using web real-time communications (WebRTC) framework.
+This vision means the HTML5 client will, at some point, completely implement the current Flash-based functionality, including the ability to broadcast audio and video from within the browser using web real-time communications (WebRTC) framework.
 
 Google Chrome on Android devices supports WebRTC (we use these devices for development and testing); however, Apple's Safari browser on iOS devices does not.  It would be great if Apple were to support WebRTC -- or to enable other browsers to use their own rendering engine on iOS -- but until then we (and you) are restricted to using the HTML5 client platforms that support WebRTC.
 
@@ -25,13 +27,15 @@ The existing Flash client will not be replaced by the HTML5 client -- all curren
 
 ## Phases for Development of HTML5 Client
 
-We’ve mapped out the development of the HTML5 client in three phases:
+We’ve mapped out the development of the HTML5 client in the phases:
 
-  1. Viewing a live BigBlueButton session using an HTML5 browser (view presentation updates, streaming audio/video, two-way chat).
-  1. Broadcast audio/video from an HTML5 browser using WebRTC
-  1. Support for all presentation features of BigBlueButton in HTML5
+  1. Viewing a live BigBlueButton session using an HTML5 browser (view presentation updates, view desktop sharing, two-way chat, two-way audio, respond to polls, emjoi icons).
+  1. Presentation capabilities: advance slides and switch presentation.
+  1. Two-way video
+  1. All presenter capabilities
+  1. All moderator capabilities
 
-The following describes our efforts to implement phase 1: viewing a live BigBlueButton session using an HTML5 browser.  The current builds support webRTC audio and we are working on adding video support through webRTC.
+The following describes our efforts to implement Phase 1: viewing a live BigBlueButton session using an HTML5 browser.  The current builds support WebRTC audio and we are working on viewing the presenter's desktop via WebRTC video.
 
 ## UI
 
