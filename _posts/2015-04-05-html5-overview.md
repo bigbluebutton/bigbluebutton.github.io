@@ -163,6 +163,7 @@ The result should be ```{"html5clientStatus":"running"}```
 
 
 ## Current stage
+
 ### Implemented:
   * two way public and private chat
   * viewing presentation with slides, cursor, whiteboard annotations
