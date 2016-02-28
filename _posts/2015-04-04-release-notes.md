@@ -30,7 +30,7 @@ See [issues fixed in BigBlueButton 1.0-beta](https://github.com/bigbluebutton/bi
 
 June 29, 2015 ([Installation Instructions](/install/install.html))
 
-This was a maintenance release to 0.9 to fix issue [1953](https://code.google.com/p/bigbluebutton/issues/detail?id=1953)
+This was a maintenance release to 0.9 to fix issue [2701](https://github.com/bigbluebutton/bigbluebutton/issues/2701)
 with FireFox and Desktop Sharing.
 
 
@@ -127,7 +127,7 @@ Released: June 18, 2012
 
   * **Default Presentation** - You can now specify a default presentation for all BigBlueButton sessions, which lets you, for example, show an initial help page in a session.  See [defaultUploadedPresentation](https://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-web/grails-app/conf/bigbluebutton.properties#L130) property.
 
-  * **Auto-translate disabled** -  Google Translate APIs are [no longer free](http://code.google.com/apis/language/translate/overview.html) so the auto translate feature is now disabled by default until we can determine the best way to support their new model (see [1079](http://code.google.com/p/bigbluebutton/issues/detail?id=1079))
+  * **Auto-translate disabled** -  Google Translate APIs are [no longer free](http://code.google.com/apis/language/translate/overview.html) so the auto translate feature is now disabled by default until we can determine the best way to support their new model (see [1833](https://github.com/bigbluebutton/bigbluebutton/issues/1833))
 
   * **bbb-conf now Installs development tools** - To make it easier to develop BigBlueButton, `bbb-conf` can now install a build environment on a BigBlueButton server within any account with sudo privileges.  
 
@@ -175,9 +175,9 @@ Released: November 9, 2010
 See [detailed list of issues fixed in BigBlueButton 0.71](http://code.google.com/p/bigbluebutton/issues/list?can=1&q=milestone=Release0.71)
 
 ## Known Issues
-  * [Issue 567](http://code.google.com/p/bigbluebutton/issues/detail?id=567) Hitting backspace on Safari causes the browser to go back one page
-  * [Issue 634](http://code.google.com/p/bigbluebutton/issues/detail?id=634) You have been logged out
-  * [Issue 670](http://code.google.com/p/bigbluebutton/issues/detail?id=670) Listener Window Count
+  * [Issue 1322](https://github.com/bigbluebutton/bigbluebutton/issues/1322) Hitting backspace on Safari causes the browser to go back one page
+  * [Issue 1389](https://github.com/bigbluebutton/bigbluebutton/issues/1389) You have been logged out
+  * [Issue 1425](https://github.com/bigbluebutton/bigbluebutton/issues/1425) Listener Window Count
 
 
 # Release 0.7: Feynman
@@ -211,9 +211,9 @@ Released: July 15, 2010
 See [detailed list of issues fixed in BigBlueButton 0.7](http://code.google.com/p/bigbluebutton/issues/list?can=1&q=milestone=Release0.7)
 
 ## Known Issues
-  * [Issue 524](http://code.google.com/p/bigbluebutton/issues/detail?id=524) Problems with audio delay using VoIP
-  * [Issue 579](http://code.google.com/p/bigbluebutton/issues/detail?id=579) Presenter can't widen the view of portrait documents
-  * [Issue 580](http://code.google.com/p/bigbluebutton/issues/detail?id=580) CentOS packages do not support BigBlueButton 0.7
+  * [Issue 1279](https://github.com/bigbluebutton/bigbluebutton/issues/1279) Problems with audio delay using VoIP
+  * [Issue 1334](https://github.com/bigbluebutton/bigbluebutton/issues/1334) Presenter can't widen the view of portrait documents
+  * [Issue 1335](https://github.com/bigbluebutton/bigbluebutton/issues/1335) CentOS packages do not support BigBlueButton 0.7
 
 # Release 0.64: Lickety-split
 
@@ -241,9 +241,9 @@ Released: April 3, 2010
 
 ## Known Issues
 
-  * [Issue 419](http://code.google.com/p/bigbluebutton/issues/detail?id=419&sort=priority&colspec=ID%20Type%20Status%20Priority%20Milestone%20Owner%20Component%20Summary) Viewers are unable to mute/unmute themselves
-  * [Issue 357](http://code.google.com/p/bigbluebutton/issues/detail?id=357&sort=priority&colspec=ID%20Type%20Status%20Priority%20Milestone%20Owner%20Component%20Summary) Uploading a presentation overwrites a previous presentation with the same name
-  * [Issue 467](http://code.google.com/p/bigbluebutton/issues/detail?id=467&colspec=ID%20Type%20Status%20Priority%20Milestone%20Owner%20Component%20Summary) Creating a meeting with a blank meetingID overrides any previous meetings with blank meetingIDs
+  * [Issue 1174](https://github.com/bigbluebutton/bigbluebutton/issues/1174) Viewers are unable to mute/unmute themselves
+  * [Issue 1112](https://github.com/bigbluebutton/bigbluebutton/issues/1112) Uploading a presentation overwrites a previous presentation with the same name
+  * [Issue 1222](https://github.com/bigbluebutton/bigbluebutton/issues/1222) Creating a meeting with a blank meetingID overrides any previous meetings with blank meetingIDs
 
 
 # Release 0.63: Red Dot
@@ -272,8 +272,8 @@ Released: January 25, 2010
   * [See Issues Fixed in BigBlueButton 0.63](http://code.google.com/p/bigbluebutton/issues/list?can=1&q=milestone=Release0.63%20status=Fixed&colspec=ID%20Type%20Status%20Priority%20Milestone%20Owner%20Component%20Summary)
 
 ## Known Issues
-  * [Issue 324](http://code.google.com/p/bigbluebutton/issues/detail?id=324) List of uploaded presentation doesn't get transferred when changing presenters
-  * [Issue 322](http://code.google.com/p/bigbluebutton/issues/detail?id=322) Odd issue with presentation getting out of sync
+  * [Issue 1079](https://github.com/bigbluebutton/bigbluebutton/issues/1079) List of uploaded presentation doesn't get transferred when changing presenters
+  * [Issue 1077](https://github.com/bigbluebutton/bigbluebutton/issues/1077) Odd issue with presentation getting out of sync
 
 
 
@@ -305,32 +305,32 @@ If you are running  BigBlueButton VM 0.61 -- either from VM or from apt-get pack
 
 
 ## Fixed Issues
-  * [Issue 11](http://code.google.com/p/bigbluebutton/issues/detail?id=11)   	 Listeners window not getting updates
-  * [Issue 110](http://code.google.com/p/bigbluebutton/issues/detail?id=110) Deskshare works only when tunneling on Mac OS X
-  * [Issue 150](http://code.google.com/p/bigbluebutton/issues/detail?id=150) Deskshare applet should test port to check if it should tunnel
-  * [Issue 168](http://code.google.com/p/bigbluebutton/issues/detail?id=168) One one deskshare usage per session
-  * [Issue 170](http://code.google.com/p/bigbluebutton/issues/detail?id=170) Switching presenter while screensharing results in old presenter seeing screenshare viewer window
-  * [Issue 177](http://code.google.com/p/bigbluebutton/issues/detail?id=177) When selecting a slide from the fisheye control, the cursor becomes an i-beam
-  * [Issue 179](http://code.google.com/p/bigbluebutton/issues/detail?id=179) Zooming can cause a slide to disappear when clicking next
-  * [Issue 180](http://code.google.com/p/bigbluebutton/issues/detail?id=180) Deskshare can leave a stream open
-  * [Issue 187](http://code.google.com/p/bigbluebutton/issues/detail?id=187) Improve slide navigation from keyboard
-  * [Issue 189](http://code.google.com/p/bigbluebutton/issues/detail?id=189) Improve speed of Desktop Sharing
-  * [Issue 200](http://code.google.com/p/bigbluebutton/issues/detail?id=200) Update build.sh scripts with Virtual Machine
-  * [Issue 201](http://code.google.com/p/bigbluebutton/issues/detail?id=201) Update desktop sharing video
-  * [Issue 203](http://code.google.com/p/bigbluebutton/issues/detail?id=203) Create wiki on how to setup development environment
-  * [Issue 204](http://code.google.com/p/bigbluebutton/issues/detail?id=204) Update Installing BBB from source wiki
-  * [Issue 208](http://code.google.com/p/bigbluebutton/issues/detail?id=208) Port 9123 could still be in use on restart of red5
-  * [Issue 220](http://code.google.com/p/bigbluebutton/issues/detail?id=220) Not all viewers automatically seeing the shared desktop
-  * [Issue 221](http://code.google.com/p/bigbluebutton/issues/detail?id=221) Tooltips for all icons
-  * [Issue 226](http://code.google.com/p/bigbluebutton/issues/detail?id=226) Desktop sharing window remains open when sharer closes connection / crashes
-  * [Issue 229](http://code.google.com/p/bigbluebutton/issues/detail?id=229) Last frame of desktop sharing is visible to viewers
-  * [Issue 230](http://code.google.com/p/bigbluebutton/issues/detail?id=230) Flash debug client shows messages
+  * [Issue 769](https://github.com/bigbluebutton/bigbluebutton/issues/769)   	 Listeners window not getting updates
+  * [Issue 865](https://github.com/bigbluebutton/bigbluebutton/issues/865) Deskshare works only when tunneling on Mac OS X
+  * [Issue 905](https://github.com/bigbluebutton/bigbluebutton/issues/905) Deskshare applet should test port to check if it should tunnel
+  * [Issue 923](https://github.com/bigbluebutton/bigbluebutton/issues/923) One one deskshare usage per session
+  * [Issue 925](https://github.com/bigbluebutton/bigbluebutton/issues/925) Switching presenter while screensharing results in old presenter seeing screenshare viewer window
+  * [Issue 932](https://github.com/bigbluebutton/bigbluebutton/issues/932) When selecting a slide from the fisheye control, the cursor becomes an i-beam
+  * [Issue 934](https://github.com/bigbluebutton/bigbluebutton/issues/934) Zooming can cause a slide to disappear when clicking next
+  * [Issue 180](https://github.com/bigbluebutton/bigbluebutton/issues/935) Deskshare can leave a stream open
+  * [Issue 942](https://github.com/bigbluebutton/bigbluebutton/issues/942) Improve slide navigation from keyboard
+  * [Issue 944](https://github.com/bigbluebutton/bigbluebutton/issues/944) Improve speed of Desktop Sharing
+  * [Issue 955](https://github.com/bigbluebutton/bigbluebutton/issues/955) Update build.sh scripts with Virtual Machine
+  * [Issue 956](https://github.com/bigbluebutton/bigbluebutton/issues/956) Update desktop sharing video
+  * [Issue 958](https://github.com/bigbluebutton/bigbluebutton/issues/958) Create wiki on how to setup development environment
+  * [Issue 959](https://github.com/bigbluebutton/bigbluebutton/issues/959) Update Installing BBB from source wiki
+  * [Issue 963](https://github.com/bigbluebutton/bigbluebutton/issues/963) Port 9123 could still be in use on restart of red5
+  * [Issue 975](https://github.com/bigbluebutton/bigbluebutton/issues/975) Not all viewers automatically seeing the shared desktop
+  * [Issue 976](https://github.com/bigbluebutton/bigbluebutton/issues/976) Tooltips for all icons
+  * [Issue 981](https://github.com/bigbluebutton/bigbluebutton/issues/981) Desktop sharing window remains open when sharer closes connection / crashes
+  * [Issue 984](https://github.com/bigbluebutton/bigbluebutton/issues/984) Last frame of desktop sharing is visible to viewers
+  * [Issue 985](https://github.com/bigbluebutton/bigbluebutton/issues/985) Flash debug client shows messages
 
 ## Known Issues
-  * [Issue 233](http://code.google.com/p/bigbluebutton/issues/detail?id=233) 	java.io.IOException: Too many open files
-  * [Issue 227](http://code.google.com/p/bigbluebutton/issues/detail?id=227) BBB apps (Red5) should reconnect to ActiveMQ when connection drops
-  * [Issue 214](http://code.google.com/p/bigbluebutton/issues/detail?id=214) VoIP stops working
-  * [Issue 198](http://code.google.com/p/bigbluebutton/issues/detail?id=198) Mozilla crashes uploading PDF
+  * [Issue 988](https://github.com/bigbluebutton/bigbluebutton/issues/988) 	java.io.IOException: Too many open files
+  * [Issue 982](https://github.com/bigbluebutton/bigbluebutton/issues/982) BBB apps (Red5) should reconnect to ActiveMQ when connection drops
+  * [Issue 969](https://github.com/bigbluebutton/bigbluebutton/issues/969) VoIP stops working
+  * [Issue 953](https://github.com/bigbluebutton/bigbluebutton/issues/953) Mozilla crashes uploading PDF
 
 # Release 0.61: Titan
 
@@ -364,33 +364,33 @@ If you are running a BigBlueButton VM or had installed BigBlueButton using packa
 **Note:** If you get an error during upgrade, just run `sudo apt-get upgrade` again.  We refactored the install scripts and a previous install script and new install scrip both reference the same configuration file.  Running the upgrade command a second time will solve the problem as the first time upgrades all the install script.
 
 ## Fixed Issues
-  * [Issue 25](http://code.google.com/p/bigbluebutton/issues/detail?id=25) Windows can get hidden or off-screen
-  * [Issue 52](http://code.google.com/p/bigbluebutton/issues/detail?id=52) First moderator should become default presenter
-  * [Issue 66](http://code.google.com/p/bigbluebutton/issues/detail?id=66) Progress should include generating thumbnails
-  * [Issue 71](http://code.google.com/p/bigbluebutton/issues/detail?id=71) Reload after login doesn't load the person back into the session
-  * [Issue 90](http://code.google.com/p/bigbluebutton/issues/detail?id=90) deskshare-app blocks red5 from restarting
-  * [Issue 72](http://code.google.com/p/bigbluebutton/issues/detail?id=72) Upon uploading a presentation the first slide does not show
-  * [Issue 115](http://code.google.com/p/bigbluebutton/issues/detail?id=115) Windows respond very poorly when maximized
-  * [Issue 128](http://code.google.com/p/bigbluebutton/issues/detail?id=128) Unable to drag desktop sharing window while sharing fullscreen
-  * [Issue 129](http://code.google.com/p/bigbluebutton/issues/detail?id=129) BigBlueButton client will hang for ~ 1 minute while it waits for direct connection to 1935 to timeout
-  * [Issue 146](http://code.google.com/p/bigbluebutton/issues/detail?id=146) User can log in without entering a username
-  * [Issue 149](http://code.google.com/p/bigbluebutton/issues/detail?id=149) Session not invalidated after logout
-  * [Issue 157](http://code.google.com/p/bigbluebutton/issues/detail?id=157) Red5 ip is lost after upgrading
-  * [Issue 161](http://code.google.com/p/bigbluebutton/issues/detail?id=161) Red5 logs are erased on restart
-  * [Issue 163](http://code.google.com/p/bigbluebutton/issues/detail?id=163) Sharing full screen may cause red5 server to halt
-  * [Issue 166](http://code.google.com/p/bigbluebutton/issues/detail?id=166) Video screen not resized according to the window resize
-  * [Issue 168](http://code.google.com/p/bigbluebutton/issues/detail?id=168) One one deskshare usage per session
-  * [Issue 169](http://code.google.com/p/bigbluebutton/issues/detail?id=169) Make "USB Video Class Video" default choice for Mac
-  * [Issue 175](http://code.google.com/p/bigbluebutton/issues/detail?id=175) Maximize deskshare window when in full screen causes hang
-  * [Issue 176](http://code.google.com/p/bigbluebutton/issues/detail?id=176) Share web cam icon allows multiple clicks
-  * [Issue 178](http://code.google.com/p/bigbluebutton/issues/detail?id=178) Reset layout should reset sizes of windows
+  * [Issue 783](https://github.com/bigbluebutton/bigbluebutton/issues/783) Windows can get hidden or off-screen
+  * [Issue 810](https://github.com/bigbluebutton/bigbluebutton/issues/810) First moderator should become default presenter
+  * [Issue 823](https://github.com/bigbluebutton/bigbluebutton/issues/823) Progress should include generating thumbnails
+  * [Issue 828](https://github.com/bigbluebutton/bigbluebutton/issues/828) Reload after login doesn't load the person back into the session
+  * [Issue 845](https://github.com/bigbluebutton/bigbluebutton/issues/845) deskshare-app blocks red5 from restarting
+  * [Issue 829](https://github.com/bigbluebutton/bigbluebutton/issues/829) Upon uploading a presentation the first slide does not show
+  * [Issue 870](https://github.com/bigbluebutton/bigbluebutton/issues/870) Windows respond very poorly when maximized
+  * [Issue 883](https://github.com/bigbluebutton/bigbluebutton/issues/883) Unable to drag desktop sharing window while sharing fullscreen
+  * [Issue 884](https://github.com/bigbluebutton/bigbluebutton/issues/884) BigBlueButton client will hang for ~ 1 minute while it waits for direct connection to 1935 to timeout
+  * [Issue 901](https://github.com/bigbluebutton/bigbluebutton/issues/901) User can log in without entering a username
+  * [Issue 904](https://github.com/bigbluebutton/bigbluebutton/issues/904) Session not invalidated after logout
+  * [Issue 912](https://github.com/bigbluebutton/bigbluebutton/issues/912) Red5 ip is lost after upgrading
+  * [Issue 916](https://github.com/bigbluebutton/bigbluebutton/issues/916) Red5 logs are erased on restart
+  * [Issue 918](https://github.com/bigbluebutton/bigbluebutton/issues/918) Sharing full screen may cause red5 server to halt
+  * [Issue 921](https://github.com/bigbluebutton/bigbluebutton/issues/921) Video screen not resized according to the window resize
+  * [Issue 923](https://github.com/bigbluebutton/bigbluebutton/issues/923) One one deskshare usage per session
+  * [Issue 924](https://github.com/bigbluebutton/bigbluebutton/issues/924) Make "USB Video Class Video" default choice for Mac
+  * [Issue 930](https://github.com/bigbluebutton/bigbluebutton/issues/930) Maximize deskshare window when in full screen causes hang
+  * [Issue 931](https://github.com/bigbluebutton/bigbluebutton/issues/931) Share web cam icon allows multiple clicks
+  * [Issue 933](https://github.com/bigbluebutton/bigbluebutton/issues/933) Reset layout should reset sizes of windows
 
 ## Known Issues
-  * [Issue 181](http://code.google.com/p/bigbluebutton/issues/detail?id=181) Stopping deskshare crashes Safari
-  * ~~[Issue 180](http://code.google.com/p/bigbluebutton/issues/detail?id=180) Deskshare can leave a stream open~~
-  * ~~[Issue 179](http://code.google.com/p/bigbluebutton/issues/detail?id=179) Zooming can cause a slide to disappear when clicking next~~
-  * ~~[Issue 170](http://code.google.com/p/bigbluebutton/issues/detail?id=170) Switching presenter while screensharing results in old presenter seeing screenshare viewer window~~
-  * [Issue 153](http://code.google.com/p/bigbluebutton/issues/detail?id=153)  The Show button on the Upload Window doesn't work
+  * [Issue 936](https://github.com/bigbluebutton/bigbluebutton/issues/936) Stopping deskshare crashes Safari
+  * ~~[Issue 935](https://github.com/bigbluebutton/bigbluebutton/issues/935) Deskshare can leave a stream open~~
+  * ~~[Issue 934](https://github.com/bigbluebutton/bigbluebutton/issues/934) Zooming can cause a slide to disappear when clicking next~~
+  * ~~[Issue 925](https://github.com/bigbluebutton/bigbluebutton/issues/925) Switching presenter while screensharing results in old presenter seeing screenshare viewer window~~
+  * [Issue 908](https://github.com/bigbluebutton/bigbluebutton/issues/908)  The Show button on the Upload Window doesn't work
 
 # 0.6 Release: Mir Space Station. August 12 2009
 
@@ -404,32 +404,32 @@ The VoIP capability is based on the [Red5Phone](http://code.google.com/p/red5pho
 
 ### Fixed Issues
 Here are the list of issues we fixed on this release:
-  * [Issue 67](http://code.google.com/p/bigbluebutton/issues/detail?id=67) Red5 Phone Module
-  * [Issue 69](http://code.google.com/p/bigbluebutton/issues/detail?id=69) Users do not see slides from presenter
-  * [Issue 98](http://code.google.com/p/bigbluebutton/issues/detail?id=98) Left and Right arrow keys not working
-  * [Issue 99](http://code.google.com/p/bigbluebutton/issues/detail?id=99) Update Reset Zoom icon
-  * [Issue 104](http://code.google.com/p/bigbluebutton/issues/detail?id=104) Add Desktop Sharing to BigBlueButton
-  * [Issue 106](http://code.google.com/p/bigbluebutton/issues/detail?id=106) Unable to start desktop sharing
-  * [Issue 108](http://code.google.com/p/bigbluebutton/issues/detail?id=108) Client does not provide proper feedback when logging out
-  * [Issue 114](http://code.google.com/p/bigbluebutton/issues/detail?id=114) Client trying to load history.js and history.htm
-  * [Issue 117](http://code.google.com/p/bigbluebutton/issues/detail?id=117) Log window is hard to read
-  * [Issue 118](http://code.google.com/p/bigbluebutton/issues/detail?id=118) Limitation of conference session does not work.
-  * [Issue 121](http://code.google.com/p/bigbluebutton/issues/detail?id=121) Can't input chat text in full screen mode
-  * [Issue 125](http://code.google.com/p/bigbluebutton/issues/detail?id=125) Build bbb-apps from VM
-  * [Issue 130](http://code.google.com/p/bigbluebutton/issues/detail?id=130) Hearing voices after logging out
-  * [Issue 135](http://code.google.com/p/bigbluebutton/issues/detail?id=135) Participant entry sound plays when user icon is clicked
-  * [Issue 136](http://code.google.com/p/bigbluebutton/issues/detail?id=136) Phone Logout null pointer exception
-  * [Issue 138](http://code.google.com/p/bigbluebutton/issues/detail?id=138) Unmute-all icon mis-aligned
-  * [Issue 139](http://code.google.com/p/bigbluebutton/issues/detail?id=139) bbb-setip not detecting rtmp port
+  * [Issue 824](https://github.com/bigbluebutton/bigbluebutton/issues/824) Red5 Phone Module
+  * [Issue 826](https://github.com/bigbluebutton/bigbluebutton/issues/826) Users do not see slides from presenter
+  * [Issue 853](https://github.com/bigbluebutton/bigbluebutton/issues/853) Left and Right arrow keys not working
+  * [Issue 854](https://github.com/bigbluebutton/bigbluebutton/issues/854) Update Reset Zoom icon
+  * [Issue 859](https://github.com/bigbluebutton/bigbluebutton/issues/859) Add Desktop Sharing to BigBlueButton
+  * [Issue 861](https://github.com/bigbluebutton/bigbluebutton/issues/861) Unable to start desktop sharing
+  * [Issue 863](https://github.com/bigbluebutton/bigbluebutton/issues/863) Client does not provide proper feedback when logging out
+  * [Issue 869](https://github.com/bigbluebutton/bigbluebutton/issues/869) Client trying to load history.js and history.htm
+  * [Issue 872](https://github.com/bigbluebutton/bigbluebutton/issues/872) Log window is hard to read
+  * [Issue 873](https://github.com/bigbluebutton/bigbluebutton/issues/873) Limitation of conference session does not work.
+  * [Issue 876](https://github.com/bigbluebutton/bigbluebutton/issues/876) Can't input chat text in full screen mode
+  * [Issue 880](https://github.com/bigbluebutton/bigbluebutton/issues/880) Build bbb-apps from VM
+  * [Issue 885](https://github.com/bigbluebutton/bigbluebutton/issues/885) Hearing voices after logging out
+  * [Issue 890](https://github.com/bigbluebutton/bigbluebutton/issues/890) Participant entry sound plays when user icon is clicked
+  * [Issue 891](https://github.com/bigbluebutton/bigbluebutton/issues/891) Phone Logout null pointer exception
+  * [Issue 893](https://github.com/bigbluebutton/bigbluebutton/issues/893) Unmute-all icon mis-aligned
+  * [Issue 894](https://github.com/bigbluebutton/bigbluebutton/issues/894) bbb-setip not detecting rtmp port
 
 ### Known Issues
-  * [Issue 141](http://code.google.com/p/bigbluebutton/issues/detail?id=141) Impossible to disconnect from voice-conference w/o logging out
-  * ~~[Issue 133](http://code.google.com/p/bigbluebutton/issues/detail?id=133) Webcam window still visible to other participants after logging out~~
-  * ~~[Issue 129](http://code.google.com/p/bigbluebutton/issues/detail?id=129) Client takes too long to test port 1935 and start tunneling~~
-  * [Issue 127](http://code.google.com/p/bigbluebutton/issues/detail?id=127) Video stream not properly closing in client
-  * ~~[Issue 107](http://code.google.com/p/bigbluebutton/issues/detail?id=107) Cut-and-paste url should give a login error~~
-  * [Issue 88](http://code.google.com/p/bigbluebutton/issues/detail?id=88) PDF slide with many symbols causing long delay
-  * ~~[Issue 72](http://code.google.com/p/bigbluebutton/issues/detail?id=72) Upon uploading a presentation the first slide does not show~~
+  * [Issue 896](https://github.com/bigbluebutton/bigbluebutton/issues/896) Impossible to disconnect from voice-conference w/o logging out
+  * ~~[Issue 888](https://github.com/bigbluebutton/bigbluebutton/issues/888) Webcam window still visible to other participants after logging out~~
+  * ~~[Issue 884](https://github.com/bigbluebutton/bigbluebutton/issues/884) Client takes too long to test port 1935 and start tunneling~~
+  * [Issue 882](https://github.com/bigbluebutton/bigbluebutton/issues/882) Video stream not properly closing in client
+  * ~~[Issue 862](https://github.com/bigbluebutton/bigbluebutton/issues/862) Cut-and-paste url should give a login error~~
+  * [Issue 843](https://github.com/bigbluebutton/bigbluebutton/issues/843) PDF slide with many symbols causing long delay
+  * ~~[Issue 829](https://github.com/bigbluebutton/bigbluebutton/issues/829) Upon uploading a presentation the first slide does not show~~
 
 Released: August 12, 2009
 
@@ -454,24 +454,24 @@ Under the hood, the private chat works in the same way as the public chat, excep
 
 ### Fixed Issues
 Here are the list of issues we fixed on this release:
-  * [Issue 109](http://code.google.com/p/bigbluebutton/issues/detail?id=109) Cannot upload twice a file
-  * [Issue 101](http://code.google.com/p/bigbluebutton/issues/detail?id=101) Red5 video app has significant delay
-  * [Issue 96](http://code.google.com/p/bigbluebutton/issues/detail?id=96) Fixed the thumbnail view in presentation module to be more responsive and user friendly
-  * [Issue 94](http://code.google.com/p/bigbluebutton/issues/detail?id=94) Change applet certificate
-  * [Issue 93](http://code.google.com/p/bigbluebutton/issues/detail?id=93) deskshare-client should tunnel through port 80
-  * [Issue 87](http://code.google.com/p/bigbluebutton/issues/detail?id=87) Logout should close the deskshare module
-  * [Issue 85](http://code.google.com/p/bigbluebutton/issues/detail?id=85) Added a zoom slide to presentation module, for users without mousewheel
-  * [Issue 84](http://code.google.com/p/bigbluebutton/issues/detail?id=84) Only one instance of the upload window can now be opened.
-  * [Issue 78](http://code.google.com/p/bigbluebutton/issues/detail?id=78) Added Desktop Sharing. The presenter can now do a screen-cast
-  * [Issue 75](http://code.google.com/p/bigbluebutton/issues/detail?id=75) bbb-setupdev -s (setup samba) now gives the correct path
-  * [Issue 5](http://code.google.com/p/bigbluebutton/issues/detail?id=5) Added Private Chat. Participants can now chat privately with any other participant in the conference
+  * [Issue 864](https://github.com/bigbluebutton/bigbluebutton/issues/864) Cannot upload twice a file
+  * [Issue 856](https://github.com/bigbluebutton/bigbluebutton/issues/856) Red5 video app has significant delay
+  * [Issue 851](https://github.com/bigbluebutton/bigbluebutton/issues/851) Fixed the thumbnail view in presentation module to be more responsive and user friendly
+  * [Issue 849](https://github.com/bigbluebutton/bigbluebutton/issues/849) Change applet certificate
+  * [Issue 848](https://github.com/bigbluebutton/bigbluebutton/issues/848) deskshare-client should tunnel through port 80
+  * [Issue 842](https://github.com/bigbluebutton/bigbluebutton/issues/842) Logout should close the deskshare module
+  * [Issue 840](https://github.com/bigbluebutton/bigbluebutton/issues/840) Added a zoom slide to presentation module, for users without mousewheel
+  * [Issue 839](https://github.com/bigbluebutton/bigbluebutton/issues/839) Only one instance of the upload window can now be opened.
+  * [Issue 833](https://github.com/bigbluebutton/bigbluebutton/issues/833) Added Desktop Sharing. The presenter can now do a screen-cast
+  * [Issue 832](https://github.com/bigbluebutton/bigbluebutton/issues/832) bbb-setupdev -s (setup samba) now gives the correct path
+  * [Issue 763](https://github.com/bigbluebutton/bigbluebutton/issues/763) Added Private Chat. Participants can now chat privately with any other participant in the conference
 
 ### Known Issues
-  * [Issue 112](http://code.google.com/p/bigbluebutton/issues/detail?id=112) Desk share video shows the final frame when presenter logs out
-  * ~~[Issue 111](http://code.google.com/p/bigbluebutton/issues/detail?id=111) Desk share video has narrow yellow stripe at the top~~
-  * ~~[Issue 110](http://code.google.com/p/bigbluebutton/issues/detail?id=110) Deskshare works only when tunneling on Mac OS X~~
-  * [Issue 95](http://code.google.com/p/bigbluebutton/issues/detail?id=95) Deskshare app sometimes crashes
-  * ~~[Issue 90](http://code.google.com/p/bigbluebutton/issues/detail?id=90) deskshare-app blocks red5 from restarting~~
+  * [Issue 867](https://github.com/bigbluebutton/bigbluebutton/issues/867) Desk share video shows the final frame when presenter logs out
+  * ~~[Issue 866](https://github.com/bigbluebutton/bigbluebutton/issues/866) Desk share video has narrow yellow stripe at the top~~
+  * ~~[Issue 865](https://github.com/bigbluebutton/bigbluebutton/issues/865) Deskshare works only when tunneling on Mac OS X~~
+  * [Issue 850](https://github.com/bigbluebutton/bigbluebutton/issues/850) Deskshare app sometimes crashes
+  * ~~[Issue 845](https://github.com/bigbluebutton/bigbluebutton/issues/845) deskshare-app blocks red5 from restarting~~
 
 # Release 0.4
 
