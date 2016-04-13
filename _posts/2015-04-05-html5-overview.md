@@ -69,17 +69,11 @@ Below you can see the current architecture of the HTML5 client and its communica
 
 ![HTML5 Overview](/images/html5-client-architecture.png)
 
-## Implementation of the HTML5 client
-The HTML5 client is implemented using [Meteor.js](http://meteor.com) in [CoffeeScript](http://coffeescript.org/)
+## Implementation of the HTML5 Client (client side):
+The HTML5 client is implemented using [Meteor.js](http://meteor.com) in [ECMA2015](http://www.ecma-international.org/ecma-262/6.0/)
+The client side is built using React.js
 
-All the code for the HTML5 client is inside the `bigbluebutton/bigbluebutton-html5/app` folder. It mainly consists of LESS, HTML and CoffeeScript files.
-
-### CoffeeScript
-CoffeeScript is a language that compiles into JavaScript. It offers several advantages over JavaScript, especially that the code is usually a lot smaller and easier to maintain. Code in CoffeeScript can be run by Meteor.js thanks to a CoffeeScript [package](https://atmospherejs.com/meteor/coffeescript).
-
-### WhiteboardPaperModel and Raphaël
-
-A significant amount of the code of the client is related to the whiteboard. We use a library called [Raphaël](http://raphaeljs.com/) to work with vector graphics.
+All the code for the HTML5 client is inside the `bigbluebutton/bigbluebutton-html5/` folder.
 
 ### LESS and Media Queries
 
@@ -87,9 +81,11 @@ We use [LESS](http://lesscss.org/) precompiler to keep the stylesheets short and
 
 The responsive UI of the HTML5 client is constructed using media queries. Each LESS expression is tied to some specific range of devices and window sizes. HTML5 client provides four different views depending on your device (desktop/mobile) and browser orientation (landscape/portrait).
 
-## Implementation details
+### React.js
 
-### HTML5 Client's server side:
+We use the React front end for Meteor applications.
+
+### Implementation of the HTML5 Client (server side):
 
 As we run
 ```$ ./start.sh```
@@ -141,7 +137,7 @@ We have disabled autopublishing. We publish manually inside server/publish.coffe
 
 
 
-### HTML5 Client's client side:
+### Behind the curtains:
 
 We rely heavily on the fact that MongoDB on the server side automatically pushes updates to MiniMongo on the client side.
 The client side subscribes to the published collections on the server side. During the subscription, the userId and authToken of the user logged in the client are required. These 2 identifiers together with the meetingId provide enough information for the publishing mechanism to decide what subset of the collections the user logged in the client is authorized to view.
@@ -169,7 +165,7 @@ The result should be ```{"html5clientStatus":"running"}```
   * viewing presentation with slides, cursor, whiteboard annotations
   * audio using WebRTC (listen and speak)
   * lock settings
-  * listen Only audio
+  * listen only audio
 
 ### Not yet implemented (see more information about these features in the existing Flash client):
   * viewing of desktop sharing video
@@ -211,7 +207,7 @@ If you want to manually restart (or stop) it you can do so with the command
 $ sudo service bbb-html5 restart
 ```
 
-Note that the logs for the component are located at `/var/log/bigbluebutton/html5/html5.log` and the code for the client can be found at `/usr/share/meteor/html5/app/`.
+Note that the logs for the component are located at `/var/log/bigbluebutton/html5/html5.log` and the code for the client can be found at `/usr/share/meteor/html5/`.
 
 Later on if you wish to remove the HTML5 client, you can enter the command
 
