@@ -44,9 +44,9 @@ Want to help our project grow?  Spread the word (blog, tweet, upload a video to 
 
 ## Latest versions
 
-The latest stable version of BigBlueButton is 0.9.1. See [release notes](/support/release-notes.html), [overview](/overview/09overview.html), and [architecture](/overview/architecture.html) for more details.  
+The latest version of BigBlueButton is 0.9.1. See [release notes](/support/release-notes.html), [overview](/overview/09overview.html), and [architecture](/overview/architecture.html) for more details.  
 
-The latest development version is BigBlueButton is 1.0-beta (see [1.0 overview](1.0/10overview.html), [1.0 architecture](/1.0/10architecture.html), and [1.0 install](1.0/10install.html)).
+The next version in development is now at BigBlueButton is 1.0-RC (see [1.0 overview](1.0/10overview.html), [1.0 architecture](/1.0/10architecture.html), and [1.0 install](1.0/10install.html)).
 
 Enjoy!
 
