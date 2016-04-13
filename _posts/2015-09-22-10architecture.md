@@ -7,7 +7,7 @@ date: 2015-09-20 17:34:41
 
 # Overview
 
-BigBlueButton 1.0-beta (referred hereafter as 1.0) is build upon some amazing [open source components](http://bigbluebutton.org/components/). This page describes how they work together.
+BigBlueButton 1.0-RC (referred hereafter as 1.0) is build upon some amazing [open source components](http://bigbluebutton.org/components/). This page describes how they work together.
 
 # High-level Architecture Overview for BigBlueButton 1.0
 
