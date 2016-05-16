@@ -46,7 +46,7 @@ The BigBlueButton project began in 2008 (see [history](http://bigbluebutton.org/
 
 ## Latest versions
 
-The latest version of BigBlueButton is 1.0. See [overview](/overview/10overview.html), [nstall](/install/install.html), and [architecture](/overview/architecture.html) for more details.  
+The latest version of BigBlueButton is 1.0. See [overview](/overview/10overview.html), [install](/install/install.html), and [architecture](/overview/architecture.html) for more details.  
 
 
 Enjoy!
