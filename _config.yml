@@ -22,11 +22,10 @@ sections: [
     ['overview', 'Overview'],
     ['install', 'Install'],
     ['dev', 'Develop'],
-    ['html', 'HTML5 (dev)'],
     ['mobile', 'Mobile (dev)'],
     ['support', 'Support'],
-    ['labs', 'Labs'],
-    ['1.0', '1.0-RC'],
+    ['html', 'HTML5 (dev)'],
+    ['labs', 'Labs (dev)'],
     ['post', 'Posts']
 ]
 
