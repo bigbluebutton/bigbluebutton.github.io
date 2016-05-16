@@ -1,7 +1,8 @@
 ---
 layout: page
 title: "HTML5 Overview"
-category: labs
+category: html
+redirect_from: "/labs/html5-overview"
 date: 2015-04-05 11:41:36
 order: 1
 ---
@@ -194,7 +195,7 @@ Advantages to SVG:
 
 ## Try out the HTML5 client by installing it from packages
 
-If you are running [BigBlueButton 1.0-beta](/1.0/10install.html), you can easily add the HTML5 client to your server so you can try it out. These are the steps to add it:
+If you are running [BigBlueButton 1.0](/install/install.html), you can easily add the HTML5 client to your server so you can try it out. These are the steps to add it:
 
 ```
 $ sudo apt-get install bbb-html5
@@ -218,4 +219,4 @@ $ sudo apt-get purge bbb-html5
 
 ## Set up a Development Environment
 
-If you want to explore, develop and improve the HTML5 client, please follow the instructions on [setting up HTML5 development environment](/labs/html5-dev.html)
+If you want to explore, develop and improve the HTML5 client, please follow the instructions on [setting up HTML5 development environment](/html5/html5-dev.html)
