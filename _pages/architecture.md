@@ -1,1 +1,1 @@
-../_posts/2015-04-04-architecture.md
+../_posts/2015-09-22-architecture.md

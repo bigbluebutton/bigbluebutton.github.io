@@ -19,7 +19,7 @@ Open up the config.xml file. This is a line by line discussion of it's propertie
 The template can be found [here](https://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-client/resources/config.xml.template).
 
 ## Main parameters
-```xml
+~~~xml
 <localeversion suppressWarning="false">0.9.0</localeversion>
 <version>VERSION</version>
 <help url="http://HOST/help.html"/>
@@ -37,62 +37,62 @@ The template can be found [here](https://github.com/bigbluebutton/bigbluebutton/
 <lock disableCamForLockedUsers="false" disableMicForLockedUsers="false" disablePrivateChatForLockedUsers="false"
     disablePublicChatForLockedUsers="false" lockLayoutForLockedUsers="false" lockOnJoin="true"
 	lockOnJoinConfigurable="false"/>
-```
+~~~
 
 
-```xml
+~~~xml
 <localeversion suppressWarning="false">0.9.0</localeversion>
-```
+~~~
 
 This should be left as is. It has to do with the client caching localization files. If you're having problems with the Warning Dialog for old localizations, you can set the **suppressWarning** parameter to true.
 
-```xml
+~~~xml
 <version>VERSION</version>
-```
+~~~
 This has to do with the caching of the client as a whole. Should also be left alone, in general.
 
-```xml
+~~~xml
 <help url="http://HOST/help.html"/>
-```
+~~~
 
 This is the URL that you would like users redirected to when they click the Help button in the client.
 
-```xml
+~~~xml
 <porttest host="HOST" application="video/portTest" timeout="10000"/>
-```
+~~~
 The IP and Red5 application the client uses to test whether necessary ports are open, and determine whether tunnelling should be used. The **host** should be your BBB server IP. The **application** should be left as is.
 
-```xml
+~~~xml
 <application uri="rtmp://HOST/bigbluebutton" host="http://HOST/bigbluebutton/api/enter" />
-```
+~~~
 The URL that the client queries for the user's information when the user joins a meeting.
 
-```xml
+~~~xml
 <language userSelectionEnabled="true" />
-```
+~~~
 This enables/disables the language selector combo box in the client. Enable this if you would like your users to be able to select the language of their BigBlueButton client themselves instead of the language being detected automatically for them.
 
-```xml
+~~~xml
 <skinning enabled="true" url="branding/css/theme.css.swf" />
-```
+~~~
 Set **enabled** to true and set the **url** to the SWF file with your theme modifications. This enables/disables skinning support for the client. If the value is false, the **url** attribute will be ignored. Otherwise the **url** attribute specifies the compiled CSS file to load on startup. See [Branding](/dev/branding.html) for more details.
 
-```xml
+~~~xml
 <shortcutKeys showButton="true" />
-```
+~~~
 This disables/enables the visibility of the Shortcut Keys button. It should be left as true.
 
-```xml
+~~~xml
 <browserVersions chrome="CHROME_VERSION" firefox="FIREFOX_VERSION" flash="FLASH_VERSION" java="1.7.0_51" />
-```
+~~~
 This is used to determine whether a browser or plugin is out-of-date. The values are filled in when the client is packaged, but can be changed manually.
 
-```xml
+~~~xml
 <layout showLogButton="false" defaultLayout="bbb.layout.name.defaultlayout"
             showToolbar="true" showFooter="true" showMeetingName="true" showHelpButton="true" 
             showLogoutWindow="true" showLayoutTools="true" confirmLogout="true"
             showRecordingNotification="true"/>
-```
+~~~
 
 |Name             | Default Value | Description|
 |:----------------|:--------------|:-----------|
@@ -106,15 +106,15 @@ This is used to determine whether a browser or plugin is out-of-date. The values
 | confirmLogout   | true          | Show a confirmation pop-up when a user wishes to logout. |
 | showRecordingNotification | true          | Show or hide a notification on the top toolbar when recording is active. |
 
-```xml
+~~~xml
 <meeting muteOnStart="false" />
-```
+~~~
 This determines whether people should join the audio muted by default.
 
-```xml
+~~~xml
 <lock disableCamForLockedUsers="false" disableMicForLockedUsers="false" disablePrivateChatForLockedUsers="false" 
     disablePublicChatForLockedUsers="false" lockLayoutForLockedUsers="false" lockOnJoin="true" lockOnJoinConfigurable="false"/>
-```
+~~~
 
 |Name             | Default Value | Description|
 |:----------------|:--------------|:-----------|
@@ -143,7 +143,7 @@ The BigBlueButton client is comprised of one or more modules. You can specify wh
 
 ### Chat Module
 
-```xml
+~~~xml
 <module name="ChatModule" url="http://HOST/client/ChatModule.swf?v=VERSION" 
 	uri="rtmp://HOST/bigbluebutton" 
 	dependsOn="UsersModule"
@@ -152,7 +152,7 @@ The BigBlueButton client is comprised of one or more modules. You can specify wh
 	colorPickerIsVisible="false"
 	position="top-right"
 />
-```
+~~~
 
 |Name                  | Default Value | Description|
 |:---------------------|:--------------|:-----------|
@@ -161,14 +161,14 @@ The BigBlueButton client is comprised of one or more modules. You can specify wh
 | colorPickerIsVisible | false         | Show or hide the chat message color picker. |
 
 ### Users Module
-```xml
+~~~xml
 <module name="UsersModule" url="http://HOST/client/UsersModule.swf?v=VERSION"
 	uri="rtmp://HOST/bigbluebutton"
 	allowKickUser="false"
 	enableRaiseHand="true"
 	enableSettingsButton="true"
 />
-```
+~~~
 
 |Name             | Default Value | Description|
 |:---------------------|:--------------|:-----------|
@@ -177,7 +177,7 @@ The BigBlueButton client is comprised of one or more modules. You can specify wh
 | enableSettingsButton | true  | Show or hide the the settings button. |
 
 ### Desktop Sharing
-```xml
+~~~xml
 <module name="DeskShareModule"
 	url="http://HOST/client/DeskShareModule.swf?v=VERSION"
 	uri="rtmp://HOST/deskShare"
@@ -185,7 +185,7 @@ The BigBlueButton client is comprised of one or more modules. You can specify wh
 	autoStart="false"
 	autoFullScreen="false"
 />
-```
+~~~
 The Desktop Sharing module. Note that it connects to /deskShare, which is a red5 application on the server separate from the /bigbluebutton application.
 
 |Name            | Default Value | Description|
@@ -195,7 +195,7 @@ The Desktop Sharing module. Note that it connects to /deskShare, which is a red5
 | autoFullScreen | false         |  |
 
 ### Phone Module
-```xml
+~~~xml
 <module name="PhoneModule" url="http://HOST/client/PhoneModule.swf?v=VERSION"
 	uri="rtmp://192.168.0.36/sip"
 	autoJoin="true"
@@ -209,7 +209,7 @@ The Desktop Sharing module. Note that it connects to /deskShare, which is a red5
 	echoTestApp="9196"
 	dependsOn="UsersModule"
 />
-```
+~~~
 The Phone Module shows as the small headset icon in the upper left of the client. It allows users to join the meeting through VoIP by using a headset. Note again the client connect to /sip instead of /bigbluebutton on the server side.
 
 |Name                  | Default Value | Description|
@@ -225,7 +225,7 @@ The Phone Module shows as the small headset icon in the upper left of the client
 | echoTestApp          | 9196          | The pin number to use for the echo test. Do not change. |
 
 ### Videoconf Module
-```xml
+~~~xml
 <module name="VideoconfModule" url="http://HOST/client/VideoconfModule.swf?v=VERSION" 
 	uri="rtmp://HOST/video"
 	dependson = "UsersModule"
@@ -257,7 +257,7 @@ The Phone Module shows as the small headset icon in the upper left of the client
 	glowColor = "0x4A931D"
 	glowBlurSize = "30.0"   
 />
-```
+~~~
 
 The Video Conferencing Module. Allows users to share their webcams with the room. It connects to the separate /video application on the bbb server. See also [changing quality of webcam picture](/support/faq.html#how-do-i-change-the-video-quality-of-the-shared-webcams) in the FAQ.
 
@@ -290,7 +290,7 @@ The Video Conferencing Module. Allows users to share their webcams with the room
 ### Videodock Module
 This module will dock viewed webcams and and tile them.
 
-```xml
+~~~xml
 <module name="VideodockModule" url="http://HOST/client/VideodockModule.swf?v=VERSION"
 	uri="rtmp://192.168.0.36/bigbluebutton"
 	dependsOn="VideoconfModule, UsersModule"
@@ -302,7 +302,7 @@ This module will dock viewed webcams and and tile them.
 	layout="smart"
 	oneAlwaysBigger="false"
 />
-```
+~~~
 
 |Name                  | Default Value            | Description|
 |:---------------------|:-------------------------|:-----------|
@@ -312,7 +312,7 @@ This module will dock viewed webcams and and tile them.
 
 
 ### Present Module
-```xml
+~~~xml
 <module name="PresentModule" url="http://HOST/client/PresentModule.swf?v=VERSION"
 	uri="rtmp://192.168.0.36/bigbluebutton"
 	host="http://192.168.0.36"
@@ -322,7 +322,7 @@ This module will dock viewed webcams and and tile them.
 	maxFileSize="30"
 	dependsOn="UsersModule"
 />
-```
+~~~
 The Presentation Module which lets users share slides and other documents in the main viewing area inside of BigBlueButton.
 
 |Name                  | Default Value            | Description|
@@ -333,13 +333,13 @@ The Presentation Module which lets users share slides and other documents in the
 | maxFileSize | 30 |  |
 
 ### Whiteboard Module
-```xml
+~~~xml
 <module name="WhiteboardModule" url="http://HOST/client/WhiteboardModule.swf?v=VERSION" 
 	uri="rtmp://192.168.0.225/bigbluebutton" 
 	keepToolbarVisible="false"
 	dependsOn="PresentModule"
 />
-```
+~~~
 The Whiteboard Module is a transparent overlaid canvas on top of the presentation window. It allows users to draw annotations on top of uploaded slides and documents.
 
 |Name                | Default Value | Description|
@@ -354,7 +354,7 @@ The layouts are defined in XML format, and the default layouts file is located a
 
 The format is as follows:
 
-```xml
+~~~xml
 <layouts>
     <layout name=”LAYOUT_NAME” ... >
         <window name=”WINDOW_NAME” ... />
@@ -364,7 +364,7 @@ The format is as follows:
     <layout ... />
     ...
 </layouts>
-```
+~~~
 
 ### Layout parameters
 
@@ -397,14 +397,14 @@ The format is as follows:
 You can have multiple layout definitions, and inside each layout, multiple window layout definitions.
 
 ### Example:
-```xml
+~~~xml
 <layout name="Default minWidth">
 <window name="PresentationWindow" width="0.5137481910274964" height="0.9946808510638298" x="0.18017366136034732" y="0" />
     <window name="VideoDock" width="0.1772793053545586" height="0.30851063829787234" x="0" y="0.6875" minWidth="280" />
     <window name="ChatWindow" width="0.3031837916063676" height="0.9960106382978723" x="0.6968162083936325" y="0" />
     <window name="UsersWindow" width="0.1772793053545586" height="0.6795212765957446" x="0" y="0" minWidth="280" />
 </layout>
-```
+~~~
 
 ### Configuration on config.xml:
 
@@ -421,11 +421,11 @@ New layouts can be created using the “add layout to list” button. Sysadmins 
 
 Example of the layouts module definition on config.xml:
 
-```xml
+~~~xml
 <module name="LayoutModule" 
     url="http://HOST/client/LayoutModule.swf?v=VERSION" 
     uri="rtmp://HOST/bigbluebutton" 
     layoutConfig="conf/layout.xml" 
     enableEdit="false"
 />
-```
+~~~

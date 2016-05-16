@@ -5,9 +5,9 @@ category: support
 date: 2015-04-04 22:26:10
 ---
 
-# Release 1.0-beta
+# Release 1.0
 
-Updated: October 5, 2015 ([Installation Instructions](/1.0/10install.html))
+Released: May 15, 2016 ([Installation Instructions](/install/install.html))
 
 This release focused on increasing the interactivity between instructors and students.
 
@@ -21,14 +21,16 @@ This release focused on increasing the interactivity between instructors and stu
 
   * **Puffin Browser support** - BigBlueButton detects [Puffin Browser](https://www.puffinbrowser.com/index.php) version 4.6 (or later) and enables the user to broadcast their microphone and/or webcam in a BigBlueButton session on a mobile device.
 
-For details of these updates and others (with screen shots) see [1.0 overview](/1.0/10overview.html).
+  * **Automatic Reconnect** - BigBlueButton detects when the network connection has dropped an will attempt to automatically reconnect.
 
-See [issues fixed in BigBlueButton 1.0-beta](https://github.com/bigbluebutton/bigbluebutton/issues?q=milestone%3A%22Release+1.0.0%22+is%3Aclosed).  
+For details of these updates and others (with screen shots) see [overview](/overview/overview.html).
+
+See [issues fixed in BigBlueButton 1.0](https://github.com/bigbluebutton/bigbluebutton/issues?q=milestone%3A%22Release+1.0.0%22+is%3Aclosed).  
 
 
 # Release 0.9.1
 
-June 29, 2015 ([Installation Instructions](/install/install.html))
+Released: June 29, 2015 
 
 This was a maintenance release to 0.9 to fix issue [2701](https://github.com/bigbluebutton/bigbluebutton/issues/2701)
 with FireFox and Desktop Sharing.
@@ -36,7 +38,7 @@ with FireFox and Desktop Sharing.
 
 # Release 0.9.0
 
-Updated: April 30, 2015 ([Installation Instructions](/install/install.html))
+Released: April 30, 2015 ([Installation Instructions](/install/install.html))
 
 This release of BigBlueButton 0.9.0 represents a significant upgrade on the ability to deliver remote students a high-quality on-line learning experience.
 

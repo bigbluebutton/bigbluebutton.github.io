@@ -112,11 +112,11 @@ The playback files are found in `/var/bigbluebutton/published/presentation/<inte
 
 BigBlueButton does not have an administrator web interface to control the sessions or recordings as in both cases they are handled by 3rd party software, but it has a useful tool to monitor the state and control your recordings through the phases described above.
 
-In the terminal of your server you can execute "bbb-record", which will show you each option with its description
+In the terminal of your server you can execute `bbb-record`, which will show you each option with its description
 
-```
+~~~
 
-BigBlueButton Recording Diagnostic Utility (BigBlueButton Version 0.9.1)
+BigBlueButton Recording Diagnostic Utility (BigBlueButton Version 1.0.N) 
 
    bbb-record [options]
 
@@ -140,7 +140,7 @@ Administration:
    --toexternal <internal meetingId>	get the external meeting id for the given internal meetingId
    --republish <internal meetingID>	  republish the recording for meetingID.
 
-```
+~~~
 
 ### Useful terms
 
@@ -155,23 +155,23 @@ In BigBlueButton you can use the same external meeting ID (for example "English 
 
 ### List recordings
 
-```
+~~~
 bbb-record --list
-```
+~~~
 
 will list all your recordings.
 
 
 ### Watch recordings
-```
+~~~
 bbb-record --watch
-```
+~~~
 
 will list your latest 20 recordings, refreshing its output every 2 seconds. Its output is similar to this:
 
 
-```
-Every 2.0s: bbb-record --list20                                                                                                                              Mon Sep 23 19:52:14 2013
+~~~
+Every 2.0s: bbb-record --list20
 
 Internal MeetingID                                               Time                APVD APVDE RAS Slides Processed            Published           External MeetingID
 ------------------------------------------------------  ---------------------------- ---- ----- --- ------ -------------------- ------------------  -------------------
@@ -188,7 +188,7 @@ Internal MeetingID                                               Time           
 --
 Last meeting processed (bbb-web.log): 6e35e3b2778883f5db637d7a5dba0a427f692e91-1379965122603
 
-```
+~~~
 
 
 ### Rebuild a recording
@@ -197,69 +197,69 @@ It will go through the Process and Publish phases again.
 
 If you run bbb-record --rebuild on a recording where the process and publish script were not run because the moderator of the session did not click the record button, this will force the meeting to be processed. In this case, the entire length of the meeting will be included in the recording.
 
-```
+~~~
 sudo bbb-record --rebuild 6e35e3b2778883f5db637d7a5dba0a427f692e91-1379965122603
-```
+~~~
 
 ### Rebuild every recording
 
 It will go through the Process and Publish phases again for every recording in your server.
 This action will take a long time since it processes every recording.
 
-```
+~~~
 sudo bbb-record --rebuildall
-```
+~~~
 
 
 ### Delete a recording
 
-```
+~~~
 sudo bbb-record --delete 6e35e3b2778883f5db637d7a5dba0a427f692e91-1379965122603
-```
+~~~
 
 
 ### Delete all recordings
 
-```
+~~~
 sudo bbb-record --deleteall
-```
+~~~
 
 ### Debug recordings
 
 Check recording log files, looking for errors since the Archive phase.
 
-```
+~~~
 sudo bbb-record --debug
-```
+~~~
 
 
 ### Enable a workflow
 
-```
+~~~
 sudo bbb-record --enable presentation
-```
+~~~
 
 ### Disable a workflow
 
-```
+~~~
 sudo bbb-record --disable presentation
-```
+~~~
 
 
 ### Get internal meeting ids
 
-```
+~~~
 sudo bbb-record --tointernal "English 101" 
-```
+~~~
 
 will show
 
-```
+~~~
 
 Internal meeting ids related to the given external meeting id:
 -------------------------------------------------------------
 6e35e3b2778883f5db637d7a5dba0a427f692e91-1379965122603
-```
+~~~
 
 Use double quotes for the external meeting id.
 
@@ -267,9 +267,9 @@ Use double quotes for the external meeting id.
 ### Get external meeting ids
 
 
-```
+~~~
 sudo bbb-record --toexternal "English 101" 
-```
+~~~
 
 
 
@@ -281,9 +281,9 @@ Use double quotes for the external meeting id.
 Republish recordings.
 
 
-```
+~~~
 sudo bbb-record --republish 6e35e3b2778883f5db637d7a5dba0a427f692e91-1379965122603
-```
+~~~
 
 
 ## For Developers
@@ -306,7 +306,7 @@ To understand how it works, you should have basic, intermediate or advanced unde
 
 These phases are handled by Ruby scripts. The directory for those files is `/usr/local/bigbluebutton/core/`
 
-```
+~~~
 /usr/local/bigbluebutton/core/
 +-- Gemfile                                       
 +-- Gemfile.lock
@@ -346,7 +346,7 @@ These phases are handled by Ruby scripts. The directory for those files is `/usr
     +-- sanity
         +-- sanity.rb
 
-```
+~~~
 
 The main file is `rap-worker.rb`, it executes all the Record and Playback phases
 
@@ -370,7 +370,7 @@ The scripts take the argument `-m`, which takes the meeting id as a parameter.
 
 A set of example scripts is provided to give you a framework to build your custom scripts from.
 
-```
+~~~
 
 |-- post_archive
 |   `-- post_archive.rb.example
@@ -378,19 +378,19 @@ A set of example scripts is provided to give you a framework to build your custo
 |   `-- post_process.rb.example
 `-- post_publish
     `-- post_publish.rb.example
-```
+~~~
 
 The example files give the file paths where the files from the corresponding step are located, and include code for accessing the metadata variables from the meeting. For example, if you passed a variable named
 
-```
+~~~
 meta_postpublishemail=user@example.com
-```
+~~~
 
 when creating the meeting, you can access it by doing
 
-```
+~~~
 email = meeting_metadata['postpublishemail']
-```
+~~~
 
 in the script.
 
@@ -405,15 +405,15 @@ Playback works with the javascript library Popcorn.js which shows the slides, ch
 
 Apart from the command
 
-```
+~~~
 sudo bbb-record --debug
-```
+~~~
 
 You can use the output from
 
-```
+~~~
 sudo bbb-record --watch 
-```
+~~~
 
 to detect problems with your recordings.
 
@@ -421,17 +421,17 @@ To investigate the processing of a particular recording, you can look at the fol
 
 The bbb-rap-worker log is a general log file that can be used to find which section of the recording processing is failing. It also logs a message if a recording process is skipped because the moderator did not push the record button.
 
-```
+~~~
 /var/log/bigbluebutton/bbb-rap-worker.log
-```
+~~~
 
 To investigate an error for a particular recording, check the following log files:
 
-```
+~~~
 /var/log/bigbluebutton/archive-<recordingid>.log
 /var/log/bigbluebutton/<workflow>/process-<recordingid>.log
 /var/log/bigbluebutton/<workflow>/publish-<recordingid>.log
-```
+~~~
 
 
 ### Understanding output from bbb-record-watch
@@ -443,9 +443,9 @@ To investigate an error for a particular recording, check the following log file
 This section is intended to help you to find and in some cases to solve problems in the
 Record and Playback component of BigBlueButton, watching the output of the command
 
-```
+~~~
 bbb-record --watch
-```
+~~~
 
 #### RAS ( RECORDED - ARCHIVED - SANITY CHECKED )
 
@@ -471,9 +471,9 @@ Once the recording passed the sanity check , an **_X_** appears under **S**, if 
 
   * A media file was not properly archived, find the cause of the problem in the sanity log
 
-```
+~~~
 grep <internal meeting id> /var/log/bigbluebutton/sanity.log
-```
+~~~
 
 
 #### APVD (Audio, Presentation, Video, Deskshare)
@@ -486,9 +486,9 @@ shared your webcam or desktop, or you haven't enabled webcam or deskshare to be 
 This section is related to archived media. If you don't see an **_X_** under a media you are sure that was recorded, check out
 the sanity log. Execute this command to find the problem:
 
-```
+~~~
 grep <internal meeting id> /var/log/bigbluebutton/sanity.log
-```
+~~~
 
 
 #### Processed
@@ -496,9 +496,9 @@ grep <internal meeting id> /var/log/bigbluebutton/sanity.log
 If a script was applied to process your recording, its name should be listed under the column 'Processed', by default you should see 
 "presentation", if you don't see one of them, find the problem in the log file of the processed recording:
 
-```
+~~~
 grep -B 3 "status: 1" /var/log/bigbluebutton/presentation/process-<internal meeting id>.log | grep ERROR
-```
+~~~
 
 If there is some output, it should show the problem. If there is no output then tail the file to see which is the
 latest executed task. Make sure that is the one that failed and an error message with the problem is described few lines after.
@@ -507,9 +507,9 @@ latest executed task. Make sure that is the one that failed and an error message
 
 If a script is applied to publish your recording, its name should be listed under the column 'Published'.
 
-```
+~~~
 grep -B 3 "status: 1" /var/log/bigbluebutton/presentation/publish-<internal meeting id>.log | grep ERROR
-```
+~~~
 
 
 If there is some output then you found the problem, if there is not any output then tail the file to see which is the
