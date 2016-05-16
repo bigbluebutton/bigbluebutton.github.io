@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "HTML5 Design"
-category: labs
+category: html
 date: 2016-05-13 17:34:41
 ---
 
@@ -188,7 +188,7 @@ The HTML5 client consists of three main areas
 - Group
 - Private
 
-<img src="/images/bbb-html5-presenter-cropped.jpg	" />
+<img src="/images/bbb-html5-presenter-cropped.png" />
 
 By grouping features and content into their own blocks, allows us to associate content and their actions together. For example, providing presentation actions within the presentation area vs. in the top right left corner. 
 
@@ -217,7 +217,38 @@ In the new client, we’ve decided to group all our presentation actions into a 
 
 If you’re looking to add a new actions to presentation, this is where you’ll place the button to activate it.
 
+<img src="/images/bbb-html5_wireframe_presenter_actions.png" />
+
+Since the action is to activate a new module, it will appear to the right of the presentation block. 
+
+<img src="/images/bbb-html5_wireframe_presenter_new_module.png" />
+
+Introducing new modules to the right of the presentation will provide developers with a dedicated area and real estate to build a variety of different features. Also, by dedicating a specific areas, will limit the interference to BigBlueButton’s core interface. 
 
 
+### Multiple Presentation Windows
+
+Multiple presenters sharing content. 
+
+<img src="/images/bbb_multiple_presentations.png" />
+
+In the screenshot above, you’ll see an implementation of the BigBlueButton client with multiple presentation screens. 
+
+
+Multiple presentation view
+
+A general rule we’d like to establish for adding to the BigBlueButton core interface, is to make sure any new item is contained within their appropriate block. 
+
+Below you’ll see a series of layouts that following this rule. We are introducing multiple presentation windows to the interface and they are grouped within the presentation block. 
+
+
+<img src="/images/bbb-html5_wireframe_multiple_presentations.png" />
+
+<img src="/images/bbb-html5_wireframe_multiple_presentations_sidebar.png" />
+
+<img src="/images/bbb-html5_wireframe_multiple_presentations_full.png" />
+
+
+Thanks for reading through the current progress of the HTML5 client designs. If you have any questions, thoughts or feedback, please email Tyler Copeland copelandmedia@gmail.com or info@bigbluebutton.org. 
 
 
