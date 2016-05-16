@@ -16,7 +16,7 @@ To achieve that goal, we are always looking at ways to improve the teacher and l
 
 Recently, we’ve been working on developing a mobile client for BigBlueButton that has a new user interface.  This document gives you the motivation and design goals for creating a consistent BigBlueButton user interface across platforms (mobile, tablet, and desktop).
 
-<br>
+<br><br>
 
 # Motivation For Change
 
@@ -44,7 +44,7 @@ In the beginning when designing the BigBlueButton HTML5 client, we started with 
 
 As we developed designs for the mobile interface -- starting from a very small set of design goals -- we knew it didn’t need to work exactly the same on all platforms to succeed; rather, it needed to share a common design language that was consistent across all platforms.
 
-<br>
+<br><br>
 
 # Design Goals
 
@@ -78,14 +78,14 @@ There are many current use cases of the product which has helped with the creati
 
 We would also like to provide a detailed style guide, that will help guide developers in choosing and placing elements. If it’s shared notes, or additional volume controls, we want to make sure the look and feel are consistent with the existing user interface. 
 
-<br>
+<br><br>
 
 # Client Designs
 The following are the latest user interface designs for the web, tablet and mobile client. To view all designs, please visit our [InVision project.](https://invis.io/FW6L8OYR4)
 
 ## Mobile 
 
-Participants View
+**Participants View**
 
 <img src="/images/mobile_presentation.png" width="225" /> 
 <img src="/images/mobile_presentation_portrait.png" width="225" /> 
@@ -96,78 +96,88 @@ Participants View
 <img src="/images/mobile_presentation_landscape.png" width="475" />
 <img src="/images/mobile_actions.png" width="475" />
 
----
+<br>
 
 ## Tablet
 
-Participants View
+**Participants View**
 
 <img src="/images/ipad_landscape_presentation.png" width="475" />
 <img src="/images/ipad_landscape_presentation_nav.png" width="475" />
 <img src="/images/ipad_landscape.png" width="475" />
 <img src="/images/ipad_landscape_sidebar.png" width="475" />
 
----
+<br>
 
 ## Web
 
-Presenter Views
+**Presenter Views**
 
 <img src="/images/bbb-html5_presenter_no_presentation.png" />
+<center> Presenter's first time experience </center>
 
 <br>
 
 <img src="/images/bbb-html5_presenter_presentation.png" />
+<center> Populated presentation</center>
 
 <br>
 
 <img src="/images/bbb-html5_presenter_sidebar_chat.png" />
+<center> Multiple opened components</center>
 
 <br>
 
 <img src="/images/bbb-html5_presenter_whiteboard_tools.png" />
+<center> Whiteboard tools</center>
 
 <br>
 
 <img src="/images/bbb-html5_presenter_deskshare.png" />
+<center> Desktop sharing</center>
 
 <br>
 
-<img src="/images/bbb-html5_presenter_settings_audio.png" />
+<img src="/images/bbb-html5_presenter_settings_audio.png"  style="border:1px solid #ccc;" />
+<center> User settings</center>
 
+<br>
 
-Participants Views
+**Participants Views**
 
 
 <img src="/images/bbb-html5_participants_no_presentation.png" />
+<center> Participants first time experience</center>
 
 <br>
 
 <img src="/images/bbb-html5_participants_presentation.png" />
+<center> Populated presentation</center>
 
 <br>
 
 <img src="/images/bbb-html5_participants_presentation_actions.png" />
+<center> User action buttons</center>
 
 <br>
 
 <img src="/images/bbb-html5_participants_presentation_sidebar_alert.png" />
+<center> Alert message</center>
 
 <br>
 
 <img src="/images/bbb-html5_participants_presentaton_notifications.png" />
+<center> Session notifications</center>
 
-<br>
-
----
 
 <br>
 
 
 ## Style Guide
 
-<img src="/images/bbb_style_guide.png" />
+<img src="/images/bbb_style_guide.png" style="border:1px solid #ccc;" />
 
+<br>
 
 ## Modular Design Example
 
@@ -188,7 +198,11 @@ The HTML5 client consists of three main areas
 - Group
 - Private
 
+<br>
+
 <img src="/images/bbb-html5-presenter-cropped.png" />
+
+<br>
 
 By grouping features and content into their own blocks, allows us to associate content and their actions together. For example, providing presentation actions within the presentation area vs. in the top right left corner. 
 
@@ -196,35 +210,52 @@ Also, this provides our development community with a framework for building on t
 
 Below we'll outline two examples of building on top of the HTML5 client.
 
+<br>
+
 
 ### Shared Notes
 
 The ability of collaborating together on notes for the session.
 
 
-Presentation  - Uploaded a presentation
+**Presentation**  - Uploaded a presentation
 
 <img src="/images/bbb-html5_wireframe_presentation.png" />
 
+<br>
 
-Exploded View - Webcam, users list and public chat are turned on
+
+**Exploded View** - Webcam, users list and public chat are turned on
+
+<br>
 
 <img src="/images/bbb-html5_wireframe_presenter_sidebar_chat.png" />
 
-Presentation Actions - The presenter would like provide their participants with the ability of contributing to a set of shared notes. To do so, the presenter will need to select “Public Notes” from the action button. 
+<br>
+
+**Presentation Actions** - The presenter would like provide their participants with the ability of contributing to a set of shared notes. To do so, the presenter will need to select “Public Notes” from the action button. 
 
 In the new client, we’ve decided to group all our presentation actions into a single button. This allows us to scale the presentation to multiple actions without cluttering the interface. 
 
 If you’re looking to add a new actions to presentation, this is where you’ll place the button to activate it.
 
+<br>
+
 <img src="/images/bbb-html5_wireframe_presenter_actions.png" />
+
+<br>
 
 Since the action is to activate a new module, it will appear to the right of the presentation block. 
 
+<br>
+
 <img src="/images/bbb-html5_wireframe_presenter_new_module.png" />
+
+<br>
 
 Introducing new modules to the right of the presentation will provide developers with a dedicated area and real estate to build a variety of different features. Also, by dedicating a specific areas, will limit the interference to BigBlueButton’s core interface. 
 
+<br>
 
 ### Multiple Presentation Windows
 
@@ -234,21 +265,28 @@ Multiple presenters sharing content.
 
 In the screenshot above, you’ll see an implementation of the BigBlueButton client with multiple presentation screens. 
 
+<br>
 
-Multiple presentation view
+
+**Multiple presentation view**
 
 A general rule we’d like to establish for adding to the BigBlueButton core interface, is to make sure any new item is contained within their appropriate block. 
 
 Below you’ll see a series of layouts that following this rule. We are introducing multiple presentation windows to the interface and they are grouped within the presentation block. 
 
+<br>
 
 <img src="/images/bbb-html5_wireframe_multiple_presentations.png" />
 
+<br>
+
 <img src="/images/bbb-html5_wireframe_multiple_presentations_sidebar.png" />
+
+<br>
 
 <img src="/images/bbb-html5_wireframe_multiple_presentations_full.png" />
 
 
-Thanks for reading through the current progress of the HTML5 client designs. If you have any questions, thoughts or feedback, please email Tyler Copeland copelandmedia@gmail.com or info@bigbluebutton.org. 
+Thanks for reading through the current progress of the HTML5 client designs. If you have any questions, thoughts or feedback, please email [the BigBlueButton community](bigbluebutton-dev@googlegroups.com). 
 
 
