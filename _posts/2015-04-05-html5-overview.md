@@ -2,6 +2,7 @@
 layout: page
 title: "HTML5 Overview"
 category: html
+redirect_from: "/labs/html5-overview"
 date: 2015-04-05 11:41:36
 ---
 
@@ -217,4 +218,4 @@ $ sudo apt-get purge bbb-html5
 
 ## Set up a Development Environment
 
-If you want to explore, develop and improve the HTML5 client, please follow the instructions on [setting up HTML5 development environment](/labs/html5-dev.html)
+If you want to explore, develop and improve the HTML5 client, please follow the instructions on [setting up HTML5 development environment](/html5/html5-dev.html)
