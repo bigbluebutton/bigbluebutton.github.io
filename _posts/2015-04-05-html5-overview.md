@@ -39,29 +39,17 @@ We’ve mapped out the development of the HTML5 client in the phases:
 
 The following describes our efforts to implement Phase 1: viewing a live BigBlueButton session using an HTML5 browser.  The current builds support WebRTC audio and we are working on viewing the presenter's desktop via WebRTC video.
 
-## UI
+## User Interface Design
 
-<p>The overall design of the HTML5 client [in landscape view] aims to resemble what the users are familiar with from the existing Flash client.</p>
-<img src="/images/html5_client_20150922_desktop.png" width="800" />
-<p>The HTML5 client also has a portrait view where the interface was modified to better accommodate devices with smaller/narrow screens (mobile devices).</p>
+We intend the design of the HTML5 client to leverage a more modern, consistent design that would be familiar to users on mobile devices.  Here's a mockup of the intended design.
 
+<br>
+<center>
+<img src="/images/bbb-html5_presenter_sidebar_chat.png" />
+</center>
 
-<img src="/images/html5_client_20150922_vertical.png" width="600" style="" />
-<p>Notice the large raiseHand and fullScreen buttons designed to be easy to tap on a touch screen. Two expansions are accessible via the buttons in the top left and right hand corners. The left wing displays the users while the right one brings up the settings, and the controls for chat display and logout.</p>
-
-<img src="/images/html5_client_20150922_settings.png" width="800" />
-<p>The settings dialog provides a way to join the audio as listenOnly or with a microphone as well as other settings.</p>
-
-<img src="/images/html5_client_20150922_full_screen.png" width="800" />
-<p>The full-screen capability allows a distraction free mode aimed at handheld devices.</p>
-
-
-The interface differences include:
-
-  * toggle for controlling which modules are visible (Users, Presentation, Chat)
-  * an additional button for displaying the presentation in full screen (on a mobile device)
-  * slightly different Chat Options panel, redesigned to utilize native option selection offered for browsers on mobile devices.
-
+<br>
+For more details on the design of the user experience, see [HTML5 Design](/html/html5-design.html).
 
 ## Overview of Architecture
 
@@ -90,10 +78,14 @@ We use the React front end for Meteor applications.
 ### Implementation of the HTML5 Client (server side):
 
 As we run
-```$ ./start.sh```
+
+~~~
+$ ./start.sh
+~~~
+
 we start the Meteor process in the terminal. We initialize Meteor.RedisPubSub and then publish a json request message “get_all_meetings_request” to BigBlueButton-Apps, which triggers the following response:
 
-```
+~~~json
 {
    "payload": {
      "meetings": [
@@ -113,7 +105,7 @@ we start the Meteor process in the terminal. We initialize Meteor.RedisPubSub an
      "version": "0.0.1"
    }
 }
-```
+~~~
 
 
 We parse this information and populate a Meetings [MongoDB] collection on the server side for all the ongoing meetings on this BigBlueButton server.
@@ -157,7 +149,7 @@ Check if the HTML5 client is running and ready to serve users:
 
 `http://your_ip>/html5client/check`
 
-The result should be ```{"html5clientStatus":"running"}```
+The result should be `{"html5clientStatus":"running"}`.
 
 
 ## Current stage
@@ -197,25 +189,25 @@ Advantages to SVG:
 
 If you are running [BigBlueButton 1.0](/install/install.html), you can easily add the HTML5 client to your server so you can try it out. These are the steps to add it:
 
-```
+~~~
 $ sudo apt-get install bbb-html5
 $ sudo bbb-conf --restart
-```
+~~~
 
 From now on the HTML5 client's package (bbb-html5) will update when you update BigBlueButton, will restart with the other components when you perform `bbb-conf --restart` or `bbb-conf --clean`.
 If you want to manually restart (or stop) it you can do so with the command
 
-```
+~~~
 $ sudo service bbb-html5 restart
-```
+~~~
 
 Note that the logs for the component are located at `/var/log/bigbluebutton/html5/html5.log` and the code for the client can be found at `/usr/share/meteor/html5/`.
 
 Later on if you wish to remove the HTML5 client, you can enter the command
 
-```
+~~~
 $ sudo apt-get purge bbb-html5
-```
+~~~
 
 ## Set up a Development Environment
 
