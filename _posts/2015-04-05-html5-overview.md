@@ -211,4 +211,15 @@ $ sudo apt-get purge bbb-html5
 
 ## Set up a Development Environment
 
-If you want to explore, develop and improve the HTML5 client, please follow the instructions on [setting up HTML5 development environment](/html5/html5-dev.html)
+If you want to explore, develop and improve the HTML5 client, please follow the instructions on [setting up HTML5 development environment](/html/html5-dev.html)
+
+## Coding Practices
+
+When making a new component there is a certain structure to implement and existing components to utilize to make your life easier. [HTML5 Coding Practices](/html/CodingPractices.html)
+
+## Project Structure
+
+Our directory structure is based off of Meteor's, see it here [HTML5 Project Structure](/html/project-structure.html)
+
+
+
