@@ -22,7 +22,7 @@ BigBlueButton enables real-time sharing of audio, video, presentation (with whit
 There are two types of users in a BigBlueButton session: _viewer_ or _moderator_.  A viewer (typically the student) can chat, display an emote icon, and send/receive audio and video.  A moderator (typically the instructor) can, in addition to all the capabilities of a viewer, mute/unmute other viewers, lock down viewers, or make anyone (including themselves) the presenter.  The current presenter can can upload slides, annotate them (using the whiteboard controls), and share his or her desktop for all to see.
 
 
-If you are new to BigBlueButton, to quickly get started we recommend (in order): 
+If you are new to BigBlueButton we recommend (in order): 
 
   1. Watch the [overview videos](http://bigbluebutton.org/videos) to better understand the capabilities of viewer, moderator, and presenter.
   1. Try out BigBlueButton using our [Demo Server](http://demo.bigbluebutton.org/). 
