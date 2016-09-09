@@ -125,3 +125,27 @@ The file can export as many function, objects, or other pieces of data as it nee
 #### Styles.scss
 
 All styles should be written in SASS when possible.
+
+### /private/config
+
+All configuration files are located in sub-directories within **/private/config**. The file configuration method used utilizes .yaml notated file types.
+
+*The default configuration files are as follows:* &nbsp;
+
+![alt text](/images/config_defaults.png "Default Configuration files") &nbsp;
+
+The default configuration files can be overloaded and it's values changed based on the required environment.
+
+*Development overload configuration files are as follows:* &nbsp;
+
+![alt text](/images/development_overload_config.png "Development Overloading")
+
+*Production overloaded configuration files are as follows:* &nbsp;
+
+![alt text](/images/production_overload_config.png "Production Overloading")
+
+During Meteor.startup() the configuration files are loaded and can be accessed through the Meteor.settings.public object &nbsp;
+
+*As an example of it's usage we can do:* &nbsp;
+
+![alt text](/images/config_usage.png "Usage Example")
