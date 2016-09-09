@@ -128,9 +128,9 @@ All styles should be written in SASS when possible.
 
 ### /private/config
 
-All configuration files are located in sub-directories within **/private/config**. The file configuration method used utilizes .yaml notated file types.
+All configuration files are located in sub-directories within **/private/config**. The file configuration method used, utilizes .yaml notated file types.
 
-***The default configuration files are as follows:*** &nbsp;
+***Default configuration files:*** &nbsp;
 
   `private/config/public/app.yaml` &nbsp;
 
@@ -138,11 +138,11 @@ All configuration files are located in sub-directories within **/private/config*
 
   `private/config/server/redis.yaml` &nbsp;
 
-The default configuration files can be overloaded and it's values changed based on the required environment. &nbsp;
+The default configuration can be overloaded and it's values changed based on the selected environment. These overloaded configuration files are located in sub-folders with their corresponding environment name. &nbsp;
 
 &nbsp;
 
-*Development overload configuration files are as follows:* &nbsp;
+*Development overload configuration files:* &nbsp;
 
   `private/config/development/public/app.yaml` &nbsp;
 
@@ -152,7 +152,7 @@ The default configuration files can be overloaded and it's values changed based 
 
   &nbsp;
 
-  *Production overload configuration files are as follows:* &nbsp;
+  *Production overload configuration files:* &nbsp;
 
   `private/config/production/public/app.yaml` &nbsp;
 
