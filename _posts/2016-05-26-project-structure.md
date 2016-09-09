@@ -130,22 +130,48 @@ All styles should be written in SASS when possible.
 
 All configuration files are located in sub-directories within **/private/config**. The file configuration method used utilizes .yaml notated file types.
 
-*The default configuration files are as follows:* &nbsp;
+***The default configuration files are as follows:*** &nbsp;
 
-![alt text](/images/config_defaults.png "Default Configuration files") &nbsp;
+  `private/config/public/app.yaml` &nbsp;
 
-The default configuration files can be overloaded and it's values changed based on the required environment.
+  `private/config/server/media.yaml` &nbsp;
+
+  `private/config/server/redis.yaml` &nbsp;
+
+The default configuration files can be overloaded and it's values changed based on the required environment. &nbsp;
+
+&nbsp;
 
 *Development overload configuration files are as follows:* &nbsp;
 
-![alt text](/images/development_overload_config.png "Development Overloading")
+  `private/config/development/public/app.yaml` &nbsp;
 
-*Production overloaded configuration files are as follows:* &nbsp;
+  `private/config/development/server/media.yaml` &nbsp;
 
-![alt text](/images/production_overload_config.png "Production Overloading")
+  `private/config/development/server/redis.yaml` &nbsp;
+
+  &nbsp;
+
+  *Production overload configuration files are as follows:* &nbsp;
+
+  `private/config/production/public/app.yaml` &nbsp;
+
+  `private/config/production/server/media.yaml` &nbsp;
+
+  `private/config/production/server/redis.yaml` &nbsp;
+
+&nbsp;
 
 During Meteor.startup() the configuration files are loaded and can be accessed through the Meteor.settings.public object &nbsp;
 
 *As an example of it's usage we can do:* &nbsp;
 
-![alt text](/images/config_usage.png "Usage Example")
+  `import { Meteor } from 'meteor/meteor';` &nbsp;
+
+`const APP_CONFIG = Meteor.settings.public.app;` &nbsp;
+
+`if (APP_CONFIG.httpsConnection){` &nbsp;
+
+  &nbsp;&nbsp;&nbsp;&nbsp;`baseConnection += ('S');` &nbsp;
+
+`}` &nbsp;
