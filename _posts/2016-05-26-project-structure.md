@@ -12,34 +12,34 @@ date: 2016-05-26 14:39:42
 imports/                  
   startup/                
     client/               
-      index.js              # import client startup through a single index ent
-      routes.js             # set up all routes in the app
+      index.js                   # import client startup through a single index ent
+      routes.js                  # set up all routes in the app
       useraccounts-configuration.js # configure login templates
     server/  
-      fixtures.js           # fill the DB with example data on startup
-      index.js              # import server startup through a single index ent
+      fixtures.js                # fill the DB with example data on startup
+      index.js                   # import server startup through a single index ent
 
   api/
-    lists/                  # a unit of domain logic
+    lists/                       # a unit of domain logic
       server/  
-        publications.js     # all list-related publications
-        publications.test.js# tests for the lists publications
-      lists.js              # definition of the Lists collection
-      lists.tests.js        # tests for the behavior of that collection
-      methods.js            # methods related to lists
-      methods.tests.js      # tests for those methods
+        publications.js          # all list-related publications
+        publications.test.js     # tests for the lists publications
+      lists.js                   # definition of the Lists collection
+      lists.tests.js             # tests for the behavior of that collection
+      methods.js                 # methods related to lists
+      methods.tests.js           # tests for those methods
 
   ui/  
-    components/             # all reusable components in the application                            
-                            # can be split by domain if there are many
-    layouts/                # wrapper components for behavior and visuals
-    pages/                  # entry points for rendering used by the router
+    components/                  # all reusable components in the application                            
+                                 # can be split by domain if there are many
+    layouts/                     # wrapper components for behavior and visuals
+    pages/                       # entry points for rendering used by the router
 
 client/  
-  main.js                   # client entry point, import all client code
+  main.js                        # client entry point, import all client code
 
 server/
-  main.js                   # server entry point, import all server code
+  main.js                        # server entry point, import all server code
 </pre>
 
 
