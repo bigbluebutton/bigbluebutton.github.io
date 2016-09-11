@@ -30,7 +30,8 @@ imports/
       methods.tests.js      # tests for those methods
 
   ui/  
-    components/             # all reusable components in the application                            # can be split by domain if there are many
+    components/             # all reusable components in the application                            
+                            # can be split by domain if there are many
     layouts/                # wrapper components for behavior and visuals
     pages/                  # entry points for rendering used by the router
 
