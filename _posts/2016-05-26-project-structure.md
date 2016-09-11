@@ -12,34 +12,33 @@ date: 2016-05-26 14:39:42
 imports/                  
   startup/                
     client/               
-      index.js              <font color="#A9A9A9"># import client startup through a single index ent</font>
-      routes.js             <font color="#A9A9A9"># set up all routes in the app</font>
-      useraccounts-configuration.js <font color="#A9A9A9"># configure login templates</font>
+      index.js              # import client startup through a single index ent
+      routes.js             # set up all routes in the app
+      useraccounts-configuration.js # configure login templates
     server/  
-      fixtures.js           <font color="#A9A9A9"># fill the DB with example data on startup</font>
-      index.js              <font color="#A9A9A9"># import server startup through a single index ent</font>
+      fixtures.js           # fill the DB with example data on startup
+      index.js              # import server startup through a single index ent
 
   api/
-    lists/                  <font color="#A9A9A9"># a unit of domain logic</font>
+    lists/                  # a unit of domain logic
       server/  
-        publications.js     <font color="#A9A9A9"># all list-related publications</font>
-        publications.test.js<font color="#A9A9A9"># tests for the lists publications</font>
-      lists.js              <font color="#A9A9A9"># definition of the Lists collection</font>
-      lists.tests.js        <font color="#A9A9A9"># tests for the behavior of that collection</font>
-      methods.js            <font color="#A9A9A9"># methods related to lists</font>
-      methods.tests.js      <font color="#A9A9A9"># tests for those methods</font>
+        publications.js     # all list-related publications
+        publications.test.js# tests for the lists publications
+      lists.js              # definition of the Lists collection
+      lists.tests.js        # tests for the behavior of that collection
+      methods.js            # methods related to lists
+      methods.tests.js      # tests for those methods
 
   ui/  
-    components/             <font color="#A9A9A9"># all reusable components in the application</font>
-                            <font color="#A9A9A9"># can be split by domain if there are many</font>
-    layouts/                <font color="#A9A9A9"># wrapper components for behavior and visuals</font>
-    pages/                  <font color="#A9A9A9"># entry points for rendering used by the router</font>
+    components/             # all reusable components in the application                            # can be split by domain if there are many
+    layouts/                # wrapper components for behavior and visuals
+    pages/                  # entry points for rendering used by the router
 
 client/  
-  main.js                   <font color="#A9A9A9"># client entry point, import all client code</font>
+  main.js                   # client entry point, import all client code
 
 server/
-  main.js                   <font color="#A9A9A9"># server entry point, import all server code</font>
+  main.js                   # server entry point, import all server code
 </pre>
 
 
