@@ -8,8 +8,40 @@ date: 2016-05-26 14:39:42
 
 ## Meteor Structure
 
+<pre>
+imports/                  
+  startup/                
+    client/               
+      index.js              <font color="#A9A9A9"># import client startup through a single index ent</font>
+      routes.js             <font color="#A9A9A9"># set up all routes in the app</font>
+      useraccounts-configuration.js <font color="#A9A9A9"># configure login templates</font>
+    server/  
+      fixtures.js           <font color="#A9A9A9"># fill the DB with example data on startup</font>
+      index.js              <font color="#A9A9A9"># import server startup through a single index ent</font>
 
-![Meteor Structure Diagram](https://sc-cdn.scaleengine.net/i/f688f5a9d82e0d2bdae4b6a23f2a814f.png)
+  api/
+    lists/                  <font color="#A9A9A9"># a unit of domain logic</font>
+      server/  
+        publications.js     <font color="#A9A9A9"># all list-related publications</font>
+        publications.test.js<font color="#A9A9A9"># tests for the lists publications</font>
+      lists.js              <font color="#A9A9A9"># definition of the Lists collection</font>
+      lists.tests.js        <font color="#A9A9A9"># tests for the behavior of that collection</font>
+      methods.js            <font color="#A9A9A9"># methods related to lists</font>
+      methods.tests.js      <font color="#A9A9A9"># tests for those methods</font>
+
+  ui/  
+    components/             <font color="#A9A9A9"># all reusable components in the application</font>
+                            <font color="#A9A9A9"># can be split by domain if there are many</font>
+    layouts/                <font color="#A9A9A9"># wrapper components for behavior and visuals</font>
+    pages/                  <font color="#A9A9A9"># entry points for rendering used by the router</font>
+
+client/  
+  main.js                   <font color="#A9A9A9"># client entry point, import all client code</font>
+
+server/
+  main.js                   <font color="#A9A9A9"># server entry point, import all server code</font>
+</pre>
+
 
 Taken from [Meteor Structure](http://guide.meteor.com/structure.html#example-app-structure)
 
@@ -128,50 +160,43 @@ All styles should be written in SASS when possible.
 
 ### /private/config
 
-All configuration files are located in sub-directories within **/private/config**. The file configuration method used, utilizes .yaml notated file types.
+All configuration files are located in sub-directories within **/private/config**. The file configuration method utilizes .yaml notated file types.
 
 ***Default configuration files:*** &nbsp;
 
-  `private/config/public/app.yaml` &nbsp;
+<pre>
+private/config/public/app.yaml
+private/config/server/media.yaml
+private/config/server/redis.yaml
+</pre>
 
-  `private/config/server/media.yaml` &nbsp;
-
-  `private/config/server/redis.yaml` &nbsp;
-
-The default configuration can be overloaded and it's values changed based on the selected environment. These overloaded configuration files are located in sub-folders with their corresponding environment name. &nbsp;
-
-&nbsp;
+The default configuration can be overloaded and their values changed based on the selected environment. These overloaded configuration files are located in sub-folders with their corresponding environment name.
 
 *Development overload configuration files:* &nbsp;
 
-  `private/config/development/public/app.yaml` &nbsp;
-
-  `private/config/development/server/media.yaml` &nbsp;
-
-  `private/config/development/server/redis.yaml` &nbsp;
-
-  &nbsp;
+<pre>
+private/config/development/public/app.yaml
+private/config/development/server/media.yaml
+private/config/development/server/redis.yaml
+</pre>
 
   *Production overload configuration files:* &nbsp;
 
-  `private/config/production/public/app.yaml` &nbsp;
+<pre>
+private/config/production/public/app.yaml
+private/config/production/server/media.yaml
+private/config/production/server/redis.yaml
+</pre>
 
-  `private/config/production/server/media.yaml` &nbsp;
-
-  `private/config/production/server/redis.yaml` &nbsp;
-
-&nbsp;
-
-During Meteor.startup() the configuration files are loaded and can be accessed through the Meteor.settings.public object &nbsp;
+During Meteor.startup() the configuration files are loaded and can be accessed through the Meteor.settings.public object.
 
 *As an example of it's usage we can do:* &nbsp;
+<pre>
+import { Meteor } from 'meteor/meteor';
 
-  `import { Meteor } from 'meteor/meteor';` &nbsp;
+const APP_CONFIG = Meteor.settings.public.app;
 
-`const APP_CONFIG = Meteor.settings.public.app;` &nbsp;
-
-`if (APP_CONFIG.httpsConnection){` &nbsp;
-
-  &nbsp;&nbsp;&nbsp;&nbsp;`baseConnection += ('S');` &nbsp;
-
-`}` &nbsp;
+if (APP_CONFIG.httpsConnection){
+  baseConnection += ('S');
+}
+</pre>
