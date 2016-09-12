@@ -8,8 +8,40 @@ date: 2016-05-26 14:39:42
 
 ## Meteor Structure
 
+<pre>
+imports/                  
+  startup/                
+    client/               
+      index.js                      # import client startup through a single index ent
+      routes.js                     # set up all routes in the app
+      useraccounts-configuration.js # configure login templates
+    server/  
+      fixtures.js                   # fill the DB with example data on startup
+      index.js                      # import server startup through a single index ent
 
-![Meteor Structure Diagram](https://sc-cdn.scaleengine.net/i/f688f5a9d82e0d2bdae4b6a23f2a814f.png)
+  api/
+    lists/                          # a unit of domain logic
+      server/  
+        publications.js             # all list-related publications
+        publications.test.js        # tests for the lists publications
+      lists.js                      # definition of the Lists collection
+      lists.tests.js                # tests for the behavior of that collection
+      methods.js                    # methods related to lists
+      methods.tests.js              # tests for those methods
+
+  ui/  
+    components/                     # all reusable components in the application                            
+                                    # can be split by domain if there are many
+    layouts/                        # wrapper components for behavior and visuals
+    pages/                          # entry points for rendering used by the router
+
+client/  
+  main.js                           # client entry point, import all client code
+
+server/
+  main.js                           # server entry point, import all server code
+</pre>
+
 
 Taken from [Meteor Structure](http://guide.meteor.com/structure.html#example-app-structure)
 
@@ -128,50 +160,40 @@ All styles should be written in SASS when possible.
 
 ### /private/config
 
-All configuration files are located in sub-directories within **/private/config**. The file configuration method used, utilizes .yaml notated file types.
+All configuration files are located in sub-directories within **/private/config**. The file configuration method utilizes .yaml notated file types.
 
-***Default configuration files:*** &nbsp;
+***Default configuration files:***
+<pre>
+private/config/public/app.yaml
+private/config/server/media.yaml
+private/config/server/redis.yaml
+</pre>
 
-  `private/config/public/app.yaml` &nbsp;
+The default configuration can be overloaded and their values changed based on the selected environment. These overloaded configuration files are located in sub-folders with their corresponding environment name.
 
-  `private/config/server/media.yaml` &nbsp;
+*Development overload configuration files:*
+<pre>
+private/config/development/public/app.yaml
+private/config/development/server/media.yaml
+private/config/development/server/redis.yaml
+</pre>
 
-  `private/config/server/redis.yaml` &nbsp;
+*Production overload configuration files:*
+<pre>
+private/config/production/public/app.yaml
+private/config/production/server/media.yaml
+private/config/production/server/redis.yaml
+</pre>
 
-The default configuration can be overloaded and it's values changed based on the selected environment. These overloaded configuration files are located in sub-folders with their corresponding environment name. &nbsp;
+During Meteor.startup() the configuration files are loaded and can be accessed through the Meteor.settings.public object.
 
-&nbsp;
+*As an example of it's usage we can do:*
+<pre>
+import { Meteor } from 'meteor/meteor';
 
-*Development overload configuration files:* &nbsp;
+const APP_CONFIG = Meteor.settings.public.app;
 
-  `private/config/development/public/app.yaml` &nbsp;
-
-  `private/config/development/server/media.yaml` &nbsp;
-
-  `private/config/development/server/redis.yaml` &nbsp;
-
-  &nbsp;
-
-  *Production overload configuration files:* &nbsp;
-
-  `private/config/production/public/app.yaml` &nbsp;
-
-  `private/config/production/server/media.yaml` &nbsp;
-
-  `private/config/production/server/redis.yaml` &nbsp;
-
-&nbsp;
-
-During Meteor.startup() the configuration files are loaded and can be accessed through the Meteor.settings.public object &nbsp;
-
-*As an example of it's usage we can do:* &nbsp;
-
-  `import { Meteor } from 'meteor/meteor';` &nbsp;
-
-`const APP_CONFIG = Meteor.settings.public.app;` &nbsp;
-
-`if (APP_CONFIG.httpsConnection){` &nbsp;
-
-  &nbsp;&nbsp;&nbsp;&nbsp;`baseConnection += ('S');` &nbsp;
-
-`}` &nbsp;
+if (APP_CONFIG.httpsConnection){
+  baseConnection += ('S');
+}
+</pre>
