@@ -162,7 +162,7 @@ All styles should be written in SASS when possible.
 
 All configuration files are located in sub-directories within **/private/config**. The file configuration method utilizes .yaml notated file types.
 
-***Default configuration files:*** &nbsp;
+***Default configuration files:***
 
 <pre>
 private/config/public/app.yaml
@@ -172,7 +172,7 @@ private/config/server/redis.yaml
 
 The default configuration can be overloaded and their values changed based on the selected environment. These overloaded configuration files are located in sub-folders with their corresponding environment name.
 
-*Development overload configuration files:* &nbsp;
+*Development overload configuration files:*
 
 <pre>
 private/config/development/public/app.yaml
@@ -180,7 +180,7 @@ private/config/development/server/media.yaml
 private/config/development/server/redis.yaml
 </pre>
 
-  *Production overload configuration files:* &nbsp;
+  *Production overload configuration files:*
 
 <pre>
 private/config/production/public/app.yaml
@@ -190,7 +190,7 @@ private/config/production/server/redis.yaml
 
 During Meteor.startup() the configuration files are loaded and can be accessed through the Meteor.settings.public object.
 
-*As an example of it's usage we can do:* &nbsp;
+*As an example of it's usage we can do:*
 <pre>
 import { Meteor } from 'meteor/meteor';
 
