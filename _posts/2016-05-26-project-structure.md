@@ -5,43 +5,55 @@ category: html
 date: 2016-05-26 14:39:42
 ---
 
+<style type="text/css">
+pre
+{
+white-space: pre;
+overflow-x: auto;
+font-size: 0.85em;
+font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
+}
+
+.comments{
+color: #A9A9A9;
+}
+</style>
 
 ## Meteor Structure
 
 <pre>
-imports/                  
+imports/               
   startup/                
     client/               
-      index.js                      # import client startup through a single index ent
-      routes.js                     # set up all routes in the app
-      useraccounts-configuration.js # configure login templates
+      index.js                      <span class="comments"># import client startup through a single index entity</span>
+      routes.js                     <span class="comments"># set up all routes in the app</span>
+      useraccounts-configuration.js <span class="comments"># configure login templates</span>
     server/  
-      fixtures.js                   # fill the DB with example data on startup
-      index.js                      # import server startup through a single index ent
+      fixtures.js                   <span class="comments"># fill the DB with example data on startup</span>
+      index.js                      <span class="comments"># import server startup through a single index entity</span>
 
   api/
-    lists/                          # a unit of domain logic
+    lists/                          <span class="comments"># a unit of domain logic</span>
       server/  
-        publications.js             # all list-related publications
-        publications.test.js        # tests for the lists publications
-      lists.js                      # definition of the Lists collection
-      lists.tests.js                # tests for the behavior of that collection
-      methods.js                    # methods related to lists
-      methods.tests.js              # tests for those methods
+        publications.js             <span class="comments"># all list-related publications</span>
+        publications.test.js        <span class="comments"># tests for the lists publications</span>
+      lists.js                      <span class="comments"># definition of the Lists collection</span>
+      lists.tests.js                <span class="comments"># tests for the behavior of that collection</span>
+      methods.js                    <span class="comments"># methods related to lists</span>
+      methods.tests.js              <span class="comments"># tests for those methods</span>
 
   ui/  
-    components/                     # all reusable components in the application                            
-                                    # can be split by domain if there are many
-    layouts/                        # wrapper components for behavior and visuals
-    pages/                          # entry points for rendering used by the router
+    components/                     <span class="comments"># all reusable components in the application</span>
+                                    <span class="comments"># can be split by domain if there are many</span>
+    layouts/                        <span class="comments"># wrapper components for behavior and visuals</span>
+    pages/                          <span class="comments"># entry points for rendering used by the router</span>
 
 client/  
-  main.js                           # client entry point, import all client code
+  main.js                           <span class="comments"># client entry point, import all client code</span>
 
 server/
-  main.js                           # server entry point, import all server code
+  main.js                           <span class="comments"># server entry point, import all server code</span>
 </pre>
-
 
 Taken from [Meteor Structure](http://guide.meteor.com/structure.html#example-app-structure)
 
@@ -163,32 +175,36 @@ All styles should be written in SASS when possible.
 All configuration files are located in sub-directories within **/private/config**. The file configuration method utilizes .yaml notated file types.
 
 ***Default configuration files:***
-<pre>
+
+~~~
 private/config/public/app.yaml
 private/config/server/media.yaml
 private/config/server/redis.yaml
-</pre>
+~~~
 
 The default configuration can be overloaded and their values changed based on the selected environment. These overloaded configuration files are located in sub-folders with their corresponding environment name.
 
 *Development overload configuration files:*
-<pre>
+
+~~~
 private/config/development/public/app.yaml
 private/config/development/server/media.yaml
 private/config/development/server/redis.yaml
-</pre>
+~~~
 
 *Production overload configuration files:*
-<pre>
+
+~~~
 private/config/production/public/app.yaml
 private/config/production/server/media.yaml
 private/config/production/server/redis.yaml
-</pre>
+~~~
 
 During Meteor.startup() the configuration files are loaded and can be accessed through the Meteor.settings.public object.
 
 *As an example of it's usage we can do:*
-<pre>
+
+~~~
 import { Meteor } from 'meteor/meteor';
 
 const APP_CONFIG = Meteor.settings.public.app;
@@ -196,4 +212,4 @@ const APP_CONFIG = Meteor.settings.public.app;
 if (APP_CONFIG.httpsConnection){
   baseConnection += ('S');
 }
-</pre>
+~~~
