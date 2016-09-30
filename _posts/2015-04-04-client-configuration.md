@@ -287,29 +287,6 @@ The Video Conferencing Module. Allows users to share their webcams with the room
 | glowColor              | 0x4A931D                      | Glow color surrounding webcam window of user that's talking. |
 | glowBlurSize           | 30.0                          | How much to glow. |
 
-### Videodock Module
-This module will dock viewed webcams and and tile them.
-
-~~~xml
-<module name="VideodockModule" url="http://HOST/client/VideodockModule.swf?v=VERSION"
-	uri="rtmp://192.168.0.36/bigbluebutton"
-	dependsOn="VideoconfModule, UsersModule"
-	autoDock="true"
-	maximizeWindow="false"
-	position="bottom-right"
-	width="172"
-	height="179"
-	layout="smart"
-	oneAlwaysBigger="false"
-/>
-~~~
-
-|Name                  | Default Value            | Description|
-|:---------------------|:-------------------------|:-----------|
-| autoDock             | true                     | Automatically dock all webcam windows. |
-| maximizeWindow       | false                    | Maximize the docking window. |
-| oneAlwaysBigger      | false                    | Always have one of the video windows bigger. |
-
 
 ### Present Module
 ~~~xml
