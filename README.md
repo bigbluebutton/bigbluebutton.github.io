@@ -2,6 +2,54 @@ This is the developer documentation web site for BigBlueButton.
 
 This site uses Jekyll to build the documentation site.  You can setup Jekyll to build the website locally so you can preview the site before pushing changes.
 
+### The easy way
+
+The easy to generate the BigBlueButton documentation locally and see the effect of your changes before committing is to create a Docker image that runs Jekyll.  If you have installed Docker, then create a `Dockerfile` using the following text
+
+```
+FROM ubuntu:16.04
+MAINTAINER Fred Dixon
+
+RUN apt-get update
+RUN apt-get -y install build-essential zlib1g-dev ruby-dev ruby nodejs vim \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/
+
+RUN gem install github-pages bundler therubyracer
+
+VOLUME /site
+
+EXPOSE 4000
+
+WORKDIR /site
+ENTRYPOINT ["jekyll"]
+```
+and then build it with the command
+
+    docker build -t github-pages .
+
+This creates a self-contained jekyll server for serving GitHub pages.  After the images builds, then if, for example, you've checked out this repository to `/Users/ffdixon/fred/bigbluebutton.github.io`, you can render it locally using the command
+
+    docker run --rm -v /Users/ffdixon/fred/bigbluebutton.github.io:/site -p 4000:4000 github-pages serve --watch --host 0.0.0.0
+ 
+When you run this command you'll see
+
+```
+$ docker run --rm -v /Users/ffdixon/fred/bigbluebutton.github.io:/site -p 4000:4000 github-pages serve --watch --host 0.0.0.0
+Configuration file: /site/_config.yml
+Configuration file: /site/_config.yml
+            Source: /site
+       Destination: /site/_site
+ Incremental build: disabled. Enable with --incremental
+      Generating... 
+                    done in 8.521 seconds.
+ Auto-regeneration: enabled for '/site'
+Configuration file: /site/_config.yml
+    Server address: http://0.0.0.0:4000/
+  Server running... press ctrl-c to stop.
+```
+And you can now view the site using the URL http://localhost:4000/.  If the Docker approach does not work, you can setup Jekyll using the steps below.
+   
 ### Ruby
 
 To install Ruby, we suggest the use of [rbenv](https://github.com/rbenv/rbenv).
