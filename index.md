@@ -7,7 +7,7 @@ title: "BigBlueButton"
   <img src="/images/logo.png"/>
 </p><br>
 
-**BigBlueButton** is an open source web conferencing system for online learning.  
+**BigBlueButton** is an open source web conferencing system for online learning. Cool!
 
 We believe every student with a web browser should have access to a high-quality on-line learning experience.  We intend to make that possible with BigBlueButton.
 

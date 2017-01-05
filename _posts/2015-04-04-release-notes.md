@@ -5,6 +5,25 @@ category: support
 date: 2015-04-04 22:26:10
 ---
 
+# Release 1.1-beta 
+
+Released: XX YY, 201X ([Installation Instructions](/1.1/install.html))
+
+This release builds upon the stability of BigBlueButton 1.0 to add the following new capabilities.
+
+  * **Closed Captioning** - BigBlueButton now supports live captioning during a session for students with hearing disabilities.  After the session finishes, the live captions will appear as subtitles in the recordings.
+
+  * **Faster Desktop Sharing** - The desktop sharing is faster and now captures the cursor.  It also runs again with Chrome browser.
+
+  * **Breakout Rooms** - Instructors can now group and place students into breakout rooms for a given period of time.  The insturctor can also monitor activity in the breakout rooms with a one-button click to join the audio of any breakout room.
+
+  * **Ubuntu 16.04 64-bit** - BigBlueButton now installs on Ubuntu 16.04 64-bit.  It also includes the latest version of red5 and FreeSWITH 1.6.
+
+For details of these updates and others (with screen shots) see [overview](/1.1/overview.html).
+
+See [issues fixed in BigBlueButton 1.1](https://github.com/bigbluebutton/bigbluebutton/issues?q=milestone%3A%22Release+1.1.0%22+is%3Aclosed).  
+
+
 # Release 1.0
 
 Released: May 15, 2016 ([Installation Instructions](/install/install.html))
@@ -307,7 +326,7 @@ If you are running  BigBlueButton VM 0.61 -- either from VM or from apt-get pack
 
 
 ## Fixed Issues
-  * [Issue 769](https://github.com/bigbluebutton/bigbluebutton/issues/769)   	 Listeners window not getting updates
+  * [Issue 769](https://github.com/bigbluebutton/bigbluebutton/issues/769)     Listeners window not getting updates
   * [Issue 865](https://github.com/bigbluebutton/bigbluebutton/issues/865) Deskshare works only when tunneling on Mac OS X
   * [Issue 905](https://github.com/bigbluebutton/bigbluebutton/issues/905) Deskshare applet should test port to check if it should tunnel
   * [Issue 923](https://github.com/bigbluebutton/bigbluebutton/issues/923) One one deskshare usage per session
@@ -329,7 +348,7 @@ If you are running  BigBlueButton VM 0.61 -- either from VM or from apt-get pack
   * [Issue 985](https://github.com/bigbluebutton/bigbluebutton/issues/985) Flash debug client shows messages
 
 ## Known Issues
-  * [Issue 988](https://github.com/bigbluebutton/bigbluebutton/issues/988) 	java.io.IOException: Too many open files
+  * [Issue 988](https://github.com/bigbluebutton/bigbluebutton/issues/988)  java.io.IOException: Too many open files
   * [Issue 982](https://github.com/bigbluebutton/bigbluebutton/issues/982) BBB apps (Red5) should reconnect to ActiveMQ when connection drops
   * [Issue 969](https://github.com/bigbluebutton/bigbluebutton/issues/969) VoIP stops working
   * [Issue 953](https://github.com/bigbluebutton/bigbluebutton/issues/953) Mozilla crashes uploading PDF

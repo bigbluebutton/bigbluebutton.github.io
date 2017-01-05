@@ -190,6 +190,39 @@ Last meeting processed (bbb-web.log): 6e35e3b2778883f5db637d7a5dba0a427f692e91-1
 
 ~~~
 
+*BigBlueButton 1.1*  When using BigBlueButton 1.1, you'll see recording process running as BigBlueButton processes the recording.
+
+~~~
+Every 2.0s: bbb-record --list20                                                                                                                                                                          Fri Dec 16 19:48:10 2016
+
+Internal MeetingID                                               Time                APVD APVDE RAS Slides Processed            Published           External MeetingID
+------------------------------------------------------  ---------------------------- ---- ----- --- ------ -------------------- ------------------  -------------------
+238ff79fd66331a59274a8f3f05f1c0cd3e278b4-1481917394340  Fri Dec 16 19:43:14 UTC 2016 XX         X       17
+b88482332e176943b72de73ec63b69f01f113c85-1481917347334  Fri Dec 16 19:42:27 UTC 2016  X                  6
+6e35e3b2778883f5db637d7a5dba0a427f692e91-1481916917964  Fri Dec 16 19:35:17 UTC 2016 XX   XX  X         18                                          English 101 English 101
+183f0bf3a0982a127bdb8161e0c44eb696b3e75c-1481916628809  Fri Dec 16 19:30:28 UTC 2016  X                  5
+183f0bf3a0982a127bdb8161e0c44eb696b3e75c-1481915915825  Fri Dec 16 19:18:35 UTC 2016  X                  5
+183f0bf3a0982a127bdb8161e0c44eb696b3e75c-1481915383857  Fri Dec 16 19:09:43 UTC 2016  X                  5
+183f0bf3a0982a127bdb8161e0c44eb696b3e75c-1481915110521  Fri Dec 16 19:05:10 UTC 2016  X                  5
+
+--
+NEXT                         LEFT          LAST                         PASSED UNIT                  ACTIVATES
+Fri 2016-12-16 19:53:06 UTC  4min 56s left Fri 2016-12-16 19:48:06 UTC  4s ago bbb-record-core.timer bbb-record-core.service
+
+1 timers listed.
+--
+● bbb-record-core.service - BigBlueButton recording & playback processing
+   Loaded: loaded (/usr/lib/systemd/system/bbb-record-core.service; static; vendor preset: enabled)
+   Active: inactive (dead) since Fri 2016-12-16 19:48:06 UTC; 3s ago
+  Process: 26774 ExecStart=/usr/local/bigbluebutton/core/scripts/rap-worker.rb (code=exited, status=0/SUCCESS)
+ Main PID: 26774 (code=exited, status=0/SUCCESS)
+
+Dec 16 19:48:06 XXX-8gb-nyc3-01 systemd[1]: Started BigBlueButton recording & playback processing.
+--
+~~~
+
+
+
 
 ### Rebuild a recording
 
