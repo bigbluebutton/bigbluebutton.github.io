@@ -7,15 +7,15 @@ date: 2015-04-04 22:26:10
 
 # Release 1.1-beta 
 
-Released: XX YY, 201X ([Installation Instructions](/1.1/install.html))
+Released: Jan 6, 2017 ([Installation Instructions](/1.1/install.html))
 
-This release builds upon the stability of BigBlueButton 1.0 to add the following new capabilities.
+This release adds the following new capabilities.
+
+  * **Breakout Rooms** - Instructors can now group and place students into breakout rooms for a given period of time.  The insturctor can also monitor activity in the breakout rooms with a one-button click to join the audio of any breakout room.
 
   * **Closed Captioning** - BigBlueButton now supports live captioning during a session for students with hearing disabilities.  After the session finishes, the live captions will appear as subtitles in the recordings.
 
   * **Faster Desktop Sharing** - The desktop sharing is faster and now captures the cursor.  It also runs again with Chrome browser.
-
-  * **Breakout Rooms** - Instructors can now group and place students into breakout rooms for a given period of time.  The insturctor can also monitor activity in the breakout rooms with a one-button click to join the audio of any breakout room.
 
   * **Ubuntu 16.04 64-bit** - BigBlueButton now installs on Ubuntu 16.04 64-bit.  It also includes the latest version of red5 and FreeSWITH 1.6.
 
