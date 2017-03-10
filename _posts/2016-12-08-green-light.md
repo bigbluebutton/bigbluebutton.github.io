@@ -9,7 +9,7 @@ BigBlueButton is an open source web conferencing system for online learning.  Th
 
 # Overview
 
-GreenLight is a super simple front-end for your BigBlueButton server.  At it's core, Green Light provides a minimalistic web-based interface that lets users
+GreenLight is a super simple front-end for your BigBlueButton server.  At its core, Green Light provides a minimalistic web-based interface that lets users
   
    * Create a meeting
    * Invite others to the meeting
@@ -115,11 +115,9 @@ Also, configuring authentication with a Google account will enable GreenLight to
 
 Run all the commands in section as `root` on your BigBlueButton 1.1-beta (or later) server.
 
-First, you need to install Docker.  The Docker documentation is the best resource and for the latest steps.  To install Docker, see
+First, you need to install Docker.  The Docker documentation is the best resource and for the latest steps.  To install Docker, see [Instal Docker on Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/).
 
-   https://docs.docker.com/engine/installation/linux/ubuntu/ 
-
-Once you have followed the steps, to ensure you have docker installed correctly, run the command to check its version (it you should see version 1.13.1 or later).
+Once you have followed the installation steps for Docker, check you have the latest version using the following command (it you should see version 1.13.1 or later).
 
 ~~~
 # docker version
