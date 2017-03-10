@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Green Light"
+title: "GreenLight"
 category: "1.1"
 date: 2016-12-08 16:29:25
 ---
@@ -361,8 +361,7 @@ BigBlueButton will now execute this script at the end of processing each recordi
 
 ### Configure the GreenLight to send emails
 
-Using the Google account that you configured for OAuth 2 in section [Google OAuth](#google-oauth), 
-edit `env` and apply the following settings.
+Using the Google account that you configured for OAuth 2 in section [Google OAuth](#google-oauth), edit `env` and apply the following settings.
 
 ~~~
 GREENLIGHT_DOMAIN=<domain>
