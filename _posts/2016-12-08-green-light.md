@@ -163,7 +163,7 @@ We're now going to configure GreenLight with the minimal settings to run. First,
 # docker run --rm bigbluebutton/greenlight rake secret
 ~~~
 
-Next, eit the `env` file and add assign the output for the above command to `SECRET_KEY_BASE`.  After you edit, it should look like the following (replace `<secret>` with the output from the above command).
+Next, edit the `env` file and add assign the output for the above command to `SECRET_KEY_BASE`.  After you edit, it should look like the following (replace `<secret>` with the output from the above command).
 
 ~~~
 # Step 1 - Create a secret key for rails
@@ -189,7 +189,7 @@ Next, we need to tell GreenLight how to connect to your BigBlueButton server and
 
 Of course, the URL for your BigBlueButton server will be different than demo.bigbluebutton.org and your <secret> will be a long string of characters.
 
-Assign the values for `URL` and `Secret` the `env` file to `BIGBLUEBUTTON_ENDPOINT` and  `BIGBLUEBUTTON_SECRET`.  It should look something like below
+Assign the values for `URL` and `Secret` to `BIGBLUEBUTTON_ENDPOINT` and  `BIGBLUEBUTTON_SECRET` in the `env` file.  It should look something like below
 
 ~~~
 # Step 2 - Enter credentials for your BigBlueButton Server
@@ -231,7 +231,7 @@ And restart nginx to have it read the new configuration file.
 
 After restart, you can access GreenLight with `https://<hostname>/b`, where `<hostname>` is the hostname for your BigBlueButton server.
 
-If you want replace the default page on your BigBlueButton server with GreenLight, add the following entry to the bottom `/etc/nginx/sites-available/bigbluebutton` just before the last '}'.
+If you want to replace the default page on your BigBlueButton server with GreenLight, add the following entry to the bottom `/etc/nginx/sites-available/bigbluebutton` just before the last '}'.
 
 ~~~
      location = / {
