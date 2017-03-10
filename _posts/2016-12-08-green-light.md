@@ -370,7 +370,7 @@ SMTP_SERVER=smtp.gmail.com
 SMTP_PORT=587
 SMTP_DOMAIN=gmail.com
 SMTP_USERNAME=<gmail_email_address>
-SMTP_PASSWORD=<gmail_email_assword>
+SMTP_PASSWORD=<gmail_email_password>
 ~~~
 
 Do the steps in [Applying env file changes](#applying-env-file-changes) to apply the new changes.
