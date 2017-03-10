@@ -259,14 +259,14 @@ You need a Google account to create an OAuth 2 `CLIENT_ID` and `SECRET`.  The wi
 
 Login to your Google account, and click the following link
   
-  https://console.developers.google.com/
+  [https://console.developers.google.com/](https://console.developers.google.com/)
 
 If you want to see the documentation behind OAuth2 at Google, click the link [https://developers.google.com/identity/protocols/OAuth2](https://developers.google.com/identity/protocols/OAuth2).
 
 First, enable the "Google+ API".  
 
    1. Click Dashboard
-   1. Click ‘+Enable APIs"
+   1. Click "+Enable APIs"
    1. Click "Google+ API"
    1. Click "Enable"
    1. Click "Credentials"
@@ -276,7 +276,7 @@ First, enable the "Google+ API".
   1. Click "Create credentials
   1. Select "OAuth client ID
   1. Select "Web application"
-  1. Under "Authorized redirect URIs" enter "http://<hostname>/b/auth/google/callback"
+  1. Under "Authorized redirect URIs" enter "http://hostname/b/auth/google/callback" where hostname is your hostname
   1. Click "Create"
 
 A window should open with your OAuth credentials. In this window, copy client ID and client secret to the `env` file so it resembles the following (your credentials will be different).
@@ -295,7 +295,7 @@ Login to your Twitter account, and click the following link: [https://apps.twitt
 Next,
 
   1. Click "Create New App"
-  1. Under "Callback URL" enter "http://<hostname>/b/auth/twitter/callback"
+  1. Under "Callback URL" enter "http://hostname/b/auth/twitter/callback" where hostname is your hostname
   1. Click "Create your Twitter application"
   1. Click "Keys and Access Tokens" tab
 
@@ -387,7 +387,7 @@ Do the steps in [Applying env file changes](#applying-env-file-changes) to apply
 
 ## Automatically start GreenLight on boot
 
-Run the following command
+Use the following command when starting Greenlight
 
 ~~~
 # docker run -d -p 5000:80 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight bigbluebutton/greenlight
