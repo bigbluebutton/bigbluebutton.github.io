@@ -413,3 +413,17 @@ Then use the command to start the BigBlueButton server:
 ~~~
 # docker run -d -p 5000:80 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight bigbluebutton/greenlight
 ~~~
+
+## Launching Greenlight in the Host Network
+
+In the env file add this line:
+
+~~~
+PORT=5000
+~~~
+
+Run this command:
+
+~~~
+# docker run -d -p 5000:5000 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight --network=host bigbluebutton/greenlight
+~~~
