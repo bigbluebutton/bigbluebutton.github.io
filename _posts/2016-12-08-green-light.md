@@ -176,7 +176,7 @@ Next, edit the `env` file and add assign the output for the above command to `SE
 SECRET_KEY_BASE=<secret>
 ~~~
 
-### Enter BigBlueButton Credentials
+## 3. Enter BigBlueButton Credentials
 
 Next, we need to tell GreenLight how to connect to your BigBlueButton server and issue API commands.  Enter the command `bbb-conf --secret`.  For example, here's what the command looks like when running on `demo.bigbluebutton.org` (we've masked the shared secret).
 
@@ -206,7 +206,7 @@ BIGBLUEBUTTON_SECRET=<secret>
 
 Save the changes to `env` file.
 
-### Run GreenLight Server
+## 4. Run GreenLight Server
 
 Using Docker you can start your server with the following command
 
@@ -248,7 +248,7 @@ And restart nginx once more
 GreenLight is now the default landing page of your server.
 
 
-## 3. Configure OAuth2
+## 5. Configure OAuth2 (optional)
 
 You only need to configure (at least) one OAuth provider to use authenticated meetings. GreenLight supports Google and Twitter.
 
@@ -312,27 +312,7 @@ See [Applying env File Changes](#applying-env-file-changes) section to enable yo
 
 Once an OAuth provider is configured GreenLight will allow users to login and use authenticated meetings.
 
-# Finishing Steps
-
-## Applying env File Changes
-
-After you update the `env` file, you must recreate the container running your Greenlight application.
-
-Stop the currently running Greenlight instance:
-
-~~~
-# docker stop greenlight
-# docker rm greenlight
-~~~
-
-Then use the same command to start the server
-
-~~~
-# docker run -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight bigbluebutton/greenlight
-~~~
-
-
-## Configuring email notifications
+## 6. Configuring email notifications (optional)
 
 There are three steps to configuring email notifications:
 
@@ -385,17 +365,49 @@ GREENLIGHT_MAIL_NOTIFICATIONS=true
 Do the steps in [Applying env file changes](#applying-env-file-changes) to apply the new changes.
 
 
+
+# Administration
+
+
 ## Automatically start GreenLight on boot
 
-Use the following command when starting Greenlight
+To have GreenLight automatically restart when you star the host server, first stop and remove the existing container named 'greenlight':
+
+~~~
+# docker stop greenlight
+# docker rm greenlight
+~~~
+
+and then run Greenlight with the following docker command
 
 ~~~
 # docker run -d -p 5000:80 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight bigbluebutton/greenlight
 ~~~
 
+The parameter '--restart=unless-stopped' will automatically restart the docker image when you restart the computer.
+
+
+## Applying env File Changes
+
+Whenever you update the `env` file and want to apply the changes to GreenLight, you must stop GreenLight, delete the container, and run it again.
+
+To stop GreenLight and remove the existing container named 'greenlight', do the following:
+
+~~~
+# docker stop greenlight
+# docker rm greenlight
+~~~
+
+Then use the same command to start the server
+
+~~~
+# docker run -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight bigbluebutton/greenlight
+~~~
+
+
 ## Updating Greenlight to a new version
 
-To download the latest greenlight image, do the following command:
+To update GreenLight to the latest docker image, do the following command:
 
 ~~~
 # docker pull bigbluebutton/greenlight
@@ -414,9 +426,12 @@ Then use the command to start the BigBlueButton server:
 # docker run -d -p 5000:80 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight bigbluebutton/greenlight
 ~~~
 
+
+# Troubleshooting
+
 ## Launching Greenlight in the Host Network
 
-In the env file add this line:
+If you want to run GreenLight on the host network, you can edit the env file add this line:
 
 ~~~
 PORT=5000
