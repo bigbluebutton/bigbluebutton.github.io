@@ -384,7 +384,7 @@ and then run Greenlight with the following docker command
 # docker run -d -p 5000:80 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight bigbluebutton/greenlight
 ~~~
 
-The parameter '--restart=unless-stopped' will automatically restart the docker image when you restart the computer.
+The parameter `--restart=unless-stopped` will automatically restart the docker image when you restart the computer.
 
 
 ## Applying env File Changes
