@@ -115,7 +115,7 @@ Also, configuring authentication with a Google account will enable GreenLight to
 
 Run all the commands in section as `root` on your BigBlueButton 1.1-beta (or later) server.
 
-First, you need to install Docker.  The Docker documentation is the best resource and for the latest steps.  To install Docker, see [Instal Docker on Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/).
+First, you need to install Docker.  The Docker documentation is the best resource and for the latest steps.  To install Docker (recommend installing Docker CE unless you have a subscription to Docker EE), see [Instal Docker on Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/).
 
 Once you have followed the installation steps for Docker, check you have the latest version using the following command (it you should see version 1.13.1 or later).
 
