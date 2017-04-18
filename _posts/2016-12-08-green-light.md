@@ -431,7 +431,7 @@ Then use the command to start the BigBlueButton server:
 
 ## Launching Greenlight in the Host Network
 
-If you want to run GreenLight on the host network, you can edit the env file add this line:
+If you want to run GreenLight on the host network, you can edit the env file and add this line:
 
 ~~~
 PORT=5000
@@ -442,3 +442,12 @@ Run this command:
 ~~~
 # docker run -d -p 5000:5000 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight --network=host bigbluebutton/greenlight
 ~~~
+
+## Check Greenlight configuration
+
+This performs some basic tests to check the Greenlight installation and its connection to BigBlueButton.
+
+~~~
+# docker run --rm --env-file env bigbluebutton/greenlight rake conf:check
+~~~
+
