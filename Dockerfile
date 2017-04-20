@@ -6,7 +6,7 @@ RUN apt-get -y install build-essential zlib1g-dev ruby-dev ruby nodejs vim \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/
 
-RUN gem install github-pages bundler therubyracer
+RUN gem install tzinfo libv8 github-pages bundler therubyracer
 
 VOLUME /site
 
