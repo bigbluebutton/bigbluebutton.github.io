@@ -446,8 +446,14 @@ Run this command:
 ## Check Greenlight configuration
 
 This performs some basic tests to check the Greenlight installation and its connection to BigBlueButton.
+To check Greenlight's configuration for connecting to a BigBlueButton server use the following command:
 
 ~~~
 # docker run --rm --env-file env bigbluebutton/greenlight rake conf:check
 ~~~
 
+To check Greenlight's mailer configuration use the following command and replace <your_email> with an email address to receive the test email.
+
+~~~
+# docker run --rm --env-file env bigbluebutton/greenlight rake conf:check_email['<your_email>']
+~~~
