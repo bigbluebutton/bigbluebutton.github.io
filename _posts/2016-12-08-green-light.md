@@ -445,7 +445,6 @@ Run this command:
 
 ## Check Greenlight configuration
 
-This performs some basic tests to check the Greenlight installation and its connection to BigBlueButton.
 To check Greenlight's configuration for connecting to a BigBlueButton server use the following command:
 
 ~~~
