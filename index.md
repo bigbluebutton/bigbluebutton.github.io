@@ -37,7 +37,7 @@ Next, depending on whether you are a developer or administrator, we recommend:
   1. [Install](/install/install.html) BigBlueButton your own server (Ubuntu 14.04 64-bit).
   1. Read the [FAQ](/support/faq.html).
   1. Try integrating with an existing [integration](http://bigbluebutton.org/open-source-integrations/) as a front-end or, if you're a developer, use the [BigBlueButton API](/dev/api.html) to integrate BigBlueButton with your software or create custom front-end.
-  1. [Setup](/install/setup.html) a development environment to modify and extend BigBlueButton for your needs.
+  1. [Setup](/dev/setup.html) a development environment to modify and extend BigBlueButton for your needs.
 
 We also welcome your feedback on BigBlueButton and encourage you to join one of the above mailing lists and share your thoughts.  
 
@@ -46,9 +46,7 @@ The BigBlueButton project began in 2008 (see [history](http://bigbluebutton.org/
 
 ## Latest versions
 
-The latest version of BigBlueButton is 1.0. See [overview](/overview/overview.html), [install](/install/install.html), and [architecture](/overview/architecture.html) for more details.  
-
-Want the latest and greatest?  We released BigBlueButton 1.1-beta for Ubuntu 16.04.  See [overview of 1.1-beta](1.1/overview.html), [install 1.1-beta](/1.1/install.html).  
+The latest version of BigBlueButton is 1.1-RC (release candidate). See [overview](/overview/overview.html), [install](/install/install.html), and [architecture](/overview/architecture.html) for more details.  
 
 Enjoy!
 

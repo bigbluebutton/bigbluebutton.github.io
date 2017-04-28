@@ -5,11 +5,11 @@ category: support
 date: 2015-04-04 22:26:10
 ---
 
-# Release 1.1-beta 
+# Release 1.1-RC
 
-Released: Jan 6, 2017 ([Installation Instructions](/1.1/install.html))
+Released: April 28, 2017 ([Installation Instructions](/overview/install.html))
 
-This release adds the following new capabilities.
+This release adds the following new capabilities:
 
   * **Breakout Rooms** - Instructors can now group and place students into breakout rooms for a given period of time.  The insturctor can also monitor activity in the breakout rooms with a one-button click to join the audio of any breakout room (see [video](https://www.youtube.com/watch?v=q5N-lcocJss)).
 
@@ -19,9 +19,9 @@ This release adds the following new capabilities.
 
   * **Ubuntu 16.04 64-bit** - BigBlueButton now installs on Ubuntu 16.04 64-bit.  It also includes the latest version of red5 and FreeSWITH 1.6.
 
-For details of these updates and others (with screen shots) see [overview](/1.1/overview.html).
+For details of these updates and others (with screen shots) see [overview](/overview/overview.html).
 
-See [issues fixed in BigBlueButton 1.1](https://github.com/bigbluebutton/bigbluebutton/issues?q=milestone%3A%22Release+1.1.0%22+is%3Aclosed).  
+See also [issues fixed in BigBlueButton 1.1](https://github.com/bigbluebutton/bigbluebutton/issues?q=milestone%3A%22Release+1.1.0%22+is%3Aclosed).  
 
 
 # Release 1.0

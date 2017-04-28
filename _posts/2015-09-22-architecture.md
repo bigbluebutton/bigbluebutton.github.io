@@ -8,7 +8,7 @@ date: 2015-09-20 17:34:41
 
 # Overview
 
-BigBlueButton 1.0 is build upon some amazing [open source components](http://bigbluebutton.org/components/). This page describes how they work together.
+BigBlueButton is build upon some amazing software components -- nginx, red5, FreeSWITCH, tomcat7, redis, and others.  This page describes the architecture of how they work together.
 
 # High-level Architecture Overview for BigBlueButton
 

@@ -24,7 +24,7 @@ Note: This is still in development
 
 ### A BigBlueButton 1.1 server with HTTPS/SSL
 
-[BigBlueButton setup](/1.1/install/install.html)
+[BigBlueButton setup](/install/install.html)
 
 [Configuring HTTPS on BigBlueButton](/install/install.html#configuring-https-on-bigbluebutton)
 
@@ -34,7 +34,7 @@ you will need a non-root user account. We use the name `firstuser`. You will nee
 
 Provided you have a domain name We can use letsencrypt certificates for free.
 
-[Step by step instructions here](/1.1/install.html#using-lets-encrypt)
+[Step by step instructions here](/install/install.html#using-lets-encrypt)
 
 ## Building the client
 
@@ -54,7 +54,7 @@ Modify your `config.xml` to match below
 />
 ```
 
-If you are running a development environment, you will need to configure it to load via HTTPS [just like the packaged client was set up here](/1.1/install.html#configure-bigbluebutton-to-load-session-via-https)
+If you are running a development environment, you will need to configure it to load via HTTPS [just like the packaged client was set up here](/install/install.html#configure-bigbluebutton-to-load-session-via-https)
 
 Modify the command to enable HTTPS in your development `config.xml` file otherwise the modules will not load
 

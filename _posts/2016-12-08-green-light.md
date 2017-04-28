@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "GreenLight"
-category: "1.1"
+category: "install"
 date: 2016-12-08 16:29:25
 ---
 
@@ -88,24 +88,24 @@ alt="Installation Video Walkthrough" border="10" /></a>
 
 # Installing GreenLight
 
-To make it easy to install GreenLight on your BigBlueButton 1,1-beta (or later) server, we’ve created a Docker image that encapsulates everything into a single container.
+To make it easy to install GreenLight on your BigBlueButton 1,1 (or later) server, we’ve created a Docker image that encapsulates everything into a single container.
 
 GreenLight is built as Ruby on Rails application.  If you don't want to use the Docker image and, instead, run it from source, see the steps at [https://github.com/bigbluebutton/greenlight](https://github.com/bigbluebutton/greenlight).  
 
-These instructions show how to install GreenLight on your BigBlueButton 1.1-beta (or later) server using Docker.
+These instructions show how to install GreenLight on your BigBlueButton 1.1 (or later) server using Docker.
 
 ## Prerequisites
 
 Before you install, you need the following
 
-  * BigBlueButton 1.1-beta (or later) server
+  * BigBlueButton 1.1 (or later) server
   * The BigBlueButton server has been configure with a fully qualified hostname with valid SSL certificate
 
 While you don’t need to configure GreenLight for authentication, if you do it will enable users to have recorded meetings and manage the meetings.  To setup GreenLight for authentication, you need
 
   * A Google Account
   * A Twitter Account
-  * A BigBlueButton 1.1-beta (or later) server configured with SSL
+  * A BigBlueButton 1.1 (or later) server configured with SSL
 
 Having a Google account will enable you to request a client ID and client secret from Google’s API console to allow GreenLight to enable users to login with their (not yours) Google account.  It’s a similar configuration for a Twitter account.
 
@@ -113,7 +113,7 @@ Also, configuring authentication with a Google account will enable GreenLight to
 
 ## 1. Install Docker
 
-Run all the commands in section as `root` on your BigBlueButton 1.1-beta (or later) server.
+Run all the commands in section as `root` on your BigBlueButton 1.1 (or later) server.
 
 First, you need to install Docker.  The Docker documentation is the best resource and for the latest steps.  To install Docker (recommend installing Docker CE unless you have a subscription to Docker EE), see [Instal Docker on Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/).
 
