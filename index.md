@@ -41,7 +41,7 @@ Next, depending on whether you are a developer or administrator, we recommend:
 
 We also welcome your feedback on BigBlueButton and encourage you to join one of the above mailing lists and share your thoughts.  
 
-The BigBlueButton project began in 2008 (see [history](http://bigbluebutton.org/history/)). The project is managed by a core group of [committers](/support/faq.html#bigbluebutton-committer) that are _very_ determined to see this project meet is goals.  If you like BigBlueButton, you can give back by spreading the word (blog, tweet, upload a video to YouTube, etc.) about the project.  You'll find the project is a global community that believes the entrepreneurial opportunities and social benefits of providing remote students a high-quality on-line learning experience.
+The BigBlueButton project began in 2008. The project is managed by a core group of [committers](/support/faq.html#bigbluebutton-committer) that are _very_ determined to see this project meet is goals.  If you like BigBlueButton, you can give back by spreading the word (blog, tweet, upload a video to YouTube, etc.) about the project.  You'll find the project is a global community that believes the entrepreneurial opportunities and social benefits of providing remote students a high-quality on-line learning experience.
 
 
 ## Latest versions
