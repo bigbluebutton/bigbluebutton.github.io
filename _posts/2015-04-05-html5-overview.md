@@ -107,7 +107,7 @@ Similarly we obtain an array of all users, presentations and the chat history fo
 Using this information we populate our collections Users, Chat, Presentations, Shapes, Slides, etc.
 We are subscribed to receive event messages on the following Redis channel:
 
-  * "bigbluebutton:from-bbb-apps:*"
+  * "bigbluebutton:from-bbb-apps:* "
 
 And we publish event messages on:
 
@@ -137,7 +137,7 @@ Check if the HTML5 client is running and ready to serve users:
 
 `http://your_ip>/html5client/check`
 
-The result should be `{"html5clientStatus":"running"}`.
+The result should be `{"html5clientStatus": "running"}`.
 
 
 ## Current stage
@@ -208,17 +208,6 @@ The HTML5 client will be updated along with other components when you do a
 sudo apt-get update
 sudo apt-get dist-upgrade
 ~~~
-
-
-
-
-
-
-
-
-
-
-
 
 From now on the HTML5 client's package (bbb-html5) will update when you update BigBlueButton, will restart with the other components when you perform `bbb-conf --restart` or `bbb-conf --clean`.
 If you want to manually restart (or stop) it you can do so with the command

@@ -28,7 +28,8 @@ Go to next list item            -  I
 ~~~
 
 A more comprehensive list of NVDA short cuts can be found at :
-http://webaim.org/resources/shortcuts/nvda
+[http://webaim.org/resources/shortcuts/nvda](http://webaim.org/resources/shortcuts/nvda)
+
 
 Due to browser limitations the dialog box to join Mic audio is currently not keyboard accessible.
 The colour picker in the closed caption settings is also currently not keyboard accessible.
@@ -48,7 +49,7 @@ It will contain style classes such as extraSmallFont, smallFont, mediumFont, etc
 
 ## Localization
 
-The HTML5 client supports localizations. The main language file is `en.json`. When there is a new field to localize, we update `en.json`, and then the new field string becomes available for crowdsourced translation on Transifex.com
+The HTML5 client supports localizations. The main language file is `en.json`. When there is a new field to localize, we update `en.json`, and then the new field string becomes available for crowdsourced translation on [Transifex](https://www.transifex.com)
 
 When declaring formatted messages we use  defineMessages and  injectIntl in place of FormattedMessage.
 
