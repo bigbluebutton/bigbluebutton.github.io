@@ -95,7 +95,7 @@ Inside <b>/modifiers</b> we have one file per method. These functions that go in
 
 ### eventHandlers.js
 
-Inside <b>/modifiers</b> we will have a file named eventHandlers.js. This file will import the server object where we register Redis event handlers for. Currently we use a our eventEmitter from <b>/imports/startup/server</b>. This file will contain all the event handlers for the collection. Every event will have a function registered to a string message. Each function handler must receive a callback object. Each function handler must end by returning and invoking the callback like so `return arg.callback();`
+Inside `imports/api/<collection>/server/` we have a file called `eventHandlers.js`. This file will contain all the event handlers for the collection.
 
 /ui
 ---
