@@ -1,20 +1,19 @@
 ---
 layout: page
 title: "Client Configuration"
-category: dev 
+category: install
 date: 2015-04-04 22:22:25
 ---
 
 
 # Introduction
-A detailed discussion of the client's config.xml file. This document shows you how to configure the client to work to your liking, and what options are available.
 
-**Note:** Since 0.81 the config.xml is cached by the BigBlueButton server for any active meeting.  That is, making a change to the config.xml and refreshing the browser will not load the new config.xml.  To see the results of editing the config.xml, create a new meeting and join it, or restart the BigBlueButton server.
+This document shows you how to configure the BigBlueButton 1.1 client by making changes to `config.xml`, the configuration file loaded at runtime by the client.
 
 ## Config.xml
 The config.xml file is located in the deployed client directory, the default location is `/var/www/bigbluebutton/client/conf/config.xml`. If you are working with the source code, it is located in the client's src/conf directory, the default location is `~/dev/source/bigbluebutton/bigbluebutton-client/src/conf/config.xml`.
 
-Open up the config.xml file. This is a line by line discussion of it's properties, applicable for version 0.9.0.
+Here's an overview of the conetns of `config.xml file` for BigBlueButton.
 
 The template can be found [here](https://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-client/resources/config.xml.template).
 

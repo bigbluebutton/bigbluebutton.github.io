@@ -26,7 +26,7 @@ The Client also uploads presentations to Web API.
 
 ### Third-party Applications
 
-Every access to BigBlueButton comes through a front-end portal (we refer to as a third-party application).  BigBlueButton integrates Moodle, Wordpress, Canvas, Sakai, and others (see [third-party integrations](http://bigbluebutton.org/open-source-integrations/)).  From a learning management system (LMS) such as Moodle, teachers can setup BigBlueButton rooms within their course and students can access the rooms and their recordings. 
+Every access to BigBlueButton comes through a front-end portal (we refer to as a third-party application).  BigBlueButton integrates Moodle, Wordpress, Canvas, Sakai, and others (see [third-party integrations](http://bigbluebutton.org/integrations/)).  From a learning management system (LMS) such as Moodle, teachers can setup BigBlueButton rooms within their course and students can access the rooms and their recordings. 
 
 The BigBlueButton comes with some simple [API demos](http://demo.bigbluebutton.org/demo/demo1.jsp), but you really want to use an existing front-end or develop your own using the [BigBlueButton API](/dev/api.html).
 

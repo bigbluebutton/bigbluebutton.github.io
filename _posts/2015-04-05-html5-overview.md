@@ -19,7 +19,7 @@ With the adoption of HTML5, the web browser is becoming the platform for rich cl
 
 Furthermore, with the recent progress in WebRTC, an HTML5-based application can access the user's webcam and microphone **without** the need for plugins.
 
-The long-term vision for the BigBlueButton HTML5 client is to enable users on all platforms supporting an HTML5 browser -- including smartphones and tablets to -- to fully access all of BigBlueButton’s features.
+The long-term vision for the BigBlueButton HTML5 client is to enable users on all platforms supporting an HTML5 browser -- including smartphones and tablets -- to fully access all of BigBlueButton’s features.
 
 This vision means the HTML5 client will, at some point, completely implement the current Flash-based functionality, including the ability to broadcast audio and video from within the browser using web real-time communications (WebRTC) framework.
 
@@ -41,7 +41,7 @@ The following describes our efforts to implement Phase 1: viewing a live BigBlue
 
 ## User Interface Design
 
-We intend the design of the HTML5 client to leverage a more modern, consistent design that would be familiar to users on mobile devices.  Here's a mockup of the intended design.
+We intend the design of the HTML5 client to leverage a more modern, consistent design that would be familiar to users on mobile devices.  Here's an example view.
 
 <br>
 <center>
@@ -65,11 +65,11 @@ The client side is built using React.js
 
 All the code for the HTML5 client is inside the `bigbluebutton/bigbluebutton-html5/` folder.
 
-### LESS and Media Queries
+### SASS and Media Queries
 
-We use [LESS](http://lesscss.org/) precompiler to keep the stylesheets short and readable. LESS is a stylesheet language that is compiled into CSS. It allows us to use variables and mixins. Selectors can be nested, thus making it easier to read the code.
+We use [SASS](http://sass-lang.com/) precompiler to keep the stylesheets short and readable. SASS is a stylesheet language that is compiled into CSS. It allows us to use variables and mixins. Selectors can be nested, thus making it easier to read the code.
 
-The responsive UI of the HTML5 client is constructed using media queries. Each LESS expression is tied to some specific range of devices and window sizes. HTML5 client provides four different views depending on your device (desktop/mobile) and browser orientation (landscape/portrait).
+The responsive UI of the HTML5 client is constructed using media queries. Each SASS expression is tied to some specific range of devices and window sizes.
 
 ### React.js
 
@@ -77,13 +77,7 @@ We use the React front end for Meteor applications.
 
 ### Implementation of the HTML5 Client (server side):
 
-As we run
-
-~~~
-$ ./start.sh
-~~~
-
-we start the Meteor process in the terminal. We initialize Meteor.RedisPubSub and then publish a json request message “get_all_meetings_request” to BigBlueButton-Apps, which triggers the following response:
+As we start the Meteor process in the terminal, we initialize RedisPubSub and then publish a json request message “get_all_meetings_request” to BigBlueButton-Apps, which triggers the following response:
 
 ~~~json
 {
@@ -110,10 +104,10 @@ we start the Meteor process in the terminal. We initialize Meteor.RedisPubSub an
 
 We parse this information and populate a Meetings [MongoDB] collection on the server side for all the ongoing meetings on this BigBlueButton server.
 Similarly we obtain an array of all users, presentations and the chat history for each meeting.
-Using this information we populate our collections Users, Chat, Presentations, Shapes, Slides.
+Using this information we populate our collections Users, Chat, Presentations, Shapes, Slides, etc.
 We are subscribed to receive event messages on the following Redis channel:
 
-  * "bigbluebutton:from-bbb-apps:*"
+  * "bigbluebutton:from-bbb-apps:* "
 
 And we publish event messages on:
 
@@ -123,23 +117,17 @@ And we publish event messages on:
   * "bigbluebutton:to-bbb-apps:voice"
   * "bigbluebutton:to-bbb-apps:whiteboard"
 
-Throughout the meeting we keep receiving json messages via Redis about all the events in the meetings on the BigBlueButton server. We classify them in server/redispubsub.coffee and handle them in server/collection_methods/*
+Throughout the meeting we keep receiving json messages via Redis about all the events in the meetings on the BigBlueButton server.
 The handling procedure typically involves updating the particular document[s] in the collection.
-It is crucial for the HTML5 client that the Mongo database stays up to date. Therefore if the Meteor process is terminated while there are running sessions, we query BigBlueButton-Apps in attempt to update our database and continue serving the meetings. Note that if an HTML5 client user is in a meeting and the Meteor process is stopped, the user will not be able to reconnect to the meeting automatically. The user will have to log in again.
-
-We have disabled autopublishing. We publish manually inside server/publish.coffee based on what information the specific client provides during the subscription phase in lib/router.coffee. This is how we limit clients from receiving data for meetings they are not authorized to attend.
-
-
+It is crucial for the HTML5 client that the Mongo database stays up to date.
 
 ### Behind the curtains:
 
 We rely heavily on the fact that MongoDB on the server side automatically pushes updates to MiniMongo on the client side.
-The client side subscribes to the published collections on the server side. During the subscription, the userId and authToken of the user logged in the client are required. These 2 identifiers together with the meetingId provide enough information for the publishing mechanism to decide what subset of the collections the user logged in the client is authorized to view.
-
-When an event in the meeting occurs the database on the server side is updated and the information is propagated to the client side MiniMongo database. The templates are automatically rendered with the most recent information so the user interface is updated.
+The client side subscribes to the published collections on the server side. During the subscription, the meetingId, userId and authToken of the user logged in the client are required. These 3 identifiers provide enough information for the publishing mechanism to decide what subset of the collections the user logged in the client is authorized to view.
 
 Losing connection:
-(Client side) If a user loses connection while in the meeting, a message appears on the screen informing the user about the disconnection and the reconnection countdown. The client will periodically attempt to reconnect. If the reconnection is successful, the client will reappear with everything up to date. However, if the client is unable to reconnect the user will be asked to log in again.
+(Client side) If a user loses connection while in the meeting, a message appears on the screen informing the user about the disconnection and the reconnection countdown. The client will periodically attempt to reconnect. If the reconnection is successful, the client will reappear with everything up to date.
 
 
 ## API
@@ -149,7 +137,7 @@ Check if the HTML5 client is running and ready to serve users:
 
 `http://your_ip>/html5client/check`
 
-The result should be `{"html5clientStatus":"running"}`.
+The result should be `{"html5clientStatus": "running"}`.
 
 
 ## Current stage
@@ -157,41 +145,68 @@ The result should be `{"html5clientStatus":"running"}`.
 ### Implemented:
   * two way public and private chat
   * viewing presentation with slides, cursor, whiteboard annotations
-  * audio using WebRTC (listen and speak)
+  * audio using WebRTC (listen and speak AND listen only modes)
   * lock settings
-  * listen only audio
+  * polling
+  * breakout rooms
+  * accessibility
+  * localizations
 
 ### Not yet implemented (see more information about these features in the existing Flash client):
   * viewing of desktop sharing video
 
 ### Planned features:
   * webcam video
-  * presenter mode
-  * accessibility
-  * localization
-  * shortcut keys
 
 
 ## Whiteboard
 
-The whiteboard is an SVG element (or PNG if working with BigBlueButton version 0.9) embedded in the page, composed of images, a small red cursor and any shapes drawn by the presenter. Raphaël.js is used to automate most of the SVG manipulation but lots of math is still required on the client side. The information for all of the slides and shapes in the meeting are stored in a collection and are used to keep the whiteboard in the Presenter module up to date so that it matches what all other viewers (and the presenter) see.
+The whiteboard is an SVG element embedded in the page, composed of images, a small red cursor and any shapes drawn by the presenter.
 
-Advantages to SVG:
-
-  * Panning and zooming are relatively easy using SVG because no objects need to be scaled, it is all handled automatically when you simply adjust the viewBox property of the SVG object.
-
-  * SVG, much as its acronym suggests, are scalable. Thus any screen size, big or small, can be adjusted and aside from the the background image, all shapes will be drawn at a greater resolution automatically. Things will just look great at any size.
-
-  * SVG is in the DOM, which means that we can control them through JavaScript. This will make using the HTML5 client for presenting relatively easy to implement at a later stage.
+# Installation
+There are two ways to install the client:
+- setting up a development environment or
+- installing packages for { bbb-html5, Nodejs, MongoDB }
 
 
-## Try out the HTML5 client by installing it from packages
+## Install the HTML5 client from packages
 
-If you are running [BigBlueButton 1.0](/install/install.html), you can easily add the HTML5 client to your server so you can try it out. These are the steps to add it:
+If you are running [BigBlueButton 1.1](/install/install.html), follow these steps:
 
 ~~~
 $ sudo apt-get install bbb-html5
 $ sudo bbb-conf --restart
+~~~
+
+You need to install the latest version of mongodb:
+
+~~~
+$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
+$ echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+sudo apt-get update
+sudo apt-get install -y mongodb-org curl
+sudo service mongod start
+~~~
+
+Then add NodeJS:
+
+~~~
+curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+sudo apt-get install -y nodejs
+~~~
+
+You need only do the above once.  At this point, you can install the current build of the BigBlueButton HTML5 client
+
+~~~
+sudo apt-get install -y bbb-html5
+~~~
+
+After the install, you should be able to navigate to the `<your domain>/demo/demoHTML5.jsp` demo and join via the HTML5 client.
+The HTML5 client will be updated along with other components when you do a
+
+~~~
+sudo apt-get update
+sudo apt-get dist-upgrade
 ~~~
 
 From now on the HTML5 client's package (bbb-html5) will update when you update BigBlueButton, will restart with the other components when you perform `bbb-conf --restart` or `bbb-conf --clean`.
@@ -220,6 +235,3 @@ When making a new component there is a certain structure to implement and existi
 ## Project Structure
 
 Our directory structure is based off of Meteor's, see it here [HTML5 Project Structure](/html/project-structure.html)
-
-
-

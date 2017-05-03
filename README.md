@@ -1,41 +1,25 @@
-This is the developer documentation web site for BigBlueButton.
+This is repository contains the developer documentation for BigBlueButton.  This is located at [http://docs.bigbluebutton.org/](http://docs.bigbluebutton.org/).
 
-This site uses Jekyll to build the documentation site.  You can setup Jekyll to build the website locally so you can preview the site before pushing changes.
+This repository uses Jekyll to build the documentation site.  When making changes to the docs, you should first setup Jekyll so you can build the documentation site locally to preview any changes before you push to git..
 
-### The easy way
+### The easy way to preview (using Docker)
 
-The easy to generate the BigBlueButton documentation locally and see the effect of your changes before committing is to create a Docker image that runs Jekyll.  If you have installed Docker, then create a `Dockerfile` using the following text
+The easy to generate the BigBlueButton documentation locally and see the effect of your changes before committing is to create a Docker image that runs Jekyll.  If you have installed Docker, then you can create a docker image called `github-pages` using the following command
 
-```
-FROM ubuntu:16.04
-MAINTAINER Fred Dixon
+~~~
+docker build -t github-pages .
+~~~
 
-RUN apt-get update
-RUN apt-get -y install build-essential zlib1g-dev ruby-dev ruby nodejs vim \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/
+After the images builds, then if, for example, you've checked out this repository to `~/bigbluebutton.github.io`, you can render it locally using the command
 
-RUN gem install github-pages bundler therubyracer
-
-VOLUME /site
-
-EXPOSE 4000
-
-WORKDIR /site
-ENTRYPOINT ["jekyll"]
-```
-and then build it with the command
-
-    docker build -t github-pages .
-
-This creates a self-contained jekyll server for serving GitHub pages.  After the images builds, then if, for example, you've checked out this repository to `/Users/ffdixon/fred/bigbluebutton.github.io`, you can render it locally using the command
-
-    docker run --rm -v /Users/ffdixon/fred/bigbluebutton.github.io:/site -p 4000:4000 github-pages serve --watch --host 0.0.0.0
+~~~
+docker run --rm -v ~/bigbluebutton.github.io:/site -p 4000:4000 github-pages serve --watch --host 0.0.0.0
+~~~
  
 When you run this command you'll see
 
-```
-$ docker run --rm -v /Users/ffdixon/fred/bigbluebutton.github.io:/site -p 4000:4000 github-pages serve --watch --host 0.0.0.0
+~~~
+$ docker run --rm -v ~/bigbluebutton.github.io:/site -p 4000:4000 github-pages serve --watch --host 0.0.0.0
 Configuration file: /site/_config.yml
 Configuration file: /site/_config.yml
             Source: /site
@@ -47,7 +31,8 @@ Configuration file: /site/_config.yml
 Configuration file: /site/_config.yml
     Server address: http://0.0.0.0:4000/
   Server running... press ctrl-c to stop.
-```
+~~~
+
 And you can now view the site using the URL http://localhost:4000/.  If the Docker approach does not work, you can setup Jekyll using the steps below.
    
 ### Ruby
@@ -96,23 +81,21 @@ $ gem install bundler
 $ rbenv rehash
 ```
 
-### Jekyll
-
 At this point you have the correct version of Ruby installed, now you have to install the site dependencies. Enter the directory bigbluebutton.github.io and type
 
- ```
- bundle install
- ```
+```
+bundle install
+```
 
  This will install all the Jekyll components.  Next, type
 
- ```
- jekyll serve --host=0.0.0.0
- ```
+```
+jekyll serve --host=0.0.0.0
+```
 
 Jekyll will run a server on port 4000 that lets you see a live update of the site after you make a save of any file.
 
- ```
+```
  Freds-Air:bigbluebutton.github.io ffdixon$ jekyll serve
 Configuration file: /Users/ffdixon/bigbluebutton.github.io/_config.yml
             Source: /Users/ffdixon/bigbluebutton.github.io
