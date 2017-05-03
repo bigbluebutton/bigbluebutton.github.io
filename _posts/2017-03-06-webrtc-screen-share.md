@@ -86,41 +86,27 @@ Modify the 2 FreeSWITCH dialplans and add the following contents for each file
 <extension name="public_extensions">
   <condition field="destination_number" expression="^\d{5}-DESKSHARE$">
     <action application="answer"/>
-    <action application="conference" data="${destination_number}@video-mcu-stereo"/>
+    <action application="conference" data="${destination_number}@bbb-screenshare"/>
   </condition>
 </extension>
 ```
 
 Then in a FreeSWITCH terminal (`/opt/freeswitch/bin/fs_cli`) run `reloadxml`
-then.
-
-Confirm that mod_av and mod_verto are enabled in autoload_configs/modules.conf.xml
-
-```
-<load module="mod_av"/>
-<load module="mod_verto"/>
-```
-
-After that you can verify with
-
-```
-freeswitch@machine> module_exists mod_av
-true
-freeswitch@machine> module_exists mod_verto
-true
-```
 
 Make a backup of your wss.pem file in case
 
 `sudo cp /opt/freeswitch/etc/freeswitch/tls/wss.pem /opt/freeswitch/etc/freeswitch/tls/wss.pem.BAK`
 
-Now modify the existing file so the contents match below
+Now change directory to the LetsEncrypt directory for your website, for example 
 
 ```
-/etc/letsencrypt/live/example.bigbluebutton.com/
-cert.pem
-privkey.pem
-chain.pem
+/etc/letsencrypt/live/HOSTNAME/
+```
+
+Run the next command to set up SSL certificates for FreeSWITCH
+
+```
+cat cert.pem privkey.pem chain.pem > /opt/freeswitch/etc/freeswitch/tls/wss.pem
 ```
 
 Restart the FreeSWITCH service `sudo service freeswitch restart`
@@ -138,7 +124,54 @@ red5 {
 
 we have `deskshareip` matching your IP address, if not-- make the change so that red5 will work correctly
 
+## Disabling sound
+
+Edit the file `/opt/freeswitch/conf/autoload_configs/conference.conf.xml` and add a new profile named `bbb-screenshare` with the following contents
+
+```
+<profile name="bbb-screenshare">
+  <param name="domain" value="$${domain}"/>
+  <param name="rate" value="48000"/>
+  <param name="channels" value="2"/>
+  <param name="interval" value="20"/>
+  <param name="energy-level" value="200"/>
+  <!-- <param name="tts-engine" value="flite"/> -->
+  <!-- <param name="tts-voice" value="kal16"/> -->
+  <!-- <param name="muted-sound" value="conference/conf-muted.wav"/>
+  <param name="unmuted-sound" value="conference/conf-unmuted.wav"/>
+  <param name="alone-sound" value="conference/conf-alone.wav"/>
+  <param name="moh-sound" value="local_stream://stereo"/>
+  <param name="enter-sound" value="tone_stream://%(200,0,500,600,700)"/>
+  <param name="exit-sound" value="tone_stream://%(500,0,300,200,100,50,25)"/>
+  <param name="kicked-sound" value="conference/conf-kicked.wav"/>
+  <param name="locked-sound" value="conference/conf-locked.wav"/>
+  <param name="is-locked-sound" value="conference/conf-is-locked.wav"/>
+  <param name="is-unlocked-sound" value="conference/conf-is-unlocked.wav"/>
+  <param name="pin-sound" value="conference/conf-pin.wav"/>
+  <param name="bad-pin-sound" value="conference/conf-bad-pin.wav"/> -->
+  <param name="caller-id-name" value="$${outbound_caller_name}"/>
+  <param name="caller-id-number" value="$${outbound_caller_id}"/>
+  <param name="comfort-noise" value="false"/>
+  <param name="conference-flags" value="video-floor-only|rfc-4579|livearray-sync|minimize-video-encoding"/>
+  <param name="video-second-screen" value="true"/>
+  <param name="video-mode" value="mux"/>
+  <param name="video-layout-name" value="3x3"/>
+  <param name="video-layout-name" value="group:grid"/>
+  <!--<param name="video-canvas-size" value="1920x1080"/>-->
+  <param name="video-canvas-size" value="1280x1024"/>
+  <param name="video-canvas-bgcolor" value="#333333"/>
+  <param name="video-layout-bgcolor" value="#000000"/>
+  <param name="video-codec-bandwidth" value="1mb"/>
+  <param name="video-fps" value="15"/>
+</profile>
+```
+## Modifications to Conference Flags
+
+ Editing the contents of `/opt/freeswitch/conf/autoload_configs/conference.conf.xml`
+ 
+ 
+ Modify the `conference-flags` in your video profile `bbb-screenshare` (or `video-mcu-stereo`) to have the `minimize-video-encoding` value. As well as `manage-inbound-video-bitrate` if it doesn't already exist. And if it doesn't exist add this video parameter `<param name="video-codec-bandwidth" value="1mb"/>`.
 
 # Final notes
 
-  * ensure that the Google Chrome extension you use has your domain whitelisted
+  * If you choose to use share from Google Chrome ensure that you followed the steps to build an extension that has your domain whitelisted
