@@ -152,7 +152,7 @@ Edit the file `/opt/freeswitch/conf/autoload_configs/conference.conf.xml` and ad
   <param name="caller-id-name" value="$${outbound_caller_name}"/>
   <param name="caller-id-number" value="$${outbound_caller_id}"/>
   <param name="comfort-noise" value="false"/>
-  <param name="conference-flags" value="video-floor-only|rfc-4579|livearray-sync|minimize-video-encoding"/>
+  <param name="conference-flags" value="video-floor-only|rfc-4579|livearray-sync|minimize-video-encoding|manage-inbound-video-bitrate"/>
   <param name="video-second-screen" value="true"/>
   <param name="video-mode" value="mux"/>
   <param name="video-layout-name" value="3x3"/>
@@ -165,13 +165,9 @@ Edit the file `/opt/freeswitch/conf/autoload_configs/conference.conf.xml` and ad
   <param name="video-fps" value="15"/>
 </profile>
 ```
-## Modifications to Conference Flags
 
- Editing the contents of `/opt/freeswitch/conf/autoload_configs/conference.conf.xml`
- 
- 
- Modify the `conference-flags` in your video profile `bbb-screenshare` (or `video-mcu-stereo`) to have the `minimize-video-encoding` value. As well as `manage-inbound-video-bitrate` if it doesn't already exist. And if it doesn't exist add this video parameter `<param name="video-codec-bandwidth" value="1mb"/>`.
+# Browser Extensions
 
-# Final notes
+  [Information available here](https://github.com/bigbluebutton/bigbluebutton/tree/master/bbb-screenshare/webrtc-extensions)
 
-  * If you choose to use share from Google Chrome ensure that you followed the steps to build an extension that has your domain whitelisted
+  Build your own extension to allow web browsers to share your screen with BigBlueButton
