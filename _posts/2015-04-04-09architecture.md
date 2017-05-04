@@ -81,7 +81,7 @@ In BigBlueButton, a user can join the voice conference in several ways. Users ca
 
 ## Uploading a Presentation
 
-Uploaded presentations go through a conversion process in order to be displayed inside the Flash client. When the uploaded presentation is an Office document, it needs to be converted into PDF using LibreOffice. The PDF document is then converted in SWF using SWFTools. There are times when a PDF page fails to convert to SWF. In this case, an image snapshot of the page is taken using ImageMagick/GhostScript and the image is converted to PDF then to SWF.
+Uploaded presentations go through a conversion process in order to be displayed inside the Flash client. When the uploaded presentation is an Office document, it needs to be converted into PDF using LibreOffice. The PDF document is then converted in SWF using SWFTools. There are times when a PDF page fails to convert to SWF. In this case, an image snapshot of the page is taken using ImageMagick and the image is converted to PDF then to SWF.
 
 ![Uploading Presentation](/images/presentation-upload.png)
 
