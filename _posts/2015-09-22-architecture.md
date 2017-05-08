@@ -97,7 +97,7 @@ A user can join the voice conference (running in FreeSWITCH) in several ways. Us
 
 Uploaded presentations go through a conversion process in order to be displayed inside the Flash client. When the uploaded presentation is an Office document, it needs to be converted into PDF using LibreOffice. The PDF document is then converted in SWF using SWFTools. There are times when a PDF page fails to convert to SWF. In this case, an image snapshot of the page (as PNG) is taken using pdftocairo the resulting image is converted SWF.
 
-![Uploading Presentation](/images/10/presentation-upload.png)
+![Uploading Presentation](/images/10/presentation-upload-11.png)
 
 The conversion process sends progress messages to the client through the Redis pubsub.
 
