@@ -10,14 +10,14 @@ BigBlueButton is an open source web conferencing system for online learning.  Th
 # Overview
 
 GreenLight is a super simple front-end for your BigBlueButton server.  At its core, Green Light provides a minimalistic web-based interface that lets users
-  
+
    * Create a meeting
    * Invite others to the meeting
    * Join a meeting
 
 Furthermore, if you configure GreenLight to use either Gmail or Twitter for authentication, users can login and record meetings and manage the recordings.
 
-The steps below cover how to use and install GreenLight on your BigBlueButton server. 
+The steps below cover how to use and install GreenLight on your BigBlueButton server.
 
 # The quickest way to create a meeting
 
@@ -43,7 +43,7 @@ GreenLight offers more capabilities if you login (see next section).
 
 # Create and manage recordings
 
-When you login using either your Google or Twitter account, GreenLight lets you create recorded meetings and manage the recordings.  
+When you login using either your Google or Twitter account, GreenLight lets you create recorded meetings and manage the recordings.
 
 > How does GreenLight's authentication work?  It uses a technology called `OAuth` that first has users authenticate with either their Google or Twitter account and, if successful, GreenLight will receive an authentication token with very limited information.  In the case of Twitter, this is only the users name.  In the case of Google, it's the users name and Gmail address.  GreenLight can then use the Gmail address to send out e-mail notifications of when a recording is ready.
 
@@ -83,14 +83,14 @@ You can delete a recording at anytime.
 
 We created the following video to give you an overview of how GreenLight works.
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=yGX3JCv7OVM" target="_blank"><img src="/images/gl-video.png" 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=yGX3JCv7OVM" target="_blank"><img src="/images/gl-video.png"
 alt="Installation Video Walkthrough" border="10" /></a>
 
 # Installing GreenLight
 
 To make it easy to install GreenLight on your BigBlueButton 1,1 (or later) server, we’ve created a Docker image that encapsulates everything into a single container.
 
-GreenLight is built as Ruby on Rails application.  If you don't want to use the Docker image and, instead, run it from source, see the steps at [https://github.com/bigbluebutton/greenlight](https://github.com/bigbluebutton/greenlight).  
+GreenLight is built as Ruby on Rails application.  If you don't want to use the Docker image and, instead, run it from source, see the steps at [https://github.com/bigbluebutton/greenlight](https://github.com/bigbluebutton/greenlight).
 
 These instructions show how to install GreenLight on your BigBlueButton 1.1 (or later) server using Docker.
 
@@ -215,7 +215,7 @@ Using Docker you can start your server with the following command
 # docker run -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight bigbluebutton/greenlight
 ~~~
 
->  For more information on docker commands take a look at [https://docs.docker.com/engine/reference/commandline/docker/](https://docs.docker.com/engine/reference/commandline/docker/). 
+>  For more information on docker commands take a look at [https://docs.docker.com/engine/reference/commandline/docker/](https://docs.docker.com/engine/reference/commandline/docker/).
 
 Before trying to access GreenLight, we'll setup nginx to forward request on `<hostname>:5000/b` to port 5000 locally.  To configure nginx, enter the following command
 
@@ -258,12 +258,12 @@ You can use your own Google account, but since GreenLight will use this account 
 You need a Google account to create an OAuth 2 `CLIENT_ID` and `SECRET`.  The will enable users of GreenLight to authenticate with their own Google account (not yours).
 
 Login to your Google account, and click the following link
-  
+
   [https://console.developers.google.com/](https://console.developers.google.com/)
 
 If you want to see the documentation behind OAuth2 at Google, click the link [https://developers.google.com/identity/protocols/OAuth2](https://developers.google.com/identity/protocols/OAuth2).
 
-First, enable the "Google+ API".  
+First, enable the "Google+ API".
 
    1. Click Dashboard
    1. Click "+Enable APIs"
@@ -271,7 +271,7 @@ First, enable the "Google+ API".
    1. Click "Enable"
    1. Click "Credentials"
 
- Next, 
+ Next,
 
   1. Click "Create credentials
   1. Select "OAuth client ID
@@ -364,7 +364,31 @@ GREENLIGHT_MAIL_NOTIFICATIONS=true
 
 Do the steps in [Applying env file changes](#applying-env-file-changes) to apply the new changes.
 
+## 7. Configuring Slack notifications (optional)
 
+Enabling Slack notifications will allow GreenLight to send notifications to a Slack channel (or user) when:
+
+  1. A recording is published/unpublished.
+  1. A user joins a meeting.
+  1. A meeting ends.
+
+### Registering your Slack Webhook
+
+Follow the steps below to register your Slack Webhook:
+
+  1. Go to [https://slack.com/apps/A0F7XDUAZ-incoming-webhooks](https://slack.com/apps/A0F7XDUAZ-incoming-webhooks).
+  1. Select your team and click 'Configure'.
+  1. Choose a channel, and select 'Add Incoming Webhooks Integration'.
+
+### Enabling Slack notifications
+
+To enable Slack notifications you will need to open your `env` file and insert values for the `SLACK_WEBHOOK` and `SLACK_CHANNEL` environment variables.
+
+`SLACK_WEBHOOK` is the webhook you generated for your team on the [Slack website](https://slack.com/apps/A0F7XDUAZ-incoming-webhooks) (see above).
+
+`SLACK_CHANNEL` is the channel you want the notifications to display to. Keep in mind, channels start with a # symbol (#channel_name). You can also send messages directly to a user with the @ symbol (@username). If you don't specify a channel, the messages will be sent to the channel you selected when registering your webhook.
+
+Do the steps in [Applying env file changes](#applying-env-file-changes) to apply the new changes.
 
 # Administration
 
