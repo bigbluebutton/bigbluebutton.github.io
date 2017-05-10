@@ -390,6 +390,16 @@ To enable Slack notifications you will need to open your `env` file and insert v
 
 Do the steps in [Applying env file changes](#applying-env-file-changes) to apply the new changes.
 
+## 8. Configuring a custom background (optional)
+
+By default, GreenLight will use a standard background for its landing image. If you would like to change this background, you can go into the `env` file and set the `LANDING_BACKGROUND` variable to a URL that points to an image. For best results, use a large image that takes up most of the screen (such as 1280 x 1024).
+
+`LANDING_BACKGROUND=http://www.somewebsite.com/coolbackground.png`
+
+It is important to note that users who have configured custom landing backgrounds on their account will not see the `LANDING_BACKGROUND`, but rather their own.
+
+Do the steps in [Applying env file changes](#applying-env-file-changes) to apply the new changes.
+
 # Administration
 
 
