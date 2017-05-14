@@ -10,9 +10,9 @@ order: 1
 
 # Overview
 
-This document gives an overview of the development effort to create the HTML5 client for BigBlueButton.  
+This document gives an overview of current development build of the HTML5 client for BigBlueButton.  
 
-The current BigBlueButton Flash-based client supports a wide range of browsers (FireFox, Chrome, Safari, Edge, IE, etc.) and wide range of platforms (Windows, Mac OS X, Linux, and Chromebook).  The Flash client also leverages WebRTC if supported by the browser to give teachers and students the best audio experience.  Flash has great platform support as well: Google has built auto-updating capabilities into Chrome from the beginning, and recently Microsoft added auto-updating support IE 11 and their next-generation browser Edge.  
+Today, the Flash-based client for BigBlueButton supports a wide range of browsers (FireFox, Chrome, Safari, Edge, IE, etc.) and wide range of platforms (Windows, Mac OS X, Linux, and Chromebook).  The Flash client also leverages WebRTC if supported by the browser to give teachers and students the best audio experience.  Flash has great platform support as well: Google has built auto-updating capabilities into Chrome from the beginning, and recently Microsoft added auto-updating support IE 11 and their next-generation browser Edge.  
 
 However, Flash does not work on mobile browsers.  And we want to ensure students with mobile devices can participate in a BigBlueButton session.
 
@@ -169,14 +169,9 @@ There are two ways to install the client:
 
 ## Install the HTML5 client from packages
 
-If you are running [BigBlueButton 1.1](/install/install.html), follow these steps:
+To install the current dev version of the BigBlueButton HTML5 client, setup a [BigBlueButton 1.1](/install/install.html) server.  
 
-~~~
-$ sudo apt-get install bbb-html5
-$ sudo bbb-conf --restart
-~~~
-
-You need to install the latest version of mongodb:
+First, you need to install the latest version of mongodb:
 
 ~~~
 $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
@@ -186,21 +181,20 @@ sudo apt-get install -y mongodb-org curl
 sudo service mongod start
 ~~~
 
-Then add NodeJS:
+Then add nodeJS:
 
 ~~~
 curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ~~~
 
-You need only do the above once.  At this point, you can install the current build of the BigBlueButton HTML5 client
+You need only install mongodb and nodeJS once.  At this point, you can install the current build of the BigBlueButton HTML5 client
 
 ~~~
 sudo apt-get install -y bbb-html5
 ~~~
 
-After the install, you should be able to navigate to the `<your domain>/demo/demoHTML5.jsp` demo and join via the HTML5 client.
-The HTML5 client will be updated along with other components when you do a
+After the install, you should be able to navigate to the `<your domain>/demo/demoHTML5.jsp` demo and join via the HTML5 client.  The HTML5 client will be updated along with other components when you do a
 
 ~~~
 sudo apt-get update
