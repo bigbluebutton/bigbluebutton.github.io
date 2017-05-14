@@ -10,22 +10,20 @@ order: 1
 
 # Overview
 
-This document provides information about the BigBlueButton HTML5 client that provides users an additional entry point for users to join a BigBlueButton session.
+This document gives an overview of the development effort to create the HTML5 client for BigBlueButton.  
 
-The BigBlueButton HTML5 client is under development.  
+The current BigBlueButton Flash-based client supports a wide range of browsers (FireFox, Chrome, Safari, Edge, IE, etc.) and wide range of platforms (Windows, Mac OS X, Linux, and Chromebook).  The Flash client also leverages WebRTC if supported by the browser to give teachers and students the best audio experience.  Flash has great platform support as well: Google has built auto-updating capabilities into Chrome from the beginning, and recently Microsoft added auto-updating support IE 11 and their next-generation browser Edge.  
+
+However, Flash does not work on mobile browsers.  And we want to ensure students with mobile devices can participate in a BigBlueButton session.
 
 ## Vision
-With the adoption of HTML5, the web browser is becoming the platform for rich client interfaces.
+The BigBlueButton project wants to provide remote students a high-quality online learning experience regardless of their devices.   Our long-term vision is to deliver an HTML5 client would be work on all devices.
 
-Furthermore, with the recent progress in WebRTC, an HTML5-based application can access the user's webcam and microphone **without** the need for plugins.
+## Scope
 
-The long-term vision for the BigBlueButton HTML5 client is to enable users on all platforms supporting an HTML5 browser -- including smartphones and tablets -- to fully access all of BigBlueButton’s features.
+The first step towards this vision is to create an HTML5 client that students to participate in a BigBlueButton session on browsers that support WebRTC.  Currently, this means FireFox and Chrome on the desktop and laptop, and Chrome on Android devices.  The Safari browser on iOS devices does *not* support WebRTC yet.  We are also building an iOS client for BigBlueButton.
 
-This vision means the HTML5 client will, at some point, completely implement the current Flash-based functionality, including the ability to broadcast audio and video from within the browser using web real-time communications (WebRTC) framework.
-
-Google Chrome on Android devices supports WebRTC (we use these devices for development and testing); however, Apple's Safari browser on iOS devices does not.  It would be great if Apple were to support WebRTC -- or to enable other browsers to use their own rendering engine on iOS -- but until then we (and you) are restricted to using the HTML5 client platforms that support WebRTC.
-
-The existing Flash client will not be replaced by the HTML5 client -- all current functionality of BigBlueButton will remain intact.  We are adding to the functionality by providing users with the ability to join a session (and increasingly participate) through an HTML5 interface (no Flash required).
+The first release Flash client will not be replaced by the HTML5 client -- all current functionality of BigBlueButton will remain intact.  Instead, we are adding to the functionality to connect via an HTML5 client to a BigBlueButton session.  This gives user the ability to have the best experience for their platform.  
 
 ## Phases for Development of HTML5 Client
 
