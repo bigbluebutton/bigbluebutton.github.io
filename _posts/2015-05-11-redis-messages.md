@@ -7,7 +7,7 @@ date: 2015-05-11 17:34:41
 
 # Redis Messages 
 
-The following list is an enumeration of the messages sent/received through redis from the perspective of bbb-akka-apps.  These messages are present in BigBlueButton 1.0-beta (or later).  With these messages, you can integrate your own server-side logic for monitoring the messages in a BigBlueButton session.
+The following list is an enumeration of the messages sent/received through redis from the perspective of bbb-akka-apps.  These messages are present in BigBlueButton 1.0 (or later).  With these messages, you can integrate your own server-side logic for monitoring the messages in a BigBlueButton session.
 
 ## meeting_created_message
 

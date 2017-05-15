@@ -280,6 +280,6 @@ Below you’ll see a series of layouts that following this rule. We are introduc
 <img src="/images/bbb-html5_wireframe_multiple_presentations_full.png" />
 
 
-Thanks for reading through the current progress of the HTML5 client designs. If you have any questions, thoughts or feedback, please email [the BigBlueButton community](http://bigbluebutton.org/support).
+If you have any questions or feedback, please join [the BigBlueButton community](https://bigbluebutton.org/support/community/) and post them to the [bigbluebutton-dev](https://groups.google.com/forum/#!forum/bigbluebutton-dev) mailing list.  We look forward to hearing from you.
 
 
