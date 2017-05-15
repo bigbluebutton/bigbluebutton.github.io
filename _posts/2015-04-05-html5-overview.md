@@ -181,12 +181,6 @@ The client side subscribes to the published collections on the server side. Duri
 
 If a user loses connection while in the meeting, a message appears on the screen informing the user about the disconnection and the reconnection countdown. The client will periodically attempt to reconnect. If the reconnection is successful, the client will reappear with everything up to date.
 
-
-## API
-
-### HTML5 client installed
-
-
 # Installation
 There are two ways to install the client: from packages and from source code (in a development environment).
 
@@ -242,7 +236,7 @@ Later on if you wish to remove the HTML5 client, you can enter the command
 $ sudo apt-get purge bbb-html5
 ~~~
 
-# Development of the HTML5 client
+## Development of the HTML5 client
 
 If you want to explore, develop and improve the HTML5 client, please follow the instructions on [setting up HTML5 development environment](/html/html5-dev.html).
 
@@ -254,7 +248,12 @@ When making a new component there is a certain structure to implement and existi
 
 Our directory structure is based off of Meteor's, see it here [HTML5 Project Structure](/html/project-structure.html)
 
+## Localization
+
+You can contribute to the localization of the HTML5 client. The method is the same as in the Flash client - by using Transifex. For more information, please visit [the localization page](/dev/localization.html). The Transifex project is titled "BigBlueButton HTML5".
+
 # Join the Community
 
 If you have any questions or feedback, please join [the BigBlueButton community](https://bigbluebutton.org/support/community/) and post them to the [bigbluebutton-dev](https://groups.google.com/forum/#!forum/bigbluebutton-dev) mailing list.  We look forward to
  hearing from you.
+
