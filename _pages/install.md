@@ -1,1 +1,1 @@
-../_posts/2015-09-23-install.md
+../_posts/2016-12-08-install.md
