@@ -10,15 +10,15 @@ order: 1
 
 # Overview 
 
-This document gives an overview of long-term vision and scope (the first release) for the development of the HTML5 client for BigBlueButton.  
+This document gives an overview of the long-term vision and scope (the first release) for the development of the HTML5 client for BigBlueButton.
 
 Today, the current BigBlueButton client runs in Flash.  Flash enjoys a wide range of browsers (FireFox, Chrome, Safari, Edge, IE, etc.) and a wide range of platforms (Windows, Mac OS X, Linux, and Chromebook).  The BigBlueButton client has over seven years of development with a focus on stability, usability, and features.  Over that time, the BigBlueButton client has been used by millions of users.  The BigBlueButton client also leverages web real-time communications (WebRTC), if available in the browser, for sending and receiving high-quliaty audio with very good echo cancellation.   
 
-Over the years, support for the Flash runtime has grown as well.  Google always bundled the latest version of Flash into Chrome, and, recently, Microsoft now integrates the Flash runtime into IE11 and into their next-generation browser Edge and automatically updates both via Windows Update.
+Over the years, support for the Flash runtime has grown as well.  Google has always bundled the latest version of Flash into Chrome, and, since recently, Microsoft integrates the Flash runtime into IE11 and into their next-generation browser Edge and automatically updates both via Windows Update.
 
-We always state the goal of the BigBlueButton project is to _provide remote students a high-quality online learning experience_.   However, Flash does not run on mobile browsers, which means those students with only a mobile device can not participate.
+We always state the goal of the BigBlueButton project is to _provide remote students a high-quality online learning experience_.   However, Flash does not run on mobile browsers, which means those students with only a mobile device cannot participate.
 
-We want the BigBlueButton client to run on all mobile clients.  With mobile support we could increase the adoption of BigBlueButton (as measured by how many student could use from a mobile device), increase the size of of the BigBlueButton community (as measured by how the number of educational institutions -- higher education, K12, or corporate learning -- that use BigBlueButton within their learning management systems), and increase the number of developers that build unpon the BigBlueButton platform to create new products and services (as measured by design wins).
+We want the BigBlueButton client to run on all mobile clients.  With mobile support we could increase the adoption of BigBlueButton (as measured by how many students could use it from a mobile device), increase the size of of the BigBlueButton community (as measured by how the number of educational institutions -- higher education, K12, or corporate learning -- that use BigBlueButton within their learning management systems), and increase the number of developers who build upon the BigBlueButton platform to create new products and services (as measured by design wins).
 
 In an online classroom there are teachers and students.  In the BigBlueButton client, these groups of users map into `viewers` and `moderators` respectively. 
 
@@ -36,13 +36,13 @@ The HTML5 client should interoperate with the Flash client.  The instructor shou
 
 The first step towards this vision is to create an HTML5 client that implements all the viewer capabilities except two-way webcams (that will come in a subsequent release).  By focusing first on the viewer capabilities, we can release soon and enable remote students to participate using any mobile device that supports WebRTC.
 
-Andorid devices (phone and tables) provide excellent support for WebRTC.  However, Apple's Safari browser on both desktop and iOS devices does *not* yet support WebRTC (though there are indications this may change as WebKit, the underlying rendering engine for Safari, is getting support for WebRTC).  To support iOS, we are developing an iOS client in a parallel project.  The rest of this document focuses on the HTML5 client.
+Android devices (phone and tablet) provide excellent support for WebRTC.  However, Apple's Safari browser on both desktop and iOS devices does *not* yet support WebRTC (though there are indications this may change as WebKit, the underlying rendering engine for Safari, is getting support for WebRTC).  To support iOS, we are developing an iOS client in a parallel project.  The rest of this document focuses on the HTML5 client.
 
 The BigBlueButton HTML5 client represents a significant step towards the long-term vision.  For users, it would enable Android users to participate in an online class.   For developers, it provides a modern platform for integrating synchronous collaboration into their products and services.
 
 # First Release
 
-The first release of the HTML5 client will have all viewer capabilities of the Flash client in BigBlueButton 1.1 (except two-way webcams).  This means FireFox and Chrome on the desktop, Chrome on the Chromebook, and Chrome on an Andorid phone or table can
+The first release of the HTML5 client will have all viewer capabilities of the Flash client in BigBlueButton 1.1 (except two-way webcams).  This means FireFox and Chrome on the desktop, Chrome on the Chromebook, and Chrome or FireFox on an Android phone or tablet can
 
   * send/receive high-quality, low latency audio
   * engage in public/private chat
@@ -63,7 +63,7 @@ For the first release, we are also supporting presentation capabilities to
   * Advance the slides
   * Go to a specific slide
 
-Like BigBlueButton itself, the HTML5 client will be fully open source.  From the developers perspective, this means you can integrate and extend the HTML5 client.  To support developers, we provide documentation on the architecture, setting up a development environment, and installing on a BigBlueButton 1.1-RC (or later) server.  We also provide in the [bigbluebutton-dev](https://bigbluebutton.org/support/community/) mailing list from the core BigBlueButton devs.
+Like BigBlueButton itself, the HTML5 client will be fully open source.  From the developers' perspective, this means you can integrate and extend the HTML5 client.  To support developers, we provide documentation on the architecture, setting up a development environment, and installing on a BigBlueButton 1.1-RC (or later) server.  We also provide support in the [bigbluebutton-dev](https://bigbluebutton.org/support/community/) mailing list from the core BigBlueButton devs.
 
 For a video walkthrough of what capabilities are in place as of 2017-05-15, click the image below of the HTML5 client.
 
@@ -73,10 +73,10 @@ You can try out the latest build of the BigBlueButton HTML5 client at the test s
 
 # Future Releases
 
-Building upon the first release, we plan to add the additional presenter and moderator capabilities to the HTML5 client, including.
+Building upon the first release, we plan to add the additional presenter and moderator capabilities to the HTML5 client, including:
 
   * Upload slides
-  * Whitebaord controls (pan/zoom and annotations, such as draw and text tool)
+  * Whiteboard controls (pan/zoom and annotations, such as draw and text tool)
   * Two-way webcam
   * Share desktop
   * All remaining moderator capabilities, including
@@ -102,7 +102,7 @@ For more details on the design of the user experience, see [HTML5 Design](/html/
 
 The core architecural components of the HTML5 client are 
   * [Meteor.js](http://meteor.com) in [ECMA2015](http://www.ecma-international.org/ecma-262/6.0/)
-The client side is built using React.js
+for communication between client and server.
   * [React.js](https://facebook.github.io/react/) for rendering the user interface in an efficient manner
   * [MongoDB](https://www.mongodb.com/) for keeping the state of each BigBlueButton client consistent with the BigBlueButton server
   * [WebRTC](https://webrtc.org/) for sending/receiving audio and video
@@ -154,7 +154,7 @@ As we start the Meteor process in the terminal, we initialize RedisPubSub and th
 ~~~
 
 
-We parse this information and populate a Meetingscollection on the server side (stored in  MongoDB) for all the ongoing meetings on this BigBlueButton server.
+We parse this information and populate a Meetings collection on the server side (stored in  MongoDB) for all the ongoing meetings on this BigBlueButton server.
 Similarly we obtain an array of all users, presentations and the chat history for each meeting.
 Using this information we populate our collections Users, Chat, Presentations, Shapes, Slides, etc.
 We are subscribed to receive event messages on the following Redis channel:
@@ -188,7 +188,7 @@ If a user loses connection while in the meeting, a message appears on the screen
 
 
 # Installation
-There are two ways to install the client: from packages and for the development environment.
+There are two ways to install the client: from packages and from source code (in a development environment).
 
 ## From packages
 
