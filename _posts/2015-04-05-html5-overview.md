@@ -225,10 +225,12 @@ The HTML5 client's package (bbb-html5) will restart with the other components wh
 If you want to manually restart (or stop) it you can do so with the command
 
 ~~~
-$ sudo service bbb-html5 restart
+$ sudo systemctl restart bbb-html5.service
 ~~~
 
-The logs for the component are located at `/var/log/bigbluebutton/html5/html5.log` and the code for the client can be found at `/usr/share/meteor/html5/`.
+The logs for the component are located at `/var/log/bigbluebutton/html5/html5client.log` and the code for the client can be found at `/usr/share/meteor/bundle/`.
+
+The configuration files for the client are located at `/usr/share/meteor/bundle/programs/server/assets/app/config`. If you modify them, you will need to restart bbb-html5.service for the new configuration to take effect.
 
 Later on if you wish to remove the HTML5 client, you can enter the command
 
