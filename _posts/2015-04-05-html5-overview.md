@@ -182,13 +182,11 @@ The client side subscribes to the published collections on the server side. Duri
 If a user loses connection while in the meeting, a message appears on the screen informing the user about the disconnection and the reconnection countdown. The client will periodically attempt to reconnect. If the reconnection is successful, the client will reappear with everything up to date.
 
 # Installation
-There are two ways to install the client: from packages and from source code (in a development environment).
+The steps below install the HTML5 client from packages.  If you are interested in development of the HTML5 client, after following the steps below see: [setting up HTML5 development environment](/html/html5-dev.html).
 
-## From packages
+You can install the current developer build of the HTML5 client on your existing [BigBlueButton 1.1](/install/install.html) server using the steps below.  As this is a development build, we do not recommend it for production use.  If you are interested modifying the the HTML5 client, after following the steps below see: [setting up HTML5 development environment](/html/html5-dev.html).
 
-You can install the current developer build of the HTML5 client on your existing [BigBlueButton 1.1](/install/install.html) server using the steps below.  As this is a development build, we do not recommend it for production use.
-
-First, you need to install the latest version of mongodb:
+To isntall the HTML5 client, first install the latest version of mongodb:
 
 ~~~
 $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
@@ -205,13 +203,11 @@ curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ~~~
 
-You need only install mongodb and nodeJS once.  Next, install BigBlueButton HTML5 client
+You need only install mongodb and nodeJS once.  Next, to install BigBlueButton HTML5 client
 
 ~~~
 sudo apt-get install -y bbb-html5
 ~~~
-
-The BigBlueButton configuration utility `bbb-conf` will automatically stop/restart BigBlueButton. 
 
 As we update the BigBlueButton HTML5 client, you'll be able to update it along along with other components with the standard
 
@@ -237,10 +233,6 @@ Later on if you wish to remove the HTML5 client, you can enter the command
 ~~~
 $ sudo apt-get purge bbb-html5
 ~~~
-
-## Development of the HTML5 client
-
-If you want to explore, develop and improve the HTML5 client, please follow the instructions on [setting up HTML5 development environment](/html/html5-dev.html).
 
 ## Coding Practices
 
