@@ -1,3 +1,6 @@
 _site/
 *.swp
 .DS_store
+Gemfile.lock
+.DS_Store
+._.DS_Store

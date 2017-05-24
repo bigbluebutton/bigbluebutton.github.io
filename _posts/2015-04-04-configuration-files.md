@@ -74,6 +74,13 @@ Debug output from the sip red5 application, which is the red5 server component (
 
 Debug output from the video red5 application, which is the red5 server component for supporting video in the BigBlueButton client.
 
+```
+ /usr/share/red5/log/bigbluebutton.log
+```
+
+Debug output from the bigbluebutton red5 application, which contains information on client connections to the red5 server.
+
+
 # Tomcat 7
 
 ## Configuration files

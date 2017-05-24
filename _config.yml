@@ -6,7 +6,7 @@ subtitle: 'Open Source Web Conferencing'
 disqus_shortname: ''
 
 # if you use google analytics, add your tracking id here
-google_analytics_id: ''
+google_analytics_id: 'UA-4901813-1'
 
 # Enable/show navigation. There are there options:
 #   0 - always hide
@@ -22,11 +22,11 @@ sections: [
     ['overview', 'Overview'],
     ['install', 'Install'],
     ['dev', 'Develop'],
-    ['html', 'HTML5 (dev)'],
     ['mobile', 'Mobile (dev)'],
     ['support', 'Support'],
-    ['labs', 'Labs'],
-    ['1.0', '1.0-beta'],
+    ['html', 'HTML5 (dev)'],
+    ['labs', 'Labs (dev)'],
+    ['1.1', '1.1 (beta)'],
     ['post', 'Posts']
 ]
 
@@ -38,16 +38,16 @@ baseurl: ''
 permalink: none
 
 # Syntax highlighting
-highlighter: pygments
+highlighter: rouge
 
 # Since these are pages, it doesn't really matter
 future: true
 
 # Exclude non-site files
-exclude: ['bin', 'README.md']
+exclude: ['bin', 'vendor', 'README.md']
 
 # Use the redcarpet Markdown renderer
-markdown: redcarpet
+markdown: kramdown
 redcarpet:
     extensions: [
         'no_intra_emphasis',

@@ -14,34 +14,33 @@ If you would like to help translate BigBlueButton into your language, or you see
 
   1. Create an account on [transifex.com](https://www.transifex.com/)
   1. Visit the [BigBlueButton project](https://www.transifex.com/projects/p/bigbluebutton/) on Transifex. You'll see a list of languages ready for translation.
-  1. Click the name of the language you wish to translate
+  1. Click the name of the language you wish to translate  
 
-    If you don't find your language, please post on the [BigBlueButton Mailing List](http://groups.google.com/group/bigbluebutton-dev/topics?gvc=2) requesting it be added.
+     If you don't find your language, please post on the [BigBlueButton Mailing List](http://groups.google.com/group/bigbluebutton-dev/topics?gvc=2) requesting it be added.
 
   1. Click 'Join team' to join the localization team for your language
 
+     The 'Join team' button is in the upper right-hand corner.
 
-    The 'Join team' button is in the upper right-hand corner.
+     ![join](/images/join.png)
 
-    ![join](/images/join.png)
-
-    At this point, Transifex will send an e-mail to the coordinator for BigBlueButton localization requesting approval. You should receive approval very quickly.
+     At this point, Transifex will send an e-mail to the coordinator for BigBlueButton localization requesting approval. You should receive approval very quickly.
 
   1. Once approved, click the 'bbbResource.properties' link
 
-    ![bbbResources.properties](/images/image1.png)
+     ![bbbResources.properties](/images/image1.png)
 
-    You'll see a dialog box where you can begin translation.
+     You'll see a dialog box where you can begin translation.
 
   1. Click the 'Translate Now' button
 
-    ![approved](/images/approved.png)
+     ![approved](/images/approved.png)
 
-    At this point, you'll see the Transifex localization window for your language.
+     At this point, you'll see the Transifex localization window for your language.
 
-    ![translate](/images/translate.png)
+     ![translate](/images/translate.png)
 
-    You can now click on a string in the left-hand panel and enter/review the translation for it (see  [intro to web editor](http://support.transifex.com/customer/portal/articles/972120-introduction-to-the-web-editor)).
+     You can now click on a string in the left-hand panel and enter/review the translation for it (see  [intro to web editor](http://support.transifex.com/customer/portal/articles/972120-introduction-to-the-web-editor)).
 
 **Translation tips:**
 
