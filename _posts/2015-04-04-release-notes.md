@@ -5,23 +5,27 @@ category: support
 date: 2015-04-04 22:26:10
 ---
 
-# Release 1.1-RC
+# Release 1.1
 
-Released: April 28, 2017 ([Installation Instructions](/overview/install.html))
+Released: May 24, 2017 ([Installation Instructions](/overview/install.html))
 
-This release adds the following new capabilities:
+This release improved BigBlueButton with the following new features:
 
-  * **Breakout Rooms** - Instructors can now group and place students into breakout rooms for a given period of time.  The insturctor can also monitor activity in the breakout rooms with a one-button click to join the audio of any breakout room (see [video](https://www.youtube.com/watch?v=q5N-lcocJss)).
+  * **Breakout Rooms** - Instructors can now group and place students into breakout rooms for a given period of time.  The insturctor can also monitor activity in the breakout rooms with a one-button listen or join (see [video](https://www.youtube.com/watch?v=q5N-lcocJss)).
 
-  * **Closed Captioning** - BigBlueButton now supports live captioning during a session for students with hearing disabilities.  After the session finishes, the live captions will appear as subtitles in the recordings (see [video](https://www.youtube.com/watch?v=vDpurrMgal0)).
+  * **Closed Captioning** - BigBlueButton now supports live captioning during a session for students with hearing disabilities.  After the session finishes, the live captions appear in the recordings as subtitles (see [video](https://www.youtube.com/watch?v=vDpurrMgal0)).
 
-  * **Faster Desktop Sharing** - The desktop sharing is faster and now captures the cursor.  It also runs again with Chrome browser (see [video](https://www.youtube.com/watch?v=xTFuEvmEqB0)).
+  * **Faster Desktop Sharing** - The new screen sharing works with all browsers, is faster, and now captures the cursor (see [video](https://www.youtube.com/watch?v=xTFuEvmEqB0)).
 
-  * **Ubuntu 16.04 64-bit** - BigBlueButton now installs on Ubuntu 16.04 64-bit.  It also includes the latest version of red5 and FreeSWITH 1.6.
+  * **Thumbnails in recordings** - The 'getRecordings' API call now returns thumbnail images for the recordings.
 
-For details of these updates and others (with screen shots) see [overview](/overview/overview.html).
+  * **GreenLight** - The BigBlueButton server now has an easy to use front-end to create meetings and manage recordings (see [GreenLight](/install/green-light.html)).
 
-See also [issues fixed in BigBlueButton 1.1](https://github.com/bigbluebutton/bigbluebutton/issues?q=milestone%3A%22Release+1.1.0%22+is%3Aclosed).  
+  * **Ubuntu 16.04 64-bit** - BigBlueButton now installs on Ubuntu 16.04 64-bit, the most recent long term support release.  BigBlueBlutton now uses systemd to start/stop all of its components.
+
+For details (and a list of other features) now in this release see [overview](/overview/overview.html).
+
+See [issues fixed in BigBlueButton 1.1](https://github.com/bigbluebutton/bigbluebutton/issues?q=milestone%3A%22Release+1.1.0%22+is%3Aclosed).  
 
 
 # Release 1.0

@@ -63,7 +63,7 @@ For the first release, we are also supporting presentation capabilities to
   * Advance the slides
   * Go to a specific slide
 
-Like BigBlueButton itself, the HTML5 client will be fully open source.  From the developers' perspective, this means you can integrate and extend the HTML5 client.  To support developers, we provide documentation on the architecture, setting up a development environment, and installing on a BigBlueButton 1.1-RC (or later) server.  We also provide support in the [bigbluebutton-dev](https://bigbluebutton.org/support/community/) mailing list from the core BigBlueButton devs.
+Like BigBlueButton itself, the HTML5 client will be fully open source.  From the developers' perspective, this means you can integrate and extend the HTML5 client.  To support developers, we provide documentation on the architecture, setting up a development environment, and installing on a BigBlueButton 1.1 (or later) server.  We also provide support in the [bigbluebutton-dev](https://bigbluebutton.org/support/community/) mailing list from the core BigBlueButton devs.
 
 For a video walkthrough of what capabilities are in place as of 2017-05-15, click the image below of the HTML5 client.
 
