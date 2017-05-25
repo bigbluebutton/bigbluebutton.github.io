@@ -11,21 +11,21 @@ Released: May 24, 2017 ([Installation Instructions](/overview/install.html))
 
 This release improved BigBlueButton with the following new features:
 
-  * **Breakout Rooms** - The instructor can now group students into breakout rooms to increase collaboration.  The instructor can monitor activity in the breakout rooms (listen or join) and set a time limit for collaboration. (see [video](https://www.youtube.com/watch?v=q5N-lcocJss)).
+  * **Breakout Rooms** - The instructor can now group students into breakout rooms to increase collaboration and can monitor activity in the breakout rooms (listen or join). (see [video](https://www.youtube.com/watch?v=q5N-lcocJss)).
 
-  * **Closed Captioning** - BigBlueButton now supports the entry (by a stenographer) of live captioning during a session for students with hearing disabilities.  When BigBlueButton generates a recording for the session, the captions as subtitles in the recording (see [video](https://www.youtube.com/watch?v=vDpurrMgal0)).
+  * **Closed Captioning** - BigBlueButton improves accessibility support by enabling stenographer (logged in as a moderator) to enter live captioning for students.  After the session finishes, the captions will appear as subtitles in the recording (see [video](https://www.youtube.com/watch?v=vDpurrMgal0)).
 
-  * **Faster Screen Sharing** - Screen sharing is faster, works with all browsers, and captures the cursor (see [video](https://www.youtube.com/watch?v=xTFuEvmEqB0)).
+  * **Faster Screen Sharing** - Screen sharing now is faster, works with all browsers, and captures the cursor (see [video](https://www.youtube.com/watch?v=xTFuEvmEqB0)).
 
-  * **Thumbnails in recordings** - The 'getRecordings' API call now returns URLs for thumbnail images of the first three slides.  This makes it easier for users to locate the desired recording in a front-end interface to BigBlueButton.
+  * **Thumbnails in recordings** - The 'getRecordings' API call now returns thumbnails (150 x 112 images) of the first three slides.  Front-end applications can use the thumbnails to make it easier for users to locate their desired recording.
 
-  * **GreenLight** - GreenLight is a full feature and easy-to-use frontend that you can install on the BigBlueButton server (see [GreenLight](/install/green-light.html)).  GreenLight is written in Rails 5 (see [source](https://github.com/bigbluebutton/greenlight)).
+  * **GreenLight** - GreenLight is an easy-to-use frontend for quicly creating meetings and managing recordings.  Using Docker, you can [install GreenLight](/install/green-light.html) on the BigBlueButton server itself.  GreenLight is written in Rails 5 (see [source](https://github.com/bigbluebutton/greenlight)).
 
-  * **Packaging for Ubuntu 16.04 64-bit** - New and updated packages for Ubuntu 16.04 64-bit with simplifed start/stop scripts (thanks to systemd).
+  * **Ubuntu 16.04 packages** - BigBlueButton has updated packages for Ubuntu 16.04 64-bit with simplifed start/stop scripts (thanks to systemd).
 
-For a detailed description of the new features, see [overview](/overview/overview.html).
+For a detailed list of new features in this release, see [overview](/overview/overview.html).
 
-For a complete list of what's been enhances and fixes in this release, see [issues fixed in BigBlueButton 1.1](https://github.com/bigbluebutton/bigbluebutton/issues?q=milestone%3A%22Release+1.1.0%22+is%3Aclosed).  
+See also [issues fixed in BigBlueButton 1.1](https://github.com/bigbluebutton/bigbluebutton/issues?q=milestone%3A%22Release+1.1.0%22+is%3Aclosed).  
 
 
 # Release 1.0
