@@ -9,7 +9,7 @@ date: 2015-04-04 22:26:10
 
 Released: May 24, 2017 ([Installation Instructions](/overview/install.html))
 
-This release improved BigBlueButton with the following new features:
+This release adds the following new features to the BigBlueButton platform:
 
   * **Breakout Rooms** - The instructor can now group students into breakout rooms to increase collaboration and can monitor activity in the breakout rooms (listen or join). (see [video](https://www.youtube.com/watch?v=q5N-lcocJss)).
 
@@ -17,11 +17,11 @@ This release improved BigBlueButton with the following new features:
 
   * **Faster Screen Sharing** - Screen sharing now is faster, works with all browsers, and captures the cursor (see [video](https://www.youtube.com/watch?v=xTFuEvmEqB0)).
 
-  * **Thumbnails in recordings** - The 'getRecordings' API call now returns thumbnails (150 x 112 images) of the first three slides.  Front-end applications can use the thumbnails to make it easier for users to locate their desired recording.
+  * **Thumbnails images** - The 'getRecordings' API call now returns thumbnail images (150 x 112) of the first three slides uploaded by the presenter in the session.  Front-end applications can use these thumbnails to make it easier for users to scan through a list of recordings.
 
-  * **GreenLight** - GreenLight is an easy-to-use frontend for quicly creating meetings and managing recordings.  Using Docker, you can [install GreenLight](/install/green-light.html) on the BigBlueButton server itself.  GreenLight is written in Rails 5 (see [source](https://github.com/bigbluebutton/greenlight)).
+  * **GreenLight** - GreenLight is a new frontend that makes it easy for users to quickly creating meetings, invite others, and manage recordings.  Using Docker, you can [install](/install/green-light.html) GreenLight on the BigBlueButton server itself (no need for a separate server).  GreenLight is written in Rails 5 (see [source](https://github.com/bigbluebutton/greenlight)).
 
-  * **Ubuntu 16.04 packages** - BigBlueButton has updated packages for Ubuntu 16.04 64-bit with simplifed start/stop scripts (thanks to systemd).
+  * **Ubuntu 16.04 packages** - This release installs on Ubuntu 16.04 (the most recent long-term support release from Canonical).  This release also uses systemd for simpler start/stop scripts for individual components.
 
 For a detailed list of new features in this release, see [overview](/overview/overview.html).
 
