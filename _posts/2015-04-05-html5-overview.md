@@ -69,7 +69,7 @@ For a video walkthrough of what capabilities are in place as of 2017-05-15, clic
 
 [![BigBlueButton HTML5 client overview (dev release)](https://img.youtube.com/vi/wD7KCdFRm00/0.jpg)](https://www.youtube.com/watch?v=wD7KCdFRm00" BigBlueButton HTML5 client overview (dev release)")
 
-You can try out the latest build of the BigBlueButton HTML5 client at the test server [https://test.bigbluebutton.org/](https://test.bigbluebutton.org/).
+You can try out the latest build of the BigBlueButton HTML5 client at the test server [https://test.bigbluebutton.org/](https://test.bigbluebutton.org/).  This developer release does not yet support viewing desktop sharing from the presenter.
 
 # Future Releases
 
