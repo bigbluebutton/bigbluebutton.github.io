@@ -364,7 +364,23 @@ GREENLIGHT_MAIL_NOTIFICATIONS=true
 
 Do the steps in [Applying env file changes](#applying-env-file-changes) to apply the new changes.
 
-## 7. Configuring Slack notifications (optional)
+## 7. Enabling Uploading to Youtube (optional)
+
+In order to allow users to upload their recordings to [Youtube](https://www.youtube.com/), you will need to configure GreenLight to work with Google OAuth2. To do this, see the section on [Google OAuth](#google-oauth).
+
+Once you have GreenLight successfully authenticating users with OAuth2, you will need to enable the Youtube Data API within the [Google Developer Console](https://console.developers.google.com). This will allow GreenLight to ask users for permission to access their Youtube account (and upload recordings).
+
+In order to enable the Youtube Data API, you should follow these steps:
+
+   1. Click Dashboard
+   1. Click "+Enable APIs"
+   1. Click "Youtube Data API"
+   1. Click "Enable"
+   1. Click "Credentials"
+
+Users will be required to authenticate again in order to allow Youtube access. If a user attempts to upload a recording without access, GreenLight will prompt them to reauthenticate.
+
+## 8. Configuring Slack notifications (optional)
 
 Enabling Slack notifications will allow GreenLight to send notifications to a Slack channel (or user) when:
 
@@ -390,7 +406,7 @@ To enable Slack notifications you will need to open your `env` file and insert v
 
 Do the steps in [Applying env file changes](#applying-env-file-changes) to apply the new changes.
 
-## 8. Configuring a custom background (optional)
+## 9. Configuring a custom background (optional)
 
 By default, GreenLight will use a standard background for its landing image. If you would like to change this background, you can go into the `env` file and set the `LANDING_BACKGROUND` variable to a URL that points to an image. For best results, use a large image that takes up most of the screen (such as 1280 x 1024).
 
@@ -415,11 +431,12 @@ To have GreenLight automatically restart when you star the host server, first st
 and then run Greenlight with the following docker command
 
 ~~~
-# docker run -d -p 5000:80 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight bigbluebutton/greenlight
+# docker run -d -p 5000:80 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production -v $(pwd)/assets:/usr/src/app/public/system --env-file env --name greenlight bigbluebutton/greenlight
 ~~~
 
 The parameter `--restart=unless-stopped` will automatically restart the docker image when you restart the computer.
 
+If you don't wish to save user content (such as custom landing images) locally on your sever, you can remove `-v $(pwd)/assets:/usr/src/app/public/system` from the command. They will then be saved in Greenlight's public directory within the docker container.
 
 ## Applying env File Changes
 
@@ -435,7 +452,7 @@ To stop GreenLight and remove the existing container named 'greenlight', do the 
 Then use the same command to start the server
 
 ~~~
-# docker run -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight bigbluebutton/greenlight
+# docker run -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production -v $(pwd)/assets:/usr/src/app/public/system --env-file env --name greenlight bigbluebutton/greenlight
 ~~~
 
 
@@ -457,7 +474,7 @@ To stop currently running Greenlight instance:
 Then use the command to start the BigBlueButton server:
 
 ~~~
-# docker run -d -p 5000:80 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight bigbluebutton/greenlight
+# docker run -d -p 5000:80 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production -v $(pwd)/assets:/usr/src/app/public/system --env-file env --name greenlight bigbluebutton/greenlight
 ~~~
 
 
@@ -474,7 +491,7 @@ PORT=5000
 Run this command:
 
 ~~~
-# docker run -d -p 5000:5000 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight --network=host bigbluebutton/greenlight
+# docker run -d -p 5000:5000 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production -v $(pwd)/assets:/usr/src/app/public/system --env-file env --name greenlight --network=host bigbluebutton/greenlight
 ~~~
 
 ## Check Greenlight configuration
