@@ -187,7 +187,7 @@ Next, we need to tell GreenLight how to connect to your BigBlueButton server and
     Secret: <secret>
 ~~~
 
-Of course, the URL for your BigBlueButton server will be different than demo.bigbluebutton.org and your <secret> will be a long string of characters.
+Of course, the URL for your BigBlueButton server will be different than demo.bigbluebutton.org and your secret will be a long string of characters.
 
 Assign the values for `URL` and `Secret` to `BIGBLUEBUTTON_ENDPOINT` and  `BIGBLUEBUTTON_SECRET` in the `env` file.  It should look something like below
 
@@ -262,6 +262,8 @@ Login to your Google account, and click the following link
   [https://console.developers.google.com/](https://console.developers.google.com/)
 
 If you want to see the documentation behind OAuth2 at Google, click the link [https://developers.google.com/identity/protocols/OAuth2](https://developers.google.com/identity/protocols/OAuth2).
+
+![greenlight-google-plus-api](/images/gl-google-plus-api.png)
 
 First, enable the "Google+ API".
 
@@ -364,11 +366,13 @@ GREENLIGHT_MAIL_NOTIFICATIONS=true
 
 Do the steps in [Applying env file changes](#applying-env-file-changes) to apply the new changes.
 
-## 7. Enabling Uploading to Youtube (optional)
+## 7. Enabling uploading to Youtube (optional)
 
 In order to allow users to upload their recordings to [Youtube](https://www.youtube.com/), you will need to configure GreenLight to work with Google OAuth2. To do this, see the section on [Google OAuth](#google-oauth).
 
 Once you have GreenLight successfully authenticating users with OAuth2, you will need to enable the Youtube Data API within the [Google Developer Console](https://console.developers.google.com). This will allow GreenLight to ask users for permission to access their Youtube account (and upload recordings).
+
+![greenlight-youtube-data-api](/images/gl-youtube-data-api.png)
 
 In order to enable the Youtube Data API, you should follow these steps:
 
