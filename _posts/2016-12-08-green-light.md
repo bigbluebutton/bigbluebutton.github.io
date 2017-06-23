@@ -218,7 +218,19 @@ BIGBLUEBUTTON_SECRET=<secret>
 
 Save the changes to `env` file.
 
-## 4. Run GreenLight Server
+## 4. Install Webhooks on your BigBlueButton Server
+
+Some of the features in GreenLight require webhooks to be installed on your BigBlueButton server.
+
+To install webhooks, run the following command on your BigBlueButton server:
+
+`# apt-get install bbb-webhooks`
+
+You will also need to tell GreenLight that you have enabled webhooks on your BigBlueButton server. To do this, change the `GREENLIGHT_USE_WEBHOOKS` environment variable in your `env` file from `false` to `true`.
+
+`GREENLIGHT_USE_WEBHOOKS=true`
+
+## 5. Run GreenLight Server
 
 Using Docker you can start your server with the following command
 
@@ -260,7 +272,7 @@ And restart nginx once more
 GreenLight is now the default landing page of your server.
 
 
-## 5. Configure OAuth2 (optional)
+## 6. Configure OAuth2 (optional)
 
 You only need to configure (at least) one OAuth provider to use authenticated meetings. GreenLight supports Google and Twitter.
 
@@ -326,7 +338,7 @@ See [Applying env File Changes](#applying-env-file-changes) section to enable yo
 
 Once an OAuth provider is configured GreenLight will allow users to login and use authenticated meetings.
 
-## 6. Configuring email notifications (optional)
+## 7. Configuring email notifications (optional)
 
 There are three steps to configuring email notifications:
 
@@ -378,7 +390,7 @@ GREENLIGHT_MAIL_NOTIFICATIONS=true
 
 Do the steps in [Applying env file changes](#applying-env-file-changes) to apply the new changes.
 
-## 7. Enabling uploading to Youtube (optional)
+## 8. Enabling uploading to Youtube (optional)
 
 In order to allow users to upload their recordings to [Youtube](https://www.youtube.com/), you will need to configure GreenLight to work with Google OAuth2. To do this, see the section on [Google OAuth](#google-oauth).
 
@@ -396,7 +408,7 @@ In order to enable the Youtube Data API, you should follow these steps:
 
 Users will be required to authenticate again in order to allow Youtube access. If a user attempts to upload a recording without access, GreenLight will prompt them to reauthenticate.
 
-## 8. Configuring Slack notifications (optional)
+## 9. Configuring Slack notifications (optional)
 
 Enabling Slack notifications will allow GreenLight to send notifications to a Slack channel (or user) when:
 
@@ -422,7 +434,7 @@ To enable Slack notifications you will need to open your `env` file and insert v
 
 Do the steps in [Applying env file changes](#applying-env-file-changes) to apply the new changes.
 
-## 9. Configuring a custom background (optional)
+## 10. Configuring a custom background (optional)
 
 By default, GreenLight will use a standard background for its landing image. If you would like to change this background, you can go into the `env` file and set the `LANDING_BACKGROUND` variable to a URL that points to an image. For best results, use a large image that takes up most of the screen (such as 1280 x 1024).
 
