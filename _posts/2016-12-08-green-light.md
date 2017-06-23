@@ -63,9 +63,16 @@ As moderator, you can record any segment of the meeting by pressing the Start/St
 
 If you are using FireFox or Chrome, GreenLight will notify you on the desktop (outside the browser) when someone is waiting to join your personal meeting.
 
+## Realtime updates on active meetings
+Not only does GreenLight keep track of your previous meetings, it also lets you know when they are active, along with how many users and moderators are currently in them.
+
+![greenlight-active-meetings](/images/gl-active-meetings.png)
+
 ## Email notifications of finished recordings
 
-After the meeting finishes, you will receive an e-mail notification when the recordings is ready.
+After a meeting finishes, you will receive an e-mail notification when the recordings is ready.
+
+![greenlight-recording-ready-email](/images/gl-recording-ready-email.png)
 
 ## Manage visibility of recordings: Public, Unlisted, and Not Published
 
@@ -75,6 +82,11 @@ You can change the visibility of recordings anytime within GreenLight (you need 
 
 **Public** | **Unlisted** | **Not Published**
 Everyone can view the recording URL at the meeting page. | Only users who have the recording URL can view it. |No one can view the recording.
+
+## Share recordings
+You can use the share button to share your recordings via email or upload to [Youtube](www.youtube.com) (provided they have a video component).
+
+![greenlight-youtube-upload](/images/gl-youtube-upload.png)
 
 ## Delete recordings
 You can delete a recording at anytime.
