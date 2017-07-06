@@ -244,7 +244,7 @@ Using Docker you can start your server with the following command
 Before trying to access GreenLight, we'll setup nginx to forward request on `<hostname>:5000/b` to port 5000 locally.  To configure nginx, enter the following command
 
 ~~~
-# docker run --rm bigbluebutton/greenlight cat ./scripts/greenlight.nginx > /etc/bigbluebutton/nginx/greenlight.nginx
+# docker run --rm bigbluebutton/greenlight cat ./scripts/greenlight.nginx | sudo tee  /etc/bigbluebutton/nginx/greenlight.nginx
 ~~~
 
 And restart nginx to have it read the new configuration file.
