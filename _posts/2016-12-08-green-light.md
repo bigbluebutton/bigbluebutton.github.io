@@ -332,6 +332,36 @@ TWITTER_ID=SOj8AkIdeqJuP2asfbbGSBk0
 TWITTER_SECRET=elxXJZqPVexBFf9ZJsafd4UTSzpr5AVmcH7Si5JzeHQ9th
 ~~~
 
+### LDAP OAuth
+
+GreenLight is able to authenticate users using an external LDAP server. To connect GreenLight to an LDAP server, you will have to provide values for the environment variables under the 'LDAP Login Provider' section in the `env` file. You need to provide all of the values for LDAP authentication to work correctly.
+
+`LDAP_SERVER` is the server host.
+
+`LDAP_PORT` is the server port (commonly 389).
+
+`LDAP_METHOD` is the authentication method, either 'plain' (default), 'ssl' or 'tls'.
+
+`LDAP_UID` is the name of the attribute that contains the user id. For example, OpenLDAP uses 'uid'.
+
+`LDAP_BASE` is the location to look up users.
+
+`LDAP_BIND_DN` is the default account to use for user lookup.
+
+`LDAP_PASSWORD` is the password for the account to perform user lookup.
+
+Here are some example settings using an OpenLDAP server.
+
+~~~
+LDAP_SERVER=host
+LDAP_PORT=389
+LDAP_METHOD=plain
+LDAP_UID=uid
+LDAP_BASE='dc=example,dc=org'
+LDAP_BIND_DN='cn=admin,dc=example,dc=org'
+LDAP_PASSWORD=password
+~~~
+
 If your server is still running you will need to recreate the container for changes to take effect.
 
 See [Applying env File Changes](#applying-env-file-changes) section to enable your new configuration.
