@@ -166,6 +166,12 @@ Edit the file `/opt/freeswitch/conf/autoload_configs/conference.conf.xml` and ad
 </profile>
 ```
 
+# Modify verto.nginx
+
+  Modify the `proxy_pass` line's IP address from `127.0.0.1` to yours.
+  
+  It should look like `proxy_pass https://<IP_ADDRESS>:8082;` with `<IP_ADDRESS>` being your external IP address
+
 # Browser Extensions
 
   [Information available here](https://github.com/bigbluebutton/bigbluebutton/tree/master/bbb-screenshare/webrtc-extensions)
