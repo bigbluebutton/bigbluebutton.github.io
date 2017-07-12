@@ -68,27 +68,20 @@ You will need to manually install the red5 app for webrtc deskshare video stream
 
 ### Configure FreeSWITCH
 
-Modify the 2 FreeSWITCH dialplans and add the following contents for each file
+Create the following dialplan in `/opt/freeswitch/etc/freeswitch/dialplan/default/bbb_screenshare.xml`
 
-/opt/freeswitch/etc/freeswitch/dialplan/default.xml
-
-```
-<extension name="public_extensions">
-  <condition field="destination_number" expression="^\d{5}-DESKSHARE$">
-    <action application="transfer" data="${destination_number} XML public"/>
-  </condition>
-</extension>
-```
-
-/opt/freeswitch/etc/freeswitch/dialplan/public.xml
 
 ```
-<extension name="public_extensions">
-  <condition field="destination_number" expression="^\d{5}-DESKSHARE$">
-    <action application="answer"/>
-    <action application="conference" data="${destination_number}@bbb-screenshare"/>
-  </condition>
-</extension>
+<include>
+    <extension name="bbb_screenshare">
+      <condition field="destination_number" expression="^(\d{5}-SCREENSHARE)$">
+        <action application="set" data="jitterbuffer_msec=20:400"/>
+        <action application="answer"/>
+        <action application="conference" data="${destination_number}@bbb-screenshare"/>
+      </condition>
+    </extension>
+</include>
+
 ```
 
 Then in a FreeSWITCH terminal (`/opt/freeswitch/bin/fs_cli`) run `reloadxml`
@@ -111,18 +104,22 @@ cat cert.pem privkey.pem chain.pem > /opt/freeswitch/etc/freeswitch/tls/wss.pem
 
 Restart the FreeSWITCH service `sudo service freeswitch restart`
 
-## Configure Akka Apps
+## Configure BBB-Web bigbluebutton.properties
 
-Verify that in `~/dev/bigbluebutton/akka-bbb-apps/src/main/resources/application.conf`
+Verify that in `~/dev/bigbluebutton/bigbluebutton-web/grails-app/conf/bigbluebutton.properties`
 
 ```
-red5 {
-    deskshareip="192.168.0.109"
-    deskshareapp="video-broadcast"
-}
+# The server where FS will publish as RTMP stream
+screenshareRtmpServer=[IP of your Red5 server]
+
+# The Red5 app that receives the published RTMP stream
+screenshareRtmpBroadcastApp=video-broadcast
+
+# The suffix of our verto screenshare conference.
+# Convention is {voiceConf}-SCREENSHARE
+screenshareConfSuffix=-SCREENSHARE
 ```
 
-we have `deskshareip` matching your IP address, if not-- make the change so that red5 will work correctly
 
 ## Disabling sound
 
@@ -168,9 +165,9 @@ Edit the file `/opt/freeswitch/conf/autoload_configs/conference.conf.xml` and ad
 
 # Modify verto.nginx
 
-  Modify the `proxy_pass` line's IP address from `127.0.0.1` to yours.
+Edit `/etc/bigbluebutton/nginx/verto.nginx`. Modify the `proxy_pass` line's IP address from `127.0.0.1` to yours.
   
-  It should look like `proxy_pass https://<IP_ADDRESS>:8082;` with `<IP_ADDRESS>` being your external IP address
+It should look like `proxy_pass https://<IP_ADDRESS>:8082;` with `<IP_ADDRESS>` being your external IP address
 
 # Browser Extensions
 
