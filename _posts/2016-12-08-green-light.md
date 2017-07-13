@@ -336,21 +336,21 @@ TWITTER_SECRET=elxXJZqPVexBFf9ZJsafd4UTSzpr5AVmcH7Si5JzeHQ9th
 
 GreenLight is able to authenticate users using an external LDAP server. To connect GreenLight to an LDAP server, you will have to provide values for the environment variables under the 'LDAP Login Provider' section in the `env` file. You need to provide all of the values for LDAP authentication to work correctly.
 
-`LDAP_SERVER` is the server host.
+> `LDAP_SERVER` is the server host.
 
-`LDAP_PORT` is the server port (commonly 389).
+> `LDAP_PORT` is the server port (commonly 389).
 
-`LDAP_METHOD` is the authentication method, either 'plain' (default), 'ssl' or 'tls'.
+> `LDAP_METHOD` is the authentication method, either 'plain' (default), 'ssl' or 'tls'.
 
-`LDAP_UID` is the name of the attribute that contains the user id. For example, OpenLDAP uses 'uid'.
+> `LDAP_UID` is the name of the attribute that contains the user id. For example, OpenLDAP uses 'uid'.
 
-`LDAP_BASE` is the location to look up users.
+> `LDAP_BASE` is the location to look up users.
 
-`LDAP_BIND_DN` is the default account to use for user lookup.
+> `LDAP_BIND_DN` is the default account to use for user lookup.
 
-`LDAP_PASSWORD` is the password for the account to perform user lookup.
+> `LDAP_PASSWORD` is the password for the account to perform user lookup.
 
-Here are some example settings using an OpenLDAP server.
+Here are some example settings using an [OpenLDAP](http://www.openldap.org/) server.
 
 ~~~
 LDAP_SERVER=host
@@ -535,6 +535,20 @@ Then use the command to start the BigBlueButton server:
 # docker run -d -p 5000:80 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production -v $(pwd)/assets:/usr/src/app/public/system --env-file env --name greenlight bigbluebutton/greenlight
 ~~~
 
+
+## Disabling guest access
+
+A user must login to GreenLight to access features such as meeting updates, preferences, recording management, and more. However, GreenLight will allow unauthenticated users to create meetings.
+
+If you wish to disable guest access and only allow authenticated users to create meetings, you should uncomment and set the `DISABLE_GUEST_ACCESS` environment variable in the `env` file to `true`.
+
+`DISABLE_GUEST_ACCESS=true`
+
+This will **not** prevent unauthenticated users from joining meetings created by authenticated users if they have been given the invite URL.
+
+Disabling guest access will also set a new landing page that welcomes the user to GreenLight, and prompts them to login.
+
+Do the steps in [Applying env file changes](#applying-env-file-changes) to apply the new changes.
 
 # Troubleshooting
 
