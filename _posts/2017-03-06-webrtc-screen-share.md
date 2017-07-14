@@ -77,6 +77,8 @@ Create the following dialplan in `/opt/freeswitch/etc/freeswitch/dialplan/defaul
       <condition field="destination_number" expression="^(\d{5}-SCREENSHARE)$">
         <action application="set" data="jitterbuffer_msec=20:400"/>
         <action application="answer"/>
+        <action application="video_decode" data="wait"/>
+        <action application="set" data="conference_force_canvas_size=${video_width}x${video_height}"/>
         <action application="conference" data="${destination_number}@bbb-screenshare"/>
       </condition>
     </extension>
@@ -154,7 +156,6 @@ Edit the file `/opt/freeswitch/conf/autoload_configs/conference.conf.xml` and ad
   <param name="video-mode" value="mux"/>
   <param name="video-layout-name" value="3x3"/>
   <param name="video-layout-name" value="group:grid"/>
-  <!--<param name="video-canvas-size" value="1920x1080"/>-->
   <param name="video-canvas-size" value="1280x1024"/>
   <param name="video-canvas-bgcolor" value="#333333"/>
   <param name="video-layout-bgcolor" value="#000000"/>
