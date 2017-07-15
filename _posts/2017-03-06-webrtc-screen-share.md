@@ -164,25 +164,10 @@ Edit the file `/opt/freeswitch/conf/autoload_configs/conference.conf.xml` and ad
 </profile>
 ```
 
-Create `/opt/freeswitch/conf/dialplan/public/bbb_screenshare.xml` with the following file
-
-```
-<include>
-
-    <extension name="bbb_webrtc_call" continue="true">
-      <condition field="${sip_via_protocol}" expression="^wss?$" break="on-false">
-        <action application="set" data="bbb_authorized=true"/>
-        <action application="transfer" data="${destination_number} XML default"/>
-      </condition>
-    </extension>
-
-</include>
-```
-
 Edit `/opt/freeswitch/conf/autoload_configs/verto.conf.xml` and change the profie name to `<profile name="public-v4">` and `<profile name="public-v6">
 `.
 
-If the server is behind NAT, then uncomment the lines for ext-rtp-ip and give it the following value
+If the BigBlueButton server is behind NAT, then uncomment the lines for ext-rtp-ip and give it the following value
 
 ```
 <param name="ext-rtp-ip" value="$${external_rtp_ip}"/>
