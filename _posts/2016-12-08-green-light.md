@@ -552,6 +552,30 @@ Do the steps in [Applying env file changes](#applying-env-file-changes) to apply
 
 # Troubleshooting
 
+## Logging
+
+GreenLight logs to `log/production.log` within the docker container by default. This means that if you recreate your docker container, you will lose all of the logs. To prevent this, you can mount the log directory in the containter to a directory on your host machine. This will mirror the `production.log` file from within the container and save to the host machine instead.
+
+To save logs to the host machine, you should include the following option when running GreenLight.
+~~~
+# -v $(pwd)/log:/usr/src/app/log
+~~~
+
+This makes the full run command:
+~~~
+# docker run -d -p 5000:80 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production -v $(pwd)/assets:/usr/src/app/public/system -v $(pwd)/log:/usr/src/app/log --env-file env --name greenlight bigbluebutton/greenlight
+~~~
+
+You can then find `production.log` at `~/greenlight/log`.
+
+If you want to access logs within the docker container without mounting the log directory, you can enter to docker container to retrieve the logs using:
+
+~~~
+# docker exec -i -t greenlight /bin/bash
+~~~
+
+If you don't want GreenLight send logs to `log/production.log`, you can configure it to log to the console instead. To do this, you should comment out the `DISABLE_RAILS_LOG_TO_STDOUT` environment variable in the `env` file.
+
 ## Launching Greenlight in the Host Network
 
 If you want to run GreenLight on the host network, you can edit the env file and add this line:
