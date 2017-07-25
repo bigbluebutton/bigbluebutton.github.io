@@ -167,7 +167,7 @@ Edit the file `/opt/freeswitch/conf/autoload_configs/conference.conf.xml` and ad
 Edit `/opt/freeswitch/conf/autoload_configs/verto.conf.xml` and change the profie name to `<profile name="public-v4">` and `<profile name="public-v6">
 `.
 
-If the BigBlueButton server is behind NAT, then uncomment the lines for ext-rtp-ip and give it the following value
+If the BigBlueButton server is behind NAT, then uncomment both lines (in public-v4 and public-v6) for ext-rtp-ip and give it the following value
 
 ```
 <param name="ext-rtp-ip" value="$${external_rtp_ip}"/>
