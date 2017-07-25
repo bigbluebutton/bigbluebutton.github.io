@@ -18,13 +18,13 @@ font-family: Monaco,Menlo,Consolas,"Courier New",monospace;
 
 ## Overview
 
-Note: This is still in development
+Note: These steps are still in development and not ready yet.  They are currently being modified for BigBlueButton 2.0-dev (an announcement of availiability will be posted to bigbluebutton-dev).
 
 ## Prerequisites
 
-### A BigBlueButton 1.1 server with HTTPS/SSL
+### A BigBlueButton 2.0-dev server with HTTPS/SSL
 
-[BigBlueButton setup](/install/install.html)
+** Installation instructions to be availabile soon **
 
 [Configuring HTTPS on BigBlueButton](/install/install.html#configuring-https-on-bigbluebutton)
 
