@@ -316,7 +316,7 @@ The `GOOGLE_OAUTH2_HD` environment varaible is optional and can be used to restr
 
 ~~~
 GOOGLE_OAUTH2_HD=example.com
-~~
+~~~
 
 ### Twitter OAuth
 
