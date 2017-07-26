@@ -312,6 +312,12 @@ GOOGLE_OAUTH2_ID=1093993040802-jjs03khpdl4dfasffq7hj6ansct5.apps.googleuserconte
 GOOGLE_OAUTH2_SECRET=KLlBNy_b9pvBGasf7d5Wrcq
 ~~~
 
+The `GOOGLE_OAUTH2_HD` environment varaible is optional and can be used to restrict Google authentication to a specific Google Apps hosted domain.
+
+~~~
+GOOGLE_OAUTH2_HD=example.com
+~~
+
 ### Twitter OAuth
 
 You need a Twitter account to create an OAuth 2 client ID and client secret. The will enable users of GreenLight to authenticate with their own Twitter account (not yours).
