@@ -444,7 +444,7 @@ In order to enable the Youtube Data API, you should follow these steps:
 
 Users will be required to authenticate again in order to allow Youtube access. If a user attempts to upload a recording without access, GreenLight will prompt them to reauthenticate.
 
-Lastly, you will also need to change the `ENABLE_YOUTUBE_UPLOADING` varaible in the `env` file from `false` to `true`. This will make sure GreenLight asks users for permission to access their Youtube accounts when authenticating.
+Lastly, you will also need to change the `ENABLE_YOUTUBE_UPLOADING` variable in the `env` file from `false` to `true`. This will make sure GreenLight asks users for permission to access their Youtube accounts when authenticating.
 
 ## 9. Configuring Slack notifications (optional)
 
