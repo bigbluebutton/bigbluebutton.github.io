@@ -363,8 +363,8 @@ LDAP_SERVER=host
 LDAP_PORT=389
 LDAP_METHOD=plain
 LDAP_UID=uid
-LDAP_BASE='dc=example,dc=org'
-LDAP_BIND_DN='cn=admin,dc=example,dc=org'
+LDAP_BASE=dc=example,dc=org
+LDAP_BIND_DN=cn=admin,dc=example,dc=org
 LDAP_PASSWORD=password
 ~~~
 
