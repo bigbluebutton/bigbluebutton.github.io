@@ -30,7 +30,7 @@ The Client also uploads presentations to Web API.
 
 The HTML5 client and server is built using [Meteor](https://www.meteor.com/) and communicates with the other components of the system through redis pubsub. 
 
-See the [HTML5 Overview] (/html/html5-overview.html) document for more info.
+See the [HTML5 Overview](/html/html5-overview.html) document for more info.
 
 ### BBB Web 
 
