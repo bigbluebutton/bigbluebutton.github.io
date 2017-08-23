@@ -131,7 +131,7 @@ First, you need to install Docker.  The Docker documentation is the best resourc
 
 Once you have followed the installation steps for Docker, check you have the latest version using the following command (it you should see version 17 or later).
 
-~
+~~~
 # docker version
 Client:
  Version:      17.06.0-ce
@@ -149,7 +149,7 @@ Server:
  Built:        Fri Jun 23 21:19:04 2017
  OS/Arch:      linux/amd64
  Experimental: false
-~
+~~~
 
 ## 2. Install GreenLight
 
