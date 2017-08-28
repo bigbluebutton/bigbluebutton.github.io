@@ -163,7 +163,7 @@ Next, setup directory for running GreenLight.
 We need to create a template environment file for GreenLight that we can put in all the settings.  To both install GreenLight and create a template environment file (called `env`), run the following command:
 
 ~~~
-# docker run --rm bigbluebutton/greenlight cat ./env > env
+# docker run --rm bigbluebutton/greenlight cat ./sample.env > env
 ~~~
 
 
