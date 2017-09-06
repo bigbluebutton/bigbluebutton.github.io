@@ -106,6 +106,8 @@ GreenLight is built as Ruby on Rails application.  If you don't want to use the 
 
 These instructions show how to install GreenLight on your BigBlueButton 1.1 (or later) server using Docker.
 
+We highly suggest using Docker to install and deploy GreenLight, but if you must, there are [instructions](http://docs.bigbluebutton.org/install/green-light.html#installing-greenlight-without-docker) for installing from source.
+
 ## Prerequisites
 
 Before you install, you need the following
@@ -583,6 +585,24 @@ If you want to access logs within the docker container without mounting the log 
 ~~~
 
 If you don't want GreenLight send logs to `log/production.log`, you can configure it to log to the console instead. To do this, you should comment out the `DISABLE_RAILS_LOG_TO_STDOUT` environment variable in the `env` file.
+
+## Installing GreenLight without Docker
+
+Although GreenLight was designed to be used with Docker, it is possible to install it from source onto a BigBlueButton server. This should only be done if Docker is not an option, and we highly recommend using Docker to deploy GreenLight.
+
+1. Log into your BigBlueButton server as root.
+2. Ensure you have both Ruby and Ruby on Rails installed on your BigBlueButton server.
+3. Clone the [GreenLight repo](https://github.com/bigbluebutton/greenlight) and switch into the `/greenlight` directory.
+4. Open up the `Gemfile` and move the `dotenv-rails` gem outside of the test/development block.
+5. Install bundler if you need to (`gem install bundler`), then run `bundle`. If it fails to bundle the `pg` gem, run `sudo apt-get install libpq-dev` then try again.
+6. Copy the file at `/scripts/greenlight.nginx` to `/etc/bigbluebutton/nginx` on your BigBlueButton server. To apply the change, restart nginx using `systemctl restart nginx`.
+7. Return to the `/greenlight` directory and copy the `sample.env` file to `.env` using `cp sample.env .env`.
+8. Fill out the `.env` file. For information on how to do this, see the [ Enter BigBlueButton Credentials](http://docs.bigbluebutton.org/install/green-light.html#3-enter-bigbluebutton-credentials) section. Make sure to uncomment the BigBlueButton server credentials. To generate the `SECRET_KEY_BASE`, run `rake secret` from within the `/greenlight` directory.
+9. Uncomment the `RELATIVE_URL_ROOT=/b` line within the `.env` file.
+10. Migrate the database using `RAILS_ENV=production rake db:migrate`.
+11. Precompile the assets by running `rails assets:precompile`.
+12. Start the Greenlight server using `rails s -p 5000 -e production`.
+13. Navigate to your host at `/b` to use GreenLight.
 
 ## Launching Greenlight in the Host Network
 
