@@ -27,6 +27,7 @@ sections: [
     ['html', 'HTML5 (dev)'],
     ['labs', 'Labs (dev)'],
     ['1.1', '1.1 (beta)'],
+    ['2.0', '2.0 (beta)'],
     ['post', 'Posts']
 ]
 
