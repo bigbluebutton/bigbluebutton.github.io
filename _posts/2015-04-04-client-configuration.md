@@ -22,20 +22,23 @@ The template can be found [here](https://github.com/bigbluebutton/bigbluebutton/
 <localeversion suppressWarning="false">0.9.0</localeversion>
 <version>VERSION</version>
 <help url="http://HOST/help.html"/>
+<javaTest url="http://HOST/testjava.html"/>
 <porttest host="HOST" application="video/portTest" timeout="10000"/>
-<application uri="rtmp://HOST/bigbluebutton" host="http://HOST/bigbluebutton/api/enter" />
-<language userSelectionEnabled="true" />
-<skinning enabled="true" url="branding/css/theme.css.swf" />
+<bwMon server="HOST" application="video/bwTest"/>    
+<application uri="rtmp://HOST/bigbluebutton" host="http://HOST/bigbluebutton/api/enter"/>
+<language userSelectionEnabled="true" rtlEnabled="true"/>
+<skinning enabled="true" url="http://HOST/client/branding/css/BBBDefault.css.swf?v=VERSION" />
 <shortcutKeys showButton="true" />
 <browserVersions chrome="CHROME_VERSION" firefox="FIREFOX_VERSION" flash="FLASH_VERSION" java="1.7.0_51" />
 <layout showLogButton="false" defaultLayout="bbb.layout.name.defaultlayout"
-    showToolbar="true" showFooter="true" showMeetingName="true" showHelpButton="true"
-    showLogoutWindow="true" showLayoutTools="true" confirmLogout="true"
-    showRecordingNotification="true"/>
+        showToolbar="true" showFooter="true" showMeetingName="true" showHelpButton="true" 
+        showLogoutWindow="true" showLayoutTools="true" confirmLogout="true" showNetworkMonitor="false"
+        showRecordingNotification="true" logoutOnStopRecording="false"/>
 <meeting muteOnStart="false" />
-<lock disableCamForLockedUsers="false" disableMicForLockedUsers="false" disablePrivateChatForLockedUsers="false"
-    disablePublicChatForLockedUsers="false" lockLayoutForLockedUsers="false" lockOnJoin="true"
-	lockOnJoinConfigurable="false"/>
+<breakoutRooms enabled="true" record="false" />
+<logging enabled="true" target="trace" level="info" format="{dateUTC} {time} :: {name} :: [{logLevel}] {message}" uri="http://HOST/log" logPattern=".*"/>
+<lock disableCam="false" disableMic="false" disablePrivateChat="false" 
+      disablePublicChat="false" lockLayout="false" lockOnJoin="true" lockOnJoinConfigurable="false"/>
 ~~~
 
 
@@ -67,9 +70,13 @@ The IP and Red5 application the client uses to test whether necessary ports are 
 The URL that the client queries for the user's information when the user joins a meeting.
 
 ~~~xml
-<language userSelectionEnabled="true" />
+<language userSelectionEnabled="true" rtlEnabled="true" />
 ~~~
-This enables/disables the language selector combo box in the client. Enable this if you would like your users to be able to select the language of their BigBlueButton client themselves instead of the language being detected automatically for them.
+
+|Name                  | Default Value | Description |
+|:---------------------|:--------------|:------------|
+| userSelectionEnabled | true          | This enables/disables the language selector combo box in the client. Enable this if you would like your users to be able to select the language of their BigBlueButton client themselves instead of the language being detected automatically for them. |
+| rtlEnabled           | true          | If set to true, if using a languages that have `direction="rtl"` in `locales.xml` will fully change the layout direction to right from left reading mode. |
 
 ~~~xml
 <skinning enabled="true" url="branding/css/theme.css.swf" />
@@ -88,9 +95,9 @@ This is used to determine whether a browser or plugin is out-of-date. The values
 
 ~~~xml
 <layout showLogButton="false" defaultLayout="bbb.layout.name.defaultlayout"
-            showToolbar="true" showFooter="true" showMeetingName="true" showHelpButton="true" 
-            showLogoutWindow="true" showLayoutTools="true" confirmLogout="true"
-            showRecordingNotification="true"/>
+        showToolbar="true" showFooter="true" showMeetingName="true" showHelpButton="true" 
+        showLogoutWindow="true" showLayoutTools="true" confirmLogout="true"
+        showRecordingNotification="true" logoutOnStopRecording="false"/>
 ~~~
 
 |Name             | Default Value | Description|
@@ -102,8 +109,11 @@ This is used to determine whether a browser or plugin is out-of-date. The values
 | showMeetingName | true          | Show or hide the meeting name that is in the top toolbar. |
 | showHelpButton  | true          | Show the help button on the main toolbar. |
 | showLogoutWindow | true         | Show the logout window when the client logs out. |
+| showLayoutTools | true          | Show the layout options toolbar. |
 | confirmLogout   | true          | Show a confirmation pop-up when a user wishes to logout. |
-| showRecordingNotification | true          | Show or hide a notification on the top toolbar when recording is active. |
+| showNetworkMonitor        | false | Show a network monitor button in the top bar. |
+| showRecordingNotification | true  | Show or hide a notification on the top toolbar when recording is active. |
+| logoutOnStopRecording     | true  | Immediately logout all users when the recording is stopped. |
 
 ~~~xml
 <meeting muteOnStart="false" />
@@ -111,19 +121,68 @@ This is used to determine whether a browser or plugin is out-of-date. The values
 This determines whether people should join the audio muted by default.
 
 ~~~xml
-<lock disableCamForLockedUsers="false" disableMicForLockedUsers="false" disablePrivateChatForLockedUsers="false" 
-    disablePublicChatForLockedUsers="false" lockLayoutForLockedUsers="false" lockOnJoin="true" lockOnJoinConfigurable="false"/>
+<breakoutRooms enabled="true" record="false" />
+~~~
+Determines whether breakout rooms feature si enabled and if recording is enabled for them.
+
+~~~xml
+<logging enabled="true" target="trace" level="info" format="{dateUTC} {time} :: {name} :: [{logLevel}] {message}" uri="http://HOST/log" logPattern=".*"/>
+~~~
+It contains the logging configuration. Mainly used for debugging purpose.
+
+|Name             | Default Value | Description|
+|:----------------|:--------------|:-----------|
+| enabled    | true  | It is preferred to set this to false in production if you don't need client logs. |
+| target     | trace | By default logs are output to the Flash Player console. |
+| level      | info  | Only info logs are written by default. |
+| format     | "{dateUTC} {time} :: {name} :: [{logLevel}] {message} | The default log format. |
+| uri        | none | This option only works when the target is set to to `server`, it should be the broker of your logs. |
+| logPattern | true  | RegExp pattern for which to enable logging. |
+
+The following logging targets are available
+
+| Value            | Description |
+|:----------------|:------------|
+| trace     | Write logs using trace function. |
+| logwindow | Write logs in LogWindow view. |
+| server    | Send logs to the server. |
+| jsnlog    | Uses jsnlog javascript library (experimental). |
+
+The possible level values are: none, fatal_only, fatal, error_only, error, warn_only, warn, info_only, info, debug_only, debug, all
+
+The format token are described in the table below.
+
+| Name            | Description |
+|:----------------|:------------|
+| {dateUTC}     | he UTC date in the format YYYY/MM/DD |
+| {gmt}         | The time offset of the statement to the Greenwich mean time in the format GMT+9999 |
+| {logLevel}    | The level of the log statement (example | DEBUG). |
+| {logTime}     | The UTC time in the format HH:MM:SS.0MS |
+| {message}     | The message of the logger. |
+| {message_dqt} | The message of the logger, double quote escaped. |
+| {name}        | The name of the logger. |
+| {time}        | The time in the format H:M:S.MS |
+| {timeUTC}     | The UTC time in the format H:M:S.MS |
+| {shortName}   | The short name of the logger. |
+| {shortSWF}    | The SWF file name. |
+| {swf}         | The full SWF path. |
+| {person}      | The Person that wrote this statement. |
+| {atPerson}    | he Person that wrote this statement with the 'at' prefix. |
+
+~~~xml
+<lock disableCam="false" disableMic="false" disablePrivateChat="false" 
+      disablePublicChat="false" lockLayout="false" lockOnJoin="true" lockOnJoinConfigurable="false"/>
 ~~~
 
 |Name             | Default Value | Description|
 |:----------------|:--------------|:-----------|
-| disableCamForLockedUsers         | false | Default camera lock state for users that have been locked. |
-| disableMicForLockedUsers         | false | Default microphone lock state for users that have been locked. |
-| disablePrivateChatForLockedUsers | false | Default private chat lock state for users that have been locked. |
-| disablePublicChatForLockedUsers  | false | Default public chat lock state for users that have been locked. |
-| lockLayoutForLockedUsers         | false | Default layout lock state for users that have been locked. |
-| lockOnJoin                       | true  | Lock users when they join. |
-| lockOnJoinConfigurable           | false | Show or hide the check box for lock-on-join. |
+| disableCam         | false | Default camera lock state for users that have been locked. |
+| disableMic         | false | Default microphone lock state for users that have been locked. |
+| disablePrivateChat | false | Default private chat lock state for users that have been locked. |
+| disablePublicChat  | false | Default public chat lock state for users that have been locked. |
+| lockLayout         | false | Default layout lock state for users that have been locked. |
+| lockOnJoin         | true  | Lock users when they join. |
+| lockOnJoinConfigurable | false | Show or hide the check box for lock-on-join. |
 
 ## Modules
 
@@ -137,7 +196,7 @@ The BigBlueButton client is comprised of one or more modules. You can specify wh
 | url             | The url to the compiled module .swf file. Usually has a version appended to it, to prevent caching of old version when a new version of BigBlueButton is released. |
 | uri             | The uri the module will connect to using rtmp. This is usually your bbb server ip with /bigbluebutton appended to it. Apart from making sure the ip is correct, you don't have to worry about it. |
 | dependsOn       | Optional parameter that should be included in the case that the module being loaded depends on another BigBlueButton module being loaded first in order to work properly. |
-| position        | Location of module on the screen.  There are a number of pre-defined positions that you can assign a module to change its layout. This is superseded by the Layout Module. |
+| baseTabIndex    | The accessibilty starting tab index for the module components. |
 
 
 ### Chat Module
@@ -145,44 +204,54 @@ The BigBlueButton client is comprised of one or more modules. You can specify wh
 ~~~xml
 <module name="ChatModule" url="http://HOST/client/ChatModule.swf?v=VERSION" 
 	uri="rtmp://HOST/bigbluebutton" 
-	dependsOn="UsersModule"
-	privateEnabled="true"
-	fontSize="12"
+	dependsOn="UsersModule"	
+	privateEnabled="true"  
+	fontSize="14"
+	baseTabIndex="801"
 	colorPickerIsVisible="false"
-	position="top-right"
+	maxMessageLength="1024"
 />
 ~~~
 
 |Name                  | Default Value | Description|
 |:---------------------|:--------------|:-----------|
 | privateEnabled       | true          | Set to true to enable private chat. |
-| fontSize             | 12            | Set the default size of the chat messages. |
+| fontSize             | 14            | Set the default size of the chat messages. |
 | colorPickerIsVisible | false         | Show or hide the chat message color picker. |
+| maxMessageLength     | 1024          | Set the maximum legnth of a message to be sent. |
+
 
 ### Users Module
 ~~~xml
 <module name="UsersModule" url="http://HOST/client/UsersModule.swf?v=VERSION"
 	uri="rtmp://HOST/bigbluebutton"
 	allowKickUser="false"
-	enableRaiseHand="true"
+	enableEmojiStatus="true"
 	enableSettingsButton="true"
+    enableGuestUI="false"
+
 />
 ~~~
 
 |Name             | Default Value | Description|
 |:---------------------|:--------------|:-----------|
 | allowKickUser        | false | Determines whether or not the Moderators of the meeting are able to eject a user from the conference. If set to true, a Moderator will be given the option of ejecting a selected user from the conference by clicking on their Kick button inside the Users window. |
-| enableRaiseHand      | true  | Show or hide the raise hand button. |
+| enableEmojiStatus    | true  | Show or hide the emoji status button. |
 | enableSettingsButton | true  | Show or hide the the settings button. |
+| enableGuestUI        | true  | Show or hide the the guest settings button. |
 
-### Desktop Sharing
+### Screenshare Sharing
 ~~~xml
-<module name="DeskShareModule"
-	url="http://HOST/client/DeskShareModule.swf?v=VERSION"
-	uri="rtmp://HOST/deskShare"
-	showButton="true"
-	autoStart="false"
-	autoFullScreen="false"
+<module name="ScreenshareModule"
+	url="http://HOST/client/ScreenshareModule.swf?v=VERSION"
+	uri="rtmp://HOST/screenshare"
+    showButton="true"
+    enablePause="true"
+    tryWebRTCFirst="false"
+    chromeExtensionLink=""
+    chromeExtensionKey=""
+    baseTabIndex="201"
+	help="http://HOST/client/help/screenshare-help.html"
 />
 ~~~
 The Desktop Sharing module. Note that it connects to /deskShare, which is a red5 application on the server separate from the /bigbluebutton application.
@@ -190,22 +259,27 @@ The Desktop Sharing module. Note that it connects to /deskShare, which is a red5
 |Name            | Default Value | Description|
 |:---------------|:--------------|:-----------|
 | showButton     | true          | Show or hide the button that is added to the toolbar for the presenter. |
-| autoStart      | false         | Set to true to automatically start the desktop sharing module. |
-| autoFullScreen | false         |  |
+| enablePause    | true          | Show or hide the pause button to the toolbar for the presenter. |
+| tryWebRTCFirst | false         | Try using WebRTC screen-sharing before falling back to Java screen-sharing. |
+| chromeExtensionLink | -        | Link to WebRTC chrome extension for sceen-sharing. |
+| chromeExtensionKey  | -        | Key of WebRTC chrome extension for sceen-sharing. |
+| help           | -             | The help link to explain how screensharing works. |
 
 ### Phone Module
 ~~~xml
 <module name="PhoneModule" url="http://HOST/client/PhoneModule.swf?v=VERSION"
-	uri="rtmp://192.168.0.36/sip"
+	uri="rtmp://HOST/sip" 
 	autoJoin="true"
 	listenOnlyMode="true"
-	presenterShareOnly="false"
+    forceListenOnly="false"
 	skipCheck="false"
 	showButton="true"
 	enabledEchoCancel="true"
 	useWebRTCIfAvailable="true"
 	showPhoneOption="false"
-	echoTestApp="9196"
+	showWebRTCStats="false"
+    showWebRTCMOS="false"
+    echoTestApp="9196"
 	dependsOn="UsersModule"
 />
 ~~~
@@ -215,46 +289,32 @@ The Phone Module shows as the small headset icon in the upper left of the client
 |:---------------------|:--------------|:-----------|
 | autoJoin             | true          | Set to true to have the user automatically join the voice conference. |
 | listenOnlyMode       | true          | Shows or hides listen-only mode as an option for audio. |
+| forceListenOnly      | false         | If enabled, joining any audio conference will be restricted to listen mode. |
 | presenterShareOnly   | false         | If true, only the presenter may join with a microphone. |
 | skipCheck            | false         | Skip checking if user has working microphone. |
 | showButton           | true          | Set to true to have the headset icon visible on the toolbar. |
 | enabledEchoCancel    | true          | Set to true to enable the acoustic echo cancellation. |
 | useWebRTCIfAvailable | true          | If true, then on Firefox and Chrome browsers the client will try to use WebRTC. |
 | showPhoneOption      | false         | Show or hide a third option for a dial-in number. |
+| showWebRTCStats      | false         | Show or hide WebRTC call quality. |
+| showWebRTCMOS        | false         | Show or hide WebRTC detailed statistics. |
 | echoTestApp          | 9196          | The pin number to use for the echo test. Do not change. |
 
 ### Videoconf Module
 ~~~xml
 <module name="VideoconfModule" url="http://HOST/client/VideoconfModule.swf?v=VERSION" 
 	uri="rtmp://HOST/video"
-	dependson = "UsersModule"
-	videoQuality = "100"
-	presenterShareOnly = "false"
-	controlsForPresenter = "false"
-	resolutions = "320x240,640x480,1280x720"
-	autoStart = "false"
-	skipCamSettingsCheck="false"
-	showButton = "true"
-	showCloseButton = "true"
-	publishWindowVisible = "true"
-	viewerWindowMaxed = "false"
-	viewerWindowLocation = "top"
-	camKeyFrameInterval = "30"
-	camModeFps = "10"
-	camQualityBandwidth = "0"
-	camQualityPicture = "90"
-	smoothVideo="false"
-	applyConvolutionFilter="false"
-	convolutionFilter="-1, 0, -1, 0, 6, 0, -1, 0, -1"
-	filterBias="0"
-	filterDivisor="4"
-	enableH264 = "true"
-	h264Level = "2.1"
-	h264Profile = "main"        
-	displayAvatar = "false"
-	focusTalking = "false"
-	glowColor = "0x4A931D"
-	glowBlurSize = "30.0"   
+    dependsOn="UsersModule"
+    baseTabIndex="401"
+    autoStart="false"
+    skipCamSettingsCheck="false"
+    showButton="true"
+    applyConvolutionFilter="false"
+    convolutionFilter="-1, 0, -1, 0, 6, 0, -1, 0, -1"
+    filterBias="0"
+    filterDivisor="4"
+    displayAvatar="false"
+    priorityRatio="0.67"
 />
 ~~~
 
@@ -262,41 +322,29 @@ The Video Conferencing Module. Allows users to share their webcams with the room
 
 |Name                  | Default Value            | Description|
 |:---------------------|:-------------------------|:-----------|
-| presenterShareOnly   | false                    | If set to true, only the presenter will have the option of sharing their webcam. This is useful in one-to-many meetings, where there is one presenter that everyone should be focusing on, such as a webcast or a virtual classroom. |
-| resolutions          | 320x240,640x480,1280x720 | Configure the resolutions you want the user to choose from. |
-| autoStart            | false                    | Start the webcam automatically. This will choose the first option in the `resolutions` entry. |
+| autoStart            | false                    | Start the webcam automatically. |
+| skipCamSettingsCheck | false                    | If enabled, it will skip the camera check window and select the first available webcam to start streaming immediately |
 | showButton           | true                     | Show button in main toolbar. |
-| publishWindowVisible | true                     | Make the webcam publish window visible. If you set to false, you need to make `autoStart` to true. Otherwise, you won't be able to start camera. |
-| viewerWindowMaxed    | false                    | Maximize the webcam viewer window. |
-| viewerWindowLocation | top                      | Set the preferred location of the viewer window when it pops up. |
-| camKeyFrameInterval  | 30                       | See [Camera doc](http://help.adobe.com/en_US/FlashPlatform/beta/reference/actionscript/3/flash/media/Camera.html) |
-| camModeFps           | 10                       | See [Camera doc](http://help.adobe.com/en_US/FlashPlatform/beta/reference/actionscript/3/flash/media/Camera.html) |
-| camQualityBandwidth  | 0                        | See [Camera doc](http://help.adobe.com/en_US/FlashPlatform/beta/reference/actionscript/3/flash/media/Camera.html) |
-| camQualityPicture    | 90                       | See [Camera doc](http://help.adobe.com/en_US/FlashPlatform/beta/reference/actionscript/3/flash/media/Camera.html) |
-| smoothVideo          | false                    | See [Camera doc](http://help.adobe.com/en_US/FlashPlatform/beta/reference/actionscript/3/flash/media/Camera.html) |
 | applyConvolutionFilter | false                  | See [Camera doc](http://help.adobe.com/en_US/FlashPlatform/beta/reference/actionscript/3/flash/media/Camera.html) |
 | convolutionFilter      | -1, 0, -1, 0, 6, 0, -1, 0, -1 | See [Camera doc](http://help.adobe.com/en_US/FlashPlatform/beta/reference/actionscript/3/flash/media/Camera.html) |
 | filterBias             | 0                             | See [Camera doc](http://help.adobe.com/en_US/FlashPlatform/beta/reference/actionscript/3/flash/media/Camera.html) |
 | filterDivisor          | 4                             | See [Camera doc](http://help.adobe.com/en_US/FlashPlatform/beta/reference/actionscript/3/flash/media/Camera.html) |
-| enableH264             | true                          | See [Camera doc](http://help.adobe.com/en_US/FlashPlatform/beta/reference/actionscript/3/flash/media/Camera.html) |
-| h264Level              | 2.1                           | See [H264 Level](http://help.adobe.com/en_US/FlashPlatform/beta/reference/actionscript/3/flash/media/H264Level.html) |
-| h264Profile            | main                          | See [H264 Profile](http://help.adobe.com/en_US/FlashPlatform/beta/reference/actionscript/3/flash/media/H264Profile.html) |
 | displayAvatar          | false                         | Display avatar in webcam window. |
-| focusTalking           | false                         | Make speaker window bigger.|
-| glowColor              | 0x4A931D                      | Glow color surrounding webcam window of user that's talking. |
-| glowBlurSize           | 30.0                          | How much to glow. |
+| priorityRatio          | 0.67                          | The weight ratio for the webcam when clicking on it. |
 
 
 ### Present Module
 ~~~xml
 <module name="PresentModule" url="http://HOST/client/PresentModule.swf?v=VERSION"
-	uri="rtmp://192.168.0.36/bigbluebutton"
-	host="http://192.168.0.36"
-	showPresentWindow="true"
-	showWindowControls="true"
-	openExternalFileUploadDialog="false"
-	maxFileSize="30"
-	dependsOn="UsersModule"
+        uri="rtmp://HOST/bigbluebutton" 
+        dependsOn="UsersModule"
+        host="http://HOST" 
+        showPresentWindow="true"
+        showWindowControls="true"
+        openExternalFileUploadDialog="false"
+        baseTabIndex="501"
+        maxFileSize="30"
+        enableDownload="true"
 />
 ~~~
 The Presentation Module which lets users share slides and other documents in the main viewing area inside of BigBlueButton.
@@ -307,13 +355,15 @@ The Presentation Module which lets users share slides and other documents in the
 | showWindowControls   | true                     | Set true to show the presentation window controls. |
 | openExternalFileUploadDialog | false |  |
 | maxFileSize | 30 |  |
+| enableDownload | true | Enables the download of presentations from the server. |
 
 ### Whiteboard Module
 ~~~xml
 <module name="WhiteboardModule" url="http://HOST/client/WhiteboardModule.swf?v=VERSION" 
-	uri="rtmp://192.168.0.225/bigbluebutton" 
-	keepToolbarVisible="false"
-	dependsOn="PresentModule"
+        uri="rtmp://HOST/bigbluebutton" 
+        dependsOn="PresentModule"
+        baseTabIndex="601"
+        keepToolbarVisible="false"
 />
 ~~~
 The Whiteboard Module is a transparent overlaid canvas on top of the presentation window. It allows users to draw annotations on top of uploaded slides and documents.
@@ -321,6 +371,34 @@ The Whiteboard Module is a transparent overlaid canvas on top of the presentatio
 |Name                | Default Value | Description|
 |:-------------------|:--------------|:-----------|
 | keepToolbarVisible | false         | Always show the whiteboard toolbar to the presenter instead of just when the Presentation window is moused over. |
+
+### Shared Notes Module
+~~~xml
+<module name="SharedNotesModule" url="http://HOST/client/SharedNotesModule.swf?v=VERSION"
+    uri="rtmp://HOST/bigbluebutton"
+    dependsOn="UsersModule"
+    refreshDelay="500"
+    toolbarVisibleByDefault="false"
+    showToolbarButton="true"
+    fontSize="14"
+    maxMessageLength="5000"
+    maxNoteLength="10000"
+    enableDeleteNotes="false"
+    hideAdditionalNotes="false"
+/>
+~~~
+The Shared Notes Module gives users a collaborative note pad capturing content during the session.
+
+|Name                     | Default Value | Description|
+|:------------------------|:--------------|:-----------|
+| refreshDelay            | 500           | The delay for fetching notes update from the server. |
+| toolbarVisibleByDefault | false         | Show or hide the control bar by default. |
+| showToolbarButton       | true          | Show or hide the text format button. |
+| fontSize                | 14            | Default notes font size. |
+| maxMessageLength        | 5000          | The maximum length for a note update to be sent to the server. |
+| maxNoteLength           | 10000         | The maximum length for a single note. |
+| enableDeleteNotes       | false         | Offers the ability to close a shared note and delete its content by closing it. |
+| hideAdditionalNotes     | false         | Show or hide the button to create additional shared notes. |
 
 ## Layouts
 
