@@ -76,7 +76,7 @@ The URL that the client queries for the user's information when the user joins a
 |Name                  | Default Value | Description |
 |:---------------------|:--------------|:------------|
 | userSelectionEnabled | true          | This enables/disables the language selector combo box in the client. Enable this if you would like your users to be able to select the language of their BigBlueButton client themselves instead of the language being detected automatically for them. |
-| rtlEnabled           | true          | If set to true, if using a languages that have `direction="rtl"` in `locales.xml` will fully change the layout direction to right from left reading mode. |
+| rtlEnabled           | true          | If set to true, if using a languages that have `direction="rtl"` in `locales.xml` will fully change the layout direction to right from left reading mode(experimental). |
 
 ~~~xml
 <skinning enabled="true" url="branding/css/theme.css.swf" />
