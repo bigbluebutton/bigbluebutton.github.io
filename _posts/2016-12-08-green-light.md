@@ -591,7 +591,7 @@ If you don't want GreenLight send logs to `log/production.log`, you can configur
 Although GreenLight was designed to be used with Docker, it is possible to install it from source onto a BigBlueButton server. This should only be done if Docker is not an option, and we highly recommend using Docker to deploy GreenLight.
 
 1. Log into your BigBlueButton server as root.
-2. Ensure you have both Ruby and Ruby on Rails installed on your BigBlueButton server.
+2. Ensure you have both Ruby and Ruby on Rails installed on your BigBlueButton server. GreenLight requires a minimum of Ruby 2.4.0 and Rails 5.
 3. Clone the [GreenLight repo](https://github.com/bigbluebutton/greenlight) and switch into the `/greenlight` directory.
 4. Open up the `Gemfile` and move the `dotenv-rails` gem outside of the test/development block.
 5. Install bundler if you need to (`gem install bundler`), then run `bundle`. If it fails to bundle the `pg` gem, run `sudo apt-get install libpq-dev` then try again.
