@@ -190,7 +190,7 @@ To isntall the HTML5 client, first install the latest version of mongodb:
 
 ~~~
 $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv EA312927
-$ echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list
+$ echo "deb http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
 sudo apt-get update
 sudo apt-get install -y mongodb-org curl
 sudo service mongod start
