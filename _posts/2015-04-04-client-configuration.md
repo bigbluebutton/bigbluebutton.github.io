@@ -26,8 +26,9 @@ The template can be found [here](https://github.com/bigbluebutton/bigbluebutton/
 <porttest host="HOST" application="video/portTest" timeout="10000"/>
 <bwMon server="HOST" application="video/bwTest"/>    
 <application uri="rtmp://HOST/bigbluebutton" host="http://HOST/bigbluebutton/api/enter"/>
-<language userSelectionEnabled="true" rtlEnabled="true"/>
+<language userSelectionEnabled="true" rtlEnabled="false"/>
 <skinning enabled="true" url="http://HOST/client/branding/css/BBBDefault.css.swf?v=VERSION" />
+<branding logo="logo.swf" copyright="&#169; 2017 &lt;u&gt;&lt;a href=&quot;http://HOST/home.html&quot; target=&quot;_blank&quot;&gt;BigBlueButton Inc.&lt;/a&gt;&lt;/u&gt; (build {0})" background="" toolbarColor="" showQuote="true"/>
 <shortcutKeys showButton="true" />
 <browserVersions chrome="CHROME_VERSION" firefox="FIREFOX_VERSION" flash="FLASH_VERSION" java="1.7.0_51" />
 <layout showLogButton="false" defaultLayout="bbb.layout.name.defaultlayout"
@@ -70,18 +71,31 @@ The IP and Red5 application the client uses to test whether necessary ports are 
 The URL that the client queries for the user's information when the user joins a meeting.
 
 ~~~xml
-<language userSelectionEnabled="true" rtlEnabled="true" />
+<language userSelectionEnabled="true" rtlEnabled="false" />
 ~~~
 
 |Name                  | Default Value | Description |
 |:---------------------|:--------------|:------------|
 | userSelectionEnabled | true          | This enables/disables the language selector combo box in the client. Enable this if you would like your users to be able to select the language of their BigBlueButton client themselves instead of the language being detected automatically for them. |
-| rtlEnabled           | true          | If set to true, if using a languages that have `direction="rtl"` in `locales.xml` will fully change the layout direction to right from left reading mode(experimental). |
+| rtlEnabled           | false         | If set to true, if using a languages that have `direction="rtl"` in `locales.xml` will fully change the layout direction to right from left reading mode(experimental). |
 
 ~~~xml
 <skinning enabled="true" url="branding/css/theme.css.swf" />
 ~~~
 Set **enabled** to true and set the **url** to the SWF file with your theme modifications. This enables/disables skinning support for the client. If the value is false, the **url** attribute will be ignored. Otherwise the **url** attribute specifies the compiled CSS file to load on startup. See [Branding](/dev/branding.html) for more details.
+
+~~~xml
+<branding logo="logo.swf" copyright="&#169; 2017 &lt;u&gt;&lt;a href=&quot;http://HOST/home.html&quot; target=&quot;_blank&quot;&gt;BigBlueButton Inc.&lt;/a&gt;&lt;/u&gt; (build {0})" background="" toolbarColor="" showQuote="true"/>
+~~~
+ background="" toolbarColor="" showQuote="true"
+|Name             | Default Value | Description|
+|:----------------|:--------------|:-----------|
+| logo            | logo.swf      | The logo file to be displayed in the top left corner of the main toolbar. |
+| copyright       | &#169; 2017 &lt;u&gt;&lt;a href=&quot;http://HOST/home.html&quot; target=&quot;_blank&quot;&gt;BigBlueButton Inc.&lt;/a&gt;&lt;/u&gt; (build {0}) | The copyright displayed in footer. {0} is dynamically replaced by the build number. |
+| background      | -             | The image file to be displayed in the background. |
+| toolbarColor    | -             | The main toolbar background color. |
+| showQuote       | true          | Show/hide the quote while loading the application. |
+
 
 ~~~xml
 <shortcutKeys showButton="true" />
@@ -229,7 +243,7 @@ The BigBlueButton client is comprised of one or more modules. You can specify wh
 	enableEmojiStatus="true"
 	enableSettingsButton="true"
     enableGuestUI="false"
-
+    moderatorUnmute="true"
 />
 ~~~
 
@@ -239,6 +253,7 @@ The BigBlueButton client is comprised of one or more modules. You can specify wh
 | enableEmojiStatus    | true  | Show or hide the emoji status button. |
 | enableSettingsButton | true  | Show or hide the the settings button. |
 | enableGuestUI        | true  | Show or hide the the guest settings button. |
+| moderatorUnmute      | true  | Adds the ability to mute and unmute other users for moderator role. |
 
 ### Screenshare Sharing
 ~~~xml
