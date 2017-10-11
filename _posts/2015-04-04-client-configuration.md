@@ -87,11 +87,11 @@ Set **enabled** to true and set the **url** to the SWF file with your theme modi
 ~~~xml
 <branding logo="logo.swf" copyright="&#169; 2017 &lt;u&gt;&lt;a href=&quot;http://HOST/home.html&quot; target=&quot;_blank&quot;&gt;BigBlueButton Inc.&lt;/a&gt;&lt;/u&gt; (build {0})" background="" toolbarColor="" showQuote="true"/>
 ~~~
- background="" toolbarColor="" showQuote="true"
+
 |Name             | Default Value | Description|
 |:----------------|:--------------|:-----------|
 | logo            | logo.swf      | The logo file to be displayed in the top left corner of the main toolbar. |
-| copyright       | &#169; 2017 &lt;u&gt;&lt;a href=&quot;http://HOST/home.html&quot; target=&quot;_blank&quot;&gt;BigBlueButton Inc.&lt;/a&gt;&lt;/u&gt; (build {0}) | The copyright displayed in footer. {0} is dynamically replaced by the build number. |
+| copyright       | -             | The copyright displayed in footer. {0} is dynamically replaced by the build number. |
 | background      | -             | The image file to be displayed in the background. |
 | toolbarColor    | -             | The main toolbar background color. |
 | showQuote       | true          | Show/hide the quote while loading the application. |
@@ -170,7 +170,7 @@ The format token are described in the table below.
 |:----------------|:------------|
 | {dateUTC}     | he UTC date in the format YYYY/MM/DD |
 | {gmt}         | The time offset of the statement to the Greenwich mean time in the format GMT+9999 |
-| {logLevel}    | The level of the log statement (example | DEBUG). |
+| {logLevel}    | The level of the log statement (example : DEBUG). |
 | {logTime}     | The UTC time in the format HH:MM:SS.0MS |
 | {message}     | The message of the logger. |
 | {message_dqt} | The message of the logger, double quote escaped. |
