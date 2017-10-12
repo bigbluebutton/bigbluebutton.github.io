@@ -545,6 +545,15 @@ Then use the command to start the BigBlueButton server:
 # docker run -d -p 5000:80 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production -v $(pwd)/assets:/usr/src/app/public/system --env-file env --name greenlight bigbluebutton/greenlight
 ~~~
 
+## Setting a prefered client
+
+A BigBlueButton server has two seperate clients that a user can use, these are the Flash and HTML5 clients. If your server isn't running the HTML5 client, GreenLight will automatically join all users using the Flash client.
+
+If you've setup the HTML5 client on your server, you can control which client GreenLight will default to. If you set `USE_HTML5_BY_DEFAULT` to `true` in the `.env` file, all **non-authenticated users** will join using the HTML5 client by default (instead of the Flash client).
+
+The way GreenLight selects a client for **authenticated users** is different. If a user is authenticated, they will have the ability to switch their prefered client in their preferences (provided HTML5 is configured on the server). This means that users who have logged in have full control over which client they use and can switch between them.
+
+It is also worth noting that if the user is on a mobile device, GreenLight will automatically use the HTML5 client, since the Flash client does not work on mobile devices. If a user attempts to join a server that isn't running the HTML5 client using a mobile device, GreenLight will display a message letting them know they are unable to join because the BigBlueButton server doesn't support the HTML5 client.
 
 ## Disabling guest access
 
