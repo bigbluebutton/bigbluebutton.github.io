@@ -11,7 +11,7 @@ order: 2
 
 # Overview
 
-BigBlueButton is an open source web conferencing system for online learning.  Our goal is to provide remote students with a high-quality online learning experience.
+BigBlueButton is an open source web conferencing system for online learning.  Our goal is to provide remote students with a high-quality online learning experience..
 
 To achieve this goal, we are always looking at ways to improve the teacher and learning experience within our product.  The user interface (UI) for BigBlueButton is a major component of that experience.
 
@@ -61,11 +61,12 @@ We have a similar set of elements in BigBlueButton
 
 ## Unified experience
 
-Providing a unified experience will allow our users to quickly become familiar with the product and reduce the overall learning curve. If you are using the web, tablet or mobile client, our goal is to have consistent styles and placement of elements. This will also make the experience of contributing or building on top of BigBlueButton a lot easier for developers.
+Providing a unified experience will allow our users to quickly become familiar with the product and reduce the overall learning curve. If you are using the web, tablet or mobile client, our goal is to have consistent styles and placement of elements. By doing so, will also make the experience of contributing or building on top of BigBlueButton a lot easier for developers.
+
 
 ## Accessibility
 
-Accessibility is _very_ important to our target market of online learning.  We wanted to make sure the designs would allow us to provide our users with a variety of accessibility best practises, such as Aria landmarks, Aria labels, Aria polite.   While Flash has very good support for accessibility within the web browser, we wanted to be sure the HTML5 client was equally accessible as well.
+Accessibility is _very_ important to our target market of online learning.  We wanted to make sure the designs would allow us to provide our users with a variety of accessibility best practises, such as Aria landmarks, Aria labels, Aria polite and providing a colour palette that supports visually impared users. While Flash has very good support for accessibility within the web browser, we wanted to be sure the HTML5 client was equally accessible as well.
 
 ## Extensible UI design
 
@@ -73,213 +74,121 @@ BigBlueButton is not only a solution, but a platform that other companies build 
 
 <br><br>
 
-# Client Designs
-The following are the latest user interface designs for the web, tablet and mobile client. To view all designs, please visit our [InVision project.](https://invis.io/FW6L8OYR4)
+# Client Designs | Initial Release
 
-## Mobile
+Below are designs for our first release for the web, tablet and mobile HTML5 client.
 
-**Participants View**
+## Mobile Views
 
-<img src="/images/mobile_presentation.png" width="225" />
-<img src="/images/mobile_presentation_portrait.png" width="225" />
-<img src="/images/mobile_chat.png" width="225" />
-<img src="/images/mobile_settings.png" width="225" />
+With the first release of the HTML5 mobile views, we've focused our efforts on tackling the experience of how individuals will best consume content on a smaller device. This includes, consuming the presentation, enabling/disabling your audio, emoji interactions and public/private chat.
 
-
-<img src="/images/mobile_presentation_landscape.png" width="475" />
-<img src="/images/mobile_actions.png" width="475" />
+<br>
+<img src="/images/html5/bbb_mobile_default.png" width="225" alt="BigBlueButton Mobile Default View"/>
+<img src="/images/html5/bbb_mobile_participants_list.png" width="225" alt="BigBlueButton Mobile Participants List" />
+<img src="/images/html5/bbb_mobile_chat_public.png" width="225" alt="BigBlueButton Mobile Public Chat"/>
+<img src="/images/html5/bbb_mobile_polling.png" width="225" alt="BigBlueButton Mobile Polling" />
 
 <br>
 
-## Tablet
+## Tablet Views
 
-**Participants View**
-
-<img src="/images/ipad_landscape_presentation.png" width="475" />
-<img src="/images/ipad_landscape_presentation_nav.png" width="475" />
-<img src="/images/ipad_landscape.png" width="475" />
-<img src="/images/ipad_landscape_sidebar.png" width="475" />
+The tablet views follow the same design pattern approach as the mobile screens.
 
 <br>
+<img src="/images/html5/bbb_tablet_portrait.png" width="465" />
+<img src="/images/html5/bbb_tablet_portrait_sidebar.png" width="465" style="margin-left:20px;"/>
+<br><br>
+<br><br>
+<img src="/images/html5/bbb_tablet_landscape.png" width="465"/>
+<img src="/images/html5/bbb_tablet_landscape_sidebar.png" width="465" style="margin-left:20px;"/>
+<br><br>
 
-## Web
+## Desktop Views
 
-**Presenter Views**
-
-<img src="/images/bbb-html5_presenter_no_presentation.png" />
-<center> Presenter's first time experience </center>
-
-<br>
-
-<img src="/images/bbb-html5_presenter_presentation.png" />
-<center> Populated presentation</center>
-
-<br>
-
-<img src="/images/bbb-html5_presenter_sidebar_chat.png" />
-<center> Multiple opened components</center>
+The desktop experience is where we start to see more of the functionality become present. Here is where you will see as a presenter the ability to upload slides, annotations, multi whiteboard and closed captioning.
 
 <br>
+<img src="/images/html5/bbb-html5_default.png" />
+<center> Default View </center>
+<br><br>
 
-<img src="/images/bbb-html5_presenter_whiteboard_tools.png" />
-<center> Whiteboard tools</center>
+<img src="/images/html5/bbb-html5_default_expanded_sidebar.png" />
+<center> Expanded Sidebar View |  Public & direct messages and the list of participants. </center>
+<br><br>
 
-<br>
+<img src="/images/html5/bbb-html5_default_expanded.png" />
+<center> Full Expanded View |  Public and private chat. </center>
+<br><br>
 
-<img src="/images/bbb-html5_presenter_deskshare.png" />
-<center> Desktop sharing</center>
+<img src="/images/html5/bbb-html5_breakout_rooms.png" />
+<center> Breakout Rooms </center>
+<br><br>
 
-<br>
-
-<img src="/images/bbb-html5_presenter_settings_audio.png"  style="border:1px solid #ccc;" />
-<center> User settings</center>
-
-<br>
-
-**Participants Views**
-
-
-<img src="/images/bbb-html5_participants_no_presentation.png" />
-<center> Participants first time experience</center>
-
-<br>
-
-<img src="/images/bbb-html5_participants_presentation.png" />
-<center> Populated presentation</center>
-
-<br>
-
-<img src="/images/bbb-html5_participants_presentation_actions.png" />
-<center> User action buttons</center>
-
-<br>
-
-<img src="/images/bbb-html5_participants_presentation_sidebar_alert.png" />
-<center> Alert message</center>
-
-<br>
-
-<img src="/images/bbb-html5_participants_presentaton_notifications.png" />
-<center> Session notifications</center>
+<img src="/images/html5/bbb-html5_settings.png" style="border:1px solid #ccc;" />
+<center> User Settings </center>
+<br><br>
 
 
-<br>
 
 
 ## Style Guide
 
-<img src="/images/bbb_style_guide.png" style="border:1px solid #ccc;" />
+### Overview
 
+Without the style you'll find a breakout of the core colour palette, typography and elements styles.
+
+<img src="/images/html5/bbb_style_guide.png" style="border:1px solid #ccc;" />
+
+
+### Accessible Colour Palette
+
+As a team passionate about maintaining accessibility best practices within BigBlueButton and in the case of colour, we want to make sure all types of users (visually impaired or not) have a pleasant experience. Below you'll find a detailed overview of our core colour palette and their contrast ratio. Our goal was to maintain a ratio of 4.5:1 an above.
+<img src="/images/html5/bbb_colour_palette.png" />
 <br>
 
-## Modular Design Example
+### Custom Icon Library
+With the new client we wanted to also include a shareable icon library that can openly use for their development efforts.
+<br><br>
+<img src="/images/html5/bbb_icons.png" style="border:1px solid #ccc;" />
+<br><br><br>
 
-The HTML5 client consists of three main areas
+# Client Designs | Planned Updated
+Desktop Sharing
 
-1. Presentation
-- PDF presentation
-- Webcams
-- Deskshare
-- Polling
+### Expanding the presentation controls
+<img src="/images/html5/bbb_default.png" />
 
-2. Participants
-- Presenter
-- Audio user
-- List only users
-
-3. Conversations
-- Group
-- Private
-
+### Interface Refinement
+### Audio dialog with echo test
+<br>
 <br>
 
-<img src="/images/bbb-html5-presenter-cropped.png" />
-
+## Client Designs | Roadmap Features
+Multiple Chat
+Audio Only Breakout Rooms
+Video Sharing
+User Management
 <br>
-
-By grouping features and content into their own blocks, it enabled us to associate content and their actions together. For example; providing presentation actions within the presentation area vs. in the top right left corner.
-
-Also, this design provides our development community with a framework for building on top of the existing client. If they are adding a new action for the presentation they will know exactly where to place this button. Or if they are looking to build a new module they will know that modules are their own block.
-
-Below we'll outline two examples of building on top of the HTML5 client.
-
 <br>
-
 
 ### Shared Notes
+<img src="/images/html5/bbb_multiple_shared_notes.png" />
+<br><br>
+<img src="/images/html5/bbb_mobile_participants_list_notes.png"  width="350"/>
+<img src="/images/html5/bbb_mobile_notes.png" width="350" />
+<hr>
 
-The ability of collaborating together on notes for the session.
+### Multiple Chat Rooms
+<img src="/images/html5/bbb_multiple_chat_pods.png" />
+<br><br>
+<img src="/images/html5/bbb_mobile_participants_list_chat.png" width="350" />
+<img src="/images/html5/bbb_mobile_chat_public.png"  width="350"/>
 
+### User Management
+Add Text
 
-**Presentation**  - Uploaded a presentation
-
-<img src="/images/bbb-html5_wireframe_presentation.png" />
-
-<br>
-
-
-**Exploded View** - Webcam, users list and public chat are turned on
-
-<br>
-
-<img src="/images/bbb-html5_wireframe_presenter_sidebar_chat.png" />
-
-<br>
-
-**Presentation Actions** - The presenter would like provide their participants with the ability of contributing to a set of shared notes. To do so, the presenter will need to select “Public Notes” from the action button.
-
-In the new client, we’ve decided to group all our presentation actions into a single button. This allows us to scale the presentation to multiple actions without cluttering the interface.
-
-If you’re looking to add a new actions to presentation, this is where you’ll place the button to activate it.
-
-<br>
-
-<img src="/images/bbb-html5_wireframe_presenter_actions.png" />
-
-<br>
-
-Since the action is to activate a new module, it will appear to the right of the presentation block.
-
-<br>
-
-<img src="/images/bbb-html5_wireframe_presenter_new_module.png" />
-
-<br>
-
-Introducing new modules to the right of the presentation will provide developers with a dedicated area and real estate to build a variety of different features. Also, by dedicating a specific areas, will limit the interference to BigBlueButton’s core interface.
-
-<br>
-
-### Multiple Presentation Windows
-
-Multiple presenters sharing content.
-
-<img src="/images/bbb_multiple_presentations.png" />
-
-In the screenshot above, you’ll see an implementation of the BigBlueButton client with multiple presentation screens.
-
-<br>
-
-
-**Multiple presentation view**
-
-A general rule we’d like to establish for adding to the BigBlueButton core interface, is to make sure any new item is contained within their appropriate block.
-
-Below you’ll see a series of layouts that following this rule. We are introducing multiple presentation windows to the interface and they are grouped within the presentation block.
-
-<br>
-
-<img src="/images/bbb-html5_wireframe_multiple_presentations.png" />
-
-<br>
-
-<img src="/images/bbb-html5_wireframe_multiple_presentations_sidebar.png" />
-
-<br>
-
-<img src="/images/bbb-html5_wireframe_multiple_presentations_full.png" />
+### User Management
+Audio Only Breakout Rooms
 
 
 If you have any questions or feedback, please join [the BigBlueButton community](https://bigbluebutton.org/support/community/) and post them to the [bigbluebutton-dev](https://groups.google.com/forum/#!forum/bigbluebutton-dev) mailing list.  We look forward to hearing from you.
-
-
