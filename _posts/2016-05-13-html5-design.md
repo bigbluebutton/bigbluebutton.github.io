@@ -132,7 +132,9 @@ The desktop experience is where we start to see more of the functionality become
 <center> User Settings </center>
 <br><br>
 
-
+<img src="/images/html5/bbb-html5_close_caption.png" style="border:1px solid #ccc;" />
+<center> Closed Caption </center>
+<br><br>
 
 
 ## Style Guide
@@ -198,8 +200,8 @@ User Management
 ### User Management
 Add Text
 
-### User Management
-Audio Only Breakout Rooms
+### Audio Only Breakout Rooms
+Add Text
 
 
 If you have any questions or feedback, please join [the BigBlueButton community](https://bigbluebutton.org/support/community/) and post them to the [bigbluebutton-dev](https://groups.google.com/forum/#!forum/bigbluebutton-dev) mailing list.  We look forward to hearing from you.
