@@ -72,6 +72,15 @@ Accessibility is _very_ important to our target market of online learning.  We w
 
 BigBlueButton is not only a solution, but a platform that other companies build upon.  In creating a new design one of our goals is to provide our community with a modular design so that new features or components can be created with ease.   If a developer wanted to add a shared notes module in the UI, for example, or additional volume controls, we want to make sure the look and feel are consistent with the existing user interface.
 
+## Shareable Design Document
+
+With the latest design of our HTML5 client, we wanted to also include a shareable design document that other designers could use as a starting point to brand the client or to conceptualize new features for the client.
+
+[Download BigBlueButton Design Sketch App File ](http://docs.bigbluebutton.org/images/html5/BigBlueButton_html5_designs.sketch)
+<br><br>
+
+<hr>
+
 <br><br>
 
 # Client Designs | Initial Release
@@ -136,6 +145,17 @@ The desktop experience is where we start to see more of the functionality become
 <center> Closed Caption </center>
 <br><br>
 
+<img src="/images/html5/bbb-html5_participant_types.png" style="border:1px solid #ccc;" />
+<center> Participant types</center>
+<br><br>
+
+__Presenter__: As shown above the blue square in the top left hand corner of the avatar indicates that they are the presenter. Located in the bottom right hand corner is the join audio indicator and the ring around the avatar is a visually show when a participant is talking.
+
+__Moderator__: We wanted to visually differentiate moderators from all other user types and have done so with a square avatar. With the state displayed above, you'll also notice that in this particular chase the moderator has joined the audio but has themselves muted.
+
+__Participant__: As a participant within the HTML5 client, you avatar will be presented as a circle and you'll also have an indicator if you'd selected to join the audio. In the case displayed above, this participant has selected to join the audio listen only.
+
+<br><br>
 
 ## Style Guide
 
@@ -153,7 +173,7 @@ As a team passionate about maintaining accessibility best practices within BigBl
 <br>
 
 ### Custom Icon Library
-With the new client we wanted to also include a shareable icon library that can openly use for their development efforts.
+With the new client, we wanted to include a shareable icon library that developers could use and have created our own custom icon library with over 80+ icons.
 <br><br>
 <img src="/images/html5/bbb_icons.png" style="border:1px solid #ccc;" />
 <br><br><br>
@@ -169,7 +189,7 @@ Updated presentation controls that include, zoom, fit to width and fit to page.
 <img src="/images/html5/bbb_default.png" />
 
 ### Audio dialog with echo test
-When a use joins a session, a dialogue box will appear signifying to the user which auto route they should take, join with microphone or listen only (similar to the flash experience). If they select join via a microphone, a user will be prompted with a another step asking if they can hear themselves (echo test).
+When a user joins a session, a dialogue box will appear signifying to the user which auto route they should take, join with microphone or listen only (similar to the flash experience). If they select join via a microphone, a user will be prompted with a another step asking if they can hear themselves (echo test).
 
 <img src="/images/html5/bbb-html5_audio_dialogue.png" />
 
@@ -177,12 +197,11 @@ When a use joins a session, a dialogue box will appear signifying to the user wh
 <br>
 
 ## Client Designs | Roadmap Features
-Multiple Chat
-Audio Only Breakout Rooms
-Video Sharing
-User Management
-<br>
-<br>
+
+### Video Sharing
+<img src="/images/html5/bbb-html5_video_dock.png" />
+<br><br>
+<br><br>
 
 ### Shared Notes
 <img src="/images/html5/bbb_multiple_shared_notes.png" />
@@ -198,10 +217,10 @@ User Management
 <img src="/images/html5/bbb_mobile_chat_public.png"  width="350"/>
 
 ### User Management
-Add Text
+<img src="/images/html5/bbb-html5_user_management.png" />
+<br><br><br><br>
 
-### Audio Only Breakout Rooms
-Add Text
+<hr>
 
 
 If you have any questions or feedback, please join [the BigBlueButton community](https://bigbluebutton.org/support/community/) and post them to the [bigbluebutton-dev](https://groups.google.com/forum/#!forum/bigbluebutton-dev) mailing list.  We look forward to hearing from you.
