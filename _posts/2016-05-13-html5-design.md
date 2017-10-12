@@ -124,6 +124,10 @@ The desktop experience is where we start to see more of the functionality become
 <center> Breakout Rooms </center>
 <br><br>
 
+<img src="/images/html5/bbb-html5_upload.png" style="border:1px solid #ccc;" />
+<center> Uploading a presentation </center>
+<br><br>
+
 <img src="/images/html5/bbb-html5_settings.png" style="border:1px solid #ccc;" />
 <center> User Settings </center>
 <br><br>
@@ -152,14 +156,21 @@ With the new client we wanted to also include a shareable icon library that can 
 <img src="/images/html5/bbb_icons.png" style="border:1px solid #ccc;" />
 <br><br><br>
 
-# Client Designs | Planned Updated
-Desktop Sharing
+# Client Designs | Planned Updates
+
+### Desktop Sharing
+When a presenter chooses to shares their desktop, it will replace the existing presentation area. When a presenter has finished sharing their desktop, they can select "stop", and the presentation will resume.
+<img src="/images/html5/bbb-html5_deskshare.png" />
 
 ### Expanding the presentation controls
+Updated presentation controls that include, zoom, fit to width and fit to page.
 <img src="/images/html5/bbb_default.png" />
 
-### Interface Refinement
 ### Audio dialog with echo test
+When a use joins a session, a dialogue box will appear signifying to the user which auto route they should take, join with microphone or listen only (similar to the flash experience). If they select join via a microphone, a user will be prompted with a another step asking if they can hear themselves (echo test).
+
+<img src="/images/html5/bbb-html5_audio_dialogue.png" />
+
 <br>
 <br>
 
