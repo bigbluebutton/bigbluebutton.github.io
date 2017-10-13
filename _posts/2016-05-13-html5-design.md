@@ -88,8 +88,7 @@ With the latest design of our HTML5 client, we're including a shareable design d
 Below are designs for our first release for the web, tablet and mobile HTML5 client.
 
 ## Mobile Views
-
-With the first release of the HTML5 mobile view, we've focused our efforts on covering the experience of consuming content as a participant. This includes, consuming the presentation, enabling/disabling your audio, emoji interactions, as well as familiar functionality such as public/private chat.
+With the first release of the HTML5 mobile Views, we've focused our efforts on building the viewer functionality. This includes, consuming the presentation, enabling/disabling your audio, emoji interactions, as well as the ability to participate in public/private chat conversations.
 
 <br>
 <img src="/images/html5/bbb_mobile_default.png" width="225" alt="BigBlueButton Mobile Default View"/>
@@ -101,7 +100,7 @@ With the first release of the HTML5 mobile view, we've focused our efforts on co
 
 ## Tablet Views
 
-The tablet views follow the same design pattern as the mobile phone experience.
+The tablet views follow the same design pattern as the mobile phone.
 
 <br>
 <img src="/images/html5/bbb_tablet_portrait.png" width="465" />
@@ -114,7 +113,7 @@ The tablet views follow the same design pattern as the mobile phone experience.
 
 ## Desktop Views
 
-For the desktop experience, it's where we start to see more of the functionality become present to presenters and participants. Here is where you will see (as a presenter) the ability to upload slides, annotations, multi whiteboard and closed captioning.
+For the desktop experience, it's where we start to see more of the functionality become present to presenters and participants. Here you will see (as a presenter) the ability to upload slides, annotations, multi whiteboard and closed captioning.
 
 <br>
 <img src="/images/html5/bbb-html5_default.png" />
@@ -149,11 +148,11 @@ For the desktop experience, it's where we start to see more of the functionality
 <center> Participant types</center>
 <br><br>
 
-__Presenter__: As shown above the blue square in the top left hand corner of the avatar indicates that they are the presenter. Located in the bottom right hand corner is the join audio indicator and the ring around the avatar is a visually show when a participant is talking.
+__Presenter__: As shown above, the blue square in the top left-hand corner of the avatar indicates that the participant is the presenter. Located in the bottom right-hand corner is the join audio indicator (audio icon + green circle) and the ring around the avatar visually represents that someone is speaking.
 
-__Moderator__: We wanted to visually differentiate moderators from all other user types and have done so with a square avatar. With the state displayed above, you'll also notice that in this particular chase the moderator has joined the audio but has themselves muted.
+__Moderator__: We wanted to visually differentiate moderators from all other participants and have done so by visually changing the avatar to a square. With the state displayed above, you will also see the moderator has their audio muted (muted icon + red circle).
 
-__Participant__: As a participant within the HTML5 client, you avatar will be presented as a circle and you'll also have an indicator if you'd selected to join the audio. In the case displayed above, this participant has selected to join the audio listen only.
+__Participant__: Participates are visually indicated using a circle avatar, and In the case displayed above, this participant has selected to join the audio listen only (headset icon + green circle).
 
 <br><br>
 
@@ -161,19 +160,19 @@ __Participant__: As a participant within the HTML5 client, you avatar will be pr
 
 ### Overview
 
-Without the style you'll find a breakout of the core colour palette, typography and elements styles.
+In the style guide displayed below, you will find a breakdown of the core colour palette, typography and elements styles used in the HTML5 client.
 
 <img src="/images/html5/bbb_style_guide.png" style="border:1px solid #ccc;" />
 
 
 ### Accessible Colour Palette
 
-As a team passionate about maintaining accessibility best practices within BigBlueButton and in the case of colour, we want to make sure all types of users (visually impaired or not) have a pleasant experience. Below you'll find a detailed overview of our core colour palette and their contrast ratio. Our goal was to maintain a ratio of 4.5:1 an above.
+As a team, we're passionate about maintaining accessibility best practices within our products, and in the case of colour, we want to make sure all types of users (visually impaired or not) have a pleasant experience. Below you'll find a detailed overview of our core colour palette and their contrast ratio. Our goal was to maintain a ratio of 4.5:1 an above.
 <img src="/images/html5/bbb_colour_palette.png" />
 <br>
 
 ### Custom Icon Library
-With the new client, we wanted to include a shareable icon library that developers could use and have created our own custom icon library with over 80+ icons.
+With the new HTML5 client, we wanted to include a shareable icon library that developers could use during development and have created our own custom icon library with over 80+ icons.
 <br><br>
 <img src="/images/html5/bbb_icons.png" style="border:1px solid #ccc;" />
 <br><br><br>
@@ -181,15 +180,15 @@ With the new client, we wanted to include a shareable icon library that develope
 # Client Designs | Planned Updates
 
 ### Desktop Sharing
-When a presenter chooses to shares their desktop, it will replace the existing presentation area. When a presenter has finished sharing their desktop, they can select "stop", and the presentation will resume.
+When a presenter chooses to shares their desktop, it will replace the existing presentation area. At any time, the presenter can end their desk share, and the presentation will resume in its original location.
 <img src="/images/html5/bbb-html5_deskshare.png" />
 
 ### Expanding the presentation controls
-Updated presentation controls that include, zoom, fit to width and fit to page.
+Updated presentation controls to be included are, zoom, fit to width and fit to page.
 <img src="/images/html5/bbb_default.png" />
 
 ### Audio dialog with echo test
-When a user joins a session, a dialogue box will appear signifying to the user which auto route they should take, join with microphone or listen only (similar to the flash experience). If they select join via a microphone, a user will be prompted with a another step asking if they can hear themselves (echo test).
+When a user joins a session, a dialogue box will appear signifying which auto route they can take, joining audio using a microphone or listen only (similar to the flash experience). If they select join via a microphone, a user will be prompted with another step asking if they can hear themselves (echo test). From there, if selected "Yes", then they will advance into the session.
 
 <img src="/images/html5/bbb-html5_audio_dialogue.png" />
 
