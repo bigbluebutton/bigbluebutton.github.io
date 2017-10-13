@@ -9,14 +9,20 @@ order: 1
 
 # Overview 
 
-We designed the BigBlueButton HTML5 client to be accessible to as many users as possible regardless of any underlying disability. Screen reader compatibility has been provided for two of the most popular and widely used software solutions currently on the market.
- 
-  * NVDA (Open Source Software)
-  * JAWS (Paid Software)
+The province of Ontario is one of the first in establishing a goal and time-frame for accessibility. 
+The BigBlueButton project aims to comply with the proposed accessibility guidelines, enabling individuals 
+with disabilities the ability to use the web application. To be a bit more specific, we ensure that users 
+are able to perceive, understand, navigate, interact and contribute using the HTML5 client.
 
-Keyboard support has also been provided so that users can interact with all interactable elements of the client via keyboard only.
+Based on the scope of the project, focus has been placed on disabilities related to visual, auditory and motor impairments. 
 
-## Keyboard Example : Send a Public message when client first loads
+We have designed the BigBlueButton HTML5 client to be accessible to as many users as possible regardless of any underlying disability. 
+Keyboard and screen reader support, in particular the open source NVDA screen reader, but also JAWS, 
+the markets leading paid software.
+
+There are a few minor controls within the client that are not fully accessible, The colour picker in the closed caption settings for example.
+
+#### Keyboard Example : Send a Public message when client first loads
 
 * Close audio modal
   1. Tab
@@ -29,45 +35,44 @@ Keyboard support has also been provided so that users can interact with all inte
 * Open Public chat
   1. Down-Arrow
   2. Enter
-* Focus message input
-  1. Tab (x6)
 * Send message
   1. Type message
   2. Enter
 
-
 ## NVDA 
 
-Common Navigation Shortcut keys: 
+NVDA navigation keys:
+Stop Reading                    -  Ctrl
+Activate Link                   -  Enter
+Activate Button                 -  Enter or Space
+Go to next Heading              -  H
+Go to next landmark/region      -  D
+Go to next list                 -  L
+Go to next list item            -  I
 
-b - next button
-k - next link
-h - next heading
-f - next form field
-d - next landmark
-NVDA shortcuts resource
+A more comprehensive list of NVDA short cuts can be found at : http://webaim.org/resources/shortcuts/nvda
+Due to browser limitations the dialog box to join Mic audio is currently not keyboard accessible. The colour picker in the closed caption settings is also currently not keyboard accessible. There are a few other minor controls yet to be made accessible.
 
 ***Note: NVDA works best with Mozilla FireFox and users must toggle focus mode off by pressing the ESC key or NVDAKEY + Spacebar to switch to Browse mode.***
 
 #### NVDA Example : Send a Public message when client first loads 
 
 * Close audio modal
-  1. Tab
+  1. b
+  2. Shift + b
   2. Enter
 * Open users pane
-  1. Enter
+  1. b
+  2. Shift + b
+  3. Enter
 * Focus messages list
-  1. Shift + D (x2)
+  1. Shift + d (x2)
 * Open Public chat
   1. Down-Arrow
   2. Enter
-* Focus message input
-  1. ‘f’ key (x2)
-  2. NDVA + spacebar
 * Send message
   1. Type message
   2. Enter
-  3. NDVA + spacebar
 
 
 ## JAWS
@@ -81,22 +86,18 @@ JAWS shortcuts resource
 ### JAWS Example : Send a Public message when client first loads
 
 * Close audio modal
-  1. JAWSKEY + z
-  2. Tab
-  3. Spacebar
+  1. b
+  2. Shift + b
+  3. Enter
 * Open users pane
-  1. Tab (x2)
-  2. Space
+  1. Tab
+  2. Shift + Enter
 * Focus messages list
-  1. Shift + Tab (x3)
+  1. Shift + Tab (x2)
 * Open Public chat
-  1. Down-Arrow
+  1. Insert + z
+  2. Down arrow
   2. Enter
-* Focus message input
-  1. JAWSKEY + z
-  2. Tab
-  3. ‘f’ key (x2)
-  4. Enter
 * Send message
   1. Type message
   2. Enter
