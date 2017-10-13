@@ -13,9 +13,10 @@ The province of Ontario is one of the first in establishing a goal and time-fram
 with disabilities the ability to use the web application. To be a bit more specific, we ensure that users are able to perceive, understand, navigate, interact and contribute using the HTML5 client.
 
 Based on the scope of the project, focus has been placed on disabilities related to visual, auditory and motor impairments. 
+We have designed the BigBlueButton HTML5 client to be accessible to as many users as possible regardless of any underlying disability.
 
-We have designed the BigBlueButton HTML5 client to be accessible to as many users as possible regardless of any underlying disability. 
-Keyboard and screen reader support is provided, in particular the open source NVDA screen reader, but also JAWS, the markets leading paid software.
+The client follow the WCAG 2.0 color contrast guidlines for all visual elements, in addition to an aesthetically pleasing inclusive design. 
+Keyboard and screen reader support has been implemented, in particular for the open source NVDA screen reader. JAWS, the markets leading paid screen reader software is also compatible with the client.
 
 ***Note:
 There are a few minor controls within the client that are not fully accessible, The colour picker in the closed caption settings for example.***
