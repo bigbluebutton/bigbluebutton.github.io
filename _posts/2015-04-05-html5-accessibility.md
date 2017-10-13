@@ -99,3 +99,6 @@ JAWS shortcuts resource
 * Send message
   1. Type message
   2. Enter
+
+The following link provides a listing of JAWS keys and functionality:
+[JAWS Keys](https://webaim.org/resources/shortcuts/jaws)
