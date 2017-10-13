@@ -74,7 +74,7 @@ BigBlueButton is not only a solution, but a platform that other companies build 
 
 ## Shareable Design Document
 
-With the latest design of our HTML5 client, we wanted to also include a shareable design document that other designers could use as a starting point to brand the client or to conceptualize new features for the client.
+With the latest design of our HTML5 client, we're including a shareable design document for other designers to use as a starting point to brand the client or to conceptualize new features.
 
 [Download BigBlueButton Design Sketch App File ](http://docs.bigbluebutton.org/images/html5/BigBlueButton_html5_designs.sketch)
 <br><br>
@@ -89,7 +89,7 @@ Below are designs for our first release for the web, tablet and mobile HTML5 cli
 
 ## Mobile Views
 
-With the first release of the HTML5 mobile views, we've focused our efforts on tackling the experience of how individuals will best consume content on a smaller device. This includes, consuming the presentation, enabling/disabling your audio, emoji interactions and public/private chat.
+With the first release of the HTML5 mobile view, we've focused our efforts on covering the experience of consuming content as a participant. This includes, consuming the presentation, enabling/disabling your audio, emoji interactions, as well as familiar functionality such as public/private chat.
 
 <br>
 <img src="/images/html5/bbb_mobile_default.png" width="225" alt="BigBlueButton Mobile Default View"/>
@@ -101,7 +101,7 @@ With the first release of the HTML5 mobile views, we've focused our efforts on t
 
 ## Tablet Views
 
-The tablet views follow the same design pattern approach as the mobile screens.
+The tablet views follow the same design pattern as the mobile phone experience.
 
 <br>
 <img src="/images/html5/bbb_tablet_portrait.png" width="465" />
@@ -114,7 +114,7 @@ The tablet views follow the same design pattern approach as the mobile screens.
 
 ## Desktop Views
 
-The desktop experience is where we start to see more of the functionality become present. Here is where you will see as a presenter the ability to upload slides, annotations, multi whiteboard and closed captioning.
+For the desktop experience, it's where we start to see more of the functionality become present to presenters and participants. Here is where you will see (as a presenter) the ability to upload slides, annotations, multi whiteboard and closed captioning.
 
 <br>
 <img src="/images/html5/bbb-html5_default.png" />
