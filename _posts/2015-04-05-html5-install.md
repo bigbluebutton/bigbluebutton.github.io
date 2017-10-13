@@ -12,9 +12,6 @@ order: 1
 
 This document covers how to install the latest build of the BigBlueButton HTML5 client.
 
-We welcome [contributions](/support/faq.html#contributing-to-bigbluebutton) from others.  See also [HTML5 Coding Practices](/html/CodingPractices.html)
-
-The directory structure for the HTML5 client is based off of Meteor's.  See [HTML5 Project Structure](/html/project-structure.html)
 
 ## Before you install
 

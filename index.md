@@ -15,6 +15,10 @@ We've written this documentation for administrators and developers who want to s
 
 The source code for BigBlueButton is hosted on [GitHub](http://github.com/bigbluebutton/bigbluebutton).
 
+<p align="center">
+  <img src="/images/20-screenshot.png"/>
+</p><br>
+
 ## Getting started
 
 BigBlueButton enables real-time sharing of audio, video, slides (with whiteboard), polling, emote icons (including raise hand), chat, and the presenter's desktop.  It is [localized](/dev/localization.html) into over 35 languages and supports JAWS screen reader for students with visual disabilities. 
@@ -44,7 +48,13 @@ The BigBlueButton project began in 2008. The project is managed by a core group 
 
 ## Latest versions
 
-The latest version of BigBlueButton is 1.1. See [overview](/overview/overview.html), [install](/install/install.html), and [architecture](/overview/architecture.html) for more details.  
+The latest release is BigBlueButton 1.1. See [overview](/overview/overview.html), [install](/install/install.html), and [architecture](/overview/architecture.html) for more details.  
+
+The latest version is BigBlueButton 2.0-beta which improves collaboration with students through  multi-user whiteboard and shared notes.  See [overview](2.0/20overview.html) and [install](/2.0/20install.html).  Click the image below for a video [overview of 2.0-beta](https://www.youtube.com/watch?v=NQPrdc-W-6A).
+
+<p align="center">
+  <a href="http://www.youtube.com/watch?feature=player_embedded&v=NQPrdc-W-6A" target="_blank"><img src="http://img.youtube.com/vi/NQPrdc-W-6A/0.jpg" alt="Overview of BigBlueButton 2.0" width="480" height="360" border="10" /></a>
+</p>
 
 Enjoy!
 
