@@ -12,7 +12,7 @@ order: 1
 
 This document gives an overview of the long-term vision and near-term scope (the first release) planned for the BigBlueButton HTML5 client.
 
-The BigBlueButton project started in 2009 with one goal: to prove remote students a high-quality online learning experience.  Since then, BigBlueButton client, written in Flash, has been has been used by millions of users in online classes.  
+The BigBlueButton project started in 2009 with one goal: to provide remote students a high-quality online learning experience.  Since then, BigBlueButton client, written in Flash, has been used by millions of users in online classes.
 
 Flash enjoys support from a wide range of browsers (FireFox, Chrome, Safari, Edge, and IE) and a wide range of platforms (Windows, Mac OS X, Linux, and Chromebook).  Google embeds Flash into their browser and provides automatic updates, and  so does Microsoft in Edge.  BigBlueButton also leverages the browser's support for web real-time communications (WebRTC) for sending and receiving high-quliaty audio.
 
@@ -49,7 +49,6 @@ The feature list for the first release of the HTML5 client will include
   * Respond to polls
   * Join breakout rooms
   * View presentation
-  * View desktop sharing video from presenter
   * View close captions
   * Restrict of sharing chat and/or audio based on Moderator changing lock settings
   * Localization
@@ -59,11 +58,20 @@ The feature list for the first release of the HTML5 client will include
 The above feature list covers a lot of ground.  All the above is currently implemented, with the remaining features still in deveopment 
   * Initiate desktop sharing
   * View desktop sharing video from presenter
+  * Shared notes
 
 Recall we said that the first release will only support viewer capabilities.  We're a bit further along in the development of the HTML5 client than originally planned, so the first release will support some presentation capabilities 
 
   * Advance the slides
   * Upload a presentation
+  * Whiteboard controls (except for pan/zoom)
+
+and some moderator capabilities
+
+  * Make user presenter
+  * Promote/demote user
+  * Kick user
+  * Mute/unmute user
 
 You can try out the latest build of the BigBlueButton HTML5 client at the test server [https://test.bigbluebutton.org/](https://test.bigbluebutton.org/).  This developer release does not yet support viewing desktop sharing from the presenter.
 
@@ -72,11 +80,10 @@ You can try out the latest build of the BigBlueButton HTML5 client at the test s
 
 Building upon the first release, we plan to add the additional presenter and moderator capabilities to the HTML5 client, including:
 
-  * Whiteboard controls (pan/zoom and annotations, such as draw and text tool)
+  * Remaining whiteboard controls (pan/zoom)
   * Two-way webcam
   * Share desktop
   * All remaining moderator capabilities, including
-    * Make user presenter
     * Initiate breakout rooms
     * Lock down viewers
 
