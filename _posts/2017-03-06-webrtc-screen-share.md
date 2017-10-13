@@ -26,7 +26,7 @@ Note: These steps are still in development and not ready yet.  They are currentl
 
 ** Installation instructions to be availabile soon **
 
-[Configuring HTTPS on BigBlueButton](/install/install.html#configuring-https-on-bigbluebutton)
+[Configuring HTTPS on BigBlueButton](/install/install.html#configuring-ssl-on-your-bigbluebutton-server)
 
 you will need a non-root user account. We use the name `firstuser`. You will need to create the user account if you install from packages. If you set up a development environment you should already have it.
 
