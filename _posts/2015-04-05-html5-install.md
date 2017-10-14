@@ -7,21 +7,29 @@ date: 2015-04-05 11:41:36
 order: 1
 ---
 
-
 # Overview 
 
-This document covers how to install the latest build of the BigBlueButton HTML5 client.
+This document covers how to install the latest developer build of the BigBlueButton HTML5 client.  See also [Overview](html/html5-overview.html) and [Design](/html/html5-design.html) of the HTML5 client.
+
+As the HTML5 client is still under active development.  As such, we do not recommend it for production use.  You can try the latest version of the HTML5 client at [https://test.bigbluebutton.org/](https://test.bigbluebutton.org/).
 
 
-## Before you install
+# Before you install
 
-The BigBlueButton HTML5 client runs on BigBlueButton 2.0-beta server (referred hereafter as simply BigBlueButton 2.0).  Before setting up the HTML5 client, first setup a [BigBlueButton 2.0-beta server](/2.0/20install.html).  
+Before installing the HTML5 client you need an [BigBlueButton 2.0-beta server](/2.0/20install.html) (referred hereafter as simply BigBlueButton 2.0).  All the development of the HTML5 client now occurs on the 2.0 code base.
 
-As the HTML5 client is still under active develoipment we do not recommend it for production use.  
+To ensure you have the latest version of BigBlueButton 2.0, do
+
+~~~
+sudo apt-get update
+sudo apt-get dist-upgrade
+~~~
 
 # Installation
 
-The first step is to in stall mongodb.  
+## 1. Install MongDB and NodeJS
+
+BigBlueButton HTML5 client uses mongodb, a very efficent database, to keep the user synchronized with the current meeting state.  To install MongoDB, do the following 
 
 ~~~
 $ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6
@@ -31,27 +39,51 @@ $ sudo apt-get install -y mongodb-org curl
 $ sudo service mongod start
 ~~~
 
-Next, install the nodeJS server.
+Next, the HTML5 client uses a nodeJS server to communicate with the BigBlueButton server.  To install nodeJS, do the following
 
 ~~~
 curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ~~~
 
-You need only install mongodb and nodeJS once.  Once these steps are done, you can install the BigBlueButton HTML5 client with a single command.
+You need only install mongodb and nodeJS once.  
+
+
+## 2. Install HTML5 client
+
+To install the HTML5 client, enter 
 
 ~~~
 sudo apt-get install -y bbb-html5
 ~~~
 
-As we update the BigBlueButton HTML5 client, you'll be able to update it along along with other components with the standard
+After the installation finishes, restart your BigBlueButton server with the command
+
+~~~
+sudo bbb-conf --restart
+~~~
+
+As we publish updates to the HTML5 client (which is under active development) you can upgrade to the latest version with the commands
 
 ~~~
 sudo apt-get update
 sudo apt-get dist-upgrade
 ~~~
 
-The BigBlueButton configuration tool `bbb-conf` will automatically restart the components for the HTML5 client when you perform `bbb-conf --restart` or `bbb-conf --clean`.
+## 3. Loading the HTML5 client
+
+To try out the HTML5 client, access your BigBlueButton server with an Android device (phone or tablet), or iOS device (iPhone or iPad) running iOS 11 (you need iOS 11 to have support for WebRTC audio).   The HTML5 client runs alongside the Flash client, so after you join with your mobile device join the with your web browser and try uploading slides and moving around.  You'll see the updates come through to the HTML5 client running on your mobile device.
+
+The HTML5 client also runs within Chrome, FireFox, or Safari 11 on the desktop. These browser support WebRTC for audio.
+
+To try the HTML5 client on the desktop, install the [API demos](/install/install.html#install-api-demos-optional) and then join the Demo Meeting via the URL `https://<your_server>/demo/demoHTML5.jsp`.  
+
+You can do this on the test.bigbluebutton.org server via the URL [https://test.bigbluebutton.org/demo/demoHTML5.jsp](https://test.bigbluebutton.org/demo/demoHTML5.jsp).
+
+<p align="center">
+  <img src="/images/20html5-demo.png"/>
+</p><br>
+
 
 If you want to manually restart (or stop) it you can do so with the command
 
@@ -69,6 +101,11 @@ Later on if you wish to remove the HTML5 client, you can enter the command
 $ sudo apt-get purge bbb-html5
 ~~~
 
+# After you install
+
+## Development
+
+The HTML5 client for BigBlueButton is a very active project.  If you want to join the development effort, see [development of HTML5 client](/html/html5-dev.html).
 
 ## Localization
 
@@ -76,5 +113,7 @@ You can contribute to the localization of the HTML5 client. The method is the sa
 
 ## Join the Community
 
-If you have any questions or feedback, please join [the BigBlueButton community](https://bigbluebutton.org/support/community/) and post them to the [bigbluebutton-dev](https://groups.google.com/forum/#!forum/bigbluebutton-dev) mailing list.  We look forward to hearing from you.
+If you have any questions or feedback, join [the BigBlueButton community](https://bigbluebutton.org/support/community/) and post to the [bigbluebutton-dev](https://groups.google.com/forum/#!forum/bigbluebutton-dev) mailing list.  
+
+We look forward to hearing from you.
 
