@@ -11,45 +11,30 @@ order: 2
 
 # Overview
 
-BigBlueButton is an open source web conferencing system for online learning.  Our goal is to provide remote students with a high-quality online learning experience..
+BigBlueButton is an open source web conferencing system for online learning.  Our goal is to provide remote students a high-quality online learning experience.
 
-To achieve this goal, we are always looking at ways to improve the teacher and learning experience within our product.  The user interface (UI) for BigBlueButton is a major component of that experience.
+One measurement of how well we acheive that goal is to ask "how easily can a user -- who may be a teacher with remote students anywhere in the world, a corporate instructor giving an orientation session to new employees, or a student logging into their online class ready to learn -- quickly get started using our product?"  In other words, can a user, after a few moments of interaction,  master the interface and get on with the task of teaching or learning?
 
-Since the project’s inception in 2008, BigBlueButton has evolved and improved with each product iteration (over 14 releases since the initial version).  While there have been significant architectural changes over the years, the UI has remained largely consistent with the first release.
+We've put a lot of work into the user interface (UI) over the years.  We release BigBlueButton [BigBlueButton 2.0](2.0/20overview.html) with multi-user whiteboard, shared notes, and, most importantly, an updated user interface.
 
-Recently, we’ve been working on developing an HTML5 mobile client for BigBlueButton that has an updated user experience for participating in BigBlueButton sessions.  While there are many architectural changes needed to support an HTML5 client, and while we wanted to create a consistent user experience across platforms, we took this opportunity to ask ourselves "How could we improve the user experience to better reach our goal?".
+We think a good interface is critical to the success of any product. This document gives you an overview of design decisions we made in creating a consistent interface for the HTML5 client that spans use on mobile, tablet, and desktop platforms.  
 
-This document will give you an overview of our motivation and design decisions consistent with the BigBlueButton user interface in HTML5 that is intended to span across platforms (mobile, tablet, and desktop).
-
-
-## Cross platform capability
-
-There are many technical challenges to creating a cross-platform HTML5 product that implements similar functionality on all devices.  Today, platforms provide by the browsers -- especially those that support web real-time communications (WebRTC) frameworks -- are nothing short of amazing.
-If you are a busy student, commuting into campus, or a business professional conducting a collaborative online training session, we would like to provide you multiple options (phone, tablet, and desktop) to join a BigBlueButton session.
-
-## User expectations
-
-With the increased adoption of mobile applications, new standards, new user expectations, and new best practices have evolved; such as CSS frameworks, grid systems, layouts, placement and sizing of elements, that are creating a fairly consistent means of interaction with mobile devices.
-
-For example, if you have used Slack, Facebook, Twitter, or GMail mobile applications, you would notice they all share similar UI conventions that have evolved over the past few years.
-
-When updating the BigBlueButton user interface, we didn’t feel the need to create any radically new ways of interaction; rather, we wanted to provide users with a modern, consistent, modular and accessible interface that would be familiar to users based on their experience with other applications.
-
-## Consistent across platforms
-
-In the beginning when designing the BigBlueButton HTML5 client, we initially focused on the mobile experience, which had a very different experience from the the current Flash-based web client.  After all, they are different forms of interaction: touch vs. mouse, handheld vs. screen, tap vs. keyboard.
-
-As we developed designs for the mobile interface -- starting from a very small set of design goals -- we knew that while it didn’t need to work exactly the same on all platforms we wanted to create a design language that was consistent across all platforms.
-
-<br><br>
 
 # Design Goals
 
+## User expectations
+
+Today, users expect to access BigBlueButton from a mobile device.  When interacting with a mobile, suers expect certain standards, conventions, and best practices.  For example, if you have used the mobile client for Slack, Facebook, Twitter, or GMail, you would notice they all share similar UI conventions that have evolved over the past few years.
+
+For the HTML5 client, the underlying technology is completely different.  Instead of a Flash application, it uses CSS frameworks, grid systems, layouts, and placement and sizing of elements that all combine together to create a consistent interface that works across multiple mobile devices.i
+
+When designing the BigBlueButton HTML5 client's user interface, we didn't feel the need to create any radically new ways of interaction on a mobile client; rather, we wanted to provide users with a modern and accessible interface that would be familiar to all based on their prior experience with other applications.
+
 ## Mobile first approach
 
-Designing for mobile first allows us to take a step back from the current user experience and think about the minimal set of features required for a participant to engage in a session (you will see lots of examples of this in the designs below).
+Designing for mobile first allows us to take a step back from the current user experience and think about the minimal set of features required for a user to engage in an online session (you will see lots of screen shots of this designs below).
 
-The current Flash-based user experience has a series of windows and layouts to accommodate different users.  However; mobile applications don’t have windows, instead they have a core set of elements that intelligently overlay as the user needs to access them.
+The current Flash-based user experience has a series of windows and layouts to accommodate different users.  However, a mobile application doesn't have windows.  Instead, it a core set of elements that intelligently overlay as the user needs to access them.
 
 We have a similar set of elements in BigBlueButton
 
@@ -61,8 +46,14 @@ We have a similar set of elements in BigBlueButton
 
 ## Unified experience
 
-Providing a unified experience will allow our users to quickly become familiar with the product and reduce the overall learning curve. If you are using the web, tablet or mobile client, our goal is to have consistent styles and placement of elements. By doing so, will also make the experience of contributing or building on top of BigBlueButton a lot easier for developers.
+Providing a unified experience will allow our users to quickly become familiar with the product and reduce the overall learning curve.  If you are using the web, tablet or mobile client, our goal is to have consistent styles and placement of elements. By doing so, will also make the experience of contributing or building on top of BigBlueButton a lot easier for developers.
 
+
+## Consistent across platforms
+
+While the initial design of the HTML5 client focused mainly on the mobile experience, we want the HTML5 client to run on the desktop as well.  The Flash run-time environment has enabled us to provide BigBlueButton across Mac, Linux, and PC computers.  We expect, over time as the HTML5 client matures, it will become the default interface accross all platforms. 
+
+Mobile has different user experience from a web application.  After all, they are different forms of interaction: touch vs. mouse, handheld vs. screen, tap vs. keyboard.  Over time, we evolved the designs to include interaction on the desktop.  We expect as the HTML5 client matures it will become the default interface accross all platforms. 
 
 ## Accessibility
 
@@ -76,7 +67,7 @@ BigBlueButton is not only a solution, but a platform that other companies build 
 
 With the latest design of our HTML5 client, we're including a shareable design document for other designers to use as a starting point to brand the client or to conceptualize new features.
 
-[Download BigBlueButton Design Sketch App File ](http://docs.bigbluebutton.org/images/html5/BigBlueButton_html5_designs.sketch)
+[Download BigBlueButton Design Sketch App File ](/images/html5/BigBlueButton_html5_designs.sketch)
 <br><br>
 
 <hr>
