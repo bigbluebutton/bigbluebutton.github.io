@@ -394,7 +394,7 @@ First, the script requires two gem dependencies `jwt` and `java_properties`.  To
 Next, run the following command to install the callback script into BigBlueButton.
 
 ~~~
-# docker run --rm bigbluebutton/greenlight cat ./scripts/greenlight_recording_notify.rb > /usr/local/bigbluebutton/core/scripts/post_publish/greenlight_recording_notify.rb
+# docker run --rm bigbluebutton/greenlight cat ./scripts/greenlight_recording_notify.rb | sudo tee -a /usr/local/bigbluebutton/core/scripts/post_publish/greenlight_recording_notify.rb
 # chmod +x /usr/local/bigbluebutton/core/scripts/post_publish/greenlight_recording_notify.rb
 ~~~
 
