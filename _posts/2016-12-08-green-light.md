@@ -376,6 +376,8 @@ See [Applying env File Changes](#applying-env-file-changes) section to enable yo
 
 Once an OAuth provider is configured GreenLight will allow users to login and use authenticated meetings.
 
+If you are using an ActiveDirectory LDAP server, you should determine the name of your user id parameter to set `LDAP_UID`. It is commonly 'sAMAccountName' or 'UserPrincipalName'.
+
 ## 7. Configuring email notifications (optional)
 
 There are three steps to configuring email notifications:
