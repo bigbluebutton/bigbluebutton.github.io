@@ -652,6 +652,4 @@ Setting these rules should allow traffic from the GreenLight docker container.
 ~~~
 iptables -A INPUT -i docker0 -j ACCEPT
 iptables -A OUTPUT -o docker0 -j ACCEPT
-iptables -A FORWARD -i docker0 -j ACCEPT
-iptables -A FORWARD -o docker0 -j ACCEPT
 ~~~
