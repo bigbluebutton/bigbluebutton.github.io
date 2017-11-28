@@ -42,7 +42,7 @@ $ sudo service mongod start
 Next, the HTML5 client uses a nodeJS server to communicate with the BigBlueButton server.  To install nodeJS, do the following
 
 ~~~
-curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ~~~
 
