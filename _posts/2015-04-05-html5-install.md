@@ -44,6 +44,7 @@ Next, the HTML5 client uses a nodeJS server to communicate with the BigBlueButto
 ~~~
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 sudo apt-get install -y nodejs
+sudo apt-get install -y nodejs-legacy
 ~~~
 
 You need only install mongodb and nodeJS once.  
