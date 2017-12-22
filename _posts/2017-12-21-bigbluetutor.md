@@ -19,9 +19,7 @@ The steps below cover usage,  features, installation and future development
 # User Experience:
 This shows the steps to use BigBlueTutor from a user’s perspective in the Ionic Client
 
-
 ![](https://lh3.googleusercontent.com/uariST4fUUMLolOd_7sVdNHNZ26b27HEKA3bj5exePgLmqd0Piue6xgyNCVwl7kT1CQ=h900-rw)
-
 
 **Sign in** with your Google account. BigBlueTutor will use your Google account to create your profile.
 
@@ -52,11 +50,14 @@ Status: Released ([app](https://play.google.com/store/apps/details?id=com.blinds
 Supports: **Android**, **iOS**
 Status: In Development
 
-Setting up mobile development environment:
+# Technical Overview:
+BigBlueTutor uses Deepstream.io and NodeJS for it's backend server. It uses RethinkDB to integrate with Deepstream.
+Deepstream allows us to focus our development efforts towards BigBlueTutor specific features.
+BigBueTutor have two mobile client implementations, Ionic and React-Native. The Ionic client was made to demonstrate a quick working version of BigBlueTutor while the React-Native client is used for long-term development. 
 
 # Before You Install:
 BigBlueTutor requires a pre-existing BigBlueButton server with the HTML5 client. You will need a BigBlueButton 2.0 server with the HTML5 client.
-The BigBlueButton server is separate from BigBLueTutor and does not have to be hosted together.
+The BigBlueButton server is separate from BigBlueTutor and does not have to be hosted together.
 
 See [BigBlueButton HTML5 Overview](/html/html5-overview.html) for the HTML5 client
 
