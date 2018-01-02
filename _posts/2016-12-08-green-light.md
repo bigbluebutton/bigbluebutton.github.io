@@ -643,6 +643,7 @@ To check Greenlight's mailer configuration use the following command and replace
 # docker run --rm --env-file env bigbluebutton/greenlight rake conf:check_email['<your_email>']
 ~~~
 
+<!--
 ## Configuring GreenLight with a Firewall
 
 If you have configured an iptables firewall that uses the default rules to restrict all ports, you'll need to change the rules to allow traffic on the docker interface in order for GreenLight to run properly.
@@ -653,3 +654,4 @@ Setting these rules should allow traffic from the GreenLight docker container.
 iptables -A INPUT -i docker0 -j ACCEPT
 iptables -A OUTPUT -o docker0 -j ACCEPT
 ~~~
+-->

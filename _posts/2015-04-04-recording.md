@@ -76,7 +76,7 @@ The Publish phase involves generating metadata and taking many or all the proces
 ## Playback
 The Playback phase involves taking the published files (audio, webcam, deskshare, chat, events, metadata) and playing them in the browser.
 
-Using the workflow **presentation**, playback is handled by HTML, CSS and Javascript libraries; it is fully available in Mozilla Firefox and Google Chrome(also in Android devices); in Internet Explorer if you have installed [Google Chrome Frame](https://tools.google.com/dlpage/chromeframe). In other browsers like Opera or Safari the playback will work without all its functionality , e.g, thumbnails won't be shown. There is not a unique video file for playback, there is not an available button or link to download the recording. We have opened an [issue](https://github.com/bigbluebutton/bigbluebutton/issues/1969) for this enhancement
+Using the workflow **presentation**, playback is handled by HTML, CSS and Javascript libraries; it is fully available in Mozilla Firefox and Google Chrome(also in Android devices).  In other browsers like Opera or Safari the playback will work without all its functionality , e.g, thumbnails won't be shown. There is not a unique video file for playback, there is not an available button or link to download the recording. We have opened an [issue](https://github.com/bigbluebutton/bigbluebutton/issues/1969) for this enhancement
 
 
 # Media storage
