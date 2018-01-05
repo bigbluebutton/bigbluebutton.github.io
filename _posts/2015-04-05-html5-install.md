@@ -39,7 +39,11 @@ $ sudo apt-get install -y mongodb-org curl
 $ sudo service mongod start
 ~~~
 
-Next, the HTML5 client uses a nodeJS server to communicate with the BigBlueButton server.  To install nodeJS, do the following
+Next, the HTML5 client uses a nodeJS server to communicate with the BigBlueButton server.  
+
+Note: If you were running an earlier version of the HTML5 client and have node 4.x installed (to check do `dpkg -l | grep nodejs`), uninstall the node 4.x packges before proceeding.
+
+To install nodeJS 6.x, do the following
 
 ~~~
 curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
