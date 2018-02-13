@@ -74,6 +74,45 @@ sudo apt-get update
 sudo apt-get dist-upgrade
 ~~~
 
+The HTML5 client uses the kurento media server to send/receive WebRTC video streams.  If your installing on a BigBlueButton server behind network address translation (NAT), you need to give kurento access to a STUN server (which stans for Session Traversal of UDP through NAT).  A STUN server will help Kurento determine its external address when behind NAT.
+
+You'll find a list of publically available STUN servers at the [kurento documentation](http://doc-kurento.readthedocs.io/en/stable/installation_guide.html#stun-and-turn-servers).  
+
+To configure Kurento to use a STUN server from the above list, you need to edit `/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini`.  Here's the default configuration.
+
+~~~
+# cat /etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
+; Only IP address are supported, not domain names for addresses
+; You have to find a valid stun server. You can check if it works
+; usin this tool:
+;   http://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/
+; stunServerAddress=<serverAddress>
+; stunServerPort=<serverPort>
+
+; turnURL gives the necessary info to configure TURN for WebRTC.
+;    'address' must be an IP (not a domain).
+;    'transport' is optional (UDP by default).
+; turnURL=user:password@address:port(?transport=[udp|tcp|tls])
+
+;pemCertificate is deprecated. Please use pemCertificateRSA instead
+;pemCertificate=<path>
+;pemCertificateRSA=<path>
+;pemCertificateECDSA=<path>
+~~~
+
+For example, to use the STUN server at 74.125.204.127 with port 19302, change the values for `stunServerAddress` and `stunServerPort` as follows.
+
+~~~
+stunServerAddress=74.125.204.127
+stunServerPort=19302
+~~~
+
+Save your changes, then restart BigBlueButton with the command:
+
+~~~
+sudo bbb-conf --restart
+~~~
+
 ## 3. Loading the HTML5 client
 
 To try out the HTML5 client, access your BigBlueButton server with an Android device (phone or tablet), or iOS device (iPhone or iPad) running iOS 11 (you need iOS 11 to have support for WebRTC audio).   The HTML5 client runs alongside the Flash client, so after you join with your mobile device join the with your web browser and try uploading slides and moving around.  You'll see the updates come through to the HTML5 client running on your mobile device.
