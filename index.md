@@ -50,7 +50,8 @@ The BigBlueButton project began in 2008. The project is managed by a core group 
 
 The latest release is BigBlueButton 1.1. See [overview](/overview/overview.html), [install](/install/install.html), and [architecture](/overview/architecture.html) for more details.  
 
-The latest version is BigBlueButton 2.0-beta which improves collaboration with students through  multi-user whiteboard and shared notes.  See [overview](2.0/20overview.html) and [install steps](/2.0/20install.html).  Click the image below for a video [overview of 2.0-beta](https://www.youtube.com/watch?v=NQPrdc-W-6A).
+The latest version is BigBlueButton 2.0-beta which improves collaboration with students through  multi-user whiteboard and shared notes.  To install in 15 minutes, see [one line installer](https://github.com/bigbluebutton/bbb-install).  See also [overview](2.0/20overview.html), [step-by-step install instructions](/2.0/20install.html), and a [video overview of 2.0-beta](https://www.youtube.com/watch?v=NQPrdc-W-6A).
+
 
 <p align="center">
   <a href="http://www.youtube.com/watch?feature=player_embedded&v=NQPrdc-W-6A" target="_blank"><img src="http://img.youtube.com/vi/NQPrdc-W-6A/0.jpg" alt="Overview of BigBlueButton 2.0" width="480" height="360" border="10" /></a>
