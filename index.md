@@ -11,7 +11,7 @@ title: "BigBlueButton"
 
 We believe every student with a web browser should have access to a high-quality online learning experience.  
 
-We've written this documentation for administrators and developers who want to setup and customize their own BigBlueButton server. If you are an end-user (instructor or teacher) interested in learning more about BigBlueButton (and how it works) visit [bigbluebutton.org](http://bigbluebutton.org). 
+This documentation for administrators and developers who want to setup and customize their own BigBlueButton server. If you are an end-user (instructor or teacher) interested in learning more about BigBlueButton (and how it works) visit [bigbluebutton.org](http://bigbluebutton.org). 
 
 The source code for BigBlueButton is hosted on [GitHub](http://github.com/bigbluebutton/bigbluebutton).
 
@@ -19,12 +19,14 @@ The source code for BigBlueButton is hosted on [GitHub](http://github.com/bigblu
   <img src="/images/20-screenshot.png"/>
 </p><br>
 
-## Getting started
+## Overview
 
 BigBlueButton enables real-time sharing of audio, video, slides (with whiteboard), polling, emote icons (including raise hand), chat, and the presenter's desktop.  It is [localized](/dev/localization.html) into over 35 languages and supports JAWS screen reader for students with visual disabilities. 
 
 Users join a BigBlueButton session as one of two roles: _viewer_ or _moderator_.  A viewer (typically the student) can chat, display an emote icon, send/receive audio and video, and respond to polls.  A moderator (typically the instructor) can -- in addition to all the capabilities of a viewer -- mute/unmute other viewers, lock down viewers, or make anyone (including themselves) the presenter.  The current presenter can can upload slides, annotate them (using the whiteboard controls), and share his or her desktop for all to see.
 
+
+## Getting Started
 
 If you are new to BigBlueButton we recommend (in order): 
 
@@ -41,16 +43,17 @@ Next, depending on whether you are a developer or administrator, we recommend:
 
 If you are a developer, we recommend
   1. [Setup](/dev/setup.html) a development environment to modify and extend BigBlueButton for your needs.
-  1. Integrate BigBlueButton with your applicaiton using the [BigBlueButton API](/dev/api.html).
+  1. Integrate BigBlueButton with your application using the [BigBlueButton API](/dev/api.html).
 
-The BigBlueButton project began in 2008. The project is managed by a core group of [committers](/support/faq.html#bigbluebutton-committer) that are _very_ determined to see this project meet is goals.  If you like BigBlueButton, help us by spreading the word (blog, tweet, upload a video to YouTube, etc.) about the project.  And definitely join one of the [mailing lists](https://bigbluebutton.org/support/community/) -- you'll an active and a global community supporting BigBlueButton for the entrepreneurial opportunities and social benefits of providing supported and tested platform for online learning.
+The BigBlueButton project began in 2008. It is managed by a core group of [committers](/support/faq.html#bigbluebutton-committer) that are _very_ determined to see this project meet is goals.  If you use BigBlueButton and find it worthwhile, you can help us by spreading the word (blog, tweet, upload a video to YouTube, etc.) about the project.  
 
+You'll fine BigBlueButton project is supported by an active and a global community that believe in the entrepreneurial opportunities and social benefits of the project.  If you do contribute to the project, you'll find the more you contribute the more you get back.
 
 ## Latest versions
 
 The latest release is BigBlueButton 1.1. See [overview](/overview/overview.html), [install](/install/install.html), and [architecture](/overview/architecture.html) for more details.  
 
-The latest version is BigBlueButton 2.0-beta which improves collaboration with students through  multi-user whiteboard and shared notes.  To install in 15 minutes, see [one line installer](https://github.com/bigbluebutton/bbb-install).  See also [overview](2.0/20overview.html), [step-by-step install instructions](/2.0/20install.html), and a [video overview of 2.0-beta](https://www.youtube.com/watch?v=NQPrdc-W-6A).
+The latest version is BigBlueButton 2.0-beta which improves collaboration with students through  multi-user whiteboard and shared notes.  To make it easy to try out, we provide a [one line installer](https://github.com/bigbluebutton/bbb-install).  See also [overview](2.0/20overview.html), [step-by-step install instructions](/2.0/20install.html), and a [video overview of 2.0-beta](https://www.youtube.com/watch?v=NQPrdc-W-6A).
 
 
 <p align="center">
