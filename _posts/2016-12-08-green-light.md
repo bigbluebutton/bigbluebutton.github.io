@@ -333,7 +333,7 @@ Next,
   1. Click "Create your Twitter application"
   1. Click "Keys and Access Tokens" tab
 
-You should see a key and secret.  Add the `client id` and `client secret` to the `env` file (your values will be different)
+You should see a key and secret.  Add the `Consumer Key (API Key)` (not the OwnerID) and `Consumer Secret (API Secret)` to the `env` file (your values will be different)
 
 ~~~
 TWITTER_ID=SOj8AkIdeqJuP2asfbbGSBk0
