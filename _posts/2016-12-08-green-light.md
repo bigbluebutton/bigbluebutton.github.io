@@ -589,7 +589,11 @@ This makes the full run command:
 
 You can then find `production.log` at `~/greenlight/log`.
 
-If you want to access logs within the docker container without mounting the log directory, you can enter to docker container to retrieve the logs using:
+If you don't want GreenLight send logs to `log/production.log`, you can configure it to log to the console instead. To do this, you should comment out the `DISABLE_RAILS_LOG_TO_STDOUT` environment variable in the `env` file.
+
+## Accessing GreenLight within the Docker container
+
+If you want to access GreenLight within the docker container, you can get a root prompt for the Linux environment in the docker container using the folloiwng command:
 
 ~~~
 # docker exec -i -t greenlight /bin/bash
