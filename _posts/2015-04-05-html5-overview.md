@@ -10,34 +10,43 @@ order: 1
 
 # Overview 
 
-This document gives an overview of the long-term vision and near-term scope (the first release) planned for the BigBlueButton HTML5 client.
+This document gives an overview of the long-term vision and near-term scope (the first release) planned for HTML5 client for BigBlueButton.
 
-The BigBlueButton project started in 2009 with one goal: to provide remote students a high-quality online learning experience.  Since then, BigBlueButton client, written in Flash, has been used by millions of users in online classes.
+The BigBlueButton project started in 2009 with one goal: to provide remote students a high-quality online learning experience.  Since then, the BigBlueButton client, written in Flash, has been used by millions of users.
 
-Flash enjoys support from a wide range of browsers (FireFox, Chrome, Safari, Edge, and IE) and a wide range of platforms (Windows, Mac OS X, Linux, and Chromebook).  Google embeds Flash into their browser and provides automatic updates, and  so does Microsoft in Edge.  BigBlueButton also leverages the browser's support for web real-time communications (WebRTC) for sending and receiving high-quliaty audio.
+Today, users are increasingly looking for options to join to a BigBlueButton session from a mobile device.  However, mobile devices do not support Flash natively.  
 
-We also want BigBlueButton to run on mobile devices.  However, mobile devices do not support Flash natively.  Also, Adobe recently announce that Flash will be end of life in 2020 (which as the time of this writing is over three years away).  We want to move the BigBlueButton project to pure HTML5 and support mobile users _long_ before then.  Hence, the HTML5 client project.
+Also, while Flash enjoys support from a wide range of browsers (FireFox, Chrome, Safari, Edge, and IE) and a wide range of platforms (Windows, Mac OS X, Linux, and Chromebook), and while Google embeds Flash into their browser and provides automatic updates, as so does Microsoft in Edge, Adobe has announced that it will discontinue support for Flash by the [end of 2020](https://theblog.adobe.com/adobe-flash-update/).   
 
-It's worth stating that the HTML5 client is part of the BigBlueButton project.  It will be open source.  
+We want to move the BigBlueButton project to pure HTML5 and support mobile users _long_ before the end of 2020.  Hence, the HTML5 client project.
 
-If you are a developer,  this means you can integrate and extend the HTML5 client into your commercial product.  To support developers, we provide documentation on the architecture, setting up a development environment, and installing on a BigBlueButton 1.1 (or later) server.  We also provide support in the [bigbluebutton-dev](https://bigbluebutton.org/support/community/) mailing list from the core BigBlueButton devs.
+A BigBlueButton 2.0-beta server (hereafter referred to as simply "BigBlueButton 2.0")  can support users connecting from either the Flash or HTML5 client in the same sessions.  The server routes messages seamslessly between the clients. 
 
-For the sections below, a few definitions.  In the BigBlueButton client, a user joins as either a `viewer` or `moderator`.  A viewer can send/receive audio and video, engage in public/private chat, raise hand, respond to polls, join breakout rooms, and view close captions.  Students typically join as viewers.
+The HTML5 support for real-time audio and video has substantially improved of the years with WebRTC.  The Flash client already uses WebRTC for sending and receiving high-quliaty audio for the audio (with a fallback to built-in Flash audio if the network blocks the ports needed for WebRTC).
 
-A moderator can, in addition to all the viewer capabilities, also mute/unmute other viewers, lock down all viewers, create live closed captioning, create breakout rooms, and make anyone (including themselves) the presenter.  Teachers typically join as moderators.
+It's worth emhasizing that the HTML5 client is part of the BigBlueButton project.  It will be open source.  
 
-Any moderator can make a user presenter (including themselves).  The current presenter can upload slides, annotate the slides using whiteboard tools, and share their desktop for all to see.
+If you are a developer, this means you can integrate and extend the HTML5 client into your commercial product.  To support developers, we provide documentation on the architecture, setting up a development environment, and installing on a BigBlueButton 2.0 (or later) server.  We also provide support in the [bigbluebutton-dev](https://bigbluebutton.org/support/community/) mailing list from the core BigBlueButton devs.
+
+In the BigBlueButton client, a user joins as either a `viewer` or `moderator`.  A viewer can send/receive audio and video, engage in public/private chat, raise hand, respond to polls, join breakout rooms, and view close captions.  Students typically join as viewers.
+
+A moderator can -- in addition to all the viewer capabilities -- also mute/unmute other viewers, lock down all viewers, create live closed captioning, create breakout rooms, and make anyone (including themselves) the presenter.  Teachers typically join as moderators.
+
+Any moderator can make anyone presenter (including themselves).  The current presenter can upload slides, annotate the slides using whiteboard tools, and share their desktop for all to see.
+
 
 ## Vision
 The vision for the BigBlueButton project is to provide remote students a high-quality online learning experience regardless of the student's computer or device.
 
-To achieve this vision, we want to deliver HTML5 client that works on desktop, laptops, and _mobile_ clients.  Working towards this vision, we want the HTML5 client to work alongside the Flash client to provide a smooth transition from one platform to another.  In this way, as the HTML5 client matures, we expect it to be increasingly used over the Flash client.  And, when the HTML5 client achieves parity of features with the Flash client, we can retire the Flash client.
+To achieve this vision, we want to deliver HTML5 client that works on desktop, laptops, and _mobile_ clients.  
+
+Working towards this vision, we want the HTML5 client to work alongside the Flash client to provide a smooth transition from one platform to another.  In this way, as the HTML5 client matures, we expect it to be increasingly used over the Flash client.  Over time, when the HTML5 client achieves parity of features with the Flash client, we plan to retire the Flash client and use pure HTML5 accross the board.
 
 ## Scope
 
-The near-term goal (the first release) is to create an HTML5 client that implements all the viewer capabilities of the Flash client with the exception of two-way webcams (that will come in a subsequent release) in an Andorid or iOS phone or tablet.  
+The near-term goal (the first release) is to create an HTML5 client that implements all the viewer capabilities of the Flash client with the exception of two-way webcams (that will come in a subsequent release) in an Andorid or iOS (iOS 11+) phone or tablet.  
 
-Android provides excellent support for WebRTC in the Chrome browser.  As of the time of this writing, Apple recently released support for WebRTC in mobie Safari in iOS 11 (yay).  
+Android provides excellent support for WebRTC in the Chrome browser.  As of the time of this writing, Apple recently released support for WebRTC in iOS 11 which has a [76% market penetration](https://www.macrumors.com/2018/04/25/ios-11-installed-on-76-percent-of-devices/).
 
 # Features for the first release
 
@@ -55,16 +64,13 @@ The feature list for the first release of the HTML5 client will include
   * Responsive user experience on phone and tablet in portrait and landscape mode
   * Accessibility through keyboard navagitation 
 
-The above feature list covers a lot of ground.  All the above is currently implemented, with the remaining features still in deveopment 
-  * Initiate desktop sharing
-  * View desktop sharing video from presenter
-  * Shared notes
-
 Recall we said that the first release will only support viewer capabilities.  We're a bit further along in the development of the HTML5 client than originally planned, so the first release will support some presentation capabilities 
 
   * Advance the slides
   * Upload a presentation
   * Whiteboard controls (except for pan/zoom)
+  * Share desktop (FireFox and Chrome only)
+  * Start/stop recording
 
 and some moderator capabilities
 
@@ -73,22 +79,25 @@ and some moderator capabilities
   * Kick user
   * Mute/unmute user
 
-You can try out the latest build of the BigBlueButton HTML5 client at the test server [https://test.bigbluebutton.org/](https://test.bigbluebutton.org/).  This developer release does not yet support viewing desktop sharing from the presenter.
+You can try out the latest build of the BigBlueButton HTML5 client at our test server [https://test.bigbluebutton.org/](https://test.bigbluebutton.org/). 
 
+With the above it's now possible to hold a fairly complete meeting wiht just the HTML5 client.  If you do this, you can also make use of two-way video between the HTML5 clients.  The video codecs on the Flash client are different, so Flash users don't see video from the HTML5 client and vice-versa.
 
 # Future Releases
 
-Building upon the first release, we plan to add the additional presenter and moderator capabilities to the HTML5 client, including:
+Building upon the first release, we plan to add the remaining presenter and moderator capabilities to the HTML5 client, including:
 
   * Remaining whiteboard controls (pan/zoom)
-  * Two-way webcam
-  * Share desktop
+  * Breakout Rooms
+  * Closed Captioning
+  * Shared Notes
   * All remaining moderator capabilities, including
-    * Initiate breakout rooms
     * Lock down viewers
 
 
 ## User Interface 
+
+The requirements for an HTML5 interface include ease of use, responsive design, and the ability to run on multiple platforms.
 
 While we are targeting the first release of the HTML5 client for mobile users, we have designed its interface (UI) for both desktop and mobile clients.  
 
