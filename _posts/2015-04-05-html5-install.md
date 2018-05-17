@@ -13,6 +13,9 @@ This document covers how to install the latest developer build of the BigBlueBut
 
 As the HTML5 client is still under active development.  As such, we do not recommend it for production use.  You can try the latest version of the HTML5 client at [https://test.bigbluebutton.org/](https://test.bigbluebutton.org/).
 
+# One line install
+
+If you want to install BigBlueButton 2.0-beta + SSL + HTML5 client with a single command, see [bbb-install.sh](https://github.com/bigbluebutton/bbb-install).  
 
 # Before you install
 
