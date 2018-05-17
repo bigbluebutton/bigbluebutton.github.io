@@ -24,7 +24,7 @@ A BigBlueButton 2.0-beta server (hereafter referred to as simply "BigBlueButton 
 
 The HTML5 support for real-time audio and video has substantially improved of the years with WebRTC.  The Flash client already uses WebRTC for sending and receiving high-quliaty audio for the audio (with a fallback to built-in Flash audio if the network blocks the ports needed for WebRTC).
 
-It's worth emhasizing that the HTML5 client is part of the BigBlueButton project.  It will be open source.  
+It's worth emphasizing that the HTML5 client is part of the BigBlueButton project.  It will be open source.  
 
 If you are a developer, this means you can integrate and extend the HTML5 client into your commercial product.  To support developers, we provide documentation on the architecture, setting up a development environment, and installing on a BigBlueButton 2.0 (or later) server.  We also provide support in the [bigbluebutton-dev](https://bigbluebutton.org/support/community/) mailing list from the core BigBlueButton devs.
 
@@ -32,7 +32,7 @@ In the BigBlueButton client, a user joins as either a `viewer` or `moderator`.  
 
 A moderator can -- in addition to all the viewer capabilities -- also mute/unmute other viewers, lock down all viewers, create live closed captioning, create breakout rooms, and make anyone (including themselves) the presenter.  Teachers typically join as moderators.
 
-Any moderator can make anyone presenter (including themselves).  The current presenter can upload slides, annotate the slides using whiteboard tools, and share their desktop for all to see.
+The current presenter can upload slides, annotate the slides using whiteboard tools, and share their desktop for all to see.
 
 
 ## Vision
@@ -44,7 +44,7 @@ Working towards this vision, we want the HTML5 client to work alongside the Flas
 
 ## Scope
 
-The near-term goal (the first release) is to create an HTML5 client that implements all the viewer capabilities of the Flash client with the exception of two-way webcams (that will come in a subsequent release) in an Andorid or iOS (iOS 11+) phone or tablet.  
+The near-term goal (the first release) is to create an HTML5 client that implements all the viewer capabilities of the Flash client for desktop, Android or iOS (iOS 11+) phone or tablet.
 
 Android provides excellent support for WebRTC in the Chrome browser.  As of the time of this writing, Apple recently released support for WebRTC in iOS 11 which has a [76% market penetration](https://www.macrumors.com/2018/04/25/ios-11-installed-on-76-percent-of-devices/).
 
@@ -53,6 +53,7 @@ Android provides excellent support for WebRTC in the Chrome browser.  As of the 
 The feature list for the first release of the HTML5 client will include
 
   * send/receive high-quality, low latency audio with WebRTC
+  * send/receive high-quality, low latency video (webcam) with WebRTC - between HTML5 users only
   * engage in public/private chat
   * Share emojis (including raise hand)
   * Respond to polls
@@ -62,7 +63,7 @@ The feature list for the first release of the HTML5 client will include
   * Restrict of sharing chat and/or audio based on Moderator changing lock settings
   * Localization
   * Responsive user experience on phone and tablet in portrait and landscape mode
-  * Accessibility through keyboard navagitation 
+  * Accessibility through keyboard navagitation (includes shortcuts)
 
 Recall we said that the first release will only support viewer capabilities.  We're a bit further along in the development of the HTML5 client than originally planned, so the first release will support some presentation capabilities 
 
@@ -70,7 +71,6 @@ Recall we said that the first release will only support viewer capabilities.  We
   * Upload a presentation
   * Whiteboard controls (except for pan/zoom)
   * Share desktop (FireFox and Chrome only)
-  * Start/stop recording
 
 and some moderator capabilities
 
@@ -78,10 +78,11 @@ and some moderator capabilities
   * Promote/demote user
   * Kick user
   * Mute/unmute user
+  * Start/stop recording
 
 You can try out the latest build of the BigBlueButton HTML5 client at our test server [https://test.bigbluebutton.org/](https://test.bigbluebutton.org/). 
 
-With the above it's now possible to hold a fairly complete meeting wiht just the HTML5 client.  If you do this, you can also make use of two-way video between the HTML5 clients.  The video codecs on the Flash client are different, so Flash users don't see video from the HTML5 client and vice-versa.
+With the above it's now possible to hold a fairly complete meeting with just the HTML5 client.  If you do this, you can also make use of two-way video between the HTML5 clients.  The video codecs on the Flash client are different, so Flash users don't see video from the HTML5 client and vice-versa.
 
 # Future Releases
 
@@ -164,15 +165,12 @@ Similarly we obtain an array of all users, presentations and the chat history fo
 Using this information we populate our collections Users, Chat, Presentations, Shapes, Slides, etc.
 We are subscribed to receive event messages on the following Redis channel:
 
-  * "bigbluebutton:from-bbb-apps:* "
+  * "to-html5-redis-channel"
+  * "from-akka-apps-*"
 
 And we publish event messages on:
 
-  * "bigbluebutton:to-bbb-apps:chat"
-  * "bigbluebutton:to-bbb-apps:meeting"
-  * "bigbluebutton:to-bbb-apps:users"
-  * "bigbluebutton:to-bbb-apps:voice"
-  * "bigbluebutton:to-bbb-apps:whiteboard"
+  * "to-akka-apps-redis-channel"
 
 Throughout the meeting we keep receiving json messages via Redis about all the events in the meetings on the BigBlueButton server.
 The handling procedure typically involves updating the particular document[s] in the collection.
