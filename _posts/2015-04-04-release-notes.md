@@ -5,6 +5,22 @@ category: support
 date: 2015-04-04 22:26:10
 ---
 
+# Release 2.0-beta
+
+Released: May 10, 2018 ([Installation Instructions](2.0/20install.html))
+
+Major features in this release include:
+
+  * **Multi-user Whiteboard** - The presenter can now let all users write on the whitebaord at the same time. 
+
+  * **Shared Notes** - Added a new layout that enables all users to collaborate together on shared notes.
+
+  * **UI Improvements** - Multiple UI improvements that include enable users to choose a breakout room, restrict viewers to only seeing the moderator's webcams, enabling download of presentation, and smoothing of whiteboard strokes.
+
+  * **HTML5 mobile client** - Users on Android and iOS 11+ devices can participate in online sessions.  The HTML5 client enables two-way sharing of audio, chat, viewing presentation, responding to polls, sharing emoji, and viewing WebRTC screen sharing.  
+
+For more information on this release see [detailed list of new features](/2.0/20overview.html) and [issues fixed in BigBlueButton 2.0-beta](https://github.com/bigbluebutton/bigbluebutton/issues?utf8=%E2%9C%93&q=milestone%3A%22Release+2.0%22+is%3Aclosed+).
+
 # Release 1.1
 
 Released: May 24, 2017 ([Installation Instructions](/overview/install.html))

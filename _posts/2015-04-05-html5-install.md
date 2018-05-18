@@ -9,23 +9,63 @@ order: 1
 
 # Overview 
 
-This document covers how to install the latest developer build of the BigBlueButton HTML5 client.  See also [Overview](html/html5-overview.html) and [Design](/html/html5-design.html) of the HTML5 client.
+This document covers how to install/update the latest developer build of the BigBlueButton HTML5 client.  See also [Overview](html/html5-overview.html) and [Design](/html/html5-design.html) of the HTML5 client.
 
 As the HTML5 client is still under active development.  As such, we do not recommend it for production use.  You can try the latest version of the HTML5 client at [https://test.bigbluebutton.org/](https://test.bigbluebutton.org/).
 
-
-# Before you install
-
 Before installing the HTML5 client you need an [BigBlueButton 2.0-beta server](/2.0/20install.html) (referred hereafter as simply BigBlueButton 2.0).  All the development of the HTML5 client now occurs on the 2.0 code base.
 
-To ensure you have the latest version of BigBlueButton 2.0, do
+# Upgrade options
+
+
+## Single Command
+
+If you have a  BigBlueButton 2.0 server, you can install/upgrade to the latest version of the HTML5 client with a single command, see [bbb-install.sh](https://github.com/bigbluebutton/bbb-install).
+
+
+## Manual Upgrade
+
+If you have a BigBlueButton 2.0 server with an earlier version of the HTML5 client installed, follow the steps below.  First, do a general update.  *Note:  We changed some of the package names (kms-server-6.0 to kms-server), this will actually uninstall some of the existing packages (due to missing dependencies).* After
 
 ~~~
 sudo apt-get update
 sudo apt-get dist-upgrade
 ~~~
 
-# Installation
+As stated above, this will actually remove some older HTML5 packages -- you'll see the message.
+
+~~~
+The following packages will be REMOVED:
+  bbb-html5 bbb-webrtc-sfu kms-core-6.0 kms-elements-6.0 kms-filters-6.0 kurento-media-server-6.0
+~~~
+
+Enter 'Y' to continue.  After the upgrade runs, you can run `sudo apt-get install bbb-html5` to install the new HTML5 packages.
+
+~~~
+sudo apt-get install bbb-html5
+~~~
+
+and then remove the older `kms-core-6.0` and `kms-elements-6.0` packages 
+
+~~~
+sudo apt-get purge kms-core-6.0 kms-elements-6.0
+~~~
+
+Finally, run `sudo bbb-conf --seitp <hostname/IP address>` to ensure all the components have the latest hostname/IP address.  For example, if your server had the hostname `bbb.myserver.com`, you would run
+
+~~~
+sudo bbb-conf --setip bbb.myserver.com
+~~~
+
+You can now test out the HTML5 client by going to `/demo/demoHTML5.jsp` (as in `https://bbb.myserver.com/demo/demoHTML5.jsp`).  If you need to install the API demos, enter
+
+~~~
+sudo apt-get install bbb-demo
+~~~
+
+The server should automatically load the HTML5 client when you access your server with an Android or iOS 11+ client. 
+
+# Step-by-Step Installation
 
 ## 1. Install MongDB and NodeJS
 
@@ -134,9 +174,9 @@ If you want to manually restart (or stop) it you can do so with the command
 $ sudo systemctl restart bbb-html5.service
 ~~~
 
-The logs for the component are located at `/var/log/bigbluebutton/html5/html5client.log` and the code for the client can be found at `/usr/share/meteor/bundle/`.
+The logs for the component can be seen/followed using `journalctl -f -u bbb-html5.service` and the code for the client can be found at `/usr/share/meteor/bundle/`.
 
-The configuration files for the client are located at `/usr/share/meteor/bundle/programs/server/assets/app/config`. If you modify them, you will need to restart bbb-html5.service for the new configuration to take effect.
+The configuration files for the [packaged] client are located at `/usr/share/meteor/bundle/programs/server/assets/app/config/settings-production.json`. If you modify the file, you will need to restart bbb-html5.service for the new configuration to take effect.
 
 Later on if you wish to remove the HTML5 client, you can enter the command
 
