@@ -557,3 +557,190 @@ No, when creating the meeting the parameters must include `record=true` to enabl
 ## How to delete recordings before storage device is full?
 
 `/etc/cron.daily/bigbluebutton` deletes the archived media. Edit the file and add more rules if you need to delete others like raw files or processed files.
+
+
+# Events outline
+
+
+## Overview
+
+The sections that follow cover the types of events you will encounter in events.xml (in case you want to parse them with your own scripts).
+
+## Chat
+
+### **PublicChatEvent**
+
+| attributes|              |            |           |
+| :--------|:------------:| :---------:| :--------:|
+|  message  | sender | senderId    | color|
+
+
+## Presentation
+
+### **AssignPresenterEvent**
+
+| attributes|              | |
+| --------|:------------:| -----:
+|  assignedBy  | userid | name
+
+### **ConversionCompletedEvent**
+
+| attributes|              |
+| :--------|:------------:|
+|  presentationName  | originalFilename | 
+
+### **ParticipantJoinEvent**
+
+| attributes|              |            |           |
+| :--------|:------------:| :---------:| :--------:|
+|  userId  | externalUserId | role    | name|
+
+
+### **ResizeAndMoveSlideEvent**
+
+| attributes|              |            |           |       |
+| :--------|:------------:| :---------:| :--------:|:-----:|
+|  widthRatio  | yOffset | id    | heightRatio|xOffset |
+
+
+### **SharePresentationEvent**
+
+| attributes|              |
+| :--------|:------------:|
+|  share  | presentationName |
+
+
+
+### **GotoSlideEvent**
+
+| attributes|              |
+| :--------|:------------:|
+|  slide  | id |
+
+
+## Whiteboard
+
+### **AddShapeEvent**
+
+| attributes|              |            |           |       |           |           |           |           |           |           |           |
+| :--------|:------------:| :---------:| :--------:|:-----:| :---------:| :---------:| :---------:| :---------:| :---------:| :---------:| :---------:|
+|  presentation  | shapeId | type    | dataPoints|userId |position| pageNumber| status| whiteboardId| id| thickness| color| 
+
+### **UndoAnnotationEvent**
+
+| attributes|              |            |           | |
+| :--------|:------------:| :---------:| :--------:|:-----:|
+|  presentation  | shapeId | userId    | pageNumber|whiteboardId |
+
+
+### **WhiteboardCursorMoveEvent**
+
+| attributes|              |            |
+| :--------|:------------:| :---------| 
+|  yOffset  | userId | xOffset |
+
+## User
+
+
+## Voice
+
+### **StartRecordingEvent**
+
+| attributes|              |                       | 
+| :--------: |:------------:| :--------------------:|
+|  bridge   | filename     | recordingTimestamp    |
+
+### **ParticipantJoinedEvent**
+
+| attributes|              |            |           |       |           |
+| :--------|:------------:| :---------:| :--------:|:-----:| ---------:|
+|  muted  | callernumber | talking    | callername|bridge |participant|
+
+
+### **ParticipantTalkingEvent**
+
+| attributes|              |                       | 
+| :--------: |:------------:| :--------------------:|
+|  talking   | bridge     | participant    |
+
+### **ParticipantTalkingEvent**
+
+| attributes|              |                       | 
+| :--------: |:------------:| :--------------------:|
+|  muted   | bridge     | participant    |
+
+### **ParticipantLeftEvent**
+
+| attributes|              |
+| --------|:------------:| 
+|  bridge  | participant | 
+
+## Participant 
+
+### **RecordStatusEvent**
+
+| attributes|              |
+| --------|:------------:| 
+|  userId  | status | 
+
+## Caption 
+
+
+## Screen Share 
+
+## Desk Share
+
+### **DeskshareStartedEvent**
+
+| attributes| |
+| :--------| :--------: |
+|  file  | stream | 
+
+### **DeskshareStoppedEvent**
+
+| attributes| | |
+| :--------| :--------: |:------: |
+|  file  | stream | duration
+
+## PARTICIPANT
+
+### **ParticipantStatusChangeEvent**
+
+| attributes| | |
+| :--------| :--------: |:------: |
+|  value  | userId | status
+
+## Poll
+
+### **PollStartedRecordEvent**
+
+| attributes|              | 
+| :--------|:------------:| 
+|  answers  | pollId |
+
+### **UserRespondedToPollRecordEvent**
+
+| attributes|              | |
+| :--------|:------------:| :-----:|
+|  answerId  | pollId |userId |
+
+### **PollStoppedRecordEvent**
+
+| attributes|
+| :--------|
+|  pollId  |
+
+## WEBCAM
+
+### **StartWebcamShareEvent**
+
+| attributes|
+| :--------|
+|  stream  |
+
+
+### **StopWebcamShareEvent**
+
+| attributes|              | 
+| :--------|:------------:| 
+|  duration  | stream |
