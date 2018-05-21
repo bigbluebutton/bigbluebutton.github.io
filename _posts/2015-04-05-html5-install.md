@@ -48,8 +48,23 @@ sudo apt-get install bbb-html5
 and then remove the older `kms-core-6.0` and `kms-elements-6.0` packages 
 
 ~~~
-sudo apt-get purge kms-core-6.0 kms-elements-6.0
+sudo apt-get purge kms-core-6.0 kms-elements-6.0 kurento-media-server-6.0
 ~~~
+
+Also, check the contents of `/usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml` for the entry for `kurentoUrl` (it is near the top).  If `kurentoUrl` has a `wss` in it, then 
+
+~~~
+  kurentoUrl: wss://<server_name>/kurento
+~~~
+
+then change it to the format
+
+~~~
+  kurentoUrl: ws://<server_name>:8888/kurento
+~~~
+
+and save the updated file.
+
 
 Finally, run `sudo bbb-conf --seitp <hostname/IP address>` to ensure all the components have the latest hostname/IP address.  For example, if your server had the hostname `bbb.myserver.com`, you would run
 
