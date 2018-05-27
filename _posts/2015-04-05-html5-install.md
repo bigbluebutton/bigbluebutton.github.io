@@ -201,6 +201,21 @@ $ sudo apt-get purge bbb-html5
 
 # After you install
 
+## Making the HTML5 client default
+
+If you want, you can configure your BigBlueButton server to make the HTML5 client the default client.  To do this, edit `/var/lib/tomcat7/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties` and set the values for `attendeesJoinViaHTML5Client` and `moderatorsJoinViaHTML5Client` to true, as in
+
+~~~
+# Force all attendees to join the meeting using the HTML5 client
+attendeesJoinViaHTML5Client=true
+
+# Force all moderators to join the meeting using the HTML5 client
+moderatorsJoinViaHTML5Client=true
+~~~
+
+Restart BigBlueButton with `sudo bbb-conf --restart` and then join from your front-end.  You should automatically join with the HTML5 client.
+
+
 ## Development
 
 The HTML5 client for BigBlueButton is a very active project.  If you want to join the development effort, see [development of HTML5 client](/html/html5-dev.html).
