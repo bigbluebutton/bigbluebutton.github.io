@@ -231,6 +231,26 @@ The HTML5 client for BigBlueButton is a very active project.  If you want to joi
 
 You can contribute to the localization of the HTML5 client. The method is the same as in the Flash client - by using Transifex. For more information, please visit [the localization page](/dev/localization.html). The Transifex project is titled "BigBlueButton HTML5".
 
+## Customization
+
+The HTML5 client can be customized in several ways
+
+### Modify the existing configuration
+
+You can find the configurations file for the HTML5 packaged client in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings-production.json`. If you modify the file you will need to restart the server side component before your changes are applied: `sudo systemctl restart bbb-html5`
+
+Fox example, this is the file where you specify the Google Chrome extension key for screensharing as described in [the documentation for creating Screenshare Extension](https://github.com/bigbluebutton/screenshare-chrome-extension#to-configure-your-html5-client)
+
+### Pass in meta parameters
+
+The HTML5 client functionality and looks can be modified by passing meta parameters when creating the BigBlueButton meeting. The currently supported meta parameters are as follows:
+
+`html5autoswaplayout`: `true` -- loads the client with presentation and webcam areas swapped
+
+`html5autosharewebcam`: `true` -- requests access for webcam and initiates its sharing as soon as the client is finished loading
+
+`html5hidepresentation`: `true` -- hides the presentation area so that webcams display take over the focus of the whole view
+
 ## Join the Community
 
 If you have any questions or feedback, join [the BigBlueButton community](https://bigbluebutton.org/support/community/) and post to the [bigbluebutton-dev](https://groups.google.com/forum/#!forum/bigbluebutton-dev) mailing list.  
