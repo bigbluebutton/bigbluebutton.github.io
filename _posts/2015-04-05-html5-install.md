@@ -201,6 +201,13 @@ $ sudo apt-get purge bbb-html5
 
 # After you install
 
+## Creating an extension for Chrome to share your screen
+
+The HTML5 client uses WebRTC to enable the presenter to share the screen.  While FireFox enables the presenter to share their screen directly, Chrome requires the presenter have installed a Chrome extension (that contains a small bit of JavaScript) to whitelist the target BigBlueButton server.
+
+To create the chrome extension, fork the code at [screenshare-chrome-extension](https://github.com/bigbluebutton/screenshare-chrome-extension), modify the `manifest.json` so it points to the hostname for your BigBlueButton server, and upload it to the Google Chrome store.  See the README.md file in the above repository for details. 
+
+
 ## Making the HTML5 client default
 
 If you want, you can configure your BigBlueButton server to make the HTML5 client the default client.  To do this, edit `/var/lib/tomcat7/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties` and set the values for `attendeesJoinViaHTML5Client` and `moderatorsJoinViaHTML5Client` to true, as in
