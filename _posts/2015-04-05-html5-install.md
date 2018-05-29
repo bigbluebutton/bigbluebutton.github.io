@@ -239,7 +239,27 @@ The HTML5 client can be customized in several ways
 
 You can find the configurations file for the HTML5 packaged client in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings-production.json`. If you modify the file you will need to restart the server side component before your changes are applied: `sudo systemctl restart bbb-html5`
 
-Fox example, this is the file where you specify the Google Chrome extension key for screensharing as described in [the documentation for creating Screenshare Extension](https://github.com/bigbluebutton/screenshare-chrome-extension#to-configure-your-html5-client)
+Some commonly modified parameters include:
+
+`chromeExtensionKey` and `chromeExtensionLink` - this is where you specify the Google Chrome extension key for screensharing as described in [the documentation for creating Screenshare Extension](https://github.com/bigbluebutton/screenshare-chrome-extension#to-configure-your-html5-client).
+
+`enableScreensharing` and `enableVideo` control the functionality for sharing/viewing WebRTC screenshare and webcams.
+
+`log.level` controls the level of logging for the server application - you can set it to 'debug' or 'info' if you need more information or 'error' or 'warn' in case you want to limit logging and optimize the speed of the application.
+
+`autoJoin`, `listenOnlyMode`, `forceListenOnly` and `skipCheck` control the audio participation of users in the HTML5 client in the same way they do in the Flash client:
+
+`"autoJoin": true` means we want to display the microphone vs listen only choice immediately after login
+
+`"listenOnlyMode": false` - do not allow joining as listen only
+
+`"forceListenOnly": true` - do not allow full audio for attendees (note this requires `"listenOnlyMode": true`)
+
+`"skipCheck": true` skips echo test when joining full audio
+
+### Branding
+
+The HTML5 client has an area for a custom logo in the upper left-hand corner. To display your logo first you should enable the display of this branding area by editing `displayBrandingArea` to be `true` in the configuration file for HTML5 client (see the section above on how to modify the existing configuration). The URL used for the logo should be passed as a parameter on the create meeting call `customLogoURL=https://your.logo.png`
 
 ### Pass in meta parameters
 
