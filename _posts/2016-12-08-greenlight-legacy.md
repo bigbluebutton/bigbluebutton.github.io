@@ -1,11 +1,13 @@
 ---
 layout: page
-title: "GreenLight"
-category: "install"
+title: "GreenLight Legacy"
+#category: "install"
 date: 2016-12-08 16:29:25
 ---
 
 BigBlueButton is an open source web conferencing system for online learning.  The project’s goal is to enable teachers to provide remote students anywhere in the world a high-quality online learning experience.
+
+These are the docs for the old outdated version of Greenlight, now dubbed Greenlight Legacy. If you are using the latest version of Greenlight, checkout the [latest docs](/install/greenlight.html).
 
 # Overview
 

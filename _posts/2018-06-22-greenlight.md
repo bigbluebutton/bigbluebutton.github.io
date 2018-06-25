@@ -288,7 +288,7 @@ First, enable the "Google+ API".
   1. Click "Create credentials
   1. Select "OAuth client ID
   1. Select "Web application"
-  1. Under "Authorized redirect URIs" enter "http://hostname/b/auth/google/callback" where hostname is your hostname
+  1. Under "Authorized redirect URIs" enter "http://hostname/gl/auth/google/callback" where hostname is your hostname
   1. Click "Create"
 
 A window should open with your OAuth credentials. In this window, copy client ID and client secret to the `env` file so it resembles the following (your credentials will be different).
@@ -313,7 +313,7 @@ Login to your Twitter account, and click the following link: [https://apps.twitt
 Next,
 
   1. Click "Create New App"
-  1. Under "Callback URL" enter "http://hostname/b/auth/twitter/callback" where hostname is your hostname
+  1. Under "Callback URL" enter "http://hostname/gl/auth/twitter/callback" where hostname is your hostname
   1. Click "Create your Twitter application"
   1. Click "Keys and Access Tokens" tab
 
@@ -383,4 +383,6 @@ Then, [restart Greenlight](#applying-env-changes).
 
 # Looking for the old Greenlight docs?
 
-TODO: path to old gl docs
+The old version of Greenlight has been renamed to Greenlight Legacy. It is still available on Github under the [legacy branch](https://github.com/bigbluebutton/greenlight/tree/legacy), although we highly suggest using the latest version of Greenlight.
+
+You can find the old documentation for Greenlight Legacy [here](/greenlight-legacy.html).
