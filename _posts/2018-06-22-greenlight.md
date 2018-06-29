@@ -5,7 +5,7 @@ category: "install"
 date: 2016-12-08 16:29:25
 ---
 
-BigBlueButton is an open source web conferencing system for online learning.  The project’s goal is to enable teachers to provide remote students anywhere in the world a high-quality online learning experience.
+BigBlueButton is an open source web conferencing system for online learning. The project’s goal is to enable teachers to provide remote students anywhere in the world a high-quality online learning experience.
 
 # Overview
 
@@ -30,7 +30,7 @@ We host a public, absolutely free, demo version of Greenlight and BigBlueButton 
 
 Greenlight is a feature rich application that aims to address all your BigBlueButton users needs. We are constantly expanding Greenlight, and if you have any suggestions, you can open one on the [official Greenlight repo](https://github.com/bigbluebutton/greenlight).
 
-As BigBlueButton and Greenlight are open-source project, we encourage other developers to contribute. If you want to implement a new feature and submit a pull request, your are more than welcome to do so! For information on contributing to BigBlueButton projects, see [Contributing to BigBlueButton](http://docs.bigbluebutton.org/support/faq.html#contributing-to-bigbluebutton).
+As BigBlueButton and Greenlight are open-source projects, we encourage other developers to contribute. If you want to implement a new feature and submit a pull request, you are more than welcome to do so! For information on contributing to BigBlueButton projects, see [Contributing to BigBlueButton](http://docs.bigbluebutton.org/support/faq.html#contributing-to-bigbluebutton).
 
 ## Accounts and Settings
 
@@ -74,7 +74,7 @@ If the room is running, they'll be instantly join in. However, if the room is no
 
 ### Creating New Rooms
 
-When you signup for Greenlight, the appication creates your home room which is named "`FIRST_NAME`'s Room". You are free to create as many new rooms as you would like for different purposes or attendees. To create a new room, you simply click the "Create Room" button beside your profile in the navigation bar. You will have the option to automatically start the room when you create it.
+When you signup for Greenlight, the appication creates your home room which is named "`FIRST_NAME`'s Room". You are free to create as many new rooms as you would like for different purposes. To create a new room, you simply click the "Create Room" button beside your profile in the navigation bar. You will have the option to automatically start the room when you create it.
 
 ![Greenlight Create Room](/images/greenlight/create_room.png)
 
@@ -97,13 +97,13 @@ Each recording has a visibility associated with it, which can be changed by clic
 
 ### Managing Recordings
 
-Using the dropdown in the recordings table, you have the ability to delete a recording or mail a recording to a friend. Keep in mind, email a unlisted recording **will** allow the friend access, so if you want a recording to be completely private, don't share the recording link.
+Using the dropdown in the recordings table, you have the ability to delete a recording or mail a recording to a friend. Keep in mind, emailing an unlisted recording **will** allow the friend access, so if you want a recording to be completely private, don't share the recording link.
 
 Deleted recordings are **not** recoverable, so be sure when deleting a recording.
 
 # Installing on a BigBlueButton Server
 
-To make install Greenlight as easy as possible, we've created a Docker image that wraps the applicaton. It is **highly** recommended that you use Docker when install Greenlight on a BigBlueButton server. You can install Greenlight without Docker, however we don't provide steps for doing this, so some knowledge of Ruby on Rails is most likily required.
+To make Greenlight as easy to install as possible, we've created a Docker image that wraps the applicaton. It is **highly** recommended that you use Docker when install Greenlight on a BigBlueButton server. You can install Greenlight without Docker, however we don't provide steps for doing this, so some knowledge of Ruby on Rails is most likily required.
 
 You should run all commands in this section as `root` on your BigBlueButton server.
 
@@ -119,7 +119,7 @@ Before you install Greenlight, you must have a BigBlueButton server to install i
 
 The official Docker documentation is the best resource for Docker install steps. To install Docker (we recommend installing Docker CE unless you have a subscription to Docker EE), see [Install Docker on Ubuntu](https://docs.docker.com/engine/installation/linux/ubuntu/).
 
-Before moving onto the next step, verify that Docker is install by running:
+Before moving onto the next step, verify that Docker is installed by running:
 
 ```
 docker -v
@@ -127,7 +127,7 @@ docker -v
 
 ## 2. Install Greenlight
 
-First, create the Greenlight directory for it's configuration to live in.
+First, create the Greenlight directory for its configuration to live in.
 
 ```
 mkdir ~/greenlight && cd ~/greenlight
@@ -141,7 +141,7 @@ docker run --rm bigbluebutton/greenlight cat ./sample.env > env
 
 ## 3. Configure Greenlight
 
-If you open the `env` file you'll see that it contains information for all of the Greenlight configuration options. Some of these are mandatory (or highly recommended).
+If you open the `env` file you'll see that it contains information for all of the Greenlight configuration options. Some of these are mandatory.
 
 ### Generating a Secret Key
 
@@ -155,17 +155,17 @@ Inside your `env` file, set the `SECRET_KEY_BASE` option to this key. You don't 
 
 ### Setting BigBlueButton Credentials
 
-By default, your Greenlight instance will automatically connect to test-install.blindsidenetworks.com if no BigBlueButton credentials are specfied. To set Greenlight to connect to your BigBlueButton server (the one it's installed on), you need to give Greenlight the endpoint and the secret. To get the credentials, run:
+By default, your Greenlight instance will automatically connect to [test-install.blindsidenetworks.com](https://test-install.blindsidenetworks.com) if no BigBlueButton credentials are specfied. To set Greenlight to connect to your BigBlueButton server (the one it's installed on), you need to give Greenlight the endpoint and the secret. To get the credentials, run:
 
 ```
 bbb-conf --secret
 ```
 
-In your `env` file, set `BIGBLUEBUTTON_ENDPOINT` to the URL, and set `BIGBLUEBUTTON_SECRET` to the secret.
+In your `env` file, set the `BIGBLUEBUTTON_ENDPOINT` to the URL, and set `BIGBLUEBUTTON_SECRET` to the secret.
 
 ### Verifying Configuration
 
-Once you have finished setting the environment varaibles above in your `env` file, to verify that you configuration is valid, run:
+Once you have finished setting the environment variables above in your `env` file, to verify that you configuration is valid, run:
 
 ```
 docker run --rm --env-file env bigbluebutton/greenlight rake conf:check
@@ -181,13 +181,13 @@ Greenlight will be configured to deploy at the `/gl` subdirectory. This is necce
 docker run --rm bigbluebutton/greenlight cat ./greenlight.nginx | sudo tee /etc/bigbluebutton/nginx/greenlight.nginx
 ```
 
-Verify that this file is in place. If it is, restart Nginx so it picks up the new configuration.
+Verify that the Nginx configuration file (`/etc/bigbluebutton/nginx/greenlight.nginx`) is in place. If it is, restart Nginx so it picks up the new configuration.
 
 ```
 systemctl restart nginx
 ```
 
-This will routes all requests to `https://<hostname>/gl` to the Greenlight application. If you wish to use a different relative root, you can follow the steps outlined [here](#using-a-different-relative-route).
+This will routes all requests to `https://<hostname>/gl` to the Greenlight application. If you wish to use a different relative root, you can follow the steps outlined [here](#using-a-different-relative-root).
 
 Optionally, if you wish to have the default landing page at the root of your BigBlueButton server redirect to Greenlight, add the following entry to the bottom of `/etc/nginx/sites-available/bigbluebutton` just before the last `}` character.
 
@@ -205,7 +205,7 @@ There are two ways to start the Greenlight docker container.
 * using the `docker run` command.
 * running the prebuilt `docker-compose` file.
 
-We suggest using `docker-compose` because it is easy to manage and saves you remembering a extremely long command, but if you don't wish to install `docker-compose`, you can use `docker run`.
+We suggest using `docker-compose` because it is easy to manage and saves you remembering an extremely long command, but if you don't wish to install `docker-compose`, you can use `docker run`.
 
 ### Using `docker-compose`
 
@@ -233,9 +233,9 @@ This will start Greenlight, and you should be able to access it at `https://<hos
 
 The database is saved to the BigBlueButton server so data persists when you restart. This can be found at `~/greenlight/db`.
 
-All of the logs from the application are also saved to the BigBlueButton server, which can be found at `~/greenlight/db`.
+All of the logs from the application are also saved to the BigBlueButton server, which can be found at `~/greenlight/logs`.
 
-If you don't wish for either of these to presist, simply remove the volumes from the `docker-compose.yml` file.
+If you don't wish for either of these to persist, simply remove the volumes from the `docker-compose.yml` file.
 
 To stop the application, run:
 
@@ -326,7 +326,7 @@ TWITTER_SECRET=elxXJZqPVexBFf9ZJsafd4UTSzpr5AVmcH7Si5JzeHQ9th
 
 ## Using a Different Relative Root
 
-By default Greenlight is deployed to the `/gl` subdirectory. If you are running Greenlight on a BigBlueButton server you must deploy Greenlight to a subdirectoy to avoid conflicts.
+By default Greenlight is deployed to the `/gl` subdirectory. If you are running Greenlight on a BigBlueButton server you must deploy Greenlight to a subdirectory to avoid conflicts.
 
 If you with to use a relative root other than `/gl`, you can do the following:
 
