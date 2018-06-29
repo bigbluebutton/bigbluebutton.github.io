@@ -7,7 +7,7 @@ date: 2015-04-04 22:11:11
 
 # Overview
 
-BigBlueButton is build upon some amazing [open source components](http://bigbluebutton.org/components/). This page describes how they work together.
+BigBlueButton is build upon some amazing [open source components](/overview/architecture.html#overview). This page describes how they work together.
 
 # High-level Architecture Overview
 

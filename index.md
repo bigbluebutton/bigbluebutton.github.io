@@ -38,7 +38,7 @@ If you are new to BigBlueButton we recommend (in order):
 Next, depending on whether you are a developer or administrator, we recommend:
 
   1. [Install](/install/install.html) BigBlueButton your own server (Ubuntu 16.04 64-bit).
-  1. Setup the [GreenLight](/install/green-light.html) front end, or use an existing [integration](http://bigbluebutton.org/open-source-integrations/) (such as Moodle or WordPress).
+  1. Setup the [GreenLight](/install/green-light.html) front end, or use an existing [integration](https://bigbluebutton.org/integrations/) (such as Moodle or WordPress).
   1. Read the [FAQ](/support/faq.html).
 
 If you are a developer, we recommend
@@ -53,7 +53,7 @@ You'll fine BigBlueButton project is supported by an active and a global communi
 
 The latest release is BigBlueButton 1.1. See [overview](/overview/overview.html), [install](/install/install.html), and [architecture](/overview/architecture.html) for more details.  
 
-The latest version is BigBlueButton 2.0-beta which improves collaboration with students through  multi-user whiteboard and shared notes.  To make it easy to try out, we provide a [one line installer](https://github.com/bigbluebutton/bbb-install).  See also [overview](2.0/20overview.html), [step-by-step install instructions](/2.0/20install.html), and a [video overview of 2.0-beta](https://www.youtube.com/watch?v=NQPrdc-W-6A).
+The latest version is BigBlueButton 2.0-beta which improves collaboration with students through  multi-user whiteboard and shared notes.  To make it easy to try out, we provide a [one line installer](https://github.com/bigbluebutton/bbb-install).  See also [overview](/2.0/20overview.html), [step-by-step install instructions](/2.0/20install.html), and a [video overview of 2.0-beta](https://www.youtube.com/watch?v=NQPrdc-W-6A).
 
 
 <p align="center">

@@ -7,7 +7,7 @@ date: 2015-04-04 22:26:10
 
 # Release 2.0-beta
 
-Released: May 10, 2018 ([Installation Instructions](2.0/20install.html))
+Released: May 10, 2018 ([Installation Instructions](/2.0/20install.html))
 
 Major features in this release include:
 
@@ -54,7 +54,7 @@ This release focused on increasing the interactivity between instructors and stu
 
   * **Emoji** - Students can now use emoji icons (happy, neutral, sad, confused, and away) to give feedback in addition current raise hand.
 
-  * **Puffin Browser support** - BigBlueButton detects [Puffin Browser](https://www.puffinbrowser.com/index.php) version 4.6 (or later) and enables the user to broadcast their microphone and/or webcam in a BigBlueButton session on a mobile device.
+  * **Puffin Browser support** - BigBlueButton detects [Puffin Browser](https://www.puffinbrowser.com) version 4.6 (or later) and enables the user to broadcast their microphone and/or webcam in a BigBlueButton session on a mobile device.
 
   * **Automatic Reconnect** - BigBlueButton detects when the network connection has dropped an will attempt to automatically reconnect.
 
@@ -89,7 +89,7 @@ This release of BigBlueButton 0.9.0 represents a significant upgrade on the abil
 
   * **Ubuntu 14.04 64-bit** - BigBlueButton now installs on Ubuntu 14.04 64-bit.
 
-For details of the new features (with screen shots) see [0.9.0 overview](/overview/09overview.html).
+For details of the new features (with screen shots) see [0.9.0 overview](/overview/090overview.html).
 
 ## Fixed Issues
 
@@ -204,7 +204,7 @@ Released: November 9, 2010
 
   * **Client Branding** - Administrators can now [skin](/dev/branding.html) the BigBlueButton using cascading style sheets.
 
-  * **Client Configuration** - Administrators can configure, on a server basis, specific capabilities of the BigBlueButton client.  For example, you can change the video quality, define who can share video, and allow moderators to kick users.   See [Client Configuration](/dev/client-configuration.html) for the full list of configuration parameters.
+  * **Client Configuration** - Administrators can configure, on a server basis, specific capabilities of the BigBlueButton client.  For example, you can change the video quality, define who can share video, and allow moderators to kick users.   See [Client Configuration](/install/client-configuration.html) for the full list of configuration parameters.
 
   * **Mate** - The BigBlueButton client is now fully migrated to the [mate](http://mate.asfusion.com/) framework.
 
