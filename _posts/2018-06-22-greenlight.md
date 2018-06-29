@@ -168,7 +168,7 @@ In your `env` file, set the `BIGBLUEBUTTON_ENDPOINT` to the URL, and set `BIGBLU
 Once you have finished setting the environment variables above in your `env` file, to verify that you configuration is valid, run:
 
 ```
-docker run --rm --env-file env bigbluebutton/greenlight rake conf:check
+docker run --rm --env-file env bigbluebutton/greenlight bundle exec rake conf:check
 ```
 
 All three of the tests must pass before you proceed.
@@ -209,7 +209,7 @@ We suggest using `docker-compose` because it is easy to manage and saves you rem
 
 ### Using `docker-compose`
 
-Install `docker-compose` by following the steps for installing on Linux in the [Docker documentation](https://docs.docker.com/compose/install/).
+Install `docker-compose` by following the steps for installing on Linux in the [Docker documentation](https://docs.docker.com/compose/install/). You may be required to run all `docker-compose` commands using sudo. If you wish to change this, check out [managing docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user).
 
 Before you continue, verfiy that you have `docker-compose` installed by running:
 
@@ -245,7 +245,21 @@ docker-compose down
 
 ### Using `docker run`
 
-TODO: add steps for `docker run`
+To run Greenlight using `docker run`, from the `~/greenlight` directory, run the following command:
+
+```
+docker run -d -p 6000:3000 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight bigbluebutton/greenlight
+```
+
+The database is saved to the BigBlueButton server so data persists when you restart. This can be found at `~/greenlight/db`.
+
+If you wish to extract the logs from the docker container and save them to the BigBlueButton server, add `-v $(pwd)/log:/usr/src/app/log` to the `docker run` command.
+
+Then when you want to stop the docker container, run:
+
+```
+docker stop greenlight
+```
 
 # Configuring Greenlight
 
