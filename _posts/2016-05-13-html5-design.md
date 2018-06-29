@@ -15,7 +15,7 @@ BigBlueButton is an open source web conferencing system for online learning.  Ou
 
 One measurement of how well we acheive that goal is to ask "how easily can a user -- who may be a teacher with remote students anywhere in the world, a corporate instructor giving an orientation session to new employees, or a student logging into their online class ready to learn -- quickly get started using our product?"  In other words, can a user, after a few moments of interaction,  master the interface and get on with the task of teaching or learning?
 
-We've put a lot of work into the user interface (UI) over the years.  We release BigBlueButton [BigBlueButton 2.0](2.0/20overview.html) with multi-user whiteboard, shared notes, and, most importantly, an updated user interface.
+We've put a lot of work into the user interface (UI) over the years.  We release BigBlueButton [BigBlueButton 2.0](/2.0/20overview.html) with multi-user whiteboard, shared notes, and, most importantly, an updated user interface.
 
 We think a good interface is critical to the success of any product. This document gives you an overview of design decisions we made in creating a consistent interface for the HTML5 client that spans use on mobile, tablet, and desktop platforms.  
 

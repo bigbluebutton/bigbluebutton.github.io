@@ -23,7 +23,7 @@ For more information on this release see [detailed list of new features](/2.0/20
 
 # Release 1.1
 
-Released: May 24, 2017 ([Installation Instructions](/overview/install.html))
+Released: May 24, 2017 ([Installation Instructions](/install/install.html))
 
 Major features in this release include:
 
