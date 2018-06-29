@@ -9,7 +9,7 @@ order: 1
 
 # Overview 
 
-This document covers how to install/update the latest developer build of the BigBlueButton HTML5 client.  See also [Overview](html/html5-overview.html) and [Design](/html/html5-design.html) of the HTML5 client.
+This document covers how to install/update the latest developer build of the BigBlueButton HTML5 client.  See also [Overview](/html/html5-overview.html) and [Design](/html/html5-design.html) of the HTML5 client.
 
 As the HTML5 client is still under active development.  As such, we do not recommend it for production use.  You can try the latest version of the HTML5 client at [https://test.bigbluebutton.org/](https://test.bigbluebutton.org/).
 
@@ -131,7 +131,7 @@ sudo apt-get dist-upgrade
 
 The HTML5 client uses the kurento media server to send/receive WebRTC video streams.  If your installing on a BigBlueButton server behind network address translation (NAT), you need to give kurento access to a STUN server (which stans for Session Traversal of UDP through NAT).  A STUN server will help Kurento determine its external address when behind NAT.
 
-You'll find a list of publically available STUN servers at the [kurento documentation](http://doc-kurento.readthedocs.io/en/stable/installation_guide.html#stun-and-turn-servers).  
+You'll find a list of publically available STUN servers at the [kurento documentation](https://kurento.readthedocs.io/en/stable/doc/admin_guide.html#installation).  
 
 To configure Kurento to use a STUN server from the above list, you need to edit `/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini`.  Here's the default configuration.
 

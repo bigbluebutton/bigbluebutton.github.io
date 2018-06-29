@@ -84,7 +84,7 @@ You can change the visibility of recordings anytime within GreenLight (you need 
 Everyone can view the recording URL at the meeting page. | Only users who have the recording URL can view it. |No one can view the recording.
 
 ## Share recordings
-You can use the share button to share your recordings via email or upload to [Youtube](www.youtube.com) (provided they have a video component).
+You can use the share button to share your recordings via email or upload to [Youtube](https://www.youtube.com) (provided they have a video component).
 
 ![greenlight-youtube-upload](/images/gl-youtube-upload.png)
 
