@@ -8,7 +8,7 @@ date: 2015-04-04 22:27:43
 
 # Overview
 
-BigBlueButton is comprised of many [open source components](http://www.bigbluebutton.org/components) along with a significant amount of additional code written by the BigBlueButton team to implement the client and server functionality for web conferencing.
+BigBlueButton is comprised of many [open source components](/overview/architecture.html#overview) along with a significant amount of additional code written by the BigBlueButton team to implement the client and server functionality for web conferencing.
 
 Like any large open source project, this may seem complicated at first, but when you break everything down to its components, it becomes much less complex.  Here's our attempt to carefully walk you through each of the configuration and log files to help you understand how to modify and extend BigBlueButton yourself.
 
