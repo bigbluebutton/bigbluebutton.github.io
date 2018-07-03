@@ -78,7 +78,7 @@ When you signup for Greenlight, the appication creates your home room which is n
 
 ![Greenlight Create Room](/images/greenlight/create_room.png)
 
-Your new room will then show under your current room, and you can click to switch between them. Your home room is the one with the home icon. You can change which room is your home room or delete a room using the room dropdown.
+Your new room will then show under your current room, and you can click to switch between them. Your home room is the one with the home icon. You can delete a room using the room dropdown.
 
 ![Greenlight Multiple Rooms](/images/greenlight/multiple_rooms.png)
 
