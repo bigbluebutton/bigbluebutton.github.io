@@ -400,3 +400,9 @@ Then, [restart Greenlight](#applying-env-changes).
 The old version of Greenlight has been renamed to Greenlight Legacy. It is still available on Github under the [legacy branch](https://github.com/bigbluebutton/greenlight/tree/legacy), although we highly suggest using the latest version of Greenlight.
 
 You can find the old documentation for Greenlight Legacy [here](/greenlight-legacy.html).
+
+# Can I copy over my old Greenlight data?
+
+Greenlight Legacy uses a much different database schema than that of the current version, so for this reason, it is **not** possible to copy over the data directly.
+
+However, Greenlight does allow administrators to seed accounts. In theory, you could seed new accounts based off the data in your existing Greenlight database, but some data may be lost.
