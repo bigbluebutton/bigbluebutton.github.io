@@ -103,6 +103,6 @@ The conversion process sends progress messages to the client through the Redis p
 
 ## BigBlueButton Client
 
-BigBlueButton client runs inside the browser. The main application is in ActionScript. There are Javascript libraries that provides connection to FreeSWITCH, launch the screen sharing applet, etc. The Flash client connects to BigBlueButton App to send and receive messages. The client internally uses a event bus for the components to talk to each other.
+BigBlueButton client runs inside the browser. The main application is in ActionScript. There are Javascript libraries that provides connection to FreeSWITCH, launch the screen sharing applet, etc. The Flash client connects to BigBlueButton App to send and receive messages. The client internally uses an event bus for the components to talk to each other.
 
 ![Client Architecture](/images/10/bbb-client-arch.png)
