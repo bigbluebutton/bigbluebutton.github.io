@@ -17,7 +17,7 @@ BigBlueButton provides all the core capabilities you expect in a web conferencin
 
   * audio
   * video
-  * presentaton
+  * presentation
   * screen
   * chat
   * recording of sessions for later playback
@@ -32,7 +32,7 @@ BigBlueButton emphasizes engagement with your users with features such as
 
 BigBlueButton is compatible with JAWS and NVDA screen reader and supports live closed captioning.
 
-BigBlueButton is an [open source](http://github.com/bigbluebutton/bigbluebutton) project licensed under the LGPL license.  If you are a developer you are free (and welcome) to build upong our project for your needs.
+BigBlueButton is an [open source](http://github.com/bigbluebutton/bigbluebutton) project licensed under the LGPL license.  If you are a developer you are free (and welcome) to build upon our project for your needs.
 
 This documentation site is for administrators and developers who want to setup a BigBlueButton server, customize it, and integrate it with existing applications using our API. If you are an end-user (instructor or teacher) and interested in how to use BigBlueButton, visit [bigbluebutton.org](http://bigbluebutton.org). 
 
@@ -55,7 +55,7 @@ If you are new to BigBlueButton we recommend (in order):
   1. Join the [BigBlueButton community](https://bigbluebutton.org/support/community/).
   1. Follow the project on social media: [Twitter](https://twitter.com/bigbluebutton), [FaceBook](https://www.facebook.com/bigbluebutton), [YouTube](https://www.youtube.com/user/bigbluebuttonshare), or [Google+](https://plus.google.com/+bigbluebutton).  
       
-Next, if you intend to setuip your own BigBlueButton server, we recommend:
+Next, if you intend to setup your own BigBlueButton server, we recommend:
 
   1. Visit [Install](/install/install.html) to BigBlueButton your own server (Ubuntu 16.04 64-bit).  You'll find step-by-step instructions and a [one line installer](https://github.com/bigbluebutton/bbb-install).
   1. Setup the [GreenLight](/install/green-light.html) front end, or use an existing [integration](http://bigbluebutton.org/open-source-integrations/) (such as Moodle or WordPress).

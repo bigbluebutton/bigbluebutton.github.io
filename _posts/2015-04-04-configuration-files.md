@@ -38,7 +38,7 @@ This configures nginx to use ```/var/www/bigbluebutton-default``` as the default
  /usr/share/red5/conf/red5-core.xml
 ```
 
-The main configuation file for red5.  You shouldn't need to modify this file.
+The main configuration file for red5.  You shouldn't need to modify this file.
 
 ```
  /usr/share/red5/webapps/bigbluebutton/WEB-INF/bigbluebutton.properties
