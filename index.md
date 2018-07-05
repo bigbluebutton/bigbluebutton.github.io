@@ -13,21 +13,40 @@ title: "BigBlueButton"
   <img src="/images/20-screenshot.png"/>
 </p><br>
 
-BigBlueButton provides all the core capabilities you expect in a web conferencing system: sharing of audio, video, screen, presentation, and chat -- the product emphasizes engagement with users.  We've streamlined the user interface to make it easy presenters to upload content and engage users through multi-user whiteboard, shared notes, emojis, polling, and breakout rooms.  We care about accessiblity too.  The client is compatible with JAWS and NVDA screen reader and supports live closed captioning.
+BigBlueButton provides all the core capabilities you expect in a web conferencing system with real-time sharing of 
+
+  * audio
+  * video
+  * presentaton
+  * screen
+  * chat
+  * recording of sessions for later playback
+
+BigBlueButton emphasizes engagement with your users with features such as
+
+  * multi-user whiteboard
+  * shared notes
+  * emojis
+  * polling
+  * breakout rooms
+
+BigBlueButton is compatible with JAWS and NVDA screen reader and supports live closed captioning.
 
 BigBlueButton is an [open source](http://github.com/bigbluebutton/bigbluebutton) project licensed under the LGPL license.  If you are a developer you are free (and welcome) to build upong our project for your needs.
 
 This documentation site is for administrators and developers who want to setup a BigBlueButton server, customize it, and integrate it with existing applications using our API. If you are an end-user (instructor or teacher) and interested in how to use BigBlueButton, visit [bigbluebutton.org](http://bigbluebutton.org). 
 
-## Overview
+## Two Roles
 
 In a BigBlueButton session there are only two types of users: a _viewer_ or _moderator_.  
 
-A viewer (typically the student) can chat, send/receive audio and video, respond to polls, and display an emoji (such as raise hand).  A moderator (typically the instructor) has all the capabilities of a viewer, plus the ability to mute/unmute other viewers, lock down viewers, and assign anyone (including themselves) the rle of presenter.  
+A viewer (typically the student) can chat, send/receive audio and video, respond to polls, and display an emoji (such as raise hand).  
 
-The current presenter can upload slides, use the whiteboard controls to annotate the slides, start a poll, and share their screen for all to see.
+A moderator (typically the instructor) has all the capabilities of a viewer plus the ability to mute/unmute other viewers, lock down viewers, and assign anyone (including themselves) the role of presenter.  
 
-## Getting Started with BigBlueButton
+The presenter can upload slides, annotate the slides with the whiteboard, start a poll, and share their screen for all to see.
+
+## Getting Started Quickly with BigBlueButton
 
 If you are new to BigBlueButton we recommend (in order): 
 
@@ -48,14 +67,18 @@ If you are a developer, after setting up your own BigBlueButton server, we recom
 
 The BigBlueButton project is managed by a core group of [committers](/support/faq.html#bigbluebutton-committer) who care about building the community.  If you are interested to engage us, we encourage you to join the [community](https://bigbluebutton.org/support/community/) and participate in the discussion around the project.  We also hold bi-weekly BigBlueButton Community Calls (using BigBlueButton of course).
 
-## Latest Release: 2.0-RC1
+## Latest Release
 
 The latest release is BigBlueButton 2.0-RC1. See the [overview](/overview/overview.html), [install](/install/install.html), and [architecture](/overview/architecture.html) documentation.
+
+The BigBlueButton 2.0 release is also the basis for the first release of the [HTML5 client](/html/html5-overview.html).
 
 
 <p align="center">
   <a href="http://www.youtube.com/watch?feature=player_embedded&v=NQPrdc-W-6A" target="_blank"><img src="http://img.youtube.com/vi/NQPrdc-W-6A/0.jpg" alt="Overview of BigBlueButton 2.0" width="480" height="360" border="10" /></a>
 </p>
+
+### Spread the word
 
 If you use BigBlueButton and find it worthwhile, an easy way to help support the project is to spread the word about your experiences (blog, tweet, upload a video to YouTube, etc.) or, if you want to really contribute, help improve us [improve](/faq.html#contributing-to-bigbluebutton) the product.  You'll find the more you give, the more you get back.
 

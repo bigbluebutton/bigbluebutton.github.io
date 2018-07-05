@@ -8,7 +8,7 @@ date: 2015-04-04 22:22:25
 
 # Introduction
 
-This document shows you how to configure the BigBlueButton 1.1 client by making changes to `config.xml`, the configuration file loaded at runtime by the client.
+This document shows you how to configure the BigBlueButton client by making changes to `config.xml`, the configuration file loaded at runtime by the client.
 
 ## Config.xml
 The config.xml file is located in the deployed client directory, the default location is `/var/www/bigbluebutton/client/conf/config.xml`. If you are working with the source code, it is located in the client's src/conf directory, the default location is `~/dev/source/bigbluebutton/bigbluebutton-client/src/conf/config.xml`.
