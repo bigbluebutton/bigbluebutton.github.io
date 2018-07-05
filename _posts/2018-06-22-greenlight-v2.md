@@ -1,11 +1,13 @@
 ---
 layout: page
-title: "Greenlight"
+title: "Greenlight 2.0"
 category: "install"
 date: 2016-12-08 16:29:25
 ---
 
 BigBlueButton is an open source web conferencing system for online learning. The project’s goal is to enable teachers to provide remote students anywhere in the world a high-quality online learning experience.
+
+**Looking to upgrade to Greenlight 2.0? See [these instructions](#upgrading-from-greenlight-10).**
 
 # Overview
 
@@ -24,7 +26,7 @@ Furthermore, Greenlight is completely configurable. This means you can turn on/o
 
 # Want to try out our demo version?
 
-We host a public, absolutely free, demo version of Greenlight and BigBlueButton over at [demo.bigbluebutton.org](https://demo.bigbluebutton.org/gl). Here you can create an account and experiment with Greenlight before installing it on your own BigBlueButton server.
+We host a public, absolutely free, demo version of Greenlight and BigBlueButton over at [demo.bigbluebutton.org](https://demo.bigbluebutton.org/b). Here you can create an account and experiment with Greenlight before installing it on your own BigBlueButton server.
 
 # Features
 
@@ -136,7 +138,7 @@ mkdir ~/greenlight && cd ~/greenlight
 Greenlight will read its environment configuration from the `env` file. To generate this file and install the Greenlight Docker image, run:
 
 ```
-docker run --rm bigbluebutton/greenlight cat ./sample.env > env
+docker run --rm bigbluebutton/greenlight:v2 cat ./sample.env > env
 ```
 
 ## 3. Configure Greenlight
@@ -148,7 +150,7 @@ If you open the `env` file you'll see that it contains information for all of th
 Greenlight needs a secret key in order to run in production. To generate this, run:
 
 ```
-docker run --rm bigbluebutton/greenlight bundle exec rake secret
+docker run --rm bigbluebutton/greenlight:v2 bundle exec rake secret
 ```
 
 Inside your `env` file, set the `SECRET_KEY_BASE` option to this key. You don't need to surround it in quotations.
@@ -168,17 +170,17 @@ In your `env` file, set the `BIGBLUEBUTTON_ENDPOINT` to the URL, and set `BIGBLU
 Once you have finished setting the environment variables above in your `env` file, to verify that you configuration is valid, run:
 
 ```
-docker run --rm --env-file env bigbluebutton/greenlight bundle exec rake conf:check
+docker run --rm --env-file env bigbluebutton/greenlight:v2 bundle exec rake conf:check
 ```
 
 All three of the tests must pass before you proceed.
 
 ## 4. Configure Nginx to Route To Greenlight
 
-Greenlight will be configured to deploy at the `/gl` subdirectory. This is neccesary so it doesn't conflict with the other BigBlueButton components. The Nginx configuration for this subdirectory is stored in the Greenlight image. To add this configuration file to your BigBlueButton server, run:
+Greenlight will be configured to deploy at the `/b` subdirectory. This is neccesary so it doesn't conflict with the other BigBlueButton components. The Nginx configuration for this subdirectory is stored in the Greenlight image. To add this configuration file to your BigBlueButton server, run:
 
 ```
-docker run --rm bigbluebutton/greenlight cat ./greenlight.nginx | sudo tee /etc/bigbluebutton/nginx/greenlight.nginx
+docker run --rm bigbluebutton/greenlight:v2 cat ./greenlight.nginx | sudo tee /etc/bigbluebutton/nginx/greenlight.nginx
 ```
 
 Verify that the Nginx configuration file (`/etc/bigbluebutton/nginx/greenlight.nginx`) is in place. If it is, restart Nginx so it picks up the new configuration.
@@ -187,19 +189,19 @@ Verify that the Nginx configuration file (`/etc/bigbluebutton/nginx/greenlight.n
 systemctl restart nginx
 ```
 
-This will routes all requests to `https://<hostname>/gl` to the Greenlight application. If you wish to use a different relative root, you can follow the steps outlined [here](#using-a-different-relative-root).
+This will routes all requests to `https://<hostname>/b` to the Greenlight application. If you wish to use a different relative root, you can follow the steps outlined [here](#using-a-different-relative-root).
 
 Optionally, if you wish to have the default landing page at the root of your BigBlueButton server redirect to Greenlight, add the following entry to the bottom of `/etc/nginx/sites-available/bigbluebutton` just before the last `}` character.
 
 ```
 location = / {
-  return 307 /gl;
+  return 307 /b;
 }
 ```
 
 To have this change take effect, you must once again restart Nginx.
 
-## 5. Start Greenlight
+## 5. Start Greenlight 2.0
 
 There are two ways to start the Greenlight docker container.
 * using the `docker run` command.
@@ -220,7 +222,7 @@ docker-compose -v
 Next, you should copy the `docker-compose.yml` file from the Greenlight image in to `~/greenlight` directory. To do this, run:
 
 ```
-docker run --rm bigbluebutton/greenlight cat ./docker-compose.yml > docker-compose.yml
+docker run --rm bigbluebutton/greenlight:v2 cat ./docker-compose.yml > docker-compose.yml
 ```
 
 Once you have this file, from the `~/greenlight` directory, start the application using:
@@ -229,7 +231,7 @@ Once you have this file, from the `~/greenlight` directory, start the applicatio
 docker-compose up -d
 ```
 
-This will start Greenlight, and you should be able to access it at `https://<hostname>/gl`.
+This will start Greenlight, and you should be able to access it at `https://<hostname>/b`.
 
 The database is saved to the BigBlueButton server so data persists when you restart. This can be found at `~/greenlight/db`.
 
@@ -248,7 +250,7 @@ docker-compose down
 To run Greenlight using `docker run`, from the `~/greenlight` directory, run the following command:
 
 ```
-docker run -d -p 6000:3000 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight bigbluebutton/greenlight
+docker run -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight-v2 bigbluebutton/greenlight:v2
 ```
 
 The database is saved to the BigBlueButton server so data persists when you restart. This can be found at `~/greenlight/db`.
@@ -260,6 +262,34 @@ Then when you want to stop the docker container, run:
 ```
 docker stop greenlight
 ```
+
+# Upgrading from Greenlight 1.0
+
+If you have [Greenlight 1.0](/greenlight-v1.html) installed on a BigBlueButton server, you don't have to do a complete new install to install Greenlight 2.0, although you can if you'd like.
+
+Before upgrading, keep in mind that [you cannot move over your data from Greenlight 1.0 to 2.0](#can-i-copy-over-my-old-greenlight-data). If you aren't okay with losing this data, do **not** upgrade.
+
+To upgrade to Greenlight 2.0 from Greenlight 1.0, complete the following steps.
+
+## 1. Setup the 2.0 Environment
+
+Copy the Greenlight 2.0 sample environment into your env file. If you want to save your Greenlight 1.0 settings, make a copy of the `env` file first. This will also pull the Greenlight 2.0 image.
+```
+cd ~/greenlight
+docker run --rm bigbluebutton/greenlight:v2 cat ./sample.env > env
+```
+
+Then follow the steps to [configure Greenlight](#3-configure-greenlight).
+
+## 2. Remove the Existing Database
+
+Backup your existing database, which is stored at `~/greenlight/db/production/production.sqlite3`.
+
+Then, remove the database directory (`~/greenlight/db`). When you first start Greenlight 2.0, it will generate a new database.
+
+## 3. Start Greenlight 2.0
+
+Choose to [start Greenlight 2.0](#5-start-greenlight-20) with either `docker-compose` or `docker run`.
 
 # Configuring Greenlight
 
@@ -302,7 +332,7 @@ First, enable the "Google+ API".
   1. Click "Create credentials
   1. Select "OAuth client ID
   1. Select "Web application"
-  1. Under "Authorized redirect URIs" enter "http://hostname/gl/auth/google/callback" where hostname is your hostname
+  1. Under "Authorized redirect URIs" enter "http://hostname/b/auth/google/callback" where hostname is your hostname
   1. Click "Create"
 
 A window should open with your OAuth credentials. In this window, copy client ID and client secret to the `env` file so it resembles the following (your credentials will be different).
@@ -327,7 +357,7 @@ Login to your Twitter account, and click the following link: [https://apps.twitt
 Next,
 
   1. Click "Create New App"
-  1. Under "Callback URL" enter "http://hostname/gl/auth/twitter/callback" where hostname is your hostname
+  1. Under "Callback URL" enter "http://hostname/b/auth/twitter/callback" where hostname is your hostname
   1. Click "Create your Twitter application"
   1. Click "Keys and Access Tokens" tab
 
@@ -340,9 +370,9 @@ TWITTER_SECRET=elxXJZqPVexBFf9ZJsafd4UTSzpr5AVmcH7Si5JzeHQ9th
 
 ## Using a Different Relative Root
 
-By default Greenlight is deployed to the `/gl` subdirectory. If you are running Greenlight on a BigBlueButton server you must deploy Greenlight to a subdirectory to avoid conflicts.
+By default Greenlight is deployed to the `/b` subdirectory. If you are running Greenlight on a BigBlueButton server you must deploy Greenlight to a subdirectory to avoid conflicts.
 
-If you with to use a relative root other than `/gl`, you can do the following:
+If you with to use a relative root other than `/b`, you can do the following:
 
 1. Change the `RELATIVE_ROOT_URL` environment variable.
 1. Update the `/etc/bigbluebutton/nginx/greenlight.nginx` file to reflect the new relative root.
@@ -390,16 +420,16 @@ docker run
 To update Greenlight, all you need to do is pull the latest image from [Dockerhub](https://hub.docker.com/).
 
 ```
-docker pull bigbluebutton/greenlight
+docker pull bigbluebutton/greenlight:v2
 ```
 
 Then, [restart Greenlight](#applying-env-changes).
 
-# Looking for the old Greenlight docs?
+# Looking for the old Greenlight 1.0 docs?
 
-The old version of Greenlight has been renamed to Greenlight Legacy. It is still available on Github under the [legacy branch](https://github.com/bigbluebutton/greenlight/tree/legacy), although we highly suggest using the latest version of Greenlight.
+The old version of Greenlight has been renamed to Greenlight Legacy. It is still available on Github under the [v1 branch](https://github.com/bigbluebutton/greenlight/tree/v1), although we highly suggest using the latest version of Greenlight.
 
-You can find the old documentation for Greenlight Legacy [here](/greenlight-legacy.html).
+You can find the old documentation for Greenlight 1.0 [here](/greenlight-v1.html).
 
 # Can I copy over my old Greenlight data?
 

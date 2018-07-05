@@ -1,13 +1,13 @@
 ---
 layout: page
-title: "GreenLight Legacy"
+title: "GreenLight 1.0"
 #category: "install"
 date: 2016-12-08 16:29:25
 ---
 
 BigBlueButton is an open source web conferencing system for online learning.  The project’s goal is to enable teachers to provide remote students anywhere in the world a high-quality online learning experience.
 
-**These are the docs for the old outdated version of Greenlight, now dubbed Greenlight Legacy. If you are using the latest version of Greenlight, checkout the [latest docs](/install/greenlight.html).**
+**These are the docs for the old and outdated Greenlight 1.0. If you are using the latest version of Greenlight, checkout the [latest docs](/install/greenlight-v2.html).**
 
 # Overview
 
@@ -166,7 +166,7 @@ Next, setup directory for running GreenLight.
 We need to create a template environment file for GreenLight that we can put in all the settings.  To both install GreenLight and create a template environment file (called `env`), run the following command:
 
 ~~~
-# docker run --rm bigbluebutton/greenlight:legacy cat ./sample.env > env
+# docker run --rm bigbluebutton/greenlight:v1 cat ./sample.env > env
 ~~~
 
 
@@ -175,7 +175,7 @@ We need to create a template environment file for GreenLight that we can put in 
 We're now going to configure GreenLight with the minimal settings to run. First, run the following command to generate a secret key.
 
 ~~~
-# docker run --rm bigbluebutton/greenlight:legacy rake secret
+# docker run --rm bigbluebutton/greenlight:v1 rake secret
 ~~~
 
 Next, edit the `env` file and add assign the output for the above command to `SECRET_KEY_BASE`.  After you edit, it should look like the following (replace `<secret>` with the output from the above command).
@@ -186,7 +186,7 @@ Next, edit the `env` file and add assign the output for the above command to `SE
 # You can generate a secure one through the Greenlight docker image
 # with with the command
 #
-#   docker run --rm bigbluebutton/greenlight:legacy rake secret
+#   docker run --rm bigbluebutton/greenlight:v1 rake secret
 #
 SECRET_KEY_BASE=<secret>
 ~~~
@@ -239,7 +239,7 @@ Using Docker you can start your server with the following command
 
 ~~~
 # cd ~/greenlight
-# docker run -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight bigbluebutton/greenlight:legacy
+# docker run -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight bigbluebutton/greenlight:v1
 ~~~
 
 >  For more information on docker commands take a look at [https://docs.docker.com/engine/reference/commandline/docker/](https://docs.docker.com/engine/reference/commandline/docker/).
@@ -247,7 +247,7 @@ Using Docker you can start your server with the following command
 Before trying to access GreenLight, we'll setup nginx to forward request on `<hostname>:5000/b` to port 5000 locally.  To configure nginx, enter the following command
 
 ~~~
-# docker run --rm bigbluebutton/greenlight:legacy cat ./scripts/greenlight.nginx | sudo tee  /etc/bigbluebutton/nginx/greenlight.nginx
+# docker run --rm bigbluebutton/greenlight:v1 cat ./scripts/greenlight.nginx | sudo tee  /etc/bigbluebutton/nginx/greenlight.nginx
 ~~~
 
 And restart nginx to have it read the new configuration file.
@@ -397,7 +397,7 @@ First, the script requires two gem dependencies `jwt` and `java_properties`.  To
 Next, run the following command to install the callback script into BigBlueButton.
 
 ~~~
-# docker run --rm bigbluebutton/greenlight:legacy cat ./scripts/greenlight_recording_notify.rb | sudo tee -a /usr/local/bigbluebutton/core/scripts/post_publish/greenlight_recording_notify.rb
+# docker run --rm bigbluebutton/greenlight:v1 cat ./scripts/greenlight_recording_notify.rb | sudo tee -a /usr/local/bigbluebutton/core/scripts/post_publish/greenlight_recording_notify.rb
 # chmod +x /usr/local/bigbluebutton/core/scripts/post_publish/greenlight_recording_notify.rb
 ~~~
 
@@ -502,7 +502,7 @@ To have GreenLight automatically restart when you star the host server, first st
 and then run Greenlight with the following docker command
 
 ~~~
-# docker run -d -p 5000:80 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production -v $(pwd)/assets:/usr/src/app/public/system --env-file env --name greenlight bigbluebutton/greenlight:legacy
+# docker run -d -p 5000:80 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production -v $(pwd)/assets:/usr/src/app/public/system --env-file env --name greenlight bigbluebutton/greenlight:v1
 ~~~
 
 The parameter `--restart=unless-stopped` will automatically restart the docker image when you restart the computer.
@@ -523,7 +523,7 @@ To stop GreenLight and remove the existing container named 'greenlight', do the 
 Then use the same command to start the server
 
 ~~~
-# docker run -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production -v $(pwd)/assets:/usr/src/app/public/system --env-file env --name greenlight bigbluebutton/greenlight:legacy
+# docker run -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production -v $(pwd)/assets:/usr/src/app/public/system --env-file env --name greenlight bigbluebutton/greenlight:v1
 ~~~
 
 
@@ -532,7 +532,7 @@ Then use the same command to start the server
 To update GreenLight to the latest docker image, do the following command:
 
 ~~~
-# docker pull bigbluebutton/greenlight:legacy
+# docker pull bigbluebutton/greenlight:v1
 ~~~
 
 To stop currently running Greenlight instance:
@@ -545,7 +545,7 @@ To stop currently running Greenlight instance:
 Then use the command to start the BigBlueButton server:
 
 ~~~
-# docker run -d -p 5000:80 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production -v $(pwd)/assets:/usr/src/app/public/system --env-file env --name greenlight bigbluebutton/greenlight:legacy
+# docker run -d -p 5000:80 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production -v $(pwd)/assets:/usr/src/app/public/system --env-file env --name greenlight bigbluebutton/greenlight:v1
 ~~~
 
 ## Setting a prefered client
@@ -585,7 +585,7 @@ To save logs to the host machine, you should include the following option when r
 
 This makes the full run command:
 ~~~
-# docker run -d -p 5000:80 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production -v $(pwd)/assets:/usr/src/app/public/system -v $(pwd)/log:/usr/src/app/log --env-file env --name greenlight bigbluebutton/greenlight:legacy
+# docker run -d -p 5000:80 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production -v $(pwd)/assets:/usr/src/app/public/system -v $(pwd)/log:/usr/src/app/log --env-file env --name greenlight bigbluebutton/greenlight:v1
 ~~~
 
 You can then find `production.log` at `~/greenlight/log`.
@@ -631,7 +631,7 @@ PORT=5000
 Run this command:
 
 ~~~
-# docker run -d -p 5000:5000 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production -v $(pwd)/assets:/usr/src/app/public/system --env-file env --name greenlight --network=host bigbluebutton/greenlight:legacy
+# docker run -d -p 5000:5000 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production -v $(pwd)/assets:/usr/src/app/public/system --env-file env --name greenlight --network=host bigbluebutton/greenlight:v1
 ~~~
 
 ## Check Greenlight configuration
@@ -639,13 +639,13 @@ Run this command:
 To check Greenlight's configuration for connecting to a BigBlueButton server use the following command:
 
 ~~~
-# docker run --rm --env-file env bigbluebutton/greenlight:legacy rake conf:check
+# docker run --rm --env-file env bigbluebutton/greenlight:v1 rake conf:check
 ~~~
 
 To check Greenlight's mailer configuration use the following command and replace <your_email> with an email address to receive the test email.
 
 ~~~
-# docker run --rm --env-file env bigbluebutton/greenlight:legacy rake conf:check_email['<your_email>']
+# docker run --rm --env-file env bigbluebutton/greenlight:v1 rake conf:check_email['<your_email>']
 ~~~
 
 <!--
