@@ -1,4 +1,4 @@
----
+--- 
 layout: default
 title: "BigBlueButton"
 ---
@@ -7,26 +7,46 @@ title: "BigBlueButton"
   <img src="/images/logo.png"/>
 </p><br>
 
-**BigBlueButton** is an open source web conferencing system for online learning.  
-
-We believe every student with a web browser should have access to a high-quality online learning experience.  
-
-This documentation for administrators and developers who want to setup and customize their own BigBlueButton server. If you are an end-user (instructor or teacher) interested in learning more about BigBlueButton (and how it works) visit [bigbluebutton.org](http://bigbluebutton.org). 
-
-The source code for BigBlueButton is hosted on [GitHub](http://github.com/bigbluebutton/bigbluebutton).
+**BigBlueButton** is an open source web conferencing system for online learning.  The goal of BigBlueButton is to enable every student with a web browser to a high-quality online learning experience.  
 
 <p align="center">
   <img src="/images/20-screenshot.png"/>
 </p><br>
 
-## Overview
+BigBlueButton provides all the core capabilities you expect in a web conferencing system with real-time sharing of 
 
-BigBlueButton enables real-time sharing of audio, video, slides (with whiteboard), polling, emote icons (including raise hand), chat, and the presenter's desktop.  It is [localized](/dev/localization.html) into over 35 languages and supports JAWS screen reader for students with visual disabilities. 
+  * audio
+  * video
+  * presentation
+  * screen
+  * chat
+  * recording of sessions for later playback
 
-Users join a BigBlueButton session as one of two roles: _viewer_ or _moderator_.  A viewer (typically the student) can chat, display an emote icon, send/receive audio and video, and respond to polls.  A moderator (typically the instructor) can -- in addition to all the capabilities of a viewer -- mute/unmute other viewers, lock down viewers, or make anyone (including themselves) the presenter.  The current presenter can can upload slides, annotate them (using the whiteboard controls), and share his or her desktop for all to see.
+BigBlueButton emphasizes engagement with your users with features such as
 
+  * multi-user whiteboard
+  * shared notes
+  * emojis
+  * polling
+  * breakout rooms
 
-## Getting Started
+BigBlueButton is compatible with JAWS and NVDA screen reader and supports live closed captioning.
+
+BigBlueButton is an [open source](http://github.com/bigbluebutton/bigbluebutton) project licensed under the LGPL license.  If you are a developer you are free (and welcome) to build upon our project for your needs.
+
+This documentation site is for administrators and developers who want to setup a BigBlueButton server, customize it, and integrate it with existing applications using our API. If you are an end-user (instructor or teacher) and interested in how to use BigBlueButton, visit [bigbluebutton.org](http://bigbluebutton.org). 
+
+## Two Roles
+
+In a BigBlueButton session there are only two types of users: a _viewer_ or _moderator_.  
+
+A viewer (typically the student) can chat, send/receive audio and video, respond to polls, and display an emoji (such as raise hand).  
+
+A moderator (typically the instructor) has all the capabilities of a viewer plus the ability to mute/unmute other viewers, lock down viewers, and assign anyone (including themselves) the role of presenter.  
+
+The presenter can upload slides, annotate the slides with the whiteboard, start a poll, and share their screen for all to see.
+
+## Getting Started Quickly with BigBlueButton
 
 If you are new to BigBlueButton we recommend (in order): 
 
@@ -35,32 +55,32 @@ If you are new to BigBlueButton we recommend (in order):
   1. Join the [BigBlueButton community](https://bigbluebutton.org/support/community/).
   1. Follow the project on social media: [Twitter](https://twitter.com/bigbluebutton), [FaceBook](https://www.facebook.com/bigbluebutton), [YouTube](https://www.youtube.com/user/bigbluebuttonshare), or [Google+](https://plus.google.com/+bigbluebutton).  
       
-Next, depending on whether you are a developer or administrator, we recommend:
+Next, if you intend to setup your own BigBlueButton server, we recommend:
 
-  1. [Install](/install/install.html) BigBlueButton your own server (Ubuntu 16.04 64-bit).
-  1. Setup the [GreenLight](/install/green-light.html) front end, or use an existing [integration](https://bigbluebutton.org/integrations/) (such as Moodle or WordPress).
-  1. Read the [FAQ](/support/faq.html).
+  1. Visit [Install](/install/install.html) to BigBlueButton your own server (Ubuntu 16.04 64-bit).  You'll find step-by-step instructions and a [one line installer](https://github.com/bigbluebutton/bbb-install).
+  1. Setup the [GreenLight](/install/green-light.html) front end, or use an existing [integration](http://bigbluebutton.org/open-source-integrations/) (such as Moodle or WordPress).
+  1. Take a quick read through the [FAQ](/support/faq.html).
 
-If you are a developer, we recommend
+If you are a developer, after setting up your own BigBlueButton server, we recommend
   1. [Setup](/dev/setup.html) a development environment to modify and extend BigBlueButton for your needs.
   1. Integrate BigBlueButton with your application using the [BigBlueButton API](/dev/api.html).
 
-The BigBlueButton project began in 2008. It is managed by a core group of [committers](/support/faq.html#bigbluebutton-committer) that are _very_ determined to see this project meet is goals.  If you use BigBlueButton and find it worthwhile, you can help us by spreading the word (blog, tweet, upload a video to YouTube, etc.) about the project.  
+The BigBlueButton project is managed by a core group of [committers](/support/faq.html#bigbluebutton-committer) who care about building the community.  If you are interested to engage us, we encourage you to join the [community](https://bigbluebutton.org/support/community/) and participate in the discussion around the project.  We also hold bi-weekly BigBlueButton Community Calls (using BigBlueButton of course).
 
-You'll fine BigBlueButton project is supported by an active and a global community that believe in the entrepreneurial opportunities and social benefits of the project.  If you do contribute to the project, you'll find the more you contribute the more you get back.
+## Latest Release
 
-## Latest versions
+The latest release is BigBlueButton 2.0-RC1. See the [overview](/overview/overview.html), [install](/install/install.html), and [architecture](/overview/architecture.html) documentation.
 
-The latest release is BigBlueButton 1.1. See [overview](/overview/overview.html), [install](/install/install.html), and [architecture](/overview/architecture.html) for more details.  
-
-The latest version is BigBlueButton 2.0-beta which improves collaboration with students through  multi-user whiteboard and shared notes.  To make it easy to try out, we provide a [one line installer](https://github.com/bigbluebutton/bbb-install).  See also [overview](/2.0/20overview.html), [step-by-step install instructions](/2.0/20install.html), and a [video overview of 2.0-beta](https://www.youtube.com/watch?v=NQPrdc-W-6A).
+The BigBlueButton 2.0 release is also the basis for the first release of the [HTML5 client](/html/html5-overview.html).
 
 
 <p align="center">
   <a href="http://www.youtube.com/watch?feature=player_embedded&v=NQPrdc-W-6A" target="_blank"><img src="http://img.youtube.com/vi/NQPrdc-W-6A/0.jpg" alt="Overview of BigBlueButton 2.0" width="480" height="360" border="10" /></a>
 </p>
 
-Enjoy!
+### Spread the word
+
+If you use BigBlueButton and find it worthwhile, an easy way to help support the project is to spread the word about your experiences (blog, tweet, upload a video to YouTube, etc.) or, if you want to really contribute, help improve us [improve](/faq.html#contributing-to-bigbluebutton) the product.  You'll find the more you give, the more you get back.
 
 ---
 

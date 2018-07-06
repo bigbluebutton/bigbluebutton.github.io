@@ -20,7 +20,7 @@ Also, while Flash enjoys support from a wide range of browsers (FireFox, Chrome,
 
 We want to move the BigBlueButton project to pure HTML5 and support mobile users _long_ before the end of 2020.  Hence, the HTML5 client project.
 
-A BigBlueButton 2.0-beta server (hereafter referred to as simply "BigBlueButton 2.0")  can support users connecting from either the Flash or HTML5 client in the same sessions.  The server routes messages seamslessly between the clients. 
+A BigBlueButton 2.0-beta server (hereafter referred to as simply "BigBlueButton 2.0")  can support users connecting from either the Flash or HTML5 client in the same sessions.  The server routes messages seamlessly between the clients. 
 
 The HTML5 support for real-time audio and video has substantially improved of the years with WebRTC.  The Flash client already uses WebRTC for sending and receiving high-quliaty audio for the audio (with a fallback to built-in Flash audio if the network blocks the ports needed for WebRTC).
 
@@ -40,7 +40,7 @@ The vision for the BigBlueButton project is to provide remote students a high-qu
 
 To achieve this vision, we want to deliver HTML5 client that works on desktop, laptops, and _mobile_ clients.  
 
-Working towards this vision, we want the HTML5 client to work alongside the Flash client to provide a smooth transition from one platform to another.  In this way, as the HTML5 client matures, we expect it to be increasingly used over the Flash client.  Over time, when the HTML5 client achieves parity of features with the Flash client, we plan to retire the Flash client and use pure HTML5 accross the board.
+Working towards this vision, we want the HTML5 client to work alongside the Flash client to provide a smooth transition from one platform to another.  In this way, as the HTML5 client matures, we expect it to be increasingly used over the Flash client.  Over time, when the HTML5 client achieves parity of features with the Flash client, we plan to retire the Flash client and use pure HTML5 across the board.
 
 ## Scope
 
@@ -63,7 +63,7 @@ The feature list for the first release of the HTML5 client will include
   * Restrict of sharing chat and/or audio based on Moderator changing lock settings
   * Localization
   * Responsive user experience on phone and tablet in portrait and landscape mode
-  * Accessibility through keyboard navagitation (includes shortcuts)
+  * Accessibility through keyboard navigation (includes shortcuts)
 
 Recall we said that the first release will only support viewer capabilities.  We're a bit further along in the development of the HTML5 client than originally planned, so the first release will support some presentation capabilities 
 

@@ -13,7 +13,7 @@ order: 2
 
 BigBlueButton is an open source web conferencing system for online learning.  Our goal is to provide remote students a high-quality online learning experience.
 
-One measurement of how well we acheive that goal is to ask "how easily can a user -- who may be a teacher with remote students anywhere in the world, a corporate instructor giving an orientation session to new employees, or a student logging into their online class ready to learn -- quickly get started using our product?"  In other words, can a user, after a few moments of interaction,  master the interface and get on with the task of teaching or learning?
+One measurement of how well we achieve that goal is to ask "how easily can a user -- who may be a teacher with remote students anywhere in the world, a corporate instructor giving an orientation session to new employees, or a student logging into their online class ready to learn -- quickly get started using our product?"  In other words, can a user, after a few moments of interaction,  master the interface and get on with the task of teaching or learning?
 
 We've put a lot of work into the user interface (UI) over the years.  We release BigBlueButton [BigBlueButton 2.0](/2.0/20overview.html) with multi-user whiteboard, shared notes, and, most importantly, an updated user interface.
 
@@ -57,7 +57,7 @@ Mobile has different user experience from a web application.  After all, they ar
 
 ## Accessibility
 
-Accessibility is _very_ important to our target market of online learning.  We wanted to make sure the designs would allow us to provide our users with a variety of accessibility best practises, such as Aria landmarks, Aria labels, Aria polite and providing a colour palette that supports visually impared users. While Flash has very good support for accessibility within the web browser, we wanted to be sure the HTML5 client was equally accessible as well.
+Accessibility is _very_ important to our target market of online learning.  We wanted to make sure the designs would allow us to provide our users with a variety of accessibility best practices, such as Aria landmarks, Aria labels, Aria polite and providing a colour palette that supports visually impaired users. While Flash has very good support for accessibility within the web browser, we wanted to be sure the HTML5 client was equally accessible as well.
 
 ## Extensible UI design
 

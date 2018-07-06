@@ -8,12 +8,12 @@ date: 2015-04-04 22:22:25
 
 # Introduction
 
-This document shows you how to configure the BigBlueButton 1.1 client by making changes to `config.xml`, the configuration file loaded at runtime by the client.
+This document shows you how to configure the BigBlueButton client by making changes to `config.xml`, the configuration file loaded at runtime by the client.
 
 ## Config.xml
 The config.xml file is located in the deployed client directory, the default location is `/var/www/bigbluebutton/client/conf/config.xml`. If you are working with the source code, it is located in the client's src/conf directory, the default location is `~/dev/source/bigbluebutton/bigbluebutton-client/src/conf/config.xml`.
 
-Here's an overview of the conetns of `config.xml file` for BigBlueButton.
+Here's an overview of the content of `config.xml file` for BigBlueButton.
 
 The template can be found [here](https://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-client/resources/config.xml.template).
 
@@ -219,7 +219,7 @@ The BigBlueButton client is comprised of one or more modules. You can specify wh
 | url             | The url to the compiled module .swf file. Usually has a version appended to it, to prevent caching of old version when a new version of BigBlueButton is released. |
 | uri             | The uri the module will connect to using rtmp. This is usually your bbb server ip with /bigbluebutton appended to it. Apart from making sure the ip is correct, you don't have to worry about it. |
 | dependsOn       | Optional parameter that should be included in the case that the module being loaded depends on another BigBlueButton module being loaded first in order to work properly. |
-| baseTabIndex    | The accessibilty starting tab index for the module components. |
+| baseTabIndex    | The accessibility starting tab index for the module components. |
 
 
 ### Chat Module
@@ -241,7 +241,7 @@ The BigBlueButton client is comprised of one or more modules. You can specify wh
 | privateEnabled       | true          | Set to true to enable private chat. |
 | fontSize             | 14            | Set the default size of the chat messages. |
 | colorPickerIsVisible | false         | Show or hide the chat message color picker. |
-| maxMessageLength     | 1024          | Set the maximum legnth of a message to be sent. |
+| maxMessageLength     | 1024          | Set the maximum length of a message to be sent. |
 
 
 ### Users Module

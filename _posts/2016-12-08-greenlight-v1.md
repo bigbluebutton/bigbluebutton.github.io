@@ -315,7 +315,7 @@ GOOGLE_OAUTH2_ID=1093993040802-jjs03khpdl4dfasffq7hj6ansct5.apps.googleuserconte
 GOOGLE_OAUTH2_SECRET=KLlBNy_b9pvBGasf7d5Wrcq
 ~~~
 
-The `GOOGLE_OAUTH2_HD` environment varaible is optional and can be used to restrict Google authentication to a specific Google Apps hosted domain.
+The `GOOGLE_OAUTH2_HD` environment variable is optional and can be used to restrict Google authentication to a specific Google Apps hosted domain.
 
 ~~~
 GOOGLE_OAUTH2_HD=example.com
@@ -548,13 +548,13 @@ Then use the command to start the BigBlueButton server:
 # docker run -d -p 5000:80 --restart=unless-stopped -v $(pwd)/db/production:/usr/src/app/db/production -v $(pwd)/assets:/usr/src/app/public/system --env-file env --name greenlight bigbluebutton/greenlight:v1
 ~~~
 
-## Setting a prefered client
+## Setting a preferred client
 
-A BigBlueButton server has two seperate clients that a user can use, these are the Flash and HTML5 clients. If your server isn't running the HTML5 client, GreenLight will automatically join all users using the Flash client.
+A BigBlueButton server has two separate clients that a user can use, these are the Flash and HTML5 clients. If your server isn't running the HTML5 client, GreenLight will automatically join all users using the Flash client.
 
 If you've setup the HTML5 client on your server, you can control which client GreenLight will default to. If you set `USE_HTML5_BY_DEFAULT` to `true` in the `.env` file, all **non-authenticated users** will join using the HTML5 client by default (instead of the Flash client).
 
-The way GreenLight selects a client for **authenticated users** is different. If a user is authenticated, they will have the ability to switch their prefered client in their preferences (provided HTML5 is configured on the server). This means that users who have logged in have full control over which client they use and can switch between them.
+The way GreenLight selects a client for **authenticated users** is different. If a user is authenticated, they will have the ability to switch their preferred client in their preferences (provided HTML5 is configured on the server). This means that users who have logged in have full control over which client they use and can switch between them.
 
 It is also worth noting that if the user is on a mobile device, GreenLight will automatically use the HTML5 client, since the Flash client does not work on mobile devices. If a user attempts to join a server that isn't running the HTML5 client using a mobile device, GreenLight will display a message letting them know they are unable to join because the BigBlueButton server doesn't support the HTML5 client.
 
@@ -576,7 +576,7 @@ Do the steps in [Applying env file changes](#applying-env-file-changes) to apply
 
 ## Logging
 
-GreenLight logs to `log/production.log` within the docker container by default. This means that if you recreate your docker container, you will lose all of the logs. To prevent this, you can mount the log directory in the containter to a directory on your host machine. This will mirror the `production.log` file from within the container and save to the host machine instead.
+GreenLight logs to `log/production.log` within the docker container by default. This means that if you recreate your docker container, you will lose all of the logs. To prevent this, you can mount the log directory in the container to a directory on your host machine. This will mirror the `production.log` file from within the container and save to the host machine instead.
 
 To save logs to the host machine, you should include the following option when running GreenLight.
 ~~~
@@ -594,7 +594,7 @@ If you don't want GreenLight send logs to `log/production.log`, you can configur
 
 ## Accessing GreenLight within the Docker container
 
-If you want to access GreenLight within the docker container, you can get a root prompt for the Linux environment in the docker container using the folloiwng command:
+If you want to access GreenLight within the docker container, you can get a root prompt for the Linux environment in the docker container using the following command:
 
 ~~~
 # docker exec -i -t greenlight /bin/bash
