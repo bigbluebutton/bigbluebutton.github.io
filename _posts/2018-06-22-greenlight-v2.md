@@ -263,35 +263,7 @@ Then when you want to stop the docker container, run:
 docker stop greenlight
 ```
 
-# Upgrading from Greenlight 1.0
-
-If you have [Greenlight 1.0](/greenlight-v1.html) installed on a BigBlueButton server, you don't have to do a complete new install to install Greenlight 2.0, although you can if you'd like.
-
-Before upgrading, keep in mind that [you cannot move over your data from Greenlight 1.0 to 2.0](#can-i-copy-over-my-old-greenlight-data). If you aren't okay with losing this data, do **not** upgrade.
-
-To upgrade to Greenlight 2.0 from Greenlight 1.0, complete the following steps.
-
-## 1. Setup the 2.0 Environment
-
-Copy the Greenlight 2.0 sample environment into your env file. If you want to save your Greenlight 1.0 settings, make a copy of the `env` file first. This will also pull the Greenlight 2.0 image.
-```
-cd ~/greenlight
-docker run --rm bigbluebutton/greenlight:v2 cat ./sample.env > env
-```
-
-Then follow the steps to [configure Greenlight](#3-configure-greenlight).
-
-## 2. Remove the Existing Database
-
-Backup your existing database, which is stored at `~/greenlight/db/production/production.sqlite3`.
-
-Then, remove the database directory (`~/greenlight/db`). When you first start Greenlight 2.0, it will generate a new database.
-
-## 3. Start Greenlight 2.0
-
-Choose to [start Greenlight 2.0](#5-start-greenlight-20) with either `docker-compose` or `docker run`.
-
-# Configuring Greenlight
+# Configuring Greenlight 2.0
 
 Greenlight is a highly configurable application. The various configuration options can be found below. When making a changes to the `env` file, in order for them to take effect you must restart you Greenlight container. For informaton on how to do this, see [Applying `env` Changes](#applying-env-changes).
 
@@ -379,6 +351,52 @@ If you with to use a relative root other than `/b`, you can do the following:
 1. Restart Nginx and the Greenlight server.
 
 If you are **not** deploying Greenlight on a BigBlueButton server and want the application to run at root, simply set the `RELATIVE_ROOT_URL` to be blank.
+
+# Upgrading from Greenlight 1.0
+
+If you have [Greenlight 1.0](/greenlight-v1.html) installed on a BigBlueButton server, you don't have to do a complete new install to install Greenlight 2.0, although you can if you'd like.
+
+Before upgrading, keep in mind that [you cannot move over your data from Greenlight 1.0 to 2.0](#can-i-copy-over-my-old-greenlight-data). If you aren't okay with losing this data, do **not** upgrade.
+
+To upgrade to Greenlight 2.0 from Greenlight 1.0, complete the following steps.
+
+## 1. Setup the 2.0 Environment
+
+Copy the Greenlight 2.0 sample environment into your env file. If you want to save your Greenlight 1.0 settings, make a copy of the `env` file first. This will also pull the Greenlight 2.0 image.
+```
+cd ~/greenlight
+docker run --rm bigbluebutton/greenlight:v2 cat ./sample.env > env
+```
+
+Then follow the steps to [configure Greenlight](#3-configure-greenlight).
+
+## 2. Remove the Existing Database
+
+Backup your existing database, which is stored at `~/greenlight/db/production/production.sqlite3`.
+
+Then, remove the database directory (`~/greenlight/db`). When you first start Greenlight 2.0, it will generate a new database.
+
+```
+rm -rf db/
+```
+
+## 3. Start Greenlight 2.0
+
+Choose to [start Greenlight 2.0](#5-start-greenlight-20) with either `docker-compose` or `docker run`.
+
+# Remaining on Greenlight 1.0
+
+If you have Greenlight 1.0, you may pull the Greenlight 2.0 Docker image when updating. If you do, you'll see a page similar to this:
+
+![Greenlight Migration Error](/images/greenlight/gl_migration_error.png)
+
+To continue to use Greenlight 1.0, all you need to do is to explicitly specify version 1.0 in the run command. You can do this like so:
+
+```
+docker run -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight bigbluebutton/greenlight:v1
+```
+
+This will force Greenlight to use version 1.0. For any other Docker commands relating to the image, make sure you specify the `v1` tag.
 
 # Administration
 
