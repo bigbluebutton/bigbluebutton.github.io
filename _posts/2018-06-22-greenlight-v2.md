@@ -260,7 +260,7 @@ If you wish to extract the logs from the docker container and save them to the B
 Then when you want to stop the docker container, run:
 
 ```
-docker stop greenlight
+docker stop greenlight-v2
 ```
 
 # Configuring Greenlight 2.0
