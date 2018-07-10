@@ -488,7 +488,7 @@ Once the meeting has finished, an **_X_** under **R** appears, if it does not ap
 
   * Be sure all users left the meeting.
 
-  * Check out that the parameter `defaultMeetingExpireDuration` in `/var/lib/tomcat6/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties` does not have a big value (default to 1).
+  * Check out that the parameter `defaultMeetingExpireDuration` in `/var/lib/tomcat7/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties` does not have a big value (default to 1).
 
   * Be sure the parameter `record=true` was passed in the `create` api call. If not, you didn't record the meeting.
 
