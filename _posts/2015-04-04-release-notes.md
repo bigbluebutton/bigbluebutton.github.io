@@ -158,7 +158,7 @@ Released: June 18, 2012
 
 
 ## Configuration Updates
-  * **API demos now separate** - The API demos are installed in their own package (for easy addition and removal).  The install location has changed to `/var/lib/tomcat6/webapps/demo`, which changes the URL from accessing them from `/bigbluebutton/demo` to `/demo`.
+  * **API demos now separate** - The API demos are installed in their own package (for easy addition and removal).  The install location has changed to `/var/lib/tomcat7/webapps/demo`, which changes the URL from accessing them from `/bigbluebutton/demo` to `/demo`.
 
   * **Upload slides on create** - The 'create' API now supports specification for upload of slides upon creation of the session.  To upload slides, developers can pass an xml with the 'create' request (send via POST).  The xml file may include the slides inline or reference them via URLs.
 
