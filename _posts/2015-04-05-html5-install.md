@@ -66,7 +66,7 @@ then change it to the format
 and save the updated file.
 
 
-Finally, run `sudo bbb-conf --seitp <hostname/IP address>` to ensure all the components have the latest hostname/IP address.  For example, if your server had the hostname `bbb.myserver.com`, you would run
+Finally, run `sudo bbb-conf --setip <hostname/IP address>` to ensure all the components have the latest hostname/IP address.  For example, if your server had the hostname `bbb.myserver.com`, you would run
 
 ~~~
 sudo bbb-conf --setip bbb.myserver.com
