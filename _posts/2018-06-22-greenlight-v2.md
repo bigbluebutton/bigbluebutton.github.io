@@ -340,6 +340,44 @@ TWITTER_ID=SOj8AkIdeqJuP2asfbbGSBk0
 TWITTER_SECRET=elxXJZqPVexBFf9ZJsafd4UTSzpr5AVmcH7Si5JzeHQ9th
 ~~~
 
+### LDAP Auth
+
+Greenlight is able to authenticate users using an external LDAP server. To connect Greenlight to an LDAP server, you will have to provide values for the environment variables under the 'LDAP Login Provider' section in the `env` file. You need to provide all of the values for LDAP authentication to work correctly.
+
+> `LDAP_SERVER` is the server host.
+
+> `LDAP_PORT` is the server port (commonly 389).
+
+> `LDAP_METHOD` is the authentication method, either 'plain' (default), 'ssl' or 'tls'.
+
+> `LDAP_UID` is the name of the attribute that contains the user id. For example, OpenLDAP uses 'uid'.
+
+> `LDAP_BASE` is the location to look up users.
+
+> `LDAP_BIND_DN` is the default account to use for user lookup.
+
+> `LDAP_PASSWORD` is the password for the account to perform user lookup.
+
+Here are some example settings using an [OpenLDAP](http://www.openldap.org/) server.
+
+~~~
+LDAP_SERVER=host
+LDAP_PORT=389
+LDAP_METHOD=plain
+LDAP_UID=uid
+LDAP_BASE=dc=example,dc=org
+LDAP_BIND_DN=cn=admin,dc=example,dc=org
+LDAP_PASSWORD=password
+~~~
+
+If your server is still running you will need to recreate the container for changes to take effect.
+
+See [Applying env Changes](#applying-env-changes) section to enable your new configuration.
+
+If you are using an ActiveDirectory LDAP server, you must determine the name of your user id parameter to set `LDAP_UID`. It is commonly 'sAMAccountName' or 'UserPrincipalName'.
+
+LDAP authentication takes precedence over all other providers. This means that if you have other providers configured with LDAP, clicking the login button will take you to the LDAP sign in page as opposed to presenting the general login modal.
+
 ## Using a Different Relative Root
 
 By default Greenlight is deployed to the `/b` subdirectory. If you are running Greenlight on a BigBlueButton server you must deploy Greenlight to a subdirectory to avoid conflicts.
@@ -351,6 +389,14 @@ If you with to use a relative root other than `/b`, you can do the following:
 1. Restart Nginx and the Greenlight server.
 
 If you are **not** deploying Greenlight on a BigBlueButton server and want the application to run at root, simply set the `RELATIVE_ROOT_URL` to be blank.
+
+## Setting a Custom Branding Image
+
+Greenlight provides you with the ability to set the branding image that you see on the left side of the header. By default this is set to the BigBlueButton logo. You can change this by setting the `BRANDING_IMAGE` option in the `env` file to a public URL for a png or jpg image.
+
+~~~
+BRANDING_IMAGE=https://www.example.com/example.png
+~~~
 
 # Upgrading from Greenlight 1.0
 
