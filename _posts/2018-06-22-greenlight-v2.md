@@ -145,6 +145,8 @@ docker run --rm bigbluebutton/greenlight:v2 cat ./sample.env > env
 
 If you open the `env` file you'll see that it contains information for all of the Greenlight configuration options. Some of these are mandatory.
 
+When you installed in step two, the `env` file was generated at `~/greenlight/env`.
+
 ### Generating a Secret Key
 
 Greenlight needs a secret key in order to run in production. To generate this, run:
