@@ -400,6 +400,20 @@ Greenlight provides you with the ability to set the branding image that you see 
 BRANDING_IMAGE=https://www.example.com/example.png
 ~~~
 
+## Adding Terms and Conditions
+
+Greenlight allows you to add terms and conditions to the application. By adding a `terms.md` file to `app/config/` you will enable terms and conditions. This will display a terms and conditions page whenever a user signs up (or logs on without accepting yet). They are required to accept before they can continue to use Greenlight.
+
+The `terms.md` file is a [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) file, so you can style your terms and conditions as you wish.
+
+To add terms and conditions to your docker container, create a `terms.md` file in the `~/greenlight` directory. Then, add the following volume to your Greenlight run command.
+
+`-v $(pwd)/terms.md:/usr/src/app/config/terms.md`
+
+If you are running Greenlight using the `docker-compose.yml` file, add the following volume:
+
+`- ./terms.md:/usr/src/app/config/terms.md`
+
 # Upgrading from Greenlight 1.0
 
 If you have [Greenlight 1.0](/greenlight-v1.html) installed on a BigBlueButton server, you don't have to do a complete new install to install Greenlight 2.0, although you can if you'd like.
