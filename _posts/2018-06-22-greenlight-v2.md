@@ -27,7 +27,7 @@ Furthermore, Greenlight is completely configurable. This means you can turn on/o
 
 # Want to try out our demo version?
 
-We host a public, absolutely free, demo version of Greenlight and BigBlueButton over at [demo.bigbluebutton.org](https://demo.bigbluebutton.org/b). Here you can create an account and experiment with Greenlight before installing it on your own BigBlueButton server.
+We host a public, absolutely free, demo version of Greenlight and BigBlueButton over at [demo.bigbluebutton.org](https://demo.bigbluebutton.org/gl). Here you can create an account and experiment with Greenlight before installing it on your own BigBlueButton server.
 
 # Features
 
