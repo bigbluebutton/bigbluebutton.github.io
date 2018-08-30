@@ -65,6 +65,27 @@ then change it to the format
 
 and save the updated file.
 
+As of BigBlueButton 2.0-RC5, the HTML5 client now uses Kurento for listen only.  First, set `enableListenOnly` to true in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings-production.json`, as in
+
+~~~
+# cat /usr/share/meteor/bundle/programs/server/assets/app/config/settings-production.json | grep enableListenOnly
+      "enableListenOnly": true
+~~~
+
+Next, edit `/usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml` change the value to `ip` to match the external IP address of the server.  For example, if the server's external IP address is `203.0.113.1`, then edit this file so the value for `ip` is as follows
+
+~~~
+freeswitch:
+    ip: '203.0.113.1'
+    port: '5066'
+~~~
+
+Next, ensure that `/opt/freeswitch/etc/freeswitch/sip_profiles/external.xml` has entries for `ws-binding` and `wss-binding` for your external IP address.  For example, if the server's external IP address is `203.0.113.1`, then edit `external.xml` so the values for `ws-binding` and `wss-binding` are as follows
+
+~~~
+    <param name="ws-binding"   value="203.0.113.1:5066"/>
+    <param name="wss-binding"  value="203.0.113.1:7443"/>
+~~~
 
 Finally, run `sudo bbb-conf --setip <hostname/IP address>` to ensure all the components have the latest hostname/IP address.  For example, if your server had the hostname `bbb.myserver.com`, you would run
 
@@ -78,7 +99,7 @@ You can now test out the HTML5 client by going to `/demo/demoHTML5.jsp` (as in `
 sudo apt-get install bbb-demo
 ~~~
 
-The server should automatically load the HTML5 client when you access your server with an Android or iOS 11+ client. 
+The server should automatically load the HTML5 client when you access your server with an Android 6.0 or iOS 11+ client.  
 
 # Step-by-Step Installation
 
