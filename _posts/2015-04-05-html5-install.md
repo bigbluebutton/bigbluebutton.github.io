@@ -87,6 +87,12 @@ Next, ensure that `/opt/freeswitch/etc/freeswitch/sip_profiles/external.xml` has
     <param name="wss-binding"  value="203.0.113.1:7443"/>
 ~~~
 
+Next, ensure that `/opt/freeswitch/etc/freeswitch/sip_profiles/external.xml` has the value for `enable-3pcc` set to `proxy`, as in
+
+~~~
+  <param name="enable-3pcc" value="proxy"/>
+~~~
+
 Finally, run `sudo bbb-conf --setip <hostname/IP address>` to ensure all the components have the latest hostname/IP address.  For example, if your server had the hostname `bbb.myserver.com`, you would run
 
 ~~~
