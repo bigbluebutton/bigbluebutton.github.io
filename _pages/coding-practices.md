@@ -1,1 +1,0 @@
-../_posts/2016-05-26-coding-practices.md

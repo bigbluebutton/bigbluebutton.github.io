@@ -1,8 +1,9 @@
 ---
 layout: page
 title: "Configuration Files"
-category: install
+category: admin
 date: 2015-04-04 22:27:43
+redirect_from: "/install/configuration-files"
 ---
 
 

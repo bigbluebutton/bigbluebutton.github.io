@@ -1,9 +1,12 @@
 ---
-layout: page
-title: "BigBlueTutor"
-category: labs
-date: 2017-12-21 14:58:25
+#layout: page
+#title: "BigBlueTutor"
+#category: labs
+#date: 2017-12-21 14:58:25
 ---
+
+Note: this project is depreciated.
+
 
 # Overview:
 BigBlueTutor is a mobile social platform for BigBlueButton that aims to connect students with tutors and various subject experts. BigBlueTutor aims to help students:

@@ -1,1 +1,0 @@
-../_posts/2016-12-08-green-light.md

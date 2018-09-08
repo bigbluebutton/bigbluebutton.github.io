@@ -1,1 +1,1 @@
-../_posts/2016-12-08-setup.md
+../_posts/2018-06-03-setup.md
