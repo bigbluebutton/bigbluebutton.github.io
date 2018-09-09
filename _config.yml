@@ -25,7 +25,7 @@ sections: [
     ['dev', 'Develop'],
     ['mobile', 'Mobile (dev)'],
     ['support', 'Support'],
-    ['html', 'HTML5 (dev)'],
+    ['html', 'HTML5'],
     ['labs', 'Labs (dev)'],
     ['1.1', '1.1 (beta)'],
     ['2.0', '2.0 (beta)'],

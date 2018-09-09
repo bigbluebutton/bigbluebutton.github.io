@@ -1,8 +1,9 @@
 ---
 layout: page
 title: "Client Configuration"
-category: install
+category: admin
 date: 2015-04-04 22:22:25
+redirect_from: /install/client-configuration.html
 ---
 
 
@@ -540,3 +541,31 @@ Example of the layouts module definition on config.xml:
         enableEdit="false"
 />
 ~~~
+
+
+# Right to Left
+
+Users that are familiar to languages written from right to left like Arabic, Persian and Hebrew are now able to use BigBlueButton in their mother tongue. It is possible to write in those languages without any additional configuration, and additionally the layout can be mirrored from right to left.
+
+![rtl-support](/images/20-rtl-screen.png)
+
+## Available Features
+
+The following features are available for RTL languages:
+
+- Write in text inputs and text area.
+- Display the application layout from right to left.
+- Mirrored icons, like logout icon and send chat message icon.
+
+## Configuration
+
+While right to left languages are supported without the need to mirror the layout, however setting layout direction from right to left needs changing `config.xml`. For that you just have to set `rtlEnabled` to `true` in the `language` XML tag.
+
+```
+<language rtlEnabled="true" />
+```
+
+## Known Limitations
+
+- Whiteboard text tool not usable.
+- Some labels are truncated.

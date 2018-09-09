@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Greenlight 2.0"
+title: "Greenlight"
 category: "install"
 date: 2016-12-08 16:29:25
 redirect_from: "/install/greenlight.html"
@@ -15,7 +15,7 @@ BigBlueButton is an open source web conferencing system for online learning. The
 ![Greenlight Landing](/images/greenlight/landing.png)
 <center>(the Greenlight home/landing page.)</center><br>
 
-Greenlight is a simple front-end interface for your BigBlueButton server. At it's heart, Greenlight provides a minimalistic web-based application that allows users to:
+Greenlight 2.0 is a simple front-end interface for your BigBlueButton server. At it's heart, Greenlight provides a minimalistic web-based application that allows users to:
 
   * Signup/Login with Twitter, Google, or through the application itself.
   * Manage your account settings and user preferences.
