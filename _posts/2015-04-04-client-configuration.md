@@ -24,7 +24,7 @@ The template can be found [here](https://github.com/bigbluebutton/bigbluebutton/
 <version>VERSION</version>
 <help url="http://HOST/help.html"/>
 <javaTest url="http://HOST/testjava.html"/>
-<porttest host="rtmp://HOST" application="video/portTest" timeout="10000"/>
+<porttest host="rtmp://HOST" ipv4FallbackHost="rtmp://ALTHOST" application="video/portTest" timeout="10000"/>
 <bwMon server="rtmp://HOST" application="video/bwTest"/>
 <application uri="rtmp://HOST/bigbluebutton" host="http://HOST/bigbluebutton/api/enter" reconnWaitTime="2000"/>
 <language userSelectionEnabled="true" rtlEnabled="false"/>
@@ -62,9 +62,9 @@ This has to do with the caching of the client as a whole. Should also be left al
 This is the URL that you would like users redirected to when they click the Help button in the client.
 
 ~~~xml
-<porttest host="rtmp://HOST" application="video/portTest" timeout="10000"/>
+<porttest host="rtmp://HOST" ipv4FallbackHost="rtmp://ALTHOST" application="video/portTest" timeout="10000"/>
 ~~~
-The IP and Red5 application the client uses to test whether necessary ports are open, and determine whether tunnelling should be used. The **host** should be your BBB server IP. The **application** should be left as is.
+The IP and Red5 application the client uses to test whether necessary ports are open, and determine whether tunnelling should be used. The **host** should be your BBB server IP. The **application** should be left as is. The **ipv4FallbackHost** is an optional property that is a fallback for the port test before tunnelling is attempted. Refer to (https://github.com/bigbluebutton/bigbluebutton/issues/6059) for more information on the purpose of the property. 
 
 ~~~xml
 <application uri="rtmp://HOST/bigbluebutton" host="http://HOST/bigbluebutton/api/enter"  reconnWaitTime="2000"/>
