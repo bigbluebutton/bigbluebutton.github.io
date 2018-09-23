@@ -253,7 +253,7 @@ docker-compose down
 To run Greenlight using `docker run`, from the `~/greenlight` directory, run the following command:
 
 ```
-docker run -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight-v2 bigbluebutton/greenlight:v2
+docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight-v2 bigbluebutton/greenlight:v2
 ```
 
 The database is saved to the BigBlueButton server so data persists when you restart. This can be found at `~/greenlight/db`.
@@ -456,7 +456,7 @@ If you have Greenlight 1.0, you may pull the Greenlight 2.0 Docker image when up
 To continue to use Greenlight 1.0, all you need to do is to explicitly specify version 1.0 in the run command. You can do this like so:
 
 ```
-docker run -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight bigbluebutton/greenlight:v1
+docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight bigbluebutton/greenlight:v1
 ```
 
 This will force Greenlight to use version 1.0. For any other Docker commands relating to the image, make sure you specify the `v1` tag.
@@ -493,7 +493,7 @@ docker rm greenlight-v2
 bring back up Greenlight using:
 
 ```
-docker run -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight-v2 bigbluebutton/greenlight:v2
+docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight-v2 bigbluebutton/greenlight:v2
 ```
 
 ## Updating Greenlight
