@@ -544,7 +544,7 @@ Greenlight can now be treated like any other rails application. To start it loca
 
 Now you should be able to access Greenlight via: http://localhost:3000
 
-**Enabling Omniauth**
+## Enabling Omniauth
 
 To enable Omniauth, you will require a hostname that ends with a **top level domain** (e.g “.com”, “.ca”, etc).
 
