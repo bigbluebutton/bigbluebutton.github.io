@@ -523,19 +523,20 @@ However, Greenlight does allow administrators to seed accounts. In theory, you c
 
 To setup Greenlight so that it can be run as a rails application, follow these steps:
 
-
 1. [Install Ruby on Rails](https://gorails.com/setup/ubuntu/16.04).
 2. Login to GitHub and fork the repository: [https://github.com/bigbluebutton/greenlight](https://github.com/bigbluebutton/greenlight)
 3. Clone the repository locally from your fork:
-    git clone https://github.com/<GitHub_Username>/greenlight.git
 
+  ```
+  git clone https://github.com/<GitHub_Username>/greenlight.git
+  ```
 
 4. From the directory:  ```./greenlight```  run the following command to generate a “.env” file. (this is used for configuration):
 
-    ```
-    cp sample.env .env
-    ```
-
+  ```
+  cp sample.env .env
+  ```
+  
 If you want to modify the configuration files, follow these instructions: [Configuring Greenlight 2.0](http://www.google.com/url?q=http%3A%2F%2Fdocs.bigbluebutton.org%2Finstall%2Fgreenlight-v2.html%23configuring-greenlight-20&sa=D&sntz=1&usg=AFQjCNG382q_nhYVCNS-P4e7kJ-hd4MdGg)
 
 You can now run Greenlight like any other rails application. Run the command to start the server:
