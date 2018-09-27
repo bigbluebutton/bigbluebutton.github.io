@@ -560,13 +560,12 @@ After properly adding the new hostname, run the following:
 
 You should see that the url contains the hostname with the top level domain:
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538073744004_image.png)
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538074544244_image.png)
 
 
 Once everything works, you can [configure Omniauth](http://docs.bigbluebutton.org/install/greenlight-v2.html#user-authentication).
 
 After configuring Omniauth, you should be able to gain full access to Omniauth signup:
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538073994345_image.png)
-
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538074632840_image.png)
 
