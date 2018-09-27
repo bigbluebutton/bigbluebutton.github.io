@@ -545,6 +545,38 @@ You can now run Greenlight like any other rails application. To run Greenlight, 
 
 You can test the application by loading the following URL in your browser: [http://localhost:3000](http://localhost:3000)
 
+## Customizing the Landing Page
+
+Let’s get started with a basic UI change. We will rename the welcome logo to say “Welcome to MyServer”.
+
+Begin by entering the `greenlight` directory, and accessing `app/views/main/index.html.erb`. This file corresponds to the Greenlight landing page and will look like this:
+
+![app/views/main/index.html.erb](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538080537551_image.png)
+
+
+Upon closer inspection, there is a line of code which corresponds to the big welcoming logo on the landing page:
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538080675385_image.png)
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538080763660_image.png)
+
+
+In particular, we see the following command: `t(``"``landing.welcome``"``)`. This retrieves text from a predefined location: `config/locales/en.yml`.
+
+![config/locales/en.yml](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538081113190_image.png)
+
+
+To change the landing page welcoming logo, we need to modify the message associated with `landing.welcome`:
+
+![Before](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538081341639_image.png)
+
+![After](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538081423415_image.png)
+
+
+All you to do is save the file and refresh the landing page, then you should see that the logo has changed:
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538081550335_image.png)
+
 ## Enabling Omniauth
 
 To enable Omniauth, you will require a hostname that ends with a **top level domain** (e.g “.com”, “.ca”, etc).
