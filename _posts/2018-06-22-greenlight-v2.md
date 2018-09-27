@@ -531,6 +531,7 @@ To setup Greenlight so that it can be run as a rails application, follow these s
 
 
 4. Make a copy of the “sample.env” file and rename it to “.env”:
+
 ![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538071747812_image.png)
 ![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538071730887_image.png)
 
