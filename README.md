@@ -90,7 +90,7 @@ bundle install
  This will install all the Jekyll components.  Next, type
 
 ```
-jekyll serve --host=0.0.0.0
+bundle exec jekyll serve --host=0.0.0.0
 ```
 
 Jekyll will run a server on port 4000 that lets you see a live update of the site after you make a save of any file.

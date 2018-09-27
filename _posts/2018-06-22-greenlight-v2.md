@@ -517,3 +517,87 @@ You can find the old documentation for Greenlight 1.0 [here](/greenlight-v1.html
 Greenlight Legacy uses a much different database schema than that of the current version, so for this reason, it is **not** possible to copy over the data directly.
 
 However, Greenlight does allow administrators to seed accounts. In theory, you could seed new accounts based off the data in your existing Greenlight database, but some data may be lost.
+
+# Setting up a development environment
+## Developing with a Rails Server
+
+To setup Greenlight so that it can be run as a rails application, follow these steps:
+
+1. [Install Ruby on Rails](https://gorails.com/setup/ubuntu/16.04).
+1. Login to your GitHub and fork the repository: [https://github.com/bigbluebutton/greenlight](https://github.com/bigbluebutton/greenlight)
+1. On your workstation, clone the repository locally from your fork:
+
+    ```
+    git clone https://github.com/<GitHub_Username>/greenlight.git
+    ```
+
+1. Enter the `greenlight` directory and run the following command to generate a `.env` file. (this is used for configuration):
+
+    ```
+    cp sample.env .env
+    ```
+  
+If you want to modify the configuration files, follow these instructions: [Configuring Greenlight 2.0](http://www.google.com/url?q=http%3A%2F%2Fdocs.bigbluebutton.org%2Finstall%2Fgreenlight-v2.html%23configuring-greenlight-20&sa=D&sntz=1&usg=AFQjCNG382q_nhYVCNS-P4e7kJ-hd4MdGg)
+
+You can now run Greenlight like any other rails application. To run Greenlight, use the following command:
+
+    bin/rails server --port=3000
+
+You can test the application by loading the following URL in your browser: [http://localhost:3000](http://localhost:3000)
+
+## Customizing the Landing Page
+
+Let’s get started with a basic UI change. We will rename the welcome logo to say “Welcome to MyServer”.
+
+Begin by entering the `greenlight` directory, and accessing `app/views/main/index.html.erb`. This file corresponds to the Greenlight landing page and will look like this:
+
+![app/views/main/index.html.erb](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538080537551_image.png)
+
+
+Upon closer inspection, there is a line of code which corresponds to the big welcoming logo on the landing page:
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538080675385_image.png)
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538080763660_image.png)
+
+
+In particular, we see the following command: `t(``"``landing.welcome``"``)`. This retrieves text from a predefined location: `config/locales/en.yml`.
+
+![config/locales/en.yml](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538081113190_image.png)
+
+
+To change the landing page welcoming logo, we need to modify the message associated with `landing.welcome`:
+
+![Before](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538081341639_image.png)
+
+![After](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538081423415_image.png)
+
+
+All you to do is save the file and refresh the landing page, then you should see that the logo has changed:
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538081550335_image.png)
+
+## Enabling Omniauth
+
+To enable Omniauth, you will require a hostname that ends with a **top level domain** (e.g “.com”, “.ca”, etc).
+
+To do this you can add a hostname to your computer which ends in a **top level domain**:
+
+- [Adding hosts for linux](https://www.cyberciti.biz/faq/ubuntu-change-hostname-command/)
+- [Adding hosts for Windows](https://support.rackspace.com/how-to/modify-your-hosts-file/)
+- [Adding hosts for Mac](https://www.tekrevue.com/tip/edit-hosts-file-mac-os-x/)
+
+After properly adding the new hostname, run the following:
+
+    bin/rails server --binding=<hostname>
+
+You should see that the url contains the hostname with the top level domain:
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538074544244_image.png)
+
+
+Once everything works, you can [configure Omniauth](http://docs.bigbluebutton.org/install/greenlight-v2.html#user-authentication).
+
+After configuring Omniauth, you should be able to gain full access to Omniauth signup:
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538074632840_image.png)
