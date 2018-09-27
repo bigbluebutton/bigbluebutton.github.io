@@ -519,5 +519,53 @@ Greenlight Legacy uses a much different database schema than that of the current
 However, Greenlight does allow administrators to seed accounts. In theory, you could seed new accounts based off the data in your existing Greenlight database, but some data may be lost.
 
 # Setting up a development environment
-## Developing with Ruby on Rails
+## Developing with a Rails Server
+
+To setup Greenlight so that it can be run as a rails application, follow these steps:
+
+
+1. [Install Ruby on Rails](https://gorails.com/setup/ubuntu/16.04).
+2. Make a fork of the GitHub repository: https://github.com/bigbluebutton/greenlight
+3. Enter the directory you want to develop in and clone the repository from your fork:
+    git clone https://github.com/<GitHub_Username>/greenlight.git
+
+
+4. Make a copy of the “sample.env” file and rename it to “.env”:
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538071747812_image.png)
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538071730887_image.png)
+
+
+If you want to modify the configuration files, follow these instructions: [Configuring Greenlight 2.0](http://www.google.com/url?q=http%3A%2F%2Fdocs.bigbluebutton.org%2Finstall%2Fgreenlight-v2.html%23configuring-greenlight-20&sa=D&sntz=1&usg=AFQjCNG382q_nhYVCNS-P4e7kJ-hd4MdGg)
+
+Greenlight can now be treated like any other rails application, to start it locally, run:
+
+    bin/rails server --port=3000
+
+Now you should be able to access Greenlight via: http://localhost:3000
+
+**Enabling Omniauth**
+
+To enable Omniauth, you will require a hostname that ends with a **top level domain** (e.g “.com”, “.ca”, etc).
+
+To do this you can add a hostname to your computer which ends in a **top level domain**:
+
+- [Adding hosts for linux](https://www.cyberciti.biz/faq/ubuntu-change-hostname-command/)
+- [Adding hosts for Windows](https://support.rackspace.com/how-to/modify-your-hosts-file/)
+- [Adding hosts for Mac](https://www.tekrevue.com/tip/edit-hosts-file-mac-os-x/)
+
+After properly adding the new hostname, run the following:
+
+    bin/rails server --binding=<hostname>
+
+You should see that the url contains the hostname with the top level domain:
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538073744004_image.png)
+
+
+Once everything works, you can [configure Omniauth](http://docs.bigbluebutton.org/install/greenlight-v2.html#user-authentication).
+
+After configuring Omniauth, you should be able to gain full access to Omniauth signup:
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538073994345_image.png)
+
 
