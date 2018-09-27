@@ -531,7 +531,7 @@ To setup Greenlight so that it can be run as a rails application, follow these s
   git clone https://github.com/<GitHub_Username>/greenlight.git
   ```
 
-4. From the directory:  ```./greenlight```  run the following command to generate a “.env” file. (this is used for configuration):
+4. From ```./greenlight```,  run the following command to generate a “.env” file. (this is used for configuration):
 
   ```
   cp sample.env .env
