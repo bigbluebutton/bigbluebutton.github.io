@@ -518,5 +518,6 @@ Greenlight Legacy uses a much different database schema than that of the current
 
 However, Greenlight does allow administrators to seed accounts. In theory, you could seed new accounts based off the data in your existing Greenlight database, but some data may be lost.
 
-# Setting up a development environment with Ruby on Rails
+# Setting up a development environment
+## With Ruby
 
