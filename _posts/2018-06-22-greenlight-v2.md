@@ -538,7 +538,7 @@ To setup Greenlight so that it can be run as a rails application, follow these s
 
 If you want to modify the configuration files, follow these instructions: [Configuring Greenlight 2.0](http://www.google.com/url?q=http%3A%2F%2Fdocs.bigbluebutton.org%2Finstall%2Fgreenlight-v2.html%23configuring-greenlight-20&sa=D&sntz=1&usg=AFQjCNG382q_nhYVCNS-P4e7kJ-hd4MdGg)
 
-Greenlight can now be treated like any other rails application, to start it locally, run:
+Greenlight can now be treated like any other rails application. To start it locally, run:
 
     bin/rails server --port=3000
 
