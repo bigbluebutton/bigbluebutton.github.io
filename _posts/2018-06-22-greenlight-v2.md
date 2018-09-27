@@ -530,8 +530,11 @@ To setup Greenlight so that it can be run as a rails application, follow these s
     git clone https://github.com/<GitHub_Username>/greenlight.git
 
 
-4. From the directory:  `./greenlight`  run the following command to generate a “.env” file. (this is used for configuration):
+4. From the directory:  ```./greenlight```  run the following command to generate a “.env” file. (this is used for configuration):
+
+    ```
     cp sample.env .env
+    ```
 
 If you want to modify the configuration files, follow these instructions: [Configuring Greenlight 2.0](http://www.google.com/url?q=http%3A%2F%2Fdocs.bigbluebutton.org%2Finstall%2Fgreenlight-v2.html%23configuring-greenlight-20&sa=D&sntz=1&usg=AFQjCNG382q_nhYVCNS-P4e7kJ-hd4MdGg)
 
@@ -566,4 +569,3 @@ Once everything works, you can [configure Omniauth](http://docs.bigbluebutton.or
 After configuring Omniauth, you should be able to gain full access to Omniauth signup:
 
 ![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538074632840_image.png)
-
