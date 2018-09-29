@@ -7,7 +7,7 @@ title: "BigBlueButton"
   <img src="/images/logo.png"/>
 </p><br>
 
-**BigBlueButton** is an open source web conferencing system for online learning.  The goal of BigBlueButton is to enable every student with a web browser to a high-quality online learning experience.  
+**BigBlueButton** is an open source web conferencing system for online learning.  The goal of BigBlueButton is to enable instructors to engage remote student in a high-quality online learning experience.  
 
 <p align="center">
   <img src="/images/20-screenshot.png"/>
@@ -19,32 +19,32 @@ BigBlueButton provides all the core capabilities you expect in a web conferencin
   * video
   * presentation
   * screen
-  * chat
   * recording of sessions for later playback
 
 BigBlueButton emphasizes engagement with your users with features such as
 
+  * chat (public and private)
   * multi-user whiteboard
   * shared notes
   * emojis
   * polling
   * breakout rooms
 
-BigBlueButton is compatible with JAWS and NVDA screen reader and supports live closed captioning.
+We care about accessibility.  BigBlueButton is compatible with JAWS screen reader and supports live closed captioning (see our [accessibility statement](https://bigbluebutton.org/accessibility/)).
 
 BigBlueButton is an [open source](http://github.com/bigbluebutton/bigbluebutton) project licensed under the LGPL license.  If you are a developer you are free (and welcome) to build upon our project for your needs.
 
 This documentation site is for administrators and developers who want to setup a BigBlueButton server, customize it, and integrate it with existing applications using our API. If you are an end-user (instructor or teacher) and interested in how to use BigBlueButton, visit [bigbluebutton.org](http://bigbluebutton.org). 
 
-## Two Roles
+## Two types of users
 
 In a BigBlueButton session there are only two types of users: a _viewer_ or _moderator_.  
 
 A viewer (typically the student) can chat, send/receive audio and video, respond to polls, and display an emoji (such as raise hand).  
 
-A moderator (typically the instructor) has all the capabilities of a viewer plus the ability to mute/unmute other viewers, lock down viewers, and assign anyone (including themselves) the role of presenter.  
+A moderator (typically the instructor) has all the capabilities of a viewer plus the ability to mute/unmute other viewers, lock down viewers (i.e. restrict them from doing private chat), and assign anyone (including themselves) the role of _presenter_.  
 
-The presenter can upload slides, annotate the slides with the whiteboard, start a poll, and share their screen for all to see.
+The presenter controls the presentation area.  This means they can upload slides, annotate the current slide with the whiteboard controls, enable/disable multi-user whiteboard, start a poll, and share their screen for all to see.
 
 ## Getting Started Quickly with BigBlueButton
 
