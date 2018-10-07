@@ -550,7 +550,7 @@ last executed task, sure that is the one that failed and an error message with t
 
 # FAQS
 
-## How do I change when Start/Stop recording marks
+## How do I change the Start/Stop recording marks
 
 Sometimes you have a user the clicked the Start/Stop Recording button at the wrong time.  As a result, the playback file produced might be missing the first 30 minutes.
 
