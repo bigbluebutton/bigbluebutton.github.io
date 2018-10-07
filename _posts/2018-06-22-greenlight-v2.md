@@ -106,7 +106,7 @@ Deleted recordings are **not** recoverable, so be sure when deleting a recording
 
 # Installing on a BigBlueButton Server
 
-To make Greenlight as easy to install as possible, we've created a Docker image that wraps the applicaton. It is **highly** recommended that you use Docker when install Greenlight on a BigBlueButton server. You can install Greenlight without Docker (see [Setting up a development environment](#setting-up-a-development-environment)).
+To make Greenlight as easy to install as possible, we've created a Docker image that wraps the applicaton. It is **highly** recommended that you use Docker when install Greenlight on a BigBlueButton server. You can install Greenlight without Docker (see [GreenLight without Docker](#greenlight-without-docker)).
 
 You should run all commands in this section as `root` on your BigBlueButton server.
 
