@@ -8,30 +8,30 @@ redirect_from: "/install/greenlight.html"
 
 BigBlueButton is an open source web conferencing system for online learning. The project’s goal is to enable teachers to provide remote students anywhere in the world a high-quality online learning experience.
 
-**Looking to upgrade to Greenlight 2.0? See [these instructions](#upgrading-from-greenlight-10).**
+**Looking to upgrade from Greenlight 1.0? See [these instructions](#upgrading-from-greenlight-10).**
 
 # Overview
 
 ![Greenlight Landing](/images/greenlight/landing.png)
 <center>(the Greenlight home/landing page.)</center><br>
 
-Greenlight 2.0 is a simple front-end interface for your BigBlueButton server. At it's heart, Greenlight provides a minimalistic web-based application that allows users to:
+Greenlight 2.0 is a ruby on rails application that provides a a simple front-end interface to your BigBlueButton server. GreenLight lets users:
 
-  * Signup/Login with Twitter, Google, or through the application itself.
-  * Manage your account settings and user preferences.
-  * Create and manage your own personal rooms ([BigBlueButton](https://github.com/bigbluebutton/bigbluebutton) sessions).
-  * Invite others to your room using a simple URL.
+  * Signup/Login with Twitter, Google, or through the application itself
+  * Manage their account settings and user preferences.
+  * Create and manage their own personal rooms ([BigBlueButton](https://github.com/bigbluebutton/bigbluebutton) sessions).
+  * Invite others to join a sessio using a simple URL.
   * View recordings and share them with others.
 
-Furthermore, Greenlight is completely configurable. This means you can turn on/off features to make Greenlight fit your specific use case.
+Furthermore, as Greenlight is a ruby on rails application, it is completely configurable and brandable.
 
 # Want to try out our demo version?
 
-We host a public, absolutely free, demo version of Greenlight and BigBlueButton over at [demo.bigbluebutton.org](https://demo.bigbluebutton.org/gl). Here you can create an account and experiment with Greenlight before installing it on your own BigBlueButton server.
+We host a public, absolutely free, demo version of Greenlight and BigBlueButton over at [demo.bigbluebutton.org](https://demo.bigbluebutton.org/gl). Here you can create an account and experiment with Greenlight before installing it on your own BigBlueButton server.  **Note:** Recordings will only last for 14 days on the public server.
 
 # Features
 
-Greenlight is a feature rich application that aims to address all your BigBlueButton users needs. We are constantly expanding Greenlight, and if you have any suggestions, you can open one on the [official Greenlight repo](https://github.com/bigbluebutton/greenlight).
+Greenlight is a feature rich application that aims to address all your BigBlueButton users needs.  We are constantly expanding Greenlight, and if you have any suggestions, you can open one on the [official Greenlight repo](https://github.com/bigbluebutton/greenlight).
 
 As BigBlueButton and Greenlight are open-source projects, we encourage other developers to contribute. If you want to implement a new feature and submit a pull request, you are more than welcome to do so! For information on contributing to BigBlueButton projects, see [Contributing to BigBlueButton](http://docs.bigbluebutton.org/support/faq.html#contributing-to-bigbluebutton).
 
@@ -106,7 +106,7 @@ Deleted recordings are **not** recoverable, so be sure when deleting a recording
 
 # Installing on a BigBlueButton Server
 
-To make Greenlight as easy to install as possible, we've created a Docker image that wraps the applicaton. It is **highly** recommended that you use Docker when install Greenlight on a BigBlueButton server. You can install Greenlight without Docker, however we don't provide steps for doing this, so some knowledge of Ruby on Rails is most likily required.
+To make Greenlight as easy to install as possible, we've created a Docker image that wraps the applicaton. It is **highly** recommended that you use Docker when install Greenlight on a BigBlueButton server. You can install Greenlight without Docker (see [Setting up a development environment](#setting-up-a-development-environment)).
 
 You should run all commands in this section as `root` on your BigBlueButton server.
 
@@ -518,64 +518,131 @@ Greenlight Legacy uses a much different database schema than that of the current
 
 However, Greenlight does allow administrators to seed accounts. In theory, you could seed new accounts based off the data in your existing Greenlight database, but some data may be lost.
 
-# Setting up a development environment
-## Developing with a Rails Server
+# Running GreenLight without Docker
 
-To setup Greenlight so that it can be run as a rails application, follow these steps:
+You can run GreenLight outside of Docker, which also makes it easy to customize GreenLight (such as changing the landing page).
+
+## Runing GreenLight outside of Docker
+
+To setup Greenlight so it runs outside of Docker requires having rails installed, checking out the source code, and running it at the command line.  You need to have a [GitHub](https://github.com/) account.
 
 1. [Install Ruby on Rails](https://gorails.com/setup/ubuntu/16.04).
-1. Login to your GitHub and fork the repository: [https://github.com/bigbluebutton/greenlight](https://github.com/bigbluebutton/greenlight)
-1. On your workstation, clone the repository locally from your fork:
+1. Login to your GitHub account and fork the [GreenLight repository](https://github.com/bigbluebutton/greenlight).
+1. Login (via SSH) to the server where you want to run GreenLight and clone the forked repository (replace `<gitHub_Username>` with your GitHub username:
 
-    ```
-    git clone https://github.com/<GitHub_Username>/greenlight.git
-    ```
+~~~
+git clone https://github.com/<GitHub_Username>/greenlight.git
+~~~
 
-1. Enter the `greenlight` directory and run the following command to generate a `.env` file. (this is used for configuration):
+1. Enter the `greenlight` directory and copy `sample.env` to `.env` file (this is used for configuration):
 
-    ```
-    cp sample.env .env
-    ```
+~~~
+cd greenlight
+cp sample.env .env
+~~~
   
-If you want to modify the configuration files, follow these instructions: [Configuring Greenlight 2.0](http://www.google.com/url?q=http%3A%2F%2Fdocs.bigbluebutton.org%2Finstall%2Fgreenlight-v2.html%23configuring-greenlight-20&sa=D&sntz=1&usg=AFQjCNG382q_nhYVCNS-P4e7kJ-hd4MdGg)
+If you want to modify the default configuration file (such as enabling authentication using OAuth2) see [Configuring Greenlight 2.0](#configuring-greenlight-20).
 
-You can now run Greenlight like any other rails application. To run Greenlight, use the following command:
+With rails installed, GreenLight source checked out, and an `.env.` file created, you can now run Greenlight locally like any other rails application. To run Greenlight, use the following command:
 
-    bin/rails server --port=3000
+~~~
+bin/rails server --port=3000
+~~~
 
-You can test the application by loading the following URL in your browser: [http://localhost:3000](http://localhost:3000)
+You can test the application by loading the following URL in your browser: [http://localhost:3000](http://localhost:3000).
+
 
 ## Customizing the Landing Page
 
-Let’s get started with a basic UI change. We will rename the welcome logo to say “Welcome to MyServer”.
+A common customization is to modify the default landing page. For a simple change, let's rename the welcome banner to say “Welcome to MyServer”.
 
 Begin by entering the `greenlight` directory, and accessing `app/views/main/index.html.erb`. This file corresponds to the Greenlight landing page and will look like this:
 
-![app/views/main/index.html.erb](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538080537551_image.png)
+~~~erb
+<%
+# BigBlueButton open source conferencing system - http://www.bigbluebutton.org/.
+# Copyright (c) 2018 BigBlueButton Inc. and by respective authors (see below).
+# This program is free software; you can redistribute it and/or modify it under the
+# terms of the GNU Lesser General Public License as published by the Free Software
+# Foundation; either version 3.0 of the License, or (at your option) any later
+# version.
+#
+# BigBlueButton is distributed in the hope that it will be useful, but WITHOUT ANY
+# WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+# You should have received a copy of the GNU Lesser General Public License along
+# with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
+%>
+
+<% unless flash.empty? %>
+  <%= render "shared/error_banner" do %>
+    <% flash.each do |key, value| %>
+      <%= content_tag :div, value, class: "flash #{key} d-inline" %>
+    <% end %>
+  <% end %>
+<% end %>
+
+<div class="background">
+  <div class="container pt-9 pb-8">
+    <div class="row">
+      <div class="col-md-12 col-sm-12 text-center">
+        <h1 id="main-text" class="display-4 mb-4"> <%= t("landing.welcome").html_safe %></h1>
+        <p class="lead offset-lg-2 col-lg-8 col-sm-12 "><%= t("landing.about", href: link_to(t("greenlight"), "https://bigbluebutton.org/2018/07/09/greenlight-2-0/", target: "_blank")).html_safe %></p>
+        <%= link_to "https://youtu.be/Hso8yLzkqj8", target: "_blank" do %>
+          <h4><%= t("landing.video") %> <i class="far fa-play-circle ml-1"></i></h4>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<%= render "shared/features" %>
 
 
-Upon closer inspection, there is a line of code which corresponds to the big welcoming logo on the landing page:
+<script>
+var cycleImages = function(){
+  var images = $('.img-cycle img');
+  var now = images.filter(':visible');
+  var next = now.next().length ? now.next() : images.first();
+  var speed = 1500;
+  now.fadeOut(speed);
+  next.fadeIn(speed);
+}
+$(function() {
+  setInterval(cycleImages, 5000);
+});
+</script>
+~~~
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538080675385_image.png)
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538080763660_image.png)
+The display of the welcome logo is implemented in the following line
+
+~~~
+<h1 id="main-text" class="display-4 mb-4"> <%= t("landing.welcome").html_safe %></h1>
+~~~
 
 
 In particular, we see the following command: `t(``"``landing.welcome``"``)`. This retrieves text from a predefined location: `config/locales/en.yml`.
 
-![config/locales/en.yml](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538081113190_image.png)
+~~~yml
+  landing:
+    about: "%{href} is a simple front-end for your BigBlueButton open-source web conferencing server. You can create your own rooms to host sessions, or join others using a short and convenient link."
+    welcome: Welcome to BigBlueButton.
+    video: Watch our tutorial on using Greenlight
+    upgrade: Show me how to upgrade to 2.0!
+    version: We've released a new version of Greenlight, but your database isn't compatible.
+~~~
 
+To change the landing page welcoming logo, modify the message associated with `landing.welcome`:
 
-To change the landing page welcoming logo, we need to modify the message associated with `landing.welcome`:
+~~~yml
+    welcome: Welcome to BigBlueButton.
+~~~
 
-![Before](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538081341639_image.png)
+Save the changes to `en.yml` and refresh the landing page.  You should see that the logo has changed:
 
-![After](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538081423415_image.png)
-
-
-All you to do is save the file and refresh the landing page, then you should see that the logo has changed:
-
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538081550335_image.png)
+![Updated login](/images/greenlight/gl-welcome-to-my-server.png)
 
 ## Enabling Omniauth
 
