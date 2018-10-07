@@ -550,6 +550,61 @@ last executed task, sure that is the one that failed and an error message with t
 
 # FAQS
 
+## How do I change when Start/Stop recording marks
+
+Sometimes you have a user the clicked the Start/Stop Recording button at the wrong time.  As a result, the playback file produced might be missing the first 30 minutes.
+
+You can change the segments processed for a recording by editing the `events.xml` file.  Use `bbb-record --list` to find the internal `meetingId` for the recording.  For example, to get the last three recordings
+
+~~~
+$ sudo bbb-record --list | head -n 5
+Internal MeetingID                                               Time                APVD APVDE RAS Slides Processed            Published           External MeetingID
+------------------------------------------------------  ---------------------------- ---- ----- --- ------ -------------------- ------------------  -------------------
+238ff79fd66331a59274a8f3f05f1c0cd3e278b4-1538942925244  Sun Oct 7 16:08:45 EDT 2018  XX   XX  X          6                      presentation        English 102
+6e35e3b2778883f5db637d7a5dba0a427f692e91-1538942881350  Sun Oct 7 16:08:01 EDT 2018   X    X  X          6                      presentation        English 101
+6e35e3b2778883f5db637d7a5dba0a427f692e91-1538941988186  Sun Oct 7 15:53:08 EDT 2018  XX   XX  X          6                      presentation        English 101
+~~~
+
+The first recording has an internal `meetingID` of `238ff79fd66331a59274a8f3f05f1c0cd3e278b4-1538942925244`.  If this is the recoding you want to edit, you'll find the events.xml in the location `/var/bigbluebutton/recording/raw/238ff79fd66331a59274a8f3f05f1c0cd3e278b4-1538942925244\events.xml`.  Edit this file and look for the first `RecordingStatusEvent`, such as
+
+~~~
+  <event timestamp="4585088638" module="PARTICIPANT" eventname="RecordStatusEvent">
+    <userId>w_68gpmvhecnng</userId>
+    <status>true</status>
+  </event>
+~~~
+
+Next, find when the first moderator joined, and thend move the `RecordStatusEvent` after the moderator join event.  Also, edit the `timestamp` for `RecordStatusEvent` so it occurrs **after** the moderator's `timestamp`.  For example:
+
+~~~xml
+  <event timestamp="4585063453" module="PARTICIPANT" eventname="ParticipantJoinEvent">
+    <userId>w_68gpmvhecnng</userId>
+    <externalUserId>w_68gpmvhecnng</externalUserId>
+    <role>MODERATOR</role>
+    <name>e2</name>
+  </event>
+  <event timestamp="4585063454" module="PARTICIPANT" eventname="RecordStatusEvent">
+    <userId>w_68gpmvhecnng</userId>
+    <status>true</status>
+  </event>
+~~~
+
+This is equivalent to the first moderator clicking the Start/Stop Record button.  Save the modified `events.xml` and regenerate recording using the `bbb-record --rebuild` command, as in
+
+~~~
+sudo bbb-record --rebuild 238ff79fd66331a59274a8f3f05f1c0cd3e278b4-1538942925244
+~~~
+
+If there are no other recordings processing, you should see the recording re-process using the `sudo bbb-record --watch` command.  After the processing is finished, your users can view the recording and see all the content from the time the first moderator joined.
+
+
+~~~xml
+ <event timestamp="4584199946" module="PARTICIPANT" eventname="RecordStatusEvent">
+    <userId>w_w0mkqqeo8jqc</userId>
+    <status>true</status>
+  </event>
+~~~
+
 ## Is the recording activated automatically?
 
 No, when creating the meeting the parameters must include `record=true` to enable recording.  In BigBlueButton 0.9.1, to have a recorded session create a playback file, a moderator must click the Start/Stop Record button during the session. Otherwise, BigBlueButton will not create a playback file and delete the recorded session.
