@@ -615,13 +615,13 @@ $(function() {
 </script>
 ~~~
 
-And look for the following line:
+This is an Embedded RuBy (ERB) file.   Look for the following line:
 
 ~~~html
 <h1 id="main-text" class="display-4 mb-4"> <%= t("landing.welcome").html_safe %></h1>
 ~~~
 
-The function `t("landing.welcome")` retrieves the localized version of the welcome message.  For English, this text is retrieved from `config/locales/en.yml`.  Here's the section that specifices the localized strings for the English.
+The function `t("landing.welcome")` retrieves the localized version of the label `welcome.message`.  For English, this retrieves the string from [en.yml](https://github.com/bigbluebutton/greenlight/blob/master/config/locales/en.yml).  Edit `config/locales/en.yml` and look for the following section:
 
 ~~~yml
   landing:
@@ -632,15 +632,16 @@ The function `t("landing.welcome")` retrieves the localized version of the welco
     version: We've released a new version of Greenlight, but your database isn't compatible.
 ~~~
 
-To change the welcome message, modify the message associated with `landing.welcome`:
+To change the welcome message, modify the text associated with `landing.welcome` to say "Welcome to MyServer".
 
 ~~~yml
     welcome: Welcome to MyServer
 ~~~
 
-Save the change to `en.yml` and refresh the landing page in your browser.  You should see that the welcome message has changed:
+Save the change to `en.yml`.  Refresh the landing page in your browser.  The welcome message should have the new text.
 
 ![Updated login](/images/greenlight/gl-welcome-to-my-server.png)
+
 
 ## Enabling Omniauth
 
