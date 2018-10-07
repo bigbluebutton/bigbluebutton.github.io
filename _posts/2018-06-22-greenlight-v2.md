@@ -17,10 +17,10 @@ BigBlueButton is an open source web conferencing system for online learning. The
 
 Greenlight 2.0 is a ruby on rails application that provides a a simple front-end interface to your BigBlueButton server. GreenLight lets users:
 
-  * Signup/Login with Twitter, Google, or through the application itself
+  * Sign up/Login with Twitter, Google, or through the application itself
   * Manage their account settings and user preferences.
   * Create and manage their own personal rooms ([BigBlueButton](https://github.com/bigbluebutton/bigbluebutton) sessions).
-  * Invite others to join a sessio using a simple URL.
+  * Invite others to join a session using a simple URL.
   * View recordings and share them with others.
 
 Furthermore, as Greenlight is a ruby on rails application, it is completely configurable and brandable.
@@ -37,7 +37,7 @@ As BigBlueButton and Greenlight are open-source projects, we encourage other dev
 
 ## Accounts and Settings
 
-### Signup / Login
+### Sign up / Login
 
 Greenlight has full support for managing user accounts. It currently supports three types of user authentication:
 
@@ -47,9 +47,9 @@ Greenlight has full support for managing user accounts. It currently supports th
 
 ![Greenlight Login](/images/greenlight/login.png)
 
-All of these authentication providers are configurable and can be turned on/off individually. Turning off In-application authentication will disable user signup. This allows you to preconfigure accounts for specific users who you want to have access to your server.
+All of these authentication providers are configurable and can be turned on/off individually. Turning off In-application authentication will disable user sign up. This allows you to preconfigure accounts for specific users who you want to have access to your server.
 
-Once you are logged in, you'll see your account appear in the top right corner of the screen. Clicking on this displays a dropdown that allows you to traverse Greenlight.
+Once you are logged in, you'll see your account appear in the top right corner of the screen. Clicking on this displays a drop-down that allows you to traverse Greenlight.
 
 ![Greenlight Nav](/images/greenlight/nav.png)
 
@@ -63,7 +63,7 @@ Greenlight also allows users to update their account information at any time, in
 
 ### Using Your Room
 
-Greenlight is built around the concept of rooms. A room, to the user, is a BigBlueButton session that they "own". A user can add custom room settings, start/stop their room, invite others to their room using a short easily communicatable URL, track sessions, and more.
+Greenlight is built around the concept of rooms. A room, to the user, is a BigBlueButton session that they "own". A user can add custom room settings, start/stop their room, invite others to their room using a short easily communicable URL, track sessions, and more.
 
 ![Greenlight Room](/images/greenlight/room.png)
 
@@ -71,17 +71,17 @@ To invite someone to join your room, all you have to do is give them the invite 
 
 ![Greenlight Invitation](/images/greenlight/invitation.png)
 
-If the room is running, they'll be instantly join in. However, if the room is not running they'll be added to the waitlist. Once the room starts, they'll be automatically joined into the room with the owner. A user can leave the waitlist simply by leaving the page.
+If the room is running, they'll be instantly join in. However, if the room is not running they'll be added to the wait list. Once the room starts, they'll be automatically joined into the room with the owner. A user can leave the wait list simply by leaving the page.
 
 ![Greenlight Waiting](/images/greenlight/waiting.png)
 
 ### Creating New Rooms
 
-When you signup for Greenlight, the appication creates your home room which is named "`FIRST_NAME`'s Room". You are free to create as many new rooms as you would like for different purposes. To create a new room, you simply click the "Create Room" button beside your profile in the navigation bar. You will have the option to automatically start the room when you create it.
+When you sign up for Greenlight, the application creates your home room which is named "`FIRST_NAME`'s Room". You are free to create as many new rooms as you would like for different purposes. To create a new room, you simply click the "Create Room" button beside your profile in the navigation bar. You will have the option to automatically start the room when you create it.
 
 ![Greenlight Create Room](/images/greenlight/create_room.png)
 
-Your new room will then show under your current room, and you can click to switch between them. Your home room is the one with the home icon. You can delete a room using the room dropdown.
+Your new room will then show under your current room, and you can click to switch between them. Your home room is the one with the home icon. You can delete a room using the room drop-down.
 
 ![Greenlight Multiple Rooms](/images/greenlight/multiple_rooms.png)
 
@@ -100,13 +100,13 @@ Each recording has a visibility associated with it, which can be changed by clic
 
 ### Managing Recordings
 
-Using the dropdown in the recordings table, you have the ability to delete a recording or mail a recording to a friend. Keep in mind, emailing an unlisted recording **will** allow the friend access, so if you want a recording to be completely private, don't share the recording link.
+Using the drop-down in the recordings table, you have the ability to delete a recording or mail a recording to a friend. Keep in mind, emailing an unlisted recording **will** allow the friend access, so if you want a recording to be completely private, don't share the recording link.
 
 Deleted recordings are **not** recoverable, so be sure when deleting a recording.
 
 # Installing on a BigBlueButton Server
 
-To make Greenlight as easy to install as possible, we've created a Docker image that wraps the applicaton. It is **highly** recommended that you use Docker when install Greenlight on a BigBlueButton server. You can install Greenlight without Docker (see [GreenLight without Docker](#greenlight-without-docker)).
+To make Greenlight as easy to install as possible, we've created a Docker image that wraps the application. It is **highly** recommended that you use Docker when install Greenlight on a BigBlueButton server. You can install Greenlight without Docker (see [GreenLight without Docker](#greenlight-without-docker)).
 
 You should run all commands in this section as `root` on your BigBlueButton server.
 
@@ -116,7 +116,7 @@ Before you install Greenlight, you must have a BigBlueButton server to install i
 
 * have a version of BigBlueButton 2.0 (or greater).
 * have a fully qualified hostname.
-* have a valid SSL certificate (https).
+* have a valid SSL certificate (HTTPS).
 
 ## 1. Install Docker
 
@@ -160,7 +160,7 @@ Inside your `env` file, set the `SECRET_KEY_BASE` option to this key. You don't 
 
 ### Setting BigBlueButton Credentials
 
-By default, your Greenlight instance will automatically connect to [test-install.blindsidenetworks.com](https://test-install.blindsidenetworks.com) if no BigBlueButton credentials are specfied. To set Greenlight to connect to your BigBlueButton server (the one it's installed on), you need to give Greenlight the endpoint and the secret. To get the credentials, run:
+By default, your Greenlight instance will automatically connect to [test-install.blindsidenetworks.com](https://test-install.blindsidenetworks.com) if no BigBlueButton credentials are specified. To set Greenlight to connect to your BigBlueButton server (the one it's installed on), you need to give Greenlight the endpoint and the secret. To get the credentials, run:
 
 ```
 bbb-conf --secret
@@ -180,7 +180,7 @@ All three of the tests must pass before you proceed.
 
 ## 4. Configure Nginx to Route To Greenlight
 
-Greenlight will be configured to deploy at the `/b` subdirectory. This is neccesary so it doesn't conflict with the other BigBlueButton components. The Nginx configuration for this subdirectory is stored in the Greenlight image. To add this configuration file to your BigBlueButton server, run:
+Greenlight will be configured to deploy at the `/b` subdirectory. This is necessary so it doesn't conflict with the other BigBlueButton components. The Nginx configuration for this subdirectory is stored in the Greenlight image. To add this configuration file to your BigBlueButton server, run:
 
 ```
 docker run --rm bigbluebutton/greenlight:v2 cat ./greenlight.nginx | sudo tee /etc/bigbluebutton/nginx/greenlight.nginx
@@ -216,7 +216,7 @@ We suggest using `docker-compose` because it is easy to manage and saves you rem
 
 Install `docker-compose` by following the steps for installing on Linux in the [Docker documentation](https://docs.docker.com/compose/install/). You may be required to run all `docker-compose` commands using sudo. If you wish to change this, check out [managing docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user).
 
-Before you continue, verfiy that you have `docker-compose` installed by running:
+Before you continue, verify that you have `docker-compose` installed by running:
 
 ```
 docker-compose -v
@@ -268,7 +268,7 @@ docker stop greenlight-v2
 
 # Configuring Greenlight 2.0
 
-Greenlight is a highly configurable application. The various configuration options can be found below. When making a changes to the `env` file, in order for them to take effect you must restart you Greenlight container. For informaton on how to do this, see [Applying `env` Changes](#applying-env-changes).
+Greenlight is a highly configurable application. The various configuration options can be found below. When making a changes to the `env` file, in order for them to take effect you must restart you Greenlight container. For information on how to do this, see [Applying `env` Changes](#applying-env-changes).
 
 ## User Authentication
 
@@ -276,7 +276,7 @@ Greenlight supports three types of user authentication. You can configure any nu
 
 ### In Application (Greenlight)
 
-Greenlight has the ability to create accounts on its own. Users can signup with their name, email and password and use Greenlight's full functionality.
+Greenlight has the ability to create accounts on its own. Users can sign up with their name, email and password and use Greenlight's full functionality.
 
 By default, the ability for anyone to create a Greenlight account is enabled. To disable this, set the `ALLOW_GREENLIGHT_ACCOUNTS` option in your `env` file to false. This will **not** delete existing Greenlight accounts, but will prevent new ones from being created.
 
@@ -317,7 +317,7 @@ GOOGLE_OAUTH2_ID=1093993040802-jjs03khpdl4dfasffq7hj6ansct5.apps.googleuserconte
 GOOGLE_OAUTH2_SECRET=KLlBNy_b9pvBGasf7d5Wrcq
 ~~~
 
-The `GOOGLE_OAUTH2_HD` environment varaible is optional and can be used to restrict Google authentication to a specific Google Apps hosted domain.
+The `GOOGLE_OAUTH2_HD` environment variable is optional and can be used to restrict Google authentication to a specific Google Apps hosted domain.
 
 ~~~
 GOOGLE_OAUTH2_HD=example.com
@@ -383,7 +383,7 @@ LDAP authentication takes precedence over all other providers. This means that i
 
 ## Using a Different Relative Root
 
-By default Greenlight is deployed to the `/b` subdirectory. If you are running Greenlight on a BigBlueButton server you must deploy Greenlight to a subdirectory to avoid conflicts.
+By default Greenlight is deployed to the `/b` sub directory. If you are running Greenlight on a BigBlueButton server you must deploy Greenlight to a sub directory to avoid conflicts.
 
 If you with to use a relative root other than `/b`, you can do the following:
 
@@ -395,7 +395,7 @@ If you are **not** deploying Greenlight on a BigBlueButton server and want the a
 
 ## Setting a Custom Branding Image
 
-Greenlight provides you with the ability to set the branding image that you see on the left side of the header. By default this is set to the BigBlueButton logo. You can change this by setting the `BRANDING_IMAGE` option in the `env` file to a public URL for a png or jpg image.
+Greenlight provides you with the ability to set the branding image that you see on the left side of the header. By default this is set to the BigBlueButton logo. You can change this by setting the `BRANDING_IMAGE` option in the `env` file to a public URL for a png or JPEG image.
 
 ~~~
 BRANDING_IMAGE=https://www.example.com/example.png
@@ -508,7 +508,7 @@ Then, [restart Greenlight](#applying-env-changes).
 
 # Looking for the old Greenlight 1.0 docs?
 
-The old version of Greenlight has been renamed to Greenlight Legacy. It is still available on Github under the [v1 branch](https://github.com/bigbluebutton/greenlight/tree/v1), although we highly suggest using the latest version of Greenlight.
+The old version of Greenlight has been renamed to Greenlight Legacy. It is still available on GitHub under the [v1 branch](https://github.com/bigbluebutton/greenlight/tree/v1), although we highly suggest using the latest version of Greenlight.
 
 You can find the old documentation for Greenlight 1.0 [here](/greenlight-v1.html).
 
@@ -524,24 +524,24 @@ You can run GreenLight outside of Docker, which also makes it easy to customize 
 
 ## Running GreenLight as a Rails application
 
-To setup Greenlight so it runs outside of Docker requires having rails installed, checking out the source code, and running it at the command line.  You need to have a [GitHub](https://github.com/) account.
+To run Greenlight without Docker requires having server with ruby on rails installed, checking out the source code, and running GreenLight at the command line as a rails application.  We recommend using a [GitHub](https://github.com/) account to checkout the source for GreenLight.
 
-1. [Install Ruby on Rails](https://gorails.com/setup/ubuntu/16.04).
-1. Login to your GitHub account and fork the [GreenLight repository](https://github.com/bigbluebutton/greenlight).
-1. Login (via SSH) to the server where you want to run GreenLight and clone the forked repository (replace `<gitHub_Username>` with your GitHub username:
+1. [Install Ruby on Rails](https://gorails.com/setup/ubuntu/16.04) on your serer.
+1. Login to your GitHub account (via the web) and fork the [GreenLight repository](https://github.com/bigbluebutton/greenlight).
+1. Login to your server (via SSH) clone the forked repository with the following command (replace `<GitHub_Username>` with your GitHub username):
 
    ~~~
    git clone https://github.com/<GitHub_Username>/greenlight.git
    ~~~
 
-1. Enter the `greenlight` directory and copy `sample.env` to `.env` file (this is used for configuration):
+1. Next, enter the `greenlight` directory and copy the `sample.env` file to `.env` (this creates a default configuration file):
 
-~~~
-cd greenlight
-cp sample.env .env
-~~~
+   ~~~
+   cd greenlight
+   cp sample.env .env
+   ~~~
   
-If you want to modify the default configuration file (such as enabling authentication using OAuth2) see [Configuring Greenlight 2.0](#configuring-greenlight-20).
+If you want to modify the default configuration file, such as enabling authentication using OAuth2, see [Configuring Greenlight 2.0](#configuring-greenlight-20).  At a minimum you'll need to [Setup the BigBlueButton credentials](#setting-bigbluebutton-credentials).
 
 With rails installed, GreenLight source checked out, and an `.env.` file created, you can now run Greenlight locally like any other rails application. To run Greenlight, use the following command:
 
@@ -657,7 +657,7 @@ After properly adding the new hostname, run the following:
 
     bin/rails server --binding=<hostname>
 
-You should see that the url contains the hostname with the top level domain:
+You should see that the URL contains the hostname with the top level domain:
 
 ![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538074544244_image.png)
 
