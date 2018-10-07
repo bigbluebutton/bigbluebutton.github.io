@@ -518,11 +518,11 @@ Greenlight Legacy uses a much different database schema than that of the current
 
 However, Greenlight does allow administrators to seed accounts. In theory, you could seed new accounts based off the data in your existing Greenlight database, but some data may be lost.
 
-# Running GreenLight without Docker
+# GreenLight without Docker
 
 You can run GreenLight outside of Docker, which also makes it easy to customize GreenLight (such as changing the landing page).
 
-## Setting up GreenLight as a Rails application
+## Running GreenLight as a Rails application
 
 To setup Greenlight so it runs outside of Docker requires having rails installed, checking out the source code, and running it at the command line.  You need to have a [GitHub](https://github.com/) account.
 
