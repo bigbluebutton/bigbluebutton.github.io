@@ -522,7 +522,7 @@ However, Greenlight does allow administrators to seed accounts. In theory, you c
 
 You can run GreenLight outside of Docker, which also makes it easy to customize GreenLight (such as changing the landing page).
 
-## Runing GreenLight outside of Docker
+## Setting up GreenLight as a Rails application
 
 To setup Greenlight so it runs outside of Docker requires having rails installed, checking out the source code, and running it at the command line.  You need to have a [GitHub](https://github.com/) account.
 
@@ -618,7 +618,7 @@ $(function() {
 
 The display of the welcome logo is implemented in the following line
 
-~~~
+~~~html
 <h1 id="main-text" class="display-4 mb-4"> <%= t("landing.welcome").html_safe %></h1>
 ~~~
 
