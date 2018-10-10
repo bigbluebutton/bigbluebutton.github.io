@@ -44,6 +44,7 @@ Greenlight has full support for managing user accounts. It currently supports th
 * In-application (Greenlight)
 * Google OAuth2
 * Twitter OAuth2
+* Office365 OAuth2
 
 ![Greenlight Login](/images/greenlight/login.png)
 
@@ -345,9 +346,9 @@ TWITTER_SECRET=elxXJZqPVexBFf9ZJsafd4UTSzpr5AVmcH7Si5JzeHQ9th
 
 ### Office365 OAuth2
 
+You will need an Office365 account to create an OAuth 2 key and secret. This will allow Greenlight users to authenticate with their own Office365 accounts.
 Head to the following site and sign in to your Office365 account:
 [https://developer.microsoft.com/en-us/graph](https://developer.microsoft.com/en-us/graph)
-
 Click on the tab that says “My Apps” and you should get redirected to the applications portal:
 
 ![](https://d2mxuefqeaa7sj.cloudfront.net/s_862F4C65DCBBF32F66208EA7FF25C153F80CC5FED653F7FCC2E693F7C7577A33_1539186511422_image.png)
