@@ -44,7 +44,6 @@ Greenlight has full support for managing user accounts. It currently supports th
 * In-application (Greenlight)
 * Google OAuth2
 * Twitter OAuth2
-* Office365 OAuth2
 
 ![Greenlight Login](/images/greenlight/login.png)
 
@@ -343,49 +342,6 @@ You should see a key and secret.  Add the `Consumer Key (API Key)` (not the Owne
 TWITTER_ID=SOj8AkIdeqJuP2asfbbGSBk0
 TWITTER_SECRET=elxXJZqPVexBFf9ZJsafd4UTSzpr5AVmcH7Si5JzeHQ9th
 ~~~
-
-### Office365 OAuth2
-
-You will need an Office365 account to create an OAuth 2 key and secret. This will allow Greenlight users to authenticate with their own Office365 accounts.
-
-To begin, head over to the following site and sign in to your Office365 account:
-[https://developer.microsoft.com/en-us/graph](https://developer.microsoft.com/en-us/graph)
-
-Click on the tab that says “My Apps” and you should get redirected to the applications portal:
-
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_862F4C65DCBBF32F66208EA7FF25C153F80CC5FED653F7FCC2E693F7C7577A33_1539186511422_image.png)
-
-From here take the following steps:
-
-1. Click “Add an app”
-1. Choose any application name e.g “bbb-endpoint” and click “Create”
-1. Under the “Profile Header”, add the url (**must be https**): [](http://hostname/b/auth/microsoft_office365/callback)       “https://hostname/b/auth/microsoft_office365/callback"
-  ![](https://d2mxuefqeaa7sj.cloudfront.net/s_862F4C65DCBBF32F66208EA7FF25C153F80CC5FED653F7FCC2E693F7C7577A33_1539200454484_image.png)
-
-1. Under “Platforms”, click “Add Platform”
-    ![](https://d2mxuefqeaa7sj.cloudfront.net/s_862F4C65DCBBF32F66208EA7FF25C153F80CC5FED653F7FCC2E693F7C7577A33_1539200371889_image.png)
-
-    Select the option to add a “Web” platform, check the option to “Allow Implicit Flow”, and add the Home page URL as a Redirect URL.
-
-    ![](https://d2mxuefqeaa7sj.cloudfront.net/s_862F4C65DCBBF32F66208EA7FF25C153F80CC5FED653F7FCC2E693F7C7577A33_1539200628951_image.png)
-
-1. Under “Application Secrets”, select the option to “Generate New Password”. 
-    ![](https://d2mxuefqeaa7sj.cloudfront.net/s_862F4C65DCBBF32F66208EA7FF25C153F80CC5FED653F7FCC2E693F7C7577A33_1539200880946_image.png)
-
-    This will correspond to the `OFFICE365_SECRET` environment variable.
-
-    The Application Id can be found under “Properties”, and will correspond to the `OFFICE365_KEY` environment variable.
-
-    ![](https://d2mxuefqeaa7sj.cloudfront.net/s_862F4C65DCBBF32F66208EA7FF25C153F80CC5FED653F7FCC2E693F7C7577A33_1539201241095_image.png)
-
-    Copy both values into the `env` file:
-
-    ```
-      OFFICE365_KEY=df99f6f6-2953-4f3c-b9a1-0b407c1373ba
-      OFFICE365_SECRET=qenvRYWR5-}(vizOPR7926~
-    ```
-
-1. Save the Changes
 
 ### LDAP Auth
 
