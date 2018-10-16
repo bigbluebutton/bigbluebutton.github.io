@@ -595,6 +595,57 @@ bin/rails server --port=3000
 
 You can test the application by loading the following URL in your browser: [http://localhost:3000](http://localhost:3000).
 
+## Running Greenlight on a Docker container
+To set up a docker container which can run a local version of Greenlight, there are two options.
+To begin, start by [Installing Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/), and ensure you are on an administrative terminal.
+
+### Setting up with Docker
+1. Enter the `~/greenlight` directory
+2. Run the following command to set up the environment:
+  `cp sample.env env`
+
+
+3. Create a docker image by running the following (**image name** can be any name of your choosing):
+  `docker build -t <image name>`
+
+
+### Starting up using `docker compose`
+
+This is the recommended way of running Greenlight with a docker image.
+Start by [installing docker compose](https://docs.docker.com/compose/install/) if you haven’t installed it yet.
+
+You can verify if you have docker compose installed by running:
+`docker-compose -v`
+
+
+1. Enter the `~/greenlight` directory
+2. Run the following command to start the server:
+    `docker-compose up -d`
+3. Run the following command to take the server down:
+    `docker-compose down`
+
+
+### Starting up using `docker run`
+4. Start the server by beginning a docker run (**name** can be any name of your choosing):
+  `docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name <name> <image name>`
+
+
+5. To stop and remove the docker container:
+  ```
+  docker stop greenlight-v2
+  docker rm greenlight-v2
+  ```
+
+No matter which method you use to start the container, you should now be able to see the landing page through the endpoint [http://0.0.0.0/b/](http://0.0.0.0/b/)
+
+
+## Updating Docker with code changes
+
+For each code change, you will have to rebuild the docker image.
+To do this, enter the following commands:
+
+    docker image rm <image name>
+    docker build -t <image name>
 
 ## Customizing the Landing Page
 
