@@ -627,7 +627,9 @@ You can verify if you have docker compose installed by running:
 
 ### Starting up using `docker run`
 4. Start the server by beginning a docker run (**name** can be any name of your choosing):
-  `docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name <name> <image name>`
+  ```
+  docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name <name> <image name>
+  ```
 
 
 5. To stop and remove the docker container:
