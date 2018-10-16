@@ -620,9 +620,13 @@ You can verify if you have docker compose installed by running:
 
 1. Enter the `~/greenlight` directory
 2. Run the following command to start the server:
-    `docker-compose up -d`
+    ```
+    docker-compose up -d
+    ```
 3. Run the following command to take the server down:
-    `docker-compose down`
+    ```
+    docker-compose down
+    ```
 
 
 ### Starting up using `docker run`
