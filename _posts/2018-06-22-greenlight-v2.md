@@ -607,6 +607,8 @@ To begin, start by [Installing Docker](https://docs.docker.com/install/linux/doc
 
 3. Create a docker image by running the following (**image name** can be any name of your choosing):
   `docker build -t <image name>`
+  
+4. Go to `docker-compose.yml` and edit the entry services->app->image so that it matches <image name>.
 
 
 ### Starting up using `docker compose`
