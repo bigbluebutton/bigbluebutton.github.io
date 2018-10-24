@@ -167,6 +167,8 @@ to
 "wsUrl": "wss://<server>/bbb-webrtc-sfu",
 ```
 
+Restart BigBlueButton with `sudo bbb-conf --restart` so that the change will take effect.
+
 ### Extra steps when server is behind NAT
 The HTML5 client uses the kurento media server to send/receive WebRTC video streams.  If you are installing on a BigBlueButton server behind network address translation (NAT), you need to give kurento access to a STUN server (which stans for Session Traversal of UDP through NAT).  A STUN server will help Kurento determine its external address when behind NAT.
 
