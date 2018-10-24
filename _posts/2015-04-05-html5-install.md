@@ -155,6 +155,19 @@ sudo apt-get update
 sudo apt-get dist-upgrade
 ~~~
 
+### Extra steps for SSL
+If you have, or are going to have, HTTPS access to your server there is one extra line that needs to be changed to make the webcam and screenshare work with SSL.
+
+Open `/usr/share/meteor/bundle/programs/server/assets/app/config/settings-production.json` editing and change:
+```
+"wsUrl": "ws://<server>/bbb-webrtc-sfu",
+```
+to
+```
+"wsUrl": "wss://<server>/bbb-webrtc-sfu",
+```
+
+### Extra steps when server is behind NAT
 The HTML5 client uses the kurento media server to send/receive WebRTC video streams.  If you are installing on a BigBlueButton server behind network address translation (NAT), you need to give kurento access to a STUN server (which stans for Session Traversal of UDP through NAT).  A STUN server will help Kurento determine its external address when behind NAT.
 
 You'll find a list of publicly available STUN servers at the [kurento documentation](https://kurento.readthedocs.io/en/stable/doc/admin_guide.html#installation).  
