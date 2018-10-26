@@ -199,7 +199,7 @@ To configure Kurento to use a STUN server from the above list, you need to edit 
 For example, to use the STUN server at 74.125.204.127 with port 19302, change the values for `stunServerAddress` and `stunServerPort` as follows.
 
 ~~~
-stunServerAddress=74.125.204.127
+stunServerAddress=64.233.177.127
 stunServerPort=19302
 ~~~
 
