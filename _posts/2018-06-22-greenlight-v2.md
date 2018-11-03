@@ -562,7 +562,7 @@ Greenlight Legacy uses a much different database schema than that of the current
 
 However, Greenlight does allow administrators to seed accounts. In theory, you could seed new accounts based off the data in your existing Greenlight database, but some data may be lost.
 
-# Greenlight without Docker
+# Customizing GreenLight
 
 You can run Greenlight outside of Docker, which also makes it easy to customize GreenLight (such as changing the landing page).
 
