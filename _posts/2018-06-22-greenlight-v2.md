@@ -770,3 +770,75 @@ Once everything works, you can [configure Omniauth](http://docs.bigbluebutton.or
 After configuring Omniauth, you should be able to gain full access to Omniauth signup:
 
 ![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538074632840_image.png)
+
+# Troubleshooting Greenlight
+
+Sometimes there are missteps and incompatibility issues when setting up applications.
+
+## Checking the Logs
+
+The best way for determining the root cause of issues in your Greenlight application is to check the logs.
+
+### If you’re running Ruby on Rails
+The logs should be located under `app/log`from the `~/greenlight` directory.
+
+Depending on whether you are running on development or production, you may need to check either:
+
+1. `app/log/development.log`
+2. `app/log/production.log`
+
+### If you’re running with Docker
+Docker is always running on a production environment, so the logs will be located in `log/production.log` from the `~/greenlight` directory.
+
+## Common issues with Running Ruby on Rails
+
+### Address already in use
+If you get an error similar to the following:
+
+```
+Address already in use - bind(2) for "0.0.0.0" port 3000 (Errno::EADDRINUSE)
+```
+
+Then you are trying to start a server on an endpoint that is already in use. If this scenario occurs, there are two solutions:
+
+
+
+1. **Use another port.**
+
+
+    By default, rails servers are always started using localhost and port 3000. If you receive this error statement, it means that you have a process that is currently using that port.
+
+
+    In this case, you can get your server to start with a different port by running the following:
+      ```
+      bin/rails server -p <port number>
+      ```
+
+
+    A common port number that isn’t usually in use is **3001**.
+    In this case, **the endpoint you use to access the server will also change.**
+
+
+    For example, if you used to access [http://localhost:3000](http://localhost:3000) and change your new endpoint to 3001, you will need to access [http://localhost:3001](http://localhost:3001).
+
+
+2. **Kill the existing process that is using the endpoint.**
+
+
+    Before doing this, make sure that the process you are running isn’t important. Then you can run the following command to kill the server:
+      ```
+      kill -9 <PID>
+      ```
+
+### Development related issues
+At this stage, there are no more problems with the “setup” of the app and further troubleshooting requires an understanding of Ruby on Rails.
+
+[Follow this guide](https://guides.rubyonrails.org/debugging_rails_applications.html) to help learn common strategies for debugging Ruby on Rails applications. It will help in the long run!
+
+
+## Common issues with Docker
+
+### Changes not appearing
+If you made changes to the code and are running a docker container from a docker image, you will need to **rebuild** the image to see changes appear.
+
+In the case of environment related changes (modifying the `env` file), you will only need to restart the container.
