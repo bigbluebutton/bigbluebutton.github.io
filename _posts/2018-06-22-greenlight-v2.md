@@ -86,6 +86,31 @@ Your new room will then show under your current room, and you can click to switc
 
 ![Greenlight Multiple Rooms](/images/greenlight/multiple_rooms.png)
 
+### Renaming Rooms
+
+**Using the header**
+
+If you hover over the room name, you should see an edit icon
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544202869072_image.png)
+
+
+You can either click the **edit** icon or double click the header to enable **editing mode:**
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544202937470_image.png)
+
+
+Afterwards, you can change the name by clicking anywhere or pressing the enter key.
+
+**Using the Room block**
+
+If you look at a Room block, you will see 3 ellipsis which you can click to view a renaming option. You can click **Rename** to enable editing mode on the room block.
+Afterwards, clicking anywhere or pressing enter will save the changes.
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544203400154_image.png)
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544203464558_image.png)
+
 ## Recordings
 
 ### Viewing Recordings
@@ -104,6 +129,36 @@ Each recording has a visibility associated with it, which can be changed by clic
 Using the drop-down in the recordings table, you have the ability to delete a recording or mail a recording to a friend. Keep in mind, emailing an unlisted recording **will** allow the friend access, so if you want a recording to be completely private, don't share the recording link.
 
 Deleted recordings are **not** recoverable, so be sure when deleting a recording.
+
+### Modifying Recordings
+
+**Renaming Recordings directly using the Recording Title**
+
+To edit the recording name directly using the title, you can hover over the title and see an edit icon.
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544204609199_image.png)
+
+
+You can either click the **edit** icon or double click the title to enable **editing mode:**
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544204821105_image.png)
+
+
+Afterwards, you can change the name by clicking anywhere or pressing the enter key.
+
+**Using the Edit Recording Modal**
+
+In each recording row, there are 3 ellipsis. Click on the 3 ellipsis to reveal an option to edit details. Clicking the option to edit recording details will open a modal, where a user is able to modify various aspects of a recording, including the option to rename.
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544205320287_image.png)
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544205483748_image.png)
+
+
+**Modifying Recording Tags**
+
+To modify tags, you can use the edit recording details modal and start typing in the **Tags** textfield. You can separate tags by **comma**, **TAB** or **ENTER**.
+
 
 # Installing on a BigBlueButton Server
 
