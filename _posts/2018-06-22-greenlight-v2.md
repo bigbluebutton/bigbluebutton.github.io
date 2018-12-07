@@ -159,6 +159,27 @@ In each recording row, there are 3 ellipsis. Click on the 3 ellipsis to reveal a
 
 To modify tags, you can use the edit recording details modal and start typing in the **Tags** textfield. You can separate tags by **comma**, **TAB** or **ENTER**.
 
+### Sorting and Searching Recordings
+It is possible to **sort** recordings by metrics such as **Name**, **User Number**, and **Length of Recording**.
+
+This can be done by clicking on the headers of the table (cycles through **ascending**, **descending**, **no order**):
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544218486410_image.png)
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544218507065_image.png)
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544217571890_image.png)
+
+
+There is also a **live search** that may return any part of the recording name:
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544218879272_image.png)
+
+
+**Searching and sorting** can be used in conjunction:
+
+![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544218676488_image.png)
+
 
 # Installing on a BigBlueButton Server
 
