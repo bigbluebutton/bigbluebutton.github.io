@@ -86,6 +86,31 @@ Your new room will then show under your current room, and you can click to switc
 
 ![Greenlight Multiple Rooms](/images/greenlight/multiple_rooms.png)
 
+### Renaming Rooms
+
+**Using the header**
+
+If you hover over the room name, you should see an edit icon
+
+![Greenlight Room Header Edit Icon](/images/greenlight/room_header_edit_icon.png)
+
+
+You can either click the **edit** icon or double click the header to enable **editing mode:**
+
+![Greenlight Room Header Editing Mode](/images/greenlight/room_header_editing_mode.png)
+
+
+Afterwards, you can change the name by clicking anywhere or pressing the enter key.
+
+**Using the Room block**
+
+If you look at a Room block, you will see 3 ellipsis which you can click to view a renaming option. You can click **Rename** to enable editing mode on the room block.
+Afterwards, clicking anywhere or pressing enter will save the changes.
+
+![Greenlight Room Block Edit Dropdown](/images/greenlight/room_block_edit_dropdown.png)
+
+![Greenlight Room Block Editing Mode](/images/greenlight/room_block_editing_mode.png)
+
 ## Recordings
 
 ### Viewing Recordings
@@ -104,6 +129,41 @@ Each recording has a visibility associated with it, which can be changed by clic
 Using the drop-down in the recordings table, you have the ability to delete a recording or mail a recording to a friend. Keep in mind, emailing an unlisted recording **will** allow the friend access, so if you want a recording to be completely private, don't share the recording link.
 
 Deleted recordings are **not** recoverable, so be sure when deleting a recording.
+
+### Modifying Recordings
+
+**Renaming Recordings directly using the Recording Title**
+
+To edit the recording name directly using the title, you can hover over the title and see an edit icon.
+
+![Greenlight Recording Title Edit Icon](/images/greenlight/recording_title_edit_icon.png)
+
+
+You can either click the **edit** icon or double click the title to enable **editing mode:**
+
+![Greenlight Recording Title Editing Mode](/images/greenlight/recording_title_editing_mode.png)
+
+
+Afterwards, you can change the name by clicking anywhere or pressing the enter key.
+
+### Sorting and Searching Recordings
+It is possible to **sort** recordings by metrics such as **Name**, **User Number**, and **Length of Recording**.
+
+This can be done by clicking on the headers of the table (cycles through **ascending**, **descending**, and **no particular order**):
+
+![Greenlight Recording Sort Asc](/images/greenlight/recording_sort_asc.png)
+
+![Greenlight Recording Sort Desc](/images/greenlight/recording_sort_desc.png)
+
+There is also a **live search** that may return any part of the recording name:
+
+![Greenlight Recording Search](/images/greenlight/recording_search.png)
+
+
+**Searching and sorting** can be used in conjunction:
+
+![Greenlight Recording Filter and Search](/images/greenlight/recording_filter_search.png)
+
 
 # Installing on a BigBlueButton Server
 
