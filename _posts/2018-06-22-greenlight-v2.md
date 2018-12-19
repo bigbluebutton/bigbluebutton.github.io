@@ -92,12 +92,12 @@ Your new room will then show under your current room, and you can click to switc
 
 If you hover over the room name, you should see an edit icon
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544202869072_image.png)
+![Greenlight Room Header Edit Icon](/images/greenlight/room_header_edit_icon.png)
 
 
 You can either click the **edit** icon or double click the header to enable **editing mode:**
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544202937470_image.png)
+![Greenlight Room Header Editing Mode](/images/greenlight/room_header_editing_mode.png)
 
 
 Afterwards, you can change the name by clicking anywhere or pressing the enter key.
@@ -107,9 +107,9 @@ Afterwards, you can change the name by clicking anywhere or pressing the enter k
 If you look at a Room block, you will see 3 ellipsis which you can click to view a renaming option. You can click **Rename** to enable editing mode on the room block.
 Afterwards, clicking anywhere or pressing enter will save the changes.
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544203400154_image.png)
+![Greenlight Room Block Edit Dropdown](/images/greenlight/room_block_edit_dropdown.png)
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544203464558_image.png)
+![Greenlight Room Block Editing Mode](/images/greenlight/room_block_editing_mode.png)
 
 ## Recordings
 
@@ -136,12 +136,12 @@ Deleted recordings are **not** recoverable, so be sure when deleting a recording
 
 To edit the recording name directly using the title, you can hover over the title and see an edit icon.
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544204609199_image.png)
+![Greenlight Recording Title Edit Icon](/images/greenlight/recording_title_edit_icon.png)
 
 
 You can either click the **edit** icon or double click the title to enable **editing mode:**
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544204821105_image.png)
+![Greenlight Recording Title Editing Mode](/images/greenlight/recording_title_editing_mode.png)
 
 
 Afterwards, you can change the name by clicking anywhere or pressing the enter key.
@@ -151,18 +151,18 @@ It is possible to **sort** recordings by metrics such as **Name**, **User Number
 
 This can be done by clicking on the headers of the table (cycles through **ascending**, **descending**, and **no particular order**):
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544218486410_image.png)
+![Greenlight Recording Sort Asc](/images/greenlight/recording_sort_asc.png)
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544218507065_image.png)
+![Greenlight Recording Sort Desc](/images/greenlight/recording_sort_desc.png)
 
 There is also a **live search** that may return any part of the recording name:
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544218879272_image.png)
+![Greenlight Recording Search](/images/greenlight/recording_search.png)
 
 
 **Searching and sorting** can be used in conjunction:
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_A3C9E0C5FA2F257A8B50D61F1F2A19BEE83E001E61E8C332C7609F1281A5D30F_1544218676488_image.png)
+![Greenlight Recording Filter and Search](/images/greenlight/recording_filter_search.png)
 
 
 # Installing on a BigBlueButton Server
