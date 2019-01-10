@@ -86,6 +86,31 @@ Your new room will then show under your current room, and you can click to switc
 
 ![Greenlight Multiple Rooms](/images/greenlight/multiple_rooms.png)
 
+### Renaming Rooms
+
+**Using the header**
+
+If you hover over the room name, you should see an edit icon
+
+![Greenlight Room Header Edit Icon](/images/greenlight/room_header_edit_icon.png)
+
+
+You can either click the **edit** icon or double click the header to enable **editing mode:**
+
+![Greenlight Room Header Editing Mode](/images/greenlight/room_header_editing_mode.png)
+
+
+Afterwards, you can change the name by clicking anywhere or pressing the enter key.
+
+**Using the Room block**
+
+If you look at a Room block, you will see 3 ellipsis which you can click to view a renaming option. You can click **Rename** to enable editing mode on the room block.
+Afterwards, clicking anywhere or pressing enter will save the changes.
+
+![Greenlight Room Block Edit Dropdown](/images/greenlight/room_block_edit_dropdown.png)
+
+![Greenlight Room Block Editing Mode](/images/greenlight/room_block_editing_mode.png)
+
 ## Recordings
 
 ### Viewing Recordings
@@ -104,6 +129,41 @@ Each recording has a visibility associated with it, which can be changed by clic
 Using the drop-down in the recordings table, you have the ability to delete a recording or mail a recording to a friend. Keep in mind, emailing an unlisted recording **will** allow the friend access, so if you want a recording to be completely private, don't share the recording link.
 
 Deleted recordings are **not** recoverable, so be sure when deleting a recording.
+
+### Modifying Recordings
+
+**Renaming Recordings directly using the Recording Title**
+
+To edit the recording name directly using the title, you can hover over the title and see an edit icon.
+
+![Greenlight Recording Title Edit Icon](/images/greenlight/recording_title_edit_icon.png)
+
+
+You can either click the **edit** icon or double click the title to enable **editing mode:**
+
+![Greenlight Recording Title Editing Mode](/images/greenlight/recording_title_editing_mode.png)
+
+
+Afterwards, you can change the name by clicking anywhere or pressing the enter key.
+
+### Sorting and Searching Recordings
+It is possible to **sort** recordings by metrics such as **Name**, **User Number**, and **Length of Recording**.
+
+This can be done by clicking on the headers of the table (cycles through **ascending**, **descending**, and **no particular order**):
+
+![Greenlight Recording Sort Asc](/images/greenlight/recording_sort_asc.png)
+
+![Greenlight Recording Sort Desc](/images/greenlight/recording_sort_desc.png)
+
+There is also a **live search** that may return any part of the recording name:
+
+![Greenlight Recording Search](/images/greenlight/recording_search.png)
+
+
+**Searching and sorting** can be used in conjunction:
+
+![Greenlight Recording Filter and Search](/images/greenlight/recording_filter_search.png)
+
 
 # Installing on a BigBlueButton Server
 
@@ -562,7 +622,7 @@ Greenlight Legacy uses a much different database schema than that of the current
 
 However, Greenlight does allow administrators to seed accounts. In theory, you could seed new accounts based off the data in your existing Greenlight database, but some data may be lost.
 
-# Greenlight without Docker
+# Customizing GreenLight
 
 You can run Greenlight outside of Docker, which also makes it easy to customize GreenLight (such as changing the landing page).
 
@@ -770,3 +830,75 @@ Once everything works, you can [configure Omniauth](http://docs.bigbluebutton.or
 After configuring Omniauth, you should be able to gain full access to Omniauth signup:
 
 ![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538074632840_image.png)
+
+# Troubleshooting Greenlight
+
+Sometimes there are missteps and incompatibility issues when setting up applications.
+
+## Checking the Logs
+
+The best way for determining the root cause of issues in your Greenlight application is to check the logs.
+
+### If you’re running Ruby on Rails
+The logs should be located under `app/log`from the `~/greenlight` directory.
+
+Depending on whether you are running on development or production, you may need to check either:
+
+1. `app/log/development.log`
+2. `app/log/production.log`
+
+### If you’re running with Docker
+Docker is always running on a production environment, so the logs will be located in `log/production.log` from the `~/greenlight` directory.
+
+## Common issues with Running Ruby on Rails
+
+### Address already in use
+If you get an error similar to the following:
+
+```
+Address already in use - bind(2) for "0.0.0.0" port 3000 (Errno::EADDRINUSE)
+```
+
+Then you are trying to start a server on an endpoint that is already in use. If this scenario occurs, there are two solutions:
+
+
+
+1. **Use another port.**
+
+
+    By default, rails servers are always started using localhost and port 3000. If you receive this error statement, it means that you have a process that is currently using that port.
+
+
+    In this case, you can get your server to start with a different port by running the following:
+      ```
+      bin/rails server -p <port number>
+      ```
+
+
+    A common port number that isn’t usually in use is **3001**.
+    In this case, **the endpoint you use to access the server will also change.**
+
+
+    For example, if you used to access [http://localhost:3000](http://localhost:3000) and change your new endpoint to 3001, you will need to access [http://localhost:3001](http://localhost:3001).
+
+
+2. **Kill the existing process that is using the endpoint.**
+
+
+    Before doing this, make sure that the process you are running isn’t important. Then you can run the following command to kill the server:
+      ```
+      kill -9 <PID>
+      ```
+
+### Development related issues
+At this stage, there are no more problems with the “setup” of the app and further troubleshooting requires an understanding of Ruby on Rails.
+
+[Follow this guide](https://guides.rubyonrails.org/debugging_rails_applications.html) to help learn common strategies for debugging Ruby on Rails applications. It will help in the long run!
+
+
+## Common issues with Docker
+
+### Changes not appearing
+If you made changes to the code and are running a docker container from a docker image, you will need to **rebuild** the image to see changes appear.
+
+In the case of environment related changes (modifying the `env` file), you will only need to restart the container.
