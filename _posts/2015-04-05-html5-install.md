@@ -196,10 +196,10 @@ To configure Kurento to use a STUN server from the above list, you need to edit 
 ;pemCertificateECDSA=<path>
 ~~~
 
-For example, to use the STUN server at 74.125.204.127 with port 19302, change the values for `stunServerAddress` and `stunServerPort` as follows.
+For example, to use the STUN server at 64.233.177.127 with port 19302, change the values for `stunServerAddress` and `stunServerPort` as follows.
 
 ~~~
-stunServerAddress=173.194.196.127
+stunServerAddress=64.233.177.127
 stunServerPort=19302
 ~~~
 
