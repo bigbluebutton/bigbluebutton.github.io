@@ -36,7 +36,7 @@ See the [HTML5 Overview](/html/html5-overview.html) document for more info.
 
 The Web [API](/dev/api.html) provides the integration endpoint for third-party applications -- such as Moodle, Wordpress, Canvas, Sakai, etc. -- to control the BigBlueButton server. 
 
-Every access to BigBlueButton comes through a front-end portal (we refer to as a third-party application).  BigBlueButton integrates Moodle, Wordpress, Canvas, Sakai, and others (see [third-party integrations](http://bigbluebutton.org/integrations/)).  BigBlueButton comes with its own front-end called [GreenLight](/install/green-light.html).  When using a learning management system (LMS) such as Moodle, teachers can setup BigBlueButton rooms within their course and students can access the rooms and their recordings. 
+Every access to BigBlueButton comes through a front-end portal (we refer to as a third-party application).  BigBlueButton integrates Moodle, Wordpress, Canvas, Sakai, and others (see [third-party integrations](http://bigbluebutton.org/integrations/)).  BigBlueButton comes with its own front-end called [GreenLight](/install/greenlight-v2.html).  When using a learning management system (LMS) such as Moodle, teachers can setup BigBlueButton rooms within their course and students can access the rooms and their recordings. 
 
 The BigBlueButton comes with some simple [API demos](http://demo.bigbluebutton.org/demo/demo1.jsp).  Regardless of which front-end you use, they all use the [API](/dev/api.html) under the hood.
 

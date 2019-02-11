@@ -33,7 +33,7 @@ Major features in this release include:
 
   * **Faster Screen Sharing** - Screen sharing now is faster, works across all browsers (using a Java application that launches outside the browser), and captures the cursor (see [video](https://www.youtube.com/watch?v=xTFuEvmEqB0)).
 
-  * **GreenLight** - Administrators can install a new front-end, called GreenLight, that makes it easy for users to quickly creating meetings, invite others, and manage recordings on a BigBlueButton server.  Using Docker, administrators can [install](/install/green-light.html) on the BigBlueButton server itself (no need for a separate server).  GreenLight is written in Rails 5 and can be easily customized by any rails developer (see [source on GitHub](https://github.com/bigbluebutton/greenlight)).
+  * **GreenLight** - Administrators can install a new front-end, called GreenLight, that makes it easy for users to quickly creating meetings, invite others, and manage recordings on a BigBlueButton server.  Using Docker, administrators can [install](/install/greenlight-v2.html) on the BigBlueButton server itself (no need for a separate server).  GreenLight is written in Rails 5 and can be easily customized by any rails developer (see [source on GitHub](https://github.com/bigbluebutton/greenlight)).
 
   * **Ubuntu 16.04 packages** - This release installs on Ubuntu 16.04 64-bit (the most recent long-term support release from Canonical) and uses `systemd` for new start/stop scripts for individual components.
 
