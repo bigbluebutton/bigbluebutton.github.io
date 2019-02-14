@@ -133,11 +133,6 @@ This is used to determine whether a browser or plugin is out-of-date. The values
 | askForFeedbackOnLogout    | false | Show user rating and feedback from after logging out. |
 
 ~~~xml
-<meeting muteOnStart="false" />
-~~~
-This determines whether people should join the audio muted by default.
-
-~~~xml
 <breakoutRooms enabled="true" record="false" privateChateEnabled="true"/>
 ~~~
 Determines whether breakout rooms feature si enabled and if recording is enabled for them.
