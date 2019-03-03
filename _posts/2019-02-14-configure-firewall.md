@@ -6,11 +6,11 @@ category: 2.2
 date: 2019-02-14 22:13:42
 ---
 
-This document covers how to configure your firewall to allow external connections to BigBlueButton and how to configure BigBlueButton itself to work with your firewall.  
+This document covers firewall configuration for BigBlueButton 2.2-beta (referred hereafter as BigBlueButton). 
 
-You would configure your firewall as a step before [Installing BigBlueButton](/2.2/install.html).
+You should configure your firewall before [Installing BigBlueButton](/2.2/install.html); otherwise, you may get errors during the installation and will be unable to test BigBlueButton after the installation completes.
 
-If you are a developer setting up BigBlueButton on a local VM for testing, you can skip this section as well.
+If you are a developer setting up BigBlueButton on a local VM for testing, you can skip this section.
 
 # Overview
 
@@ -126,6 +126,42 @@ At this point, proceed with the [installation of BigBlueButton](/2.2/install.htm
 # Configure BigBlueButton to work with your firewall
 
 Before doing these steps you need to have done XXX in the installation guide.
+
+## Updating Kurento
+
+### Extra steps when server is behind NAT
+The HTML5 client uses the kurento media server to send/receive WebRTC video streams.  If you are installing on a BigBlueButton server behind a firewall that uses network address translation (NAT), you need to give kurento access to an external STUN server (which stans for Session Traversal of UDP through NAT).  A STUN server will help Kurento determine its external address when behind NAT.
+
+You'll find a list of publicly available STUN servers at the [kurento documentation](https://kurento.readthedocs.io/en/stable/doc/admin_guide.html#installation).  
+To configure Kurento to use a STUN server from the above list, you need to edit `/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini`.  Here's the default configuration.
+
+~~~
+# cat /etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
+; Only IP address are supported, not domain names for addresses
+; You have to find a valid stun server. You can check if it works
+; usin this tool:
+;   http://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/
+; stunServerAddress=<serverAddress>
+; stunServerPort=<serverPort>
+
+; turnURL gives the necessary info to configure TURN for WebRTC.
+;    'address' must be an IP (not a domain).
+;    'transport' is optional (UDP by default).
+; turnURL=user:password@address:port(?transport=[udp|tcp|tls])
+
+;pemCertificate is deprecated. Please use pemCertificateRSA instead
+;pemCertificate=<path>
+;pemCertificateRSA=<path>
+;pemCertificateECDSA=<path>
+~~~
+
+For example, to use the STUN server at 64.233.177.127 with port 19302, change the values for `stunServerAddress` and `stunServerPort` as follows.
+
+~~~
+stunServerAddress=64.233.177.127
+stunServerPort=19302
+~~~
+
 
 ## Update FreeSWITCH 
 

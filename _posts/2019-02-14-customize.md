@@ -6,15 +6,13 @@ category: 2.2
 date: 2019-02-14 22:13:42
 ---
 
-This document covers common customizations for your BigBlueButton server.
+This document covers common customizations of BigBlueButton 2.2-beta (referred hereafter as BigBlueButton). 
 
 
 # Common Customizations
-There are a number of common customizations that administrators do to their BigBlueButton server after inital install. 
-
 
 ## Remove the API demos
-If you are setting up a production server with custom front-end, you will want to remove the API demos after testing.   To remove the API demos, enter the command:
+If you have earlier installed the API demos for testing (which makes it possible for anyone to use your BigBlueButton server without authentication) and want to now remove them, enter the command:
 
 ~~~
 $ sudo apt-get purge bbb-demo
@@ -22,7 +20,7 @@ $ sudo apt-get purge bbb-demo
 
 ## Extract the shared secret
 
-All front-ends need two pieces of information from your BigBlueButton server: a hostname and shared secret.  Use the command `bbb-conf --secret` tool to get your BigBlueButton server's URL and shared secret.
+Any front-end to BigBlueButton needstwo pieces of information: the hostname for the BigBlueButton server and its shared secret (for authenticating API calls).  To print out the hostname and shared secret for you BigBlueButton server, enter the command `bbb-conf --secret`:
 
 ~~~
 $ bbb-conf --secret
@@ -34,8 +32,7 @@ $ bbb-conf --secret
       http://mconf.github.io/api-mate/#server=http://10.0.3.132/bigbluebutton/&sharedSecret=577fd5f05280c10fb475553d200f3322
 ~~~
 
-The link to API-Mate is an excellent tool provided by [Mconf Technologies](https://mconf.com/), a company that has made many contributions to the BigBlueButton project over the years.  API-Mate lets you interactively create API calls to test your server.
-
+The last line gives a link API-Mate, an excellent tool provided by [Mconf Technologies](https://mconf.com/) (a company that has made many contributions to the BigBlueButton project over the years) that makes it easy to create API calls.
 
 
 ## Modify the default landing page
@@ -46,28 +43,20 @@ The default HTML landing page is located in
 /var/www/bigbluebutton-default/index.html
 ~~~
 
-Change this page to create your own landing page.
+Change this page to create your own landing page (and keep a back-up copy of it as it will be overwritten duing package updates to `bbb-conf`).
 
-## Use the GreenLight front-end
 
-BigBlueButton comes with GreenLight, a simple front-end application that let's users quickly and easily create meetings, invite others, join meetings, and manage the recordings.
+## Use the Green Light front-end
+
+BigBlueButton comes with Green Light, a front-end application written in Ruby on Rails that makes it easy for users to create meetings, invite others, start meetings, and manage recordings.
 
 ![greenlight-start](/images/gl-start.png)
 
 For more information see [Installing GreenLight](/install/greenlight-v2.html).
 
-## Install the HTML5 client
-
-The BigBlueButton project has been activly developing an HTML5 client for mobile and desktop devices.  While the HTML5 client is initially targeting viewers os, it can upload documents, make a user presenter, share screen, and start/stop recording -- all the functionalty needed to run a meeting.
-
-For more information on the HTML5 client, along with links to install steps, see [HTML5 client](/html/html5-overview.html).
-
-
 ## Enable background music when only one person is in a session
 
-FreeSWITCH enabled you to have music play when only one users is in the voice conference.  To enable background music, edit `/opt/freeswitch/conf/autoload_configs/conference.conf.xml` (as root).
-
-and around line 204 you'll see the music on hold (moh-sound) commented out
+FreeSWITCH enables you to have music play in the background when only one users is in the voice conference.  To enable background music, edit `/opt/freeswitch/conf/autoload_configs/conference.conf.xml` (as root) and around line 204 you'll see the music on hold (moh-sound) commented out
 
 ~~~xml
 <!--
@@ -77,7 +66,7 @@ and around line 204 you'll see the music on hold (moh-sound) commented out
 -->
 ~~~
 
-and change it to
+Uncomment it and save this file.
 
 ~~~xml
       <param name="moh-sound" value="$${hold_music}"/>
@@ -97,7 +86,6 @@ For example, to use the file `/opt/freeswitch/share/freeswitch/sounds/en/us/call
 
 to
 
-
 ~~~xml
   <X-PRE-PROCESS cmd="set" data="hold_music=/opt/freeswitch/share/freeswitch/sounds/en/us/callie/ivr/48000/ivr-to_listen_to_moh.wav" />
 ~~~
@@ -109,6 +97,7 @@ and then restart BigBlueButton
 ~~~
 
 and join an audio session.  You should now hear music on hold if there is only one user in the session.  
+
 
 ## Add a phone number to the conference bridge
 
@@ -152,7 +141,7 @@ and then restart FreeSWITCH:
 
 Try calling the phone number.  It should connect to FreeSWITCH and you should hear a voice prompting you to enter the five digit PIN number for the conference.  
 
-To show users the phone number along with the 5-digit PIN number within BigBlueButton, edit `/var/lib/tomcat7/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties` and change 613-555-1234 to the phone number provided by your Internet Telephone Service Provider
+To show users the phone number along with the 5-digit PIN number within BigBlueButton, edit `/usr/share/bbb-web/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties` and change 613-555-1234 to the phone number provided by your Internet Telephone Service Provider
 
 ~~~properties
 #----------------------------------------------------
@@ -174,11 +163,12 @@ To join this meeting by phone, dial:
 and enter 12345 as the conference PIN number.
 ~~~
 
+
 ## Change the shared secret
 
 To validate incoming API calls, all external applications making API calls must checksum their API call using the same secret as configured in the BigBlueButton server.
 
-You’ll find the shared secret in `/var/lib/tomcat7/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties`
+You’ll find the shared secret in `/usr/share/bbb-web/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties`
 
 ~~~properties   
 beans.dynamicConferenceService.securitySalt=<value_of_salt>
@@ -196,7 +186,7 @@ Note: If you have created you own front-end or are using a [third-party plug-in]
 
 When a new meeting starts, BigBlueButton displays a default presentation.  The file for the default presentation is located in `/var/www/bigbluebutton-default/default.pdf`.  You can replace the contents of this file with your presentation.  Whenever a meeting is created, BigBlueButton will automatically load, convert, and display this presentation for all users.
 
-Alternatively, you can change the global default by editing `/var/lib/tomcat7/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties` and changing the URL for `beans.presentationService.defaultUploadedPresentation`.
+Alternatively, you can change the global default by editing `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties` and changing the URL for `beans.presentationService.defaultUploadedPresentation`.
 
 ~~~
 # Default Uploaded presentation file
@@ -212,7 +202,7 @@ If you want to specify the default presentation for a given meeting, you can als
 
 The default welcome message is built from three parameters: two system-wide parameters (see below) and the `welcome` parameter from the BigBlueButton `create` API call.  
 
-You'll find the two system-wide welcome parameters `defaultWelcomeMessage` and `defaultWelcomeMessageFooter` in `/var/lib/tomcat7/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties`.
+You'll find the two system-wide welcome parameters `defaultWelcomeMessage` and `defaultWelcomeMessageFooter` in `/usr/share/bbb-web/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties`.
 
 ~~~
 defaultWelcomeMessage=<default welcome message>
@@ -297,7 +287,8 @@ and save the file.
 
 See the man page `systemd.time` (under CALENDAR EVENTS) for more details about the syntax for `OnCalendar=`.
 
-## Transfer existing published recordings
+
+## Transfer published recordings from another server
 
 If you want to do the minimum amount of work to quickly make your existing recordings on an older BigBlueButton server, transfer the contents of the `/var/bigbluebutton/published` and `/var/bigbluebutton/unpublished` directories. In addition, to preserve the backup of the original raw media, you should transfer the contents of the `/var/bigbluebutton/recording/raw` directory.
 
@@ -314,7 +305,7 @@ Other methods of transferring these files can also be used; for example, you cou
 You will then need to fix the permissions on the newly copied recordings:
 
 ~~~
-chown -R tomcat7:tomcat7 /var/bigbluebutton/published /var/bigbluebutton/unpublished /var/bigbluebutton/recording/raw
+chown -R bigbluebutton:bigbluebutton /var/bigbluebutton/published /var/bigbluebutton/unpublished /var/bigbluebutton/recording/raw
 ~~~
 
 If the recordings were copied from a server with a different hostname, you will have to run the following command to fix the stored hostnames. (If you don't do this, it'll either return a 404 error, or attempt to load the recordings from the old server instead of the new server!)
@@ -332,6 +323,7 @@ $ bbb-conf --setip bigbluebutton.example.com
 ~~~
 
 The transferred recordings should be immediately visible via the BigBlueButton recordings API.
+
 
 ### Re-process raw recordings
 
@@ -354,7 +346,7 @@ There are other ways of transferring these files; for example, you could create 
 You will then need to fix the permissions on the newly copied recordings:
 
 ~~~
-$ chown -R tomcat7:tomcat7 /var/bigbluebutton/recording/raw
+$ chown -R bigbluebutton:bigbluebutton /var/bigbluebutton/recording/raw
 ~~~
 
 And initiate the re-processing of a single recording, you can do
@@ -376,6 +368,7 @@ $ bbb-record --rebuildall
 ~~~
 
 The BigBlueButton server will automatically go through the recordings and rebuild and publish them. You can use the `bbb-record --watch` command to see the progress.
+
 
 ### Migrate recordings from a previous version
 
@@ -414,18 +407,9 @@ To install bbb-webhooks
 
 For information on cofiguring bbb-webhooks, see [bbb-webhooks](/dev/webhooks.html).
 
-## Change the default layout
-
-To change the default layout, edit the file `/var/www/bigbluebutton/client/conf/config.xml` and change the value for `defaultLayout` in
-
-~~~
-    <layout showLogButton="true" defaultLayout="bbb.layout.name.defaultlayout"
-~~~
-
-to the index for the corresponding layout defined in `/var/www/bigbluebutton/client/conf/layouts.xml` (such as `bbb.layout.name.webcamsfocus`).
-
-
 ## Change the default locale
+
+XXX - Needs updating
 
 By default, the BigBlueButton client should detect the browser's locale and use that default language accordingly.  The default language is English, but you can change that by editing `bigbluebutton/client/BigBlueButton.html` and change the value
 
@@ -433,72 +417,14 @@ By default, the BigBlueButton client should detect the browser's locale and use 
 localeChain = "en_US";
 ~~~
 
-You can see the list of languages installed with BigBlueButton in the directory `/var/www/bigbluebutton/client/locale/`.
-
-
-## Change the video quality of the shared webcams
-
-The setting for picture quality of the webcams is in the [videoconf module](/admin/client-configuration.html#videoconf-module).
-
-In most cases, you can leave the default settings.  However, you can specify the Flash player use the maximum amount of bandwidth (`camQualityBandwidth="0"`) to show a picture of ninety percent quality (`camQualityPicture="90"`).
-
-~~~
-camQualityPicture="70"
-~~~
-
-To reduce the quality of the picture (and increase the frame rate), lower the value of camQualityPicture.  Corresponding, to increase the quality of the picture (and reduce the frame rate), increase the value of camQualityPicture.
-
-However, as camQualityPicture is already ninety percent, you'll find that slight increases are not very noticeable in picture quality, but do decrease the frame rate.
-
-You can change the video quality through the client's config.xml file, by default located in /var/www/bigbluebutton/client/conf. Scroll down to the entry named VideoconfModule. The value of the videoQuality attribute can be anywhere from 0 to 100. 0 means priority is given to the bandwidth and if bandwidth is low, quality will suffer. Quality of 100 means no video compression will be done at all, and you will get maximum quality at the expense of bandwidth. If the bandwidth is low, the frame rate will suffer.
-
-For more information see [Client Configuration](/admin/client-configuration.html).
-
-
-## Change the /client/BigBlueButton.html portion of the URL
-
-Using nginx, you can rewrite the incoming URL for `/client/BigBlueButton.html` to appear as a different link, such as `/conference/`.
-
-First, modify `/etc/bigbluebutton/nginx/client.nginx` and comment out the following section:
-
-~~~
-        # BigBlueButton.html is here so we can expire it every 1 minute to
-        # prevent caching.
-        #location /client/BigBlueButton.html {
-        #        root    /var/www/bigbluebutton;
-        #        index  index.html index.htm;
-        #        expires 1m;
-        #}
-~~~
-
-Next, create the file `/etc/bigbluebutton/nginx/rewrite.nginx` with the following contents:
-
-~~~
-location /client/BigBlueButton.html {
-        rewrite ^ /conference permanent;
-}
-
-location /conference {
-        alias  /var/www/bigbluebutton/client;
-        index BigBlueButton.html;
-        expires 1m;
-}
-~~~
-
-Finally, restart nginx with the following command:
-
-~~~
-   sudo systemctl restart nginx
-~~~
-
-Now login to the demo page and you'll see the URL now shows `/conference/` instead of `/client/BigBlueButton.html`.
+You can see the list of languages installed with BigBlueButton in the directory `/usr/share/meteor/bundle/programs/server/assets/app/locales`.
 
 
 ## Always record every meeting
 
 By default, the BigBlueButton server will produce a recording when (1) the meeting has been created with `record=true` in the create API call and (2) a moderator has clicked the Start/Stop Record button (at least once) during the meeting.
 
-However, you can configure a BigBlueButton server to record every meeting, edit `/var/lib/tomcat7/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties` and change
+However, you can configure a BigBlueButton server to record every meeting, edit `/usr/share/bbb-web/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties` and change
 
 ~~~
 # Start recording when first user joins the meeting.
@@ -531,7 +457,7 @@ sudo bbb-conf --restart
 
 ## Increase the 200 page limit for uploads
 
-BigBlueButton, by default, restricts uploads to 200 pages.  To increase this value, open `/var/lib/tomcat7/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties` and change the `maxNumPages` value:
+BigBlueButton, by default, restricts uploads to 200 pages.  To increase this value, open `/usr/share/bbb-web/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties` and change the `maxNumPages` value:
 
 ~~~
 #----------------------------------------------------
@@ -624,7 +550,7 @@ $ sudo apt-get purge bbb-check
 
 ## Mute all users on startup
 
-If you want to have all users join muted, you can modify `/var/lib/tomcat7/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties` and set this as a server-wide configuration.  
+If you want to have all users join muted, you can modify `/usr/share/bbb-web/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties` and set this as a server-wide configuration.  
 
 ~~~
 # Mute the meeting on start

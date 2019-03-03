@@ -8,10 +8,11 @@ date: 2019-02-14 22:13:42
 
 If you encountered any problems with the installation of BigBlueButton, this document covers how to resolve many of the common issues.
 
-
 # Troubleshooting
 
-This section will help you resolve common errors with installation of BigBlueButton.  If you are unable to resolve any installation issues, post a description of the error message along with the version of BigBlueButton you are installing to [bigbluebutton-setup](http://groups.google.com/group/bigbluebutton-setup/topics?gvc=2) and the community can help you further.
+This section will help you resolve common errors with installation of BigBlueButton 2.2-beta (referred hereafter as BigBlueButton).  
+
+If you are unable to resolve any installation issues, post a description of the error message along with the version of BigBlueButton you are installing to [bigbluebutton-setup](http://groups.google.com/group/bigbluebutton-setup/topics?gvc=2) and the community can help you further.
 
 ## Run sudo bbb-conf --check
 
@@ -39,11 +40,11 @@ If the user attempts to share their microphone and your BigBlueButton sever is n
 To enable Chrome to access the user's microphone, see [Configure HTTPS on BigBlueButton](#configure-ssl-on-your-bigbluebutton-server).
 
 
-## Tomcat7 takes a long time to startup
+## bbb-web takes a long time to startup
 
-Tomcat relies on the SecureRandom class (which uses available entropy) to provide random values for its session IDs.  On a virtualized server, however, the available entropy can run low and cause tomcat7 to block for a long period before it finishes it's startup sequence (see [Tomcat Entropy Source](http://wiki.apache.org/tomcat/HowTo/FasterStartUp#Entropy_Source)).
+ `bbb-web` relies on the SecureRandom class (which uses available entropy) to provide random values for its session IDs.  On a virtualized server, however, the available entropy can run low and cause bbb-web to block for a long period before it finishes it's startup sequence (see [Tomcat Entropy Source](http://wiki.apache.org/tomcat/HowTo/FasterStartUp#Entropy_Source)).
 
-To provide tomcat7 with more entropy, you can install haveged
+To provide `bbb-web` with more entropy, you can install haveged
 
 ~~~
 $ sudo apt-get install haveged
