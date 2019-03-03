@@ -57,19 +57,19 @@ If you are new to BigBlueButton we recommend (in order):
       
 Next, if you intend to setup your own BigBlueButton server, we recommend:
 
-  1. Visit [Install](/install/install.html) to BigBlueButton your own server (Ubuntu 16.04 64-bit).  You'll find step-by-step instructions and a [one line installer](https://github.com/bigbluebutton/bbb-install).
-  1. Setup the [GreenLight](/install/green-light.html) front end, or use an existing [integration](http://bigbluebutton.org/open-source-integrations/) (such as Moodle or WordPress).
+  1. Follow either the [step-by-step install instructions](/install/install.html) or the use the [bbb-install.sh](https://github.com/bigbluebutton/bbb-install) installation script.  The server comes with built-in API demos to quicly launch and join sessions.
+  1. Setup a front-end for your users.  You can use [Green Light](/install/green-light.html) (which `bbb-install.sh` can install for you as well), or use one of the existing [integrations](http://bigbluebutton.org/open-source-integrations/) (such as Moodle or WordPress).
   1. Take a quick read through the [FAQ](/support/faq.html).
 
 If you are a developer, after setting up your own BigBlueButton server, we recommend
-  1. [Setup](/dev/setup.html) a development environment to modify and extend BigBlueButton for your needs.
   1. Integrate BigBlueButton with your application using the [BigBlueButton API](/dev/api.html).
+  1. [Setup a development environment](/dev/setup.html) a development environment to modify and extend BigBlueButton itself.
 
-The BigBlueButton project is managed by a core group of [committers](/support/faq.html#bigbluebutton-committer) who care about building the community.  If you are interested to engage us, we encourage you to join the [community](https://bigbluebutton.org/support/community/) and participate in the discussion around the project.  We also hold bi-weekly BigBlueButton Community Calls (using BigBlueButton of course).
+The BigBlueButton project is managed by a core group of [committers](/support/faq.html#bigbluebutton-committer) who care about building the community.  If you want to join the community, then join one of our [mailing lists](https://bigbluebutton.org/support/community/) and participate in the discussion.  Ask a question.  Share your experience with BigBlueButton.  Or even help us build a feature.
 
 ## Latest Release
 
-The latest release is BigBlueButton 2.0-RC1. See the [overview](/overview/overview.html), [install](/install/install.html), and [architecture](/overview/architecture.html) documentation.
+The latest release is BigBlueButton 2.0. See the [overview](/overview/overview.html), [install](/install/install.html), and [architecture](/overview/architecture.html) documentation.
 
 The BigBlueButton 2.0 release is also the basis for the first release of the [HTML5 client](/html/html5-overview.html).
 
@@ -78,9 +78,13 @@ The BigBlueButton 2.0 release is also the basis for the first release of the [HT
   <a href="http://www.youtube.com/watch?feature=player_embedded&v=NQPrdc-W-6A" target="_blank"><img src="http://img.youtube.com/vi/NQPrdc-W-6A/0.jpg" alt="Overview of BigBlueButton 2.0" width="480" height="360" border="10" /></a>
 </p>
 
-### Spread the word
+### The future is HTML5
 
-If you use BigBlueButton and find it worthwhile, an easy way to help support the project is to spread the word about your experiences (blog, tweet, upload a video to YouTube, etc.) or, if you want to really contribute, help improve us [improve](/faq.html#contributing-to-bigbluebutton) the product.  You'll find the more you give, the more you get back.
+We are working on BigBlueButton 2.2 which will enable you to use the HTML5 client for moderator, presenter, and viewer.  It loads faster than the Flash client, has higher quality video and screen sharing (thanks to WebRTC), and works accross devices.
+
+### Helping the project
+
+If you use BigBlueButton and find it worthwhile, spread the word about your experiences (blog about it, tweet about it, upload a video to YouTube, etc.) or, if you want to really contribute, help improve us [improve](/faq.html#contributing-to-bigbluebutton) the product.  You'll find the more you give, the more you get back.
 
 ---
 

@@ -21,6 +21,7 @@ codeurl: 'https://github.com/bruth/jekyll-docs-template'
 sections: [
     ['overview', 'Overview'],
     ['install', 'Install'],
+    ['2.2', '2.2-beta'],
     ['admin', 'Administration'],
     ['dev', 'Develop'],
     ['mobile', 'Mobile (dev)'],
