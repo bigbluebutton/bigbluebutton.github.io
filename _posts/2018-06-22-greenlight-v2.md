@@ -237,7 +237,7 @@ Once you have finished setting the environment variables above in your `env` fil
 docker run --rm --env-file env bigbluebutton/greenlight:v2 bundle exec rake conf:check
 ```
 
-All three of the tests must pass before you proceed.
+If you have configured an SMTP server in your `env` file, then all four tests must pass before you proceed. If you have not configured an SMTP server, then only the first three tests must pass before you proceed.
 
 ## 4. Configure Nginx to Route To Greenlight
 
