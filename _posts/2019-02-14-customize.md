@@ -46,6 +46,23 @@ $ bbb-conf --secret
 
 The last line gives a link API-Mate, an excellent tool provided by [Mconf Technologies](https://mconf.com/) (a company that has made many contributions to the BigBlueButton project over the years) that makes it easy to create API calls.
 
+## Configure guest policy
+
+There is work underway to add the ability for moderators to approve incoming viewers in the HTML5 client (see [#5979](https://github.com/bigbluebutton/bigbluebutton/issues/5979); however, this feature is not yet implemented.
+
+The policy for guest management on the server is is set in the properties file for `bbb-web`, which is at `/var/lib/red5/webapps/bigbluebutton/WEB-INF/bigbluebutton.properties`.
+
+~~~
+# Default Guest Policy
+# Valid values are ALWAYS_ACCEPT, ALWAYS_DENY, ASK_MODERATOR
+#
+defaultGuestPolicy=ALWAYS_ACCEPT
+~~~
+
+Currently, if this value is set as `ASK_MODERATOR` (which may occur in some upgrades from 2.0 to 2.2), it will prevent HTML5 users from joining the session.  
+
+For now, to enable HTML5 users to join, change it to `ALWAYS_ACCEPT` and restart BigBlueButton server with `sudo bbb-conf --restart`.
+
 
 ## Modify the default landing page
 
