@@ -18,6 +18,18 @@ If you have earlier installed the API demos for testing (which makes it possible
 $ sudo apt-get purge bbb-demo
 ~~~
 
+## Make the HTML5 client default
+
+To make the HTML5 client the default client (and no longer load the Flash client), edit `/usr/share/bbb-web/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties` and set both `attendeesJoinViaHTML5Client` and `moderatorsJoinViaHTML5Client` to `true`, as in
+
+~~~
+# Force all attendees to join the meeting using the HTML5 client
+attendeesJoinViaHTML5Client=true
+
+# Force all moderators to join the meeting using the HTML5 client
+moderatorsJoinViaHTML5Client=true
+~~~
+
 ## Extract the shared secret
 
 Any front-end to BigBlueButton needstwo pieces of information: the hostname for the BigBlueButton server and its shared secret (for authenticating API calls).  To print out the hostname and shared secret for you BigBlueButton server, enter the command `bbb-conf --secret`:
