@@ -20,7 +20,7 @@ $ sudo apt-get purge bbb-demo
 
 ## Make the HTML5 client default
 
-To make the HTML5 client the default client (and no longer load the Flash client), edit `/usr/share/bbb-web/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties` and set both `attendeesJoinViaHTML5Client` and `moderatorsJoinViaHTML5Client` to `true`, as in
+To make the HTML5 client the default client (and no longer load the Flash client), edit `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties` and set both `attendeesJoinViaHTML5Client` and `moderatorsJoinViaHTML5Client` to `true`, as in
 
 ~~~
 # Force all attendees to join the meeting using the HTML5 client
@@ -50,7 +50,7 @@ The last line gives a link API-Mate, an excellent tool provided by [Mconf Techno
 
 There is work underway to add the ability for moderators to approve incoming viewers in the HTML5 client (see [#5979](https://github.com/bigbluebutton/bigbluebutton/issues/5979); however, this feature is not yet implemented.
 
-The policy for guest management on the server is is set in the properties file for `bbb-web`, which is at `/var/lib/red5/webapps/bigbluebutton/WEB-INF/bigbluebutton.properties`.
+The policy for guest management on the server is is set in the properties file for `bbb-web`, which is at `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties`.
 
 ~~~
 # Default Guest Policy
@@ -170,7 +170,7 @@ and then restart FreeSWITCH:
 
 Try calling the phone number.  It should connect to FreeSWITCH and you should hear a voice prompting you to enter the five digit PIN number for the conference.  
 
-To show users the phone number along with the 5-digit PIN number within BigBlueButton, edit `/usr/share/bbb-web/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties` and change 613-555-1234 to the phone number provided by your Internet Telephone Service Provider
+To show users the phone number along with the 5-digit PIN number within BigBlueButton, edit `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties` and change 613-555-1234 to the phone number provided by your Internet Telephone Service Provider
 
 ~~~properties
 #----------------------------------------------------
@@ -197,7 +197,7 @@ and enter 12345 as the conference PIN number.
 
 To validate incoming API calls, all external applications making API calls must checksum their API call using the same secret as configured in the BigBlueButton server.
 
-You’ll find the shared secret in `/usr/share/bbb-web/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties`
+You’ll find the shared secret in `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties`
 
 ~~~properties   
 beans.dynamicConferenceService.securitySalt=<value_of_salt>
@@ -231,7 +231,7 @@ If you want to specify the default presentation for a given meeting, you can als
 
 The default welcome message is built from three parameters: two system-wide parameters (see below) and the `welcome` parameter from the BigBlueButton `create` API call.  
 
-You'll find the two system-wide welcome parameters `defaultWelcomeMessage` and `defaultWelcomeMessageFooter` in `/usr/share/bbb-web/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties`.
+You'll find the two system-wide welcome parameters `defaultWelcomeMessage` and `defaultWelcomeMessageFooter` in `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties`.
 
 ~~~
 defaultWelcomeMessage=<default welcome message>
@@ -453,7 +453,7 @@ You can see the list of languages installed with BigBlueButton in the directory 
 
 By default, the BigBlueButton server will produce a recording when (1) the meeting has been created with `record=true` in the create API call and (2) a moderator has clicked the Start/Stop Record button (at least once) during the meeting.
 
-However, you can configure a BigBlueButton server to record every meeting, edit `/usr/share/bbb-web/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties` and change
+However, you can configure a BigBlueButton server to record every meeting, edit `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties` and change
 
 ~~~
 # Start recording when first user joins the meeting.
@@ -486,7 +486,7 @@ sudo bbb-conf --restart
 
 ## Increase the 200 page limit for uploads
 
-BigBlueButton, by default, restricts uploads to 200 pages.  To increase this value, open `/usr/share/bbb-web/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties` and change the `maxNumPages` value:
+BigBlueButton, by default, restricts uploads to 200 pages.  To increase this value, open `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties` and change the `maxNumPages` value:
 
 ~~~
 #----------------------------------------------------
@@ -579,7 +579,7 @@ $ sudo apt-get purge bbb-check
 
 ## Mute all users on startup
 
-If you want to have all users join muted, you can modify `/usr/share/bbb-web/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties` and set this as a server-wide configuration.  
+If you want to have all users join muted, you can modify `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties` and set this as a server-wide configuration.  
 
 ~~~
 # Mute the meeting on start
