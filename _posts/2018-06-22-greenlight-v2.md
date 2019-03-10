@@ -630,7 +630,7 @@ You can run Greenlight outside of Docker, which also makes it easy to customize 
 
 To run Greenlight without Docker requires having server with ruby on rails installed, checking out the source code, and running GreenLight at the command line as a rails application.  We recommend using a [GitHub](https://github.com/) account to checkout the source for GreenLight.
 
-1. [Install Ruby on Rails](https://gorails.com/setup/ubuntu/16.04) on your serer.
+1. [Install Ruby on Rails](https://gorails.com/setup/ubuntu/16.04) on your serer (Note: Skip the step which has you install rvm, the built-in version of ruby works fine).
 1. Login to your GitHub account (via the web) and fork the [GreenLight repository](https://github.com/bigbluebutton/greenlight).
 1. Login to your server (via SSH) clone the forked repository with the following command (replace `<GitHub_Username>` with your GitHub username):
 
