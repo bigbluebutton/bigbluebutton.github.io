@@ -330,6 +330,29 @@ $ sudo ln -s /mnt/bigbluebutton /var/bigbluebutton
 $ sudo bbb-conf --start
 ~~~
 
+## Error installing bbb-web
+
+If you get the following error during upgrade to BigBlueButton
+
+~~~
+```Unpacking bbb-web (1:2.2.0-67) over (1:2.2.0-66) ...
+dpkg: error processing archive /var/cache/apt/archives/bbb-web_1%3a2.2.0-67_amd64.deb (--unpack):
+ trying to overwrite '/etc/bigbluebutton/nginx/web', which is also in package bbb-client 1:2.2.0-28
+dpkg-deb: error: subprocess paste was killed by signal (Broken pipe)
+Errors were encountered while processing:
+ /var/cache/apt/archives/bbb-web_1%3a2.2.0-67_amd64.deb
+E: Sub-process /usr/bin/dpkg returned an error code (1)```
+~~~
+
+Then first uninstall `bbb-client`
+
+~~~
+sudo apt-get purge bbb-client
+~~~
+
+and try installing BigBlueButton again.
+
+
 ## Unable to create presentation
 
 If you see the following error in `/var/bigbluebutton/bbb-web.log`
