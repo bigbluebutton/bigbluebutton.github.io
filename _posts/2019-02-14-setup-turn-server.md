@@ -175,7 +175,7 @@ systemctl start coturn
 ## Configure BigBlueButton to use the coturn server
 
 
-You must configure bbb-web so that it will provide the list of turn servers to the web browser. Edit the file `/var/lib/tomcat7/webapps/bigbluebutton/WEB-INF/spring/turn-stun-servers.xml` using the contents below and make edits:
+You must configure bbb-web so that it will provide the list of turn servers to the web browser. Edit the file `/usr/share/bbb-web/WEB-INF/classes/spring/turn-stun-servers.xml` using the contents below and make edits:
 
   * replace both instances of `turn.example.com` with the hostname of the TURN server, and 
   * replace `<random value>` with the secret you configured in `turnserver.conf`.
