@@ -30,6 +30,29 @@ attendeesJoinViaHTML5Client=true
 moderatorsJoinViaHTML5Client=true
 ~~~
 
+## Restrict access to specific ports
+
+If your BigBlueButton server is publically available on the internet, for increased security, you should restrict access only to the following ports:
+
+  * TCP/IP port 22 for SSH
+  * TCP/IP port 80 for HTTP
+  * TCP/IP port 443 for HTTPS
+  * TCP/IP port 1935 for RTMP (only needed if Flash client is required)
+  * UDP ports 16384 to 32768 for media connections
+
+By default, a Ubuntu 16.04 server does not restrict access.  Using Ubuntu's uncompliated firewall `ufw`, you can restrict access to the above ports using the following commands:
+
+~~~
+apt-get install -y ufw
+ufw allow OpenSSH
+ufw allow "Nginx Full"
+ufw allow 1935/tcp           # omit if you don't run the Flash client
+ufw allow 16384:32768/udp
+ufw --force enable
+~~~
+
+Note: If your server is behind a firewall already -- such as running within your company or on an EC2 instance behind a Amazon Security Group -- and the firewall is enforcing the above restrictions, you don't need to run the above `ufw` commands. 
+
 ## Extract the shared secret
 
 Any front-end to BigBlueButton needstwo pieces of information: the hostname for the BigBlueButton server and its shared secret (for authenticating API calls).  To print out the hostname and shared secret for you BigBlueButton server, enter the command `bbb-conf --secret`:
