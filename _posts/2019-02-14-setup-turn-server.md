@@ -29,9 +29,9 @@ Having the server behind NAT (for example, on Amazon EC2) is OK, but all incomin
 
 ## Required Software
 
-We recommend using a minimal server installation of Ubuntu 18.04 where possible. (Ubuntu 16.04 is also ok, but includes an older version of coturn.) The [coturn](https://github.com/coturn/coturn) software requires port 443 for its exclusive use in our recommended configuration, which means the server cannot have any dashboard software or other web applications running.
+We recommend using a minimal server installation of Ubuntu 18.04.  The [coturn](https://github.com/coturn/coturn) software requires port 443 for its exclusive use in our recommended configuration, which means the server cannot have any dashboard software or other web applications running.
 
-coturn is already available in the Ubuntu packaging repositories for version 16.04 and later, and it can be installed with apt-get:
+coturn is already available in the Ubuntu packaging repositories for version 18.04 and later, and it can be installed with apt-get:
 
 ~~~
 sudo apt-get update
@@ -125,8 +125,10 @@ pkey=/etc/letsencrypt/live/turn.example.com/privkey.pem
 # Limit the allowed ciphers to improve security
 # Based on https://hynek.me/articles/hardening-your-web-servers-ssl-ciphers/
 cipher-list="ECDH+AESGCM:ECDH+CHACHA20:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:RSA+AESGCM:RSA+AES:!aNULL:!MD5:!DSS"
+
 # Enable longer DH TLS key to improve security
 dh2066
+
 # All WebRTC-compatible web browsers support TLS 1.2 or later, so disable
 # older protocols
 no-tlsv1
@@ -175,7 +177,7 @@ systemctl start coturn
 ## Configure BigBlueButton to use the coturn server
 
 
-You must configure bbb-web so that it will provide the list of turn servers to the web browser. Edit the file `/var/lib/tomcat7/webapps/bigbluebutton/WEB-INF/spring/turn-stun-servers.xml` using the contents below and make edits:
+You must configure bbb-web so that it will provide the list of turn servers to the web browser. Edit the file `/usr/share/bbb-web/WEB-INF/classes/spring/turn-stun-servers.xml` using the contents below and make edits:
 
   * replace both instances of `turn.example.com` with the hostname of the TURN server, and 
   * replace `<random value>` with the secret you configured in `turnserver.conf`.
