@@ -40,7 +40,19 @@ If your BigBlueButton server is publically available on the internet, for increa
   * TCP/IP port 1935 for RTMP (only needed if Flash client is required)
   * UDP ports 16384 to 32768 for media connections
 
-By default, a Ubuntu 16.04 server does not restrict access.  Using Ubuntu's uncompliated firewall `ufw`, you can restrict access to the above ports using the following commands:
+By default, a Ubuntu 16.04 server does not have any firewall in place: all ports are externally accessible.  Using Ubuntu's uncompliated firewall `ufw`, you can restrict access to the above ports using the commands below.
+
+Note: if you have configured `sshd` (the OpenSSH daemon) to use a different port than 22, then change the command `ufw allow OpenSSH` to `ufw allow <port>/tcp` where `<port>` is the port in use by `sshd`.  You can see which ports are in use by `sshd` using the command `# netstat -antp | grep sshd`.  For example, in the output below `netstat` shows `sshd` listening to the standard port 22.
+
+~~~
+# netstat -antp | grep sshd
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1739/sshd       
+tcp6       0      0 :::22                   :::*                    LISTEN      1739/sshd       
+~~~
+
+If your server is behind a firewall already -- such as running within your company or on an EC2 instance behind a Amazon Security Group -- and the firewall is enforcing the above restrictions, you don't need to use `ufw`: your server is already protected by a firewall.
+
+To restrict access to your BigBlueButton server, enter the following commands:
 
 ~~~
 apt-get install -y ufw
@@ -51,7 +63,8 @@ ufw allow 16384:32768/udp
 ufw --force enable
 ~~~
 
-Note: If your server is behind a firewall already -- such as running within your company or on an EC2 instance behind a Amazon Security Group -- and the firewall is enforcing the above restrictions, you don't need to run the above `ufw` commands. 
+These `ufw` firewall rules will be automatically re-applied on server reboot.
+
 
 ## Extract the shared secret
 
