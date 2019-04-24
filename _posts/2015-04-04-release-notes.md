@@ -5,9 +5,27 @@ category: support
 date: 2015-04-04 22:26:10
 ---
 
-# Release 2.0-RC1
+# Release 2.2-beta
 
-Released: July 4, 2018 ([Installation Instructions](install/install.html))
+Released: March 19, 2019 ([Installation Instructions](/2.2/install.html))
+
+This release marks the transition from the Flash client to the HTML5 client.
+
+The new HTML5 requires no downloads, no plugins, and no software installations. It loads within the browser with a single click. The client -- and it's interface -- provides a unified interface across desktop, laptop, chromebook, and mobile devices (iOS 12.2+ and Android 6.0+).  As such, there is no app to install on mobile devices to use BigBlueButton.  For mobile users, the client loads within the Safari browser on iOS and the Chrome browser on Google Chrome.
+
+Major features in this release include:
+  * **Platform** - Pure HTML5 that uses web real-time communication (WebRTC) for sharing audio, video, and screen.
+
+  * **Features** - The HTML5 client is now in feature parity with all the moderator and presenter functionality of the Flash client except for live closed captioning (under development). 
+
+  * **Increased engagement** - The presenter can now share YouTube videos live in the session and use shared notes (built upon etherpad) for collaborative editing.
+
+This release is under active development: see [BigBlueButton 2.2 Project Board](https://github.com/bigbluebutton/bigbluebutton/projects/2).  For more details see [video overview](https://bigbluebutton.org/html5https://bigbluebutton.org/html5), [overview](/2.2/overview.html) and [installation](/2.2/install.html).
+
+
+# Release 2.0
+
+Released: March 28, 2019 ([Installation Instructions](install/install.html))
 
 Major features in this release include:
 

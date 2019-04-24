@@ -44,7 +44,7 @@ Working towards this vision, we want the HTML5 client to work alongside the Flas
 
 ## Scope
 
-The near-term goal (the first release) is to create an HTML5 client that implements all the viewer capabilities of the Flash client for desktop, Android or iOS (iOS 11+) phone or tablet.
+The near-term goal (the first release) is to create an HTML5 client that implements all the viewer capabilities of the Flash client for desktop, Android or iOS (iOS 12.2+) phone or tablet.
 
 Android provides excellent support for WebRTC in the Chrome browser.  As of the time of this writing, Apple recently released support for WebRTC in iOS 11 which has a [76% market penetration](https://www.macrumors.com/2018/04/25/ios-11-installed-on-76-percent-of-devices/).
 
