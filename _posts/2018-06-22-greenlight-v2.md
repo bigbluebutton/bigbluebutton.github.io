@@ -197,17 +197,17 @@ First, create the Greenlight directory for its configuration to live in.
 mkdir ~/greenlight && cd ~/greenlight
 ```
 
-Greenlight will read its environment configuration from the `env` file. To generate this file and install the Greenlight Docker image, run:
+Greenlight will read its environment configuration from the `.env` file. To generate this file and install the Greenlight Docker image, run:
 
 ```
-docker run --rm bigbluebutton/greenlight:v2 cat ./sample.env > env
+docker run --rm bigbluebutton/greenlight:v2 cat ./sample.env > .env
 ```
 
 ## 3. Configure Greenlight
 
-If you open the `env` file you'll see that it contains information for all of the Greenlight configuration options. Some of these are mandatory.
+If you open the `.env` file you'll see that it contains information for all of the Greenlight configuration options. Some of these are mandatory.
 
-When you installed in step two, the `env` file was generated at `~/greenlight/env`.
+When you installed in step two, the `.env` file was generated at `~/greenlight/.env`.
 
 ### Generating a Secret Key
 
@@ -217,7 +217,7 @@ Greenlight needs a secret key in order to run in production. To generate this, r
 docker run --rm bigbluebutton/greenlight:v2 bundle exec rake secret
 ```
 
-Inside your `env` file, set the `SECRET_KEY_BASE` option to this key. You don't need to surround it in quotations.
+Inside your `.env` file, set the `SECRET_KEY_BASE` option to this key. You don't need to surround it in quotations.
 
 ### Setting BigBlueButton Credentials
 
@@ -227,17 +227,17 @@ By default, your Greenlight instance will automatically connect to [test-install
 bbb-conf --secret
 ```
 
-In your `env` file, set the `BIGBLUEBUTTON_ENDPOINT` to the URL, and set `BIGBLUEBUTTON_SECRET` to the secret.
+In your `.env` file, set the `BIGBLUEBUTTON_ENDPOINT` to the URL, and set `BIGBLUEBUTTON_SECRET` to the secret.
 
 ### Verifying Configuration
 
-Once you have finished setting the environment variables above in your `env` file, to verify that you configuration is valid, run:
+Once you have finished setting the environment variables above in your `.env` file, to verify that you configuration is valid, run:
 
 ```
-docker run --rm --env-file env bigbluebutton/greenlight:v2 bundle exec rake conf:check
+docker run --rm --env-file .env bigbluebutton/greenlight:v2 bundle exec rake conf:check
 ```
 
-If you have configured an SMTP server in your `env` file, then all four tests must pass before you proceed. If you have not configured an SMTP server, then only the first three tests must pass before you proceed.
+If you have configured an SMTP server in your `.env` file, then all four tests must pass before you proceed. If you have not configured an SMTP server, then only the first three tests must pass before you proceed.
 
 ## 4. Configure Nginx to Route To Greenlight
 
@@ -314,7 +314,7 @@ docker-compose down
 To run Greenlight using `docker run`, from the `~/greenlight` directory, run the following command:
 
 ```
-docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight-v2 bigbluebutton/greenlight:v2
+docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name greenlight-v2 bigbluebutton/greenlight:v2
 ```
 
 The database is saved to the BigBlueButton server so data persists when you restart. This can be found at `~/greenlight/db`.
@@ -329,7 +329,7 @@ docker stop greenlight-v2
 
 # Configuring Greenlight 2.0
 
-Greenlight is a highly configurable application. The various configuration options can be found below. When making a changes to the `env` file, in order for them to take effect you must restart you Greenlight container. For information on how to do this, see [Applying `env` Changes](#applying-env-changes).
+Greenlight is a highly configurable application. The various configuration options can be found below. When making a changes to the `.env` file, in order for them to take effect you must restart you Greenlight container. For information on how to do this, see [Applying `.env` Changes](#applying-env-changes).
 
 ## User Authentication
 
@@ -339,7 +339,7 @@ Greenlight supports three types of user authentication. You can configure any nu
 
 Greenlight has the ability to create accounts on its own. Users can sign up with their name, email and password and use Greenlight's full functionality.
 
-By default, the ability for anyone to create a Greenlight account is enabled. To disable this, set the `ALLOW_GREENLIGHT_ACCOUNTS` option in your `env` file to false. This will **not** delete existing Greenlight accounts, but will prevent new ones from being created.
+By default, the ability for anyone to create a Greenlight account is enabled. To disable this, set the `ALLOW_GREENLIGHT_ACCOUNTS` option in your `.env` file to false. This will **not** delete existing Greenlight accounts, but will prevent new ones from being created.
 
 ### Google OAuth2
 
@@ -371,7 +371,7 @@ First, enable the "Google+ API".
   1. Under "Authorized redirect URIs" enter "http://hostname/b/auth/google/callback" where hostname is your hostname
   1. Click "Create"
 
-A window should open with your OAuth credentials. In this window, copy client ID and client secret to the `env` file so it resembles the following (your credentials will be different).
+A window should open with your OAuth credentials. In this window, copy client ID and client secret to the `.env` file so it resembles the following (your credentials will be different).
 
 ~~~
 GOOGLE_OAUTH2_ID=1093993040802-jjs03khpdl4dfasffq7hj6ansct5.apps.googleusercontent.com
@@ -397,7 +397,7 @@ Next,
   1. Click "Create your Twitter application"
   1. Click "Keys and Access Tokens" tab
 
-You should see a key and secret.  Add the `Consumer Key (API Key)` (not the OwnerID) and `Consumer Secret (API Secret)` to the `env` file (your values will be different).
+You should see a key and secret.  Add the `Consumer Key (API Key)` (not the OwnerID) and `Consumer Secret (API Secret)` to the `.env` file (your values will be different).
 
 ~~~
 TWITTER_ID=SOj8AkIdeqJuP2asfbbGSBk0
@@ -438,7 +438,7 @@ From here take the following steps:
 
     ![](https://d2mxuefqeaa7sj.cloudfront.net/s_862F4C65DCBBF32F66208EA7FF25C153F80CC5FED653F7FCC2E693F7C7577A33_1539201241095_image.png)
 
-    Copy both values into the `env` file:
+    Copy both values into the `.env` file:
 
     ```
       OFFICE365_KEY=df99f6f6-2953-4f3c-b9a1-0b407c1373ba
@@ -449,7 +449,7 @@ From here take the following steps:
 
 ### LDAP Auth
 
-Greenlight is able to authenticate users using an external LDAP server. To connect Greenlight to an LDAP server, you will have to provide values for the environment variables under the 'LDAP Login Provider' section in the `env` file. You need to provide all of the values for LDAP authentication to work correctly.
+Greenlight is able to authenticate users using an external LDAP server. To connect Greenlight to an LDAP server, you will have to provide values for the environment variables under the 'LDAP Login Provider' section in the `.env` file. You need to provide all of the values for LDAP authentication to work correctly.
 
 > `LDAP_SERVER` is the server host.
 
@@ -499,7 +499,7 @@ If you are **not** deploying Greenlight on a BigBlueButton server and want the a
 
 ## Setting a Custom Branding Image
 
-Greenlight provides you with the ability to set the branding image that you see on the left side of the header. By default this is set to the BigBlueButton logo. You can change this by setting the `BRANDING_IMAGE` option in the `env` file to a public URL for a png or JPEG image.
+Greenlight provides you with the ability to set the branding image that you see on the left side of the header. By default this is set to the BigBlueButton logo. You can change this by setting the `BRANDING_IMAGE` option in the `.env` file to a public URL for a png or JPEG image.
 
 ~~~
 BRANDING_IMAGE=https://www.example.com/example.png
@@ -529,10 +529,10 @@ To upgrade to Greenlight 2.0 from Greenlight 1.0, complete the following steps.
 
 ## 1. Setup the 2.0 Environment
 
-Copy the Greenlight 2.0 sample environment into your env file. If you want to save your Greenlight 1.0 settings, make a copy of the `env` file first. This will also pull the Greenlight 2.0 image.
+Copy the Greenlight 2.0 sample environment into your .env file. If you want to save your Greenlight 1.0 settings, make a copy of the `.env` file first. This will also pull the Greenlight 2.0 image.
 ```
 cd ~/greenlight
-docker run --rm bigbluebutton/greenlight:v2 cat ./sample.env > env
+docker run --rm bigbluebutton/greenlight:v2 cat ./sample.env > .env
 ```
 
 Then follow the steps to [configure Greenlight](#3-configure-greenlight).
@@ -560,16 +560,16 @@ If you have Greenlight 1.0, you may pull the Greenlight 2.0 Docker image when up
 To continue to use Greenlight 1.0, all you need to do is to explicitly specify version 1.0 in the run command. You can do this like so:
 
 ```
-docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight bigbluebutton/greenlight:v1
+docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name greenlight bigbluebutton/greenlight:v1
 ```
 
 This will force Greenlight to use version 1.0. For any other Docker commands relating to the image, make sure you specify the `v1` tag.
 
 # Administration
 
-## Applying `env` Changes
+## Applying `.env` Changes
 
-After you edit the `env` file, you are required to restart Greenlight in order for it to pick up the changes. Ensure you are in the Greenlight directory when restarting Greenlight.
+After you edit the `.env` file, you are required to restart Greenlight in order for it to pick up the changes. Ensure you are in the Greenlight directory when restarting Greenlight.
 
 ### If you ran Greenlight using `docker-compose`
 
@@ -597,7 +597,7 @@ docker rm greenlight-v2
 bring back up Greenlight using:
 
 ```
-docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight-v2 bigbluebutton/greenlight:v2
+docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name greenlight-v2 bigbluebutton/greenlight:v2
 ```
 
 ## Updating Greenlight
@@ -662,7 +662,7 @@ To begin, start by [Installing Docker](https://docs.docker.com/install/linux/doc
 ### Setting up with Docker
 1. Enter the `~/greenlight` directory
 2. Run the following command to set up the environment:
-  `cp sample.env env`
+  `cp sample.env .env`
 
 
 3. Create a docker image by running the following (**image name** can be any name of your choosing):
@@ -694,7 +694,7 @@ You can verify if you have docker compose installed by running:
 ### Starting up using `docker run`
 1. Start the server by beginning a docker run (**name** can be any name of your choosing):
   ```
-  docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name <name> <image name>
+  docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name <name> <image name>
   ```
 
 
@@ -901,4 +901,4 @@ At this stage, there are no more problems with the “setup” of the app and fu
 ### Changes not appearing
 If you made changes to the code and are running a docker container from a docker image, you will need to **rebuild** the image to see changes appear.
 
-In the case of environment related changes (modifying the `env` file), you will only need to restart the container.
+In the case of environment related changes (modifying the `.env` file), you will only need to restart the container.
