@@ -64,7 +64,7 @@ If you are new to BigBlueButton and want to learn more about its capabilities:
 If you want to setup your own BigBlueButton server:
 
   1. To install BigBlueButton, follow either the step-by-step install instructions for [2.0](/install/install.html) or [2.2-beta](/2.2/install.html) or, to setup a server in about 15 minutes, use the [bbb-install.sh](https://github.com/bigbluebutton/bbb-install) installation script.
-  1. To setup a front-end for users, check out [Green Light](/install/green-light.html) (which `bbb-install.sh` can install for you as well), or use one of the existing [integrations](http://bigbluebutton.org/open-source-integrations/) (such as Moodle or WordPress).
+  1. To setup a front-end for users, check out [Greenlight](/install/greenlight-v2.html) (which `bbb-install.sh` can install for you as well), or use one of the existing [integrations](http://bigbluebutton.org/open-source-integrations/) (such as Moodle or WordPress).
   1. Take a quick read through the [FAQ](/support/faq.html).
 
 If you are a developer, after setting up your own BigBlueButton server, we recommend
