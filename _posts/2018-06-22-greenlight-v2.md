@@ -17,7 +17,7 @@ BigBlueButton is an open source web conferencing system for online learning. The
 
 Greenlight 2.0 is a ruby on rails application that provides a a simple front-end interface to your BigBlueButton server. GreenLight lets users:
 
-  * Sign up/Login with Twitter, Google, or through the application itself
+  * Sign up/Login with Twitter, Google, Office365 or through the application itself
   * Manage their account settings and user preferences.
   * Create and manage their own personal rooms ([BigBlueButton](https://github.com/bigbluebutton/bigbluebutton) sessions).
   * Invite others to join a session using a simple URL.
@@ -35,7 +35,7 @@ Greenlight is a feature rich application that aims to address all your BigBlueBu
 
 As BigBlueButton and Greenlight are open-source projects, we encourage other developers to contribute. If you want to implement a new feature and submit a pull request, you are more than welcome to do so! For information on contributing to BigBlueButton projects, see [Contributing to BigBlueButton](http://docs.bigbluebutton.org/support/faq.html#contributing-to-bigbluebutton).
 
-## Accounts and Settings
+## Accounts and Profile
 
 ### Sign up / Login
 
@@ -50,13 +50,13 @@ Greenlight has full support for managing user accounts. It currently supports th
 
 All of these authentication providers are configurable and can be turned on/off individually. Turning off In-application authentication will disable user sign up. This allows you to preconfigure accounts for specific users who you want to have access to your server.
 
-Once you are logged in, you'll see your account appear in the top right corner of the screen. Clicking on this displays a drop-down that allows you to traverse Greenlight.
+Once you are logged in, you'll see your account appear in the top right corner of the screen. Clicking on the navigation items along side it allows you to traverse Greenlight.
 
 ![Greenlight Nav](/images/greenlight/nav.png)
 
-### Settings
+### Profile
 
-Greenlight also allows users to update their account information at any time, including changing their password, profile image, and updating their custom design settings for Greenlight.
+Greenlight also allows users to update their account information at any time, including changing their password, profile image, and language for Greenlight.
 
 ![Greenlight Settings](/images/greenlight/settings.png)
 
@@ -78,7 +78,7 @@ If the room is running, they'll be instantly join in. However, if the room is no
 
 ### Creating New Rooms
 
-When you sign up for Greenlight, the application creates your home room which is named "`FIRST_NAME`'s Room". You are free to create as many new rooms as you would like for different purposes. To create a new room, you simply click the "Create Room" button beside your profile in the navigation bar. You will have the option to automatically start the room when you create it.
+When you sign up for Greenlight, the application creates your home room which is named "Home Room". You are free to create as many new rooms as you would like for different purposes. To create a new room, you simply click the "Create a Room" block from your list of rooms. You will have the option to automatically start the room when you create it.
 
 ![Greenlight Create Room](/images/greenlight/create_room.png)
 
@@ -104,8 +104,9 @@ Afterwards, you can change the name by clicking anywhere or pressing the enter k
 
 **Using the Room block**
 
-If you look at a Room block, you will see 3 ellipsis which you can click to view a renaming option. You can click **Rename** to enable editing mode on the room block.
-Afterwards, clicking anywhere or pressing enter will save the changes.
+If you look at a Room block, you will see 3 ellipsis which you can click to view the options for this room. You can click **Room Settings** to display a modal that will allow you to edit any of the Room's features.
+
+Afterwards, clicking **Update Room** will save the changes.
 
 ![Greenlight Room Block Edit Dropdown](/images/greenlight/room_block_edit_dropdown.png)
 
@@ -163,6 +164,88 @@ There is also a **live search** that may return any part of the recording name:
 **Searching and sorting** can be used in conjunction:
 
 ![Greenlight Recording Filter and Search](/images/greenlight/recording_filter_search.png)
+
+## Administrator Panel
+
+### Creating an Administrator Account
+
+To create an Administrator account with the default values, run the following commands:
+
+```
+cd ~/greenlight
+bundle exec rake admin:create
+```
+
+If you would like to configure the name, email, or password of the Administrator account, replace the previous command with this: 
+
+```
+cd ~/greenlight
+bundle exec rake admin:create["name","email","password"]
+```
+
+**Note:** All of the above arguments are optional and if you don’t specify an argument it will be replaced with a default value.
+
+Once the command has finished it will print the account’s email and password.
+
+![Greenlight Administrator Account Create](/images/greenlight/admin_account_create.png)
+
+### Accessing the Administrator Panel
+
+Once you are logged in as an Administrator, you will notice a new item in the Account Dropdown titled **Organization**.
+
+![Greenlight Administrator Access](/images/greenlight/admin_access.png)
+
+### Managing Users
+
+Through the Manage Users tab, Administrators are able to view and search for all user accounts that have been created. 
+
+The search box can be used to filter based on Name, Username and Authenticator.
+
+Administrators are also able to edit each account by clicking on the vertical ellipsis.
+
+![Greenlight Administrator Manage Users](/images/greenlight/admin_manage_users.png)
+
+**Promoting Accounts**
+
+To promote an account from a User to an Administrator, select Promote to Admin from the Account Dropdown.
+
+**Demoting Accounts**
+
+To demote an account from an Administrator to a User, select Demote to User from the Account Dropdown.
+
+**Deleting Accounts**
+
+To delete an account, select Delete from the Account Dropdown. 
+
+While this removes the account from Greenlight the user will still be able to sign up to Greenlight using the same email in the future.
+
+**Banning Accounts**
+
+To ban an account, select Ban User from the account dropdown.
+
+This will remove the account from Greenlight and will also prevent the user from signing up using the same email to Greenlight in the future.
+
+**Editing Accounts**
+
+To edit an account, select Edit for the specified user. This will open the edit user view.
+
+From the edit user view, Administrators are able to edit the name, email, default language, and profile picture for the given account.
+
+### Site Branding
+
+Administrators are able to customize Greenlight through the Site Settings Tab.
+
+![Greenlight Administrator Manage Users](/images/greenlight/admin_site_settings.png)
+
+**Change the Branding Image**
+
+To change Greenlight’s Branding Image which is displayed in the top left corner, replace the default image with a URL of your image and click Change Image.
+
+**Change the Primary Colour**
+
+To change Greenlight’s primary colour open the colour palette and select a new primary colour.
+
+The primary colour is the colour that Greenlight uses as a basis for the styling. This includes buttons, links, icons, etc.
 
 
 # Installing on a BigBlueButton Server
@@ -499,11 +582,7 @@ If you are **not** deploying Greenlight on a BigBlueButton server and want the a
 
 ## Setting a Custom Branding Image
 
-Greenlight provides you with the ability to set the branding image that you see on the left side of the header. By default this is set to the BigBlueButton logo. You can change this by setting the `BRANDING_IMAGE` option in the `.env` file to a public URL for a png or JPEG image.
-
-~~~
-BRANDING_IMAGE=https://www.example.com/example.png
-~~~
+See [these instructions](#site-branding). 
 
 ## Adding Terms and Conditions
 
