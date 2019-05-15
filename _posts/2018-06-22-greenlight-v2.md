@@ -169,18 +169,14 @@ There is also a **live search** that may return any part of the recording name:
 
 ### Creating an Administrator Account
 
-To create an Administrator account with the default values, run the following commands:
-
+To create an Administrator account with the default values, in the Greenlight directory, run the following commands:
 ```
-cd ~/greenlight
-bundle exec rake admin:create
+docker run --rm -v $(pwd)/db/production:/usr/src/app/db/production -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env bigbluebutton/greenlight:v2 bundle exec rake admin:create
 ```
 
 If you would like to configure the name, email, or password of the Administrator account, replace the previous command with this: 
-
 ```
-cd ~/greenlight
-bundle exec rake admin:create["name","email","password"]
+docker run --rm -v $(pwd)/db/production:/usr/src/app/db/production -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env bigbluebutton/greenlight:v2 bundle exec rake admin:create["name","email","password"]
 ```
 
 **Note:** All of the above arguments are optional and if you don’t specify an argument it will be replaced with a default value.
