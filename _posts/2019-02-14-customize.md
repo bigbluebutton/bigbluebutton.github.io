@@ -287,19 +287,32 @@ The welcome message is fixed for the duration of a meeting.  If you want to see 
 
 The default maximum file upload size for an uploaded presentation is 30 MB.
 
-To increase this size, edit /var/www/bigbluebutton/client/conf/config.xml` and edit `maxFileSize` to the new value (note: if you have the development environment you need to edit ~/dev/bigbluebutton/bigbluebutton-client/src/conf/config.xml and then rebuild the client).
-
-Next, change the corresponding limit in nginx.  Edit `/etc/bigbluebutton/nginx/web.nginx` and modify the value for `client_max_body_size`
+The first step is to change the size restriction in nginx.  Edit `/etc/bigbluebutton/nginx/web.nginx` and modify the values for `client_max_body_size`.
 
 ~~~
-       location /bigbluebutton {
-           proxy_pass         http://127.0.0.1:8080;
-           proxy_redirect     default;
-           proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
-
-        # Allow 30M uploaded presentation document.
-           client_max_body_size       30m;
+       location ~ "^\/bigbluebutton\/presentation\/(?<prestoken>[a-zA-Z0-9_-]+)/upload$" {
+          ....
+          # Allow 30M uploaded presentation document.
+          client_max_body_size       30m;
+          ....
+       }
+       
+       location = /bigbluebutton/presentation/checkPresentation {
+          ....
+          # Allow 30M uploaded presentation document.
+          client_max_body_size       30m;
+          ....
+       }
 ~~~
+
+Next change the restriction in bbb-web. Edit `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties` and modify the value `maxFileSizeUpload`.
+
+~~~
+# Maximum file size for an uploaded presentation (default 30MB).
+maxFileSizeUpload=30000000
+~~~
+
+The next changes are for the client-side checks and it depends on which clients you have it use. To increase the size for the Flash client, edit `/var/www/bigbluebutton/client/conf/config.xml` and modify `maxFileSize` to the new value (note: if you have the development environment you need to edit `~/dev/bigbluebutton/bigbluebutton-client/src/conf/config.xml` and then rebuild the client). To increase the size for the HTML5 client, edit `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml` and modify `uploadSizeMax`.
 
 Restart BigBlueButton with `sudo bbb-conf --restart`.  You should now be able to upload larger presentations within the new limit.
 

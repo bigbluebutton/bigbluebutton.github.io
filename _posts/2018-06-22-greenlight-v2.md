@@ -17,7 +17,7 @@ BigBlueButton is an open source web conferencing system for online learning. The
 
 Greenlight 2.0 is a ruby on rails application that provides a a simple front-end interface to your BigBlueButton server. GreenLight lets users:
 
-  * Sign up/Login with Twitter, Google, or through the application itself
+  * Sign up/Login with Twitter, Google, Office365 or through the application itself
   * Manage their account settings and user preferences.
   * Create and manage their own personal rooms ([BigBlueButton](https://github.com/bigbluebutton/bigbluebutton) sessions).
   * Invite others to join a session using a simple URL.
@@ -35,7 +35,7 @@ Greenlight is a feature rich application that aims to address all your BigBlueBu
 
 As BigBlueButton and Greenlight are open-source projects, we encourage other developers to contribute. If you want to implement a new feature and submit a pull request, you are more than welcome to do so! For information on contributing to BigBlueButton projects, see [Contributing to BigBlueButton](http://docs.bigbluebutton.org/support/faq.html#contributing-to-bigbluebutton).
 
-## Accounts and Settings
+## Accounts and Profile
 
 ### Sign up / Login
 
@@ -50,13 +50,13 @@ Greenlight has full support for managing user accounts. It currently supports th
 
 All of these authentication providers are configurable and can be turned on/off individually. Turning off In-application authentication will disable user sign up. This allows you to preconfigure accounts for specific users who you want to have access to your server.
 
-Once you are logged in, you'll see your account appear in the top right corner of the screen. Clicking on this displays a drop-down that allows you to traverse Greenlight.
+Once you are logged in, you'll see your account appear in the top right corner of the screen. Clicking on the navigation items along side it allows you to traverse Greenlight.
 
 ![Greenlight Nav](/images/greenlight/nav.png)
 
-### Settings
+### Profile
 
-Greenlight also allows users to update their account information at any time, including changing their password, profile image, and updating their custom design settings for Greenlight.
+Greenlight also allows users to update their account information at any time, including changing their password, profile image, and language for Greenlight.
 
 ![Greenlight Settings](/images/greenlight/settings.png)
 
@@ -78,7 +78,7 @@ If the room is running, they'll be instantly join in. However, if the room is no
 
 ### Creating New Rooms
 
-When you sign up for Greenlight, the application creates your home room which is named "`FIRST_NAME`'s Room". You are free to create as many new rooms as you would like for different purposes. To create a new room, you simply click the "Create Room" button beside your profile in the navigation bar. You will have the option to automatically start the room when you create it.
+When you sign up for Greenlight, the application creates your home room which is named "Home Room". You are free to create as many new rooms as you would like for different purposes. To create a new room, you simply click the "Create a Room" block from your list of rooms. You will have the option to automatically start the room when you create it.
 
 ![Greenlight Create Room](/images/greenlight/create_room.png)
 
@@ -104,8 +104,9 @@ Afterwards, you can change the name by clicking anywhere or pressing the enter k
 
 **Using the Room block**
 
-If you look at a Room block, you will see 3 ellipsis which you can click to view a renaming option. You can click **Rename** to enable editing mode on the room block.
-Afterwards, clicking anywhere or pressing enter will save the changes.
+If you look at a Room block, you will see 3 ellipsis which you can click to view the options for this room. You can click **Room Settings** to display a modal that will allow you to edit any of the Room's features.
+
+Afterwards, clicking **Update Room** will save the changes.
 
 ![Greenlight Room Block Edit Dropdown](/images/greenlight/room_block_edit_dropdown.png)
 
@@ -164,6 +165,84 @@ There is also a **live search** that may return any part of the recording name:
 
 ![Greenlight Recording Filter and Search](/images/greenlight/recording_filter_search.png)
 
+## Administrator Panel
+
+### Creating an Administrator Account
+
+To create an Administrator account with the default values, in the Greenlight directory, run the following commands:
+```
+docker run --rm -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env bigbluebutton/greenlight:v2 bundle exec rake admin:create
+```
+
+If you would like to configure the name, email, or password of the Administrator account, replace the previous command with this: 
+```
+docker run --rm -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env bigbluebutton/greenlight:v2 bundle exec rake admin:create["name","email","password"]
+```
+
+**Note:** All of the above arguments are optional and if you don’t specify an argument it will be replaced with a default value.
+
+Once the command has finished it will print the account’s email and password.
+
+![Greenlight Administrator Account Create](/images/greenlight/admin_account_create.png)
+
+### Accessing the Administrator Panel
+
+Once you are logged in as an Administrator, you will notice a new item in the Account Dropdown titled **Organization**.
+
+![Greenlight Administrator Access](/images/greenlight/admin_access.png)
+
+### Managing Users
+
+Through the Manage Users tab, Administrators are able to view and search for all user accounts that have been created. 
+
+The search box can be used to filter based on Name, Username and Authenticator.
+
+Administrators are also able to edit each account by clicking on the vertical ellipsis.
+
+![Greenlight Administrator Manage Users](/images/greenlight/admin_manage_users.png)
+
+**Promoting Accounts**
+
+To promote an account from a User to an Administrator, select Promote to Admin from the Account Dropdown.
+
+**Demoting Accounts**
+
+To demote an account from an Administrator to a User, select Demote to User from the Account Dropdown.
+
+**Deleting Accounts**
+
+To delete an account, select Delete from the Account Dropdown. 
+
+While this removes the account from Greenlight the user will still be able to sign up to Greenlight using the same email in the future.
+
+**Banning Accounts**
+
+To ban an account, select Ban User from the account dropdown.
+
+This will remove the account from Greenlight and will also prevent the user from signing up using the same email to Greenlight in the future.
+
+**Editing Accounts**
+
+To edit an account, select Edit for the specified user. This will open the edit user view.
+
+From the edit user view, Administrators are able to edit the name, email, default language, and profile picture for the given account.
+
+### Site Branding
+
+Administrators are able to customize Greenlight through the Site Settings Tab.
+
+![Greenlight Administrator Manage Users](/images/greenlight/admin_site_settings.png)
+
+**Change the Branding Image**
+
+To change Greenlight’s Branding Image which is displayed in the top left corner, replace the default image with a URL of your image and click Change Image.
+
+**Change the Primary Colour**
+
+To change Greenlight’s primary colour open the colour palette and select a new primary colour.
+
+The primary colour is the colour that Greenlight uses as a basis for the styling. This includes buttons, links, icons, etc.
+
 
 # Installing on a BigBlueButton Server
 
@@ -197,17 +276,17 @@ First, create the Greenlight directory for its configuration to live in.
 mkdir ~/greenlight && cd ~/greenlight
 ```
 
-Greenlight will read its environment configuration from the `env` file. To generate this file and install the Greenlight Docker image, run:
+Greenlight will read its environment configuration from the `.env` file. To generate this file and install the Greenlight Docker image, run:
 
 ```
-docker run --rm bigbluebutton/greenlight:v2 cat ./sample.env > env
+docker run --rm bigbluebutton/greenlight:v2 cat ./sample.env > .env
 ```
 
 ## 3. Configure Greenlight
 
-If you open the `env` file you'll see that it contains information for all of the Greenlight configuration options. Some of these are mandatory.
+If you open the `.env` file you'll see that it contains information for all of the Greenlight configuration options. Some of these are mandatory.
 
-When you installed in step two, the `env` file was generated at `~/greenlight/env`.
+When you installed in step two, the `.env` file was generated at `~/greenlight/.env`.
 
 ### Generating a Secret Key
 
@@ -217,7 +296,7 @@ Greenlight needs a secret key in order to run in production. To generate this, r
 docker run --rm bigbluebutton/greenlight:v2 bundle exec rake secret
 ```
 
-Inside your `env` file, set the `SECRET_KEY_BASE` option to this key. You don't need to surround it in quotations.
+Inside your `.env` file, set the `SECRET_KEY_BASE` option to this key. You don't need to surround it in quotations.
 
 ### Setting BigBlueButton Credentials
 
@@ -227,17 +306,17 @@ By default, your Greenlight instance will automatically connect to [test-install
 bbb-conf --secret
 ```
 
-In your `env` file, set the `BIGBLUEBUTTON_ENDPOINT` to the URL, and set `BIGBLUEBUTTON_SECRET` to the secret.
+In your `.env` file, set the `BIGBLUEBUTTON_ENDPOINT` to the URL, and set `BIGBLUEBUTTON_SECRET` to the secret.
 
 ### Verifying Configuration
 
-Once you have finished setting the environment variables above in your `env` file, to verify that you configuration is valid, run:
+Once you have finished setting the environment variables above in your `.env` file, to verify that you configuration is valid, run:
 
 ```
-docker run --rm --env-file env bigbluebutton/greenlight:v2 bundle exec rake conf:check
+docker run --rm --env-file .env bigbluebutton/greenlight:v2 bundle exec rake conf:check
 ```
 
-If you have configured an SMTP server in your `env` file, then all four tests must pass before you proceed. If you have not configured an SMTP server, then only the first three tests must pass before you proceed.
+If you have configured an SMTP server in your `.env` file, then all four tests must pass before you proceed. If you have not configured an SMTP server, then only the first three tests must pass before you proceed.
 
 ## 4. Configure Nginx to Route To Greenlight
 
@@ -314,7 +393,7 @@ docker-compose down
 To run Greenlight using `docker run`, from the `~/greenlight` directory, run the following command:
 
 ```
-docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight-v2 bigbluebutton/greenlight:v2
+docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name greenlight-v2 bigbluebutton/greenlight:v2
 ```
 
 The database is saved to the BigBlueButton server so data persists when you restart. This can be found at `~/greenlight/db`.
@@ -329,7 +408,7 @@ docker stop greenlight-v2
 
 # Configuring Greenlight 2.0
 
-Greenlight is a highly configurable application. The various configuration options can be found below. When making a changes to the `env` file, in order for them to take effect you must restart you Greenlight container. For information on how to do this, see [Applying `env` Changes](#applying-env-changes).
+Greenlight is a highly configurable application. The various configuration options can be found below. When making a changes to the `.env` file, in order for them to take effect you must restart you Greenlight container. For information on how to do this, see [Applying `.env` Changes](#applying-env-changes).
 
 ## User Authentication
 
@@ -339,7 +418,7 @@ Greenlight supports three types of user authentication. You can configure any nu
 
 Greenlight has the ability to create accounts on its own. Users can sign up with their name, email and password and use Greenlight's full functionality.
 
-By default, the ability for anyone to create a Greenlight account is enabled. To disable this, set the `ALLOW_GREENLIGHT_ACCOUNTS` option in your `env` file to false. This will **not** delete existing Greenlight accounts, but will prevent new ones from being created.
+By default, the ability for anyone to create a Greenlight account is enabled. To disable this, set the `ALLOW_GREENLIGHT_ACCOUNTS` option in your `.env` file to false. This will **not** delete existing Greenlight accounts, but will prevent new ones from being created.
 
 ### Google OAuth2
 
@@ -371,7 +450,7 @@ First, enable the "Google+ API".
   1. Under "Authorized redirect URIs" enter "http://hostname/b/auth/google/callback" where hostname is your hostname
   1. Click "Create"
 
-A window should open with your OAuth credentials. In this window, copy client ID and client secret to the `env` file so it resembles the following (your credentials will be different).
+A window should open with your OAuth credentials. In this window, copy client ID and client secret to the `.env` file so it resembles the following (your credentials will be different).
 
 ~~~
 GOOGLE_OAUTH2_ID=1093993040802-jjs03khpdl4dfasffq7hj6ansct5.apps.googleusercontent.com
@@ -397,7 +476,7 @@ Next,
   1. Click "Create your Twitter application"
   1. Click "Keys and Access Tokens" tab
 
-You should see a key and secret.  Add the `Consumer Key (API Key)` (not the OwnerID) and `Consumer Secret (API Secret)` to the `env` file (your values will be different).
+You should see a key and secret.  Add the `Consumer Key (API Key)` (not the OwnerID) and `Consumer Secret (API Secret)` to the `.env` file (your values will be different).
 
 ~~~
 TWITTER_ID=SOj8AkIdeqJuP2asfbbGSBk0
@@ -438,7 +517,7 @@ From here take the following steps:
 
     ![](https://d2mxuefqeaa7sj.cloudfront.net/s_862F4C65DCBBF32F66208EA7FF25C153F80CC5FED653F7FCC2E693F7C7577A33_1539201241095_image.png)
 
-    Copy both values into the `env` file:
+    Copy both values into the `.env` file:
 
     ```
       OFFICE365_KEY=df99f6f6-2953-4f3c-b9a1-0b407c1373ba
@@ -449,7 +528,7 @@ From here take the following steps:
 
 ### LDAP Auth
 
-Greenlight is able to authenticate users using an external LDAP server. To connect Greenlight to an LDAP server, you will have to provide values for the environment variables under the 'LDAP Login Provider' section in the `env` file. You need to provide all of the values for LDAP authentication to work correctly.
+Greenlight is able to authenticate users using an external LDAP server. To connect Greenlight to an LDAP server, you will have to provide values for the environment variables under the 'LDAP Login Provider' section in the `.env` file. You need to provide all of the values for LDAP authentication to work correctly.
 
 > `LDAP_SERVER` is the server host.
 
@@ -499,11 +578,7 @@ If you are **not** deploying Greenlight on a BigBlueButton server and want the a
 
 ## Setting a Custom Branding Image
 
-Greenlight provides you with the ability to set the branding image that you see on the left side of the header. By default this is set to the BigBlueButton logo. You can change this by setting the `BRANDING_IMAGE` option in the `env` file to a public URL for a png or JPEG image.
-
-~~~
-BRANDING_IMAGE=https://www.example.com/example.png
-~~~
+See [these instructions](#site-branding). 
 
 ## Adding Terms and Conditions
 
@@ -529,10 +604,10 @@ To upgrade to Greenlight 2.0 from Greenlight 1.0, complete the following steps.
 
 ## 1. Setup the 2.0 Environment
 
-Copy the Greenlight 2.0 sample environment into your env file. If you want to save your Greenlight 1.0 settings, make a copy of the `env` file first. This will also pull the Greenlight 2.0 image.
+Copy the Greenlight 2.0 sample environment into your .env file. If you want to save your Greenlight 1.0 settings, make a copy of the `.env` file first. This will also pull the Greenlight 2.0 image.
 ```
 cd ~/greenlight
-docker run --rm bigbluebutton/greenlight:v2 cat ./sample.env > env
+docker run --rm bigbluebutton/greenlight:v2 cat ./sample.env > .env
 ```
 
 Then follow the steps to [configure Greenlight](#3-configure-greenlight).
@@ -560,16 +635,16 @@ If you have Greenlight 1.0, you may pull the Greenlight 2.0 Docker image when up
 To continue to use Greenlight 1.0, all you need to do is to explicitly specify version 1.0 in the run command. You can do this like so:
 
 ```
-docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight bigbluebutton/greenlight:v1
+docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name greenlight bigbluebutton/greenlight:v1
 ```
 
 This will force Greenlight to use version 1.0. For any other Docker commands relating to the image, make sure you specify the `v1` tag.
 
 # Administration
 
-## Applying `env` Changes
+## Applying `.env` Changes
 
-After you edit the `env` file, you are required to restart Greenlight in order for it to pick up the changes. Ensure you are in the Greenlight directory when restarting Greenlight.
+After you edit the `.env` file, you are required to restart Greenlight in order for it to pick up the changes. Ensure you are in the Greenlight directory when restarting Greenlight.
 
 ### If you ran Greenlight using `docker-compose`
 
@@ -597,7 +672,7 @@ docker rm greenlight-v2
 bring back up Greenlight using:
 
 ```
-docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name greenlight-v2 bigbluebutton/greenlight:v2
+docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name greenlight-v2 bigbluebutton/greenlight:v2
 ```
 
 ## Updating Greenlight
@@ -662,7 +737,7 @@ To begin, start by [Installing Docker](https://docs.docker.com/install/linux/doc
 ### Setting up with Docker
 1. Enter the `~/greenlight` directory
 2. Run the following command to set up the environment:
-  `cp sample.env env`
+  `cp sample.env .env`
 
 
 3. Create a docker image by running the following (**image name** can be any name of your choosing):
@@ -694,7 +769,7 @@ You can verify if you have docker compose installed by running:
 ### Starting up using `docker run`
 1. Start the server by beginning a docker run (**name** can be any name of your choosing):
   ```
-  docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file env --name <name> <image name>
+  docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name <name> <image name>
   ```
 
 
@@ -901,4 +976,4 @@ At this stage, there are no more problems with the “setup” of the app and fu
 ### Changes not appearing
 If you made changes to the code and are running a docker container from a docker image, you will need to **rebuild** the image to see changes appear.
 
-In the case of environment related changes (modifying the `env` file), you will only need to restart the container.
+In the case of environment related changes (modifying the `.env` file), you will only need to restart the container.
