@@ -32,7 +32,9 @@ moderatorsJoinViaHTML5Client=true
 
 ## Restrict access to specific ports
 
-If your BigBlueButton server is publically available on the internet, for increased security, you should restrict access only to the following ports:
+If your server is behind a firewall already -- such as running within your company or on an EC2 instance behind a Amazon Security Group -- and the firewall is enforcing the above restrictions, you don't a second firewall and can skip this section.
+
+If your BigBlueButton server is publically available on the internet, then, for increased security, you should restrict access only to the following needed ports:
 
   * TCP/IP port 22 for SSH
   * TCP/IP port 80 for HTTP
@@ -40,9 +42,7 @@ If your BigBlueButton server is publically available on the internet, for increa
   * TCP/IP port 1935 for RTMP (only needed if Flash client is required)
   * UDP ports 16384 to 32768 for media connections
 
-By default, a Ubuntu 16.04 server does not have any firewall in place: all ports are externally accessible.  Using Ubuntu's uncompliated firewall `ufw`, you can restrict access to the above ports using the commands below.
-
-Note: if you have configured `sshd` (the OpenSSH daemon) to use a different port than 22, then change the command `ufw allow OpenSSH` to `ufw allow <port>/tcp` where `<port>` is the port in use by `sshd`.  You can see which ports are in use by `sshd` using the command `# netstat -antp | grep sshd`.  For example, in the output below `netstat` shows `sshd` listening to the standard port 22.
+Note: if you have configured `sshd` (the OpenSSH daemon) to use a different port than 22, then before running the commands below, change `ufw allow OpenSSH` to `ufw allow <port>/tcp` where `<port>` is the port in use by `sshd`.  You can see the listening port for `sshd` using the command `# netstat -antp | grep sshd`.  Here the command shows `sshd` listening to the standard port 22.
 
 ~~~
 # netstat -antp | grep sshd
@@ -50,9 +50,7 @@ tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      
 tcp6       0      0 :::22                   :::*                    LISTEN      1739/sshd       
 ~~~
 
-If your server is behind a firewall already -- such as running within your company or on an EC2 instance behind a Amazon Security Group -- and the firewall is enforcing the above restrictions, you don't need to use `ufw`: your server is already protected by a firewall.
-
-To restrict access to your BigBlueButton server, enter the following commands:
+To restrict access to only the needed ports for BigBlueButton, use the following commands:
 
 ~~~
 apt-get install -y ufw
@@ -64,6 +62,8 @@ ufw --force enable
 ~~~
 
 These `ufw` firewall rules will be automatically re-applied on server reboot.
+
+
 
 
 ## Extract the shared secret
