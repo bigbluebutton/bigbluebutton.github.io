@@ -3,7 +3,6 @@ layout: page
 title: "Customize"
 category: greenlight
 date: 2019-04-16 16:29:25
-# redirect_from: "/install/Green Light.html"
 ---
 
 # Customizing Green Light
@@ -22,7 +21,7 @@ To run Green Light without Docker requires having server with ruby on rails inst
    git clone https://github.com/<GitHub_Username>/greenlight.git
    ~~~
 
-1. Next, enter the `Green Light` directory and copy the `sample.env` file to `.env` (this creates a default configuration file):
+1. Next, enter the `greenlight` directory and copy the `sample.env` file to `.env` (this creates a default configuration file):
 
    ~~~
    cd greenlight

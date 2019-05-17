@@ -3,7 +3,6 @@ layout: page
 title: "Install"
 category: greenlight
 date: 2019-04-16 16:29:25
-# redirect_from: "/install/Green Light.html"
 ---
 
 # Installing on a BigBlueButton Server
@@ -165,9 +164,8 @@ If you wish to extract the logs from the docker container and save them to the B
 Then when you want to stop the docker container, run:
 
 ```
-docker stop Green Light-v2
+docker stop greenlight-v2
 ```
-
 
 # Updating Green Light
 
