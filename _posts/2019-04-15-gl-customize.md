@@ -3,7 +3,6 @@ layout: page
 title: "Customize"
 category: greenlight
 date: 2019-04-16 16:29:25
-# redirect_from: "/install/Green Light.html"
 ---
 
 # Customizing Green Light
@@ -22,10 +21,10 @@ To run Green Light without Docker requires having server with ruby on rails inst
    git clone https://github.com/<GitHub_Username>/Greenlight.git
    ~~~
 
-1. Next, enter the `Green Light` directory and copy the `sample.env` file to `.env` (this creates a default configuration file):
+1. Next, enter the `greenlight` directory and copy the `sample.env` file to `.env` (this creates a default configuration file):
 
    ~~~
-   cd Green Light
+   cd greenlight
    cp sample.env .env
    ~~~
   
@@ -44,7 +43,7 @@ To set up a docker container which can run a local version of Green Light, there
 To begin, start by [Installing Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/), and ensure you are on an administrative terminal.
 
 ### Setting up with Docker
-1. Enter the `~/Green Light` directory
+1. Enter the `~/greenlight` directory
 2. Run the following command to set up the environment:
   `cp sample.env .env`
 
@@ -64,7 +63,7 @@ You can verify if you have docker compose installed by running:
 `docker-compose -v`
 
 
-1. Enter the `~/Green Light` directory
+1. Enter the `~/greenlight` directory
 2. Run the following command to start the server:
     ```
     docker-compose up -d
@@ -224,7 +223,7 @@ Sometimes there are missteps and incompatibility issues when setting up applicat
 The best way for determining the root cause of issues in your Green Light application is to check the logs.
 
 ### If you’re running Ruby on Rails
-The logs should be located under `app/log`from the `~/Green Light` directory.
+The logs should be located under `app/log`from the `~/greenlight` directory.
 
 Depending on whether you are running on development or production, you may need to check either:
 
@@ -232,7 +231,7 @@ Depending on whether you are running on development or production, you may need 
 2. `app/log/production.log`
 
 ### If you’re running with Docker
-Docker is always running on a production environment, so the logs will be located in `log/production.log` from the `~/Green Light` directory.
+Docker is always running on a production environment, so the logs will be located in `log/production.log` from the `~/greenlight` directory.
 
 ## Common issues with Running Ruby on Rails
 

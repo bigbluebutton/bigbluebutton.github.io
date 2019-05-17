@@ -3,7 +3,6 @@ layout: page
 title: "Install"
 category: greenlight
 date: 2019-04-16 16:29:25
-# redirect_from: "/install/Green Light.html"
 ---
 
 # Installing on a BigBlueButton Server
@@ -35,27 +34,27 @@ docker -v
 First, create the Green Light directory for its configuration to live in.
 
 ```
-mkdir ~/Green Light && cd ~/Green Light
+mkdir ~/greenlight && cd ~/greenlight
 ```
 
 Green Light will read its environment configuration from the `.env` file. To generate this file and install the Green Light Docker image, run:
 
 ```
-docker run --rm bigbluebutton/Green Light:v2 cat ./sample.env > .env
+docker run --rm bigbluebutton/greenlight:v2 cat ./sample.env > .env
 ```
 
 ## 3. Configure Green Light
 
 If you open the `.env` file you'll see that it contains information for all of the Green Light configuration options. Some of these are mandatory.
 
-When you installed in step two, the `.env` file was generated at `~/Green Light/.env`.
+When you installed in step two, the `.env` file was generated at `~/greenlight/.env`.
 
 ### Generating a Secret Key
 
 Green Light needs a secret key in order to run in production. To generate this, run:
 
 ```
-docker run --rm bigbluebutton/Green Light:v2 bundle exec rake secret
+docker run --rm bigbluebutton/greenlight:v2 bundle exec rake secret
 ```
 
 Inside your `.env` file, set the `SECRET_KEY_BASE` option to this key. You don't need to surround it in quotations.
@@ -75,7 +74,7 @@ In your `.env` file, set the `BIGBLUEBUTTON_ENDPOINT` to the URL, and set `BIGBL
 Once you have finished setting the environment variables above in your `.env` file, to verify that you configuration is valid, run:
 
 ```
-docker run --rm --env-file .env bigbluebutton/Green Light:v2 bundle exec rake conf:check
+docker run --rm --env-file .env bigbluebutton/greenlight:v2 bundle exec rake conf:check
 ```
 
 If you have configured an SMTP server in your `.env` file, then all four tests must pass before you proceed. If you have not configured an SMTP server, then only the first three tests must pass before you proceed.
@@ -85,10 +84,10 @@ If you have configured an SMTP server in your `.env` file, then all four tests m
 Green Light will be configured to deploy at the `/b` subdirectory. This is necessary so it doesn't conflict with the other BigBlueButton components. The Nginx configuration for this subdirectory is stored in the Green Light image. To add this configuration file to your BigBlueButton server, run:
 
 ```
-docker run --rm bigbluebutton/Green Light:v2 cat ./Green Light.nginx | sudo tee /etc/bigbluebutton/nginx/Green Light.nginx
+docker run --rm bigbluebutton/greenlight:v2 cat ./greenlight.nginx | sudo tee /etc/bigbluebutton/nginx/greenlight.nginx
 ```
 
-Verify that the Nginx configuration file (`/etc/bigbluebutton/nginx/Green Light.nginx`) is in place. If it is, restart Nginx so it picks up the new configuration.
+Verify that the Nginx configuration file (`/etc/bigbluebutton/nginx/greenlight.nginx`) is in place. If it is, restart Nginx so it picks up the new configuration.
 
 ```
 systemctl restart nginx
@@ -124,13 +123,13 @@ Before you continue, verify that you have `docker-compose` installed by running:
 docker-compose -v
 ```
 
-Next, you should copy the `docker-compose.yml` file from the Green Light image in to `~/Green Light` directory. To do this, run:
+Next, you should copy the `docker-compose.yml` file from the Green Light image in to `~/greenlight` directory. To do this, run:
 
 ```
-docker run --rm bigbluebutton/Green Light:v2 cat ./docker-compose.yml > docker-compose.yml
+docker run --rm bigbluebutton/greenlight:v2 cat ./docker-compose.yml > docker-compose.yml
 ```
 
-Once you have this file, from the `~/Green Light` directory, start the application using:
+Once you have this file, from the `~/greenlight` directory, start the application using:
 
 ```
 docker-compose up -d
@@ -138,9 +137,9 @@ docker-compose up -d
 
 This will start Green Light, and you should be able to access it at `https://<hostname>/b`.
 
-The database is saved to the BigBlueButton server so data persists when you restart. This can be found at `~/Green Light/db`.
+The database is saved to the BigBlueButton server so data persists when you restart. This can be found at `~/greenlight/db`.
 
-All of the logs from the application are also saved to the BigBlueButton server, which can be found at `~/Green Light/logs`.
+All of the logs from the application are also saved to the BigBlueButton server, which can be found at `~/greenlight/logs`.
 
 If you don't wish for either of these to persist, simply remove the volumes from the `docker-compose.yml` file.
 
@@ -152,20 +151,20 @@ docker-compose down
 
 ### Using `docker run`
 
-To run Green Light using `docker run`, from the `~/Green Light` directory, run the following command:
+To run Green Light using `docker run`, from the `~/greenlight` directory, run the following command:
 
 ```
-docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name Green Light-v2 bigbluebutton/Green Light:v2
+docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name greenlight-v2 bigbluebutton/greenlight:v2
 ```
 
-The database is saved to the BigBlueButton server so data persists when you restart. This can be found at `~/Green Light/db`.
+The database is saved to the BigBlueButton server so data persists when you restart. This can be found at `~/greenlight/db`.
 
 If you wish to extract the logs from the docker container and save them to the BigBlueButton server, add `-v $(pwd)/log:/usr/src/app/log` to the `docker run` command.
 
 Then when you want to stop the docker container, run:
 
 ```
-docker stop Green Light-v2
+docker stop greenlight-v2
 ```
 
 # Configuring Green Light 2.0
@@ -180,7 +179,7 @@ Green Light supports three types of user authentication. You can configure any n
 
 Green Light has the ability to create accounts on its own. Users can sign up with their name, email and password and use Green Light's full functionality.
 
-By default, the ability for anyone to create a Green Light account is enabled. To disable this, set the `ALLOW_Green Light_ACCOUNTS` option in your `.env` file to false. This will **not** delete existing Green Light accounts, but will prevent new ones from being created.
+By default, the ability for anyone to create a Green Light account is enabled. To disable this, set the `ALLOW_GREENLIGHT_ACCOUNTS` option in your `.env` file to false. This will **not** delete existing Green Light accounts, but will prevent new ones from being created.
 
 ### Google OAuth2
 
@@ -333,7 +332,7 @@ By default Green Light is deployed to the `/b` sub directory. If you are running
 If you with to use a relative root other than `/b`, you can do the following:
 
 1. Change the `RELATIVE_ROOT_URL` environment variable.
-1. Update the `/etc/bigbluebutton/nginx/Green Light.nginx` file to reflect the new relative root.
+1. Update the `/etc/bigbluebutton/nginx/greenlight.nginx` file to reflect the new relative root.
 1. Restart Nginx and the Green Light server.
 
 If you are **not** deploying Green Light on a BigBlueButton server and want the application to run at root, simply set the `RELATIVE_ROOT_URL` to be blank.
@@ -348,7 +347,7 @@ Green Light allows you to add terms and conditions to the application. By adding
 
 The `terms.md` file is a [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) file, so you can style your terms and conditions as you wish.
 
-To add terms and conditions to your docker container, create a `terms.md` file in the `~/Green Light` directory. Then, add the following volume to your Green Light run command.
+To add terms and conditions to your docker container, create a `terms.md` file in the `~/greenlight` directory. Then, add the following volume to your Green Light run command.
 
 `-v $(pwd)/terms.md:/usr/src/app/config/terms.md`
 
@@ -358,7 +357,7 @@ If you are running Green Light using the `docker-compose.yml` file, add the foll
 
 # Upgrading from Green Light 1.0
 
-If you have [Green Light 1.0](/Green Light-v1.html) installed on a BigBlueButton server, you don't have to do a complete new install to install Green Light 2.0, although you can if you'd like.
+If you have [Green Light 1.0](/greenlight-v1.html) installed on a BigBlueButton server, you don't have to do a complete new install to install Green Light 2.0, although you can if you'd like.
 
 Before upgrading, keep in mind that [you cannot move over your data from Green Light 1.0 to 2.0](#can-i-copy-over-my-old-Green Light-data). If you aren't okay with losing this data, do **not** upgrade.
 
@@ -368,17 +367,17 @@ To upgrade to Green Light 2.0 from Green Light 1.0, complete the following steps
 
 Copy the Green Light 2.0 sample environment into your .env file. If you want to save your Green Light 1.0 settings, make a copy of the `.env` file first. This will also pull the Green Light 2.0 image.
 ```
-cd ~/Green Light
-docker run --rm bigbluebutton/Green Light:v2 cat ./sample.env > .env
+cd ~/greenlight
+docker run --rm bigbluebutton/greenlight:v2 cat ./sample.env > .env
 ```
 
 Then follow the steps to [configure Green Light](#3-configure-Green Light).
 
 ## 2. Remove the Existing Database
 
-Backup your existing database, which is stored at `~/Green Light/db/production/production.sqlite3`.
+Backup your existing database, which is stored at `~/greenlight/db/production/production.sqlite3`.
 
-Then, remove the database directory (`~/Green Light/db`). When you first start Green Light 2.0, it will generate a new database.
+Then, remove the database directory (`~/greenlight/db`). When you first start Green Light 2.0, it will generate a new database.
 
 ```
 rm -rf db/
@@ -397,7 +396,7 @@ If you have Green Light 1.0, you may pull the Green Light 2.0 Docker image when 
 To continue to use Green Light 1.0, all you need to do is to explicitly specify version 1.0 in the run command. You can do this like so:
 
 ```
-docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name Green Light bigbluebutton/Green Light:v1
+docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name greenlight bigbluebutton/greenlight:v1
 ```
 
 This will force Green Light to use version 1.0. For any other Docker commands relating to the image, make sure you specify the `v1` tag.
@@ -406,7 +405,7 @@ This will force Green Light to use version 1.0. For any other Docker commands re
 
 ## Applying `.env` Changes
 
-After you edit the `.env` file, you are required to restart Green Light in order for it to pick up the changes. Ensure you are in the Green Light directory when restarting Green Light.
+After you edit the `.env` file, you are required to restart Green Light in order for it to pick up the changes. Ensure you are in the `greenlight` directory when restarting Green Light.
 
 ### If you ran Green Light using `docker-compose`
 
@@ -434,7 +433,7 @@ docker rm Green Light-v2
 bring back up Green Light using:
 
 ```
-docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name Green Light-v2 bigbluebutton/Green Light:v2
+docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name Green Light-v2 bigbluebutton/greenlight:v2
 ```
 
 ## Updating Green Light
@@ -442,16 +441,16 @@ docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/s
 To update Green Light, all you need to do is pull the latest image from [Dockerhub](https://hub.docker.com/).
 
 ```
-docker pull bigbluebutton/Green Light:v2
+docker pull bigbluebutton/greenlight:v2
 ```
 
 Then, [restart Green Light](#applying-env-changes).
 
 # Looking for the old Green Light 1.0 docs?
 
-The old version of Green Light has been renamed to Green Light Legacy. It is still available on GitHub under the [v1 branch](https://github.com/bigbluebutton/Greenlight/tree/v1), although we highly suggest using the latest version of Green Light.
+The old version of Green Light has been renamed to Green Light Legacy. It is still available on GitHub under the [v1 branch](https://github.com/bigbluebutton/greenlight/tree/v1), although we highly suggest using the latest version of Green Light.
 
-You can find the old documentation for Green Light 1.0 [here](/Green Light-v1.html).
+You can find the old documentation for Green Light 1.0 [here](/greenlight-v1.html).
 
 # Can I copy over my old Green Light data?
 
@@ -468,17 +467,17 @@ You can run Green Light outside of Docker, which also makes it easy to customize
 To run Green Light without Docker requires having server with ruby on rails installed, checking out the source code, and running Green Light at the command line as a rails application.  We recommend using a [GitHub](https://github.com/) account to checkout the source for Green Light.
 
 1. [Install Ruby on Rails](https://gorails.com/setup/ubuntu/16.04) on your server (Note: Skip the step which has you install rvm, the built-in version of ruby works fine).
-1. Login to your GitHub account (via the web) and fork the [Green Light repository](https://github.com/bigbluebutton/Greenlight).
+1. Login to your GitHub account (via the web) and fork the [Green Light repository](https://github.com/bigbluebutton/greenlight).
 1. Login to your server (via SSH) clone the forked repository with the following command (replace `<GitHub_Username>` with your GitHub username):
 
    ~~~
-   git clone https://github.com/<GitHub_Username>/Greenlight.git
+   git clone https://github.com/<GitHub_Username>/greenlight.git
    ~~~
 
-1. Next, enter the `Green Light` directory and copy the `sample.env` file to `.env` (this creates a default configuration file):
+1. Next, enter the `greenlight` directory and copy the `sample.env` file to `.env` (this creates a default configuration file):
 
    ~~~
-   cd Green Light
+   cd greenlight
    cp sample.env .env
    ~~~
   
@@ -497,7 +496,7 @@ To set up a docker container which can run a local version of Green Light, there
 To begin, start by [Installing Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/), and ensure you are on an administrative terminal.
 
 ### Setting up with Docker
-1. Enter the `~/Green Light` directory
+1. Enter the `~/greenlight` directory
 2. Run the following command to set up the environment:
   `cp sample.env .env`
 
@@ -517,7 +516,7 @@ You can verify if you have docker compose installed by running:
 `docker-compose -v`
 
 
-1. Enter the `~/Green Light` directory
+1. Enter the `~/greenlight` directory
 2. Run the following command to start the server:
     ```
     docker-compose up -d
@@ -556,7 +555,7 @@ To do this, enter the following commands:
 
 A common customization is to modify the default landing page. For a simple change, let's rename the welcome banner to say “Welcome to MyServer”.
 
-The welcome banner is generated by [index.html.erb](https://github.com/bigbluebutton/Greenlight/blob/master/app/views/main/index.html.erb).  To customize this message, open `app/views/main/index.html.erb` in an editor.
+The welcome banner is generated by [index.html.erb](https://github.com/bigbluebutton/greenlight/blob/master/app/views/main/index.html.erb).  To customize this message, open `app/views/main/index.html.erb` in an editor.
 
 ~~~erb
 <%
@@ -587,7 +586,7 @@ The welcome banner is generated by [index.html.erb](https://github.com/bigbluebu
     <div class="row">
       <div class="col-md-12 col-sm-12 text-center">
         <h1 id="main-text" class="display-4 mb-4"> <%= t("landing.welcome").html_safe %></h1>
-        <p class="lead offset-lg-2 col-lg-8 col-sm-12 "><%= t("landing.about", href: link_to(t("Green Light"), "https://bigbluebutton.org/2018/07/09/Green Light-2-0/", target: "_blank")).html_safe %></p>
+        <p class="lead offset-lg-2 col-lg-8 col-sm-12 "><%= t("landing.about", href: link_to(t("Green Light"), "https://bigbluebutton.org/2018/07/09/greenlight-2-0/", target: "_blank")).html_safe %></p>
         <%= link_to "https://youtu.be/Hso8yLzkqj8", target: "_blank" do %>
           <h4><%= t("landing.video") %> <i class="far fa-play-circle ml-1"></i></h4>
         <% end %>
@@ -677,7 +676,7 @@ Sometimes there are missteps and incompatibility issues when setting up applicat
 The best way for determining the root cause of issues in your Green Light application is to check the logs.
 
 ### If you’re running Ruby on Rails
-The logs should be located under `app/log`from the `~/Green Light` directory.
+The logs should be located under `app/log`from the `~/greenlight` directory.
 
 Depending on whether you are running on development or production, you may need to check either:
 
@@ -685,7 +684,7 @@ Depending on whether you are running on development or production, you may need 
 2. `app/log/production.log`
 
 ### If you’re running with Docker
-Docker is always running on a production environment, so the logs will be located in `log/production.log` from the `~/Green Light` directory.
+Docker is always running on a production environment, so the logs will be located in `log/production.log` from the `~/greenlight` directory.
 
 ## Common issues with Running Ruby on Rails
 
