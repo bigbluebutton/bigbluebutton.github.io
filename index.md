@@ -7,27 +7,31 @@ title: "BigBlueButton"
   <img src="/images/logo.png"/>
 </p><br>
 
-**BigBlueButton** is an open source web conferencing system for online learning.  The goal of BigBlueButton is to enable instructors to engage remote student in a high-quality online learning experience.  
+**BigBlueButton** is an open source web conferencing system for online learning.  
 
-<p align="center">
-  <img src="/images/20-screenshot.png"/>
-</p><br>
-
-BigBlueButton provides all the core capabilities you expect in a web conferencing system.  It provides real-time sharing of 
+At its core, BigBlueButton provides all the core capabilities you expect in a web conferencing system.  It loads within the browser (no download required), and enables real-time sharing of
 
   * audio
   * video
   * presentation
   * screen
 
-BigBlueButton can record the content of each for later playback.  BigBlueButton is especially suited for on-line learning and focuses on the following use caes:
+The follwoing screen shot was taken from our demo server at [https://demo.bigbluebutton.org](https://demo.bigbluebutton.org)).  Anyone in the world can setup a free acount to try out BigBlueButton.
+
+<p align="center">
+  <img src="/images/22-overview-2.png"/>
+</p><br>
+
+BigBlueButton uses web real-time communications (webRTC) for sharing of media (audio, video, and screen).  We recommend using Chrome or FireFox: bboth of these browser provide excellent support for webRTC.
+
+The goal of the BigBlueButton project is to enable instructors to engage remote student in a high-quality online learning experience.   We designed BigBlueButton for the following use cases:
 
   1. tutoring/virtual office hours
   1. flipped classroom
   1. student collaboration
   1. full online classes
 
-  BigBlueButton enables you to engage users through:
+For online learning, BigBlueButton gives you many ways to engage students, including 
 
   * chat (public and private)
   * multi-user whiteboard
@@ -36,11 +40,11 @@ BigBlueButton can record the content of each for later playback.  BigBlueButton 
   * polling
   * breakout rooms
 
-BigBlueButton is compatible with JAWS screen reader (see our [accessibility statement](https://bigbluebutton.org/accessibility/)).
+BigBlueButton can record your session for later playback.  To support students with accessibility needs, BigBlueButton is compatible with JAWS screen reader (see our [accessibility statement](https://bigbluebutton.org/accessibility/)).  
 
-BigBlueButton is an [open source](http://github.com/bigbluebutton/bigbluebutton) project licensed under the LGPL license.  If you are a developer you are free (and welcome) to build upon our project for your needs.
+BigBlueButton is [open source](http://github.com/bigbluebutton/bigbluebutton) under the LGPL license.  If you are a developer you are free (and welcome) to build upon our project for your needs.  If you are familiar with Linux, you are (more than) welcome to setup your own BigBlueButton server (see linmks below).
 
-This documentation site is for administrators and developers who want to setup a BigBlueButton server, customize it, and integrate it with existing applications using our API. If you are an end-user (instructor or teacher) and interested in how to use BigBlueButton, visit [bigbluebutton.org](http://bigbluebutton.org). 
+This site contains the project's documentation.  It is written for administrators and developers who want to setup a BigBlueButton server, customize it, and integrate it with existing applications using our API. If you are an end-user (instructor or teacher) and interested in how to use BigBlueButton, visit [bigbluebutton.org](http://bigbluebutton.org). 
 
 ## Two types of users
 
@@ -75,16 +79,24 @@ The BigBlueButton project is managed by a core group of [committers](/support/fa
 
 ## Latest Release
 
-The latest release is BigBlueButton 2.0. See the [overview](/overview/overview.html), [install](/install/install.html), and [architecture](/overview/architecture.html) documentation.
+The latest version of BigBlueButton is BigBlueButton 2.2-beta which features a pure HTML5 client.  See [overview](/2.2/overview.html) and [install](/2.2/install.html).
 
-We have a beta release of BigBlueButton 2.2 which features a pure HTML5 client.  See [overview](/2.2/overview.html) and [install](/2.2/install.html).
+Overview for Viewers (click image below to watch YouTube video):
 
 <p align="center">
-  <a href="http://www.youtube.com/watch?feature=player_embedded&v=NQPrdc-W-6A" target="_blank"><img src="http://img.youtube.com/vi/NQPrdc-W-6A/0.jpg" alt="Overview of BigBlueButton 2.0" width="480" height="360" border="10" /></a>
+  <a href="https://www.youtube.com/watch?feature=player_embedded&v=uYYnryIM0Uw" target="_blank"><img src="http://img.youtube.com/vi/uYYnryIM0Uw/0.jpg" alt="Overview of BigBlueButton 2.2 for viewers" width="480" height="360" border="10" /></a>
+</p>
+
+Overview for Moderators/Presenters (click image below to watch YouTube video):
+
+<p align="center">
+  <a href="https://www.youtube.com/watch?feature=player_embedded&v=Q2tG2SS4gXA" target="_blank"><img src="http://img.youtube.com/vi/Q2tG2SS4gXA/0.jpg" alt="Overview of BigBlueButton 2.2 for moderators/presenters" width="480" height="360" border="10" /></a>
 </p>
 
 
-### Helping the project
+The latest release is BigBlueButton 2.0. See the [overview](/overview/overview.html), [install](/install/install.html), and [architecture](/overview/architecture.html) documentation.
+
+### Spreading the word
 
 If you use BigBlueButton and find it worthwhile, let other know.  Blog about it, tweet about it, upload a video to YouTube, etc.  Also, we welcome developers who want to [help improve BigBlueButton](/faq.html#contributing-to-bigbluebutton).  You'll find the more you give, the more you get back.
 
