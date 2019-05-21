@@ -7,13 +7,13 @@ date: 2019-04-16 16:29:25
 
 # Installing on a BigBlueButton Server
 
-To make Green Light as easy to install as possible, we've created a Docker image that wraps the application. It is **highly** recommended that you use Docker when install Green Light on a BigBlueButton server. You can install Green Light without Docker (see [Green Light without Docker](gl-customize.html#customizing-green-light)).
+To make Greenlight as easy to install as possible, we've created a Docker image that wraps the application. It is **highly** recommended that you use Docker when install Greenlight on a BigBlueButton server. You can install Greenlight without Docker (see [Greenlight without Docker](gl-customize.html#customizing-green-light)).
 
 You should run all commands in this section as `root` on your BigBlueButton server.
 
 ## BigBlueButton Server Requirements
 
-Before you install Green Light, you must have a BigBlueButton server to install it on. This server must:
+Before you install Greenlight, you must have a BigBlueButton server to install it on. This server must:
 
 * have a version of BigBlueButton 2.0 (or greater).
 * have a fully qualified hostname.
@@ -29,29 +29,29 @@ Before moving onto the next step, verify that Docker is installed by running:
 docker -v
 ```
 
-## 2. Install Green Light
+## 2. Install Greenlight
 
-First, create the Green Light directory for its configuration to live in.
+First, create the Greenlight directory for its configuration to live in.
 
 ```
 mkdir ~/greenlight && cd ~/greenlight
 ```
 
-Green Light will read its environment configuration from the `.env` file. To generate this file and install the Green Light Docker image, run:
+Greenlight will read its environment configuration from the `.env` file. To generate this file and install the Greenlight Docker image, run:
 
 ```
 docker run --rm bigbluebutton/greenlight:v2 cat ./sample.env > .env
 ```
 
-## 3. Configure Green Light
+## 3. Configure Greenlight
 
-If you open the `.env` file you'll see that it contains information for all of the Green Light configuration options. Some of these are mandatory.
+If you open the `.env` file you'll see that it contains information for all of the Greenlight configuration options. Some of these are mandatory.
 
 When you installed in step two, the `.env` file was generated at `~/greenlight/.env`.
 
 ### Generating a Secret Key
 
-Green Light needs a secret key in order to run in production. To generate this, run:
+Greenlight needs a secret key in order to run in production. To generate this, run:
 
 ```
 docker run --rm bigbluebutton/greenlight:v2 bundle exec rake secret
@@ -61,7 +61,7 @@ Inside your `.env` file, set the `SECRET_KEY_BASE` option to this key. You don't
 
 ### Setting BigBlueButton Credentials
 
-By default, your Green Light instance will automatically connect to [test-install.blindsidenetworks.com](https://test-install.blindsidenetworks.com) if no BigBlueButton credentials are specified. To set Green Light to connect to your BigBlueButton server (the one it's installed on), you need to give Green Light the endpoint and the secret. To get the credentials, run:
+By default, your Greenlight instance will automatically connect to [test-install.blindsidenetworks.com](https://test-install.blindsidenetworks.com) if no BigBlueButton credentials are specified. To set Greenlight to connect to your BigBlueButton server (the one it's installed on), you need to give Greenlight the endpoint and the secret. To get the credentials, run:
 
 ```
 bbb-conf --secret
@@ -79,9 +79,9 @@ docker run --rm --env-file .env bigbluebutton/greenlight:v2 bundle exec rake con
 
 If you have configured an SMTP server in your `.env` file, then all four tests must pass before you proceed. If you have not configured an SMTP server, then only the first three tests must pass before you proceed.
 
-## 4. Configure Nginx to Route To Green Light
+## 4. Configure Nginx to Route To Greenlight
 
-Green Light will be configured to deploy at the `/b` subdirectory. This is necessary so it doesn't conflict with the other BigBlueButton components. The Nginx configuration for this subdirectory is stored in the Green Light image. To add this configuration file to your BigBlueButton server, run:
+Greenlight will be configured to deploy at the `/b` subdirectory. This is necessary so it doesn't conflict with the other BigBlueButton components. The Nginx configuration for this subdirectory is stored in the Greenlight image. To add this configuration file to your BigBlueButton server, run:
 
 ```
 docker run --rm bigbluebutton/greenlight:v2 cat ./greenlight.nginx | sudo tee /etc/bigbluebutton/nginx/greenlight.nginx
@@ -93,9 +93,9 @@ Verify that the Nginx configuration file (`/etc/bigbluebutton/nginx/greenlight.n
 systemctl restart nginx
 ```
 
-This will routes all requests to `https://<hostname>/b` to the Green Light application. If you wish to use a different relative root, you can follow the steps outlined [here](gl-customize.html#using-a-different-relative-root).
+This will routes all requests to `https://<hostname>/b` to the Greenlight application. If you wish to use a different relative root, you can follow the steps outlined [here](gl-customize.html#using-a-different-relative-root).
 
-Optionally, if you wish to have the default landing page at the root of your BigBlueButton server redirect to Green Light, add the following entry to the bottom of `/etc/nginx/sites-available/bigbluebutton` just before the last `}` character.
+Optionally, if you wish to have the default landing page at the root of your BigBlueButton server redirect to Greenlight, add the following entry to the bottom of `/etc/nginx/sites-available/bigbluebutton` just before the last `}` character.
 
 ```
 location = / {
@@ -105,9 +105,9 @@ location = / {
 
 To have this change take effect, you must once again restart Nginx.
 
-## 5. Start Green Light 2.0
+## 5. Start Greenlight 2.0
 
-There are two ways to start the Green Light docker container.
+There are two ways to start the Greenlight docker container.
 * using the `docker run` command.
 * running the prebuilt `docker-compose` file.
 
@@ -123,7 +123,7 @@ Before you continue, verify that you have `docker-compose` installed by running:
 docker-compose -v
 ```
 
-Next, you should copy the `docker-compose.yml` file from the Green Light image in to `~/greenlight` directory. To do this, run:
+Next, you should copy the `docker-compose.yml` file from the Greenlight image in to `~/greenlight` directory. To do this, run:
 
 ```
 docker run --rm bigbluebutton/greenlight:v2 cat ./docker-compose.yml > docker-compose.yml
@@ -135,7 +135,7 @@ Once you have this file, from the `~/greenlight` directory, start the applicatio
 docker-compose up -d
 ```
 
-This will start Green Light, and you should be able to access it at `https://<hostname>/b`.
+This will start Greenlight, and you should be able to access it at `https://<hostname>/b`.
 
 The database is saved to the BigBlueButton server so data persists when you restart. This can be found at `~/greenlight/db`.
 
@@ -151,10 +151,10 @@ docker-compose down
 
 ### Using `docker run`
 
-To run Green Light using `docker run`, from the `~/greenlight` directory, run the following command:
+To run Greenlight using `docker run`, from the `~/greenlight` directory, run the following command:
 
 ```
-docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name Green Light-v2 bigbluebutton/greenlight:v2
+docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name Greenlight-v2 bigbluebutton/greenlight:v2
 ```
 
 The database is saved to the BigBlueButton server so data persists when you restart. This can be found at `~/greenlight/db`.
@@ -167,23 +167,23 @@ Then when you want to stop the docker container, run:
 docker stop greenlight-v2
 ```
 
-# Updating Green Light
+# Updating Greenlight
 
-To update Green Light, all you need to do is pull the latest image from [Dockerhub](https://hub.docker.com/).
+To update Greenlight, all you need to do is pull the latest image from [Dockerhub](https://hub.docker.com/).
 
 ```
 docker pull bigbluebutton/greenlight:v2
 ```
 
-Then, [restart Green Light](gl-customize.html#applying-env-changes).
+Then, [restart Greenlight](gl-customize.html#applying-env-changes).
 
-# Troubleshooting Green Light
+# Troubleshooting Greenlight
 
 Sometimes there are missteps and incompatibility issues when setting up applications.
 
 ## Checking the Logs
 
-The best way for determining the root cause of issues in your Green Light application is to check the logs.
+The best way for determining the root cause of issues in your Greenlight application is to check the logs.
 
 ### If you’re running Ruby on Rails
 The logs should be located under `app/log`from the `~/greenlight` directory.
@@ -255,62 +255,62 @@ See also
   * [Customize](/greenlight/gl-customize.html)
 
 
-# Green Light 1.0
+# Greenlight 1.0
 
-## Upgrading from Green Light 1.0
+## Upgrading from Greenlight 1.0
 
-If you have [Green Light 1.0](/greenlight-v1.html) installed on a BigBlueButton server, you don't have to do a complete new install to install Green Light 2.0, although you can if you'd like.
+If you have [Greenlight 1.0](/greenlight-v1.html) installed on a BigBlueButton server, you don't have to do a complete new install to install Greenlight 2.0, although you can if you'd like.
 
-Before upgrading, keep in mind that [you cannot move over your data from Green Light 1.0 to 2.0](#can-i-copy-over-my-old-green-light-data). If you aren't okay with losing this data, do **not** upgrade.
+Before upgrading, keep in mind that [you cannot move over your data from Greenlight 1.0 to 2.0](#can-i-copy-over-my-old-green-light-data). If you aren't okay with losing this data, do **not** upgrade.
 
-To upgrade to Green Light 2.0 from Green Light 1.0, complete the following steps.
+To upgrade to Greenlight 2.0 from Greenlight 1.0, complete the following steps.
 
 ### 1. Setup the 2.0 Environment
 
-Copy the Green Light 2.0 sample environment into your .env file. If you want to save your Green Light 1.0 settings, make a copy of the `.env` file first. This will also pull the Green Light 2.0 image.
+Copy the Greenlight 2.0 sample environment into your .env file. If you want to save your Greenlight 1.0 settings, make a copy of the `.env` file first. This will also pull the Greenlight 2.0 image.
 ```
 cd ~/greenlight
 docker run --rm bigbluebutton/greenlight:v2 cat ./sample.env > .env
 ```
 
-Then follow the steps to [configure Green Light](#3-configure-Green Light).
+Then follow the steps to [configure Greenlight](#3-configure-Greenlight).
 
 ### 2. Remove the Existing Database
 
 Backup your existing database, which is stored at `~/greenlight/db/production/production.sqlite3`.
 
-Then, remove the database directory (`~/greenlight/db`). When you first start Green Light 2.0, it will generate a new database.
+Then, remove the database directory (`~/greenlight/db`). When you first start Greenlight 2.0, it will generate a new database.
 
 ```
 rm -rf db/
 ```
 
-### 3. Start Green Light 2.0
+### 3. Start Greenlight 2.0
 
-Choose to [start Green Light 2.0](#5-start-Green Light-20) with either `docker-compose` or `docker run`.
+Choose to [start Greenlight 2.0](#5-start-Greenlight-20) with either `docker-compose` or `docker run`.
 
-## Remaining on Green Light 1.0
+## Remaining on Greenlight 1.0
 
-If you have Green Light 1.0, you may pull the Green Light 2.0 Docker image when updating. If you do, you'll see a page similar to this:
+If you have Greenlight 1.0, you may pull the Greenlight 2.0 Docker image when updating. If you do, you'll see a page similar to this:
 
-![Green Light Migration Error](/images/greenlight/gl_migration_error.png)
+![Greenlight Migration Error](/images/greenlight/gl_migration_error.png)
 
-To continue to use Green Light 1.0, all you need to do is to explicitly specify version 1.0 in the run command. You can do this like so:
+To continue to use Greenlight 1.0, all you need to do is to explicitly specify version 1.0 in the run command. You can do this like so:
 
 ```
-docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name Green Light bigbluebutton/greenlight:v1
+docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name Greenlight bigbluebutton/greenlight:v1
 ```
 
-This will force Green Light to use version 1.0. For any other Docker commands relating to the image, make sure you specify the `v1` tag.
+This will force Greenlight to use version 1.0. For any other Docker commands relating to the image, make sure you specify the `v1` tag.
 
-## Looking for the old Green Light 1.0 docs?
+## Looking for the old Greenlight 1.0 docs?
 
-The old version of Green Light has been renamed to Green Light Legacy. It is still available on GitHub under the [v1 branch](https://github.com/bigbluebutton/greenlight/tree/v1), although we highly suggest using the latest version of Green Light.
+The old version of Greenlight has been renamed to Greenlight Legacy. It is still available on GitHub under the [v1 branch](https://github.com/bigbluebutton/greenlight/tree/v1), although we highly suggest using the latest version of Greenlight.
 
-You can find the old documentation for Green Light 1.0 [here](/greenlight-v1.html).
+You can find the old documentation for Greenlight 1.0 [here](/greenlight-v1.html).
 
-## Can I copy over my old Green Light data?
+## Can I copy over my old Greenlight data?
 
-Green Light Legacy uses a much different database schema than that of the current version, so for this reason, it is **not** possible to copy over the data directly.
+Greenlight Legacy uses a much different database schema than that of the current version, so for this reason, it is **not** possible to copy over the data directly.
 
-However, Green Light does allow administrators to seed accounts. In theory, you could seed new accounts based off the data in your existing Green Light database, but some data may be lost.
+However, Greenlight does allow administrators to seed accounts. In theory, you could seed new accounts based off the data in your existing Greenlight database, but some data may be lost.
