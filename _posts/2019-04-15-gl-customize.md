@@ -5,16 +5,16 @@ category: greenlight
 date: 2019-04-16 16:29:25
 ---
 
-# Customizing Green Light
+# Customizing Greenlight
 
-You can run Green Light outside of Docker, which also makes it easy to customize Green Light (such as changing the landing page).
+You can run Greenlight outside of Docker, which also makes it easy to customize Greenlight (such as changing the landing page).
 
-## Running Green Light as a Rails application
+## Running Greenlight as a Rails application
 
-To run Green Light without Docker requires having server with ruby on rails installed, checking out the source code, and running Green Light at the command line as a rails application.  We recommend using a [GitHub](https://github.com/) account to checkout the source for Green Light.
+To run Greenlight without Docker requires having server with ruby on rails installed, checking out the source code, and running Greenlight at the command line as a rails application.  We recommend using a [GitHub](https://github.com/) account to checkout the source for Greenlight.
 
 1. [Install Ruby on Rails](https://gorails.com/setup/ubuntu/16.04) on your server (Note: You'll want to use Ruby v2.5.3).
-1. Login to your GitHub account (via the web) and fork the [Green Light repository](https://github.com/bigbluebutton/greenlight).
+1. Login to your GitHub account (via the web) and fork the [Greenlight repository](https://github.com/bigbluebutton/greenlight).
 1. Login to your server (via SSH) clone the forked repository with the following command (replace `<GitHub_Username>` with your GitHub username):
 
    ~~~
@@ -28,9 +28,9 @@ To run Green Light without Docker requires having server with ruby on rails inst
    cp sample.env .env
    ~~~
   
-If you want to modify the default configuration file, such as enabling authentication using OAuth2, see [Configuring Green Light 2.0](#configuring-green-light-20).  At a minimum you'll need to [Setup the BigBlueButton credentials](gl-install.html#setting-bigbluebutton-credentials).
+If you want to modify the default configuration file, such as enabling authentication using OAuth2, see [Configuring Greenlight 2.0](#configuring-green-light-20).  At a minimum you'll need to [Setup the BigBlueButton credentials](gl-install.html#setting-bigbluebutton-credentials).
 
-With rails installed, Green Light source checked out, and an `.env.` file created, you can now run Green Light locally like any other rails application. To run Green Light, use the following command:
+With rails installed, Greenlight source checked out, and an `.env.` file created, you can now run Greenlight locally like any other rails application. To run Greenlight, use the following command:
 
 ~~~
 bin/rails server --port=3000
@@ -38,8 +38,8 @@ bin/rails server --port=3000
 
 You can test the application by loading the following URL in your browser: [http://localhost:3000](http://localhost:3000).
 
-## Running Green Light on a Docker container
-To set up a docker container which can run a local version of Green Light, there are two options.
+## Running Greenlight on a Docker container
+To set up a docker container which can run a local version of Greenlight, there are two options.
 To begin, start by [Installing Docker](https://docs.docker.com/install/linux/docker-ce/ubuntu/), and ensure you are on an administrative terminal.
 
 ### Setting up with Docker
@@ -56,7 +56,7 @@ To begin, start by [Installing Docker](https://docs.docker.com/install/linux/doc
 
 ### Starting up using `docker compose`
 
-This is the recommended way of running Green Light with a docker image.
+This is the recommended way of running Greenlight with a docker image.
 Start by [installing docker compose](https://docs.docker.com/compose/install/) if you haven’t installed it yet.
 
 You can verify if you have docker compose installed by running:
@@ -83,8 +83,8 @@ You can verify if you have docker compose installed by running:
 
 2. To stop and remove the docker container:
   ```
-  docker stop Green Light-v2
-  docker rm Green Light-v2
+  docker stop Greenlight-v2
+  docker rm Greenlight-v2
   ```
 
 No matter which method you use to start the container, you should now be able to see the landing page through the endpoint [http://0.0.0.0/b/](http://0.0.0.0/b/)
@@ -103,11 +103,11 @@ To do this, enter the following commands:
 
 # Applying `.env` Changes
 
-After you edit the `.env` file, you are required to restart Green Light in order for it to pick up the changes. Ensure you are in the Green Light directory when restarting Green Light.
+After you edit the `.env` file, you are required to restart Greenlight in order for it to pick up the changes. Ensure you are in the Greenlight directory when restarting Greenlight.
 
-## If you ran Green Light using `docker-compose`
+## If you ran Greenlight using `docker-compose`
 
-Bring down Green Light using:
+Bring down Greenlight using:
 
 ```
 docker-compose down
@@ -119,40 +119,40 @@ then, bring it back up.
 docker-compose up -d
 ```
 
-## If you ran Green Light using `docker run`
+## If you ran Greenlight using `docker run`
 
-Stop and remove the Green Light container using:
-
-```
-docker stop Green Light-v2
-docker rm Green Light-v2
-```
-
-bring back up Green Light using:
+Stop and remove the Greenlight container using:
 
 ```
-docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name Green Light-v2 bigbluebutton/greenlight:v2
+docker stop Greenlight-v2
+docker rm Greenlight-v2
 ```
 
-# Configuring Green Light 2.0
+bring back up Greenlight using:
 
-Green Light is a highly configurable application. The various configuration options can be found below. When making a changes to the `.env` file, in order for them to take effect you must restart you Green Light container. For information on how to do this, see [Applying `.env` Changes](#applying-env-changes).
+```
+docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name Greenlight-v2 bigbluebutton/greenlight:v2
+```
+
+# Configuring Greenlight 2.0
+
+Greenlight is a highly configurable application. The various configuration options can be found below. When making a changes to the `.env` file, in order for them to take effect you must restart you Greenlight container. For information on how to do this, see [Applying `.env` Changes](#applying-env-changes).
 
 ## User Authentication
 
-Green Light supports three types of user authentication. You can configure any number of these, and Green Light will dynamically adjust to which ones are configured.
+Greenlight supports three types of user authentication. You can configure any number of these, and Greenlight will dynamically adjust to which ones are configured.
 
-### In Application (Green Light)
+### In Application (Greenlight)
 
-Green Light has the ability to create accounts on its own. Users can sign up with their name, email and password and use Green Light's full functionality.
+Greenlight has the ability to create accounts on its own. Users can sign up with their name, email and password and use Greenlight's full functionality.
 
-By default, the ability for anyone to create a Green Light account is enabled. To disable this, set the `ALLOW_Green Light_ACCOUNTS` option in your `.env` file to false. This will **not** delete existing Green Light accounts, but will prevent new ones from being created.
+By default, the ability for anyone to create a Greenlight account is enabled. To disable this, set the `ALLOW_Greenlight_ACCOUNTS` option in your `.env` file to false. This will **not** delete existing Greenlight accounts, but will prevent new ones from being created.
 
 ### Google OAuth2
 
-You can use your own Google account, but since Green Light will use this account for sending out emails, you may want to create a Google account related to the hostname of your BigBlueButton server.  For example, if your BigBlueButton server is called `example.myserver.com`, you may want to create a Google account called `Green Light_notifications_myserver`.
+You can use your own Google account, but since Greenlight will use this account for sending out emails, you may want to create a Google account related to the hostname of your BigBlueButton server.  For example, if your BigBlueButton server is called `example.myserver.com`, you may want to create a Google account called `Greenlight_notifications_myserver`.
 
-You need a Google account to create an OAuth 2 `CLIENT_ID` and `SECRET`.  The will enable users of Green Light to authenticate with their own Google account (not yours).
+You need a Google account to create an OAuth 2 `CLIENT_ID` and `SECRET`.  The will enable users of Greenlight to authenticate with their own Google account (not yours).
 
 Login to your Google account, and click the following link
 
@@ -160,7 +160,7 @@ Login to your Google account, and click the following link
 
 If you want to see the documentation behind OAuth2 at Google, click the link [https://developers.google.com/identity/protocols/OAuth2](https://developers.google.com/identity/protocols/OAuth2).
 
-![Green Light-google-plus-api](/images/gl-google-plus-api.png)
+![Greenlight-google-plus-api](/images/gl-google-plus-api.png)
 
 First, enable the "Google+ API".
 
@@ -193,7 +193,7 @@ GOOGLE_OAUTH2_HD=example.com
 
 ### Twitter OAuth2
 
-You need a Twitter account to create an OAuth 2 client ID and client secret. The will enable users of Green Light to authenticate with their own Twitter account (not yours).
+You need a Twitter account to create an OAuth 2 client ID and client secret. The will enable users of Greenlight to authenticate with their own Twitter account (not yours).
 
 Login to your Twitter account, and click the following link: [https://apps.twitter.com/](https://apps.twitter.com/).
 
@@ -213,7 +213,7 @@ TWITTER_SECRET=elxXJZqPVexBFf9ZJsafd4UTSzpr5AVmcH7Si5JzeHQ9th
 
 ### Office365 OAuth2
 
-You will need an Office365 account to create an OAuth 2 key and secret. This will allow Green Light users to authenticate with their own Office365 accounts.
+You will need an Office365 account to create an OAuth 2 key and secret. This will allow Greenlight users to authenticate with their own Office365 accounts.
 
 To begin, head over to the following site and sign in to your Office365 account:
 [https://developer.microsoft.com/en-us/graph](https://developer.microsoft.com/en-us/graph)
@@ -256,7 +256,7 @@ From here take the following steps:
 
 ### LDAP Auth
 
-Green Light is able to authenticate users using an external LDAP server. To connect Green Light to an LDAP server, you will have to provide values for the environment variables under the 'LDAP Login Provider' section in the `.env` file. You need to provide all of the values for LDAP authentication to work correctly.
+Greenlight is able to authenticate users using an external LDAP server. To connect Greenlight to an LDAP server, you will have to provide values for the environment variables under the 'LDAP Login Provider' section in the `.env` file. You need to provide all of the values for LDAP authentication to work correctly.
 
 > `LDAP_SERVER` is the server host.
 
@@ -294,15 +294,15 @@ LDAP authentication takes precedence over all other providers. This means that i
 
 ## Using a Different Relative Root
 
-By default Green Light is deployed to the `/b` sub directory. If you are running Green Light on a BigBlueButton server you must deploy Green Light to a sub directory to avoid conflicts.
+By default Greenlight is deployed to the `/b` sub directory. If you are running Greenlight on a BigBlueButton server you must deploy Greenlight to a sub directory to avoid conflicts.
 
 If you with to use a relative root other than `/b`, you can do the following:
 
 1. Change the `RELATIVE_ROOT_URL` environment variable.
 1. Update the `/etc/bigbluebutton/nginx/greenlight.nginx` file to reflect the new relative root.
-1. Restart Nginx and the Green Light server.
+1. Restart Nginx and the Greenlight server.
 
-If you are **not** deploying Green Light on a BigBlueButton server and want the application to run at root, simply set the `RELATIVE_ROOT_URL` to be blank.
+If you are **not** deploying Greenlight on a BigBlueButton server and want the application to run at root, simply set the `RELATIVE_ROOT_URL` to be blank.
 
 ## Setting a Custom Branding Image
 
@@ -310,15 +310,15 @@ See [these instructions](gl-admin.html#site-branding).
 
 ## Adding Terms and Conditions
 
-Green Light allows you to add terms and conditions to the application. By adding a `terms.md` file to `app/config/` you will enable terms and conditions. This will display a terms and conditions page whenever a user signs up (or logs on without accepting yet). They are required to accept before they can continue to use Green Light.
+Greenlight allows you to add terms and conditions to the application. By adding a `terms.md` file to `app/config/` you will enable terms and conditions. This will display a terms and conditions page whenever a user signs up (or logs on without accepting yet). They are required to accept before they can continue to use Greenlight.
 
 The `terms.md` file is a [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) file, so you can style your terms and conditions as you wish.
 
-To add terms and conditions to your docker container, create a `terms.md` file in the `~/greenlight` directory. Then, add the following volume to your Green Light run command.
+To add terms and conditions to your docker container, create a `terms.md` file in the `~/greenlight` directory. Then, add the following volume to your Greenlight run command.
 
 `-v $(pwd)/terms.md:/usr/src/app/config/terms.md`
 
-If you are running Green Light using the `docker-compose.yml` file, add the following volume:
+If you are running Greenlight using the `docker-compose.yml` file, add the following volume:
 
 `- ./terms.md:/usr/src/app/config/terms.md`
 
@@ -357,7 +357,7 @@ The welcome banner is generated by [index.html.erb](https://github.com/bigbluebu
     <div class="row">
       <div class="col-md-12 col-sm-12 text-center">
         <h1 id="main-text" class="display-4 mb-4"> <%= t("landing.welcome").html_safe %></h1>
-        <p class="lead offset-lg-2 col-lg-8 col-sm-12 "><%= t("landing.about", href: link_to(t("Green Light"), "https://bigbluebutton.org/2018/07/09/greenlight-2-0/", target: "_blank")).html_safe %></p>
+        <p class="lead offset-lg-2 col-lg-8 col-sm-12 "><%= t("landing.about", href: link_to(t("Greenlight"), "https://bigbluebutton.org/2018/07/09/greenlight-2-0/", target: "_blank")).html_safe %></p>
         <%= link_to "https://youtu.be/Hso8yLzkqj8", target: "_blank" do %>
           <h4><%= t("landing.video") %> <i class="far fa-play-circle ml-1"></i></h4>
         <% end %>
@@ -397,9 +397,9 @@ The function `t("landing.welcome")` retrieves the localized version of the label
   landing:
     about: "%{href} is a simple front-end for your BigBlueButton open-source web conferencing server. You can create your own rooms to host sessions, or join others using a short and convenient link."
     welcome: Welcome to BigBlueButton.
-    video: Watch our tutorial on using Green Light
+    video: Watch our tutorial on using Greenlight
     upgrade: Show me how to upgrade to 2.0!
-    version: We've released a new version of Green Light, but your database isn't compatible.
+    version: We've released a new version of Greenlight, but your database isn't compatible.
 ~~~
 
 To change the welcome message, modify the text associated with `landing.welcome` to say "Welcome to MyServer".

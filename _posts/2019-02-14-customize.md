@@ -111,13 +111,13 @@ The default HTML landing page is located in
 Change this page to create your own landing page (and keep a back-up copy of it as it will be overwritten duing package updates to `bbb-conf`).
 
 
-## Use the Green Light front-end
+## Use the Greenlight front-end
 
-BigBlueButton comes with Green Light, a front-end application written in Ruby on Rails that makes it easy for users to create meetings, invite others, start meetings, and manage recordings.
+BigBlueButton comes with Greenlight, a front-end application written in Ruby on Rails that makes it easy for users to create meetings, invite others, start meetings, and manage recordings.
 
 ![greenlight-start](/images/gl-start.png)
 
-For more information see [Installing GreenLight](/install/greenlight-v2.html).
+For more information see [Installing GreenLight](/greenlight/gl-install.html).
 
 ## Enable background music when only one person is in a session
 

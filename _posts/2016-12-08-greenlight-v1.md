@@ -11,7 +11,7 @@ BigBlueButton is an open source web conferencing system for online learning.  Th
 
 # Overview
 
-GreenLight is a super simple front-end for your BigBlueButton server.  At its core, Green Light provides a minimalistic web-based interface that lets users
+GreenLight is a super simple front-end for your BigBlueButton server.  At its core, Greenlight provides a minimalistic web-based interface that lets users
 
    * Create a meeting
    * Invite others to the meeting
