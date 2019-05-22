@@ -9,20 +9,20 @@ title: "BigBlueButton"
 
 **BigBlueButton** is an open source web conferencing system for online learning.  
 
-At its core, BigBlueButton provides all the core capabilities you expect in a web conferencing system.  It loads within the browser (no download required), and enables real-time sharing of
+BigBlueButton provides all the core capabilities you expect in a web conferencing system, including real-time sharing of
 
   * audio
   * video
   * presentation
   * screen
 
-The follwoing screen shot was taken from our demo server at [https://demo.bigbluebutton.org](https://demo.bigbluebutton.org)).  Anyone in the world can setup a free acount to try out BigBlueButton.
+BigBlueButton is a pure HTML5 application.  As such, there is no downloaded, plugin, or extension to install.  Instead, it uses the browser's built-in support for web real-time communications (WebRTC) for sharing of media.  For desktop computers, we recommend Chrome or FireFox as they both provide excellent ssupport for webRTC.  Microsoft recently [announced](https://blogs.windows.com/windowsexperience/2019/04/08/microsoft-edge-preview-builds-the-next-step-in-our-oss-journey/#oddLFwrg6sWEZyXO.97) they are moving Edge to use the Chromium engine as well (yay!).
+
+BigBlueButton implements a responsive interface that run on desktop and mobile devices.  The follwoing screen shot was taken from our demo server at [https://demo.bigbluebutton.org](https://demo.bigbluebutton.org)).  (Anyone can use [https://demo.bigbluebutton.org](https://demo.bigbluebutton.org) to try out BigBlueButton).
 
 <p align="center">
   <img src="/images/22-overview-2.png"/>
 </p><br>
-
-BigBlueButton uses web real-time communications (webRTC) for sharing of media (audio, video, and screen).  We recommend using Chrome or FireFox: bboth of these browser provide excellent support for webRTC.
 
 The goal of the BigBlueButton project is to enable instructors to engage remote student in a high-quality online learning experience.   We designed BigBlueButton for the following use cases:
 

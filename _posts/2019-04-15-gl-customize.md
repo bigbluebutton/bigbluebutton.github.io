@@ -7,11 +7,13 @@ date: 2019-04-16 16:29:25
 
 # Customizing Greenlight
 
-You can run Greenlight outside of Docker, which also makes it easy to customize Greenlight (such as changing the landing page).
+Greenlight is written in Ruby on Rails.  If you know how Ruby on Rails works, you can easily customize Greenlight to your own needs.
+
+The default install instructions will run Greenlight within docker.  To customize Greenlight, you'll want to checkout the source code and run it as a stand-alone Rails application outside of Docker.
 
 ## Running Greenlight as a Rails application
 
-To run Greenlight without Docker requires having server with ruby on rails installed, checking out the source code, and running Greenlight at the command line as a rails application.  We recommend using a [GitHub](https://github.com/) account to checkout the source for Greenlight.
+To run Greenlight without Docker requires setting up a server to run a Ruby on Rails application, checking out the source code, and running Greenlight at the command line.  We recommend using a [GitHub](https://github.com/) account to checkout the source for Greenlight.
 
 1. [Install Ruby on Rails](https://gorails.com/setup/ubuntu/16.04) on your server (Note: You'll want to use Ruby v2.5.3).
 1. Login to your GitHub account (via the web) and fork the [Greenlight repository](https://github.com/bigbluebutton/greenlight).
@@ -28,7 +30,7 @@ To run Greenlight without Docker requires having server with ruby on rails insta
    cp sample.env .env
    ~~~
   
-If you want to modify the default configuration file, such as enabling authentication using OAuth2, see [Configuring Greenlight 2.0](#configuring-green-light-20).  At a minimum you'll need to [Setup the BigBlueButton credentials](gl-install.html#setting-bigbluebutton-credentials).
+If you want to modify the default configuration file, such as enabling authentication using OAuth2, see [Configuring Greenlight 2.0](/greenlight/gl-customize.html#google-oauth2).  At a minimum you'll need to [Setup the BigBlueButton credentials](gl-install.html#setting-bigbluebutton-credentials).
 
 With rails installed, Greenlight source checked out, and an `.env.` file created, you can now run Greenlight locally like any other rails application. To run Greenlight, use the following command:
 
@@ -36,7 +38,7 @@ With rails installed, Greenlight source checked out, and an `.env.` file created
 bin/rails server --port=3000
 ~~~
 
-You can test the application by loading the following URL in your browser: [http://localhost:3000](http://localhost:3000).
+You can test the application by loading the following URL in your browser `http://localhost:3000`.
 
 ## Running Greenlight on a Docker container
 To set up a docker container which can run a local version of Greenlight, there are two options.
@@ -87,7 +89,7 @@ You can verify if you have docker compose installed by running:
   docker rm Greenlight-v2
   ```
 
-No matter which method you use to start the container, you should now be able to see the landing page through the endpoint [http://0.0.0.0/b/](http://0.0.0.0/b/)
+No matter which method you use to start the container, you should now be able to see the landing page through the endpoint `http://0.0.0.0/b`.
 
 
 ## Updating Docker with code changes
@@ -286,7 +288,7 @@ LDAP_PASSWORD=password
 
 If your server is still running you will need to recreate the container for changes to take effect.
 
-See [Applying env Changes](#applying-env-changes) section to enable your new configuration.
+See [Applying `.env` Changes](#applying-env-changes) section to enable your new configuration.
 
 If you are using an ActiveDirectory LDAP server, you must determine the name of your user id parameter to set `LDAP_UID`. It is commonly 'sAMAccountName' or 'UserPrincipalName'.
 
@@ -306,7 +308,7 @@ If you are **not** deploying Greenlight on a BigBlueButton server and want the a
 
 ## Setting a Custom Branding Image
 
-See [these instructions](gl-admin.html#site-branding). 
+You can now setup branding for Greenlight through its [admin interface](gl-admin.html#site-branding). 
 
 ## Adding Terms and Conditions
 
@@ -438,3 +440,8 @@ After configuring Omniauth, you should be able to gain full access to Omniauth s
 
 ![](https://d2mxuefqeaa7sj.cloudfront.net/s_860B5671A1EBC17AA9B4E38FD1C99F6FBD35D15FD13FAFC83B3C452349A53D30_1538074632840_image.png)
 
+See also
+  * [Overview](/greenlight/gl-overview.html)
+  * [Install](/greenlight/gl-install.html)
+  * [Admin Guide](/greenlight/gl-admin.html)
+  * [Customize](/greenlight/gl-customize.html)

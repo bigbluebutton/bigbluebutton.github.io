@@ -11,7 +11,8 @@ BigBlueButton is an open source web conferencing system for online learning. The
 ![Greenlight Landing](/images/greenlight/landing.png)
 <center>(the Greenlight home/landing page.)</center><br>
 
-Greenlight 2.0 (referred hereafter as simply "Greenlight") is a ruby on rails application that provides a simple interface to manage a BigBlueButton session. 
+Greenlight 2.0 (referred hereafter as simply "Greenlight") is a ruby on rails application that provides a simple interface to manage a BigBlueButton session.
+
 
 For the end users, Greenlight provides:
 

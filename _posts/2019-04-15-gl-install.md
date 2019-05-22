@@ -61,7 +61,7 @@ Inside your `.env` file, set the `SECRET_KEY_BASE` option to this key. You don't
 
 ### Setting BigBlueButton Credentials
 
-By default, your Greenlight instance will automatically connect to [test-install.blindsidenetworks.com](https://test-install.blindsidenetworks.com) if no BigBlueButton credentials are specified. To set Greenlight to connect to your BigBlueButton server (the one it's installed on), you need to give Greenlight the endpoint and the secret. To get the credentials, run:
+By default, your Greenlight instance will automatically connect to `test-install.blindsidenetworks.com` if no BigBlueButton credentials are specified. To set Greenlight to connect to your BigBlueButton server (the one it's installed on), you need to give Greenlight the endpoint and the secret. To get the credentials, run:
 
 ```
 bbb-conf --secret
@@ -314,3 +314,10 @@ You can find the old documentation for Greenlight 1.0 [here](/greenlight-v1.html
 Greenlight Legacy uses a much different database schema than that of the current version, so for this reason, it is **not** possible to copy over the data directly.
 
 However, Greenlight does allow administrators to seed accounts. In theory, you could seed new accounts based off the data in your existing Greenlight database, but some data may be lost.
+
+See also
+  * [Overview](/greenlight/gl-overview.html)
+  * [Install](/greenlight/gl-install.html)
+  * [Admin Guide](/greenlight/gl-admin.html)
+  * [Customize](/greenlight/gl-customize.html)
+
