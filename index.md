@@ -16,9 +16,9 @@ BigBlueButton provides all the core capabilities you expect in a web conferencin
   * presentation
   * screen
 
-BigBlueButton is a pure HTML5 application.  As such, there is no downloaded, plugin, or extension to install.  Instead, it uses the browser's built-in support for web real-time communications (WebRTC) for sharing of media.  For desktop computers, we recommend Chrome or FireFox as they both provide excellent ssupport for webRTC.  Microsoft recently [announced](https://blogs.windows.com/windowsexperience/2019/04/08/microsoft-edge-preview-builds-the-next-step-in-our-oss-journey/#oddLFwrg6sWEZyXO.97) they are moving Edge to use the Chromium engine as well (yay!).
+BigBlueButton is a pure HTML5 application.  As such, there is no downloaded, plugin, or extension to install.  Instead, it uses the browser's built-in support for web real-time communications (WebRTC) for sharing of media.  For desktop computers, we recommend Chrome or FireFox as they both provide excellent support for WebRTC.  Microsoft recently [announced](https://blogs.windows.com/windowsexperience/2019/04/08/microsoft-edge-preview-builds-the-next-step-in-our-oss-journey/#oddLFwrg6sWEZyXO.97) they are moving Edge to use the Chromium engine as well (yay!).
 
-BigBlueButton implements a responsive interface that run on desktop and mobile devices.  The follwoing screen shot was taken from our demo server at [https://demo.bigbluebutton.org](https://demo.bigbluebutton.org)).  (Anyone can use [https://demo.bigbluebutton.org](https://demo.bigbluebutton.org) to try out BigBlueButton).
+BigBlueButton implements a responsive interface that run on desktop and mobile devices.  The following screen shot was taken from our demo server at [https://demo.bigbluebutton.org](https://demo.bigbluebutton.org)).  (Anyone can use [https://demo.bigbluebutton.org](https://demo.bigbluebutton.org) to try out BigBlueButton).
 
 <p align="center">
   <img src="/images/22-overview-2.png"/>
@@ -42,7 +42,7 @@ For online learning, BigBlueButton gives you many ways to engage students, inclu
 
 BigBlueButton can record your session for later playback.  To support students with accessibility needs, BigBlueButton is compatible with JAWS screen reader (see our [accessibility statement](https://bigbluebutton.org/accessibility/)).  
 
-BigBlueButton is [open source](http://github.com/bigbluebutton/bigbluebutton) under the LGPL license.  If you are a developer you are free (and welcome) to build upon our project for your needs.  If you are familiar with Linux, you are (more than) welcome to setup your own BigBlueButton server (see linmks below).
+BigBlueButton is [open source](http://github.com/bigbluebutton/bigbluebutton) under the LGPL license.  If you are a developer you are free (and welcome) to build upon our project for your needs.  If you are familiar with Linux, you are (more than) welcome to setup your own BigBlueButton server (see links below).
 
 This site contains the project's documentation.  It is written for administrators and developers who want to setup a BigBlueButton server, customize it, and integrate it with existing applications using our API. If you are an end-user (instructor or teacher) and interested in how to use BigBlueButton, visit [bigbluebutton.org](http://bigbluebutton.org). 
 
@@ -56,14 +56,14 @@ A moderator (typically the instructor) has all the capabilities of a viewer plus
 
 The presenter controls the presentation area.  This means they can upload slides, annotate the current slide with the whiteboard controls, enable/disable multi-user whiteboard, start a poll, and share their screen for all to see.
 
-## Getting started auickly with BigBlueButton
+## Getting started quickly with BigBlueButton
 
 If you are new to BigBlueButton and want to learn more about its capabilities:  
 
   1. Watch the [overview videos](http://bigbluebutton.org/videos) to better understand the capabilities of viewer, moderator, and presenter.
   1. Try out BigBlueButton using our [Demo Server](http://demo.bigbluebutton.org/). 
   1. Join the [BigBlueButton community](https://bigbluebutton.org/support/community/).
-  1. Follow the project on social media: [Twitter](https://twitter.com/bigbluebutton), [FaceBook](https://www.facebook.com/bigbluebutton), or [YouTube](https://www.youtube.com/user/bigbluebuttonshare).
+  1. Follow the project on social media: [Twitter](https://twitter.com/bigbluebutton), [Facebook](https://www.facebook.com/bigbluebutton), or [YouTube](https://www.youtube.com/user/bigbluebuttonshare).
       
 If you want to setup your own BigBlueButton server:
 
