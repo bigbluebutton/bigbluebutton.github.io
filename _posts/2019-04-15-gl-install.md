@@ -154,7 +154,7 @@ docker-compose down
 To run Greenlight using `docker run`, from the `~/greenlight` directory, run the following command:
 
 ```
-docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name Greenlight-v2 bigbluebutton/greenlight:v2
+docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name greenlight-v2 bigbluebutton/greenlight:v2
 ```
 
 The database is saved to the BigBlueButton server so data persists when you restart. This can be found at `~/greenlight/db`.
