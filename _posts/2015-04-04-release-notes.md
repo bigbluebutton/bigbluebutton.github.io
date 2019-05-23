@@ -14,7 +14,7 @@ This release marks the transition from the Flash client to the HTML5 client.
 The new HTML5 requires no downloads, no plugins, and no software installations. It loads within the browser with a single click. The client -- and it's interface -- provides a unified interface across desktop, laptop, chromebook, and mobile devices (iOS 12.2+ and Android 6.0+).  As such, there is no app to install on mobile devices to use BigBlueButton.  For mobile users, the client loads within the Safari browser on iOS and the Chrome browser on Google Chrome.
 
 Major features in this release include:
-  * **Platform** - Pure HTML5 that uses web real-time communication (WebRTC) for sharing audio, video, and screen.
+  * **Platform** - Pure HTML5 that uses web real-time communication (WebRTC) for sharing audio, video, and screen.  No Java required for screen sharing.
 
   * **Features** - The HTML5 client is now in feature parity with all the moderator and presenter functionality of the Flash client except for live closed captioning (under development). 
 
