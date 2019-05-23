@@ -126,14 +126,14 @@ docker-compose up -d
 Stop and remove the Greenlight container using:
 
 ```
-docker stop Greenlight-v2
-docker rm Greenlight-v2
+docker stop greenlight-v2
+docker rm greenlight-v2
 ```
 
 bring back up Greenlight using:
 
 ```
-docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name Greenlight-v2 bigbluebutton/greenlight:v2
+docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name greenlight-v2 bigbluebutton/greenlight:v2
 ```
 
 # Configuring Greenlight 2.0
