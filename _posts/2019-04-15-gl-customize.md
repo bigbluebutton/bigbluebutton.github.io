@@ -171,10 +171,26 @@ docker-compose -v
 Once you have verified that it is installed correctly, create your Docker image by running (**image name** can be any name of your choosing):
 
 ```
-docker build -t <image name> .
+./scripts/image_build.sh <image name> release-v2
 ```
 
-Next, in the `docker-compose.yml` file, edit the entry services->app->image so that it matches the **image name** from above.
+Next, in the `docker-compose.yml` file, replace:
+
+```
+services:
+  app:
+    entrypoint: [bin/start]
+    image: bigbluebutton/greenlight:v2
+```
+
+With
+
+```
+services:
+  app:
+    entrypoint: [bin/start]
+    image: <image name>:release-v2
+```
 
 Finally, from the `~/greenlight` directory, start the application using:
 
@@ -216,7 +232,7 @@ After you edit the `.env` file or make any change to the code, you are required 
 ```
 docker-compose down
 docker image rm <image name>
-docker build -t <image name> .
+./scripts/image_build.sh <image name> release-v2
 docker-compose up -d
 ```
 
