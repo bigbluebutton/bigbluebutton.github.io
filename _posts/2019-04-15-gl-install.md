@@ -7,7 +7,9 @@ date: 2019-04-16 16:29:25
 
 # Installing on a BigBlueButton Server
 
-To make Greenlight as easy to install as possible, we've created a Docker image that wraps the application. It is **highly** recommended that you use Docker when install Greenlight on a BigBlueButton server. You can install Greenlight without Docker (see [Greenlight without Docker](gl-customize.html#customizing-green-light)).
+To make Greenlight as easy to install as possible, we've created a Docker image that wraps the application. It is **highly** recommended that you use Docker when install Greenlight on a BigBlueButton server.
+
+Following this installation process will install Greenlight with the default settings. Through the [Administrator Interface](gl-admin.html), you can customize the Branding Image, Primary Color and other Site Settings. If you would like to check out the Greenlight source code and make changes to it, follow these [installation instructions](gl-customize.html#customizing-greenlight)
 
 You should run all commands in this section as `root` on your BigBlueButton server.
 
@@ -107,15 +109,12 @@ To have this change take effect, you must once again restart Nginx.
 
 ## 5. Start Greenlight 2.0
 
-There are two ways to start the Greenlight docker container.
-* using the `docker run` command.
-* running the prebuilt `docker-compose` file.
-
-We suggest using `docker-compose` because it is easy to manage and saves you remembering an extremely long command, but if you don't wish to install `docker-compose`, you can use `docker run`.
-
-### Using `docker-compose`
+To start the Greenlight Docker containter, you must install `docker-compose`, which simplifies the start and stop process for Docker containers.
 
 Install `docker-compose` by following the steps for installing on Linux in the [Docker documentation](https://docs.docker.com/compose/install/). You may be required to run all `docker-compose` commands using sudo. If you wish to change this, check out [managing docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user).
+
+
+### Using `docker-compose`
 
 Before you continue, verify that you have `docker-compose` installed by running:
 
@@ -139,7 +138,7 @@ This will start Greenlight, and you should be able to access it at `https://<hos
 
 The database is saved to the BigBlueButton server so data persists when you restart. This can be found at `~/greenlight/db`.
 
-All of the logs from the application are also saved to the BigBlueButton server, which can be found at `~/greenlight/logs`.
+All of the logs from the application are also saved to the BigBlueButton server, which can be found at `~/greenlight/log`.
 
 If you don't wish for either of these to persist, simply remove the volumes from the `docker-compose.yml` file.
 
@@ -151,21 +150,30 @@ docker-compose down
 
 ### Using `docker run`
 
-To run Greenlight using `docker run`, from the `~/greenlight` directory, run the following command:
+`docker run` is no longer the recommended way to start Greenlight. Please use `docker-compose`.
 
+If you are currently using `docker run` and want to switch to `docker-compose`, follow these [instructions](#switching-from-docker-run-to-docker-compose).
+
+# Applying `.env` Changes
+
+After you edit the `.env` file, you are required to restart Greenlight in order for it to pick up the changes. Ensure you are in the Greenlight directory when restarting Greenlight.
+
+## If you ran Greenlight using `docker-compose`
+
+Bring down Greenlight using:
 ```
-docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name greenlight-v2 bigbluebutton/greenlight:v2
+docker-compose down
+```
+then, bring it back up.
+```
+docker-compose up -d
 ```
 
-The database is saved to the BigBlueButton server so data persists when you restart. This can be found at `~/greenlight/db`.
+## If you ran Greenlight using `docker run`
 
-If you wish to extract the logs from the docker container and save them to the BigBlueButton server, add `-v $(pwd)/log:/usr/src/app/log` to the `docker run` command.
+`docker run` is no longer the recommended way to start Greenlight. Please use `docker-compose`.
 
-Then when you want to stop the docker container, run:
-
-```
-docker stop greenlight-v2
-```
+If you are currently using `docker run` and want to switch to `docker-compose`, follow these [instructions](#switching-from-docker-run-to-docker-compose).
 
 # Updating Greenlight
 
@@ -175,149 +183,28 @@ To update Greenlight, all you need to do is pull the latest image from [Dockerhu
 docker pull bigbluebutton/greenlight:v2
 ```
 
-Then, [restart Greenlight](gl-customize.html#applying-env-changes).
+Then, [restart Greenlight](#applying-env-changes).
+
+# Switching from `docker run` to `docker-compose`
+To switch from using `docker run` to start Greenlight, to using `docker-compose`, run the following commands:
+```
+docker stop greenlight-v2
+docker rm greenlight-v2
+```
+
+And then follow the instructions for [Starting Greenlight](#5-start-greenlight-20) 
+
 
 # Troubleshooting Greenlight
 
 Sometimes there are missteps and incompatibility issues when setting up applications.
 
+## Changes not appearing
+
+If you made changes to the `.env` file, you will need to [restart Greenlight](#applying-env-changes) to see the changes appear.
+
 ## Checking the Logs
 
 The best way for determining the root cause of issues in your Greenlight application is to check the logs.
 
-### If you’re running Ruby on Rails
-The logs should be located under `app/log`from the `~/greenlight` directory.
-
-Depending on whether you are running on development or production, you may need to check either:
-
-1. `app/log/development.log`
-2. `app/log/production.log`
-
-### If you’re running with Docker
 Docker is always running on a production environment, so the logs will be located in `log/production.log` from the `~/greenlight` directory.
-
-## Common issues with Running Ruby on Rails
-
-### Address already in use
-If you get an error similar to the following:
-
-```
-Address already in use - bind(2) for "0.0.0.0" port 3000 (Errno::EADDRINUSE)
-```
-
-Then you are trying to start a server on an endpoint that is already in use. If this scenario occurs, there are two solutions:
-
-
-
-1. **Use another port.**
-
-
-    By default, rails servers are always started using localhost and port 3000. If you receive this error statement, it means that you have a process that is currently using that port.
-
-
-    In this case, you can get your server to start with a different port by running the following:
-      ```
-      bin/rails server -p <port number>
-      ```
-
-
-    A common port number that isn’t usually in use is **3001**.
-    In this case, **the endpoint you use to access the server will also change.**
-
-
-    For example, if you used to access [http://localhost:3000](http://localhost:3000) and change your new endpoint to 3001, you will need to access [http://localhost:3001](http://localhost:3001).
-
-
-2. **Kill the existing process that is using the endpoint.**
-
-
-    Before doing this, make sure that the process you are running isn’t important. Then you can run the following command to kill the server:
-      ```
-      kill -9 <PID>
-      ```
-
-### Development related issues
-At this stage, there are no more problems with the “setup” of the app and further troubleshooting requires an understanding of Ruby on Rails.
-
-[Follow this guide](https://guides.rubyonrails.org/debugging_rails_applications.html) to help learn common strategies for debugging Ruby on Rails applications. It will help in the long run!
-
-
-## Common issues with Docker
-
-### Changes not appearing
-If you made changes to the code and are running a docker container from a docker image, you will need to **rebuild** the image to see changes appear.
-
-In the case of environment related changes (modifying the `.env` file), you will only need to restart the container.
-
-See also
-  * [Overview](/greenlight/gl-overview.html)
-  * [Admin Guide](/greenlight/gl-admin.html)
-  * [Customize](/greenlight/gl-customize.html)
-
-
-# Greenlight 1.0
-
-## Upgrading from Greenlight 1.0
-
-If you have [Greenlight 1.0](/greenlight-v1.html) installed on a BigBlueButton server, you don't have to do a complete new install to install Greenlight 2.0, although you can if you'd like.
-
-Before upgrading, keep in mind that [you cannot move over your data from Greenlight 1.0 to 2.0](#can-i-copy-over-my-old-green-light-data). If you aren't okay with losing this data, do **not** upgrade.
-
-To upgrade to Greenlight 2.0 from Greenlight 1.0, complete the following steps.
-
-### 1. Setup the 2.0 Environment
-
-Copy the Greenlight 2.0 sample environment into your .env file. If you want to save your Greenlight 1.0 settings, make a copy of the `.env` file first. This will also pull the Greenlight 2.0 image.
-```
-cd ~/greenlight
-docker run --rm bigbluebutton/greenlight:v2 cat ./sample.env > .env
-```
-
-Then follow the steps to [configure Greenlight](#3-configure-Greenlight).
-
-### 2. Remove the Existing Database
-
-Backup your existing database, which is stored at `~/greenlight/db/production/production.sqlite3`.
-
-Then, remove the database directory (`~/greenlight/db`). When you first start Greenlight 2.0, it will generate a new database.
-
-```
-rm -rf db/
-```
-
-### 3. Start Greenlight 2.0
-
-Choose to [start Greenlight 2.0](#5-start-Greenlight-20) with either `docker-compose` or `docker run`.
-
-## Remaining on Greenlight 1.0
-
-If you have Greenlight 1.0, you may pull the Greenlight 2.0 Docker image when updating. If you do, you'll see a page similar to this:
-
-![Greenlight Migration Error](/images/greenlight/gl_migration_error.png)
-
-To continue to use Greenlight 1.0, all you need to do is to explicitly specify version 1.0 in the run command. You can do this like so:
-
-```
-docker run --restart unless-stopped -d -p 5000:80 -v $(pwd)/db/production:/usr/src/app/db/production --env-file .env --name Greenlight bigbluebutton/greenlight:v1
-```
-
-This will force Greenlight to use version 1.0. For any other Docker commands relating to the image, make sure you specify the `v1` tag.
-
-## Looking for the old Greenlight 1.0 docs?
-
-The old version of Greenlight has been renamed to Greenlight Legacy. It is still available on GitHub under the [v1 branch](https://github.com/bigbluebutton/greenlight/tree/v1), although we highly suggest using the latest version of Greenlight.
-
-You can find the old documentation for Greenlight 1.0 [here](/greenlight-v1.html).
-
-## Can I copy over my old Greenlight data?
-
-Greenlight Legacy uses a much different database schema than that of the current version, so for this reason, it is **not** possible to copy over the data directly.
-
-However, Greenlight does allow administrators to seed accounts. In theory, you could seed new accounts based off the data in your existing Greenlight database, but some data may be lost.
-
-See also
-  * [Overview](/greenlight/gl-overview.html)
-  * [Install](/greenlight/gl-install.html)
-  * [Admin Guide](/greenlight/gl-admin.html)
-  * [Customize](/greenlight/gl-customize.html)
-
