@@ -355,7 +355,7 @@ and try installing BigBlueButton again.
 
 ## Unable to create presentation
 
-If you see the following error in `/var/bigbluebutton/bbb-web.log`
+If you see the following error in `/var/log/bigbluebutton/bbb-web.log`
 
 ~~~
   failed to map segment from shared object: Operation not permitted
