@@ -8,6 +8,8 @@ date: 2015-04-14 14:56:52
 
 ## Overview
 
+** Note: ** This document refers to the legacy Flash client.  For accessibility of the new HTML5 cient, see [HTML5 client accessibility](/2.2/html5-accessibility.html).
+
 Accessibility is an important part of BigBlueButton. Not only does it allow users with disabilities to run and participate in meetings, it's also mandated by law that if we CAN make it accessible, we HAVE to. For our purposes, disabilities fall into three main categories: Visual, Auditory, and Motor. This guide focuses mostly on Visual and Motor, simply because of the nature of BigBlueButton and what the team has run into so far.
 
 With Visual and Motor disabilities there is a common concern of the user being able to navigate through the application, since use of a mouse may not be possible. You can accommodate this by including your code in the tab order, and also by providing shortcut keys for all user functionality in your code. The rule is, _if you can do it with a mouse, you need to be able to do it with a keyboard_.

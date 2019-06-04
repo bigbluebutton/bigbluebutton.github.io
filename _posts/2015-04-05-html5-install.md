@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Install"
-category: html
+#category: html
 redirect_from: "/labs/html5-overview"
 date: 2015-04-05 11:41:36
 order: 1

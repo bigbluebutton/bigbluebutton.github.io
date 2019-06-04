@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Deskshare TLS over Stunnel"
-category: labs
+#category: labs
 date: 2015-05-07 16:29:25
 ---
 

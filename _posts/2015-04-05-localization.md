@@ -8,6 +8,8 @@ date: 2015-04-05 10:33:37
 
 # Localizing BigBlueButton
 
+** Note: ** This document refers to the legacy Flash client.  For localization of the HTML5 cient, see [Localization the HTML5 client with Transifex](/2.2/dev.html#localization-with-transifex).
+
 Thanks to help from our community, BigBlueButton is localized in over twenty languages.
 
 If you would like to help translate BigBlueButton into your language, or you see an error in current localization for your language that you would like to fix, here are the steps to help out:

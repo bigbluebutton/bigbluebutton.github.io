@@ -9,6 +9,8 @@ redirect_from: /install/client-configuration.html
 
 # Introduction
 
+** Note: ** This document refers to the legacy Flash client.  For configuration of the HTML5 client, see [HTML5 client configuration](/2.2/customize.html#html5-client-configuration).
+
 This document shows you how to configure the BigBlueButton client by making changes to `config.xml`, the configuration file loaded at runtime by the client.
 
 ## Config.xml

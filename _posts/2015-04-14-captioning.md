@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Captioning"
-category: labs
+#category: labs
 date: 2015-04-14 16:29:25
 ---
 

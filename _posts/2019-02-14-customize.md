@@ -637,4 +637,387 @@ muteOnStart=false
 
 After making them modification, restart your server with `sudo bbb-conf --restart` to apply the changes.
 
+# HTML5 client configuration 
 
+The configuration file for the HTML5 client is located in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml`.  It contains all the settings for the HTML5 client.  
+
+Here's a sample `settings.yml` file (with a description of some of the key values below it).
+
+~~~
+public:
+  app:
+    mobileFontSize: 16px
+    desktopFontSize: 14px
+    audioChatNotification: false
+    showParticipantsOnLogin: true
+    autoJoin: true
+    listenOnlyMode: true
+    forceListenOnly: false
+    skipCheck: false
+    clientTitle: BigBlueButton
+    appName: BigBlueButton HTML5 Client
+    bbbServerVersion: 2.2-dev
+    copyright: ©2019 BigBlueButton Inc.
+    html5ClientBuild: 514
+    helpLink: https://bigbluebutton.org/html5/
+    lockOnJoin: true
+    cdn: ""
+    basename: /html5client
+    askForFeedbackOnLogout: true
+    allowUserLookup: false
+    enableNetworkInformation: false
+    defaultSettings:
+      application:
+        animations: true
+        chatAudioAlerts: false
+        chatPushAlerts: false
+        fallbackLocale: en
+      audio:
+        inputDeviceId: undefined
+        outputDeviceId: undefined
+      dataSaving:
+        viewParticipantsWebcams: true
+        viewScreenshare: true
+      participants:
+        muteAll: false
+        lockAll: false
+        microphone: false
+        publicChat: false
+        privateChat: false
+        layout: false
+    shortcuts:
+      openOptions:
+        accesskey: O
+        descId: openOptions
+      toggleUserList:
+        accesskey: U
+        descId: toggleUserList
+      toggleMute:
+        accesskey: M
+        descId: toggleMute
+      joinAudio:
+        accesskey: J
+        descId: joinAudio
+      leaveAudio:
+        accesskey: L
+        descId: leaveAudio
+      togglePublicChat:
+        accesskey: P
+        descId: togglePublicChat
+      hidePrivateChat:
+        accesskey: H
+        descId: hidePrivateChat
+      closePrivateChat:
+        accesskey: G
+        descId: closePrivateChat
+      openActions:
+        accesskey: A
+        descId: openActions
+      openStatus:
+        accesskey: S
+        descId: openStatus
+    branding:
+      displayBrandingArea: false
+    allowHTML5Moderator: true
+    httpsConnection: false
+    connectionTimeout: 60000
+    showHelpButton: true
+    enableExternalVideo: true
+    effectiveConnection:
+    - critical
+    - danger
+    - warning
+  kurento:
+    wsUrl: wss://bbb.example.com/bbb-webrtc-sfu
+    chromeDefaultExtensionKey: akgoaoikmbmhcopjgakkcepdgdgkjfbc
+    chromeDefaultExtensionLink: https://chrome.google.com/webstore/detail/bigbluebutton-screenshare/akgoaoikmbmhcopjgakkcepdgdgkjfbc
+    chromeExtensionKey: KEY
+    chromeExtensionLink: LINK
+    chromeScreenshareSources:
+    - window
+    - screen
+    firefoxScreenshareSource: window
+    cameraProfiles:
+    - id: low
+      name: Low quality
+      default: false
+      constraints:
+        width:
+          max: 160
+        height:
+          max: 120
+    - id: medium
+      name: Medium quality
+      default: true
+      constraints:
+        width:
+          max: 320
+        height:
+          max: 240
+    - id: high
+      name: High quality
+      default: false
+      constraints:
+        width:
+          max: 640
+        height:
+          max: 480
+    - id: hd
+      name: High definition
+      default: false
+      constraints:
+        width:
+          max: 1280
+        height:
+          max: 960
+    enableScreensharing: true
+    enableVideo: true
+    enableVideoStats: false
+    enableVideoMenu: true
+    enableListenOnly: true
+    autoShareWebcam: false
+  allowOutsideCommands:
+    toggleRecording: false
+    toggleSelfVoice: false
+  poll:
+    max_custom: 5
+  captions:
+    enabled: false
+    backgroundColor: '#000000'
+    fontColor: '#FFFFFF'
+    fontFamily: Calibri
+    fontSize: 24px
+    takeOwnership: true
+    lines: 2
+    time: 5000
+  chat:
+    min_message_length: 1
+    max_message_length: 5000
+    grouping_messages_window: 10000
+    type_system: SYSTEM_MESSAGE
+    type_public: PUBLIC_ACCESS
+    type_private: PRIVATE_ACCESS
+    system_userid: SYSTEM_MESSAGE
+    system_username: SYSTEM_MESSAGE
+    public_id: public
+    public_group_id: MAIN-PUBLIC-GROUP-CHAT
+    public_userid: public_chat_userid
+    public_username: public_chat_username
+    storage_key: UNREAD_CHATS
+    system_messages_keys:
+      chat_clear: PUBLIC_CHAT_CLEAR
+  note:
+    enabled: true
+    url: https://bbb.example.com/pad
+    config:
+      showLineNumbers: false
+      showChat: false
+      noColors: true
+      showControls: true
+      rtl: false
+  layout:
+    autoSwapLayout: false
+    hidePresentation: false
+  media:
+    stunTurnServersFetchAddress: /bigbluebutton/api/stuns
+    mediaTag: '#remote-media'
+    callTransferTimeout: 5000
+    callHangupTimeout: 2000
+    callHangupMaximumRetries: 10
+    echoTestNumber: "9196"
+  presentation:
+    defaultPresentationFile: default.pdf
+    uploadEndpoint: /bigbluebutton/presentation/upload
+    uploadSizeMin: 0
+    uploadSizeMax: 50000000
+    uploadValidMimeTypes:
+    - extension: .pdf
+      mime: application/pdf
+    - extension: .doc
+      mime: application/msword
+    - extension: .docx
+      mime: application/vnd.openxmlformats-officedocument.wordprocessingml.document
+    - extension: .xls
+      mime: application/vnd.ms-excel
+    - extension: .xlsx
+      mime: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
+    - extension: .ppt
+      mime: application/vnd.ms-powerpoint
+    - extension: .pptx
+      mime: application/vnd.openxmlformats-officedocument.presentationml.presentation
+    - extension: .txt
+      mime: text/plain
+    - extension: .rtf
+      mime: application/rtf
+    - extension: .odt
+      mime: application/vnd.oasis.opendocument.text
+    - extension: .ods
+      mime: application/vnd.oasis.opendocument.spreadsheet
+    - extension: .odp
+      mime: application/vnd.oasis.opendocument.presentation
+    - extension: .odg
+      mime: application/vnd.oasis.opendocument.graphics
+    - extension: .odc
+      mime: application/vnd.oasis.opendocument.chart
+    - extension: .odi
+      mime: application/vnd.oasis.opendocument.image
+    - extension: .jpg
+      mime: image/jpeg
+    - extension: .png
+      mime: image/png
+  user:
+    role_moderator: MODERATOR
+    role_viewer: VIEWER
+    role_presenter: PRESENTER
+  whiteboard:
+    annotations:
+      status:
+        start: DRAW_START
+        update: DRAW_UPDATE
+        end: DRAW_END
+    toolbar:
+      multiUserPenOnly: false
+      colors:
+      - label: black
+        value: '#000000'
+      - label: white
+        value: '#ffffff'
+      - label: red
+        value: '#ff0000'
+      - label: orange
+        value: '#ff8800'
+      - label: eletricLime
+        value: '#ccff00'
+      - label: Lime
+        value: '#00ff00'
+      - label: Cyan
+        value: '#00ffff'
+      - label: dodgerBlue
+        value: '#0088ff'
+      - label: blue
+        value: '#0000ff'
+      - label: violet
+        value: '#8800ff'
+      - label: magenta
+        value: '#ff00ff'
+      - label: silver
+        value: '#c0c0c0'
+      thickness:
+      - value: 14
+      - value: 12
+      - value: 10
+      - value: 8
+      - value: 6
+      - value: 4
+      - value: 2
+      - value: 1
+      font_sizes:
+      - value: 36
+      - value: 32
+      - value: 28
+      - value: 24
+      - value: 20
+      - value: 16
+      tools:
+      - icon: text_tool
+        value: text
+      - icon: line_tool
+        value: line
+      - icon: circle_tool
+        value: ellipse
+      - icon: triangle_tool
+        value: triangle
+      - icon: rectangle_tool
+        value: rectangle
+      - icon: pen_tool
+        value: pencil
+      - icon: hand
+        value: hand
+      presenterTools:
+      - text
+      - line
+      - ellipse
+      - triangle
+      - rectangle
+      - pencil
+      - hand
+      multiUserTools:
+      - text
+      - line
+      - ellipse
+      - triangle
+      - rectangle
+      - pencil
+      - hand
+  clientLog:
+    server:
+      enabled: true
+      level: info
+    console:
+      enabled: true
+      level: debug
+    external:
+      enabled: true
+      level: info
+      url: https://bbb.example.com/html5log
+      method: POST
+      throttleInterval: 400
+private:
+  app:
+    host: 127.0.0.1
+    port: 3000
+    localesUrl: /locales
+    pencilChunkLength: 100
+    loadSlidesFromHttpAlways: false
+  etherpad:
+    apikey: f7cdaaa3ffcc36f3b8261bcdb99101367c3e87f8cde9b40a91fb027022e39cf4
+    version: 1.2.13
+    host: 127.0.0.1
+    port: 9001
+  redis:
+    host: 127.0.0.1
+    port: "6379"
+    timeout: 5000
+    password: null
+    debug: false
+    channels:
+      toAkkaApps: to-akka-apps-redis-channel
+      toThirdParty: to-third-party-redis-channel
+    subscribeTo:
+    - to-html5-redis-channel
+    - from-akka-apps-*
+    - from-third-party-redis-channel
+    - from-etherpad-redis-channel
+    async:
+    - from-akka-apps-wb-redis-channel
+    ignored:
+    - CheckAlivePongSysMsg
+    - DoLatencyTracerMsg
+  serverLog:
+    level: info
+  minBrowserVersions:
+  - browser: chrome
+    version: 59
+  - browser: firefox
+    version: 52
+  - browser: firefoxMobile
+    version: 52
+  - browser: edge
+    version: 17
+  - browser: ie
+    version: Infinity
+  - browser: mobileSafari
+    version:
+    - 11
+    - 1
+  - browser: opera
+    version: 46
+  - browser: safari
+    version:
+    - 11
+    - 1
+  - browser: electron
+    version:
+    - 0
+    - 36
+~~~
