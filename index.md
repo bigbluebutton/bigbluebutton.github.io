@@ -9,33 +9,35 @@ title: "BigBlueButton"
 
 **BigBlueButton** is an open source web conferencing system for online learning.  
 
-As an _open source_ project, this means you have full access to the [source code](http://github.com/bigbluebutton/bigbluebutton) under an open source license.  If you are a developer, you are welcome to build upon BigBlueButton for your own project.  If you are a server administrator, you can setup their own BigBlueButton server in about 15 minutes (this documentation shows you how).
+As an _open source_ project you have full access to BigBlueButton's [source code](http://github.com/bigbluebutton/bigbluebutton) under an [open source license](ihttps://bigbluebutton.org/open-source-license/).  This means if you are a developer, you can build, customize, and extend BigBlueButton for your own project.  If you are a server administrator, you can setup you own BigBlueButton server in about 15 minutes (see [bbb-install.sh](https://github.com/bigbluebutton/bbb-install).
 
-As a _web conferencing system_, BigBlueButton provides you all the core capabilities you expect, including real-time sharing of media:
+As a _web conferencing system_, BigBlueButton provides all the core capabilities you expect for team and group collaboration, including real-time sharing of
 
   * audio
   * video
   * presentation
   * screen
 
-The BigBlueButton client is written in pure HTML5.  As such, it does not require your users to download and install any plugings, extensions, or executables.  They click a link and BigBlueBiutton launchs within the browser (we recommend the latest version of Chrome or FireFox for the desktop and laptop computers).  If your using a mobile device, we recommend iOS 12.2+ and Android 6.0+.  Again, BigBlueButton runs within the browser on mobile devices.  There is no app for your users to install.
+BigBlueButton runs within your browser (we recommend Firefox and Chrome) on your desktop, laptop, and Chromebook.  BigBlueButton is written in pure HTML5: it does not require you to install any plugings, extensions, or executables.  None.
 
-Here is a screen shot of the BigBlueButton client running within the Chrome browser.  From left to right, the screen shot showsa the user list, chat area, presentation area, and one shared webcam (you can have many shared webcams in a session).
+The BigBlueButton HTML5 client also runs within your mobile browser on iOS 12.2+ and Android 6.0+.  There is no app for your users to install.  Deployment is inviting users to click on a link. 
+
+Here is a screen shot of the BigBlueButton client running within the Chrome browser.  From left to right, you can see User list (the list of users in the session), the chat area, the presentation area, and a shared webcam (you can have many shared webcams in a session).
 
 <p align="center">
   <img src="/images/22-overview-2.png"/>
 </p><br>
 
-How does BigBlueButton enable real-time sharing of media without using an app or downloads?  Chrome, FireFox, and Safari Mobile (iOS) all provide native support for web real-time communications (WebRTC) libraries.  The browser take care of sharing the real-time audio, video, and screen.  What about Edge?  The good news is Microsoft recently [announced](https://blogs.windows.com/windowsexperience/2019/04/08/microsoft-edge-preview-builds-the-next-step-in-our-oss-journey/) they are switching Chromium engine (yay!).  (You can download a developer preview at the previous link.)
+How does BigBlueButton enable real-time sharing of media without plugins or downloads?  Chrome, FireFox, and Safari Mobile (iOS) all support the web real-time communications (WebRTC) libraries.  These built-in libraries give The browser the aility to send/receive audio, video, and screen.  What about Edge?  The good news is Microsoft recently [announced](https://blogs.windows.com/windowsexperience/2019/04/08/microsoft-edge-preview-builds-the-next-step-in-our-oss-journey/) they are switching Chromium engine (yay!).
 
-BigBlueButton is designed for _online learning_, which means we paid special attention to the needs of instructors around the following four use cases:
+BigBlueButton is designed for _online learning_: it has specific features to enable a teacher to engage students in one of the following use cases:
 
   1. tutoring/virtual office hours
   1. flipped classroom
   1. student collaboration
   1. full online classes
 
-A key part of online learning is user engagement.  BigblueButton enables you to interact with users using any of the following methods:
+These features include:
 
   * chat (public and private)
   * multi-user whiteboard
@@ -44,7 +46,7 @@ A key part of online learning is user engagement.  BigblueButton enables you to 
   * polling
   * breakout rooms
 
-<Diagram>
+(Of course, all these features are useful in a business meeting, but they are particularly useful in an online class).
 
 BigBlueButton can record your session for later playback.  To support users with accessibility needs, BigBlueButton is compatible with JAWS screen reader (see our [accessibility statement](https://bigbluebutton.org/accessibility/)).  
 
