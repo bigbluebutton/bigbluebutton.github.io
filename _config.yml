@@ -44,7 +44,7 @@ permalink: none
 # Syntax highlighting
 highlighter: rouge
 
-# Since these are pages, it doesn't really matter
+# Since these are pages, it doesn't really matter 
 future: true
 
 # Exclude non-site files

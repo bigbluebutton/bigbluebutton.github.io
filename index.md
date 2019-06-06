@@ -7,7 +7,7 @@ title: "BigBlueButton"
   <img src="/images/logo.png"/>
 </p><br>
 
-**BigBlueButton** is an open source web conferencing system for online learning.  
+**BigBlueButton** is an open source web conferencing system for online learning.   
 
 As an _open source_ project you have full access to BigBlueButton's [source code](http://github.com/bigbluebutton/bigbluebutton) under an [open source license](ihttps://bigbluebutton.org/open-source-license/).  This means if you are a developer, you can build, customize, and extend BigBlueButton for your own project.  If you are a server administrator, you can setup you own BigBlueButton server in about 15 minutes (see [bbb-install.sh](https://github.com/bigbluebutton/bbb-install).
 
