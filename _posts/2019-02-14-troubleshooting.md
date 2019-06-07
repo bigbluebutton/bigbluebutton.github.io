@@ -14,6 +14,33 @@ This section will help you resolve common errors with installation of BigBlueBut
 
 If you are unable to resolve any installation issues, post a description of the error message along with the version of BigBlueButton you are installing to [bigbluebutton-setup](http://groups.google.com/group/bigbluebutton-setup/topics?gvc=2) and the community can help you further.
 
+## Recording not processing after upgrading
+
+If after updating from BigBlueButton 2.0 to BigBlueButton 2.2 your recordings are not processing, and if you are seeing `Permission denied` errors in `/var/log/bigbluebutton/bbb-rap-worker.log`
+
+~~~
+I, [2019-06-07T14:26:09.034878 #14808]  INFO -- : /usr/lib/ruby/2.5.0/logger.rb:754:in `initialize': Permission denied @ rb_sysopen - /var/log/bigbluebutton/presentation/process-02feca80700b3e95b877af85db972904397857a1-1559909318977.log (Errno::EACCES)
+~~~
+
+You can resolve the errors with the following command
+
+~~~
+  sudo chown -hR bigbluebutton:bigbluebutton /var/log/bigbluebutton/presentation /var/log/bigbluebutton/screenshare
+~~~
+
+and then rebuild the recordings that had not yet processed.  You can see the list of recordings with
+
+~~~
+  bbb-record --list
+~~~
+
+and then to rebuild a recording, use `sudo bbb-record --rebuild <internal_meeting_id>`, as in
+
+~~~
+  sudo bbb-record --rebuild 298b06603719217df51c5d030b6e9417cc036476-1559314745219
+~~~
+
+
 ## Run sudo bbb-conf --check
 
 We've built in a BigBlueButton configuration utility, called `bbb-conf`, to help you configure your BigBlueButton server and troubleshoot your setup if something doesn't work right.
