@@ -607,24 +607,24 @@ You can remove this sound for all users by editing `/opt/freeswitch/etc/freeswit
     </profile>
 ~~~
 
-## Install client self-check
+## Change UDP ports 
 
-BigBlueButton provides an end-user self-check application that can help you diagnose networking and configuration issues that may be preventing an end-user from accessing the server using the Flash client.  
+By default, BigBlueButton uses the UDP ports 16384-32768 which are used by FreeSWITCH and Kurento to send real-time packets (RTP).
 
-To install the end-user self-check application, enter the command
+Specifically, FreeSWITCH uses the range 16384 - 24576, which is defined in `/opt/freeswitch/etc/freeswitch/autoload_configs/switch.conf.xml`
 
-~~~
-$ sudo apt-get install bbb-check
-~~~
-
-The self-check application is available at your BigBlueButton server's IP address (or hostname) with `/check` appended.  For example, you can try out the self-check application on the BigBlueButton demo server at [http://demo.bigbluebutton.org/check](http://demo.bigbluebutton.org/check).
-
-Later on, if you wish to remove the end-user self-check page, enter the command
-
-~~~
-$ sudo apt-get purge bbb-check
+~~~xml
+    <!-- RTP port range -->
+    <param name="rtp-start-port" value="16384"/>
+    <param name="rtp-end-port" value="24576"/>
 ~~~
 
+Kurento uses the range 24577 - 32768, which is defined in `/etc/kurento/modules/kurento/BaseRtpEndpoint.conf.ini`
+
+~~~
+    minPort=24577
+    maxPort=32768
+~~~
 
 ## Mute all users on startup
 
