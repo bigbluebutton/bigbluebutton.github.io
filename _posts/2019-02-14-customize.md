@@ -607,6 +607,39 @@ You can remove this sound for all users by editing `/opt/freeswitch/etc/freeswit
     </profile>
 ~~~
 
+## Reduce bandwidth from webcams
+
+When sharing webcams and screen, your browser (specifically the WebRTC libraries) will attempt to use all the bandwidth as configured in Kurento.
+
+The bandwidth for the streams is set in `default.yml`
+
+~~~
+  /usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml
+~~~
+
+which are
+
+~~~
+  VP8:
+    tias_main: "300000"
+    as_main: "300"
+    tias_content: "1500000"
+    as_content: "1500"
+~~~
+
+For example, to reduce webcam streams to 100 Kbits/sec and screen sharing to 1 Mbits/sec, make the following edits
+
+~~~
+  VP8:
+    tias_main: "100000"
+    as_main: "100"
+    tias_content: "1000000"
+    as_content: "1000"
+~~~
+
+and restart BigBlueButton with `sudo bbb-conf --restart`.
+
+
 ## Change UDP ports 
 
 By default, BigBlueButton uses the UDP ports 16384-32768 which are used by FreeSWITCH and Kurento to send real-time packets (RTP).
