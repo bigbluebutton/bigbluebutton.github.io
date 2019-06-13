@@ -30,6 +30,18 @@ attendeesJoinViaHTML5Client=true
 moderatorsJoinViaHTML5Client=true
 ~~~
 
+In BigBlueButton 2.2-beta-10, you can also decrease the slide conversion time by disabling creation of SWF files by setting `swfSlidesRequired=false`.
+
+~~~
+#----------------------------------------------------
+# Conversion of the presentation slides to SWF to be
+# used in the Flash client
+swfSlidesRequired=false
+~~~
+
+The SWF files are not needed by the HTML5 client.
+
+
 ## Restrict access to specific ports
 
 If your server is behind a firewall already -- such as running within your company or on an EC2 instance behind a Amazon Security Group -- and the firewall is enforcing the above restrictions, you don't a second firewall and can skip this section.
@@ -228,6 +240,17 @@ To join this meeting by phone, dial:
 and enter 12345 as the conference PIN number.
 ~~~
 
+Finally, setup the firewall rules so you are only accepting incoming calls from the IP address of your SIP provider.  For example, if your SIP provider forwards incoming calls from 64.2.142.33, then setup the following firewall rules on your server.
+
+~~~
+iptables -A INPUT -i eth0 -p tcp --dport 5060 -s 0.0.0.0/0 -j REJECT
+iptables -A INPUT -i eth0 -p udp --dport 5060 -s 0.0.0.0/0 -j REJECT
+iptables -A INPUT -i eth0 -p tcp --dport 5080 -s 0.0.0.0/0 -j REJECT
+iptables -A INPUT -i eth0 -p udp --dport 5080 -s 0.0.0.0/0 -j REJECT
+iptables -I INPUT  -p udp --dport 5060 -s 64.2.142.33 -j ACCEPT
+~~~
+
+With these rules, you won't get spammed by bots scanning for SIP endpoints and trying to connect.
 
 ## Change the shared secret
 
