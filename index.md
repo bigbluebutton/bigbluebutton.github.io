@@ -18,17 +18,17 @@ As a _web conferencing system_, BigBlueButton provides all the core capabilities
   * presentation
   * screen
 
-BigBlueButton runs within your browser (we recommend Firefox and Chrome) on your desktop, laptop, and Chromebook.  BigBlueButton is written in pure HTML5: it does not require you to install any plugings, extensions, or executables.  None.
+BigBlueButton runs within your browser (we recommend Firefox and Chrome) on your desktop, laptop, and Chromebook.  BigBlueButton is written in pure HTML5: it does not require you to install any plugins, extensions, or executables.  None.
 
 The BigBlueButton HTML5 client also runs within your mobile browser on iOS 12.2+ and Android 6.0+.  There is no app for your users to install.  Deployment is inviting users to click on a link. 
 
-Here is a screen shot of the BigBlueButton client running within the Chrome browser.  From left to right, you can see User list (the list of users in the session), the chat area, the presentation area, and a shared webcam (you can have many shared webcams in a session).
+Here is a screenshot of the BigBlueButton client running within the Chrome browser.  From left to right, you can see User list (the list of users in the session), the chat area, the presentation area, and a shared webcam (you can have many shared webcams in a session).
 
 <p align="center">
   <img src="/images/22-overview-2.png"/>
 </p><br>
 
-How does BigBlueButton enable real-time sharing of media without plugins or downloads?  Chrome, FireFox, and Safari Mobile (iOS) all support the web real-time communications (WebRTC) libraries.  These built-in libraries give The browser the aility to send/receive audio, video, and screen.  What about Edge?  The good news is Microsoft recently [announced](https://blogs.windows.com/windowsexperience/2019/04/08/microsoft-edge-preview-builds-the-next-step-in-our-oss-journey/) they are switching Chromium engine (yay!).
+How does BigBlueButton enable real-time sharing of media without plugins or downloads?  Chrome, Firefox, and Safari Mobile (iOS) all support the web real-time communications (WebRTC) libraries.  These built-in libraries give the browser the ability to send/receive audio, video, and screen.  What about Edge?  The good news is Microsoft recently [announced](https://blogs.windows.com/windowsexperience/2019/04/08/microsoft-edge-preview-builds-the-next-step-in-our-oss-journey/) they are switching Chromium engine (yay!).
 
 BigBlueButton is designed for _online learning_: it has specific features to enable a teacher to engage students in one of the following use cases:
 
@@ -48,7 +48,7 @@ These features include:
 
 (Of course, all these features are useful in a business meeting, but they are particularly useful in an online class).
 
-BigBlueButton can record your session for later playback.  To support users with accessibility needs, BigBlueButton is compatible with JAWS screen reader (see our [accessibility statement](https://bigbluebutton.org/accessibility/)).  
+BigBlueButton can record you're session for later playback.  To support users with accessibility needs, BigBlueButton is compatible with JAWS screen reader (see our [accessibility statement](https://bigbluebutton.org/accessibility/)).  
 
 Want to try out BigBlueButton?  Anyone can setup an account on [https://demo.bigbluebutton.org](https://demo.bigbluebutton.org)).  
 
@@ -59,7 +59,7 @@ This site contains the project's documentation.  It is written for administrator
 
 In BigBlueButton there are only two types of users: a viewer or a moderator.  
 
-A _viewer_ (typically the student) can chat, send/receive audio and video, respond to polls, display an emoji (such as raise hand), and participate in a breakout room.  All normal user capabilties.
+A _viewer_ (typically the student) can chat, send/receive audio and video, respond to polls, display an emoji (such as raise hand), and participate in a breakout room.  All normal user capabilities.
 
 A _moderator_ (typically the instructor) has all the capabilities of a viewer plus the ability to mute/unmute other viewers, lock down viewers (i.e. restrict them from doing private chat), and assign anyone (including themselves) the role of _presenter_.  
 
