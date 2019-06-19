@@ -693,6 +693,32 @@ muteOnStart=false
 
 After making them modification, restart your server with `sudo bbb-conf --restart` to apply the changes.
 
+## Change favicon
+
+To change the favicon, overwrite the file `/var/www/bigbluebutton-default/favicon.ico`.  
+
+You'll need to update file each time the `bbb-config` package updates.
+
+## Change title in the HTML5 client
+
+To change the title, edit `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml` and change the entry for `public.app.clientTitle`
+
+~~~
+public:
+  app: 
+    ...
+    clientTitle: BigBlueButton
+~~~
+
+You'll need to update this entry each time the package `bbb-html5` updates.  The folowing script can help automate the change
+
+~~~
+TARGET=/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
+yq w -i $TARGET public.app.clientTitle "New Title"
+chown meteor:meteor $TARGET
+~~~
+
+
 # HTML5 client configuration 
 
 The configuration file for the HTML5 client is located in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml`.  It contains all the settings for the HTML5 client.  
