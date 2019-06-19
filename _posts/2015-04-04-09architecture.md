@@ -78,7 +78,6 @@ In BigBlueButton, a user can join the voice conference in several ways. Users ca
 
 ![Joining Voice Conference](/images/joining-voice-conf.png)
 
-
 ## Uploading a Presentation
 
 Uploaded presentations go through a conversion process in order to be displayed inside the Flash client. When the uploaded presentation is an Office document, it needs to be converted into PDF using LibreOffice. The PDF document is then converted in SWF using SWFTools. There are times when a PDF page fails to convert to SWF. In this case, an image snapshot of the page is taken using ImageMagick and the image is converted to PDF then to SWF.
@@ -87,8 +86,24 @@ Uploaded presentations go through a conversion process in order to be displayed 
 
 The conversion process sends progress messages to the client through the Redis pubsub.
 
+### Presentation conversion flow
+
+The diagram below describes the flow of the presentation conversion. We take in consideration the configuration for enabling and disabling SWF, SVG and PNG conversion.
+
+![General Conversion Flow](/images/diagrams/Presentation Conversion Diagram-General Conversion Flow.png)
+
+Then below the SVG conversion flow. It is covered with the fallback conversion.
+
+![SVG Conversion Flow](/images/diagrams/Presentation Conversion Diagram-SVG Conversion Flow.png)
+
+And finally the SWF conversion flow. We conver it too with its fallback conversion.
+
+![SWF Conversion Flow](/images/diagrams/Presentation Conversion Diagram-General Conversion Flow.png)
+
 ## BigBlueButton Client
 
 BigBlueButton client runs inside the browser. The main application is in Flash. There are Javascript libraries that provides connection to FreeSWITCH, launch the desktop sharing applet, etc. The Flash client connects to BigBlueButton App to send and receive messages. The client internally uses an event bus for the components to talk to each other.
 
 ![Client Architecture](/images/bbb-client-arch.png)
+
+
