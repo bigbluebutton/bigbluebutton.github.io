@@ -92,7 +92,7 @@ The diagram below describes the flow of the presentation conversion. We take in 
 
 ![General Conversion Flow](/images/diagrams/Presentation Conversion Diagram-General Conversion Flow.png)
 
-Then below the SVG conversion flow. It is covered with the fallback conversion.
+Then below the SVG conversion flow. It covers the conversion fallback. Sometimes we detect that the generated SVG file is heavy to load by the browser, we use the fallback to put a restersised image inside the SVG file and make its loading light for the browser.
 
 ![SVG Conversion Flow](/images/diagrams/Presentation Conversion Diagram-SVG Conversion Flow.png)
 
