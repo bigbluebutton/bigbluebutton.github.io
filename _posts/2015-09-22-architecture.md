@@ -8,7 +8,7 @@ date: 2015-09-20 17:34:41
 
 # Overview
 
-BigBlueButton is build upon some amazing software components -- nginx, red5, FreeSWITCH, tomcat7, redis, and others.  This page describes the overall architecture of BigBlueButton and how the components work together.
+BigBlueButton is built upon many amazing software components -- nginx, red5, FreeSWITCH, tomcat7, redis, and others.  This page describes the overall architecture of BigBlueButton and how the components work together.
 
 # High-level Architecture Overview for BigBlueButton
 
@@ -100,6 +100,20 @@ Uploaded presentations go through a conversion process in order to be displayed 
 ![Uploading Presentation](/images/10/presentation-upload-11.png)
 
 The conversion process sends progress messages to the client through the Redis pubsub.
+
+### Presentation conversion flow
+
+The diagram below describes the flow of the presentation conversion. We take in consideration the configuration for enabling and disabling SWF, SVG and PNG conversion.
+
+![General Conversion Flow](/images/diagrams/Presentation Conversion Diagram-General Conversion Flow.png)
+
+Then below the SVG conversion flow. It covers the conversion fallback. Sometimes we detect that the generated SVG file is heavy to load by the browser, we use the fallback to put a rasterized image inside the SVG file and make its loading light for the browser.
+
+![SVG Conversion Flow](/images/diagrams/Presentation Conversion Diagram-SVG Conversion Flow.png)
+
+And finally, the SWF conversion flow. We cover it too with its fallback conversion.
+
+![SWF Conversion Flow](/images/diagrams/Presentation Conversion Diagram-General Conversion Flow.png)
 
 ## BigBlueButton Client
 
