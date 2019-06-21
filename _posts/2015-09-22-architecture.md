@@ -113,7 +113,7 @@ Then below the SVG conversion flow. It covers the conversion fallback. Sometimes
 
 And finally, the SWF conversion flow. We cover it too with its fallback conversion.
 
-![SWF Conversion Flow](/images/diagrams/Presentation Conversion Diagram-General Conversion Flow.png)
+![SWF Conversion Flow](/images/diagrams/Presentation Conversion Diagram-SWF Conversion Flow.png)
 
 ## BigBlueButton Client
 
