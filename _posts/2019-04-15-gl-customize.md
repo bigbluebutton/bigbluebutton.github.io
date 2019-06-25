@@ -223,7 +223,7 @@ Using the text editor/IDE of choice, you can edit any of the files in the direct
 
 You can see an example of how to customize the Landing Page [here](#customizing-the-landing-page).
 
-To see your changes reflected in Greenlight, you will need to [restart Greenlight](#5-start-greenlight-20).
+To see your changes reflected in Greenlight, you will need to [restart Greenlight](#applying-env-changes).
 
 # Applying `.env` Changes
 
@@ -231,7 +231,6 @@ After you edit the `.env` file or make any change to the code, you are required 
 
 ```
 docker-compose down
-docker image rm <image name>
 ./scripts/image_build.sh <image name> release-v2
 docker-compose up -d
 ```
