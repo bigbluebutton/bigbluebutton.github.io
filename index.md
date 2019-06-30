@@ -10,7 +10,7 @@ title: "BigBlueButton"
 
 BigBlueButton is an open source web conferencing system for online learning.   
 
-BigBlueButton is **open source** project, which means you have full access to the [source code](http://github.com/bigbluebutton/bigbluebutton) under an [open source license](ihttps://bigbluebutton.org/open-source-license/).  You can deploy your own BigBlueButton server (or 10 BigBlueButton servers if you want), customize it, and build on top of it for your own project.  If you are a server administrator and want to setup BigBlueButton for your organization (perhaps you are looking to run a web conferencing system behind your firewall), you can [install BigBlueButton in about 15 minutes](https://github.com/bigbluebutton/bbb-install).
+BigBlueButton is **open source** project, which means you have full access to the [source code](http://github.com/bigbluebutton/bigbluebutton) under an [open source license](https://bigbluebutton.org/open-source-license/).  You can deploy your own BigBlueButton server (or 10 BigBlueButton servers if you want), customize it, and build upom it for your own project.  If you are an administrator and want to setup a BigBlueButton server for your organization (perhaps you are looking to run a web conferencing system behind your firewall), you can [install BigBlueButton in about 15 minutes](https://github.com/bigbluebutton/bbb-install).  Cool.
 
 BigblueButton is a **web conferencing system**, which means it implements all the core capabilities you expect from a commercial web conferencing system (but under an open source project).  These capabilities include real-time sharing of
 
@@ -19,7 +19,7 @@ BigblueButton is a **web conferencing system**, which means it implements all th
 * presentation
 * screen
 
-BigBlueButton is designed for **online learning**, which means it builds goes beyond its core video and web conferencing capabilities to focus on giving the many ways to engage students in the tutoring session, group collaboration, or full online class.
+BigBlueButton is designed for **online learning**, which means that while it offeres the expected features of a web conferencing system, it focus especially on giving ways for a teacher to engage students -- such as with multi-user whiteboard and breakout rooms -- to help the online student learn.
 
 ## Using BigBlueButton
 
