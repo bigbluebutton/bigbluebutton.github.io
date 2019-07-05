@@ -379,23 +379,27 @@ Login to your Google account, and click the following link
 
 If you want to see the documentation behind OAuth2 at Google, click the link [https://developers.google.com/identity/protocols/OAuth2](https://developers.google.com/identity/protocols/OAuth2).
 
-![Greenlight-google-plus-api](/images/gl-google-plus-api.png)
+First, create a Project click the "CREATE" link.
 
-First, enable the "Google+ API".
+In the menu on the left, click "Credentials".
 
-   1. Click Dashboard
-   1. Click "+Enable APIs"
-   1. Click "Google+ API"
-   1. Click "Enable"
-   1. Click "Credentials"
+Next, click the "OAuth consent screen" tab below the "Credentials" page title.
 
- Next,
+From here take the following steps:
+1. Choose any application name e.g "Greenlight"
+2. Set "Authorized domains" to your hostname eg "hostname" where hostname is your hostname
+3. Set "Application Homepage link" to your hostname e.g "http://hostname/b/" where hostname is your hostname
+4. Set "Application Privacy Policy link" to your hostname e.g "http://hostname/b/" where hostname is your hostname
+5. Click "Save"
 
-  1. Click "Create credentials
-  1. Select "OAuth client ID
-  1. Select "Web application"
-  1. Under "Authorized redirect URIs" enter "http://hostname/b/auth/google/callback" where hostname is your hostname
-  1. Click "Create"
+Next,
+
+1. Click "Create credentials"
+2. Select "OAuth client ID"
+3. Select "Web application"
+4. Choose any name e.g “bbb-endpoint”
+5. Under "Authorized redirect URIs" enter "https://hostname/b/auth/google/callback" where hostname is your hostname
+6. Click "Create"
 
 A window should open with your OAuth credentials. In this window, copy client ID and client secret to the `.env` file so it resembles the following (your credentials will be different).
 
@@ -415,63 +419,27 @@ GOOGLE_OAUTH2_HD=example.com
 You will need an Office365 account to create an OAuth 2 key and secret. This will allow Greenlight users to authenticate with their own Office365 accounts.
 
 To begin, head over to the following site and sign in to your Office365 account:
-[https://developer.microsoft.com/en-us/graph](https://developer.microsoft.com/en-us/graph)
+[https://portal.azure.com/](https://portal.azure.com/)
 
-Click on the tab that says “My Apps” and you should get redirected to the applications portal:
+In the menu on the left, click "Azure Active Directory".
 
-![](https://d2mxuefqeaa7sj.cloudfront.net/s_862F4C65DCBBF32F66208EA7FF25C153F80CC5FED653F7FCC2E693F7C7577A33_1539186511422_image.png)
+Under the "Manage" tab, click "App registrations".
 
 From here take the following steps:
+1. Click "New Registration"
+2. Choose any application name e.g “bbb-endpoint”
+3. Set the Redirect URI to your url (must be https): “https://hostname/b/auth/office365/callback” 
+4. Click "Register"
 
-1. Click “Add an app”
-1. Choose any application name e.g “bbb-endpoint” and click “Create”
-1. Under the “Profile Header”, add the url (**must be https**): [](http://hostname/b/auth/microsoft_office365/callback)       “https://hostname/b/auth/microsoft_office365/callback"
-  ![](https://d2mxuefqeaa7sj.cloudfront.net/s_862F4C65DCBBF32F66208EA7FF25C153F80CC5FED653F7FCC2E693F7C7577A33_1539200454484_image.png)
+Once your application has been created, Under the "Overview" tab, copy your "Application (client) ID" into the `OFFICE365_KEY` environment variable in your `.env` file.
 
-1. Under “Platforms”, click “Add Platform”
-    ![](https://d2mxuefqeaa7sj.cloudfront.net/s_862F4C65DCBBF32F66208EA7FF25C153F80CC5FED653F7FCC2E693F7C7577A33_1539200371889_image.png)
+Finally, click the "Certificates & secrets" under the "Manage" tab
 
-    Select the option to add a “Web” platform, check the option to “Allow Implicit Flow”, and add the Home page URL as a Redirect URL.
+From here take the following steps:
+1. Click "New client secret"
+2. Choose the "Never" option in the "Expires" option list
+3. Copy the value of your password into the `OFFICE365_SECRET` environment variable in your `.env` file 
 
-    ![](https://d2mxuefqeaa7sj.cloudfront.net/s_862F4C65DCBBF32F66208EA7FF25C153F80CC5FED653F7FCC2E693F7C7577A33_1539200628951_image.png)
-
-1. Under “Application Secrets”, select the option to “Generate New Password”. 
-    ![](https://d2mxuefqeaa7sj.cloudfront.net/s_862F4C65DCBBF32F66208EA7FF25C153F80CC5FED653F7FCC2E693F7C7577A33_1539200880946_image.png)
-
-    This will correspond to the `OFFICE365_SECRET` environment variable.
-
-    The Application Id can be found under “Properties”, and will correspond to the `OFFICE365_KEY` environment variable.
-
-    ![](https://d2mxuefqeaa7sj.cloudfront.net/s_862F4C65DCBBF32F66208EA7FF25C153F80CC5FED653F7FCC2E693F7C7577A33_1539201241095_image.png)
-
-    Copy both values into the `.env` file:
-
-    ```
-      OFFICE365_KEY=df99f6f6-2953-4f3c-b9a1-0b407c1373ba
-      OFFICE365_SECRET=qenvRYWR5-}(vizOPR7926~
-    ```
-
-1. Save the Changes
-
-### Twitter OAuth2
-
-You need a Twitter account to create an OAuth 2 client ID and client secret. The will enable users of Greenlight to authenticate with their own Twitter account (not yours).
-
-Login to your Twitter account, and click the following link: [https://apps.twitter.com/](https://apps.twitter.com/).
-
-Next,
-
-  1. Click "Create New App"
-  1. Under "Callback URL" enter "http://hostname/b/auth/twitter/callback" where hostname is your hostname
-  1. Click "Create your Twitter application"
-  1. Click "Keys and Access Tokens" tab
-
-You should see a key and secret.  Add the `Consumer Key (API Key)` (not the OwnerID) and `Consumer Secret (API Secret)` to the `.env` file (your values will be different).
-
-~~~
-TWITTER_ID=SOj8AkIdeqJuP2asfbbGSBk0
-TWITTER_SECRET=elxXJZqPVexBFf9ZJsafd4UTSzpr5AVmcH7Si5JzeHQ9th
-~~~
 
 ### LDAP Auth
 
@@ -510,6 +478,10 @@ See [Applying `.env` Changes](#applying-env-changes) section to enable your new 
 If you are using an ActiveDirectory LDAP server, you must determine the name of your user id parameter to set `LDAP_UID`. It is commonly 'sAMAccountName' or 'UserPrincipalName'.
 
 LDAP authentication takes precedence over all other providers. This means that if you have other providers configured with LDAP, clicking the login button will take you to the LDAP sign in page as opposed to presenting the general login modal.
+
+### Twitter OAuth2
+
+Twitter Authentication is deprecated and will be phased out in v3.
 
 # Troubleshooting Greenlight
 
