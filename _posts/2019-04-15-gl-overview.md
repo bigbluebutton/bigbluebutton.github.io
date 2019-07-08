@@ -16,7 +16,7 @@ Greenlight 2.0 (referred hereafter as simply "Greenlight") is a ruby on rails ap
 
 For the end users, Greenlight provides:
 
-  * Authentication via Twitter, Google, Office365 via OAuth2, or the ability to create an account
+  * Authentication via Google, Office365, LDAP, or local accounts
   * A default personal room with a permanent invite URL
   * The ability to create multiple rooms
   * An interface to view, manage, and share recordings
@@ -41,12 +41,12 @@ As BigBlueButton and Greenlight are open-source projects, we encourage other dev
 
 ### Sign up / Login
 
-Greenlight has full support for managing user accounts. It currently supports three types of user authentication:
+Greenlight has full support for managing user accounts. It currently supports four types of user authentication:
 
 * In-application (Greenlight)
 * Google OAuth2
-* Twitter OAuth2
 * Office365 OAuth2
+* LDAP
 
 ![Greenlight Login](/images/greenlight/login.png)
 

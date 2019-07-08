@@ -481,7 +481,7 @@ LDAP authentication takes precedence over all other providers. This means that i
 
 ### Twitter OAuth2
 
-Twitter Authentication is deprecated and will be phased out in v3.
+Twitter Authentication is deprecated and will be phased out in a future release.
 
 # Troubleshooting Greenlight
 
