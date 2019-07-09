@@ -4,6 +4,7 @@ title: "Overview"
 category: greenlight
 date: 2019-04-16 16:29:25
 # redirect_from: "/install/Greenlight.html"
+redirect_from: "/install/greenlight-v2.html"
 ---
 
 BigBlueButton is an open source web conferencing system for online learning. The project’s goal is to give teachers the ability effective engage remote students in virtual classrooms.

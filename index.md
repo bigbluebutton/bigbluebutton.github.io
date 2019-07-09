@@ -10,20 +10,20 @@ title: "BigBlueButton"
 
 BigBlueButton is an open source web conferencing system for online learning.   
 
-BigBlueButton is **open source** project, which means you have full access to the [source code](http://github.com/bigbluebutton/bigbluebutton) under an [open source license](https://bigbluebutton.org/open-source-license/).  You can deploy your own BigBlueButton server (or 10 BigBlueButton servers if you want), customize it, and build upom it for your own project.  If you are an administrator and want to setup a BigBlueButton server for your organization (perhaps you are looking to run a web conferencing system behind your firewall), you can [install BigBlueButton in about 15 minutes](https://github.com/bigbluebutton/bbb-install).  Cool.
+BigBlueButton is **open source** project, which means you have full access to the [source code](http://github.com/bigbluebutton/bigbluebutton) under an [open source license](https://bigbluebutton.org/open-source-license/).  You can deploy your own BigBlueButton server (or 10 BigBlueButton servers if you want), customize it, and build upon it for your own project.  If you are an administrator and want to setup a BigBlueButton server for your organization (perhaps you are looking to run a web conferencing system behind your firewall), you can [install BigBlueButton in about 15 minutes](https://github.com/bigbluebutton/bbb-install).  Cool.
 
-BigblueButton is a **web conferencing system**, which means it implements all the core capabilities you expect from a commercial web conferencing system (but under an open source project).  These capabilities include real-time sharing of
+Bigbluebutton is a **web conferencing system**, which means it implements all the core capabilities you expect from a commercial web conferencing system (but under an open source project).  These capabilities include real-time sharing of
 
 * audio
 * video
 * presentation
 * screen
 
-BigBlueButton is designed for **online learning**, which means that while it offeres the expected features of a web conferencing system, it focus especially on giving ways for a teacher to engage students -- such as with multi-user whiteboard and breakout rooms -- to help the online student learn.
+BigBlueButton is designed for **online learning**, which means that while it offers the expected features of a web conferencing system, it focus especially on giving ways for a teacher to engage students -- such as with multi-user whiteboard and breakout rooms -- to help the online student learn.
 
 ## Using BigBlueButton
 
-BigBlueButton does not require you to install any software.  You click a link in your web browser, perhaps your joining an online office hour from your learning management system (LMS) or perhaps you've setup Green light as a simple to use front-end, and BigBlueButton runs within your web browser.  BigBlueButton.  There is no binary to download and install, no plugin you have to run.  For the desktop, we recommend Firefox and Chrome as they do a very good job of implementing the web real-time communication (WebRTC) libraries for sharing media.
+BigBlueButton does not require you to install any software.  You click a link in your web browser, perhaps your joining an online office hour from your learning management system (LMS) or perhaps you've setup Green light as a simple to use front-end, and BigBlueButton runs within your web browser.  BigBlueButton.  There is no binary to download and install, no plug-in you have to run.  For the desktop, we recommend Firefox and Chrome as they do a very good job of implementing the web real-time communication (WebRTC) libraries for sharing media.
 
 BigBlueButton runs within your phone or tablet without installing any application.  Like running on the desktop, BigBlueButton uses your mobile browser. Specifically, it runs on any iOS 12.2+ and Android 6.0+ device.  
 
@@ -33,7 +33,7 @@ Here is a screenshot of the BigBlueButton client running inside the Chrome brows
   <img src="/images/22-overview-2.png"/>
 </p><br>
 
-How does BigBlueButton enable real-time sharing of media without plugins or downloads?  Chrome, Firefox, and Safari Mobile (iOS) all support the web real-time communications (WebRTC) libraries.  These built-in libraries give the browser the ability to send/receive audio, video, and screen.  What about Edge?  The good news is Microsoft recently [announced](https://blogs.windows.com/windowsexperience/2019/04/08/microsoft-edge-preview-builds-the-next-step-in-our-oss-journey/) they are switching Chromium engine (yay!).
+How does BigBlueButton enable real-time sharing of media without plug-ins or downloads?  Chrome, Firefox, and Safari Mobile (iOS) all support the web real-time communications (WebRTC) libraries.  These built-in libraries give the browser the ability to send/receive audio, video, and screen.  What about Edge?  The good news is Microsoft recently [announced](https://blogs.windows.com/windowsexperience/2019/04/08/microsoft-edge-preview-builds-the-next-step-in-our-oss-journey/) they are switching Chromium engine (yay!).
 
 ## Designed for online learning
 
