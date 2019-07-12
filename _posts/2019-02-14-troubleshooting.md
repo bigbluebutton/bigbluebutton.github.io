@@ -817,3 +817,10 @@ You can modify length your server will retain recordings by changing `MAXAGE=7` 
 chmod +x /etc/cron.daily/etc/cron.daily/delete-old-recordings
 ~~~
 
+## The following packages have unmet dependencies
+When installing the latest build of BigBlueButton, the package `bbb-conf` now uses `yq` to manage YAML files.  
+
+You need to add the repository `ppa:rmescandon/yq` to your server.  For steps on how to do this, see [Update your server](http://docs.bigbluebutton.org/2.2/install.html#1-update-your-server) in the BigBlueButton 2.2 install guide.
+
+Alternatively, if you have not made any customizations to BigBlueButton (outside of using `bbb-conf`), you can use [bbb-install.sh](https://github.com/bigbluebutton/bbb-install) to install/upgrade to the lastest version (the `bbb-install.sh` script will automatically install the repository for `yq`).
+
