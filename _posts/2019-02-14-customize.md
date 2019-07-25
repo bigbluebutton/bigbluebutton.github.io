@@ -51,7 +51,7 @@ If your BigBlueButton server is publically available on the internet, then, for 
   * TCP/IP port 22 for SSH
   * TCP/IP port 80 for HTTP
   * TCP/IP port 443 for HTTPS
-  * TCP/IP port 1935 for RTMP (only needed if Flash client is required)
+  * TCP/IP port 1935 for RTMP (omit if server only uses HTML5 client)
   * UDP ports 16384 to 32768 for media connections
 
 Note: if you have configured `sshd` (the OpenSSH daemon) to use a different port than 22, then before running the commands below, change `ufw allow OpenSSH` to `ufw allow <port>/tcp` where `<port>` is the port in use by `sshd`.  You can see the listening port for `sshd` using the command `# netstat -antp | grep sshd`.  Here the command shows `sshd` listening to the standard port 22.
@@ -62,13 +62,12 @@ tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      
 tcp6       0      0 :::22                   :::*                    LISTEN      1739/sshd       
 ~~~
 
-To restrict access to only the needed ports for BigBlueButton, use the following commands:
+To restrict external access minimal needed ports for BigBlueButton (with [HTML5 client set as default](#make-the-html5-client-default)), use the following commands:
 
 ~~~
 apt-get install -y ufw
 ufw allow OpenSSH
 ufw allow "Nginx Full"
-ufw allow 1935/tcp           # omit if you don't run the Flash client
 ufw allow 16384:32768/udp
 ufw --force enable
 ~~~
