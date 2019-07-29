@@ -698,9 +698,13 @@ To change the favicon, overwrite the file `/var/www/bigbluebutton-default/favico
 
 You'll need to update file each time the `bbb-config` package updates.
 
+# HTML5 client configuration 
+
+The configuration file for the HTML5 client is located in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml`.  It contains all the settings for the HTML5 client.  
+
 ## Change title in the HTML5 client
 
-To change the title, edit `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml` and change the entry for `public.app.clientTitle`
+To change the title, edit `settings.yml` and change the entry for `public.app.clientTitle`
 
 ~~~
 public:
@@ -717,388 +721,93 @@ yq w -i $TARGET public.app.clientTitle "New Title"
 chown meteor:meteor $TARGET
 ~~~
 
+## Send client logs to the server
 
-# HTML5 client configuration 
+To assist with monitoring and debugging, the HTML5 client can send its logs to the BigBlueButton server via the `logger` function.  Here's an example of its use:
 
-The configuration file for the HTML5 client is located in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml`.  It contains all the settings for the HTML5 client.  
+The client logger accepts three targets for the logs: `console`, `server` and `external`.
 
-Here's a sample `settings.yml` file (with a description of some of the key values below it).
+
+Name | Default Value |Accepted Values| Description 
+ --- | --- | ---| ---
+target | "console" | "console", "external", "server" | Where the logs will be sent to.
+level | "info"  | "debug", "info", "warn", "error" | The lowest log level that will be sent. Any log level higher than this will also be sent to the target. 
+url | - | - | The end point where logs will be sent to when the target is set to "external".
+method | - | "POST", "PUT" | HTTP method being used when using the target "external".
+
+The default values are: 
 
 ~~~
-public:
-  app:
-    mobileFontSize: 16px
-    desktopFontSize: 14px
-    audioChatNotification: false
-    showParticipantsOnLogin: true
-    autoJoin: true
-    listenOnlyMode: true
-    forceListenOnly: false
-    skipCheck: false
-    clientTitle: BigBlueButton
-    appName: BigBlueButton HTML5 Client
-    bbbServerVersion: 2.2-dev
-    copyright: ©2019 BigBlueButton Inc.
-    html5ClientBuild: 514
-    helpLink: https://bigbluebutton.org/html5/
-    lockOnJoin: true
-    cdn: ""
-    basename: /html5client
-    askForFeedbackOnLogout: true
-    allowUserLookup: false
-    enableNetworkInformation: false
-    defaultSettings:
-      application:
-        animations: true
-        chatAudioAlerts: false
-        chatPushAlerts: false
-        fallbackLocale: en
-      audio:
-        inputDeviceId: undefined
-        outputDeviceId: undefined
-      dataSaving:
-        viewParticipantsWebcams: true
-        viewScreenshare: true
-      participants:
-        muteAll: false
-        lockAll: false
-        microphone: false
-        publicChat: false
-        privateChat: false
-        layout: false
-    shortcuts:
-      openOptions:
-        accesskey: O
-        descId: openOptions
-      toggleUserList:
-        accesskey: U
-        descId: toggleUserList
-      toggleMute:
-        accesskey: M
-        descId: toggleMute
-      joinAudio:
-        accesskey: J
-        descId: joinAudio
-      leaveAudio:
-        accesskey: L
-        descId: leaveAudio
-      togglePublicChat:
-        accesskey: P
-        descId: togglePublicChat
-      hidePrivateChat:
-        accesskey: H
-        descId: hidePrivateChat
-      closePrivateChat:
-        accesskey: G
-        descId: closePrivateChat
-      openActions:
-        accesskey: A
-        descId: openActions
-      openStatus:
-        accesskey: S
-        descId: openStatus
-    branding:
-      displayBrandingArea: false
-    allowHTML5Moderator: true
-    httpsConnection: false
-    connectionTimeout: 60000
-    showHelpButton: true
-    enableExternalVideo: true
-    effectiveConnection:
-    - critical
-    - danger
-    - warning
-  kurento:
-    wsUrl: wss://bbb.example.com/bbb-webrtc-sfu
-    chromeDefaultExtensionKey: akgoaoikmbmhcopjgakkcepdgdgkjfbc
-    chromeDefaultExtensionLink: https://chrome.google.com/webstore/detail/bigbluebutton-screenshare/akgoaoikmbmhcopjgakkcepdgdgkjfbc
-    chromeExtensionKey: KEY
-    chromeExtensionLink: LINK
-    chromeScreenshareSources:
-    - window
-    - screen
-    firefoxScreenshareSource: window
-    cameraProfiles:
-    - id: low
-      name: Low quality
-      default: false
-      constraints:
-        width:
-          max: 160
-        height:
-          max: 120
-    - id: medium
-      name: Medium quality
-      default: true
-      constraints:
-        width:
-          max: 320
-        height:
-          max: 240
-    - id: high
-      name: High quality
-      default: false
-      constraints:
-        width:
-          max: 640
-        height:
-          max: 480
-    - id: hd
-      name: High definition
-      default: false
-      constraints:
-        width:
-          max: 1280
-        height:
-          max: 960
-    enableScreensharing: true
-    enableVideo: true
-    enableVideoStats: false
-    enableVideoMenu: true
-    enableListenOnly: true
-    autoShareWebcam: false
-  allowOutsideCommands:
-    toggleRecording: false
-    toggleSelfVoice: false
-  poll:
-    max_custom: 5
-  captions:
-    enabled: false
-    backgroundColor: '#000000'
-    fontColor: '#FFFFFF'
-    fontFamily: Calibri
-    fontSize: 24px
-    takeOwnership: true
-    lines: 2
-    time: 5000
-  chat:
-    min_message_length: 1
-    max_message_length: 5000
-    grouping_messages_window: 10000
-    type_system: SYSTEM_MESSAGE
-    type_public: PUBLIC_ACCESS
-    type_private: PRIVATE_ACCESS
-    system_userid: SYSTEM_MESSAGE
-    system_username: SYSTEM_MESSAGE
-    public_id: public
-    public_group_id: MAIN-PUBLIC-GROUP-CHAT
-    public_userid: public_chat_userid
-    public_username: public_chat_username
-    storage_key: UNREAD_CHATS
-    system_messages_keys:
-      chat_clear: PUBLIC_CHAT_CLEAR
-  note:
-    enabled: true
-    url: https://bbb.example.com/pad
-    config:
-      showLineNumbers: false
-      showChat: false
-      noColors: true
-      showControls: true
-      rtl: false
-  layout:
-    autoSwapLayout: false
-    hidePresentation: false
-  media:
-    stunTurnServersFetchAddress: /bigbluebutton/api/stuns
-    mediaTag: '#remote-media'
-    callTransferTimeout: 5000
-    callHangupTimeout: 2000
-    callHangupMaximumRetries: 10
-    echoTestNumber: "9196"
-  presentation:
-    defaultPresentationFile: default.pdf
-    uploadEndpoint: /bigbluebutton/presentation/upload
-    uploadSizeMin: 0
-    uploadSizeMax: 50000000
-    uploadValidMimeTypes:
-    - extension: .pdf
-      mime: application/pdf
-    - extension: .doc
-      mime: application/msword
-    - extension: .docx
-      mime: application/vnd.openxmlformats-officedocument.wordprocessingml.document
-    - extension: .xls
-      mime: application/vnd.ms-excel
-    - extension: .xlsx
-      mime: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet
-    - extension: .ppt
-      mime: application/vnd.ms-powerpoint
-    - extension: .pptx
-      mime: application/vnd.openxmlformats-officedocument.presentationml.presentation
-    - extension: .txt
-      mime: text/plain
-    - extension: .rtf
-      mime: application/rtf
-    - extension: .odt
-      mime: application/vnd.oasis.opendocument.text
-    - extension: .ods
-      mime: application/vnd.oasis.opendocument.spreadsheet
-    - extension: .odp
-      mime: application/vnd.oasis.opendocument.presentation
-    - extension: .odg
-      mime: application/vnd.oasis.opendocument.graphics
-    - extension: .odc
-      mime: application/vnd.oasis.opendocument.chart
-    - extension: .odi
-      mime: application/vnd.oasis.opendocument.image
-    - extension: .jpg
-      mime: image/jpeg
-    - extension: .png
-      mime: image/png
-  user:
-    role_moderator: MODERATOR
-    role_viewer: VIEWER
-    role_presenter: PRESENTER
-  whiteboard:
-    annotations:
-      status:
-        start: DRAW_START
-        update: DRAW_UPDATE
-        end: DRAW_END
-    toolbar:
-      multiUserPenOnly: false
-      colors:
-      - label: black
-        value: '#000000'
-      - label: white
-        value: '#ffffff'
-      - label: red
-        value: '#ff0000'
-      - label: orange
-        value: '#ff8800'
-      - label: eletricLime
-        value: '#ccff00'
-      - label: Lime
-        value: '#00ff00'
-      - label: Cyan
-        value: '#00ffff'
-      - label: dodgerBlue
-        value: '#0088ff'
-      - label: blue
-        value: '#0000ff'
-      - label: violet
-        value: '#8800ff'
-      - label: magenta
-        value: '#ff00ff'
-      - label: silver
-        value: '#c0c0c0'
-      thickness:
-      - value: 14
-      - value: 12
-      - value: 10
-      - value: 8
-      - value: 6
-      - value: 4
-      - value: 2
-      - value: 1
-      font_sizes:
-      - value: 36
-      - value: 32
-      - value: 28
-      - value: 24
-      - value: 20
-      - value: 16
-      tools:
-      - icon: text_tool
-        value: text
-      - icon: line_tool
-        value: line
-      - icon: circle_tool
-        value: ellipse
-      - icon: triangle_tool
-        value: triangle
-      - icon: rectangle_tool
-        value: rectangle
-      - icon: pen_tool
-        value: pencil
-      - icon: hand
-        value: hand
-      presenterTools:
-      - text
-      - line
-      - ellipse
-      - triangle
-      - rectangle
-      - pencil
-      - hand
-      multiUserTools:
-      - text
-      - line
-      - ellipse
-      - triangle
-      - rectangle
-      - pencil
-      - hand
   clientLog:
-    server:
-      enabled: true
-      level: info
-    console:
-      enabled: true
-      level: debug
-    external:
-      enabled: true
-      level: info
-      url: https://bbb.example.com/html5log
-      method: POST
-      throttleInterval: 400
-private:
-  app:
-    host: 127.0.0.1
-    port: 3000
-    localesUrl: /locales
-    pencilChunkLength: 100
-    loadSlidesFromHttpAlways: false
-  etherpad:
-    apikey: f7cdaaa3ffcc36f3b8261bcdb99101367c3e87f8cde9b40a91fb027022e39cf4
-    version: 1.2.13
-    host: 127.0.0.1
-    port: 9001
-  redis:
-    host: 127.0.0.1
-    port: "6379"
-    timeout: 5000
-    password: null
-    debug: false
-    channels:
-      toAkkaApps: to-akka-apps-redis-channel
-      toThirdParty: to-third-party-redis-channel
-    subscribeTo:
-    - to-html5-redis-channel
-    - from-akka-apps-*
-    - from-third-party-redis-channel
-    - from-etherpad-redis-channel
-    async:
-    - from-akka-apps-wb-redis-channel
-    ignored:
-    - CheckAlivePongSysMsg
-    - DoLatencyTracerMsg
-  serverLog:
-    level: info
-  minBrowserVersions:
-  - browser: chrome
-    version: 59
-  - browser: firefox
-    version: 52
-  - browser: firefoxMobile
-    version: 52
-  - browser: edge
-    version: 17
-  - browser: ie
-    version: Infinity
-  - browser: mobileSafari
-    version:
-    - 11
-    - 1
-  - browser: opera
-    version: 46
-  - browser: safari
-    version:
-    - 11
-    - 1
-  - browser: electron
-    version:
-    - 0
-    - 36
+    server: { enabled: true, level: info }
+    console: { enabled: true, level: debug }
+    external: { enabled: false, level: info, url: https://LOG_HOST/html5Log, method: POST, throttleInterval: 400, flushOnClose: true }
+~~~
+
+Notice that the `external` option is disabled by default - you can enable it on your own server after a few configuration changes.
+
+When setting the output to `external`, the BigBlueButton client will POST the log events to the URL endpoint provided by `url`. To create an associated endpoint on the BigBlueButton server for the POST request, create a file `/etc/bigbluebutton/nginx/client-log.nginx` with the following contents:
+
+~~~
+location /html5Log {
+	access_log /var/log/nginx/html5-client.log postdata;
+	echo_read_request_body;
+}
+~~~
+
+Then create a file in `/etc/nginx/conf.d/client-log.conf` with the following contents:
+
+~~~
+log_format postdata '$remote_addr [$time_iso8601] $request_body';
+~~~
+
+Next, install the full version of nginx.
+
+~~~
+sudo apt-get install nginx-full
+~~~
+
+You may also need to create the external output file and give it the appropriate permissions and ownership:
+
+~~~
+sudo touch /var/log/nginx/html5-client.log
+sudo chown www-data:adm /var/log/nginx/html5-client.log
+sudo chmod 640 /var/log/nginx/html5-client.log
+~~~
+
+Restart BigBlueButton with `sudo bbb-conf --restart` and launch the BigBlueButton HTML5 client in a new session.  You should see the logs appearing in `/var/log/nginx/html5-client.log` as follows
+
+~~~
+99.239.102.0 [2018-09-09T14:59:10+00:00] [{\x22name: .. }]
+~~~
+
+You can follow the logs on the server with the command
+
+~~~
+tail -f html5-client.log | sed -u -e 's/\\x22/"/g' -e 's/\\x5C/\\/g'
+~~~
+
+Here's a sample log entry
+
+~~~javascript
+{  
+   "name":"clientLogger",
+   "level":30,
+   "levelName":"info",
+   "msg":"[audio] iceServers",
+   "time":"2018-08-27T19:32:57.389Z",
+   "src":"https://demo.bigbluebutton.org/html5client/dfe4ad6bfad11b20d1904e76e71d385262781887.js?meteor_js_resource=true:147:782083",
+   "v":1,
+   "extraInfo":{  
+      "sessionToken":"e7boenucj1pwkbfc",
+      "meetingId":"183f0bf3a0982a127bdb8161e0c44eb696b3e75c-1535398242909",
+      "requesterUserId":"w_klfavdlkumj8",
+      "fullname":"Ios",
+      "confname":"Demo Meeting",
+      "externUserID":"w_klfavdlkumj8"
+   },
+   "url":"https://demo.bigbluebutton.org/html5client/users",
+   "userAgent":"Mozilla/5.0 (iPad; CPU OS 11_3 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.0 Mobile/15E148 Safari/604.1",
+   "count":1
+}
 ~~~
