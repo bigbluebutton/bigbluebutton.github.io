@@ -18,21 +18,26 @@ The following diagram provides a high-level overview of the BigBlueButton archit
 
 We'll break down each component below.
 
-### Client
+## HTML5 Client and Server
 
-The Client is a Flash application which runs inside the browser. The client connects to Red5 using RTMP (port 1935) or RTMPT (port 80) if needs to tunnel.
-When it needs to connect using RTMPT, it connects through Nginx which proxies the connection to Red5.
+The HTML5 client is a single page, responsive web application that is built upon the following components: 
+  * [React.js](https://facebook.github.io/react/) for rendering the user interface in an efficient manner
+  * [WebRTC](https://webrtc.org/) for sending/receiving audio and video
 
-The Client also uploads presentations to Web API.
+The HTML5 server is built upon
+  * [Meteor.js](http://meteor.com) in [ECMA2015](http://www.ecma-international.org/ecma-262/6.0/)
+for communication between client and server.
+  * [MongoDB](https://www.mongodb.com/) for keeping the state of each BigBlueButton client consistent with the BigBlueButton server
 
+The MongoDB database contains information about all meetings on the server and, in turn, each client connected to a meeting. Each user's client is only aware of the their meeting's state, such the user's public and private chat messages sent and received. The client side subscribes to the published collections on the server side. Updates to MongoDB on the server side are automatically pushed to MiniMongo on the client side.
 
-### HTML5 Client and Server
+The following diagram gives an overview of the architecture of the HTML5 client and its communications with the other components in BigBlueButton.
 
-The HTML5 client and server is built using [Meteor](https://www.meteor.com/) and communicates with the other components of the system through redis pubsub. 
+![HTML5 Overview](/images/html5-client-architecture.png)
 
-See the [HTML5 Overview](/html/html5-overview.html) document for more info.
+More information on the architecture of the HTML5 client can be found [here](/html5-overview.html).
 
-### BBB Web 
+## BBB Web 
 
 The Web [API](/dev/api.html) provides the integration endpoint for third-party applications -- such as Moodle, Wordpress, Canvas, Sakai, etc. -- to control the BigBlueButton server. 
 
@@ -40,19 +45,15 @@ Every access to BigBlueButton comes through a front-end portal (we refer to as a
 
 The BigBlueButton comes with some simple [API demos](http://demo.bigbluebutton.org/demo/demo1.jsp).  Regardless of which front-end you use, they all use the [API](/dev/api.html) under the hood.
 
-### Presentation Conversion
-
-Uploaded presentations undergoes conversion process in order to be displayed in the Flash client. If the uploaded file is an Office document, it gets converted into PDF using LibreOffice and then converted to SWF using SWFTools. The conversion process is described later in this page.
-
-### Redis PubSub
+## Redis PubSub
 
 Redis PubSub provides a communication channel between different applications running on the BigBlueButton server.
 
-### Redis DB
+## Redis DB
 
 When a meeting is recorded, all events are stored in Redis DB. When the meeting ends, the Recording Processor will take all the recorded events as well as the different raw (PDF, WAV, FLV) files for processing.
 
-### Red5 Apps (Screenshare, Apps, Voice, Video)
+## Red5 Apps (Screenshare, Apps, Voice, Video)
 
 We think Red5 rocks! (We just had to get that upfront).
 
@@ -80,7 +81,7 @@ FreeSWITCH to easily create their own integration. Communication between apps an
 ![FsESL Akka architecture](/images/10/fsesl-akka-arch.png)
 
 
-### FreeSWITCH
+## FreeSWITCH
 
 We think FreeSWITCH rocks too!
 
@@ -101,7 +102,7 @@ Uploaded presentations go through a conversion process in order to be displayed 
 
 The conversion process sends progress messages to the client through the Redis pubsub.
 
-### Presentation conversion flow
+## Presentation conversion flow
 
 The diagram below describes the flow of the presentation conversion. We take in consideration the configuration for enabling and disabling SWF, SVG and PNG conversion.
 
@@ -117,6 +118,6 @@ And finally, the SWF conversion flow. We cover it too with its fallback conversi
 
 ## BigBlueButton Client
 
-BigBlueButton client runs inside the browser. The main application is in ActionScript. There are Javascript libraries that provides connection to FreeSWITCH, launch the screen sharing applet, etc. The Flash client connects to BigBlueButton App to send and receive messages. The client internally uses an event bus for the components to talk to each other.
+BigBlueButton Flash client runs inside the browser. The main application is in ActionScript. There are Javascript libraries that provides connection to FreeSWITCH, launch the screen sharing applet, etc. The Flash client connects to BigBlueButton App to send and receive messages. The client internally uses an event bus for the components to talk to each other. The client connects to Red5 using RTMP (port 1935) or RTMPT (port 80) if needs to tunnel. When it needs to connect using RTMPT, it connects through Nginx which proxies the connection to Red5.
 
 ![Client Architecture](/images/10/bbb-client-arch.png)

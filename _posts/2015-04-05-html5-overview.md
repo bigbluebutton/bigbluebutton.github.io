@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "Overview"
+title: "HTML5 Overview"
 #category: html
 redirect_from: "/labs/html5-overview"
 date: 2015-04-05 11:41:36
@@ -20,7 +20,7 @@ Also, while Flash enjoys support from a wide range of browsers (FireFox, Chrome,
 
 We want to move the BigBlueButton project to pure HTML5 and support mobile users _long_ before the end of 2020.  Hence, the HTML5 client project.
 
-A BigBlueButton 2.0-beta server (hereafter referred to as simply "BigBlueButton 2.0")  can support users connecting from either the Flash or HTML5 client in the same sessions.  The server routes messages seamlessly between the clients. 
+A BigBlueButton 2.0 server can support users connecting from either the Flash or HTML5 client in the same sessions.  The server routes messages seamlessly between the clients. 
 
 The HTML5 support for real-time audio and video has substantially improved of the years with WebRTC.  The Flash client already uses WebRTC for sending and receiving high-quliaty audio for the audio (with a fallback to built-in Flash audio if the network blocks the ports needed for WebRTC).
 
@@ -86,7 +86,7 @@ With the above it's now possible to hold a fairly complete meeting with just the
 
 # Future Releases
 
-Building upon the first release, we plan to add the remaining presenter and moderator capabilities to the HTML5 client, including:
+Building upon the first release, the 2.2-beta adds the remaining presenter and moderator capabilities to the HTML5 client, including:
 
   * Remaining whiteboard controls (pan/zoom)
   * Breakout Rooms
