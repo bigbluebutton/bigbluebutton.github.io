@@ -784,7 +784,7 @@ Restart BigBlueButton with `sudo bbb-conf --restart` and launch the BigBlueButto
 You can follow the logs on the server with the command
 
 ~~~
-tail -f html5-client.log | sed -u -e 's/\\x22/"/g' -e 's/\\x5C/\\/g'
+tail -f /var/log/nginx/html5-client.log | sed -u -e 's/\\x22/"/g' -e 's/\\x5C/\\/g'
 ~~~
 
 Here's a sample log entry
