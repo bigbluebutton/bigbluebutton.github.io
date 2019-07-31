@@ -5,16 +5,13 @@ category: dev
 date: 2015-04-04 22:47:38
 ---
 
-
 This document assumes the reader understands the current [BigBlueButton architecture](/overview/architecture.html).
-
 
 # Overview
 
 BigBlueButton records all the events and media data generated during a BigBlueButton session for later playback.
 
 If you want to see the Record and Playback feature in action there is a [demo](http://demo.bigbluebutton.org/demo/demo10.jsp), you can use it to record a BigBlueButton session and play it after it is listed under "Recorded Sessions" on the same page, you should wait a few minutes after your session ends while the media is processed and published for playback. This demo is also available on your server if you have [installed it](/install/install.html#6.-install-api-demos).
-
 
 Like BigBlueButton sessions, management of recordings should be handled by [third party software](http://www.bigbluebutton.org/integrations/).  Third party software consumes the [BigBlueButton API](/dev/api.html) to accomplish that.  As user you may want to use third party software which sets the right value to the parameter "record". As developer you may want to use a (not official) library which implements the api calls in your preferred language, or implement it by yourself.
 
@@ -26,35 +23,34 @@ After the session finishes, the BigBlueButton server will run an archive script 
 
 After the recording is archived, BigBlueButton will run one (or more) ingest and processing scripts, named workflows, that will _process_ and _publish_ the captured data into a format for _playback_.
 
-
 # Record and Playback Phases
 
 BigBlueButton processes the recordings in the following :
 
-  1. Capture
-  1. Archive
-  1. Sanity
-  1. Process
-  1. Publish
-  1. Playback
-
+1. Capture
+2. Archive
+3. Sanity
+4. Process
+5. Publish
+6. Playback
 
 ## Capture
+
 The Capture phase involves enabling the BigBlueButton modules (chat, presentation, video, voice, etc.) to emit events over an event bus for capture on the BigBlueButton server. Components that generate media (webcam, voice, desktop sharing) must also store their data streams on the server as well.
 
 Whiteboard, cursor, chat and other events are stored on Redis. Webcam videos (.flv) and desktop sharing videos (.flv)  are recorded by Red5. The audio conference file (.wav) is recorded by FreeSWITCH.
 
-
 ## Archive
+
 The Archive phase involves taking the captured media and events into a **raw** directory. That directory contains ALL the necessary media and files to work with.
 
-
 ## Sanity
+
 The Sanity phase involves checking that all the archived files are _valid_ for processing. For example
 that media files have not zero length and events were archived.
 
-
 ## Process
+
 The Process phase involves processing the archived  valid files of the recording according to the workflow (e.g. presentation). Usually it involves parsing the archived events, converting media files to other formats or concatenating them, etc.
 
 ## Post Scripts
@@ -63,21 +59,21 @@ _Post scripts_ allow you to perform site-specific actions after each of the Arch
 
 Some examples of things you might use the post scripts to do:
 
-  * Send you an email after a recording is published.
-  * Backup a recording to another server after your recording is archived or published.
-  * Send a text message after a recording is published.
-  * Compress media files and make them public available for download after it is published.
-  * Delete raw media files after the recording processing complete.
+* Send you an email after a recording is published.
+* Backup a recording to another server after your recording is archived or published.
+* Send a text message after a recording is published.
+* Compress media files and make them public available for download after it is published.
+* Delete raw media files after the recording processing complete.
 
 ## Publish
+
 The Publish phase involves generating metadata and taking many or all the processed files and placing them in a directory exposed publicly for later playback.
 
-
 ## Playback
+
 The Playback phase involves taking the published files (audio, webcam, deskshare, chat, events, metadata) and playing them in the browser.
 
 Using the workflow **presentation**, playback is handled by HTML, CSS and Javascript libraries; it is fully available in Mozilla Firefox and Google Chrome(also in Android devices).  In other browsers like Opera or Safari the playback will work without all its functionality , e.g, thumbnails won't be shown. There is not a unique video file for playback, there is not an available button or link to download the recording. We have opened an [issue](https://github.com/bigbluebutton/bigbluebutton/issues/1969) for this enhancement
-
 
 # Media storage
 
@@ -85,28 +81,34 @@ Some Record and Playback phases store the media they handle in different directo
 
 ## Captured files
 
-  * AUDIO: `/var/freeswitch/meetings`
-  * WEBCAM: `/usr/share/red5/webapps/video/streams`
-  * DESKTOP SHARING: `/var/bigbluebutton/deskshare`
-  * SLIDES: `/var/bigbluebutton`
-  * EVENTS: `Redis`
+* AUDIO: `/var/freeswitch/meetings`
+* WEBCAM (Flash): `/usr/share/red5/webapps/video/streams`
+* WEBCAM (HTML5): `/var/kurento/recordings`
+* SCREEN SHARING (Flash): `/var/usr/share/red5/webapps/screenshare/streams`
+* SCREEN SHARING (HTML5): `/var/kurento/screenshare`
+* SLIDES: `/var/bigbluebutton`
+* NOTES: `http://localhost:9001/p`
+* EVENTS: `Redis`
 
 ### Archived files
+
 The archived file are located in `/var/bigbluebutton/recording/raw/<internal-meeting-id>/`
 
 ### Sanity checked files
+
 The sanity files are store in the same place as the archived files
 
 ### Processed files
+
 The processed files can be found in `/var/bigbluebutton/recording/process/presentation/<internal-meeting-id>/`
 
 ### Published files
+
 The published files are in `/var/bigbluebutton/recording/publish/presentation/<internal-meeting-id>/`
 
 ### Playback files
+
 The playback files are found in `/var/bigbluebutton/published/presentation/<internal-meeting-id>/`
-
-
 
 # Manage recordings
 
@@ -114,63 +116,59 @@ BigBlueButton does not have an administrator web interface to control the sessio
 
 In the terminal of your server you can execute `bbb-record`, which will show you each option with its description
 
-~~~
+```
 
 BigBlueButton Recording Diagnostic Utility (BigBlueButton Version 1.0.N) 
 
    bbb-record [options]
 
 Reporting:
-   --list                          	List all recordings
+   --list                              List all recordings
 
 Monitoring:
-   --watch                          	Watch processing of recordings
-   --watch --withDesc               	Watch processing of recordings and show their description
+   --watch                              Watch processing of recordings
+   --watch --withDesc                   Watch processing of recordings and show their description
 
 Administration:
    --rebuild <internal meetingID>       rebuild the output for the given internal meetingID
-   --rebuildall			        rebuild every recording
-   --delete <internal meetingID>	delete one meeting and recording
-   --deleteall                      	delete all meetings and recordings
-   --debug                          	check for recording errors
-   --check                          	check for configuration errors
-   --enable <workflow>              	enable a recording workflow
-   --disable <workflow>             	disable a recording workflow
-   --tointernal <external meetingId>	get the internal meeting ids for the given external meetingId
-   --toexternal <internal meetingId>	get the external meeting id for the given internal meetingId
-   --republish <internal meetingID>	  republish the recording for meetingID.
-
-~~~
+   --rebuildall                    rebuild every recording
+   --delete <internal meetingID>    delete one meeting and recording
+   --deleteall                          delete all meetings and recordings
+   --debug                              check for recording errors
+   --check                              check for configuration errors
+   --enable <workflow>                  enable a recording workflow
+   --disable <workflow>                 disable a recording workflow
+   --tointernal <external meetingId>    get the internal meeting ids for the given external meetingId
+   --toexternal <internal meetingId>    get the external meeting id for the given internal meetingId
+   --republish <internal meetingID>      republish the recording for meetingID.
+```
 
 ### Useful terms
 
-  * workflow - is the way a recording is processed, published and played . In BigBlueButton 0.81 the unique workflow out of the box is the "presentation".
-  * internal meetingId - is an alphanumeric string that internally identifies your recorded meeting. It is created internally by BigBlueButton. For example "183f0bf3a0982a127bdb8161e0c44eb696b3e75c-1379693236230".
-  * external meetingID -  is the id you set to the meeting, like "English 201" or "My Awesome class", "Chemistry 2". It is passed through the create API call. 
-  * recording -  is recorded meeting in BigBlueButton. 
+* workflow - is the way a recording is processed, published and played . In BigBlueButton 0.81 the unique workflow out of the box is the "presentation".
+* internal meetingId - is an alphanumeric string that internally identifies your recorded meeting. It is created internally by BigBlueButton. For example "183f0bf3a0982a127bdb8161e0c44eb696b3e75c-1379693236230".
+* external meetingID -  is the id you set to the meeting, like "English 201" or "My Awesome class", "Chemistry 2". It is passed through the create API call. 
+* recording -  is recorded meeting in BigBlueButton. 
 
 In BigBlueButton you can use the same external meeting ID (for example "English 101") in many recordings but each recording will have a different internal meeting id. One external meeting id is associated with **one or many** internal meeting ids.
 
-
-
 ### List recordings
 
-~~~
+```
 bbb-record --list
-~~~
+```
 
 will list all your recordings.
 
-
 ### Watch recordings
-~~~
+
+```
 bbb-record --watch
-~~~
+```
 
 will list your latest 20 recordings, refreshing its output every 2 seconds. Its output is similar to this:
 
-
-~~~
+```
 Every 2.0s: bbb-record --list20
 
 Internal MeetingID                                               Time                APVD APVDE RAS Slides Processed            Published           External MeetingID
@@ -187,12 +185,11 @@ Internal MeetingID                                               Time           
 --
 --
 Last meeting processed (bbb-web.log): 6e35e3b2778883f5db637d7a5dba0a427f692e91-1379965122603
-
-~~~
+```
 
 *BigBlueButton 1.1*  When using BigBlueButton 1.1, you'll see recording process running as BigBlueButton processes the recording.
 
-~~~
+```
 Every 2.0s: bbb-record --list20                                                                                                                                                                          Fri Dec 16 19:48:10 2016
 
 Internal MeetingID                                               Time                APVD APVDE RAS Slides Processed            Published           External MeetingID
@@ -219,10 +216,7 @@ Fri 2016-12-16 19:53:06 UTC  4min 56s left Fri 2016-12-16 19:48:06 UTC  4s ago b
 
 Dec 16 19:48:06 XXX-8gb-nyc3-01 systemd[1]: Started BigBlueButton recording & playback processing.
 --
-~~~
-
-
-
+```
 
 ### Rebuild a recording
 
@@ -230,103 +224,89 @@ It will go through the Process and Publish phases again.
 
 If you run bbb-record --rebuild on a recording where the process and publish script were not run because the moderator of the session did not click the record button, this will force the meeting to be processed. In this case, the entire length of the meeting will be included in the recording.
 
-~~~
+```
 sudo bbb-record --rebuild 6e35e3b2778883f5db637d7a5dba0a427f692e91-1379965122603
-~~~
+```
 
 ### Rebuild every recording
 
 It will go through the Process and Publish phases again for every recording in your server.
 This action will take a long time since it processes every recording.
 
-~~~
+```
 sudo bbb-record --rebuildall
-~~~
-
+```
 
 ### Delete a recording
 
-~~~
+```
 sudo bbb-record --delete 6e35e3b2778883f5db637d7a5dba0a427f692e91-1379965122603
-~~~
-
+```
 
 ### Delete all recordings
 
-~~~
+```
 sudo bbb-record --deleteall
-~~~
+```
 
 ### Debug recordings
 
 Check recording log files, looking for errors since the Archive phase.
 
-~~~
+```
 sudo bbb-record --debug
-~~~
-
+```
 
 ### Enable a workflow
 
-~~~
+```
 sudo bbb-record --enable presentation
-~~~
+```
 
 ### Disable a workflow
 
-~~~
+```
 sudo bbb-record --disable presentation
-~~~
-
+```
 
 ### Get internal meeting ids
 
-~~~
+```
 sudo bbb-record --tointernal "English 101" 
-~~~
+```
 
 will show
 
-~~~
+```
 
 Internal meeting ids related to the given external meeting id:
 -------------------------------------------------------------
 6e35e3b2778883f5db637d7a5dba0a427f692e91-1379965122603
-~~~
+```
 
 Use double quotes for the external meeting id.
-
 
 ### Get external meeting ids
 
-
-~~~
+```
 sudo bbb-record --toexternal "English 101" 
-~~~
-
-
+```
 
 Use double quotes for the external meeting id.
-
 
 ### Republish recordings
 
 Republish recordings.
 
-
-~~~
+```
 sudo bbb-record --republish 6e35e3b2778883f5db637d7a5dba0a427f692e91-1379965122603
-~~~
-
+```
 
 ## For Developers
 
 Here you will find more details about the Record and Playback.
 
-
 The way to start a recorded session in BigBlueButton is setting the "record" parameter value to "true" in the [create API](/dev/api.html#create) call, which usually is handled by third party software.
-
-
 
 ### Capture phase
 
@@ -334,66 +314,67 @@ The Capture phase is handled by many components.
 
 To understand how it works, you should have basic, intermediate or advanced understanding about tools like FreeSWITCH, Flex, Red5 , Redis, dig into the [BigBlueButton source code](https://github.com/bigbluebutton/bigbluebutton). Search for information in the [BigBlueButton mailing list for developers](https://groups.google.com/forum/#!forum/bigbluebutton-dev) if you have more questions.
 
-
 ### Archive, Sanity, Process and Publish
 
 These phases are handled by Ruby scripts. The directory for those files is `/usr/local/bigbluebutton/core/`
 
-~~~
+```
 /usr/local/bigbluebutton/core/
 +-- Gemfile                                       
 +-- Gemfile.lock
 +-- lib
-¦   +-- recordandplayback                         
-¦   ¦   +-- audio_archiver.rb
-¦   ¦   +-- deskshare_archiver.rb
-¦   ¦   +-- edl
-¦   ¦   ¦   +-- audio.rb
-¦   ¦   ¦   +-- video.rb
-¦   ¦   +-- edl.rb
-¦   ¦   +-- events_archiver.rb
-¦   ¦   +-- generators  
-¦   ¦   ¦   +-- audio_processor.rb
-¦   ¦   ¦   +-- audio.rb
-¦   ¦   ¦   +-- events.rb
-¦   ¦   ¦   +-- matterhorn_processor.rb
-¦   ¦   ¦   +-- presentation.rb
-¦   ¦   ¦   +-- video.rb
-¦   ¦   +-- presentation_archiver.rb
-¦   ¦   +-- video_archiver.rb
-¦   +-- recordandplayback.rb
+¦   +-- recordandplayback                         
+¦   ¦   +-- audio_archiver.rb
+¦   ¦   +-- deskshare_archiver.rb
+¦   ¦   +-- edl
+¦   ¦   ¦   +-- audio.rb
+¦   ¦   ¦   +-- video.rb
+¦   ¦   +-- edl.rb
+¦   ¦   +-- events_archiver.rb
+¦   ¦   +-- generators  
+¦   ¦   ¦   +-- audio_processor.rb
+¦   ¦   ¦   +-- audio.rb
+¦   ¦   ¦   +-- events.rb
+¦   ¦   ¦   +-- matterhorn_processor.rb
+¦   ¦   ¦   +-- presentation.rb
+¦   ¦   ¦   +-- video.rb
+¦   ¦   +-- presentation_archiver.rb
+¦   ¦   +-- video_archiver.rb
+¦   +-- recordandplayback.rb
 +-- scripts
     +-- archive
-    ¦   +-- archive.rb                               
+    ¦   +-- archive.rb                               
     +-- bbb-rap.sh
     +-- bigbluebutton.yml
     +-- cleanup.rb
     +-- presentation.yml
     +-- process
-    ¦   +-- presentation.rb
-    ¦   +-- README
+    ¦   +-- presentation.rb
+    ¦   +-- README
     +-- publish
-    ¦   +-- presentation.rb
-    ¦   +-- README
+    ¦   +-- presentation.rb
+    ¦   +-- README
     +-- rap-worker.rb
     +-- sanity
         +-- sanity.rb
-
-~~~
+```
 
 The main file is `rap-worker.rb`, it executes all the Record and Playback phases
 
-  1. Detects when new captured media from a session is available.
-  1. Go through the Archive phase (`/usr/local/bigbluebutton/core/scripts/archive/archive.rb`)
-  1. Go through the Sanity phase executing (`/usr/local/bigbluebutton/core/scripts/sanity/sanity.rb`)
-  1. Go through the Process phase executing all the scripts under `/usr/local/bigbluebutton/core/scripts/process/`
-  1. Go through the Publish phase executing all the scripts under `/usr/local/bigbluebutton/core/scripts/publish/`
+1. Detects when new captured media from a session is available.
 
-  * Files ending with "archiver.rb" contain scripts with logic to archive media.
+2. Go through the Archive phase (`/usr/local/bigbluebutton/core/scripts/archive/archive.rb`)
 
-  * Files under `/usr/local/bigbluebutton/core/lib/generators/` contains scripts with logic, classes and methods used by other scripts which archive or process  media.
+3. Go through the Sanity phase executing (`/usr/local/bigbluebutton/core/scripts/sanity/sanity.rb`)
 
-  * Yml files contain information used by process and publish scripts.
+4. Go through the Process phase executing all the scripts under `/usr/local/bigbluebutton/core/scripts/process/`
+
+5. Go through the Publish phase executing all the scripts under `/usr/local/bigbluebutton/core/scripts/publish/`
+* Files ending with "archiver.rb" contain scripts with logic to archive media.
+
+* Files under `/usr/local/bigbluebutton/core/lib/generators/` contains scripts with logic, classes and methods used by other scripts which archive or process  media.
+
+* Yml files contain information used by process and publish scripts.
 
 ### Writing Post Scripts
 
@@ -403,7 +384,7 @@ The scripts take the argument `-m`, which takes the meeting id as a parameter.
 
 A set of example scripts is provided to give you a framework to build your custom scripts from.
 
-~~~
+```
 
 |-- post_archive
 |   `-- post_archive.rb.example
@@ -411,19 +392,19 @@ A set of example scripts is provided to give you a framework to build your custo
 |   `-- post_process.rb.example
 `-- post_publish
     `-- post_publish.rb.example
-~~~
+```
 
 The example files give the file paths where the files from the corresponding step are located, and include code for accessing the metadata variables from the meeting. For example, if you passed a variable named
 
-~~~
+```
 meta_postpublishemail=user@example.com
-~~~
+```
 
 when creating the meeting, you can access it by doing
 
-~~~
+```
 email = meeting_metadata['postpublishemail']
-~~~
+```
 
 in the script.
 
@@ -433,20 +414,19 @@ You are free to do anything you like inside the post scripts, including modifyin
 
 Playback works with the javascript library Popcorn.js which shows the slides, chat and webcam according to the current time played in the audio file. Playback files are located in `/var/bigbluebutton/playback/presentation/` and used to play any published recording.
 
-
 ## Troubleshooting
 
 Apart from the command
 
-~~~
+```
 sudo bbb-record --debug
-~~~
+```
 
 You can use the output from
 
-~~~
+```
 sudo bbb-record --watch 
-~~~
+```
 
 to detect problems with your recordings.
 
@@ -454,31 +434,28 @@ To investigate the processing of a particular recording, you can look at the fol
 
 The bbb-rap-worker log is a general log file that can be used to find which section of the recording processing is failing. It also logs a message if a recording process is skipped because the moderator did not push the record button.
 
-~~~
+```
 /var/log/bigbluebutton/bbb-rap-worker.log
-~~~
+```
 
 To investigate an error for a particular recording, check the following log files:
 
-~~~
+```
 /var/log/bigbluebutton/archive-<recordingid>.log
 /var/log/bigbluebutton/<workflow>/process-<recordingid>.log
 /var/log/bigbluebutton/<workflow>/publish-<recordingid>.log
-~~~
-
+```
 
 ### Understanding output from bbb-record-watch
 
 ![watch](/images/bbb-record-watch-explanation.png)
 
-
-
 This section is intended to help you to find and in some cases to solve problems in the
 Record and Playback component of BigBlueButton, watching the output of the command
 
-~~~
+```
 bbb-record --watch
-~~~
+```
 
 #### RAS ( RECORDED - ARCHIVED - SANITY CHECKED )
 
@@ -486,15 +463,15 @@ Below **RAS** you won't see any **_X_** until the meeting has finished.
 
 Once the meeting has finished, an **_X_** under **R** appears, if it does not appear:
 
-  * Be sure all users left the meeting.
+* Be sure all users left the meeting.
 
-  * Check out that the parameter `defaultMeetingExpireDuration` in `/var/lib/tomcat7/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties` does not have a big value (default to 1).
+* Check out that the parameter `defaultMeetingExpireDuration` in `/var/lib/tomcat7/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties` does not have a big value (default to 1).
 
-  * Be sure the parameter `record=true` was passed in the `create` api call. If not, you didn't record the meeting.
+* Be sure the parameter `record=true` was passed in the `create` api call. If not, you didn't record the meeting.
 
 Once the recording is archived, an **_X_** under **A** appears, if it does not appear:
 
-  * Verify this this file exists
+* Verify this this file exists
 
 `/var/bigbluebutton/recording/status/recorded/<internal meeting id>.done`
 
@@ -502,12 +479,11 @@ that means that the meeting was recorded.
 
 Once the recording passed the sanity check , an **_X_** appears under **S**, if it does not appear:
 
-  * A media file was not properly archived, find the cause of the problem in the sanity log
+* A media file was not properly archived, find the cause of the problem in the sanity log
 
-~~~
+```
 grep <internal meeting id> /var/log/bigbluebutton/sanity.log
-~~~
-
+```
 
 #### APVD (Audio, Presentation, Video, Deskshare)
 
@@ -519,19 +495,18 @@ shared your webcam or desktop, or you haven't enabled webcam or deskshare to be 
 This section is related to archived media. If you don't see an **_X_** under a media you are sure that was recorded, check out
 the sanity log. Execute this command to find the problem:
 
-~~~
+```
 grep <internal meeting id> /var/log/bigbluebutton/sanity.log
-~~~
-
+```
 
 #### Processed
 
 If a script was applied to process your recording, its name should be listed under the column 'Processed', by default you should see 
 "presentation", if you don't see one of them, find the problem in the log file of the processed recording:
 
-~~~
+```
 grep -B 3 "status: 1" /var/log/bigbluebutton/presentation/process-<internal meeting id>.log | grep ERROR
-~~~
+```
 
 If there is some output, it should show the problem. If there is no output then tail the file to see which is the
 latest executed task. Make sure that is the one that failed and an error message with the problem is described few lines after.
@@ -540,10 +515,9 @@ latest executed task. Make sure that is the one that failed and an error message
 
 If a script is applied to publish your recording, its name should be listed under the column 'Published'.
 
-~~~
+```
 grep -B 3 "status: 1" /var/log/bigbluebutton/presentation/publish-<internal meeting id>.log | grep ERROR
-~~~
-
+```
 
 If there is some output then you found the problem, if there is not any output then tail the file to see which is the
 last executed task, sure that is the one that failed and an error message with the problem is described few lines after.
@@ -556,27 +530,27 @@ Sometimes you have a user the clicked the Start/Stop Recording button at the wro
 
 You can change the segments processed for a recording by editing the `events.xml` file.  Use `bbb-record --list` to find the internal `meetingId` for the recording.  For example, to get the last three recordings
 
-~~~
+```
 $ sudo bbb-record --list | head -n 5
 Internal MeetingID                                               Time                APVD APVDE RAS Slides Processed            Published           External MeetingID
 ------------------------------------------------------  ---------------------------- ---- ----- --- ------ -------------------- ------------------  -------------------
 238ff79fd66331a59274a8f3f05f1c0cd3e278b4-1538942925244  Sun Oct 7 16:08:45 EDT 2018  XX   XX  X          6                      presentation        English 102
 6e35e3b2778883f5db637d7a5dba0a427f692e91-1538942881350  Sun Oct 7 16:08:01 EDT 2018   X    X  X          6                      presentation        English 101
 6e35e3b2778883f5db637d7a5dba0a427f692e91-1538941988186  Sun Oct 7 15:53:08 EDT 2018  XX   XX  X          6                      presentation        English 101
-~~~
+```
 
 The first recording has an internal `meetingID` of `238ff79fd66331a59274a8f3f05f1c0cd3e278b4-1538942925244`.  If this is the recoding you want to edit, you'll find the events.xml in the location `/var/bigbluebutton/recording/raw/238ff79fd66331a59274a8f3f05f1c0cd3e278b4-1538942925244\events.xml`.  Edit this file and look for the first `RecordingStatusEvent`, such as
 
-~~~
+```
   <event timestamp="4585088638" module="PARTICIPANT" eventname="RecordStatusEvent">
     <userId>w_68gpmvhecnng</userId>
     <status>true</status>
   </event>
-~~~
+```
 
 Next, find when the first moderator joined, and thend move the `RecordStatusEvent` after the moderator join event.  Also, edit the `timestamp` for `RecordStatusEvent` so it occurrs **after** the moderator's `timestamp`.  For example:
 
-~~~xml
+```xml
   <event timestamp="4585063453" module="PARTICIPANT" eventname="ParticipantJoinEvent">
     <userId>w_68gpmvhecnng</userId>
     <externalUserId>w_68gpmvhecnng</externalUserId>
@@ -587,23 +561,22 @@ Next, find when the first moderator joined, and thend move the `RecordStatusEven
     <userId>w_68gpmvhecnng</userId>
     <status>true</status>
   </event>
-~~~
+```
 
 This is equivalent to the first moderator clicking the Start/Stop Record button.  Save the modified `events.xml` and regenerate recording using the `bbb-record --rebuild` command, as in
 
-~~~
+```
 sudo bbb-record --rebuild 238ff79fd66331a59274a8f3f05f1c0cd3e278b4-1538942925244
-~~~
+```
 
 If there are no other recordings processing, you should see the recording re-process using the `sudo bbb-record --watch` command.  After the processing is finished, your users can view the recording and see all the content from the time the first moderator joined.
 
-
-~~~xml
+```xml
  <event timestamp="4584199946" module="PARTICIPANT" eventname="RecordStatusEvent">
     <userId>w_w0mkqqeo8jqc</userId>
     <status>true</status>
   </event>
-~~~
+```
 
 ## Is the recording activated automatically?
 
@@ -613,9 +586,7 @@ No, when creating the meeting the parameters must include `record=true` to enabl
 
 `/etc/cron.daily/bigbluebutton` deletes the archived media. Edit the file and add more rules if you need to delete others like raw files or processed files.
 
-
 # Events outline
-
 
 ## Overview
 
@@ -625,177 +596,166 @@ The sections that follow cover the types of events you will encounter in events.
 
 ### **PublicChatEvent**
 
-| attributes|              |            |           |
-| :--------|:------------:| :---------:| :--------:|
-|  message  | sender | senderId    | color|
-
+| attributes |        |          |       |
+|:---------- |:------:|:--------:|:-----:|
+| message    | sender | senderId | color |
 
 ## Presentation
 
 ### **AssignPresenterEvent**
 
-| attributes|              | |
-| --------|:------------:| -----:
-|  assignedBy  | userid | name
+| attributes |        |      |
+| ---------- |:------:|:----:|
+| assignedBy | userid | name |
 
 ### **ConversionCompletedEvent**
 
-| attributes|              |
-| :--------|:------------:|
-|  presentationName  | originalFilename | 
+| attributes       |                  |
+|:---------------- |:----------------:|
+| presentationName | originalFilename |
 
 ### **ParticipantJoinEvent**
 
-| attributes|              |            |           |
-| :--------|:------------:| :---------:| :--------:|
-|  userId  | externalUserId | role    | name|
-
+| attributes |                |      |      |
+|:---------- |:--------------:|:----:|:----:|
+| userId     | externalUserId | role | name |
 
 ### **ResizeAndMoveSlideEvent**
 
-| attributes|              |            |           |       |
-| :--------|:------------:| :---------:| :--------:|:-----:|
-|  widthRatio  | yOffset | id    | heightRatio|xOffset |
-
+| attributes |         |     |             |         |
+|:---------- |:-------:|:---:|:-----------:|:-------:|
+| widthRatio | yOffset | id  | heightRatio | xOffset |
 
 ### **SharePresentationEvent**
 
-| attributes|              |
-| :--------|:------------:|
-|  share  | presentationName |
-
-
+| attributes |                  |
+|:---------- |:----------------:|
+| share      | presentationName |
 
 ### **GotoSlideEvent**
 
-| attributes|              |
-| :--------|:------------:|
-|  slide  | id |
-
+| attributes |     |
+|:---------- |:---:|
+| slide      | id  |
 
 ## Whiteboard
 
 ### **AddShapeEvent**
 
-| attributes|              |            |           |       |           |           |           |           |           |           |           |
-| :--------|:------------:| :---------:| :--------:|:-----:| :---------:| :---------:| :---------:| :---------:| :---------:| :---------:| :---------:|
-|  presentation  | shapeId | type    | dataPoints|userId |position| pageNumber| status| whiteboardId| id| thickness| color| 
+| attributes   |         |      |            |        |          |            |        |              |     |           |       |
+|:------------ |:-------:|:----:|:----------:|:------:|:--------:|:----------:|:------:|:------------:|:---:|:---------:|:-----:|
+| presentation | shapeId | type | dataPoints | userId | position | pageNumber | status | whiteboardId | id  | thickness | color |
 
 ### **UndoAnnotationEvent**
 
-| attributes|              |            |           | |
-| :--------|:------------:| :---------:| :--------:|:-----:|
-|  presentation  | shapeId | userId    | pageNumber|whiteboardId |
-
+| attributes   |         |        |            |              |
+|:------------ |:-------:|:------:|:----------:|:------------:|
+| presentation | shapeId | userId | pageNumber | whiteboardId |
 
 ### **WhiteboardCursorMoveEvent**
 
-| attributes|              |            |
-| :--------|:------------:| :---------| 
-|  yOffset  | userId | xOffset |
+| attributes |        |         |
+|:---------- |:------:|:-------:|
+| yOffset    | userId | xOffset |
 
 ## User
-
 
 ## Voice
 
 ### **StartRecordingEvent**
 
-| attributes|              |                       | 
-| :--------: |:------------:| :--------------------:|
-|  bridge   | filename     | recordingTimestamp    |
+| attributes |          |                    |
+|:----------:|:--------:|:------------------:|
+| bridge     | filename | recordingTimestamp |
 
 ### **ParticipantJoinedEvent**
 
-| attributes|              |            |           |       |           |
-| :--------|:------------:| :---------:| :--------:|:-----:| ---------:|
-|  muted  | callernumber | talking    | callername|bridge |participant|
-
-
-### **ParticipantTalkingEvent**
-
-| attributes|              |                       | 
-| :--------: |:------------:| :--------------------:|
-|  talking   | bridge     | participant    |
+| attributes |              |         |            |        |             |
+|:---------- |:------------:|:-------:|:----------:|:------:|:-----------:|
+| muted      | callernumber | talking | callername | bridge | participant |
 
 ### **ParticipantTalkingEvent**
 
-| attributes|              |                       | 
-| :--------: |:------------:| :--------------------:|
-|  muted   | bridge     | participant    |
+| attributes |        |             |
+|:----------:|:------:|:-----------:|
+| talking    | bridge | participant |
+
+### **ParticipantTalkingEvent**
+
+| attributes |        |             |
+|:----------:|:------:|:-----------:|
+| muted      | bridge | participant |
 
 ### **ParticipantLeftEvent**
 
-| attributes|              |
-| --------|:------------:| 
-|  bridge  | participant | 
+| attributes |             |
+| ---------- |:-----------:|
+| bridge     | participant |
 
-## Participant 
+## Participant
 
 ### **RecordStatusEvent**
 
-| attributes|              |
-| --------|:------------:| 
-|  userId  | status | 
+| attributes |        |
+| ---------- |:------:|
+| userId     | status |
 
-## Caption 
+## Caption
 
-
-## Screen Share 
+## Screen Share
 
 ## Desk Share
 
 ### **DeskshareStartedEvent**
 
-| attributes| |
-| :--------| :--------: |
-|  file  | stream | 
+| attributes |        |
+|:---------- |:------:|
+| file       | stream |
 
 ### **DeskshareStoppedEvent**
 
-| attributes| | |
-| :--------| :--------: |:------: |
-|  file  | stream | duration
+| attributes |        |          |
+|:---------- |:------:|:--------:|
+| file       | stream | duration |
 
 ## PARTICIPANT
 
 ### **ParticipantStatusChangeEvent**
 
-| attributes| | |
-| :--------| :--------: |:------: |
-|  value  | userId | status
+| attributes |        |        |
+|:---------- |:------:|:------:|
+| value      | userId | status |
 
 ## Poll
 
 ### **PollStartedRecordEvent**
 
-| attributes|              | 
-| :--------|:------------:| 
-|  answers  | pollId |
+| attributes |        |
+|:---------- |:------:|
+| answers    | pollId |
 
 ### **UserRespondedToPollRecordEvent**
 
-| attributes|              | |
-| :--------|:------------:| :-----:|
-|  answerId  | pollId |userId |
+| attributes |        |        |
+|:---------- |:------:|:------:|
+| answerId   | pollId | userId |
 
 ### **PollStoppedRecordEvent**
 
-| attributes|
-| :--------|
-|  pollId  |
+| attributes |
+|:---------- |
+| pollId     |
 
 ## WEBCAM
 
 ### **StartWebcamShareEvent**
 
-| attributes|
-| :--------|
-|  stream  |
-
+| attributes |
+|:---------- |
+| stream     |
 
 ### **StopWebcamShareEvent**
 
-| attributes|              | 
-| :--------|:------------:| 
-|  duration  | stream |
+| attributes |        |
+|:---------- |:------:|
+| duration   | stream |
