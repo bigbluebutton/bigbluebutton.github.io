@@ -1,18 +1,16 @@
 body {
     font-weight: 400;
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
-
-    // font-family: "Source Sans Pro",Helvetica,Arial,sans-serif;
-    // font-family: arial, sans-serif;
+    font-family: 'Roboto', sans-serif;
     line-height: 1.5;
-    // font-size: 1.00em;
     font-size: 18px; 
+	letter-spacing: 0.005em;
 }
 
 pre, code {
     border: none;
     border-radius: 0;
-    background-color: #f9f9f9;
+    background-color: #F8F8F8;
     font-size: 0.85em;
 }
 
@@ -27,6 +25,10 @@ code {
 #header {
     border-bottom: 1px solid #eee;
     margin-bottom: 20px;
+}
+
+#header .brand {
+	font-size: 19px;
 }
 
 #header a:hover {
@@ -61,6 +63,8 @@ code {
 #navigation .nav-header {
     padding-left: 0;
     padding-right: 0;
+	font-size: 12px;
+	color : #5b6162;
 }
 
 body.rtl {
@@ -94,4 +98,58 @@ li {
 
 h1, h2, h3 {
 	margin-top: 20px;
+}
+
+h4 small {
+	font-size: 14px;
+	color: #5d6a6f;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+	content: "";
+}
+
+blockquote, q {
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	quotes: none;
+}
+
+a img {
+	border: 0;
+}
+
+a, input {
+	outline: none;
+}
+
+a {
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+	color: #06C;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+img {
+	-ms-interpolation-mode: bicubic;
+	border: 0;
+	height: auto;
+	max-width: 100%;
+	vertical-align: middle;
+	display: block;
+}
+
+figure {
+	margin: 0;
 }
