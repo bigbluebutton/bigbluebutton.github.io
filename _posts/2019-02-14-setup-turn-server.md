@@ -7,7 +7,6 @@ date: 2019-02-14 22:13:42
 ---
 
 This document covers how to seupt a TURN server for BigBlueButton to allow users behind restrictive firewalls to connect.
- 
 
 # Setup a TURN server
 
@@ -33,10 +32,10 @@ We recommend using a minimal server installation of Ubuntu 18.04.  The [coturn](
 
 coturn is already available in the Ubuntu packaging repositories for version 18.04 and later, and it can be installed with apt-get:
 
-~~~
-sudo apt-get update
-sudo apt-get install coturn
-~~~
+```bash
+$ sudo apt-get update
+$ sudo apt-get install coturn
+```
 
 Note: coturn will not automatically start until configuration is applied (see below).
 
@@ -48,19 +47,19 @@ You need to setup a fully qualified domain name that resolves to the external IP
 
 You can use `certbot` from [Let's Encrypt](https://letsencrypt.org/) to easily generate free TLS certificates.   To setup `certbot` enter the following commands on your TURN server (not your BigBlueButton server).
 
-~~~
-sudo add-apt-repository ppa:certbot/certbot
-sudo apt-get update
-sudo apt-get install certbot
-~~~
+```bash
+$ sudo add-apt-repository ppa:certbot/certbot
+$ sudo apt-get update
+$ sudo apt-get install certbot
+```
 
 You can then run a `certbot` command like the following to generate the certificate, replacing `turn.example.com` with the domain name of your TURN server:
 
-~~~
-sudo certbot certonly --standalone --preferred-challenges http \
+```bash
+$ sudo certbot certonly --standalone --preferred-challenges http \
     --deploy-hook "systemctl restart coturn" \
     -d turn.example.com
-~~~
+```
 
 Current versions of the certbot command set up automatic renewal by default.  Note that when certbot renews the certificate, it will restart coturn so coturn will start to use the updated certificate files. This will interrupt any ongoing TURN connections. You may wish to change the schedule of certbot renewals or disable automatic renewal if this is a concern.
 
@@ -69,12 +68,11 @@ Current versions of the certbot command set up automatic renewal by default.  No
 `coturn` configuration is stored in the file `/etc/turnserver.conf`. There are a lot of options available, all documented in comments in that file.  We include a sample configuration below with comments indicating the recommended settings, with some notes in locations where customization is required.
 
 You can repace the contents `/etc/turnserver.conf` with this file and make two changes:
-  
+
 * Replace `turn.example.com` with the hostname of your TURN server, and  
 * Replace `<random value>` to a random value for a shared secret (instructions for generating a new secret are in a comment in the file).
 
-
-~~~sh
+```ini
 # Example coturn configuration for BigBlueButton
 
 # These are the two network ports used by the TURN server which the client
@@ -137,14 +135,13 @@ no-tlsv1_1
 # Log to a single filename (rather than new log files each startup). You'll
 # want to install a logrotate configuration (see below)
 log-file=/var/log/coturn.log
-~~~
-
+```
 
 ## Configure Log Rotation
 
 To rotate the logs for `coturn`, install the following configuration file to `/etc/logrotate.d/coturn`
 
-~~~
+```
 /var/log/coturn.log
 {
     rotate 30
@@ -157,33 +154,30 @@ To rotate the logs for `coturn`, install the following configuration file to `/e
     systemctl kill -sHUP coturn.service
     endscript
 }
-~~~
-
+```
 
 ## Enabling the coturn service
 
 The ubuntu package for `coturn` requires that you edit a file to enable startup. Edit the file `/etc/default/coturn` and ensure the following line is uncommented:
 
-~~~sh
+```ini
 TURNSERVER_ENABLED=1
-~~~
+```
 
 You can then start the coturn service by running
 
-~~~sh
-systemctl start coturn
-~~~
+```bash
+$ systemctl start coturn
+```
 
 ## Configure BigBlueButton to use the coturn server
 
-
 You must configure bbb-web so that it will provide the list of turn servers to the web browser. Edit the file `/usr/share/bbb-web/WEB-INF/classes/spring/turn-stun-servers.xml` using the contents below and make edits:
 
-  * replace both instances of `turn.example.com` with the hostname of the TURN server, and 
-  * replace `<random value>` with the secret you configured in `turnserver.conf`.
+* replace both instances of `turn.example.com` with the hostname of the TURN server, and 
+* replace `<random value>` with the secret you configured in `turnserver.conf`.
 
-
-~~~xml
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -215,10 +209,8 @@ You must configure bbb-web so that it will provide the list of turn servers to t
         </property>
     </bean>
 </beans>
-~~~
-
+```
 
 Restart your BigBlueButton server to apply the changes. 
 
 Going forward, when users connect behind a restrictive firewall that prevents outgoing UDP connections, the TURN server will enable BigBlueButton to connect to FreeSWITCH and Kurento via the TURN server through port 443 on their firewall.
-

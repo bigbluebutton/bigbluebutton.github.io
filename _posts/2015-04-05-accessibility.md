@@ -5,7 +5,6 @@ category: dev
 date: 2015-04-14 14:56:52
 ---
 
-
 ## Overview
 
 ** Note: ** This document refers to the legacy Flash client.  For accessibility of the new HTML5 cient, see [HTML5 client accessibility](/2.2/html5-accessibility.html).
@@ -19,8 +18,11 @@ Some Visual disabilities require the user to have a screen reader, which is what
 It may look like a lot of work to develop accessibly, but the majority of the work involved is strictly one-time setup. Once that groundwork is in your code, it becomes a very simple matter to "fill in the blanks" as you add more code.
 
 ## Tab Order
+
 This guide will start with the assumption that you are building an entirely new module.
+
 ### Linking in your module
+
 BigBlueButton already has an established core tab order, with each module given a baseTabIndex property. The convention is to establish your module's baseTabIndex in an Options class. For an example, examine
 the ChatOptions class at dev\bigbluebutton\bigbluebutton-client\src\org\bigbluebutton\modules\chat\model\ChatOptions.as.
 
@@ -71,9 +73,11 @@ private function init():void {
 {% endhighlight %}
 
 ### Establishing internal tab order
+
 Your module now "knows" where it should sit in the general tab order; you now have to give each Flash component within your module a tabIndex property. This is based on the baseIndex variable in the MXML, so if the file you're working in does not have one, either re-read "Linking in your module" above or find a way to pass the baseIndex from the "main" MXML into the file you're working with.
 
 #### Adding the main controls
+
 If the MDIWindow you are working in doesn't have a creationComplete method, add one:
 {% highlight mxml %}
 <MDIWindow xmlns="flexlib.mdi.containers.*"
@@ -94,6 +98,7 @@ private function onCreationComplete():void {
 You'll also want to add the accessibilityDescriptions to each item here, but ignore that for now.
 
 #### All other Flash elements
+
 Now that you have put the titlebar and control buttons into the tab order, continue through each element in the module and continue assigning tabIndex properties based on the baseIndex. The tab order within the module is up to your discretion, as long as the order is as sensible to a user who cannot see the screen as it is to a fully-sighted user.
 
 You have already seen how to assign a tabIndex dynamically above. To assign a static tabIndex within the Flash component itself, write the property like so:
@@ -102,9 +107,11 @@ tabIndex="{baseIndex+4}"
 {% endhighlight %}
 
 ### Testing
+
 Testing the tab order is very easy, simply focus into the application and continue pressing the Tab key until you see the focus indicator in the general vicinity of your contribution. Continue tabbing, and observe how the movement of the indicator lines up with how you expected it to move.
 
 ## Screen Reader Compatibility
+
 According to CDOT's research, there are two main screen-reader applications to be aware of: JAWS and NVDA. JAWS is proprietary software available for a fee; use your own judgment as far as acquiring a license for the software or ignoring it in your testing. NVDA, on the other hand, is the leading open-source screen-reader and completely free to download, use, and test with.
 
 Before you can get any meaningful results from the screen-reader, you'll need to have your tab order sorted out. If you have not done so, please refer to the previous part of this guide.
@@ -129,9 +136,11 @@ accessibilityName="{ResourceUtil.getInstance().getString('bbb.exampleModule.exam
 If you change an accessibilityName dynamically, be sure to call Accessibility.updateProperties() to force the screen-reader to update it's cached version of the application. The operation is fairly memory-intensive, so use it efficiently.
 
 ### Testing
+
 Testing can be done in a very similar manner to testing the tab order. Open your screen-reader of choice, start up the BigBlueButton application, and use the Tab key to navigate to your module. Listen to the reader's description of what is on the screen, and try to put yourself in the position of a blind or partially-sighted user. Turn your monitor off, if it helps. Also listen to the descriptions of established BigBlueButton core modules, and mimic the conventions there in your own accessiblityNames.
 
 ## Shortcut Keys
+
 The last main component of adding accessibility to your code is to add shortcut keys. Like hotkeys in any other application, these are key combinations that allow quick access to any feature. In BigBlueButton, there are two distinct sets of hotkeys: global and local. Each of these has it's own "modifier," depending on the browser, and an ASCII keycode. For example, the hotkey to focus the Presentation window has the keyCode 52, which translates to the number 4 key. In Firefox, since it is a global hotkey, the modifier is the Control key. So, Ctrl-4 focuses the Presentation window. The modifiers are in this table:
 
 | Browser  | Global   | Local      |
@@ -141,6 +150,7 @@ The last main component of adding accessibility to your code is to add shortcut 
 | Explorer | Ctrl-Alt | Ctrl-Shift |
 
 ### Deciding what hotkeys to add
+
 Essentially, you want to have a hotkey for each button in your module, as well as a hotkey to focus to each place where the user can provide input or make decisions, such as text input boxes, dropdown lists, or checkboxes. It may be useful for you to map these functions out on a spreadsheet, along with the key you want associated with them and the matching ASCII code.
 
 Because the global and local hotkeys have separate modifiers, each module and the global scope have nearly the entire keyboard to work with. The modifiers were chosen because the major browsers have little or no functions already bound to them, however the W T and N keys are off-limits.
@@ -148,6 +158,7 @@ Because the global and local hotkeys have separate modifiers, each module and th
 One common requirement for global and local hotkeys is the ShortcutEvent. Open /bigbluebutton-client/src/org/bigbluebutton/main/events/ShortcutEvent.as and add a public static constant for each of your hotkeys. It's not important what you call it, as long as it's unique. This is so that when we later start dispatching ShortcutEvents, the application can differentiate between them based on what we want it to do.
 
 ### Shortcut Help Window
+
 The Shortcut Help Window, found at dev/bigbluebutton-client/src/org/bigbluebutton/main/views/ShortcutHelpWindow.mxml, is an in-client guide to all hotkeys in the application. There are several things that need to be done before we can really look at how they all work together, so let's get started.
 
 The first thing you have to do is add your keycodes into the locale files. For each keycode, you want both the ASCII value of the key and a plain-language description of what the hotkey does. For example, these two lines are the English locale entry for the "focus Presentation window" hotkey already mentioned:
@@ -232,6 +243,7 @@ Now that everything is in place, we can have a look at how it all fits together.
 But the important thing is, it works, and users can now see which hotkeys do what in your module. Now we actually have to make them do something.
 
 ### Global Shortcuts
+
 Before we get into creating global shortcuts within BigBlueButton, first be sure that you have already added the ASCII codes for your hotkeys into the locale file, as described above in the section about the Shortcut Help Window. Also, make sure that you have added constants as necessary to ShortcutEvent.as, as described in "Deciding what hotkeys to add." Once you've done that, we can proceed.
 
 Global shortcuts, in the context of BigBlueButton, are hotkeys that can be used from anywhere within the application, such as the hotkey to focus into the Presentation window. Compare this to local shortcuts which can only be used within the module they affect, such as the hotkey WITHIN the Presentation window to advance to the next slide.
@@ -270,6 +282,7 @@ private function focusWindow(e:ShortcutEvent):void {
 {% endhighlight %}
 
 ### Local Shortcuts
+
 Adding local shortcuts to your module is a more involved process, as you need to build the framework that is already present for global shortcuts. We'll start in the MDIWindow for your module.
 
 **NOTE: Some modules, like the Chat module, have a more complex structure with specific hotkeys for each one. If your module is built in a similar manner, you will need to repeat this for each MXML in your module which dispatches it's own shortcuts.**
@@ -318,7 +331,9 @@ Listening for these events is done the same way as for global shortcuts, with a
  tag in the MXML file where the hotkey is meant to take effect.
 
 ### Testing
+
 Testing your shortcuts happens in two stages. First, you need to make sure that your hotkey combinations call the correct methods and actually do what they're supposed to do and how they're supposed to do it. Second, you need to make sure that your hotkeys are available in the correct scope. Global hotkeys, of course, should work as long as the Flash application has focus. If you can move focus into the Chat module and still use the local hotkey you set up for your custom module, something has gone wrong.
 
 ## Conclusion
+
 With all you've done in this guide, your module is now accessible to users with disabilities, and you have built a strong framework into your code which can expand as needed to suit any future development. Of course, even with the testing guidelines provided here, there is a good chance you may overlook something. There is a large community of users around the world, who have been using technology with disabilities for years and who you can reach out to to perform real-world testing of what you've developed.
