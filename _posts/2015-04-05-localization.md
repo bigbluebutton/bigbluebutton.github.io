@@ -15,13 +15,13 @@ If you would like to help translate BigBlueButton into your language, or you see
 
 1. Create an account on [transifex.com](https://www.transifex.com/)
 
-1. Visit the [BigBlueButton project](https://www.transifex.com/projects/p/bigbluebutton/) on Transifex. You'll see a list of languages ready for translation.
+2. Visit the [BigBlueButton project](https://www.transifex.com/projects/p/bigbluebutton/) on Transifex. You'll see a list of languages ready for translation.
 
-1. Click the name of the language you wish to translate  
+3. Click the name of the language you wish to translate  
    
    If you don't find your language, please post on the [BigBlueButton Mailing List](http://groups.google.com/group/bigbluebutton-dev/topics?gvc=2) requesting it be added.
 
-1. Click 'Join team' to join the localization team for your language
+4. Click 'Join team' to join the localization team for your language
    
    The 'Join team' button is in the upper right-hand corner.
    
@@ -29,13 +29,13 @@ If you would like to help translate BigBlueButton into your language, or you see
    
    At this point, Transifex will send an e-mail to the coordinator for BigBlueButton localization requesting approval. You should receive approval very quickly.
 
-1. Once approved, click the 'bbbResource.properties' link
+5. Once approved, click the 'bbbResource.properties' link
    
    ![bbbResources.properties](/images/image1.png)
    
    You'll see a dialog box where you can begin translation.
 
-1. Click the 'Translate Now' button
+6. Click the 'Translate Now' button
    
    ![approved](/images/approved.png)
    
@@ -70,12 +70,12 @@ Language files are compiled into swf files and loaded dynamically based on the b
 If you created a custom language file but do not wish to contribute back to the project, here are the instructions on how to compile the language files yourself.
 
 1. Put the template file into a new folder. The folder name should follow the language code convention stated above for the language/country the language file is written for.  Put the folder under `bigbluebutton-client/locale`.
-1. The file will be loaded whenever the user's browser is set to that language/country code. Optionally, you could overwrite the English language files if you think that most of your users are running english language browsers, but would still like them to load a specific language.
+2. The file will be loaded whenever the user's browser is set to that language/country code. Optionally, you could overwrite the English language files if you think that most of your users are running english language browsers, but would still like them to load a specific language.
 
 Rebuild the client. Go to the client source directory - on the VM usually `/home/firstuser/dev/bigbluebutton/bigbluebutton-client/`, and run the command
 
-```
-   ant locales
+```bash
+$ ant locales
 ```
 
 To have the client load your locale, you need to add it to the locales.xml located in resources/prod folder.

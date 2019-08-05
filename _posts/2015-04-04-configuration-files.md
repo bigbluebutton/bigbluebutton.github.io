@@ -113,7 +113,7 @@ Locate in ```/var/log/tomcat7```
 Setup host and external IP values.
 
 ```
- /opt/freeswitch/conf/autoload_configs/conference.conf.xml
+/opt/freeswitch/conf/autoload_configs/conference.conf.xml
 ```
 
 Setup voice conference properties.
