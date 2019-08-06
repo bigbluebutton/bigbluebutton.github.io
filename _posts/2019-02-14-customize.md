@@ -556,20 +556,6 @@ After you save the changes to `bigbluebutton.properties`, restart the BigBlueBut
 $ sudo bbb-conf --restart
 ```
 
-## Restrict webcam sharing to the presenter
-
-You can configure all meetings to restrict sharing of webcam to only the current presenter. To do so, open [config.xml](/admin/client-configuration.html#configxml) in the parameters for videomodule, change the following:
-
-```xml
-presenterShareOnly="false"
-```
-
-to
-
-```
-presenterShareOnly="true"
-```
-
 ## Turn off "you are now muted"
 
 You can remove this sound for all users by editing `/opt/freeswitch/etc/freeswitch/autoload_configs/conference.conf.xml` and moving the lines containing `muted-sound` and `unmuted-sound` into the commented section.
