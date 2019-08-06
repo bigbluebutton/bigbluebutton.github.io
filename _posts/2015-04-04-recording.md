@@ -23,6 +23,8 @@ After the session finishes, the BigBlueButton server will run an archive script 
 
 After the recording is archived, BigBlueButton will run one (or more) ingest and processing scripts, named workflows, that will _process_ and _publish_ the captured data into a format for _playback_.
 
+![Record and Playback - Overview](/images/diagrams/Record and Playback Service Diagram-RAP - Overview.png)
+
 # Record and Playback Phases
 
 BigBlueButton processes the recordings in the following :
@@ -44,14 +46,20 @@ Whiteboard, cursor, chat and other events are stored on Redis. Webcam videos (.f
 
 The Archive phase involves taking the captured media and events into a **raw** directory. That directory contains ALL the necessary media and files to work with.
 
+![Record and Playback - Archive](/images/diagrams/Record and Playback Service Diagram-RAP - Archive.png)
+
 ## Sanity
 
 The Sanity phase involves checking that all the archived files are _valid_ for processing. For example
 that media files have not zero length and events were archived.
 
+![Record and Playback - Sanity](/images/diagrams/Record and Playback Service Diagram-RAP - Sanity.png)
+
 ## Process
 
 The Process phase involves processing the archived  valid files of the recording according to the workflow (e.g. presentation). Usually it involves parsing the archived events, converting media files to other formats or concatenating them, etc.
+
+![Record and Playback - Process](/images/diagrams/Record and Playback Service Diagram-RAP - Process.png)
 
 ## Post Scripts
 
@@ -68,6 +76,8 @@ Some examples of things you might use the post scripts to do:
 ## Publish
 
 The Publish phase involves generating metadata and taking many or all the processed files and placing them in a directory exposed publicly for later playback.
+
+![Record and Playback - Publish](/images/diagrams/Record and Playback Service Diagram-RAP - Publish.png)
 
 ## Playback
 
