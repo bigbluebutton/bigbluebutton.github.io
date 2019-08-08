@@ -118,6 +118,7 @@ Install `docker-compose` by following the steps for installing on Linux in the [
 Before you continue, verify that you have `docker-compose` installed by running:
 
 ```bash
+$ cd ~/greenlight
 $ docker-compose -v
 ```
 
