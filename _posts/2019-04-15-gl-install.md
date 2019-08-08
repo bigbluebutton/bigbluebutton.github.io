@@ -169,6 +169,7 @@ $ docker-compose down
 then, bring it back up.
 
 ```bash
+$ cd ~/greenlight
 $ docker-compose up -d
 ```
 
