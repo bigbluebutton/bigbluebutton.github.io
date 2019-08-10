@@ -10,42 +10,40 @@ title: "BigBlueButton"
 
 BigBlueButton is an open source web conferencing system for online learning.   
 
-BigBlueButton is **open source** project, which means you have full access to the [source code](http://github.com/bigbluebutton/bigbluebutton) under an [open source license](https://bigbluebutton.org/open-source-license/).  You can setup your own BigBlueButton server in about [15 minutes](https://github.com/bigbluebutton/bbb-install) (or setup 10 BigBlueButton servers if you want).  BigBlueButton also comes with a [Greenlight](https://github.com/bigbluebutton/greenlight), a simple front-end that gives you the ability to create rooms and manage recordings. 
+BigBlueButton is **open source**, which means you have full access to the [source code](https://github.com/bigbluebutton/bigbluebutton) under an [open source license](https://bigbluebutton.org/open-source-license/).  With [bbb-install.sh](https://github.com/bigbluebutton/bbb-install), you can setup your own BigBlueButton server in about 15 minutes (or setup 10 BigBlueButton servers if you want).  BigBlueButton comes with a simple to use front-end called [Greenlight](https://github.com/bigbluebutton/greenlight) that gives you the ability to create rooms, invite users (using a permanent URL), and manage recordings. 
 
-Bigbluebutton is a **web conferencing system**, which means it implements all the core capabilities you would expect from a commercial web conferencing system (but available to you under an open source license).  These capabilities include real-time sharing of audio, video, presentation, and your screen.
+Bigbluebutton is a **web conferencing system**, which means it implements all the core capabilities you expect from a commercial web conferencing system (but under an open source license).  These capabilities include real-time sharing of audio, video, presentation, and your screen.  BigBlueButton can record you sessions for later playback.
 
-BigBlueButton is designed for **online learning**, which means that while it offers you all expected features of a web conferencing system, it has additional features to give teachers multiple ways to engage students in online learning.  
+BigBlueButton is designed for **online learning**, which means that while it offers you all expected features of a web conferencing system, it has extensive features that enabling teachers to engage students.  The more engagement that occurs, the more learning that takes place.
 
-a tutoring session with the multi-user whiteboard or getting students to apply what they just learned in breakout rooms.
 
 ## Using BigBlueButton
 
-BigBlueButton sends and receieves audio/video using the built-in web real-time communication (WebRTC) libraries in modern web browsers.  Thanks to these libraries, there is no plugin to download, not binary to install.  We recommend Chrome and FireFox browsers as they have the best support for WebRTC.
+BigBlueButton uses your browser's built-in libraries to send/receive audio and video.  These libraries are called web real-time communication (WebRTC).  Thanks to WebRTC, there is no plugin to download, not binary to install.  Your users simply click a link (such as an invitation link to a room in Greenlight) and the BigBlueButton HTML5 client loads and runs within their browser.
 
-To join a BigBlueButton session, you click a link in your browser, such as clicking the 'Join' link in Greenlight.  The BigBlueButton components download, run, and prompt you to share your microphone and join the session.
+We recommend the Chrome and FireFox browsers as they have the best support for WebRTC.
 
-
-Here is a screenshot of the BigBlueButton client running inside the Chrome browser.  From left to right, the screenshot shows the User list (the list of users in the session), the chat area, the presentation area, and one shared webcam (you can have many shared webcams in a session).
+Here is a screenshot of the BigBlueButton client running within Chrome.  From left to right, the screenshot shows the User list (the list of users in the session), the chat area, the presentation area, and one shared webcam (you can have many shared webcams in a session).
 
 <p align="center">
   <img src="/images/22-overview-2.png"/>
 </p><br>
 
-BigBlueButton runs within your mobile browsers as well (we recomend iOS 12.2 and Android 6.0).  There is no mobile application to install -- just click a link and it's ready top run.
+BigBlueButton runs within your mobile browsers as well (we recomend iOS 12.2+ and Android 6.0+).  There is no mobile application to install -- just click a link within your mobile browser on Android (Chrome) and iOS (Safari mobile) and BigBlueButton will load and run.  (Both these mobile browsers support WebRTC).
 
-Recently, Microsoft [announced](https://blogs.windows.com/windowsexperience/2019/04/08/microsoft-edge-preview-builds-the-next-step-in-our-oss-journey/) they are switching Chromium engine.  This means almost a billion Windows 10 computers will be able to run BigBlueButton with a single click.  Very cool.
+What about Microsoft Edge?  Recently, Microsoft [announced](https://blogs.windows.com/windowsexperience/2019/04/08/microsoft-edge-preview-builds-the-next-step-in-our-oss-journey/) they are switching Chromium engine.  This means that before the end of the year almost a billion Windows 10 computers will be able to run BigBlueButton with a single click.  Very cool.
 
 
 ## Designed for online learning
 
-Imagine you are instructor teaching an online class.  You have all the core capabilities of a web conferencing system, but you want to _engage_ your students for online learning.  Your use cases for online learning are likely one of the following
+Imagine you are instructor teaching an online class.  You have all the core capabilities of a web conferencing system, but you want to _engage_ your students for online learning.  The are four core cases for online learning:
 
 1. tutoring/virtual office hours
 1. flipped classroom
 1. student collaboration
 1. full online classes
 
-To help you reach students in any of the above use cases, BigBlueButton offers many features to engage your students.  These include:
+BigBlueButton helps you engage students in each of these use cases with features that include
 
 * chat (public and private)
 * multi-user whiteboard
@@ -56,11 +54,14 @@ To help you reach students in any of the above use cases, BigBlueButton offers m
 
 (Of course, all these features are still useful in a business meeting, but they are particularly useful in an online class).
 
-BigBlueButton can record your session for later playback.  To support users with accessibility needs, BigBlueButton is compatible with JAWS screen reader (see our [accessibility statement](https://bigbluebutton.org/accessibility/)).  
+To support users with accessibility needs, BigBlueButton is WCAG 2.0 AA certified (with some exceptions).  For more details, see see our official [Accessibility Statement and VPAT](https://bigbluebutton.org/accessibility/).  
 
-Want to try out BigBlueButton?  Anyone can setup an account on [https://demo.bigbluebutton.org](https://demo.bigbluebutton.org)).  
+Want to try out BigBlueButton?  Visit [https://demo.bigbluebutton.org](https://demo.bigbluebutton.org)) and setup an account.  BigBlueButton is also built into the free version of [Moodle Cloud](https://moodlecloud.com/).
 
-This site contains the project's documentation.  It is written for administrators and developers who want to setup a BigBlueButton server, customize it, and integrate it with existing applications using our API. If you are an end-user (instructor or teacher) and interested in how to use BigBlueButton, visit [bigbluebutton.org](http://bigbluebutton.org). 
+Want to learn more about BigBlueButton?  This site contains the project's documentation.  Whether you are an administrator that wants to setup your own BigBlueButton server, or you are a developer want to setup a BigBlueButton server, customize it, and integrate your existing applications, this site has all the information you need to get started. 
+
+If you are an end-user (instructor or teacher) and interested in how to use BigBlueButton, visit [https://bigbluebutton.org/html5](https://bigbluebutton.org/html5) for tutorial videos.
+
 
 ## A brief overview of BigBlueButton
 
@@ -80,21 +81,21 @@ The presenter controls the presentation area.  This means they can
 
 We provide two overview videos describing the above capabilities:
 
-* Viewer overview
-* Moderator/Presenter overview
+* [Viewer overview](https://www.youtube.com/watch?v=uYYnryIM0Uw)
+* [Moderator/Presenter overview](https://www.youtube.com/watch?v=Q2tG2SS4gXA)
 
-## Getting started quickly with BigBlueButton
+## Getting started quickly 
 
 If you are new to BigBlueButton and want to learn more about its capabilities:  
 
-1. Watch the [overview videos](http://bigbluebutton.org/videos) to better understand the capabilities of viewer, moderator, and presenter.
-1. Setup a free account to use BigBlueButton on our [demo server](http://demo.bigbluebutton.org/). 
+1. Watch the [overview videos](https://bigbluebutton.org/html5) to better understand the capabilities of viewer, moderator, and presenter.
+1. Setup a free account to use BigBlueButton on our [demo server](https://demo.bigbluebutton.org/). 
 1. Join the [BigBlueButton community](https://bigbluebutton.org/support/community/).
 1. Follow us social media: [Twitter](https://twitter.com/bigbluebutton), [Facebook](https://www.facebook.com/bigbluebutton), and [YouTube](https://www.youtube.com/user/bigbluebuttonshare).
 
-If you want to setup your own BigBlueButton server, follow either the step-by-step install instructions for [2.0](/install/install.html) or [2.2-beta](/2.2/install.html) or, use the [bbb-install.sh](https://github.com/bigbluebutton/bbb-install) installation script to setup a server in about 15 minutes.
+If you want to setup your own BigBlueButton server, follow either the step-by-step install instructions for [2.2](/2.2/install.html) or, use the [bbb-install.sh](https://github.com/bigbluebutton/bbb-install) installation script to setup a server in about 15 minutes.
 
-You'll need to a front-end for users to access BigBlueButton.  If you are setting up a server for the first time, check out [Greenlight](/install/greenlight-v2.html) (which `bbb-install.sh` can install for you as well).  We also provide a number of [integrations](http://bigbluebutton.org/open-source-integrations/) with popular open source platforms (such as Moodle or WordPress).
+You'll need to a front-end for users to access BigBlueButton.  If you are setting up a server for the first time, check out [Greenlight](/install/greenlight-v2.html) (which `bbb-install.sh` can install for you as well).  We also provide a number of [integrations](https://bigbluebutton.org/open-source-integrations/) with popular open source platforms (such as Moodle or WordPress).
 
 If you are a developer, after setting up your own BigBlueButton server, we recommend
 
@@ -110,13 +111,13 @@ The latest version of BigBlueButton is BigBlueButton 2.2-beta which features a p
 Overview for Viewers (click image below to watch YouTube video):
 
 <p align="center">
-  <a href="https://www.youtube.com/watch?feature=player_embedded&v=uYYnryIM0Uw" target="_blank"><img src="http://img.youtube.com/vi/uYYnryIM0Uw/0.jpg" alt="Overview of BigBlueButton 2.2 for viewers" width="480" height="360" border="10" /></a>
+  <a href="https://www.youtube.com/watch?feature=player_embedded&v=uYYnryIM0Uw" target="_blank"><img src="https://img.youtube.com/vi/uYYnryIM0Uw/0.jpg" alt="Overview of BigBlueButton 2.2 for viewers" width="480" height="360" border="10" /></a>
 </p>
 
 Overview for Moderators/Presenters (click image below to watch YouTube video):
 
 <p align="center">
-  <a href="https://www.youtube.com/watch?feature=player_embedded&v=Q2tG2SS4gXA" target="_blank"><img src="http://img.youtube.com/vi/Q2tG2SS4gXA/0.jpg" alt="Overview of BigBlueButton 2.2 for moderators/presenters" width="480" height="360" border="10" /></a>
+  <a href="https://www.youtube.com/watch?feature=player_embedded&v=Q2tG2SS4gXA" target="_blank"><img src="https://img.youtube.com/vi/Q2tG2SS4gXA/0.jpg" alt="Overview of BigBlueButton 2.2 for moderators/presenters" width="480" height="360" border="10" /></a>
 </p>
 
 The previous stable release is BigBlueButton 2.0. See the [overview](/overview/overview.html), [install](/install/install.html), and [architecture](/overview/architecture.html) documentation.
