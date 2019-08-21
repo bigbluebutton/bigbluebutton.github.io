@@ -17,7 +17,7 @@ The official Docker documentation is the best resource for Docker install steps.
 
 Before moving onto the next step, verify that Docker is installed by running:
 
-```
+```bash
 docker -v
 ```
 
@@ -36,7 +36,7 @@ After cloning, you'll have the following directory:
 
 Confirm that you are working on the master branch.
 
-```
+```bash
 cd greenlight
 git status
 ```
@@ -54,31 +54,31 @@ When you first clone the Greenlight git repository, git will place you, by defau
 
 The first thing we need to do is to add the remote repository to our local clone.
 
-```
+```bash
 git remote add upstream https://github.com/bigbluebutton/greenlight.git
 ```
 
 You can now check your local list of tracked repositories to verify that the addition worked. You should see at least two results (origin and upstream). The one named "origin" should link to your personal fork and is the repository that you cloned. The second result "upstream" should link to the main Greenlight repository.
 
-```
+```bash
 git remote -v
 ```
 
 After, we need to fetch the most up to date version of the remote repository.
 
-```
+```bash
 git fetch upstream
 ```
 
 You are now ready to create a new branch to start your work and base the new branch off v2
 
-```
+```bash
 git checkout -b custom-changes upstream/v2
 ```
 
 You should now confirm that you are in the correct branch.
 
-```
+```bash
 git status
 
 On branch custom-changes
@@ -91,7 +91,7 @@ nothing to commit, working tree clean
 
 Greenlight will read its environment configuration from the `.env` file. To generate this file, enter `~/greenlight` directory and run:
 
-```
+```bash
 cp sample.env .env
 ```
 
@@ -101,17 +101,17 @@ If you open the `.env` file you'll see that it contains information for all of t
 
 Greenlight needs a secret key in order to run in production. To generate this, run:
 
-```
-bundle exec rake secret
+```bash
+docker run --rm bigbluebutton/greenlight:v2 bundle exec rake secret
 ```
 
-Inside your `.env` file, set the `SECRET_KEY_BASE` option to this key. You don't need to surround it in quotations.
+Inside your `.env` file, set the `SECRET_KEY_BASE` option to the **last** line in this command. You don't need to surround it in quotations.
 
 ### Setting BigBlueButton Credentials
 
 By default, your Greenlight instance will automatically connect to `test-install.blindsidenetworks.com` if no BigBlueButton credentials are specified. To set Greenlight to connect to your BigBlueButton server (the one it's installed on), you need to give Greenlight the endpoint and the secret. To get the credentials, run:
 
-```
+```bash
 bbb-conf --secret
 ```
 
@@ -121,8 +121,8 @@ In your `.env` file, set the `BIGBLUEBUTTON_ENDPOINT` to the URL, and set `BIGBL
 
 Once you have finished setting the environment variables above in your `.env` file, to verify that you configuration is valid, run:
 
-```
-bundle exec rake conf:check
+```bash
+docker run --rm --env-file .env bigbluebutton/greenlight:v2 bundle exec rake conf:check
 ```
 
 If you have configured an SMTP server in your `.env` file, then all four tests must pass before you proceed. If you have not configured an SMTP server, then only the first three tests must pass before you proceed.
@@ -131,13 +131,13 @@ If you have configured an SMTP server in your `.env` file, then all four tests m
 
 Greenlight will be configured to deploy at the `/b` subdirectory. This is necessary so it doesn't conflict with the other BigBlueButton components. The Nginx configuration for this subdirectory is stored in the Greenlight image. To add this configuration file to your BigBlueButton server, run:
 
-```
+```bash
 cat ./greenlight.nginx | sudo tee /etc/bigbluebutton/nginx/greenlight.nginx
 ```
 
 Verify that the Nginx configuration file (`/etc/bigbluebutton/nginx/greenlight.nginx`) is in place. If it is, restart Nginx so it picks up the new configuration.
 
-```
+```bash
 systemctl restart nginx
 ```
 
@@ -164,13 +164,13 @@ Install `docker-compose` by following the steps for installing on Linux in the [
 
 Before you continue, verify that you have `docker-compose` installed by running:
 
-```
+```bash
 docker-compose -v
 ```
 
 Once you have verified that it is installed correctly, create your Docker image by running (**image name** can be any name of your choosing):
 
-```
+```bash
 ./scripts/image_build.sh <image name> release-v2
 ```
 
@@ -194,7 +194,7 @@ services:
 
 Finally, from the `~/greenlight` directory, start the application using:
 
-```
+```bash
 docker-compose up -d
 ```
 
@@ -208,7 +208,7 @@ If you don't wish for either of these to persist, simply remove the volumes from
 
 To stop the application, run:
 
-```
+```bash
 docker-compose down
 ```
 
@@ -229,7 +229,7 @@ To see your changes reflected in Greenlight, you will need to [restart Greenligh
 
 After you edit the `.env` file or make any change to the code, you are required to rebuild the Greenlight image in order for it to pick up the changes. Ensure you are in the Greenlight directory when restarting Greenlight. To do this, enter the following commands:
 
-```
+```bash
 docker-compose down
 ./scripts/image_build.sh <image name> release-v2
 docker-compose up -d
@@ -238,12 +238,13 @@ docker-compose up -d
 
 # Updating to the Latest Version of Greenlight
 If a new version of Greenlight has been released, you'll need to fetch the most up to date version of the remote repository.
-```
+
+```bash
 git fetch upstream
 ```
 
 To merge the code:
-```
+```bash
 git merge upstream/v2
 ```
 
@@ -252,7 +253,7 @@ Then, [restart Greenlight](#applying-env-changes).
 
 # Switching from `docker run` to `docker-compose`
 To switch from using `docker run` to start Greenlight, to using `docker-compose`, run the following commands:
-```
+```bash
 docker stop <image name>
 docker rm <image name>
 ```
