@@ -124,7 +124,7 @@ The previous stable release is BigBlueButton 2.0. See the [overview](/overview/o
 
 ### Spreading the word
 
-If you use BigBlueButton and find it worthwhile, let others know.  Blog about it, tweet about it, upload a video to YouTube, etc.  Also, we welcome developers who want to [help improve BigBlueButton](/faq.html#contributing-to-bigbluebutton).  You'll find the more you give, the more you get back.
+If you use BigBlueButton and find it worthwhile, let others know.  Blog about it, tweet about it, upload a video to YouTube, etc.  Also, we welcome developers who want to [help improve BigBlueButton](/support/faq.html#contributing-to-bigbluebutton).  You'll find the more you give, the more you get back.
 
 ---
 
