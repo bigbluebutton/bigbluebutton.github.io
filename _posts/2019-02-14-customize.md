@@ -293,6 +293,26 @@ The final welcome message shown to the user (as blue text in the Chat window) is
 
 The welcome message is fixed for the duration of a meeting.  If you want to see the effect of changing the `welcome` parameter, you must [end](/dev/api.html#end) the current meeting or wait until the BigBlueButton server removes it from memory (which occurs about two minutes after the last person has left).  If you change the parameters in `bigbluebutton.properties`, you must restart BigBlueButton with `sudo bbb-conf --restart` for the new values to take effect.
 
+## Delete raw data from recordings
+
+When a meeting finishes, the BigBlueButton server [archives the meeting data](/dev/recording.html#archive) (referred to as the "raw" data).  
+
+Retaining the raw data lets you [rebuid](/dev/recording.html#rebuild-a-recording) a recording if it was accidentally deleted by a user; hHowever, the tradeoff is the storage of raw data will consume more disk space over time.
+
+You an have the BigBlueButton server automatically remove the raw data for a recording after 14 days of its being published by editing the BigBlueButton cron job, located at `/etc/cron.daily/bigbluebutton`, and uncommenting the following line
+
+```bash
+#remove_raw_of_published_recordings
+```
+
+The default duration (days) 
+
+```bash
+published_days=14
+``` 
+
+is defined near the top of the BigBlueButton cron job.
+
 # Other configuration options
 
 ## Increase the file size for an uploaded presentation
