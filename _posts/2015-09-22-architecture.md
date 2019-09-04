@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Architecture"
-category: overview
+category: 2.2
 redirect_from: "/1.0/10architecture"
 date: 2015-09-20 17:34:41
 ---
