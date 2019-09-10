@@ -313,6 +313,50 @@ published_days=14
 
 is defined near the top of the BigBlueButton cron job.
 
+## Delete recordings older than N days
+
+To delete recordings older than 14 days, add the following cron job to `/etc/cron.daily/bbb-recording-cleanup`
+
+```bash
+#!/bin/bash
+
+MAXAGE=14
+
+LOGFILE=/var/log/bigbluebutton/bbb-recording-cleanup.log
+
+shopt -s nullglob
+
+NOW=$(date +%s)
+
+echo "$(date --rfc-3339=seconds) Deleting recordings older than ${MAXAGE} days" >>"${LOGFILE}"
+
+for donefile in /var/bigbluebutton/recording/status/published/*-presentation.done ; do
+        MTIME=$(stat -c %Y "${donefile}")
+        # Check the age of the recording
+        if [ $(( ( $NOW - $MTIME ) / 86400 )) -gt $MAXAGE ]; then
+                MEETING_ID=$(basename "${donefile}")
+                MEETING_ID=${MEETING_ID%-presentation.done}
+                echo "${MEETING_ID}" >> "${LOGFILE}"
+
+                bbb-record --delete "${MEETING_ID}" >>"${LOGFILE}"
+        fi
+done
+
+for eventsfile in /var/bigbluebutton/recording/raw/*/events.xml ; do
+        MTIME=$(stat -c %Y "${eventsfile}")
+        # Check the age of the recording
+        if [ $(( ( $NOW - $MTIME ) / 86400 )) -gt $MAXAGE ]; then
+                MEETING_ID="${eventsfile%/events.xml}"
+                MEETING_ID="${MEETING_ID##*/}"
+                echo "${MEETING_ID}" >> "${LOGFILE}"
+
+                bbb-record --delete "${MEETING_ID}" >>"${LOGFILE}"
+        fi
+done
+```
+
+Change the value for `MAXAGE` to specify how many days to retain the `presentation` format recordings on your BigBlueButton server.
+
 # Other configuration options
 
 ## Increase the file size for an uploaded presentation

@@ -124,7 +124,13 @@ The previous stable release is BigBlueButton 2.0. See the [overview](/overview/o
 
 ### Spreading the word
 
-If you use BigBlueButton and find it worthwhile, let others know.  Blog about it, tweet about it, upload a video to YouTube, etc.  Also, we welcome developers who want to [help improve BigBlueButton](/support/faq.html#contributing-to-bigbluebutton).  You'll find the more you give, the more you get back.
+If you use BigBlueButton and find value in our work, spread the word to others by 
+
+  * tweeting us at [@bigbluebutton](https://twitter.com/bigbluebutton),
+  * posting a blog about us,
+  * uploading a video on YouTube demonstrating how you are using BigBlueButton.
+
+Or share your experiences on your favorite social media site.  We are passionate about making the worlds best open source web conferencing system for online learning and enjoy reading about how others are benefiting from and building upon BigBlueButton.
 
 ---
 
