@@ -695,6 +695,29 @@ For example, to reduce webcam streams to 100 Kbits/sec and screen sharing to 1 M
 
 and restart BigBlueButton with `sudo bbb-conf --restart`.
 
+## Disable webcams
+
+You can disable webcams by modifying the `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml` file and setting `enableVideo` to `false`.  To modify this file, run the following commands as root:
+
+```bash
+TARGET=/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
+yq w -i $TARGET public.kurento.enableVideo false
+chown meteor:meteor $TARGET
+```
+
+Restart BigBlueButton (`sudo bbb-conf --restart`) to apply the change.
+
+## Disable screen sharing
+
+You can disable screen sharing by modifying the `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml` file and setting `enableScreensharing` to `false`.  To modify this file, run the following commands as root:
+
+```bash
+TARGET=/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
+yq w -i $TARGET public.kurento.enableScreensharing false
+chown meteor:meteor $TARGET
+```
+Restart BigBlueButton (`sudo bbb-conf --restart`) to apply the change.
+
 ## Change UDP ports
 
 By default, BigBlueButton uses the UDP ports 16384-32768 which are used by FreeSWITCH and Kurento to send real-time packets (RTP).
