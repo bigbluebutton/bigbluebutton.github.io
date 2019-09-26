@@ -19,17 +19,17 @@ BigBlueButton is designed for **online learning**, which means that while it off
 
 ## Using BigBlueButton
 
-BigBlueButton uses your browser's built-in libraries to send/receive audio and video.  These libraries are called web real-time communication (WebRTC).  Thanks to WebRTC, there is no plugin to download, not binary to install.  Your users simply click a link (such as an invitation link to a room in Greenlight) and the BigBlueButton HTML5 client loads and runs within their browser.
+BigBlueButton uses your browser's built-in libraries to send/receive audio and video.  These libraries are called web real-time communication (WebRTC).  Thanks to WebRTC, there is no plug-in to download, not binary to install.  Your users simply click a link (such as an invitation link to a room in Greenlight) and the BigBlueButton HTML5 client loads and runs within their browser.
 
-We recommend the Chrome and FireFox browsers as they have the best support for WebRTC.
+We recommend the Chrome and Firefox browsers as they have the best support for WebRTC.
 
-Here is a screenshot of the BigBlueButton client running within Chrome.  From left to right, the screenshot shows the User list (the list of users in the session), the chat area, the presentation area, and one shared webcam (you can have many shared webcams in a session).
+Here is a screen shot of the BigBlueButton client running within Chrome.  From left to right, the screen shot shows the User list (the list of users in the session), the chat area, the presentation area, and one shared web cam (you can have many shared web cams in a session).
 
 <p align="center">
   <img src="/images/22-overview-2.png"/>
 </p><br>
 
-BigBlueButton runs within your mobile browsers as well (we recomend iOS 12.2+ and Android 6.0+).  There is no mobile application to install -- just click a link within your mobile browser on Android (Chrome) and iOS (Safari mobile) and BigBlueButton will load and run.  (Both these mobile browsers support WebRTC).
+BigBlueButton runs within your mobile browsers as well (we recommend iOS 12.2+ and Android 6.0+).  There is no mobile application to install -- just click a link within your mobile browser on Android (Chrome) and iOS (Safari mobile) and BigBlueButton will load and run.  (Both these mobile browsers support WebRTC).
 
 What about Microsoft Edge?  Recently, Microsoft [announced](https://blogs.windows.com/windowsexperience/2019/04/08/microsoft-edge-preview-builds-the-next-step-in-our-oss-journey/) they are switching Chromium engine.  This means that before the end of the year almost a billion Windows 10 computers will be able to run BigBlueButton with a single click.  Very cool.
 
@@ -50,7 +50,7 @@ BigBlueButton helps you engage students in each of these use cases with features
 * shared notes
 * emojis
 * polling
-* breakout rooms
+* break out rooms
 
 (Of course, all these features are still useful in a business meeting, but they are particularly useful in an online class).
 
@@ -67,7 +67,7 @@ If you are an end-user (instructor or teacher) and interested in how to use BigB
 
 In BigBlueButton there are only two types of users: a viewer or a moderator.  
 
-A _viewer_ (typically the student) can chat, send/receive audio and video, respond to polls, display an emoji (such as raise hand), and participate in a breakout room.  All normal user capabilities.
+A _viewer_ (typically the student) can chat, send/receive audio and video, respond to polls, display an emoji (such as raise hand), and participate in a break out room.  All normal user capabilities.
 
 A _moderator_ (typically the instructor) has all the capabilities of a viewer plus the ability to mute/unmute other viewers, lock down viewers (i.e. restrict them from doing private chat), and assign anyone (including themselves) the role of _presenter_.  
 
