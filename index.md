@@ -10,18 +10,20 @@ title: "BigBlueButton"
 
 BigBlueButton is an open source web conferencing system for online learning.   
 
-BigBlueButton is **open source**, which means you have full access to the [source code](https://github.com/bigbluebutton/bigbluebutton) under an [open source license](https://bigbluebutton.org/open-source-license/).  With [bbb-install.sh](https://github.com/bigbluebutton/bbb-install), you can setup your own BigBlueButton server in about 15 minutes (or setup 10 BigBlueButton servers if you want).  BigBlueButton comes with a simple to use front-end called [Greenlight](https://github.com/bigbluebutton/greenlight) that gives you the ability to create rooms, invite users (using a permanent URL), and manage recordings. 
+  * **Open source** - You have full access to the [source code](https://github.com/bigbluebutton/bigbluebutton) under an [open source license](https://bigbluebutton.org/open-source-license/) to install, configure, and customize BigBlueButton.  You install BigBlueButton in under 15 minutes with [bbb-install.sh](https://github.com/bigbluebutton/bbb-install).  BigBlueButton comes with [Greenlight](https://github.com/bigbluebutton/greenlight), an easy-to-use front-end that lets you create rooms, invite users, and manage recordings.  You can try out BigBlueButton and Greenlight at [https://demo.bigbluebutton.org](https://demo.bigbluebutton.org).
 
-Bigbluebutton is a **web conferencing system**, which means it implements all the core capabilities you expect from a commercial web conferencing system (but under an open source license).  These capabilities include real-time sharing of audio, video, presentation, and your screen.  BigBlueButton can record you sessions for later playback.
+  * **Web conferencing system** - BigBlueButton gives you all the core capabilities you would expect from a commercial web conferencing system (but under an open source license), including real-time sharing of audio, video, presentation, and screen.  BigBlueButton can record your sessions for later playback.
 
-BigBlueButton is designed for **online learning**, which means that while it offers you all expected features of a web conferencing system, it has extensive features that enabling teachers to engage students.  The more engagement that occurs, the more learning that takes place.
+  * **Online learning** - BigBlueButton offers many features -- such as multi-user whiteboard and shared notes -- that enable you to engage remote users to promote learning.
 
 
-## Using BigBlueButton
+## Using BigBlueButton within your web browser
 
-BigBlueButton uses your browser's built-in libraries to send/receive audio and video.  These libraries are called web real-time communication (WebRTC).  Thanks to WebRTC, there is no plug-in to download, not binary to install.  Your users simply click a link (such as an invitation link to a room in Greenlight) and the BigBlueButton HTML5 client loads and runs within their browser.
+There is no application to install to use BigBlueButton.
 
-We recommend the Chrome and Firefox browsers as they have the best support for WebRTC.
+BigBlueButton runs within your web browser using its built-in libraries, called web real-time communication (WebRTC), to send and receive high quality audio/video.  To run BigBlueButton, your simply click a browser link (such as an invitation link to a room in Greenlight) and the BigBlueButton HTML5 client loads and runs within your browser.
+
+For desktop and laptop, We recommend both Chrome and Firefox as they have the best support for WebRTC.
 
 Here is a screen shot of the BigBlueButton client running within Chrome.  From left to right, the screen shot shows the User list (the list of users in the session), the chat area, the presentation area, and one shared web cam (you can have many shared web cams in a session).
 
@@ -36,7 +38,7 @@ What about Microsoft Edge?  Recently, Microsoft [announced](https://blogs.window
 
 ## Designed for online learning
 
-Imagine you are instructor teaching an online class.  You have all the core capabilities of a web conferencing system, but you want to _engage_ your students for online learning.  The are four core cases for online learning:
+Imagine you are instructor teaching an online class.  You want to engage students within the use cases of teaching and learning.  The are four main core cases:
 
 1. tutoring/virtual office hours
 1. flipped classroom
@@ -95,7 +97,7 @@ If you are new to BigBlueButton and want to learn more about its capabilities:
 
 If you want to setup your own BigBlueButton server, follow either the step-by-step install instructions for [2.2](/2.2/install.html) or, use the [bbb-install.sh](https://github.com/bigbluebutton/bbb-install) installation script to setup a server in about 15 minutes.
 
-You'll need to a front-end for users to access BigBlueButton.  If you are setting up a server for the first time, check out [Greenlight](/install/greenlight-v2.html) (which `bbb-install.sh` can install for you as well).  We also provide a number of [integrations](https://bigbluebutton.org/open-source-integrations/) with popular open source platforms (such as Moodle or WordPress).
+You'll need to a front-end for users to access BigBlueButton.  If you are setting up a server for the first time, check out [Greenlight](/install/greenlight-v2.html) (which `bbb-install.sh` can install for you as well).  We also provide a number of [integrations](https://bigbluebutton.org/integrations/) with popular open source platforms (such as Moodle or WordPress).
 
 If you are a developer, after setting up your own BigBlueButton server, we recommend
 
