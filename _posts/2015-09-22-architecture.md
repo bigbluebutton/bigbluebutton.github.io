@@ -6,8 +6,6 @@ redirect_from: "/1.0/10architecture"
 date: 2015-09-20 17:34:41
 ---
 
-# Overview
-
 BigBlueButton is built upon many amazing software components -- nginx, red5, FreeSWITCH, tomcat7, redis, and others.  This page describes the overall architecture of BigBlueButton and how the components work together.
 
 # High-level Architecture Overview for BigBlueButton
@@ -35,13 +33,12 @@ The following diagram gives an overview of the architecture of the HTML5 client 
 
 ![HTML5 Overview](/images/html5-client-architecture.png)
 
-More information on the architecture of the HTML5 client can be found [here](/html5-overview.html).
 
 ## BBB Web 
 
-The Web [API](/dev/api.html) provides the integration endpoint for third-party applications -- such as Moodle, Wordpress, Canvas, Sakai, etc. -- to control the BigBlueButton server. 
+The [BigBlueButton API](/dev/api.html) provides a third-party integration (such as the [BigBlueButtonBN plugin](https://moodle.org/plugins/mod_bigbluebuttonbn) for Moodle) with an endpoint to control the BigBlueButton server.
 
-Every access to BigBlueButton comes through a front-end portal (we refer to as a third-party application).  BigBlueButton integrates Moodle, Wordpress, Canvas, Sakai, and others (see [third-party integrations](http://bigbluebutton.org/integrations/)).  BigBlueButton comes with its own front-end called [GreenLight](/install/greenlight-v2.html).  When using a learning management system (LMS) such as Moodle, teachers can setup BigBlueButton rooms within their course and students can access the rooms and their recordings. 
+Every access to BigBlueButton comes through a front-end portal (we refer to as a third-party application).  BigBlueButton integrates Moodle, Wordpress, Canvas, Sakai, and others (see [third-party integrations](http://bigbluebutton.org/integrations/)).  BigBlueButton comes with its own front-end called [Greenlight](/install/greenlight-v2.html).  When using a learning management system (LMS) such as Moodle, teachers can setup BigBlueButton rooms within their course and students can access the rooms and their recordings. 
 
 The BigBlueButton comes with some simple [API demos](http://demo.bigbluebutton.org/demo/demo1.jsp).  Regardless of which front-end you use, they all use the [API](/dev/api.html) under the hood.
 
@@ -73,7 +70,7 @@ Below is a diagram of the different components of Apps Akka.
 
 The meeting business logic is in the MeetingActor. This is where information about the meeting is stored and where all messages for a meeting is processed.
 
-## FsESL Akka
+## FSESL Akka
 
 We have extracted out the component that integrates with FreeSWITCH into it's own application. This allows others who are using voice conference systems other than
 FreeSWITCH to easily create their own integration. Communication between apps and FreeSWITCH Event Socket Layer (fsels) uses messages through redis pubsub.
@@ -83,20 +80,20 @@ FreeSWITCH to easily create their own integration. Communication between apps an
 
 ## FreeSWITCH
 
-We think FreeSWITCH rocks too!
+We think FreeSWITCH is an amazing piece of software for handling audio.
 
 FreeSWITCH provides the voice conferencing capability in BigBlueButton. Users are able to join the voice conference through the headset. Users joining through Google Chrome or Mozilla Firefox are able to take advantage of higher quality audio by connecting using WebRTC. FreeSWITCH can also be [integrated with VOIP providers](/install/install.html#add-a-phone-number-to-the-conference-bridge) so that users who are not able to join using the headset will be able to call in using their phone.
 
 ## Joining a Voice Conference
 
-A user can join the voice conference (running in FreeSWITCH) in several ways. Users can join using Flash, WebRTC, or phone. When joining through Flash, the user can choose to join listen-only or listen-and-talk. Users joined with Chrome and Firefox are able to join using WebRTC.  Thanks to the browser's ability to send opus encoded audio packets via UDP, WebRTC provides users higher-quality audio with lower delay. If FreeSWITCH is integrated with a VOIP provider, users are able to call in using their phone by dialing a number and pressing the conference number on their keypad.
+A user can join the voice conference (running in FreeSWITCH) from the BigBlueButton HTML5 client or through the [phone](/2.2/customize.html#add-a-phone-number-to-the-conference-bridge). When joining through the client, the user can choose to join Microphone or Listen Only, and the BigBlueButton client will make an audio connection to the server via WebRTC.  WebRTC provides the user with high-quality audio with lower delay. 
 
 ![Joining Voice Conference](/images/10/joining-voice-conf.png)
 
 
 ## Uploading a Presentation
 
-Uploaded presentations go through a conversion process in order to be displayed inside the Flash client. When the uploaded presentation is an Office document, it needs to be converted into PDF using LibreOffice. The PDF document is then converted in SWF using SWFTools. There are times when a PDF page fails to convert to SWF. In this case, an image snapshot of the page (as PNG) is taken using pdftocairo the resulting image is converted SWF.
+Uploaded presentations go through a conversion process in order to be displayed inside the client. When the uploaded presentation is an Office document, it needs to be converted into PDF using LibreOffice. The PDF document is then converted into scalable vector graphics (SVG) via `bbb-web`.  
 
 ![Uploading Presentation](/images/10/presentation-upload-11.png)
 
@@ -112,12 +109,3 @@ Then below the SVG conversion flow. It covers the conversion fallback. Sometimes
 
 ![SVG Conversion Flow](/images/diagrams/Presentation Conversion Diagram-SVG Conversion Flow.png)
 
-And finally, the SWF conversion flow. We cover it too with its fallback conversion.
-
-![SWF Conversion Flow](/images/diagrams/Presentation Conversion Diagram-SWF Conversion Flow.png)
-
-## BigBlueButton Client
-
-BigBlueButton Flash client runs inside the browser. The main application is in ActionScript. There are Javascript libraries that provides connection to FreeSWITCH, launch the screen sharing applet, etc. The Flash client connects to BigBlueButton App to send and receive messages. The client internally uses an event bus for the components to talk to each other. The client connects to Red5 using RTMP (port 1935) or RTMPT (port 80) if needs to tunnel. When it needs to connect using RTMPT, it connects through Nginx which proxies the connection to Red5.
-
-![Client Architecture](/images/10/bbb-client-arch.png)

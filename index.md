@@ -108,7 +108,7 @@ The BigBlueButton project is managed by a core group of [core committers](/suppo
 
 ## Latest Release
 
-The latest version of BigBlueButton is BigBlueButton 2.2-beta which features a pure HTML5 client.  See [overview](/2.2/overview.html) and [install](/2.2/install.html).
+The latest version of BigBlueButton is BigBlueButton 2.2-beta which features a pure HTML5 client (no more Flash).  See [install BigBlueButton 2.2](/2.2/install.html).
 
 Overview for Viewers (click image below to watch YouTube video):
 
@@ -122,7 +122,7 @@ Overview for Moderators/Presenters (click image below to watch YouTube video):
   <a href="https://www.youtube.com/watch?feature=player_embedded&v=Q2tG2SS4gXA" target="_blank"><img src="https://img.youtube.com/vi/Q2tG2SS4gXA/0.jpg" alt="Overview of BigBlueButton 2.2 for moderators/presenters" width="480" height="360" border="10" /></a>
 </p>
 
-The previous stable release is BigBlueButton 2.0. See the [overview](/overview/overview.html), [install](/install/install.html), and [architecture](/overview/architecture.html) documentation.
+The previous stable release is BigBlueButton 2.0. See the [overview](/install/overview.html) and [install](/install/install.html).
 
 ### Spreading the word
 

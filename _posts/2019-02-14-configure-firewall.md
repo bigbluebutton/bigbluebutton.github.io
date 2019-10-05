@@ -19,11 +19,11 @@ The easiest network configuration for installing BigBlueButton is on a server th
 ![Install](/images/11-install-net0.png)
 
 In this simple network configuration, BigBlueButton should work out-of-the-box after installation.  This is because the packaging scripts automatically configure BigBlueButton using the first non-loopback IP address.    
-A variation of this setup occurs when the server has multiple network interfaces, but the external IP is still the first network interface (such as eth0) picked up by the installation scripts.  
+A variation of this setup occurs when the server has multiple network interfaces, but the external IP is still the first network interface (such as `eth0`) picked up by the installation scripts.  
 
 ![Install](/images/11-install-net1.png)
 
-Again, in this case, the packaging scripts will correctly configure BigBlueButton to use the external IP address and you can skip the remainder of this section and proceed to [Installing BigBlueButton](#installation).
+If your server has `eth0` pointing to the external IP address on the internet, and there is no other firewall in place, then the packaging scripts should detect this external IP address and configure BigBlueButton accordingly.  You don't need to do any of the changes below.
 
 Don't worry if your server's IP address changes, BigBlueButton comes with a configuration utility called `bbb-conf` that lets you change all of BigBlueButton's configuration files to use any IP address or hostname.
 
@@ -166,7 +166,7 @@ Let's revist the typical setup for BigBlueButton behind a firewall (yours would 
 
 ![Install](/images/11-install-net2.png)
 
-For WebRTC audio to work, FreeSWITCH needs to listen for connections on the external IP address of the firewall.  If you haven't modified your firewall to forward ports to your BigBlueButton server, see [configure a firewall](#configure-the-firewall-if-required).
+For WebRTC audio to work, FreeSWITCH needs to listen for connections on the external IP address of the firewall.  If you haven't modified your firewall to forward ports to your BigBlueButton server, see [configure a firewall](#configure-your-firewall).
 
 With the firewall configured to forward incoming connections to the BigBlueButton server, the next step is to configure FreeSWITCH to bind to the firewall's external IP address.
 

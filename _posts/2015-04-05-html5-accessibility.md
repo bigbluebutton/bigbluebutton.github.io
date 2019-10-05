@@ -6,6 +6,7 @@ date: 2015-04-05 11:41:36
 order: 1
 ---
 
+The BigBlueButton HTML5 client is WCAG 2.0 AA accessible (with exceptions) and Section 508 compliant.  See our [official accessibility statement](https://bigbluebutton.org/accessibility/).
 
 # Overview 
 

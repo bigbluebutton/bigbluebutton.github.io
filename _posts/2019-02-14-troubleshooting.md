@@ -62,11 +62,11 @@ If the user attempts to share their microphone and your BigBlueButton sever is n
 
    _WebRTC Audio Failure: Detected the following WebRTC issue: Could not get your microphone for a WebRTC call. Do you want to try flash instead?_
 
-To enable Chrome to access the user's microphone, see [Configure HTTPS on BigBlueButton](#configure-ssl-on-your-bigbluebutton-server).
+To enable Chrome to access the user's microphone, see [Configure HTTPS on BigBlueButton](/2.2/install.html#configure-ssl-on-your-bigbluebutton-server).
 
 ## bbb-web takes a long time to startup
 
- `bbb-web` relies on the SecureRandom class (which uses available entropy) to provide random values for its session IDs.  On a virtualized server, however, the available entropy can run low and cause bbb-web to block for a long period before it finishes it's startup sequence (see [Tomcat Entropy Source](http://wiki.apache.org/tomcat/HowTo/FasterStartUp#Entropy_Source)).
+ `bbb-web` relies on the SecureRandom class (which uses available entropy) to provide random values for its session IDs.  On a virtualized server, however, the available entropy can run low and cause bbb-web to block for a long period before it finishes it's startup sequence (see [Slow startup of tomcat](https://stackoverflow.com/questions/28201794/slow-startup-on-tomcat-7-0-57-because-of-securerandom)).
 
 To provide `bbb-web` with more entropy, you can install haveged
 
@@ -216,7 +216,7 @@ The common reasons for nginx not running are inability to bind to port 80 and co
 $ sudo netstat -ant
 ```
 
-to see if any process is currently bound to port 80.  If so, check to see if another web server is installed.  If so, then stop the web server and try to restart nginx.  One of the server requirements before you install BigBlueButton is that port 80 is not in use by another application (such as Apache).  For details on why this is a requirements, see [We recommend running BigBlueButton on port 80](http://docs.bigbluebutton.org/support/faq.html#we-recommend-running-bigbluebutton-on-port-80).
+to see if any process is currently bound to port 80.  If so, check to see if another web server is installed.  If so, then stop the web server and try to restart nginx.  One of the server requirements before you install BigBlueButton is that port 80 is not in use by another application (such as Apache).  For details on why this is a requirements, see [We recommend running BigBlueButton on port 80](http://docs.bigbluebutton.org/support/faq.html#we-recommend-running-bigbluebutton-on-port-80443).
 
 If port 80 is free, check if your nginx configuration file has errors.  Try a restart of nginx
 
@@ -307,7 +307,7 @@ You can run BigBlueButton within a LXD container.
 
 ## Root partition too small
 
-If the root partition on your BigBlueButton server is too small (for disk space requirements see [Before you install](#before-you-install)), we recommend moving the following directories to an external partition with sufficient disk space.
+If the root partition on your BigBlueButton server is too small (for disk space requirements see [Before you install](/2.2/install.html#before-you-install)), we recommend moving the following directories to an external partition with sufficient disk space.
 
 BigBlueButton processing and storage of recordings:
 

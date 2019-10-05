@@ -122,7 +122,7 @@ BigBlueButton comes with Greenlight, a front-end application written in Ruby on 
 
 ![greenlight-start](/images/greenlight/room.png)
 
-For more information see [Installing GreenLight](/greenlight/gl-install.html).
+For more information see [Installing Greenlight](/greenlight/gl-install.html).
 
 ## Enable background music when only one person is in a session
 
