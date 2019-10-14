@@ -109,3 +109,7 @@ Then below the SVG conversion flow. It covers the conversion fallback. Sometimes
 
 ![SVG Conversion Flow](/images/diagrams/Presentation Conversion Diagram-SVG Conversion Flow.png)
 
+## Internal network connections
+The following diagram shows how the various components of BigBlueButton connect to each other via sockets.
+
+![Network Connections](/images/22-connections.png)

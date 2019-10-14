@@ -252,11 +252,11 @@ location /ws {
 }
 ```
 
-If you have the HTML5 client installed, you may need to a few more changes.  If `enableListenOnly` is set to true in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings-production.json`, as in
+If you have the HTML5 client installed, you may need to a few more changes.  If `enableListenOnly` is set to true in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml`, as in
 
 ```bash
-$ cat /usr/share/meteor/bundle/programs/server/assets/app/config/settings-production.json | grep enableListenOnly
-      "enableListenOnly": true
+$ grep enableListenOnly /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
+    enableListenOnly: true
 ```
 
 then Kurento is providing a listen only audio stream for users of the HTML5 client (just as red5 provides listen only audio stream for Flash users). In this case, edit `/usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml` change the value to `ip` to match the external IP address of the server.  For example, if the servers external IP address is `203.0.113.1`, then edit this file so the value for `ip` is as follows
