@@ -2,7 +2,7 @@
 layout: page
 title: "Install"
 category: greenlight
-date: 2019-04-16 16:29:25
+date: 2019-04-16 16:28:25
 ---
 
 # Installing on a BigBlueButton Server
@@ -28,7 +28,7 @@ The official Docker documentation is the best resource for Docker install steps.
 Before moving onto the next step, verify that Docker is installed by running:
 
 ```bash
-$ docker -v
+docker -v
 ```
 
 ## 2. Install Greenlight
@@ -36,13 +36,13 @@ $ docker -v
 First, create the Greenlight directory for its configuration to live in.
 
 ```bash
-$ mkdir ~/greenlight && cd ~/greenlight
+mkdir ~/greenlight && cd ~/greenlight
 ```
 
 Greenlight will read its environment configuration from the `.env` file. To generate this file and install the Greenlight Docker image, run:
 
 ```bash
-$ docker run --rm bigbluebutton/greenlight:v2 cat ./sample.env > .env
+docker run --rm bigbluebutton/greenlight:v2 cat ./sample.env > .env
 ```
 
 ## 3. Configure Greenlight
@@ -56,7 +56,7 @@ When you installed in step two, the `.env` file was generated at `~/greenlight/.
 Greenlight needs a secret key in order to run in production. To generate this, run:
 
 ```bash
-$ docker run --rm bigbluebutton/greenlight:v2 bundle exec rake secret
+docker run --rm bigbluebutton/greenlight:v2 bundle exec rake secret
 ```
 
 Inside your `.env` file, set the `SECRET_KEY_BASE` option to this key. You don't need to surround it in quotations.
@@ -66,17 +66,23 @@ Inside your `.env` file, set the `SECRET_KEY_BASE` option to this key. You don't
 By default, your Greenlight instance will automatically connect to `test-install.blindsidenetworks.com` if no BigBlueButton credentials are specified. To set Greenlight to connect to your BigBlueButton server (the one it's installed on), you need to give Greenlight the endpoint and the secret. To get the credentials, run:
 
 ```bash
-$ sudo bbb-conf --secret
+sudo bbb-conf --secret
 ```
 
 In your `.env` file, set the `BIGBLUEBUTTON_ENDPOINT` to the URL, and set `BIGBLUEBUTTON_SECRET` to the secret.
+
+### Configure Specific Settings
+
+Other than the 2 configurations listed above, there are many different options for configuring Greenlight. All possible configurations are listed in the `.env` file.
+
+You can find more info on specific settings that can be configured [here](gl-config.html).
 
 ### Verifying Configuration
 
 Once you have finished setting the environment variables above in your `.env` file, to verify that you configuration is valid, run:
 
 ```bash
-$ docker run --rm --env-file .env bigbluebutton/greenlight:v2 bundle exec rake conf:check
+docker run --rm --env-file .env bigbluebutton/greenlight:v2 bundle exec rake conf:check
 ```
 
 If you have configured an SMTP server in your `.env` file, then all four tests must pass before you proceed. If you have not configured an SMTP server, then only the first three tests must pass before you proceed.
@@ -86,13 +92,13 @@ If you have configured an SMTP server in your `.env` file, then all four tests m
 Greenlight will be configured to deploy at the `/b` subdirectory. This is necessary so it doesn't conflict with the other BigBlueButton components. The Nginx configuration for this subdirectory is stored in the Greenlight image. To add this configuration file to your BigBlueButton server, run:
 
 ```bash
-$ docker run --rm bigbluebutton/greenlight:v2 cat ./greenlight.nginx | sudo tee /etc/bigbluebutton/nginx/greenlight.nginx
+docker run --rm bigbluebutton/greenlight:v2 cat ./greenlight.nginx | sudo tee /etc/bigbluebutton/nginx/greenlight.nginx
 ```
 
 Verify that the Nginx configuration file (`/etc/bigbluebutton/nginx/greenlight.nginx`) is in place. If it is, restart Nginx so it picks up the new configuration.
 
 ```bash
-$ sudo systemctl restart nginx
+sudo systemctl restart nginx
 ```
 
 This will routes all requests to `https://<hostname>/b` to the Greenlight application. If you wish to use a different relative root, you can follow the steps outlined [here](gl-customize.html#using-a-different-relative-root).
@@ -118,20 +124,20 @@ Install `docker-compose` by following the steps for installing on Linux in the [
 Before you continue, verify that you have `docker-compose` installed by running:
 
 ```bash
-$ cd ~/greenlight
-$ docker-compose -v
+cd ~/greenlight
+docker-compose -v
 ```
 
 Next, you should copy the `docker-compose.yml` file from the Greenlight image in to `~/greenlight` directory. To do this, run:
 
 ```bash
-$ docker run --rm bigbluebutton/greenlight:v2 cat ./docker-compose.yml > docker-compose.yml
+docker run --rm bigbluebutton/greenlight:v2 cat ./docker-compose.yml > docker-compose.yml
 ```
 
 Once you have this file, from the `~/greenlight` directory, start the application using:
 
 ```bash
-$ docker-compose up -d
+docker-compose up -d
 ```
 
 This will start Greenlight, and you should be able to access it at `https://<hostname>/b`.
@@ -145,57 +151,29 @@ If you don't wish for either of these to persist, simply remove the volumes from
 To stop the application, run:
 
 ```bash
-$ docker-compose down
+docker-compose down
 ```
-
-### Using `docker run`
-
-`docker run` is no longer the recommended way to start Greenlight. Please use `docker-compose`.
-
-If you are currently using `docker run` and want to switch to `docker-compose`, follow these [instructions](#switching-from-docker-run-to-docker-compose).
-
-# Applying `.env` Changes
-
-After you edit the `.env` file, you are required to restart Greenlight in order for it to pick up the changes. Ensure you are in the Greenlight directory when restarting Greenlight.
-
-## If you ran Greenlight using `docker-compose`
-
-Bring down Greenlight using:
-
-```bash
-$ docker-compose down
-```
-
-then, bring it back up.
-
-```bash
-$ cd ~/greenlight
-$ docker-compose up -d
-```
-
-## If you ran Greenlight using `docker run`
-
-`docker run` is no longer the recommended way to start Greenlight. Please use `docker-compose`.
-
-If you are currently using `docker run` and want to switch to `docker-compose`, follow these [instructions](#switching-from-docker-run-to-docker-compose).
 
 # Updating Greenlight
 
 To update Greenlight, all you need to do is pull the latest image from [Dockerhub](https://hub.docker.com/).
 
 ```bash
-$ docker pull bigbluebutton/greenlight:v2
+cd ~/greenlight
+docker pull bigbluebutton/greenlight:v2
+docker-compose down
+docker-compose up -d
 ```
 
-Then, [restart Greenlight](#applying-env-changes).
+Once you've updated Greenlight, you should look through the latest version of the `sample.env` file [here](https://github.com/bigbluebutton/greenlight/blob/v2/sample.env), and see if there are any new settings you would like to change or add to Greenlight. If you come across something you want to add, simple copy paste it to the bottom of your `.env` file and then [apply your .env changes](gl-config.html#if-you-installed-using-the-install-instructions).
 
 # Switching from `docker run` to `docker-compose`
 
 To switch from using `docker run` to start Greenlight, to using `docker-compose`, run the following commands:
 
 ```bash
-$ docker stop greenlight-v2
-$ docker rm greenlight-v2
+docker stop greenlight-v2
+docker rm greenlight-v2
 ```
 
 And then follow the instructions for [Starting Greenlight](#5-start-greenlight-20) 
@@ -204,12 +182,14 @@ And then follow the instructions for [Starting Greenlight](#5-start-greenlight-2
 
 Sometimes there are missteps and incompatibility issues when setting up applications.
 
-## Changes not appearing
-
-If you made changes to the `.env` file, you will need to [restart Greenlight](#applying-env-changes) to see the changes appear.
-
 ## Checking the Logs
 
 The best way for determining the root cause of issues in your Greenlight application is to check the logs.
 
 Docker is always running on a production environment, so the logs will be located in `log/production.log` from the `~/greenlight` directory.
+
+See also
+  * [Overview](/greenlight/gl-overview.html)
+  * [Admin Guide](/greenlight/gl-admin.html)
+  * [Customize](/greenlight/gl-customize.html)
+  * [Configure](/greenlight/gl-configure.html)

@@ -2,7 +2,7 @@
 layout: page
 title: "Customize"
 category: greenlight
-date: 2019-04-16 16:29:25
+date: 2019-04-16 16:27:25
 ---
 
 # Customizing Greenlight
@@ -117,6 +117,12 @@ bbb-conf --secret
 
 In your `.env` file, set the `BIGBLUEBUTTON_ENDPOINT` to the URL, and set `BIGBLUEBUTTON_SECRET` to the secret.
 
+### Configure Specific Settings
+
+Other than the 2 configurations listed above, there are many different options for configuring Greenlight. All possible configurations are listed in the `.env` file.
+
+You can find more info on specific settings that can be configured [here](gl-config.html).
+
 ### Verifying Configuration
 
 Once you have finished setting the environment variables above in your `.env` file, to verify that you configuration is valid, run:
@@ -223,9 +229,9 @@ Using the text editor/IDE of choice, you can edit any of the files in the direct
 
 You can see an example of how to customize the Landing Page [here](#customizing-the-landing-page).
 
-To see your changes reflected in Greenlight, you will need to [restart Greenlight](#applying-env-changes).
+To see your changes reflected in Greenlight, you will need to [restart Greenlight](#restart-greenlight).
 
-# Applying `.env` Changes
+# Restart Greenlight
 
 After you edit the `.env` file or make any change to the code, you are required to rebuild the Greenlight image in order for it to pick up the changes. Ensure you are in the Greenlight directory when restarting Greenlight. To do this, enter the following commands:
 
@@ -248,17 +254,9 @@ To merge the code:
 git merge upstream/v2
 ```
 
-Then, [restart Greenlight](#applying-env-changes).
+Once you've merged your code, you should look through the latest version of the `sample.env` file [here](https://github.com/bigbluebutton/greenlight/blob/v2/sample.env), and see if there are any new settings you would like to change or add to Greenlight. If you come across something you want to add, simple copy paste it to the bottom of your `.env`.
 
-
-# Switching from `docker run` to `docker-compose`
-To switch from using `docker run` to start Greenlight, to using `docker-compose`, run the following commands:
-```bash
-docker stop <image name>
-docker rm <image name>
-```
-
-And then follow the instructions for [Starting Greenlight](#5-start-greenlight-20) 
+If you've merged the code and made any necessary changes to your `.env` file, you will need to [restart Greenlight](#restart-greenlight).
 
 # Customizing the Landing Page
 
@@ -323,182 +321,9 @@ To change the welcome message, modify the text associated with `landing.welcome`
     welcome: Welcome to MyServer
 ```
 
-Save the change to `en.yml`, and [restart Greenlight](#applying-env-changes).  The welcome message should have the new text.
+Save the change to `en.yml`, and [restart Greenlight](#restart-greenlight).  The welcome message should have the new text.
 
 ![Updated login](/images/greenlight/gl-welcome-to-my-server.png)
-
-
-# Configuring Greenlight 2.0
-
-Greenlight is a highly configurable application. The various configuration options can be found below. When making a changes to the `.env` file, in order for them to take effect you must restart you Greenlight container. For information on how to do this, see [Applying `.env` Changes](#applying-env-changes).
-
-## Using a Different Relative Root
-
-By default Greenlight is deployed to the `/b` sub directory. If you are running Greenlight on a BigBlueButton server you must deploy Greenlight to a sub directory to avoid conflicts.
-
-If you with to use a relative root other than `/b`, you can do the following:
-
-1. Change the `RELATIVE_ROOT_URL` environment variable.
-1. Update the `/etc/bigbluebutton/nginx/greenlight.nginx` file to reflect the new relative root.
-1. Restart Nginx and the Greenlight server.
-
-If you are **not** deploying Greenlight on a BigBlueButton server and want the application to run at root, simply set the `RELATIVE_ROOT_URL` to be blank.
-
-## Setting a Custom Branding Image
-
-You can now setup branding for Greenlight through its [Administrator Interface](gl-admin.html#site-branding). 
-
-## Adding Terms and Conditions
-
-Greenlight allows you to add terms and conditions to the application. By adding a `terms.md` file to `app/config/` you will enable terms and conditions. This will display a terms and conditions page whenever a user signs up (or logs on without accepting yet). They are required to accept before they can continue to use Greenlight.
-
-The `terms.md` file is a [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) file, so you can style your terms and conditions as you wish.
-
-To add terms and conditions to your docker container, create a `terms.md` file in the `~/greenlight` directory. Then, add the following volume to your `docker-compose.yml` file.
-
-`- ./terms.md:/usr/src/app/config/terms.md`
-
-## User Authentication
-
-Greenlight supports four types of user authentication. You can configure any number of these, and Greenlight will dynamically adjust to which ones are configured.
-
-### In Application (Greenlight)
-
-Greenlight has the ability to create accounts on its own. Users can sign up with their name, email and password and use Greenlight's full functionality.
-
-By default, the ability for anyone to create a Greenlight account is enabled. To disable this, set the `ALLOW_GREENLIGHT_ACCOUNTS` option in your `.env` file to false. This will **not** delete existing Greenlight accounts, but will prevent new ones from being created.
-
-### Google OAuth2
-
-You can use your own Google account, but since Greenlight will use this account for sending out emails, you may want to create a Google account related to the hostname of your BigBlueButton server.  For example, if your BigBlueButton server is called `example.myserver.com`, you may want to create a Google account called `greenlight_notifications_myserver`.
-
-You need a Google account to create an OAuth 2 `CLIENT_ID` and `SECRET`.  The will enable users of Greenlight to authenticate with their own Google account (not yours).
-
-Login to your Google account, and click the following link
-
-  [https://console.developers.google.com/](https://console.developers.google.com/)
-
-If you want to see the documentation behind OAuth2 at Google, click the link [https://developers.google.com/identity/protocols/OAuth2](https://developers.google.com/identity/protocols/OAuth2).
-
-First, create a Project click the "CREATE" link.
-
-In the menu on the left, click "Credentials".
-
-Next, click the "OAuth consent screen" tab below the "Credentials" page title.
-
-From here take the following steps:
-1. Choose any application name e.g "Greenlight"
-2. Set "Authorized domains" to your hostname eg "hostname" where hostname is your hostname
-3. Set "Application Homepage link" to your hostname e.g "http://hostname/b/" where hostname is your hostname
-4. Set "Application Privacy Policy link" to your hostname e.g "http://hostname/b/" where hostname is your hostname
-5. Click "Save"
-
-Next,
-
-1. Click "Create credentials"
-2. Select "OAuth client ID"
-3. Select "Web application"
-4. Choose any name e.g “bbb-endpoint”
-5. Under "Authorized redirect URIs" enter "https://hostname/b/auth/google/callback" where hostname is your hostname
-6. Click "Create"
-
-A window should open with your OAuth credentials. In this window, copy client ID and client secret to the `.env` file so it resembles the following (your credentials will be different).
-
-```
-GOOGLE_OAUTH2_ID=1093993040802-jjs03khpdl4dfasffq7hj6ansct5.apps.googleusercontent.com
-GOOGLE_OAUTH2_SECRET=KLlBNy_b9pvBGasf7d5Wrcq
-```
-
-The `GOOGLE_OAUTH2_HD` environment variable is optional and can be used to restrict Google authentication to a specific Google Apps hosted domain.
-
-```
-GOOGLE_OAUTH2_HD=example.com
-```
-
-### Office365 OAuth2
-
-You will need an Office365 account to create an OAuth 2 key and secret. This will allow Greenlight users to authenticate with their own Office365 accounts.
-
-To begin, head over to the following site and sign in to your Office365 account:
-[https://portal.azure.com/](https://portal.azure.com/)
-
-In the menu on the left, click "Azure Active Directory".
-
-Under the "Manage" tab, click "App registrations".
-
-From here take the following steps:
-1. Click "New Registration"
-2. Choose any application name e.g “bbb-endpoint”
-3. Set the Redirect URI to your url (must be https): “https://hostname/b/auth/office365/callback” 
-4. Click "Register"
-
-Once your application has been created, Under the "Overview" tab, copy your "Application (client) ID" into the `OFFICE365_KEY` environment variable in your `.env` file.
-
-Finally, click the "Certificates & secrets" under the "Manage" tab
-
-From here take the following steps:
-1. Click "New client secret"
-2. Choose the "Never" option in the "Expires" option list
-3. Copy the value of your password into the `OFFICE365_SECRET` environment variable in your `.env` file 
-
-
-### LDAP Auth
-
-Greenlight is able to authenticate users using an external LDAP server. To connect Greenlight to an LDAP server, you will have to provide values for the environment variables under the 'LDAP Login Provider' section in the `.env` file. You need to provide all of the values for LDAP authentication to work correctly.
-
-> `LDAP_SERVER` is the server host.
-
-> `LDAP_PORT` is the server port (commonly 389).
-
-> `LDAP_METHOD` is the authentication method, either 'plain' (default), 'ssl' or 'tls'.
-
-> `LDAP_UID` is the name of the attribute that contains the user id. For example, OpenLDAP uses 'uid'.
-
-> `LDAP_BASE` is the location to look up users.
-
-> `LDAP_BIND_DN` is the default account to use for user lookup.
-
-> `LDAP_PASSWORD` is the password for the account to perform user lookup.
-
-Here are some example settings using an [OpenLDAP](http://www.openldap.org/) server.
-
-```
-LDAP_SERVER=host
-LDAP_PORT=389
-LDAP_METHOD=plain
-LDAP_UID=uid
-LDAP_BASE=dc=example,dc=org
-LDAP_BIND_DN=cn=admin,dc=example,dc=org
-LDAP_PASSWORD=password
-```
-
-If your server is still running you will need to recreate the container for changes to take effect.
-
-See [Applying `.env` Changes](#applying-env-changes) section to enable your new configuration.
-
-If you are using an ActiveDirectory LDAP server, you must determine the name of your user id parameter to set `LDAP_UID`. It is commonly 'sAMAccountName' or 'UserPrincipalName'.
-
-LDAP authentication takes precedence over all other providers. This means that if you have other providers configured with LDAP, clicking the login button will take you to the LDAP sign in page as opposed to presenting the general login modal.
-
-### Twitter OAuth2
-
-Twitter Authentication is deprecated and will be phased out in a future release.
-
-## Configure GreenLight to send emails
-
-Using the Google account that you configured for OAuth 2 in section [Google OAuth2](#google-oauth2), edit `env` and apply the following settings.
-
-~~~
-GREENLIGHT_DOMAIN=<domain>
-SMTP_FROM=<gmail_email_address>
-SMTP_SERVER=smtp.gmail.com
-SMTP_PORT=587
-SMTP_DOMAIN=gmail.com
-SMTP_USERNAME=<gmail_email_address>
-SMTP_PASSWORD=<gmail_email_password>
-~~~
-
-Do the steps in [Applying .env changes](#applying-env-changes) to apply the new changes.
 
 # Troubleshooting Greenlight
 
@@ -506,10 +331,16 @@ Sometimes there are missteps and incompatibility issues when setting up applicat
 
 ## Changes not appearing
 
-If you made changes to the `.env` file, you will need to [restart Greenlight](#applying-env-changes) to see the changes appear.
+If you made changes to the `.env` file, you will need to [restart Greenlight](#restart-greenlight) to see the changes appear.
 
 ## Checking the Logs
 
 The best way for determining the root cause of issues in your Greenlight application is to check the logs.
 
 Docker is always running on a production environment, so the logs will be located in `log/production.log` from the `~/greenlight` directory.
+
+See also
+  * [Overview](/greenlight/gl-overview.html)
+  * [Install](/greenlight/gl-install.html)
+  * [Admin Guide](/greenlight/gl-admin.html)
+  * [Configure](/greenlight/gl-configure.html)
