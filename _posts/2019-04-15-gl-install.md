@@ -193,6 +193,20 @@ The best way for determining the root cause of issues in your Greenlight applica
 
 Docker is always running on a production environment, so the logs will be located in `log/production.log` from the `~/greenlight` directory.
 
+# Uninstall
+If you would like to uninstall Greenlight, you can do so by running the following commands: 
+
+**NOTE:** This will **permanently** delete all data associated with Greenlight. This data can not be recovered.
+
+```bash
+cd ~/greenlight
+docker-compose down
+docker-compose rm greenlight-v2
+docker rmi bigbluebutton/greenlight:v2
+cd ../
+sudo rm -rf greenlight/
+```
+
 See also
   * [Overview](/greenlight/gl-overview.html)
   * [Admin Guide](/greenlight/gl-admin.html)
