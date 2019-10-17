@@ -254,9 +254,8 @@ To merge the code:
 git merge upstream/v2
 ```
 
-Once you've merged your code, you should look through the latest version of the `sample.env` file [here](https://github.com/bigbluebutton/greenlight/blob/v2/sample.env), and see if there are any new settings you would like to change or add to Greenlight. If you come across something you want to add, simple copy paste it to the bottom of your `.env`.
+Once you've merged your code, you should look through the latest version of the `sample.env` file [here](https://github.com/bigbluebutton/greenlight/blob/v2/sample.env), and see if there are any new settings you would like to change or add to Greenlight. If you come across something you want to add, simply copy paste it to the bottom of your `.env`, then [restart Greenlight](#restart-greenlight).
 
-If you've merged the code and made any necessary changes to your `.env` file, you will need to [restart Greenlight](#restart-greenlight).
 
 # Customizing the Landing Page
 

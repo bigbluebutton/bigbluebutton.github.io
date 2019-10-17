@@ -165,7 +165,12 @@ docker-compose down
 docker-compose up -d
 ```
 
-Once you've updated Greenlight, you should look through the latest version of the `sample.env` file [here](https://github.com/bigbluebutton/greenlight/blob/v2/sample.env), and see if there are any new settings you would like to change or add to Greenlight. If you come across something you want to add, simple copy paste it to the bottom of your `.env` file and then [apply your .env changes](gl-config.html#if-you-installed-using-the-install-instructions).
+Once you've updated Greenlight, you should look through the latest version of the `sample.env` file [here](https://github.com/bigbluebutton/greenlight/blob/v2/sample.env), and see if there are any new settings you would like to change or add to Greenlight. If you come across something you want to add, simply copy paste it to the bottom of your `.env` file and then restart Greenlight by running:
+
+```bash
+docker-compose down
+docker-compose up -d
+```
 
 # Switching from `docker run` to `docker-compose`
 
