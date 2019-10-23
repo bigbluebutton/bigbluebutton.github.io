@@ -804,3 +804,36 @@ When installing the latest build of BigBlueButton, the package `bbb-conf` now us
 You need to add the repository `ppa:rmescandon/yq` to your server.  For steps on how to do this, see [Update your server](http://docs.bigbluebutton.org/2.2/install.html#1-update-your-server) in the BigBlueButton 2.2 install guide.
 
 Alternatively, if you have not made any customizations to BigBlueButton (outside of using `bbb-conf`), you can use [bbb-install.sh](https://github.com/bigbluebutton/bbb-install) to install/upgrade to the lastest version (the `bbb-install.sh` script will automatically install the repository for `yq`).
+
+
+## The browser is not supported
+
+When you attempt to join a BigBlueButton session, the client looks for supported browsers before fully loading.  The client gets its list of supported browsers from `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml`.  You can see the list of supported browsers at the bottom.  For example,
+
+~~~
+  - browser: mobileSafari
+    version:
+    - 11
+    - 1
+~~~
+
+states that `Mobile Safari` version 11.1 or later is supported (notice the first letter is lower case and concatanated with the remainder of the browser name).
+
+To add a browser to the list, first open the following page [https://demo.bigbluebutton.org/html5client/useragent](https://demo.bigbluebutton.org/html5client/useragent) with the browser, which will print its useragent string.  For example, with the Vivaldi browser you might see
+
+~~~
+Vivaldi 2.8.1664 / Linux 0.0.0
+~~~
+
+Next, to add this as a supported browser, append to `settings.yml`
+
+~~~
+  - browser: vivaldi
+    version:
+    - 2
+    - 8
+~~~
+
+save the updated `settings.yml` file, and then restart your BigBlueButton server with `sudo bbb-conf --restart`.  Note any browser you add must support WebRTC libraries (not all do), so be sure to check it first with [https://test.webrtc.org/](https://test.webrtc.org/).
+
+
