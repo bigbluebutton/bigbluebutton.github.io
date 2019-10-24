@@ -357,6 +357,17 @@ done
 
 Change the value for `MAXAGE` to specify how many days to retain the `presentation` format recordings on your BigBlueButton server.
 
+## Enable playback of recordings to work on iOS devices
+The `presentation` playback format generates `.webm` (VP8) encoded video files for screen share and webcams; however, iOS devices only support playback of `.mp4` (h.264) video files.  To enable playback of the `presentation` recording format on iOS devices, edit `/usr/local/bigbluebutton/core/scripts/presentation.yml` and uncomment the entry for `mp4`.
+
+~~~
+video_formats:
+  - webm
+  - mp4
+~~~
+
+This will cause BigBlueButton to generate an additional `.mp4` format for any video files (webcams and screen share) shared during the meeting.  Note: This will increase the processing time and storage size of recordings with video files
+
 # Other configuration options
 
 ## Increase the file size for an uploaded presentation
