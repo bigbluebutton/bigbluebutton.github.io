@@ -201,7 +201,6 @@ If you would like to uninstall Greenlight, you can do so by running the followin
 ```bash
 cd ~/greenlight
 docker-compose down
-docker-compose rm greenlight-v2
 docker rmi bigbluebutton/greenlight:v2
 cd ../
 sudo rm -rf greenlight/
