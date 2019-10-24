@@ -10,23 +10,23 @@ title: "BigBlueButton"
 
 BigBlueButton is an open source web conferencing system for online learning.  
 
-  * **open source** - You have full access to the [source code](https://github.com/bigbluebutton/bigbluebutton) under an [open source license](https://bigbluebutton.org/open-source-license/).  You can [setup](/2.2/install.html) your own BigBlueButton server (or 10 servers if you want), [customize the server](/2.2/dev.html), and integrate it into applications using the [BigBlueButton API](/dev/api.html).  We provide an easy-to-use front-end called [Greenlight](https://github.com/bigbluebutton/greenlight) as well.
+  * **open source** - You have full access to the [source code](https://github.com/bigbluebutton/bigbluebutton) under an [open source license](https://bigbluebutton.org/open-source-license/).  You can [setup](/2.2/install.html) your own BigBlueButton server (or 10 servers if you want), [customize it to your needs](/2.2/dev.html), and integrate BigBlueButton (or you customized version of it) into you applications using [BigBlueButton's API](/dev/api.html).  We provide an easy-to-use front-end called [Greenlight](https://github.com/bigbluebutton/greenlight) as well.
 
   * **web conferencing system** - BigBlueButton gives you all the core capabilities you would expect from a commercial web conferencing system, but under an open source license.  These capabilities include real-time sharing of audio, video, presentation, and screen.  BigBlueButton can record your sessions for later playback.
 
-  * **online learning** - BigBlueButton extends many of the core capabilities to focus on enaging your users, especially students that you want to convey information or knowledge.
+  * **online learning** - BigBlueButton extends many of its core capabilities with additional capabilities to focus on enaging users -- especially students.  For example, BigBlueButton's whiteboard allows multiple users to draw at the same time.
 
-Interested to give BigBlueButton a try?  Visit our demo [https://demo.bigbluebutton.org](https://demo.bigbluebutton.org) server to setup your own accout.
+To try out BigBlueButton, visit our [demo server](https://demo.bigbluebutton.org) server and setup a free account.
 
-Interested to learn more?  The following sections give you an overview of the project and how you can get started using it. 
+To learn more about BigBlueButton, the following sections give you an overview of the project and details of how you and your users can start using it.
 
-## Using BigBlueButton on desktop, laptop, or Chromebook.
+## Using BigBlueButton on desktop, laptop, or Chromebook
 
-BigBlueButton is a web based application.   To join a BigBlueButton session, simply click a browser link (such as an invitation link to a room in Greenlight) and your browser will download and run the BigBlueButton client.  That's it.
+BigBlueButton is a web based application.   To join a live session, you click a link in your browser (such as a link to join a room in Greenlight).   The browser will download the BigBlueButton client (written in HTML and Javascript) and run it.  That's it.  There is no app to install, no binary to first run.
 
-BigBlueButton uses the web browser's built-in libraries, called web real-time communication (WebRTC), to send and receive high quality audio, video, and screen.  For desktop and laptop users, we recommend Chrome or Firefox -- both have excellent support for WebRTC.  For Chromebooks, we recommend Google Chrome.  
+BigBlueButton uses the browser's built-in libraries, called web real-time communication (WebRTC), to send and receive audio, video, and screen.  For desktop and laptop users, we recommend Chrome or Firefox -- both have excellent support for WebRTC.  For Chromebooks, we recommend Google Chrome.  
 
-What about Microsoft Edge?  Recently, Microsoft [announced](https://blogs.windows.com/windowsexperience/2019/04/08/microsoft-edge-preview-builds-the-next-step-in-our-oss-journey/) they are switching Chromium engine.  This means in 2020 about a billion Windows 10 computers will be able to run BigBlueButton with a single click using the built-in browser.  Cool.
+Recently, Microsoft [announced that Microsoft Edge](https://blogs.windows.com/windowsexperience/2019/04/08/microsoft-edge-preview-builds-the-next-step-in-our-oss-journey/) is switching to use the Chromium engine (the open source engine that powers Google Chrome).  This means in 2020 about a billion Windows 10 computers will be able to join a BigBlueButton session with a single click using Window's built-in browser.  Cool.
 
 Here is a screen shot of the BigBlueButton client running in Chrome.
 
@@ -34,13 +34,13 @@ Here is a screen shot of the BigBlueButton client running in Chrome.
   <img src="/images/22-overview-2.png"/>
 </p><br>
 
-From left to right, you can see the list of users in the session, the chat area, the presentation area (where the current presenter can update), and one shared web cam (you can have as many, such as sixteen webcams, shared in a session depending on the bandwidth of users).
+From left to right, you can see the list of users in the session, the chat area, the presentation area (where the current presenter can update), and one shared web cam (you can share as many webcams as bandwidth allows), and the whiteboard tools.
 
-## Using BigBlueButton on mobile devices.
+## Using BigBlueButton on mobile devices
 
-BigBlueButton runs with the mobile browser.  Again, there is on mobile app for your users to install before they can join a session.
+BigBlueButton runs with the mobile browser on your phone.  There is no mobile app to download and install on your phone or tablet.
 
-We recommend iOS 12.2+ and Android 6.0+.  To join a session, just click a link and Android Chrome and BigBlueButton will load in the browser.  Similary, when you click a link iOS,  Safari mobile will open and load the BigBlueButton client. 
+BigBlueButton runs on iOS version 12.2+ and Android version 6.0+.  To join a session, click a link within the browser and, like the desktop, the browser will download and run the BigBlueButton HTMl5 client.
 
 Here's a screen shot of BigBlueButton running on an iOS phone.
 
@@ -48,6 +48,7 @@ Here's a screen shot of BigBlueButton running on an iOS phone.
   <img src="/images/22-ios.png"/>
 </p><br>
 
+This is the exact same client as the desktop.
 
 
 ## Designed for online learning
