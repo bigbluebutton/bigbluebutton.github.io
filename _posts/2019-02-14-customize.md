@@ -366,7 +366,10 @@ video_formats:
   - mp4
 ~~~
 
-This will cause BigBlueButton to generate an additional `.mp4` file any video (webcams and screen share) that was shared during the session.  Note: This will increase the processing time and storage size of recordings with video files
+This change will cause BigBlueButton to generate an additional `.mp4` file for the video components (webcam and screen share) that was shared during the session.   This change only applies to new recordings.  If you want this change to apply to any existing recordings, you need use the `bbb-record` command to [rebuild them](/dev/recording.html#rebuild-a-recording).
+
+This change will increase the processing time and storage size of recordings with video files as it will now generate two videos: `.webm` and `.mp4` for the webcam and screen share videos.
+
 
 # Other configuration options
 
