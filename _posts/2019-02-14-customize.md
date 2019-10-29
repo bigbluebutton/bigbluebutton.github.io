@@ -768,6 +768,18 @@ To change the favicon, overwrite the file `/var/www/bigbluebutton-default/favico
 
 You'll need to update file each time the `bbb-config` package updates.
 
+## Move recordings to a different partition
+
+Most of BigBlueButton's storage occurs in the `/var/bigbluebutton` directory (this is where all the recordings are stored).  If you want to move this directory to another partition, say to `/mnt/data`, do the following
+
+~~~
+$ sudo bbb-conf --stop
+$ mv /var/bigbluebutton /mnt/data
+$ ln -s /mnt/data/bigbluebutton /var/bigbluebutton
+$ sudo bbb-conf --start
+~~~
+
+
 # HTML5 client configuration
 
 The configuration file for the HTML5 client is located in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml`.  It contains all the settings for the HTML5 client.  
