@@ -15,7 +15,15 @@ If you would like to help translate BigBlueButton into your language, or you see
 
 1. Create an account on [transifex.com](https://www.transifex.com/)
 
-2. Visit the [BigBlueButton project](https://www.transifex.com/projects/p/bigbluebutton/) on Transifex. You'll see a list of languages ready for translation.
+2. Choose the project
+
+These docs are currently being updated for the HTML5 client.
+
+For helping to translate the HTML5 client, visit [BigBlueButton v2.2 HTML5 client](https://www.transifex.com/bigbluebutton/bigbluebutton-v22-html5-client/).  
+
+For the legacy Flash client, visit the [BigBlueButton project](https://www.transifex.com/bigbluebutton/bigbluebutton-dev/). 
+
+You'll see a list of languages ready for translation.
 
 3. Click the name of the language you wish to translate  
    
@@ -58,6 +66,8 @@ Finally, if you have any questions or need help, please post to [bigbluebutton-d
 Thanks again for your help in localizing BigBlueButton into other languages!
 
 ## Technical Background
+
+Note: This section applies only to the legacy Flash client.
 
 BigBlueButton localization follows the i18n standard. BigBlueButton Client will detect the locale of the language of the browser running it and attempt to load that language file.
 
