@@ -5,6 +5,14 @@ category: support
 date: 2015-04-04 22:26:10
 ---
 
+# Release 2.2-RC
+
+Released: November 6, 2019 ([Installation Instructions](/2.2/install.html))
+
+After months of testing with the community, the development cycle for BigBlueButton 2.2 is nearing the finish.  Since the beta release in March, we've been steadily fixing, improving, and hardening BigBlueButton 2.2.
+
+
+
 # Release 2.2-beta
 
 Released: March 19, 2019 ([Installation Instructions](/2.2/install.html))
@@ -21,7 +29,7 @@ Major features in this release include:
 
 * **Increased engagement** - The presenter can now share YouTube videos live in the session.
 
-This release is under active development: see [BigBlueButton 2.2 Project Board](https://github.com/bigbluebutton/bigbluebutton/projects/2).  For more details see [video overview](https://bigbluebutton.org/html5https://bigbluebutton.org/html5), [overview](/2.2/overview.html) and [installation](/2.2/install.html).
+This release is under active development: see [BigBlueButton 2.2 Project Board](https://github.com/bigbluebutton/bigbluebutton/projects/2).  For more details see [video overview](https://bigbluebutton.org/html5https://bigbluebutton.org/html5) and [installation](/2.2/install.html).
 
 # Release 2.0
 

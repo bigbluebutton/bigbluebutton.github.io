@@ -8,15 +8,15 @@ title: "BigBlueButton"
   <img src="/images/logo.png"/>
 </p><br>
 
-BigBlueButton is an open source web conferencing system for online learning.  
+Welcome to BigBlueButton, an open source web conferencing system for online learning.  
 
-  * **open source** - You have full access to the [source code](https://github.com/bigbluebutton/bigbluebutton) under an [open source license](https://bigbluebutton.org/open-source-license/).  You can [setup](/2.2/install.html) your own BigBlueButton server (or 10 servers if you want), [customize it to your needs](/2.2/dev.html), and integrate BigBlueButton (or you customized version of it) into you applications using [BigBlueButton's API](/dev/api.html).  We provide an easy-to-use front-end called [Greenlight](https://github.com/bigbluebutton/greenlight) as well.
+  * **open source** - You have full access to BigBlueButton's [source code](https://github.com/bigbluebutton/bigbluebutton) under an [open source license](https://bigbluebutton.org/open-source-license/).  You can [setup](/2.2/install.html) your own BigBlueButton server (or 10 servers if you want), [customize it's features](/2.2/dev.html), and integrate BigBlueButton (or you customized version of it) into you applications using [BigBlueButton's API](/dev/api.html).
 
-  * **web conferencing system** - BigBlueButton gives you all the core capabilities you would expect from a commercial web conferencing system, but under an open source license.  These capabilities include real-time sharing of audio, video, presentation, and screen.  BigBlueButton can record your sessions for later playback.
+  * **web conferencing system** - BigBlueButton gives you all the core capabilities you would expect from a commercial web conferencing system, but under an open source license.  These capabilities include real-time sharing of audio, video, presentation, and screen.  BigBlueButton provides an easy-to-use front-end called [Greenlight](https://github.com/bigbluebutton/greenlight).  BigBlueButtoncan record your sessions for later playback.
 
-  * **online learning** - BigBlueButton extends many of its core capabilities with additional capabilities to focus on enaging users -- especially students.  For example, BigBlueButton's whiteboard allows multiple users to draw at the same time.
+  * **online learning** - BigBlueButton extends many of its core web conferencing capabilities with additional focus on enaging your users.  For example, BigBlueButton's multi-user whiteboard allows multiple users to draw on the whiteboard at the same time.
 
-To try out BigBlueButton, visit our [demo server](https://demo.bigbluebutton.org) server and setup a free account.
+You can try out the latest version of BigBlueButton by visiting our [demo server](https://demo.bigbluebutton.org) server and setup a free account.
 
 To learn more about BigBlueButton, the following sections give you an overview of the project and details of how you and your users can start using it.
 
@@ -123,7 +123,7 @@ The BigBlueButton project is managed by a core group of [core committers](/suppo
 
 ## Latest Release
 
-The latest version of BigBlueButton is BigBlueButton 2.2-beta which features a pure HTML5 client (no more Flash).  See [install BigBlueButton 2.2](/2.2/install.html).
+The latest version of BigBlueButton is BigBlueButton 2.2 which features a pure HTML5 client (no plugin required).  See [install BigBlueButton 2.2](/2.2/install.html).
 
 Overview for Viewers (click image below to watch YouTube video):
 
@@ -136,8 +136,6 @@ Overview for Moderators/Presenters (click image below to watch YouTube video):
 <p align="center">
   <a href="https://www.youtube.com/watch?feature=player_embedded&v=Q2tG2SS4gXA" target="_blank"><img src="https://img.youtube.com/vi/Q2tG2SS4gXA/0.jpg" alt="Overview of BigBlueButton 2.2 for moderators/presenters" width="480" height="360" border="10" /></a>
 </p>
-
-The previous stable release is BigBlueButton 2.0. See the [overview](/install/overview.html) and [install](/install/install.html).
 
 ### Helping out the BigBlueButton project
 

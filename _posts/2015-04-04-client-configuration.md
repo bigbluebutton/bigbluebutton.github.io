@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Client Configuration"
-category: admin
+# category: admin
 date: 2015-04-04 22:22:25
 redirect_from: /install/client-configuration.html
 ---

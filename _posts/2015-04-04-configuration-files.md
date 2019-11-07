@@ -8,9 +8,9 @@ redirect_from: "/install/configuration-files"
 
 # Overview
 
-BigBlueButton is comprised of many [open source components](/overview/architecture.html#overview) along with a significant amount of additional code written by the BigBlueButton team to implement the client and server functionality for web conferencing.
+(This document still needs to be updated.)
 
-Like any large open source project, this may seem complicated at first, but when you break everything down to its components, it becomes much less complex.  Here's our attempt to carefully walk you through each of the configuration and log files to help you understand how to modify and extend BigBlueButton yourself.
+This document gives an overview of the BigBlueButton configuration files.
 
 The configuration files show an IP address of `192.168.0.100` -- you'll need to change it to match your local IP address when setting up BigBlueButton.
 
@@ -123,18 +123,4 @@ Setup voice conference properties.
 /opt/freeswitch/conf/dialplan/public
 ```
 
-Configure how to handle calls to join the voice conference.
 
-# BigBlueButton Client (Flash)
-
-## Enabling and Disabling client features
-
-Check the [client configuration](/install/configuration-files.html) page.
-
-## Configuration File
-
-```
-/var/www/bigbluebutton/client/conf/config.xml
-```
-
-http://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-client/resources/config.xml.template

@@ -1,7 +1,7 @@
 ---
 layout: page
 title: "Accessibility"
-category: dev
+# category: dev
 date: 2015-04-14 14:56:52
 ---
 

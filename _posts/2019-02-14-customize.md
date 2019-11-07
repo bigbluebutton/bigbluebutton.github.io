@@ -6,7 +6,7 @@ category: 2.2
 date: 2019-02-14 22:13:42
 ---
 
-This document covers common customizations of BigBlueButton 2.2-beta (referred hereafter as BigBlueButton). 
+This document covers common customizations of BigBlueButton 2.2.
 
 # Common Customizations
 

@@ -2,6 +2,7 @@
 layout: page
 title: "Accessibility"
 category: 2.2
+redirect_from: "/dev/accessibility.html"
 date: 2015-04-05 11:41:36
 order: 1
 ---

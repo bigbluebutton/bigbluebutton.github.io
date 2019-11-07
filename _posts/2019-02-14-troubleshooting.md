@@ -10,7 +10,7 @@ If you encountered any problems with the installation of BigBlueButton, this doc
 
 # Troubleshooting
 
-This section will help you resolve common errors with installation of BigBlueButton 2.2-beta (referred hereafter as BigBlueButton).  
+This section will help you resolve common errors with installation and configuration of BigBlueButton 2.2.
 
 If you are unable to resolve any installation issues, post a description of the error message along with the version of BigBlueButton you are installing to [bigbluebutton-setup](http://groups.google.com/group/bigbluebutton-setup/topics?gvc=2) and the community can help you further.
 
