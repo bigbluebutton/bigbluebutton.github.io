@@ -309,7 +309,7 @@ The default duration (days)
 
 ```bash
 published_days=14
-``` 
+```
 
 is defined near the top of the BigBlueButton cron job.
 
@@ -358,18 +358,18 @@ done
 Change the value for `MAXAGE` to specify how many days to retain the `presentation` format recordings on your BigBlueButton server.
 
 ## Enable playback of recordings on iOS
+
 The `presentation` playback format encodes the video shared during the session (webcam and screen share) as `.webm` (VP8) files; however, iOS devices only support playback of `.mp4` (h.264) video files.  To enable playback of the `presentation` recording format on iOS devices, edit `/usr/local/bigbluebutton/core/scripts/presentation.yml` and uncomment the entry for `mp4`.
 
-~~~
+```
 video_formats:
   - webm
   - mp4
-~~~
+```
 
 This change will cause BigBlueButton to generate an additional `.mp4` file for the video components (webcam and screen share) that was shared during the session.   This change only applies to new recordings.  If you want this change to apply to any existing recordings, you need use the `bbb-record` command to [rebuild them](/dev/recording.html#rebuild-a-recording).
 
 This change will increase the processing time and storage size of recordings with video files as it will now generate two videos: `.webm` and `.mp4` for the webcam and screen share videos.
-
 
 # Other configuration options
 
@@ -730,6 +730,7 @@ TARGET=/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
 yq w -i $TARGET public.kurento.enableScreensharing false
 chown meteor:meteor $TARGET
 ```
+
 Restart BigBlueButton (`sudo bbb-conf --restart`) to apply the change.
 
 ## Change UDP ports
@@ -772,13 +773,12 @@ You'll need to update file each time the `bbb-config` package updates.
 
 Most of BigBlueButton's storage occurs in the `/var/bigbluebutton` directory (this is where all the recordings are stored).  If you want to move this directory to another partition, say to `/mnt/data`, do the following
 
-~~~
+```
 $ sudo bbb-conf --stop
 $ mv /var/bigbluebutton /mnt/data
 $ ln -s /mnt/data/bigbluebutton /var/bigbluebutton
 $ sudo bbb-conf --start
-~~~
-
+```
 
 # HTML5 client configuration
 
@@ -827,7 +827,7 @@ The default values are:
 
 Notice that the `external` option is disabled by default - you can enable it on your own server after a few configuration changes.
 
-When setting the output to `external`, the BigBlueButton client will POST the log events to the URL endpoint provided by `url`. To create an associated endpoint on the BigBlueButton server for the POST request, create a file `/etc/bigbluebutton/nginx/client-log.nginx` with the following contents:
+When enabling the `external` logging output, the BigBlueButton client will POST the log events to the URL endpoint provided by `url`. To create an associated endpoint on the BigBlueButton server for the POST request, create a file `/etc/bigbluebutton/nginx/client-log.nginx` with the following contents:
 
 ```nginx
 location /html5Log {
