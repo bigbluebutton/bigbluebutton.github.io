@@ -484,6 +484,22 @@ LDAP authentication takes precedence over all other providers. This means that i
 
 Twitter Authentication is deprecated and will be phased out in a future release.
 
+## Configure GreenLight to send emails
+
+Using the Google account that you configured for OAuth 2 in section [Google OAuth2](#google-oauth2), edit `env` and apply the following settings.
+
+~~~
+GREENLIGHT_DOMAIN=<domain>
+SMTP_FROM=<gmail_email_address>
+SMTP_SERVER=smtp.gmail.com
+SMTP_PORT=587
+SMTP_DOMAIN=gmail.com
+SMTP_USERNAME=<gmail_email_address>
+SMTP_PASSWORD=<gmail_email_password>
+~~~
+
+Do the steps in [Applying .env changes](#applying-env-changes) to apply the new changes.
+
 # Troubleshooting Greenlight
 
 Sometimes there are missteps and incompatibility issues when setting up applications.
