@@ -2,7 +2,7 @@
 layout: page
 title: "Customize"
 category: 2.2
-#redirect_from: "/2.0/20install.html"
+redirect_from: "/admin/client-configuration.html"
 date: 2019-02-14 22:13:42
 ---
 
@@ -892,3 +892,48 @@ Here's a sample log entry
    "count":1
 }
 ```
+
+## Collect feedback from the users
+
+The BigBlueButton client can ask the user for feedback when they leave a session.  This feedback gives the administrator insight on a user's experiences within a BigBlueButton sessions.
+
+To enable the feedback and it's logging to your servert, run the following script.
+
+```bash
+#!/bin/bash
+
+HOST=$(cat /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties | grep -v '#' | sed -n '/^bigbluebutton.web.serverURL/{s/.*\///;p}')
+HTML5_CONFIG=/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
+
+yq w -i $HTML5_CONFIG public.clientLog.external.enabled true
+yq w -i $HTML5_CONFIG public.clientLog.external.url     "$PROTOCOL://$HOST/html5log"
+yq w -i $HTML5_CONFIG public.app.askForFeedbackOnLogout true
+chown meteor:meteor $HTML5_CONFIG
+
+cat > /etc/bigbluebutton/nginx/html5-client-log.nginx << HERE
+location /html5log {
+        access_log /var/log/nginx/html5-client.log postdata;
+        echo_read_request_body;
+}
+
+cat > /etc/nginx/conf.d/html5-client-log.conf << HERE
+log_format postdata '\$remote_addr [\$time_iso8601] \$request_body';
+HERE
+
+# We need nginx-full to enable postdata log_format
+if ! dpkg -l | grep -q nginx-full; then
+  apt-get install -y nginx-full
+fi
+
+touch /var/log/nginx/html5-client.log
+chown bigbluebutton:bigbluebutton /var/log/nginx/html5-client.log
+```
+
+The feedback will be written to `/var/log/nginx/html5-client.log`, which you would need to extract and parse.  You can also use the following command to monitor the feedback
+
+```bash
+tail -f /var/log/nginx/html5-client.log | sed -u 's/\\x22/"/g' | sed -u 's/\\x5C//g'
+```
+
+
+
