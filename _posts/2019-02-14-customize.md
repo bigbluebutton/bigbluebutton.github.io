@@ -679,35 +679,31 @@ You can remove this sound for all users by editing `/opt/freeswitch/etc/freeswit
 
 ## Reduce bandwidth from webcams
 
-When sharing webcams and screen, your browser (specifically the WebRTC libraries) will attempt to use all the bandwidth as configured in Kurento.
-
-The bandwidth for the streams is set in `default.yml`
-
-```
-  /usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml
-```
-
-which are
+You can use a banwidth usage on your BigBlueButton server using a tool such as `bmon` (`sudo apt-get install bmon`).  You can change the maximum bandwidth settings for each webcam options (low, medium, high, high definition) by editing `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml` and modifying the entries for 
 
 ```yaml
-  VP8:
-    tias_main: "300000"
-    as_main: "300"
-    tias_content: "1500000"
-    as_content: "1500"
+    cameraProfiles:
+    - id: low
+      name: Low quality
+      default: false
+      bitrate: 100
+    - id: medium
+      name: Medium quality
+      default: true
+      bitrate: 200
+    - id: high
+      name: High quality
+      default: false
+      bitrate: 500
+    - id: hd
+      name: High definition
+      default: false
+      bitrate: 800
 ```
 
-For example, to reduce webcam streams to 100 Kbits/sec and screen sharing to 1 Mbits/sec, make the following edits
+The settings for `bitrate` are in kbits/sec (i.e. 100 kbits/sec).  After your modify the values, save the file, restart your BigBlueButton server `sudo bbb-conf --restart` to have the settings take effect.  The lowest setting allowed for WebRTC is 30 Kbits/sec.  
 
-```yaml
-  VP8:
-    tias_main: "100000"
-    as_main: "100"
-    tias_content: "1000000"
-    as_content: "1000"
-```
-
-and restart BigBlueButton with `sudo bbb-conf --restart`.
+If you have sessions that like to share lots of webcams, such as ten or more, then then setting the `bitrate` for `low` to 50 and `medium` to 100 will help reduce the overall bandwidth on the server.  When many webcams are shared, the size of the webcams get so small that the reduction in `bitrate` will not be noticable during the live sessions.
 
 ## Disable webcams
 
