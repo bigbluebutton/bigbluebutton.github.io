@@ -827,7 +827,7 @@ The default values are:
 
 Notice that the `external` option is disabled by default - you can enable it on your own server after a few configuration changes.
 
-When enabling the `external` logging output, the BigBlueButton client will POST the log events to the URL endpoint provided by `url`. To create an associated endpoint on the BigBlueButton server for the POST request, create a file `/etc/bigbluebutton/nginx/client-log.nginx` with the following contents:
+When enabling the `external` logging output, the BigBlueButton client will POST the log events to the URL endpoint provided by `url`. To create an associated endpoint on the BigBlueButton server for the POST request, create a file `/etc/bigbluebutton/nginx/html5-client-log.nginx` with the following contents:
 
 ```nginx
 location /html5Log {
@@ -836,7 +836,7 @@ location /html5Log {
 }
 ```
 
-Then create a file in `/etc/nginx/conf.d/client-log.conf` with the following contents:
+Then create a file in `/etc/nginx/conf.d/html5-client-log.conf` with the following contents:
 
 ```nginx
 log_format postdata '$remote_addr [$time_iso8601] $request_body';
