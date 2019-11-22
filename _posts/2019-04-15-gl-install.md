@@ -172,16 +172,31 @@ docker-compose down
 docker-compose up -d
 ```
 
-# Switching from `docker run` to `docker-compose`
+# Switching from `Install` to `Customize`
 
-To switch from using `docker run` to start Greenlight, to using `docker-compose`, run the following commands:
+In the case that you would like to make changes to your code without losing your current data, there are steps you can take to switch from the `Install` version to the `Customize` version without losing any data. 
 
+In the Greenlight directory, take down Greenlight and rename the Greenlight directory to avoid conflicts using these commands:
 ```bash
-docker stop greenlight-v2
-docker rm greenlight-v2
+docker-compose down
+cd ..
+mv greenlight/ greenlight-old/
 ```
 
-And then follow the instructions for [Starting Greenlight](#5-start-greenlight-20) 
+Then, install Greenlight by following the `Customize` instructions [here](gl-customize.html#customizing-greenlight). Don't worry about any of the `.env` configuration, as it will be overwritten by the version you are currently using.
+
+Copy over your database file and `.env` file using these commands:
+```bash
+cp ~/greenlight-old/.env ~/greenlight/.env
+sudo cp -r ~/greenlight-old/db ~/greenlight/
+```
+
+Finally, restart Greenlight with:
+```bash
+cd ~/greenlight
+docker-compose down
+docker-compose up -d
+```
 
 # Troubleshooting Greenlight
 
