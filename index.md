@@ -10,11 +10,11 @@ title: "BigBlueButton"
 
 Welcome to BigBlueButton, an open source web conferencing system for online learning.  
 
-  * **open source** - You have full access to BigBlueButton's [source code](https://github.com/bigbluebutton/bigbluebutton) under an [open source license](https://bigbluebutton.org/open-source-license/).  You can easily [setup](/2.2/install.html) your own BigBlueButton server (or 10 servers if you want), [customize it](/2.2/dev.html), and [integrate it](/dev/api.html) into your product.
+  * **Open source** - You have full access to BigBlueButton's [source code](https://github.com/bigbluebutton/bigbluebutton) under an [open source license](https://bigbluebutton.org/open-source-license/).  You can easily [setup](/2.2/install.html) your own BigBlueButton server (or 10 servers if you want), [customize it](/2.2/dev.html), and [integrate it](/dev/api.html) into your product.
 
-  * **web conferencing system** - BigBlueButton has you all the core features you expect from a commercial web conferencing system (but under an open source license).  These features include real-time sharing of audio, video, presentation, and screen -- along with built-in whiteboard and the ability to record your sessions.  BigBlueButton comes with an easy-to-use front-end called [Greenlight](https://github.com/bigbluebutton/greenlight). 
+  * **Web conferencing system** - BigBlueButton has you all the core features you expect from a commercial web conferencing system (but under an open source license).  These features include real-time sharing of audio, video, presentation, and screen -- along with built-in whiteboard and the ability to record your sessions.  BigBlueButton comes with an easy-to-use front-end called [Greenlight](https://github.com/bigbluebutton/greenlight). 
 
-  * **online learning** - BigBlueButton extends its core features to focus on helping instructors engage remote students.  For example, an instructor can use BigBlueButton's multi-user whiteboard to work together with a student on a math problem.  BigBlueButton integrates with all the major learning management systems (LMS), including Moodle, Canvas, Sakai, Jenzabar, Blackboard, and D2L.
+  * **Online learning** - BigBlueButton extends its core features to focus on helping instructors engage remote students.  For example, an instructor can use BigBlueButton's multi-user whiteboard to work together with a student on a math problem.  BigBlueButton integrates with all the major learning management systems (LMS), including Moodle, Canvas, Sakai, Jenzabar, Blackboard, and D2L.
 
 Visit our demo server at [https://demo.bigbluebutton.org](https://demo.bigbluebutton.org) to try out BigBlueButton.  This demo server uses Greenlight (also open source) to let you easily create your own account, setup rooms, invite others, and manage recordings.
 
@@ -53,7 +53,7 @@ Here's a screen shot of BigBlueButton running on an iOS phone in landscape mode.
   <img src="/images/22-ios.png"/>
 </p><br>
 
-It's worth empahsizing there isn't mobile client and desktop client -- the same HTML5 client runs on all devices.  This gives us a single code base to enahance and innovate with adoption across desktop, laptop, chromebook, iOS, and Andorid.  Nice!
+It's worth emphasizing there isn't mobile client and desktop client -- the same HTML5 client runs on all devices.  This gives us a single code base to enhance and innovate with adoption across desktop, laptop, chromebook, iOS, and Andorid.  Nice!
 
 ## Designed for online learning
 
