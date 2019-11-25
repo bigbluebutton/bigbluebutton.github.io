@@ -22,7 +22,7 @@ The first step is to solving any problem is to read the associated documentation
 
 The our documentation, issue database, and mailing lists are all indexed by search engines.  When you encountered a problem, try searching for keywords around it.  If your receiving a specific error message when installing BigBlueButton, for example, then try searching the error message itself (be sure to include the word `bigbluebutton` to narrow your search).  There is an excellent chance that if others have encountered the same issue, a few minutes with Google will help you find one or more documentation links, issues, or mailing list discussions related to it.
 
-## I have a problem using BigBlueButton
+## Help using BigBlueButton
 
 If your BigBlueButton server itself is running fine -- that is, many users are using it without issue -- and the problem is related to understanding how a particular feature works (such as how to put users into breakout rooms), then check the [tutorial videos](https://bigbluebutton.org/videos/), especially the following two videos:
 
@@ -37,7 +37,7 @@ If you don't find a solution, then post a description of issue to [bigbluebutton
    1. Steps to reproduce the problem
    1. Can you reproduce the problem on our [demo server](https://demo.bigbluebutton.org)?
 
-## I have a problem setting up BigBlueButton
+## Help installing BigBlueButton
 
 If you have encountered a problem with installing or running your BigBlueButton server, then this section will guide you through systematically narrowing down the source of your problem.
 
@@ -89,7 +89,7 @@ If you have multiple questions about the same server, you do not have to include
 There are many members of the BigBlueButton community thst have been using and supporting BigBlueButton for years.  By including as much information as you can about your problem, you'll make it easier for them to volunteer their time to help you solve it quckly.
 
 
-## I have a problem developing BigBlueButton
+## Help developing BigBlueButton
 
 BigBlueButton is a very customizable system, see [customizable options](/2.2/customize).  If you don't see an option to customize BigBlueButton to your needs and have some experience with JavaScript development, you can [setup a development environment](/2.2/dev.html) and modify BigBlueButton to your needs.
 
