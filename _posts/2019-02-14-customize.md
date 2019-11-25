@@ -901,6 +901,8 @@ To enable the feedback and it's logging to your servert, run the following scrip
 HOST=$(cat /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties | grep -v '#' | sed -n '/^bigbluebutton.web.serverURL/{s/.*\///;p}')
 HTML5_CONFIG=/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
 
+apt-get install -y nginx-full
+
 yq w -i $HTML5_CONFIG public.clientLog.external.enabled true
 yq w -i $HTML5_CONFIG public.clientLog.external.url     "$PROTOCOL://$HOST/html5log"
 yq w -i $HTML5_CONFIG public.app.askForFeedbackOnLogout true
