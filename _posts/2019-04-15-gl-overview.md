@@ -179,8 +179,8 @@ There is also a **live search** that may return any part of the recording name:
 ![Greenlight Recording Filter and Search](/images/greenlight/recording_filter_search.png)
 
 See also
-  * [Overview](/greenlight/gl-overview.html)
   * [Install](/greenlight/gl-install.html)
   * [Admin Guide](/greenlight/gl-admin.html)
   * [Customize](/greenlight/gl-customize.html)
+  * [Configure](/greenlight/gl-configure.html)
 
