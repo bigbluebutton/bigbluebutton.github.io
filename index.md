@@ -16,18 +16,16 @@ Welcome to BigBlueButton, an open source web conferencing system for online lear
 
   * **Online learning** - BigBlueButton extends its core features to focus on helping instructors engage remote students.  For example, an instructor can use BigBlueButton's multi-user whiteboard to work together with a student on a math problem.  BigBlueButton integrates with all the major learning management systems (LMS), including Moodle, Canvas, Sakai, Jenzabar, Blackboard, and D2L.
 
-Visit our demo server at [https://demo.bigbluebutton.org](https://demo.bigbluebutton.org) to try out BigBlueButton.  This demo server uses Greenlight (also open source) to let you easily create your own account, setup rooms, invite others, and manage recordings.
+Want to try out BigBlueButton?  Visit our demo server at [https://demo.bigbluebutton.org](https://demo.bigbluebutton.org) and setup an account.   The demo server uses Greenlight (also open source) to let you creat rooms, start meetings, invite others, and manage recordings.
 
-This documementation provides you, the administrator, with all the information you need install, configure, and customize BigBlueButton to your needs.
-
-BigBlueButton is a very active project.  We regularly release updates as we continually enhance the product based on feedback from the community. 
+Want to learn more about BigBlueButton?  The documentation below provides you, the administrator, with all the information you need install, configure, and customize BigBlueButton to your needs.
 
 
 ## BigBlueButton overview
 
-BigBlueButton is a web based application: you do not need to install any application or plugin to use it.  
+BigBlueButton is an HTML5-based web application.  Unlike many commercial web conferencing systems that require you to install software, BigBlueButton run within your web browser.  There no binary to download, nor any plugin to install.
 
-BigBlueButton uses the web browser's built-in libraries -- called web real-time communication (WebRTC) -- to send and receive audio, video, and screen in real-time.  We recommend Chrome or Firefox for desktop users, both of which have have excellent support for WebRTC.  For Chromebooks users, we recommend Google Chrome.  
+BigBlueButton uses the web browser's built-in libraries -- called web real-time communication (WebRTC) -- to send and receive audio, video, and screen in real-time.  We recommend Chrome or Firefox for desktop users as both of these browsers have excellent support for WebRTC.  For Chromebooks users, the built-in Chrome browser is good.
 
 For Windows users, Microsoft recently [announced that Microsoft Edge](https://blogs.windows.com/windowsexperience/2019/04/08/microsoft-edge-preview-builds-the-next-step-in-our-oss-journey/) will be switching to use the Chromium engine (the open source engine that powers Google Chrome) in early 2020.  This means in 2020 about a billion Windows 10 computers will be able to run BigBlueButton with a single click using Window's default web browser.  Cool.
 
