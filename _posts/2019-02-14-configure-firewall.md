@@ -39,14 +39,35 @@ In this example, all users must connect to the BigBlueButton server via the unif
 
 When BigBlueButton is protected behind a firewall, you need to configure the firewall to forward the following incoming connections to BigBlueButton:
 
-* TCP ports 80, 443, 1935, and 7443
-* UDP ports in the range 16384 - 32768
+  * TCP/IP port 22 (for SSH)
+  * TCP/IP ports 80/443 (for HTTP/HTTPS)
+  * UDP ports in the range 16384 - 32768 (for FreeSWITCH/HTML5 RTP streams)
 
-In the case where you have installed BigBlueButton on Amazon EC2, you need to add rules to the server's associated security group (which serves as a firewall) to allow the above TCP and UDP connections.
+## EC2
 
-After you have made the changes, before proceeding to the installation, take a moment and test that you have configured the firewall to correctly forward the above connections (this will save you time later on if you encounter issues).
+If you are using EC2, you should also assign your server an [Elastic IP address](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) to prevent it from getting a new IP address on reboot.
 
-## Testing the firewall
+
+## Azure
+
+On Microsot Azure, when you create an instance you need to add the following inbound port rules to enable incomming connections on ports 80, 443, and UDP port range 16384-32768:
+
+![Azure Cloud ](/images/azure-firewall.png?raw=true "Azure 80, 443, and UDP 16384-32768")
+
+## Google Compute Engine
+
+On Google Compute Engine, when you create an instance you need to enable traffic on port 80 and 443.
+
+![Google Compute Engine 80-443](/images/gce-80-443.png?raw=true "GCE 80 and 443")
+
+After the instance is created, you need to add a firewall rule to allow incoming UDP traffic on the port range 16384-32768.
+
+![Google Compute Engine Firewall](/images/gce-firewall.png?raw=true "GCE Firewall")
+
+
+# Testing the firewall
+
+After you have made the changes to you firewall settings, before proceeding to the installation, take a moment and test that you have configured the firewall to correctly forward the above connections (this will save you time later on if you encounter issues).
 
 To test connections on various ports needed by BigBlueButton, you will use a tool called `netcat` to listen for connections.  You'll use `netcat` on the BigBlueButton server and on external server (outside the firewall) to generate connections.  If the connections test fail, then the firewall is forwarding the packets.
 
