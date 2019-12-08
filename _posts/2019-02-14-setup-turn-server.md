@@ -2,7 +2,6 @@
 layout: page
 title: "Configure TURN"
 category: 2.2
-#redirect_from: "/2.0/20install.html"
 date: 2019-02-14 22:13:42
 ---
 

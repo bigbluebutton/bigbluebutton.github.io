@@ -2,7 +2,8 @@
 layout: page
 title: "Customize"
 category: 2.2
-redirect_from: "/admin/client-configuration.html"
+redirect_from: 
+  - /admin/client-configuration.html
 date: 2019-02-14 22:13:42
 ---
 
