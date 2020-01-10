@@ -6,7 +6,7 @@ redirect_from: "/1.0/10architecture"
 date: 2015-09-20 17:34:41
 ---
 
-BigBlueButton is built upon many amazing software components -- nginx, red5, FreeSWITCH, tomcat7, redis, and others.  This page describes the overall architecture of BigBlueButton and how the components work together.
+BigBlueButton is built upon many amazing software components -- nginx, FreeSWITCH, tomcat7, redis, and others.  This page describes the overall architecture of BigBlueButton and how the components work together.
 
 # High-level Architecture Overview for BigBlueButton
 
@@ -49,16 +49,6 @@ Redis PubSub provides a communication channel between different applications run
 ## Redis DB
 
 When a meeting is recorded, all events are stored in Redis DB. When the meeting ends, the Recording Processor will take all the recorded events as well as the different raw (PDF, WAV, FLV) files for processing.
-
-## Red5 Apps (Screenshare, Apps, Voice, Video)
-
-We think Red5 rocks! (We just had to get that upfront).
-
-Red5 Apps are different applications that provide media streaming in the meeting and forwards messages between clients and Apps Akka.
-
-The Apps is the main BigBlueButton application that handles users, chat, whiteboard, presentation information shared by all users in a meeting. The Screenshare application allows the presenter to share their screen. The Voice application allows the user to call into the voice conference using a headset or join listen-only. The Video application provides a user to share his/her webcam to the users in the meeting.
-
-![Red5 Apps architecture](/images/10/red5-apps-arch.png)
 
 ## Apps Akka
 
