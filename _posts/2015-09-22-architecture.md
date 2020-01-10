@@ -6,7 +6,7 @@ redirect_from: "/1.0/10architecture"
 date: 2015-09-20 17:34:41
 ---
 
-BigBlueButton is built upon many amazing software components -- nginx, red5, FreeSWITCH, tomcat7, redis, and others.  This page describes the overall architecture of BigBlueButton and how the components work together.
+BigBlueButton is built upon many amazing software components -- nginx, FreeSWITCH, tomcat7, redis, and others.  This page describes the overall architecture of BigBlueButton and how the components work together.
 
 # High-level Architecture Overview for BigBlueButton
 
