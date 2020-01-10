@@ -74,6 +74,10 @@ We think FreeSWITCH is an amazing piece of software for handling audio.
 
 FreeSWITCH provides the voice conferencing capability in BigBlueButton. Users are able to join the voice conference through the headset. Users joining through Google Chrome or Mozilla Firefox are able to take advantage of higher quality audio by connecting using WebRTC. FreeSWITCH can also be [integrated with VOIP providers](/install/install.html#add-a-phone-number-to-the-conference-bridge) so that users who are not able to join using the headset will be able to call in using their phone.
 
+## Kurento and WebRTC-SFU
+
+Kurento Media Server KMS is a media server that implements both SFU and MCU models. KMS is reponsible for streaming of webcams, listen-only audio, and screensharing. The WebRTC-SFU acts as the media controller handling negotiations and to manage the media streams.
+
 ## Joining a Voice Conference
 
 A user can join the voice conference (running in FreeSWITCH) from the BigBlueButton HTML5 client or through the [phone](/2.2/customize.html#add-a-phone-number-to-the-conference-bridge). When joining through the client, the user can choose to join Microphone or Listen Only, and the BigBlueButton client will make an audio connection to the server via WebRTC.  WebRTC provides the user with high-quality audio with lower delay. 
