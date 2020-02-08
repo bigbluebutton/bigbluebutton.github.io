@@ -51,6 +51,8 @@ Here's a screen shot of BigBlueButton running on an iOS phone in landscape mode.
   <img src="/images/22-ios.png"/>
 </p><br>
 
+The only limitation on mobile platforms is the browsers do not support sharing of the mobile screen (though you can view another user's screen share).
+
 It's worth emphasizing that the same HTML5 client runs across desktop, laptop, chromebook, iOS, and Android devices.  This gives us a single code base to enhance, localize, and innovate without the multiple code bases.
 
 ## Designed for online learning
