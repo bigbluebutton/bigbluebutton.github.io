@@ -134,7 +134,12 @@ Next, you should copy the `docker-compose.yml` file from the Greenlight image in
 docker run --rm bigbluebutton/greenlight:v2 cat ./docker-compose.yml > docker-compose.yml
 ```
 
-Once you have this file, from the `~/greenlight` directory, start the application using:
+Finally, randomly generate a password for the PostgreSQL databse and replace the entries in the `.env` and `.docker-compose.yml` file with this command
+```bash
+export pass=$(openssl rand -hex 8) | sed -i 's/POSTGRES_PASSWORD=password/POSTGRES_PASSWORD='$pass'/g' docker-compose.yml;sed -i 's/DB_PASSWORD=password/DB_PASSWORD='$pass'/g' .env
+```
+
+Once you have completed these steps, from the `~/greenlight` directory, start the application using:
 
 ```bash
 docker-compose up -d
