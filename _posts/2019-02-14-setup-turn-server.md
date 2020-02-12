@@ -42,6 +42,18 @@ Note: coturn will not automatically start until configuration is applied (see be
 
 You need to setup a fully qualified domain name that resolves to the external IP address of your turn server.  You'll used this domain name to generate a TLS certificate using Let's Encrypt (next section).
 
+## Required Ports
+
+On the coturn server, you need to have the following ports (in additon port 22) availalbe for BigBlueButton clients to connect (port 3478 and 443) and for coturn to connect to your BigBlueButton server (49152 - 65535).
+
+
+| Ports         | Protocol      | Description |
+| ------------- | ------------- | ----------- |
+| 3478          | TCP/UDP       | coturn listening port |
+| 443           | TCP/UDP       | TLS listening port |
+| 49152-65535   | UDP           | relay ports range |
+
+
 ## Generating TLS certificates
 
 You can use `certbot` from [Let's Encrypt](https://letsencrypt.org/) to easily generate free TLS certificates.   To setup `certbot` enter the following commands on your TURN server (not your BigBlueButton server).
