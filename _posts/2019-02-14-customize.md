@@ -372,6 +372,134 @@ This change will cause BigBlueButton to generate an additional `.mp4` file for t
 
 This change will increase the processing time and storage size of recordings with video files as it will now generate two videos: `.webm` and `.mp4` for the webcam and screen share videos.
 
+## Automatically apply configuration changes on restart
+
+When you upgrade to the latest build of BigBlueButton using either the [manual steps](/2.2/install.html#upgrading-from-bigbluebutton-22) or [bbb-install.sh](https://github.com/bigbluebutton/bbb-install) script, if you have made manual changes to BigBlueButton's configuration, the packaging scripts may overwrite your changes.
+
+Instead of an error-prone step to manually re-applying any changes after each upgrade, a better approach would be to have your custom configuration changes in a script that gets automatically when BigBlueButton gets restarted.
+
+Whenever you manually update BigBlueButton, the [instructions](/2.2/install.html#upgrading-from-bigbluebutton-22) state to run `sudo bbb-conf --setip <hostname>` to re-apply the `<hostname>` to BigBlueButton's configuration files ([bbb-install.sh](https://github.com/bigbluebutton/bbb-install) does this for you automatically).  
+
+There is now logic in `bbb-conf` to look for a BASH script at `/etc/bigbluebutton/bbb-conf/apply-config.sh` when doing either `--restart` or `--setip <hostname>` and, if found, execute this script before starting up BigBlueButton.
+
+You can then put your configuration changes in `apply-config.sh` to ensure they are automatically applied.  Here's a sample `apply-config.sh` script
+
+~~~sh
+!/bin/bash
+
+# Pull in the helper functions for configuring BigBlueButton
+source /etc/bigbluebutton/bbb-conf/apply-lib.sh
+
+enableUFWRules
+~~~
+
+Notice it includes `apply-lib.sh` which is another BASH script that contains some helper functions (see [apply-lib.sh](https://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-config/bin/apply-lib.sh) source).  It then calls `enableUFWRules` to apply the settings in [restrict access to specific ports](#restrict-access-to-specific-ports).  
+The contents of `apply-config.sh` are not owned by any package, so it will never be overwritten.  
+
+When you create `apply-config.sh`, make it executable (`chmod +x /etc/bigbluebutton/bbb-conf/apply-config.sh`).  Using the above script as an example, whenever you do `bbb-conf` with `--restart` or `--setip`, you'll see the following output
+
+~~~
+Restarting BigBlueButton 2.2.0-xx-x ...
+Stopping BigBlueButton
+
+Applying updates in /etc/bigbluebutton/bbb-conf/apply-config.sh: 
+  - Enable Firewall and opening 22/tcp, 80/tcp, 443/tcp and 16384:32768/udp
+Rules updated
+Rules updated (v6)
+Rules updated
+Rules updated (v6)
+Rules updated
+Rules updated (v6)
+Rules updated
+Rules updated (v6)
+Firewall is active and enabled on system startup
+
+Starting BigBlueButton
+~~~
+
+The next sections give some examples of customizations you could add to `apply-config.sh`.
+
+
+### Reduce bandwidth for webcams
+
+If you expect users to share many webcams, to [reduce bandwidth for webcams](#reduce-bandwidth-from-webcams), add the following to `apply-config.sh`.
+
+~~~bash
+echo "  - Setting camera defaults"
+yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[0].bitrate 50
+yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[1].bitrate 100
+yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[2].bitrate 200
+yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[3].bitrate 300
+
+yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[0].default true
+yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[1].default false
+yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[2].default false
+yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[3].default false
+
+~~~
+
+### Apply lock settings to restrict webcams
+
+To enable lock settings for `Share webcam` by default (viewers are unable to share their webcam), add the following to `apply-config.sh`.
+
+~~~bash
+echo "  - Prevent viewers from sharing webcams"
+sed -i 's/lockSettingsDisableCam=.*/lockSettingsDisableCam=true/g' /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
+~~~
+
+After restart, if you open the lock settings you'll see `Share webcam` lock enabled.
+
+<p align="center">
+  <img src="/images/html5-lock-webcam.png"/>
+</p><br>
+
+### Apply custom settings for TURN server
+
+If always want a specific TURN server configuration, the following to `apply-config.sh` and modify `aaa.bbb.ccc.ddd` and `secret` with your values.
+
+~~~bash
+echo "  - Update TURN server configuration turn-stun-servers.xml"
+  cat <<HERE > /usr/share/bbb-web/WEB-INF/classes/spring/turn-stun-servers.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    <bean id="stun0" class="org.bigbluebutton.web.services.turn.StunServer">
+        <constructor-arg index="0" value="stun:aaa.bbb.ccc.ddd"/>
+    </bean>
+    <bean id="turn0" class="org.bigbluebutton.web.services.turn.TurnServer">
+        <constructor-arg index="0" value="secret"/>
+        <constructor-arg index="1" value="turns:aaa.bbb.ccc.ddd:443?transport=tcp"/>
+        <constructor-arg index="2" value="86400"/>
+    </bean>
+    <bean id="stunTurnService"
+            class="org.bigbluebutton.web.services.turn.StunTurnService">
+        <property name="stunServers">
+            <set>
+                <ref bean="stun0"/>
+            </set>
+        </property>
+        <property name="turnServers">
+            <set>
+                <ref bean="turn0"/>
+            </set>
+        </property>
+    </bean>
+</beans>
+~~~
+
+### Always record every meeting
+
+To [always record every meeting](#always-record-every-meeting), add the following to `apply-config.sh`. 
+
+~~~bash
+echo "  - Prevent viewers from sharing webcams"
+sed -i 's/autoStartRecording=.*/autoStartRecording=true/g' /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
+sed -i 's/allowStartStopRecording=.*/allowStartStopRecording=false/g' /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
+~~~
+
+
 # Other configuration options
 
 ## Increase the file size for an uploaded presentation
