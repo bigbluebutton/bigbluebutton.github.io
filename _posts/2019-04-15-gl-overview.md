@@ -125,6 +125,38 @@ Afterwards, clicking **Update Room** will save the changes.
 
 ![Greenlight Room Block Editing Mode](/images/greenlight/room_block_editing_mode.png)
 
+### Manage Access
+
+In the Room actions dropdown, there is a setting that allows users to share rooms. 
+
+![Greenlight Room Shared Access](/images/greenlight/room_shared_access.png)
+
+To share a room with another user, click on the dropdown and search for the user using either their **email** or their **uid**.
+
+![Greenlight Room Shared Modal](/images/greenlight/room_shared_access_modal.png)
+
+Once you click on a user to add, they will be added to the Shared With area in a pending state. No changes will be made unless the **Save Changes** button is clicked.
+
+![Greenlight Room Shared Pending](/images/greenlight/room_shared_pending.png)
+
+Users that the room has been shared with will appear in the following state:
+
+![Greenlight Room Shared Added](/images/greenlight/room_shared.png)
+
+You can unshare a room with a user by clicking the **x** icon. Again, no changes will be save until the **Save Changes** button is clicked.
+
+![Greenlight Room Shared Remove](/images/greenlight/room_shared_remove.png)
+
+Once a room is shared, the users that it is shared with will have access to that room in their Room List. They will be able to view/start the meeting and view the recordings. Note that only the room owner can edit/delete the room and the recordings.
+
+For the User that has the room shared with them, the room will now appear in their room list with a share icon and the name of the user that shared the room with them. 
+
+![Greenlight Room Shared](/images/greenlight/room_share.png)
+
+The User also has the option to remove an unwanted shared room from their room list.
+
+![Greenlight Room Remove Shared](/images/greenlight/room_remove_shared.png)
+
 ## Recordings
 
 ### Viewing Recordings
