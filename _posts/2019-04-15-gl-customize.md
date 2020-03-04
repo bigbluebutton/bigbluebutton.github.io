@@ -161,10 +161,9 @@ To have this change take effect, you must once again restart Nginx.
 
 ## 5. Start Greenlight 2.0
 
-To start the Greenlight Docker containter, you must install `docker-compose`, which simplifies the start and stop process for Docker containers.
+To start the Greenlight Docker container, you must install `docker-compose`, which simplifies the start and stop process for Docker containers.
 
 Install `docker-compose` by following the steps for installing on Linux in the [Docker documentation](https://docs.docker.com/compose/install/). You may be required to run all `docker-compose` commands using sudo. If you wish to change this, check out [managing docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user).
-
 
 ### Using `docker-compose`
 
@@ -225,6 +224,7 @@ docker-compose down
 If you are currently using `docker run` and want to switch to `docker-compose`, follow these [instructions](#switching-from-docker-run-to-docker-compose).
 
 ## Making Code Changes
+
 Using the text editor/IDE of choice, you can edit any of the files in the directory. The majority of Greenlight's code lives in `~/greenlight/app`. 
 
 You can see an example of how to customize the Landing Page [here](#customizing-the-landing-page).
@@ -241,8 +241,8 @@ docker-compose down
 docker-compose up -d
 ```
 
-
 # Updating to the Latest Version of Greenlight
+
 If a new version of Greenlight has been released, you'll need to fetch the most up to date version of the remote repository.
 
 ```bash
@@ -250,12 +250,12 @@ git fetch upstream
 ```
 
 To merge the code:
+
 ```bash
 git merge upstream/v2
 ```
 
 Once you've merged your code, you should look through the latest version of the `sample.env` file [here](https://github.com/bigbluebutton/greenlight/blob/v2/sample.env), and see if there are any new settings you would like to change or add to Greenlight. If you come across something you want to add, simply copy paste it to the bottom of your `.env`, then [restart Greenlight](#restart-greenlight).
-
 
 # Customizing the Landing Page
 
@@ -339,7 +339,8 @@ The best way for determining the root cause of issues in your Greenlight applica
 Docker is always running on a production environment, so the logs will be located in `log/production.log` from the `~/greenlight` directory.
 
 See also
-  * [Overview](/greenlight/gl-overview.html)
-  * [Install](/greenlight/gl-install.html)
-  * [Admin Guide](/greenlight/gl-admin.html)
-  * [Configure](/greenlight/gl-configure.html)
+
+* [Overview](/greenlight/gl-overview.html)
+* [Install](/greenlight/gl-install.html)
+* [Admin Guide](/greenlight/gl-admin.html)
+* [Configure](/greenlight/gl-configure.html)

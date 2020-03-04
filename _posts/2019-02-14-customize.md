@@ -46,7 +46,7 @@ The SWF files are not needed by the HTML5 client.
 
 If your server is behind a firewall already -- such as running within your company or on an EC2 instance behind a Amazon Security Group -- and the firewall is enforcing the above restrictions, you don't a second firewall and can skip this section.
 
-If your BigBlueButton server is publically available on the internet, then, for increased security, you should restrict access only to the following needed ports:
+If your BigBlueButton server is publicly available on the internet, then, for increased security, you should restrict access only to the following needed ports:
 
 * TCP/IP port 22 for SSH
 * TCP/IP port 80 for HTTP
@@ -76,7 +76,7 @@ These `ufw` firewall rules will be automatically re-applied on server reboot.
 
 ## Extract the shared secret
 
-Any front-end to BigBlueButton needstwo pieces of information: the hostname for the BigBlueButton server and its shared secret (for authenticating API calls).  To print out the hostname and shared secret for you BigBlueButton server, enter the command `bbb-conf --secret`:
+Any front-end to BigBlueButton needs two pieces of information: the hostname for the BigBlueButton server and its shared secret (for authenticating API calls).  To print out the hostname and shared secret for you BigBlueButton server, enter the command `bbb-conf --secret`:
 
 ```bash
 $ bbb-conf --secret
@@ -115,7 +115,7 @@ The default HTML landing page is located in
 /var/www/bigbluebutton-default/index.html
 ```
 
-Change this page to create your own landing page (and keep a back-up copy of it as it will be overwritten duing package updates to `bbb-conf`).
+Change this page to create your own landing page (and keep a back-up copy of it as it will be overwritten during package updates to `bbb-conf`).
 
 ## Use the Greenlight front-end
 
@@ -298,7 +298,7 @@ The welcome message is fixed for the duration of a meeting.  If you want to see 
 
 When a meeting finishes, the BigBlueButton server [archives the meeting data](/dev/recording.html#archive) (referred to as the "raw" data).  
 
-Retaining the raw data lets you [rebuid](/dev/recording.html#rebuild-a-recording) a recording if it was accidentally deleted by a user; hHowever, the tradeoff is the storage of raw data will consume more disk space over time.
+Retaining the raw data lets you [rebuild](/dev/recording.html#rebuild-a-recording) a recording if it was accidentally deleted by a user; hHowever, the tradeoff is the storage of raw data will consume more disk space over time.
 
 You an have the BigBlueButton server automatically remove the raw data for a recording after 14 days of its being published by editing the BigBlueButton cron job, located at `/etc/cron.daily/bigbluebutton`, and uncommenting the following line
 
@@ -384,21 +384,21 @@ There is now logic in `bbb-conf` to look for a BASH script at `/etc/bigbluebutto
 
 You can then put your configuration changes in `apply-config.sh` to ensure they are automatically applied.  Here's a sample `apply-config.sh` script
 
-~~~sh
+```sh
 !/bin/bash
 
 # Pull in the helper functions for configuring BigBlueButton
 source /etc/bigbluebutton/bbb-conf/apply-lib.sh
 
 enableUFWRules
-~~~
+```
 
 Notice it includes `apply-lib.sh` which is another BASH script that contains some helper functions (see [apply-lib.sh](https://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-config/bin/apply-lib.sh) source).  It then calls `enableUFWRules` to apply the settings in [restrict access to specific ports](#restrict-access-to-specific-ports).  
 The contents of `apply-config.sh` are not owned by any package, so it will never be overwritten.  
 
 When you create `apply-config.sh`, make it executable (`chmod +x /etc/bigbluebutton/bbb-conf/apply-config.sh`).  Using the above script as an example, whenever you do `bbb-conf` with `--restart` or `--setip`, you'll see the following output
 
-~~~
+```
 Restarting BigBlueButton 2.2.0-xx-x ...
 Stopping BigBlueButton
 
@@ -415,16 +415,15 @@ Rules updated (v6)
 Firewall is active and enabled on system startup
 
 Starting BigBlueButton
-~~~
+```
 
 The next sections give some examples of customizations you could add to `apply-config.sh`.
-
 
 ### Reduce bandwidth for webcams
 
 If you expect users to share many webcams, to [reduce bandwidth for webcams](#reduce-bandwidth-from-webcams), add the following to `apply-config.sh`.
 
-~~~bash
+```bash
 echo "  - Setting camera defaults"
 yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[0].bitrate 50
 yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[1].bitrate 100
@@ -435,17 +434,16 @@ yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[0].default true
 yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[1].default false
 yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[2].default false
 yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[3].default false
-
-~~~
+```
 
 ### Apply lock settings to restrict webcams
 
 To enable lock settings for `Share webcam` by default (viewers are unable to share their webcam), add the following to `apply-config.sh`.
 
-~~~bash
+```bash
 echo "  - Prevent viewers from sharing webcams"
 sed -i 's/lockSettingsDisableCam=.*/lockSettingsDisableCam=true/g' /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
-~~~
+```
 
 After restart, if you open the lock settings you'll see `Share webcam` lock enabled.
 
@@ -457,7 +455,7 @@ After restart, if you open the lock settings you'll see `Share webcam` lock enab
 
 If always want a specific TURN server configuration, the following to `apply-config.sh` and modify `aaa.bbb.ccc.ddd` and `secret` with your values.
 
-~~~bash
+```bash
 echo "  - Update TURN server configuration turn-stun-servers.xml"
   cat <<HERE > /usr/share/bbb-web/WEB-INF/classes/spring/turn-stun-servers.xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -487,18 +485,17 @@ echo "  - Update TURN server configuration turn-stun-servers.xml"
         </property>
     </bean>
 </beans>
-~~~
+```
 
 ### Always record every meeting
 
 To [always record every meeting](#always-record-every-meeting), add the following to `apply-config.sh`. 
 
-~~~bash
+```bash
 echo "  - Prevent viewers from sharing webcams"
 sed -i 's/autoStartRecording=.*/autoStartRecording=true/g' /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
 sed -i 's/allowStartStopRecording=.*/allowStartStopRecording=false/g' /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
-~~~
-
+```
 
 # Other configuration options
 
@@ -920,7 +917,7 @@ public:
     clientTitle: BigBlueButton
 ```
 
-You'll need to update this entry each time the package `bbb-html5` updates.  The folowing script can help automate the change
+You'll need to update this entry each time the package `bbb-html5` updates.  The following script can help automate the change
 
 ```bash
 $ TARGET=/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
@@ -1022,7 +1019,7 @@ Here's a sample log entry
 
 The BigBlueButton client can ask the user for feedback when they leave a session.  This feedback gives the administrator insight on a user's experiences within a BigBlueButton sessions.
 
-To enable the feedback and it's logging to your servert, run the following script.
+To enable the feedback and it's logging to your server, run the following script.
 
 ```bash
 #!/bin/bash
@@ -1061,6 +1058,3 @@ The feedback will be written to `/var/log/nginx/html5-client.log`, which you wou
 ```bash
 tail -f /var/log/nginx/html5-client.log | sed -u 's/\\x22/"/g' | sed -u 's/\\x5C//g'
 ```
-
-
-

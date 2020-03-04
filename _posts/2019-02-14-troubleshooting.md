@@ -7,8 +7,6 @@ date: 2019-02-14 22:13:42
 
 If you encountered any problems with the installation of BigBlueButton, this document covers how to resolve many of the common issues.
 
-
-
 # Getting help
 
 Have you encountered a problem with BigBluebutton?
@@ -25,22 +23,22 @@ The our documentation, issue database, and mailing lists are all indexed by sear
 
 If your BigBlueButton server itself is running fine -- that is, many users are using it without issue -- and the problem is related to understanding how a particular feature works (such as how to put users into breakout rooms), then check the [tutorial videos](https://bigbluebutton.org/videos/), especially the following two videos:
 
-  * [Viewer overview](https://www.youtube.com/watch?v=uYYnryIM0Uw)
-  * [Moderator/Presenter overview](https://www.youtube.com/watch?v=Q2tG2SS4gXA)
+* [Viewer overview](https://www.youtube.com/watch?v=uYYnryIM0Uw)
+* [Moderator/Presenter overview](https://www.youtube.com/watch?v=Q2tG2SS4gXA)
 
 Also, check the frequently asked questions on [using BigBlueButton](/support/faq.html#using-bigbluebutton).
 
 If you don't find a solution, then post a description of issue to [bigbluebutton-users](https://groups.google.com/forum/#!forum/bigbluebutton-users).  To make it easier for others to help, include (if possible) all the following information
- 
-   1. A description of the problem (a screen shot is very helpful as well)
-   1. Steps to reproduce the problem
-   1. Can you reproduce the problem on our [demo server](https://demo.bigbluebutton.org)?
+
+1. A description of the problem (a screen shot is very helpful as well)
+2. Steps to reproduce the problem
+3. Can you reproduce the problem on our [demo server](https://demo.bigbluebutton.org)?
 
 ## Help installing BigBlueButton
 
 If you have encountered a problem with installing or running your BigBlueButton server, then this section will guide you through systematically narrowing down the source of your problem.
 
-First, check -- and double-check -- that your server meets the [minimum requirements](/2.2/install.html#minimum-server-requirements).  If it does not, then one (or more) of the BigBlueButton components may be failing in unpredictable ways when they encounter a resource constraint (such as insufficient memory).  Before going further, setup a server that meets (or exceeds) the minimum requirements and try installing agin.
+First, check -- and double-check -- that your server meets the [minimum requirements](/2.2/install.html#minimum-server-requirements).  If it does not, then one (or more) of the BigBlueButton components may be failing in unpredictable ways when they encounter a resource constraint (such as insufficient memory).  Before going further, setup a server that meets (or exceeds) the minimum requirements and try installing again.
 
 Next, check the output of `sudo bbb-conf --check`.  The [bbb-conf](/admin/bbb-conf.html) script has a lot of built-in checks to look for configure errors on a BigBlueButton server.
 
@@ -48,12 +46,12 @@ If you installed BigBlueButton using the step-by-step instructions, try using th
 
 **Note:** `bbb-install.sh` cannot automate the configuration of your firewall, so there may still be some manual steps for you to do (read the `bbb-install.sh` docs for more information).  Nonetheless, if your server is on the internet, has a public IP address and a fully qualified domain name (FQDN), such as `bbb.example.com`, then `bbb-instal.sh` can usually install and configure the latest version of BigBlueButton for you in under 15 minutes.
 
-
 Next, read through the following documentation
-  1. [Install Guide](/2.2/install.html#before-you-install) (do this even if you have used `bbb-install.sh` as it will help you understand the various components of BigBlueButton)
-  1. [Troubleshooting installation issues](#troubleshooting-installation-issues)
-  1. [Troubleshooting recordings](/dev/recording.html#troubleshooting) (if your issue is related to recordings)
-  1. [Frequently Asked Questions](/support/faq.html)
+
+1. [Install Guide](/2.2/install.html#before-you-install) (do this even if you have used `bbb-install.sh` as it will help you understand the various components of BigBlueButton)
+2. [Troubleshooting installation issues](#troubleshooting-installation-issues)
+3. [Troubleshooting recordings](/dev/recording.html#troubleshooting) (if your issue is related to recordings)
+4. [Frequently Asked Questions](/support/faq.html)
 
 If you are unable to solve the problem after consulting the above documentation, then post as much information as possible about the problem to [bigbluebutton-setup](https://groups.google.com/forum/#!forum/bigbluebutton-setup) mailing list.
 
@@ -61,32 +59,31 @@ BEFORE YOU POST, we emphasize the importance of *providing as much information a
 
 Include the following information in your post:
 
-  1.  What version of BigBlueButton are you installing/running?
-  1.  Did you get any errors during the install?
-  1.  What [installation method](/2.2/install.html#installation-choices) did you follow?
-  1.  Did the problem appear after initial install, after an upgrade, or after running BigBlueButton for a while?
-  1.  Did you make any changes to BigBlueButton outside of using [bbb-conf](/admin/bbb-conf.html) or the [bbb-install.sh](/2.2/install.html#bbb-installsh) script?
-  1.  Are you running BigBlueButton within a development environment?
-  1.  Post the output of `sudo bbb-conf --check`
+1. What version of BigBlueButton are you installing/running?
+2. Did you get any errors during the install?
+3. What [installation method](/2.2/install.html#installation-choices) did you follow?
+4. Did the problem appear after initial install, after an upgrade, or after running BigBlueButton for a while?
+5. Did you make any changes to BigBlueButton outside of using [bbb-conf](/admin/bbb-conf.html) or the [bbb-install.sh](/2.2/install.html#bbb-installsh) script?
+6. Are you running BigBlueButton within a development environment?
+7. Post the output of `sudo bbb-conf --check`
 
 For issues that may be network related -- such as users unable to share their audio or video -- also include:
 
-  1.  Are you installing BigBlueButton on (a) a private network with no internet access, (b) a private network with internet access via a firewall, (c) a server on the internet with public/private IP addresses (such as Amazon EC2 or Azure), or (d) a server on the internet with a public IP address?
-  1.  Are you installing BigBlueButton on a dedicated server or virtual machine?
-  1.  Does the server have a static or dynamic IP?
-  1.  Does the server IPV4 and/or IPV6 address?
+1. Are you installing BigBlueButton on (a) a private network with no internet access, (b) a private network with internet access via a firewall, (c) a server on the internet with public/private IP addresses (such as Amazon EC2 or Azure), or (d) a server on the internet with a public IP address?
+2. Are you installing BigBlueButton on a dedicated server or virtual machine?
+3. Does the server have a static or dynamic IP?
+4. Does the server IPV4 and/or IPV6 address?
 
 For issues that may be client related -- such as the client screen goes blue or unexpectedly becomes disconnected -- also include: 
 
-  1. Are you able to reproduce the issue on [https://demo.bigbluebutton.org/](https://demo.bigbluebutton.org/)?
-  1. What browser and OS are you using?  (include the version of both)?
-  1. If your testing from the desktop or laptop, does the problem occur in both FireFox and Chrome?
-  1. Are there any errors in your browser's console?
+1. Are you able to reproduce the issue on [https://demo.bigbluebutton.org/](https://demo.bigbluebutton.org/)?
+2. What browser and OS are you using?  (include the version of both)?
+3. If your testing from the desktop or laptop, does the problem occur in both FireFox and Chrome?
+4. Are there any errors in your browser's console?
 
 If you have multiple questions about the same server, you do not have to include the above information each time, just provide a URL to a previous post that covers this information.    
 
-There are many members of the BigBlueButton community thst have been using and supporting BigBlueButton for years.  By including as much information as you can about your problem, you'll make it easier for them to volunteer their time to help you solve it quckly.
-
+There are many members of the BigBlueButton community that have been using and supporting BigBlueButton for years.  By including as much information as you can about your problem, you'll make it easier for them to volunteer their time to help you solve it quickly.
 
 ## Help developing BigBlueButton
 
@@ -95,7 +92,6 @@ BigBlueButton is a very customizable system, see [customizable options](/2.2/cus
 Post as much information as you can about your development problem to [bigbluebutton-dev](https://groups.google.com/forum/#!forum/bigbluebutton-dev).
 
 Show the progress you've made so far (code examples are very helpful).  The more you demonstrate you have first invested your time to solve the problem and shared details of your progress, the easier it is for others to volunteer their time to help.
-
 
 # Troubleshooting installation issues
 
@@ -211,7 +207,7 @@ The command `sudo bbb-conf --debug` searches through the red5, tomcat7, and ngin
 /usr/share/red5/log/bigbluebutton.log:2015-05-02 13:50:37,681-04:00 [pool-17-thread-1] ERROR o.b.w.v.f.a.PopulateRoomCommand - Not XML: [Conference 78505 not found]
 ```
 
-are innocious and can be ignored.
+are innocuous and can be ignored.
 
 ## No Symbolic Link
 
@@ -325,7 +321,7 @@ If you see `[ Fail ]`, then your nginx configuration files might have a syntax e
 $ sudo nginx -t
 ```
 
-and see if it repots any errors.  You can also check the error.log file for nginx to see what errors it gives on startup
+and see if it rerpots any errors.  You can also check the error.log file for nginx to see what errors it gives on startup
 
 ```bash
 $ sudo cat /var/log/nginx/error.log
@@ -730,7 +726,7 @@ net.ipv4.tcp_syncookies = 1
 
 Save the file and restart.   
 
-## Package install failes with sed error
+## Package install fails with sed error
 
 Some of the BigBlueButton packages use `sed` scripts to extract contents from configuration files.  If the file does not exist at the time of the script's execution, or the sed script matches multiple entries in a file (such as when a configuration line is commented out), you can see an error such as
 
@@ -751,11 +747,7 @@ Errors were encountered while processing:
 E: Sub-process /usr/bin/dpkg returned an error code (1)
 ```
 
-In thie above example, the `/var/lib/dpkg/info/bbb-client.postinst` failed to finish.  To debug, edit this file and change the first line to read
-
-```
-#!/bin/bash -ex
-```
+In the above example, the `/var/lib/dpkg/info/bbb-client.postinst` failed to finish.  To debug, edit this file and change the first line to read
 
 and run
 
@@ -892,37 +884,34 @@ When installing the latest build of BigBlueButton, the package `bbb-conf` now us
 
 You need to add the repository `ppa:rmescandon/yq` to your server.  For steps on how to do this, see [Update your server](http://docs.bigbluebutton.org/2.2/install.html#1-update-your-server) in the BigBlueButton 2.2 install guide.
 
-Alternatively, if you have not made any customizations to BigBlueButton (outside of using `bbb-conf`), you can use [bbb-install.sh](https://github.com/bigbluebutton/bbb-install) to install/upgrade to the lastest version (the `bbb-install.sh` script will automatically install the repository for `yq`).
-
+Alternatively, if you have not made any customizations to BigBlueButton (outside of using `bbb-conf`), you can use [bbb-install.sh](https://github.com/bigbluebutton/bbb-install) to install/upgrade to the latest version (the `bbb-install.sh` script will automatically install the repository for `yq`).
 
 ## The browser is not supported
 
 When you attempt to join a BigBlueButton session, the client looks for supported browsers before fully loading.  The client gets its list of supported browsers from `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml`.  You can see the list of supported browsers at the bottom.  For example,
 
-~~~
+```
   - browser: mobileSafari
     version:
     - 11
     - 1
-~~~
+```
 
-states that `Mobile Safari` version 11.1 or later is supported (notice the first letter is lower case and concatanated with the remainder of the browser name).
+states that `Mobile Safari` version 11.1 or later is supported (notice the first letter is lower case and concatenated with the remainder of the browser name).
 
 To add a browser to the list, first open the following page [https://demo.bigbluebutton.org/html5client/useragent](https://demo.bigbluebutton.org/html5client/useragent) with the browser, which will print its useragent string.  For example, with the Vivaldi browser you might see
 
-~~~
+```
 Vivaldi 2.8.1664 / Linux 0.0.0
-~~~
+```
 
 Next, to add this as a supported browser, append to `settings.yml`
 
-~~~
+```
   - browser: vivaldi
     version:
     - 2
     - 8
-~~~
+```
 
 save the updated `settings.yml` file, and then restart your BigBlueButton server with `sudo bbb-conf --restart`.  Note any browser you add must support WebRTC libraries (not all do), so be sure to check it first with [https://test.webrtc.org/](https://test.webrtc.org/).
-
-

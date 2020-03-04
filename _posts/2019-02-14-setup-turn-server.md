@@ -5,7 +5,7 @@ category: 2.2
 date: 2019-02-14 22:13:42
 ---
 
-This document covers how to seupt a TURN server for BigBlueButton to allow users behind restrictive firewalls to connect.
+This document covers how to setup a TURN server for BigBlueButton to allow users behind restrictive firewalls to connect.
 
 # Setup a TURN server
 
@@ -44,15 +44,13 @@ You need to setup a fully qualified domain name that resolves to the external IP
 
 ## Required Ports
 
-On the coturn server, you need to have the following ports (in additon port 22) availalbe for BigBlueButton clients to connect (port 3478 and 443) and for coturn to connect to your BigBlueButton server (49152 - 65535).
+On the coturn server, you need to have the following ports (in addition port 22) available for BigBlueButton clients to connect (port 3478 and 443) and for coturn to connect to your BigBlueButton server (49152 - 65535).
 
-
-| Ports         | Protocol      | Description |
-| ------------- | ------------- | ----------- |
-| 3478          | TCP/UDP       | coturn listening port |
-| 443           | TCP/UDP       | TLS listening port |
-| 49152-65535   | UDP           | relay ports range |
-
+| Ports       | Protocol | Description           |
+| ----------- | -------- | --------------------- |
+| 3478        | TCP/UDP  | coturn listening port |
+| 443         | TCP/UDP  | TLS listening port    |
+| 49152-65535 | UDP      | relay ports range     |
 
 ## Generating TLS certificates
 
