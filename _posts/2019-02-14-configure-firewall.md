@@ -39,14 +39,13 @@ In this example, all users must connect to the BigBlueButton server via the unif
 
 When BigBlueButton is protected behind a firewall, you need to configure the firewall to forward the following incoming connections to BigBlueButton:
 
-  * TCP/IP port 22 (for SSH)
-  * TCP/IP ports 80/443 (for HTTP/HTTPS)
-  * UDP ports in the range 16384 - 32768 (for FreeSWITCH/HTML5 RTP streams)
+* TCP/IP port 22 (for SSH)
+* TCP/IP ports 80/443 (for HTTP/HTTPS)
+* UDP ports in the range 16384 - 32768 (for FreeSWITCH/HTML5 RTP streams)
 
 ## EC2
 
 If you are using EC2, you should also assign your server an [Elastic IP address](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html) to prevent it from getting a new IP address on reboot.
-
 
 ## Azure
 
@@ -63,7 +62,6 @@ On Google Compute Engine, when you create an instance you need to enable traffic
 After the instance is created, you need to add a firewall rule to allow incoming UDP traffic on the port range 16384-32768.
 
 ![Google Compute Engine Firewall](/images/gce-firewall.png?raw=true "GCE Firewall")
-
 
 # Testing the firewall
 

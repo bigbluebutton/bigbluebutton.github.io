@@ -115,7 +115,7 @@ To have this change take effect, you must once again restart Nginx.
 
 ## 5. Start Greenlight 2.0
 
-To start the Greenlight Docker containter, you must install `docker-compose`, which simplifies the start and stop process for Docker containers.
+To start the Greenlight Docker container, you must install `docker-compose`, which simplifies the start and stop process for Docker containers.
 
 Install `docker-compose` by following the steps for installing on Linux in the [Docker documentation](https://docs.docker.com/compose/install/). You may be required to run all `docker-compose` commands using sudo. If you wish to change this, check out [managing docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user).
 
@@ -134,7 +134,8 @@ Next, you should copy the `docker-compose.yml` file from the Greenlight image in
 docker run --rm bigbluebutton/greenlight:v2 cat ./docker-compose.yml > docker-compose.yml
 ```
 
-Finally, randomly generate a password for the PostgreSQL databse and replace the entries in the `.env` and `.docker-compose.yml` file with this command
+Finally, randomly generate a password for the PostgreSQL database and replace the entries in the `.env` and `.docker-compose.yml` file with this command
+
 ```bash
 export pass=$(openssl rand -hex 8); sed -i 's/POSTGRES_PASSWORD=password/POSTGRES_PASSWORD='$pass'/g' docker-compose.yml;sed -i 's/DB_PASSWORD=password/DB_PASSWORD='$pass'/g' .env
 ```
@@ -182,6 +183,7 @@ docker-compose up -d
 In the case that you would like to make changes to your code without losing your current data, there are steps you can take to switch from the `Install` version to the `Customize` version without losing any data. 
 
 In the Greenlight directory, take down Greenlight and rename the Greenlight directory to avoid conflicts using these commands:
+
 ```bash
 docker-compose down
 cd ..
@@ -191,12 +193,14 @@ mv greenlight/ greenlight-old/
 Then, install Greenlight by following the `Customize` instructions [here](gl-customize.html#customizing-greenlight). Don't worry about any of the `.env` configuration, as it will be overwritten by the version you are currently using.
 
 Copy over your database file and `.env` file using these commands:
+
 ```bash
 cp ~/greenlight-old/.env ~/greenlight/.env
 sudo cp -r ~/greenlight-old/db ~/greenlight/
 ```
 
 Finally, restart Greenlight with:
+
 ```bash
 cd ~/greenlight
 docker-compose down
@@ -214,6 +218,7 @@ The best way for determining the root cause of issues in your Greenlight applica
 Docker is always running on a production environment, so the logs will be located in `log/production.log` from the `~/greenlight` directory.
 
 # Uninstall
+
 If you would like to uninstall Greenlight, you can do so by running the following commands: 
 
 **NOTE:** This will **permanently** delete all data associated with Greenlight. This data can not be recovered.
@@ -227,7 +232,8 @@ sudo rm -rf greenlight/
 ```
 
 See also
-  * [Overview](/greenlight/gl-overview.html)
-  * [Admin Guide](/greenlight/gl-admin.html)
-  * [Customize](/greenlight/gl-customize.html)
-  * [Configure](/greenlight/gl-configure.html)
+
+* [Overview](/greenlight/gl-overview.html)
+* [Admin Guide](/greenlight/gl-admin.html)
+* [Customize](/greenlight/gl-customize.html)
+* [Configure](/greenlight/gl-configure.html)

@@ -555,7 +555,7 @@ The first recording has an internal `meetingID` of `238ff79fd66331a59274a8f3f05f
   </event>
 ```
 
-Next, find when the first moderator joined, and thend move the `RecordStatusEvent` after the moderator join event.  Also, edit the `timestamp` for `RecordStatusEvent` so it occurrs **after** the moderator's `timestamp`.  For example:
+Next, find when the first moderator joined, and thend move the `RecordStatusEvent` after the moderator join event.  Also, edit the `timestamp` for `RecordStatusEvent` so it occurs **after** the moderator's `timestamp`.  For example:
 
 ```xml
   <event timestamp="4585063453" module="PARTICIPANT" eventname="ParticipantJoinEvent">
@@ -601,113 +601,43 @@ The sections that follow cover the types of events you will encounter in events.
 
 ## Chat
 
-### **PublicChatEvent**
-
-| attributes |        |          |       |
-|:---------- |:------:|:--------:|:-----:|
-| message    | sender | senderId | color |
+| Event           | Attributes                                        |
+|:--------------- |:------------------------------------------------- |
+| PublicChatEvent | - message<br/>- sender<br/>- senderId<br/>- color |
 
 ## Presentation
 
-### **AssignPresenterEvent**
-
-| attributes |        |      |
-| ---------- |:------:|:----:|
-| assignedBy | userid | name |
-
-### **ConversionCompletedEvent**
-
-| attributes       |                  |
-|:---------------- |:----------------:|
-| presentationName | originalFilename |
-
-### **ParticipantJoinEvent**
-
-| attributes |                |      |      |
-|:---------- |:--------------:|:----:|:----:|
-| userId     | externalUserId | role | name |
-
-### **ResizeAndMoveSlideEvent**
-
-| attributes |         |     |             |         |
-|:---------- |:-------:|:---:|:-----------:|:-------:|
-| widthRatio | yOffset | id  | heightRatio | xOffset |
-
-### **SharePresentationEvent**
-
-| attributes |                  |
-|:---------- |:----------------:|
-| share      | presentationName |
-
-### **GotoSlideEvent**
-
-| attributes |     |
-|:---------- |:---:|
-| slide      | id  |
+| Event                    | Attributes                                                          |
+| ------------------------ | ------------------------------------------------------------------- |
+| AssignPresenterEvent     | - assignedBy<br/>- userid<br/>- name<br/>                           |
+| ConversionCompletedEvent | - presentationName<br/>- originalFilename<br/>                      |
+| ParticipantJoinEvent     | - userId<br/>- externalUserId<br/>- role<br/>- name                 |
+| ResizeAndMoveSlideEvent  | - widthRatio<br/>- yOffset<br/>- id<br/>- heightRatio<br/>- xOffset |
+| SharePresentationEvent   | - share<br/>- presentationName<br/>                                 |
+| GotoSlideEvent           | - slide<br/>- id<br/>                                               |
 
 ## Whiteboard
 
-### **AddShapeEvent**
-
-| attributes   |         |      |            |        |          |            |        |              |     |           |       |
-|:------------ |:-------:|:----:|:----------:|:------:|:--------:|:----------:|:------:|:------------:|:---:|:---------:|:-----:|
-| presentation | shapeId | type | dataPoints | userId | position | pageNumber | status | whiteboardId | id  | thickness | color |
-
-### **UndoAnnotationEvent**
-
-| attributes   |         |        |            |              |
-|:------------ |:-------:|:------:|:----------:|:------------:|
-| presentation | shapeId | userId | pageNumber | whiteboardId |
-
-### **WhiteboardCursorMoveEvent**
-
-| attributes |        |         |
-|:---------- |:------:|:-------:|
-| yOffset    | userId | xOffset |
+| Event                     | Attributes                                                                                                                                                                 |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| AddShapeEvent             | - presentation<br/>- shapeId<br/>- type<br/>- dataPoints<br/>- userId<br/>- position<br/>- pageNumber<br/>- status<br/>- whiteboardId<br/>- id<br/>- thickness<br/>- color |
+| UndoAnnotationEvent       | - presentation<br/>- shapeId<br/>- userId<br/>- pageNumber<br/>- whiteboardId                                                                                              |
+| WhiteboardCursorMoveEvent | - yOffset<br/>- userId<br/>- xOffset                                                                                                                                       |
 
 ## User
 
 ## Voice
 
-### **StartRecordingEvent**
+| Event                   | Attributes                                                                               |
+| ----------------------- | ---------------------------------------------------------------------------------------- |
+| StartRecordingEvent     | - bridge<br/>- filename<br/>- recordingTimestamp                                         |
+| ParticipantJoinedEvent  | - muted<br/>- callernumber<br/>- talking<br/>- callername<br/>- bridge<br/>- participant |
+| ParticipantTalkingEvent | - talking<br/>- bridge<br/>- participant                                                 |
+| ParticipantTalkingEvent | - muted<br/>- bridge<br/>- participant                                                   |
+| ParticipantLeftEvent    | - bridge<br/>- participant                                                               |
+| RecordStatusEvent       | - userId<br/>- status                                                                    |
 
-| attributes |          |                    |
-|:----------:|:--------:|:------------------:|
-| bridge     | filename | recordingTimestamp |
-
-### **ParticipantJoinedEvent**
-
-| attributes |              |         |            |        |             |
-|:---------- |:------------:|:-------:|:----------:|:------:|:-----------:|
-| muted      | callernumber | talking | callername | bridge | participant |
-
-### **ParticipantTalkingEvent**
-
-| attributes |        |             |
-|:----------:|:------:|:-----------:|
-| talking    | bridge | participant |
-
-### **ParticipantTalkingEvent**
-
-| attributes |        |             |
-|:----------:|:------:|:-----------:|
-| muted      | bridge | participant |
-
-### **ParticipantLeftEvent**
-
-| attributes |             |
-| ---------- |:-----------:|
-| bridge     | participant |
-
-## Participant
-
-### **RecordStatusEvent**
-
-| attributes |        |
-| ---------- |:------:|
-| userId     | status |
-
-## Caption
+### ## Caption
 
 ## Screen Share
 
