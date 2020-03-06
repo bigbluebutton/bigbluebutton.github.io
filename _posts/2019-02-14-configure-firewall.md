@@ -286,7 +286,7 @@ freeswitch:
     port: '5066'
 ```
 
-You also need to [setup Kurento to use a STUN server](http://docs.bigbluebutton.org/html/html5-install.html#extra-steps-when-server-is-behind-nat).
+You also need to [setup Kurento to use a STUN server](#extra-steps-when-server-is-behind-nat).
 
 After making the above changes, restart BigBlueButton.
 
