@@ -915,3 +915,26 @@ Next, to add this as a supported browser, append to `settings.yml`
 ```
 
 save the updated `settings.yml` file, and then restart your BigBlueButton server with `sudo bbb-conf --restart`.  Note any browser you add must support WebRTC libraries (not all do), so be sure to check it first with [https://test.webrtc.org/](https://test.webrtc.org/).
+
+## 404 Error when loading the client
+
+BigBlueButton 2.2 requires Java 8 as the default Java.  Recently, some Ubuntu 16.04 distributions have switched the default version of Java to Java 9 (or later).
+
+Use `java -version` to check that the default version of `1.8.0`.
+
+```
+~/dev$ java -version
+openjdk version "1.8.0_242"
+OpenJDK Runtime Environment (build 1.8.0_242-8u242-b08-0ubuntu3~16.04-b08)
+OpenJDK 64-Bit Server VM (build 25.242-b08, mixed mode)
+```
+
+If not, do the following
+
+```
+sudo apt-get install openjdk-8-jre
+update-alternatives --config java  # Choose java-8 as default
+```
+
+Run `java -version` and confirm it now shows the default as `1.8.0`, and then restart BigBlueButton with `sudo bbb-conf --restart`
+
