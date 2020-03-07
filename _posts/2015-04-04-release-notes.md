@@ -9,9 +9,11 @@ date: 2015-04-04 22:26:10
 
 Released: November 6, 2019 ([Installation Instructions](/2.2/install.html))
 
-After months of testing with the community, the development cycle for BigBlueButton 2.2 is nearing the finish.  Since the beta release in March, we've been steadily fixing, improving, and hardening BigBlueButton 2.2.
+We made it!
 
+After months of testing with the community, millions of sessions hosted by commercial companies using BigBlueButton, and interacting with hundreds of people on our mailing lists that help us find and fix any issues, we are announcing the releae of BigBlueButton 2.2.
 
+Enjoy!
 
 # Release 2.2-beta
 
