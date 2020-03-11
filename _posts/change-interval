@@ -1,0 +1,25 @@
+## Change processing interval for recordings
+
+Normally, the BigBlueButton server begins processing the data recorded in a session soon after the session finishes.  However, you can change the timing for processing by creating an override for the default `bbb-record-core.timer`.
+
+For example, to process recordings between 18:00 to 05:59, enter
+
+```bash
+$ sudo systemctl edit bbb-record-core.timer
+```
+
+which will open a text editor.  Copy ad paste in the following contents:
+
+```ini
+[Timer]
+# Disable the default timer
+OnUnitInactiveSec=
+
+# Run every minute from 18:00 to 05:59
+OnCalendar=18,19,20,21,22,23,00,01,02,03,04,05:*
+```
+
+and save the file.
+
+See the man page `systemd.time` (under CALENDAR EVENTS) for more details about the syntax for `OnCalendar=`.
+
