@@ -51,7 +51,6 @@ If your BigBlueButton server is publicly available on the internet, then, for in
 * TCP/IP port 22 for SSH
 * TCP/IP port 80 for HTTP
 * TCP/IP port 443 for HTTPS
-* TCP/IP port 1935 for RTMP (omit if server only uses HTML5 client)
 * UDP ports 16384 to 32768 for media connections
 
 Note: if you have configured `sshd` (the OpenSSH daemon) to use a different port than 22, then before running the commands below, change `ufw allow OpenSSH` to `ufw allow <port>/tcp` where `<port>` is the port in use by `sshd`.  You can see the listening port for `sshd` using the command `# netstat -antp | grep sshd`.  Here the command shows `sshd` listening to the standard port 22.
