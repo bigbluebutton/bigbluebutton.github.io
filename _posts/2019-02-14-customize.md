@@ -628,6 +628,8 @@ $ sudo bbb-record --rebuild f4ae6fd61e2e95940e2e5a8a246569674c63cb4a-15172342711
 
 If you want to rebuild all your recordings, enter the command
 
+Warning: If you have a large number of recordings, this will rebuild *all* of them, and not process any new recordings until the rebuild process finishes.  Do not do this unless this is you intent.  Do not do this command to troubleshoot recording errors, instead see [Recording Troubleshooting](/dev/recording.html#troubleshooting).
+
 ```bash
 $ sudo bbb-record --rebuildall
 ```
