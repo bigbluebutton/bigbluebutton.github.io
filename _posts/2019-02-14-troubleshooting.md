@@ -419,8 +419,8 @@ In the following example, the external partition is mounted on `/mnt`.
 ```bash
 $ sudo bbb-conf --stop
 
-$ sudo mv /opt/freeswitch/recordings /mnt
-$ sudo ln -s /mnt/recordings /opt/freeswitch/recordings
+$ sudo mv /var/freeswitch/meetings /mnt
+$ sudo ln -s /mnt/recordings /var/freeswitch/meetings
 
 $ sudo mv /usr/share/red5/webapps/video/streams /mnt
 $ sudo ln -s /mnt/streams /usr/share/red5/webapps/video/streams
