@@ -78,29 +78,29 @@ $ sudo apt-get install netcat
 Next, stop BigBlueButton with the command `sudo bbb-conf --stop`.  This frees up the ports we want to test.  We can now run `netcat` to listen on ports and try connecting from an external computer.   As root, run the following command:
 
 ```bash
-$ netcat -l 7443
+$ netcat -l 443
 ```
 
-`netcat` is now going to echo to the terminal any text it receives on port 7443 (you can quit the command later using Ctrl-c).
+`netcat` is now going to echo to the terminal any text it receives on port 443 (you can quit the command later using Ctrl-c).
 
 Next, on a second computer that is external to the firewall -- that is, it must go through the firewall to access the BigBlueButton server -- install `netcat` as well.  Replace `EXTERNAL_HOST_NAME` with the hostname of your firewall, run the following command
 
 ```bash
-$ netcat EXTERNAL_HOST_NAME 7443
+$ netcat EXTERNAL_HOST_NAME 443
 ```
 
 and type type the word 'test' and press ENTER.  
 
-If the firewall is forwarding incoming connections on port 7443 to the internal BigBlueButton server, you should see the word 'test' appear after the `netcat -l 7443` command, as in
+If the firewall is forwarding incoming connections on port 443 to the internal BigBlueButton server, you should see the word 'test' appear after the `netcat -l 443` command, as in
 
 ```bash
-$ netcat -l 7443
+$ netcat -l 443
 test
 ```
 
-If the word `test` does not appear, double-check the firewall configuration to ensure its forwarding connections on port 7443 and then test again.  You want to see the word `test` appear before proceeding to the installation BigBlueButton.
+If the word `test` does not appear, double-check the firewall configuration to ensure its forwarding connections on port 443 and then test again.  You want to see the word `test` appear before proceeding to the installation BigBlueButton.
 
-Repeat these tests with ports 80, 443, and 1935.
+Repeat these tests with port 80.
 
 That covers the TCP/IP ports.  Next, we need to test that UDP connections in the range 16384-32768 are forwarded as well.  On your BigBlueButton server, run the following `netcat` command to listen for incoming data via UDP on port 17000 (here, we're picking a port in the range 16384-32768).
 
