@@ -384,7 +384,7 @@ There is now logic in `bbb-conf` to look for a BASH script at `/etc/bigbluebutto
 You can then put your configuration changes in `apply-config.sh` to ensure they are automatically applied.  Here's a sample `apply-config.sh` script
 
 ```sh
-!/bin/bash
+#!/bin/bash
 
 # Pull in the helper functions for configuring BigBlueButton
 source /etc/bigbluebutton/bbb-conf/apply-lib.sh
