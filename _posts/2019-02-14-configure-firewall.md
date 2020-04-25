@@ -14,20 +14,20 @@ If you are a developer setting up BigBlueButton on a local VM for testing, you c
 
 # Overview
 
-The easiest network configuration for installing BigBlueButton is on a server that has a single external IP address, the server is on the public Internet (and thus directly accessible by your users), and there is no firewall (virtual or physical) between users and the server.  Here is an example of such a setup with the BigBlueButton server having a (fictional) IP address 203.0.113.1 with hostname `bigbluebutton.example.com`.
+The easiest network configuration for installing BigBlueButton is on a server that has a single external IP address and the server is on the public Internet (and thus directly accessible by your users). Port-based access firewalling is implemented using [UFW](2.2/customize.html#secure-your-system--restrict-access-to-specific-ports).  Here is an example of such a setup with the BigBlueButton server having a (fictional) IP address 203.0.113.1 with hostname `bigbluebutton.example.com`.
 
 ![Install](/images/11-install-net0.png)
 
-In this simple network configuration, BigBlueButton should work out-of-the-box after installation.  This is because the packaging scripts automatically configure BigBlueButton using the first non-loopback IP address.    
+In this simple network configuration, BigBlueButton should work out-of-the-box after installation.  This is because the packaging scripts automatically configure BigBlueButton using the first non-loopback IP address, whereas access to sensitive ports is blocked.    
 A variation of this setup occurs when the server has multiple network interfaces, but the external IP is still the first network interface (such as `eth0`) picked up by the installation scripts.  
 
 ![Install](/images/11-install-net1.png)
 
-If your server has `eth0` pointing to the external IP address on the internet, and there is no other firewall in place, then the packaging scripts should detect this external IP address and configure BigBlueButton accordingly.  You don't need to do any of the changes below.
+If your server has `eth0` pointing to the external IP address on the internet, and there is no external firewall in place, then the packaging scripts should detect this external IP address and configure BigBlueButton accordingly.  You don't need to do any of the changes below.
 
 Don't worry if your server's IP address changes, BigBlueButton comes with a configuration utility called `bbb-conf` that lets you change all of BigBlueButton's configuration files to use any IP address or hostname.
 
-If there is a firewall between your users and the BigBlueButton server, then you will need to first configure the firewall to forward specific TCP/UDP connections from external clients to the internal BigBlueButton server; otherwise, users will not be able to access BigBlueButton.
+If there is an IPv4 Network Address Translation (NAT) between your users and the BigBlueButton server, then you will need to first configure the firewall to forward specific TCP/UDP connections from external clients to the internal BigBlueButton server; otherwise, users will not be able to access BigBlueButton.
 
 The following diagram gives a typical setup with an external firewall (your setup will, of course, have different IP address and hostnames).
 
