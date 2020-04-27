@@ -144,6 +144,9 @@ no-tlsv1_1
 # Log to a single filename (rather than new log files each startup). You'll
 # want to install a logrotate configuration (see below)
 log-file=/var/log/coturn.log
+
+# To enable single filename logs you need to enable the simple-log flag
+simple-log
 ```
 
 ## Configure Log Rotation
