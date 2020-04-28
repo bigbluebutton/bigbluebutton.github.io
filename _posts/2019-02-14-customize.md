@@ -484,6 +484,7 @@ echo "  - Update TURN server configuration turn-stun-servers.xml"
         </property>
     </bean>
 </beans>
+HERE
 ```
 
 ### Always record every meeting
