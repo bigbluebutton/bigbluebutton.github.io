@@ -147,7 +147,7 @@ Verify that the Nginx configuration file (`/etc/bigbluebutton/nginx/greenlight.n
 systemctl restart nginx
 ```
 
-This will routes all requests to `https://<hostname>/b` to the Greenlight application. If you wish to use a different relative root, you can follow the steps outlined [here](gl-customize.html#using-a-different-relative-root).
+This will routes all requests to `https://<hostname>/b` to the Greenlight application. If you wish to use a different relative root, you can follow the steps outlined [here](gl-config.html#using-a-different-relative-root).
 
 Optionally, if you wish to have the default landing page at the root of your BigBlueButton server redirect to Greenlight, add the following entry to the bottom of `/etc/nginx/sites-available/bigbluebutton` just before the last `}` character.
 
