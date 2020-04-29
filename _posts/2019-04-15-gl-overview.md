@@ -96,7 +96,7 @@ Your new room will then show under your current room, and you can click to switc
 | Mute users when they join                 | Automatically mutes the user when they join the BigBlueButton meeting                                                                                                                                                               |
 | Require moderator approval before joining | Prompts the moderator of the BigBlueButton meeting when a user tries to join. If the user is approved, they will be able to join the meeting.                                                                                       |
 | Allow any user to start this meeting      | Allows any user to start the meeting. By default, only the Room Owner will join as a moderator.                                                                                                                                     |
-| All users join as moderators              | Gives all users moderator priveleges in BigBlueButton when they join the meeting.                                                                                                                                                   |
+| All users join as moderators              | Gives all users moderator privileges in BigBlueButton when they join the meeting.                                                                                                                                                   |
 | Automatically join me into the room       | Automatically joins the user into the room after the room gets created successfully.                                                                                                                                                |
 
 ### Renaming Rooms
