@@ -44,7 +44,7 @@ The SWF files are not needed by the HTML5 client.
 
 ## Secure your system -- restrict access to specific ports
 
-Configuring IP firewalling is *essential for securing your installation*. By default, many services are reachable across the network. This allows BigBlueButton operate in clusters and private data center networks -- but it creates a significant attack surface, if your BigBlueButton server is publicly available on the internet.
+Configuring IP firewalling is *essential for securing your installation*. By default, many services are reachable across the network. This allows BigBlueButton operate in clusters and private data center networks -- but if your BigBlueButton server is publicly available on the internet, you need to run a firewall to reduce access to the minimal required ports.
 
 If your server is behind a firewall already -- such as running within your company or on an EC2 instance behind a Amazon Security Group -- and the firewall is enforcing the above restrictions, you don't need a second firewall and can skip this section.
 
@@ -75,7 +75,7 @@ ufw --force enable
 
 These `ufw` firewall rules will be automatically re-applied on server reboot.
 
-Besides IP-based firewalling, web application firewalls such as [ModSecurity](https://modsecurity.org/)  provide additional security by checking requests to various web-based components.
+Besides IP-based firewalling, you can explore web application firewalls such as [ModSecurity](https://modsecurity.org/) that provide additional security by checking requests to various web-based components.
 
 ## Extract the shared secret
 
