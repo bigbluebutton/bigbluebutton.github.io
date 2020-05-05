@@ -108,8 +108,8 @@ tls-listening-port=443
 # Fingerprints in TURN messages are required for WebRTC
 fingerprint
 
-# The long-term credential mechanism is required for WebRTC
-lt-cred-mech
+# The long-term credential mechanism - see note on Kurento below
+# lt-cred-mech
 
 # Configure coturn to use the "TURN REST API" method for validating time-
 # limited credentials. BigBlueButton will generate credentials in this
@@ -233,3 +233,27 @@ You must configure bbb-web so that it will provide the list of turn servers to t
 Restart your BigBlueButton server to apply the changes. 
 
 Going forward, when users connect behind a restrictive firewall that prevents outgoing UDP connections, the TURN server will enable BigBlueButton to connect to FreeSWITCH and Kurento via the TURN server through port 443 on their firewall.
+
+## Kurento edge case may require a second Turn server 
+
+A complication may affect a small minority of installations where the server is behind an unusual NAT firewall.  The difficulty arises because there are two different Turn authentication protocols - and the solution to some Kurento NAT problems relies on a setting in coturn which is incompatible with the requirements already described above.  
+
+All BBB servers should have a Stun / Turn server configured as shown in the sections above - ```/usr/share/bbb-web/WEB-INF/classes/spring/turn-stun-servers.xml```  This is required to help ensure that the HTML5 web application running in users browsers can negotiate which ports to use, using the webrtc / ICE protocols.   
+
+Kurento may, under exceptional circumstances, require a different configuration. Kurento needs to know its external IP address.  In the configuration file ```/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini``` you can specify the external IP address for Kurento. 
+
+This is the ideal situation - and avoids a great deal of complexity. 
+
+If you do **not **know the external IP address, the next best solution is to provide a Stun server - which can be the Coturn server you have set up, above. 
+
+Under some circumstances, Kurento might also require a Turn server.  The configuration for this is at the bottom of ```/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini```. 
+
+Importantly, most people do **not** need to configure Turn in this file.  
+
+If you do, however, there is a problem. 
+
+At present, if Kurento needs Turn, it must uses the "lt-cred-mech" authentication mechanism, which consists of a generated username and password formatted in a very particular way.   This requires the lt-cred-mech setting in ```/etc/turnserver.conf```
+
+The problem is that this is a *different* authentication mechanism to that required by Turn for the html5 client (which uses the 'use-auth-secret' mechanism - as shown in the example above)
+
+It appears that a single coturn server cannot provide connections using both authentication mechanisms at the same time.  If you are unable to provide Kurento with an external IP (and Stun does not work) you may need a second Turn server - configured to use ```lt-cred-mech```
