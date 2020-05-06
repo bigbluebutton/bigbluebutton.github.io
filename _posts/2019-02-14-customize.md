@@ -907,6 +907,111 @@ $ yq w -i $TARGET public.app.clientTitle "New Title"
 $ chown meteor:meteor $TARGET
 ```
 
+## Passing customization parameters to the client
+
+The HTML5 client supports a list of parameters which modify the look and default behaviour of the client. This list is accurate as of BigBlueButton version 2.2.9 (build 894)
+
+Note: A tool like https://meyerweb.com/eric/tools/dencoder/ is useful in the encoding-decoding process for the fields expecting encoded value passed (see below)
+
+* `userdata-bbb_auto_join_audio=true`
+(default value is `false`)
+
+If set to `true`, the client will start the process of joining the audio bridge automatically upon loading the client
+
+* `userdata-bbb_auto_share_webcam=true`
+(default value is `false`)
+
+If set to `true`, the client will start the process of sharing webcam (if any) automatically upon loading the client
+
+
+* `userdata-bbb_auto_swap_layout=true`
+(default value is `false`)
+
+TODO
+
+* `userdata-bbb_hide_presentation=true`
+(default value is `false`)
+
+If set to `true`, the presentation area will be minimized automatically
+
+* `userdata-bbb_listen_only_mode=false`
+(default value is `false`)
+
+If set to `true`, the user will be able to join the audio part of the meeting without needing to share a microphone (listening only, without speaking)
+
+* `userdata-bbb_outside_toggle_recording=true`
+(default value is `false`)
+(only applicable when the client is embedded in an iframe)
+If set to `true`, the recording functionality in the meeting will be able to be started/stopped from the "parent" web page -- the same page where the BigBlueButton client is embedded
+
+* `userdata-bbb_outside_toggle_self_voice=true`
+(default value is `false`)
+(only applicable when the client is embedded in an iframe)
+
+If set to `true`, the current user's audio will be able to be muted/unmuted from the "parent" web page -- the same page where the BigBlueButton client is embedded
+
+
+* `userdata-bbb_shortcuts=%5B%5D`
+(default value is the set of shortcuts specified in settings.yml)
+The value passed has to be URL encoded.
+For example if you would like to disable shortcuts, pass `%5B%5D` which is the encoded version of the empty array `[]`
+The current implementation (July 2019) includes the following shortcuts:
+ TODO
+
+
+* `userdata-bbb_skip_check_audio=true`
+TODO
+
+* `userdata-bbb_custom_style=%3Aroot%7B--loader-bg%3A%23000%3B%7D.overlay--1aTlbi%7Bbackground-color%3A%23000!important%3B%7Dbody%7Bbackground-color%3A%23000!important%3B%7D`
+(default value is "" i.e. none)
+The value passed has to be URL encoded.
+For example if you want to change the backgroung colors you could pass the URL encoded version of
+`:root{--loader-bg:#000;}.overlay--1aTlbi{background-color:#000!important;}body{background-color:#000!important;}`
+which looks like 
+`%3Aroot%7B--loader-bg%3A%23000%3B%7D.overlay--1aTlbi%7Bbackground-color%3A%23000!important%3B%7Dbody%7Bbackground-color%3A%23000!important%3B%7D`
+
+ * `userdata-bbb_custom_style_url=https://bigbluebutton.org/myStyle.css`
+ (default value is "" i.e. none)
+ This parameter acts the same way as `userdata-bbb_custom_style` except that the css content is coming from a hosted file.
+
+ * `userdata-bbb_ask_for_feedback_on_logout=true`
+ TODO
+ 
+ * `userdata-bbb_client_title=MyTitle`
+ TODO
+ 
+ * `userdata-bbb_force_listen_only=`
+ TODO
+ 
+ * `userdata-bbb_display_branding_area=`
+ TODO
+ 
+ * `userdata-bbb_preferred_camera_profile=`
+ TODO
+ 
+ * `userdata-bbb_enable_screen_sharing=`
+ TODO
+ 
+ * `userdata-bbb_enable_video=`
+ TODO
+ 
+ * `userdata-bbb_skip_video_preview=`
+ TODO
+ 
+ * `userdata-bbb_multi_user_pen_only=`
+ TODO
+ 
+ * `userdata-bbb_presenter_tools=`
+ TODO
+ 
+ * `userdata-bbb_multi_user_tools=`
+ TODO
+ 
+ * `userdata-bbb_show_participants_on_login=`
+ TODO
+
+
+
 ## Send client logs to the server
 
 To assist with monitoring and debugging, the HTML5 client can send its logs to the BigBlueButton server via the `logger` function.  Here's an example of its use:
