@@ -117,9 +117,15 @@ bbb-conf --secret
 
 In your `.env` file, set the `BIGBLUEBUTTON_ENDPOINT` to the URL, and set `BIGBLUEBUTTON_SECRET` to the secret.
 
+### Setting Allowed Hosts
+
+For reasons related to security, you'll also need to specify the domain from which the application will be accessible from. 
+
+In your `.env` file, set the `SAFE_HOSTS` to your domain. If Greenlight is accessible at `https://bbb.example.com/b` then `SAFE_HOSTS=bbb.example.com`
+
 ### Configure Specific Settings
 
-Other than the 2 configurations listed above, there are many different options for configuring Greenlight. All possible configurations are listed in the `.env` file.
+Other than the 3 configurations listed above, there are many different options for configuring Greenlight. All possible configurations are listed in the `.env` file.
 
 You can find more info on specific settings that can be configured [here](gl-config.html).
 
