@@ -187,15 +187,26 @@ To create the dialplan, use the XML below and save it to `/opt/freeswitch/conf/d
  <condition field="destination_number" expression="^EXTERNALDID">
    <action application="answer"/>
    <action application="sleep" data="500"/>
-   <action application="play_and_get_digits" data="5 5 3 7000 # conference/conf-pin.wav ivr/ivr-that_was_an_invalid_entry.wav pin \d+"/>
+   <action application="playback" data="conference/conf-pin.wav"/>
+   <action application="play_and_get_digits" data="5 5 3 7000 # silence conference/conf-bad-pin.wav pin \d+ 7000 EXTERNALDID"/>
    <action application="transfer" data="SEND_TO_CONFERENCE XML public"/>
  </condition>
 </extension>
 <extension name="check_if_conference_active">
  <condition field="${conference ${pin} list}" expression="/sofia/g" />
  <condition field="destination_number" expression="^SEND_TO_CONFERENCE$">
+   <action application="playback" data="conference/conf-welcome.wav"/>
+   <action application="playback" data="tone_stream://%(200,0,500,600,700)" />
    <action application="set" data="bbb_authorized=true"/>
    <action application="transfer" data="${pin} XML default"/>
+ </condition>
+</extension>
+<extension name="check_if_no_conference">
+ <condition field="${conference ${pin} list}" expression="/ not found/g" />
+ <condition field="destination_number" expression="^SEND_TO_CONFERENCE$">
+   <action application="playback" data="conference/conf-bad-pin.wav"/>
+   <action application="unset" data="pin"/>
+   <action application="transfer" data="EXTERNALDID"/>
  </condition>
 </extension>
 ```
