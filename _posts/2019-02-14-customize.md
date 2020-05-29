@@ -1010,6 +1010,17 @@ which looks like
  * `userdata-bbb_show_participants_on_login=`
  TODO
 
+ * `userdata-bbb_force_restore_presentation_on_new_events=`
+ False by default;
+ Introduced in https://github.com/bigbluebutton/bigbluebutton/pull/9517
+ When enabled (set to true) the presentation area will be forcefully restored if it is minimized (Viewers only) for actions:
+
+```
+presentation / slide / zoom change
+published poll
+added annotation
+uploaded new presentation
+```
 
 
 ## Send client logs to the server
