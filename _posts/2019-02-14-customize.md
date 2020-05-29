@@ -1022,6 +1022,10 @@ added annotation
 uploaded new presentation
 ```
 
+ * `userdata-bbb_show_public_chat_on_login=`
+ default value: true
+ If you set to false, the chat pannel will not be visible on page load. It will be visible if you toggle manually after page load. **Note that this is different than disabling chat**
+
 
 ## Send client logs to the server
 
