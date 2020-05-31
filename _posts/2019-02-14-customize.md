@@ -392,13 +392,14 @@ This change will increase the processing time and storage size of recordings wit
 
 When you upgrade to the latest build of BigBlueButton using either the [manual steps](/2.2/install.html#upgrading-from-bigbluebutton-22) or [bbb-install.sh](https://github.com/bigbluebutton/bbb-install) script, if you have made manual changes to BigBlueButton's configuration, the packaging scripts may overwrite your changes.
 
-Instead of an error-prone step to manually re-applying any changes after each upgrade, a better approach would be to have your custom configuration changes in a script that gets automatically when BigBlueButton gets restarted.
+Instead of an error-prone step to manually re-applying any changes after each upgrade, a better approach would be to have your custom configuration changes in a script that gets automatically applied when BigBlueButton restarts.
 
-Whenever you manually update BigBlueButton, the [instructions](/2.2/install.html#upgrading-from-bigbluebutton-22) state to run `sudo bbb-conf --setip <hostname>` to re-apply the `<hostname>` to BigBlueButton's configuration files ([bbb-install.sh](https://github.com/bigbluebutton/bbb-install) does this for you automatically).  
+Whenever you manually update BigBlueButton, the [instructions](/2.2/install.html#upgrading-from-bigbluebutton-22) state to run `sudo bbb-conf --setip <hostname>` to re-apply the `<hostname>` to BigBlueButton's configuration files ([bbb-install.sh](https://github.com/bigbluebutton/bbb-install) does this automatically for you).  
 
-There is now logic in `bbb-conf` to look for a BASH script at `/etc/bigbluebutton/bbb-conf/apply-config.sh` when doing either `--restart` or `--setip <hostname>` and, if found, execute this script before starting up BigBlueButton.
+`bbb-conf` will look for a BASH script at `/etc/bigbluebutton/bbb-conf/apply-config.sh` when doing either `--restart` or `--setip <hostname>` and, if found, execute this script before starting up BigBlueButton.
 
-You can then put your configuration changes in `apply-config.sh` to ensure they are automatically applied.  Here's a sample `apply-config.sh` script
+You can put your configuration changes in `apply-config.sh` to ensure they are automatically applied.  Here's a sample script
+
 
 ```sh
 #!/bin/bash
@@ -410,12 +411,24 @@ enableUFWRules
 ```
 
 Notice it includes `apply-lib.sh` which is another BASH script that contains some helper functions (see [apply-lib.sh](https://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-config/bin/apply-lib.sh) source).  It then calls `enableUFWRules` to apply the settings in [restrict access to specific ports](#restrict-access-to-specific-ports).  
+
 The contents of `apply-config.sh` are not owned by any package, so it will never be overwritten.  
 
-When you create `apply-config.sh`, make it executable (`chmod +x /etc/bigbluebutton/bbb-conf/apply-config.sh`).  Using the above script as an example, whenever you do `bbb-conf` with `--restart` or `--setip`, you'll see the following output
+When you first create `apply-config.sh`, make it executable using the command `chmod +x /etc/bigbluebutton/bbb-conf/apply-config.sh`.
+
+
+
+### Setup Firewall
+To configure a firewall for your BigBlueButton server (recommended), add `enableUFWRules` to `apply-config.sh`, as in
+
+```sh
+enableUFWRules
+```
+
+With `enableUFWRule` added to `apply-config.sh`, whenever you do `bbb-conf` with `--restart` or `--setip`, you'll see the following output
 
 ```
-Restarting BigBlueButton 2.2.0-xx-x ...
+Restarting BigBlueButton ..
 Stopping BigBlueButton
 
 Applying updates in /etc/bigbluebutton/bbb-conf/apply-config.sh: 
@@ -433,7 +446,6 @@ Firewall is active and enabled on system startup
 Starting BigBlueButton
 ```
 
-The next sections give some examples of customizations you could add to `apply-config.sh`.
 
 ### Reduce bandwidth for webcams
 
