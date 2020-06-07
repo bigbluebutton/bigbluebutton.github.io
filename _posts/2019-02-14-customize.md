@@ -280,18 +280,21 @@ Note: If you have created you own front-end or are using a [third-party plug-in]
 
 ## Change the default presentation
 
-When a new meeting starts, BigBlueButton displays a default presentation.  The file for the default presentation is located in `/var/www/bigbluebutton-default/default.pdf`.  You can replace the contents of this file with your presentation.  Whenever a meeting is created, BigBlueButton will automatically load, convert, and display this presentation for all users.
+When a new meeting starts, BigBlueButton displays a default presentation.  The file for the default presentation is located in `/var/www/bigbluebutton-default/default.pdf`.  You can replace the contents of this file with your presentation.  Whenever a meeting is created, BigBlueButton will automatically load, convert, and display this presentation for all users. On a bigbluebutton update this default may become replaced .
 
 Alternatively, you can change the global default by editing `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties` and changing the URL for `beans.presentationService.defaultUploadedPresentation`.
 
 ```properties
 # Default Uploaded presentation file
-beans.presentationService.defaultUploadedPresentation=${bigbluebutton.web.serverURL}/default.pdf
+beans.presentationService.defaultUploadedPresentation=${bigbluebutton.web.serverURL}/your-default.pdf
 ```
+
+The file `your-default.pdf` have to become added to the  `/usr/share/nginx/html/` directory. All files added to that directory can be downloaded from your server.
+If you want to specify the default presentation for a given meeting, you can also pass a URL to the presentation as part of the [create](/dev/api.html#pre-upload-slides) meeting API call.
 
 You'll need to restart BigBlueButton after the change with `sudo bbb-conf --restart`.
 
-If you want to specify the default presentation for a given meeting, you can also pass a URL to the presentation as part of the [create](/dev/api.html#pre-upload-slides) meeting API call.
+
 
 ## Change the default welcome message
 
