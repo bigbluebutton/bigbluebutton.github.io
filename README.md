@@ -4,18 +4,20 @@ This repository uses Jekyll to build the documentation site.  When making change
 
 ### The easy way to preview (using Docker)
 
-The easy to generate the BigBlueButton documentation locally and see the effect of your changes before committing is to create a Docker image that runs Jekyll.  If you have installed Docker, then you can create a docker image called `github-pages` using the following command
+The easy to generate the BigBlueButton documentation locally and see the effect of your changes before committing is to create a Docker image that runs Jekyll. For example, you've checked out this repository to `~/bigbluebutton.github.io`, then change your directory to `~/bigbluebutton.github.io`
+
+If you have installed Docker, then you can create a docker image called `github-pages` using the following command
 
 ~~~
 docker build -t github-pages .
 ~~~
 
-After the images builds, then if, for example, you've checked out this repository to `~/bigbluebutton.github.io`, you can render it locally using the command
+After the images builds, then you can render it locally using the command
 
 ~~~
 docker run --rm -v ~/bigbluebutton.github.io:/site -p 4000:4000 github-pages serve --watch --host 0.0.0.0
 ~~~
- 
+
 When you run this command you'll see
 
 ~~~
@@ -34,7 +36,7 @@ Configuration file: /site/_config.yml
 ~~~
 
 And you can now view the site using the URL http://localhost:4000/.  If the Docker approach does not work, you can setup Jekyll using the steps below.
-   
+
 ### Ruby
 
 To install Ruby, we suggest the use of [rbenv](https://github.com/rbenv/rbenv).
