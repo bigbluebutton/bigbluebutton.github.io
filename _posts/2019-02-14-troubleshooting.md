@@ -938,3 +938,23 @@ update-alternatives --config java  # Choose java-8 as default
 
 Run `java -version` and confirm it now shows the default as `1.8.0`, and then restart BigBlueButton with `sudo bbb-conf --restart`
 
+## Too many open files 
+On servers with greater than 8 CPU cores, `bbb-web` log (`/var/log/bigbluebutton/bbb-web.log`) may throw an error of `Too many open files`
+
+
+~~~
+Caused by: java.io.IOException: Too many open files
+~~~
+
+To resolve, create an override file that increases the number of open files for `bbb-web`
+
+~~~bash
+$  sudo mkdir -p /etc/systemd/system/bbb-web.service.d/
+$  sudo cat > /etc/systemd/system/bbb-web.service.d/override.conf << HERE
+[Service]
+LimitNOFILE=
+LimitNOFILE=8192
+HERE
+$  sudo systemctl daemon-reload
+~~~
+
