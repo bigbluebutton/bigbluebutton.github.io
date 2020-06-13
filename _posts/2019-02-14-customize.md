@@ -916,6 +916,7 @@ The HTML5 client supports a list of parameters that can be added to the `join` A
 Useful tools for development:
 
 * A tool like (https://meyerweb.com/eric/tools/dencoder/) is useful in the encoding-decoding process for the fields expecting encoded value passed (see below). The use of the api-mate is also 
+* The [API mate](http://mconf.github.com/api-mate) allows you to directly experiment with these custom parameters. To use the API mate, run the following command on your BigBlueButton machine: `sudo bbb-conf --secret`. This creates a link for you with your secret as a parameter so you can get started experimenting right away.
 
 * `userdata-bbb_auto_join_audio=true`
 (default value is `false`)
