@@ -886,11 +886,13 @@ $ sudo bbb-conf --start
 
 # HTML5 client configuration
 
+## Configuration of global settings
+
 The configuration file for the HTML5 client is located in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml`.  It contains all the settings for the HTML5 client.  
 
-## Change title in the HTML5 client
+### Modify the HTML5 client title
 
-To change the title, edit `settings.yml` and change the entry for `public.app.clientTitle`
+All changes to global HTML5 client settings are done in the file above. So to change the title, edit `settings.yml` and change the entry for `public.app.clientTitle`
 
 ```yaml
 public:
@@ -907,11 +909,13 @@ $ yq w -i $TARGET public.app.clientTitle "New Title"
 $ chown meteor:meteor $TARGET
 ```
 
-## Passing customization parameters to the client
+## Passing custom parameters to the client on join
 
-The HTML5 client supports a list of parameters which modify the look and default behaviour of the client. This list is accurate as of BigBlueButton version 2.2.9 (build 894)
+The HTML5 client supports a list of parameters that can be added to the `join` API call which modify the look and default behaviour of the client. This list is accurate as of BigBlueButton version 2.2.9 (build 894)
 
-Note: A tool like https://meyerweb.com/eric/tools/dencoder/ is useful in the encoding-decoding process for the fields expecting encoded value passed (see below)
+Useful tools for development:
+
+* A tool like (https://meyerweb.com/eric/tools/dencoder/) is useful in the encoding-decoding process for the fields expecting encoded value passed (see below). The use of the api-mate is also 
 
 * `userdata-bbb_auto_join_audio=true`
 (default value is `false`)
