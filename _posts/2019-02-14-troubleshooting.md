@@ -93,6 +93,14 @@ Post as much information as you can about your development problem to [bigbluebu
 
 Show the progress you've made so far (code examples are very helpful).  The more you demonstrate you have first invested your time to solve the problem and shared details of your progress, the easier it is for others to volunteer their time to help.
 
+## Help related to Greenlight
+
+[Greenlight](https://github.com/bigbluebutton/greenlight) is a frontend developed by BigBlueButton built using Rails. It is what you see on the demo and test servers provided by BigBlueButton.
+
+For help related to installing and using Greenlight, post your question to [bigbluebutton-greenlight](https://groups.google.com/forum/#!forum/bigbluebutton-greenlight).
+
+For development and contributions, use the issue tracker on the GitHub repository.
+
 # Troubleshooting installation issues
 
 This section will help you resolve common errors with installation and configuration of BigBlueButton server.
