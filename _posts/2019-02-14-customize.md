@@ -25,7 +25,7 @@ You an have the BigBlueButton server automatically remove the raw data for a rec
 #remove_raw_of_published_recordings
 ```
 
-The default duration (days) 
+The default duration (days)
 
 ```bash
 published_days=14
@@ -81,7 +81,7 @@ Change the value for `MAXAGE` to specify how many days to retain the `presentati
 
 Most of BigBlueButton's storage occurs in the `/var/bigbluebutton` directory (this is where all the recordings are stored).  If you want to move this directory to another partition, say to `/mnt/data`, do the following
 
-```
+```bash
 $ sudo bbb-conf --stop
 $ mv /var/bigbluebutton /mnt/data
 $ ln -s /mnt/data/bigbluebutton /var/bigbluebutton
@@ -119,7 +119,7 @@ $ sudo ./bbb-x.x-script --force
 
 The `presentation` playback format encodes the video shared during the session (webcam and screen share) as `.webm` (VP8) files; however, iOS devices only support playback of `.mp4` (h.264) video files.  To enable playback of the `presentation` recording format on iOS devices, edit `/usr/local/bigbluebutton/core/scripts/presentation.yml` and uncomment the entry for `mp4`.
 
-```
+```yaml
 video_formats:
   - webm
   - mp4
@@ -131,7 +131,7 @@ This change will increase the processing time and storage size of recordings wit
 
 ### Always record every meeting
 
-To [always record every meeting](#always-record-every-meeting), add the following to `apply-config.sh`. 
+To [always record every meeting](#always-record-every-meeting), add the following to `apply-config.sh`.
 
 ```bash
 echo "  - Prevent viewers from sharing webcams"
@@ -259,7 +259,7 @@ The transferred recordings should be immediately visible via the BigBlueButton r
 
 ### Reduce bandwidth from webcams
 
-You can use a banwidth usage on your BigBlueButton server using a tool such as `bmon` (`sudo apt-get install bmon`).  You can change the maximum bandwidth settings for each webcam options (low, medium, high, high definition) by editing `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml` and modifying the entries for 
+You can use a banwidth usage on your BigBlueButton server using a tool such as `bmon` (`sudo apt-get install bmon`).  You can change the maximum bandwidth settings for each webcam options (low, medium, high, high definition) by editing `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml` and modifying the entries for
 
 ```yaml
     cameraProfiles:
@@ -497,7 +497,7 @@ defaultWelcomeMessageFooter=<br><br>To join this meeting by phone, dial:<br>  %%
 
 Save `bigbluebutton.properties` and restart BigBlueButton again.  Each user that joins a session will see a message in the chat similar to.
 
-```
+```text
 To join this meeting by phone, dial:
    613-555-1234
 and enter 12345 as the conference PIN number.
@@ -505,7 +505,7 @@ and enter 12345 as the conference PIN number.
 
 Finally, setup the firewall rules so you are only accepting incoming calls from the IP address of your SIP provider.  For example, if your SIP provider forwards incoming calls from 64.2.142.33, then setup the following firewall rules on your server.
 
-```
+```bash
 iptables -A INPUT -i eth0 -p tcp --dport 5060 -s 0.0.0.0/0 -j REJECT
 iptables -A INPUT -i eth0 -p udp --dport 5060 -s 0.0.0.0/0 -j REJECT
 iptables -A INPUT -i eth0 -p tcp --dport 5080 -s 0.0.0.0/0 -j REJECT
@@ -617,7 +617,7 @@ $ sudo apt-get purge bbb-demo
 
 The default HTML landing page is located in
 
-```
+```bash
 /var/www/bigbluebutton-default/index.html
 ```
 
@@ -650,8 +650,8 @@ Note: if you have configured `sshd` (the OpenSSH daemon) to use a different port
 
 ```bash
 $ netstat -antp | grep sshd
-tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1739/sshd       
-tcp6       0      0 :::22                   :::*                    LISTEN      1739/sshd       
+tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      1739/sshd
+tcp6       0      0 :::22                   :::*                    LISTEN      1739/sshd
 ```
 
 To restrict external access minimal needed ports for BigBlueButton (with [HTML5 client set as default](#make-the-html5-client-default)), use the following commands:
@@ -669,6 +669,7 @@ These `ufw` firewall rules will be automatically re-applied on server reboot.
 Besides IP-based firewalling, you can explore web application firewalls such as [ModSecurity](https://modsecurity.org/) that provide additional security by checking requests to various web-based components.
 
 ### Setup Firewall
+
 To configure a firewall for your BigBlueButton server (recommended), add `enableUFWRules` to `apply-config.sh`, as in
 
 ```sh
@@ -677,11 +678,13 @@ enableUFWRules
 
 With `enableUFWRule` added to `apply-config.sh`, whenever you do `bbb-conf` with `--restart` or `--setip`, you'll see the following output
 
-```
+```bash
+sudo bbb-conf --restart
+
 Restarting BigBlueButton ..
 Stopping BigBlueButton
 
-Applying updates in /etc/bigbluebutton/bbb-conf/apply-config.sh: 
+Applying updates in /etc/bigbluebutton/bbb-conf/apply-config.sh:
   - Enable Firewall and opening 22/tcp, 80/tcp, 443/tcp and 16384:32768/udp
 Rules updated
 Rules updated (v6)
@@ -764,10 +767,9 @@ Whenever you manually update BigBlueButton, the [instructions](/2.2/install.html
 
 `bbb-conf` will look for a BASH script at `/etc/bigbluebutton/bbb-conf/apply-config.sh` when doing either `--restart` or `--setip <hostname>` and, if found, execute this script before starting up BigBlueButton.
 
-You can put your configuration changes in `apply-config.sh` to ensure they are automatically applied.  Here's a sample script
+You can put your configuration changes in `apply-config.sh` to ensure they are automatically applied.  Here's a sample script:
 
-
-```sh
+```bash
 #!/bin/bash
 
 # Pull in the helper functions for configuring BigBlueButton
@@ -872,7 +874,7 @@ To change the title, edit `settings.yml` and change the entry for `public.app.cl
 
 ```yaml
 public:
-  app: 
+  app:
     ...
     clientTitle: BigBlueButton
 ```
@@ -953,7 +955,7 @@ The client logger accepts three targets for the logs: `console`, `server` and `e
 | url    | -             | -                                | The end point where logs will be sent to when the target is set to "external".                          |
 | method | -             | "POST", "PUT"                    | HTTP method being used when using the target "external".                                                |
 
-The default values are: 
+The default values are:
 
 ```yaml
   clientLog:
@@ -995,7 +997,7 @@ $ sudo chmod 640 /var/log/nginx/html5-client.log
 
 Restart BigBlueButton with `sudo bbb-conf --restart` and launch the BigBlueButton HTML5 client in a new session.  You should see the logs appearing in `/var/log/nginx/html5-client.log` as follows
 
-```
+```log
 99.239.102.0 [2018-09-09T14:59:10+00:00] [{\x22name: .. }]
 ```
 
