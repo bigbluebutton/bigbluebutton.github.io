@@ -131,16 +131,6 @@ This change will increase the processing time and storage size of recordings wit
 
 ### Always record every meeting
 
-To [always record every meeting](#always-record-every-meeting), add the following to `apply-config.sh`.
-
-```bash
-echo "  - Prevent viewers from sharing webcams"
-sed -i 's/autoStartRecording=.*/autoStartRecording=true/g' /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
-sed -i 's/allowStartStopRecording=.*/allowStartStopRecording=false/g' /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
-```
-
-### Always record every meeting2
-
 By default, the BigBlueButton server will produce a recording when (1) the meeting has been created with `record=true` in the create API call and (2) a moderator has clicked the Start/Stop Record button (at least once) during the meeting.
 
 However, you can configure a BigBlueButton server to record every meeting, edit `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties` and change
@@ -171,6 +161,14 @@ To apply the changes, restart the BigBlueButton server using the command
 
 ```bash
 $ sudo bbb-conf --restart
+```
+
+To [always record every meeting](#always-record-every-meeting), add the following to `apply-config.sh`.
+
+```bash
+echo "  - Prevent viewers from sharing webcams"
+sed -i 's/autoStartRecording=.*/autoStartRecording=true/g' /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
+sed -i 's/allowStartStopRecording=.*/allowStartStopRecording=false/g' /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
 ```
 
 ### Re-process raw recordings
