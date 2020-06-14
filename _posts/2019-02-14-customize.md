@@ -981,7 +981,7 @@ Useful tools for development:
 | ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- | ------------- |
 | `userdata-bbb_auto_swap_layout=`           | If set to `true`, the client will display the ask for feedback screen on logout                                       | `false`       |
 | `userdata-bbb_hide_presentation=`          | If set to `true`, the presentation area will be minimized automatically                                               | `false`       |
-| `userdata-bbb_show_participants_on_login=` | If set to `true`, the client will start the process of joining the audio bridge automatically upon loading the client | `false`       |
+| `userdata-bbb_show_participants_on_login=` | If set to `false`, the participants panel will not be displayed until opened. | `true`       |
 | `userdata-bbb_show_public_chat_on_login=`  | If set to `false`, the chat panel will not be visible on page load until opened. Not the same as disabling chat.      | `true`        |
 
 ### External parameters
