@@ -75,7 +75,11 @@ for eventsfile in /var/bigbluebutton/recording/raw/*/events.xml ; do
 done
 ```
 
-Change the value for `MAXAGE` to specify how many days to retain the `presentation` format recordings on your BigBlueButton server.
+Change the value for `MAXAGE` to specify how many days to retain the `presentation` format recordings on your BigBlueButton server. After you create the file, make sure it is executable.
+
+```powershell
+$ chmod +x /etc/cron.daily/etc/cron.daily/delete-old-recordings
+```
 
 ### Move recordings to a different partition
 
@@ -534,6 +538,73 @@ Then restart BigBlueButton
 ```bash
 $ sudo bbb-conf --restart
 ```
+
+## Connect BigBlueButton to an external FreeSWITCH Server
+
+BigBlueButton bundles in FreeSWITCH, but you can configure BigBlueButton to use an external FreeSWITCH server.
+
+First, edit `/usr/share/red5/webapps/bigbluebutton/WEB-INF/bigbluebutton.properties`
+
+```properties
+freeswitch.esl.host=127.0.0.1
+freeswitch.esl.port=8021
+freeswitch.esl.password=ClueCon
+```
+
+Change `freeswitch.esl.host` to point to your external FreeSWITCH IP address. Change the default `freeswitch.esl.password` to the ESL password for your server.
+
+You can use http://strongpasswordgenerator.com/ to generate passwords.
+
+In your external FreeSWITCH server, edit `/opt/freeswitch/conf/autoload_configs/event_socket.conf.xml`.
+
+```xml
+<configuration name="event_socket.conf" description="Socket Client">
+  <settings>
+    <param name="nat-map" value="false"/>
+    <param name="listen-ip" value="127.0.0.1"/>
+    <param name="listen-port" value="8021"/>
+    <param name="password" value="ClueCon"/>
+    <!-- param name="apply-inbound-acl" value="localnet.auto"/ -->
+  </settings>
+</configuration>
+```
+
+Change the `listen-ip` to your external FreeSWITCH server IP and also change the `password` to be the same as `freeswitch.esl.password`.
+
+Edit `/usr/share/red5/webapps/sip/WEB-INF/bigbluebutton-sip.properties`
+
+```properties
+bbb.sip.app.ip=127.0.0.1
+bbb.sip.app.port=5070
+
+sip.server.username=bbbuser
+sip.server.password=secret
+
+freeswitch.ip=127.0.0.1
+freeswitch.port=5060
+```
+
+Change `bbb.sip.app.ip` to your BigBlueButton server ip.
+
+Change `sip.server.password` to something else.
+
+Change `freeswitch.ip` to your external FreeSWITCH ip.
+
+In your external FreeSWITCH server.
+
+Edit `/opt/freeswitch/conf/directory/default/bbbuser.xml`
+
+```xml
+  <user id="bbbuser">
+    <params>
+      <!-- omit password for authless registration -->
+      <param name="password" value="secret"/>
+      <!-- What this user is allowed to access -->
+      <!--<param name="http-allowed-api" value="jsapi,voicemail,status"/> -->
+    </params>
+```
+
+Change `password` to match the password you set in `sip.server.password`.
 
 ## Presentation
 
