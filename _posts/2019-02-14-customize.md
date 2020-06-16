@@ -963,7 +963,7 @@ Useful tools for development:
 
 | Parameter                           | Description                                                                                                    | Default value |
 | ----------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------- |
-| `userdata-bbb_multi_user_pen_only=` | If set to `true`, the whiteboard will be multi-user only, meaning that all participants can annotate it freely | `false`       |
+| `userdata-bbb_multi_user_pen_only=` | If set to `true`, only the pen tool will be available to non-participants when multi-user whiteboard is enabled | `false`       |
 | `userdata-bbb_presenter_tools=`     | Pass in an array of permitted tools from `settings.yml`                                                        | all enabled   |
 | `userdata-bbb_multi_user_tools=`    | Pass in an array of permitted tools for non-presenters from `settings.yml`                                     | all enabled   |
 
