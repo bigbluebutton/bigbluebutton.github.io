@@ -3,9 +3,10 @@ layout: page
 title: "Getting help"
 category: 2.2
 date: 2020-06-16 14:30:00
-#date: 2019-02-10 23:13:42
 order: 2
 ---
+
+# Introduction
 
 Have you encountered a problem with BigBluebutton?
 
@@ -30,9 +31,9 @@ If your BigBlueButton server itself is running fine -- that is, many users are u
 
 Also, check the frequently asked questions on [using BigBlueButton](/support/faq.html#using-bigbluebutton).
 
-If you don't find a solution, then post a description of issue to [bigbluebutton-users](https://groups.google.com/forum/#!forum/bigbluebutton-users).  To make it easier for others to help, include (if possible) all the following information
+If you don't find a solution, then post a description of the issue to [bigbluebutton-users](https://groups.google.com/forum/#!forum/bigbluebutton-users).  To make it easier for others to help, include (if possible) all the following information
 
-1. A description of the problem (a screen shot is very helpful as well)
+1. A description of the problem (a screenshot is very helpful as well)
 2. Steps to reproduce the problem
 3. Can you reproduce the problem on our [demo server](https://demo.bigbluebutton.org)?
 
@@ -40,18 +41,18 @@ If you don't find a solution, then post a description of issue to [bigbluebutton
 
 If you have encountered a problem with installing or running your BigBlueButton server, then this section will guide you through systematically narrowing down the source of your problem.
 
-First, check -- and double-check -- that your server meets the [minimum requirements](/2.2/install.html#minimum-server-requirements).  If it does not, then one (or more) of the BigBlueButton components may be failing in unpredictable ways when they encounter a resource constraint (such as insufficient memory).  Before going further, setup a server that meets (or exceeds) the minimum requirements and try installing again.
+First, check -- and double-check -- that your server meets the [minimum requirements](/2.2/install.html#minimum-server-requirements).  If it does not, then one (or more) of the BigBlueButton components may be failing in unpredictable ways when they encounter a resource constraint (such as insufficient memory).  Before going further, set up a server that meets (or exceeds) the minimum requirements and try installing again.
 
-Next, check the output of `sudo bbb-conf --check`.  The [bbb-conf](/admin/bbb-conf.html) script has a lot of built-in checks to look for configure errors on a BigBlueButton server.
+Next, check the output of `sudo bbb-conf --check`.  The [bbb-conf](/admin/bbb-conf.html) script has a lot of built-in checks to look for configuration errors on a BigBlueButton server.
 
-If you installed BigBlueButton using the step-by-step instructions, try using the [bbb-install.sh](https://github.com/bigbluebutton/bbb-install).  This script automates much of the [step-by-step](/2.2/install.html#before-you-install) commands to install/upgrade a BigBlueButton server.  
+If you installed BigBlueButton using the step-by-step instructions, try using the [bbb-install.sh](https://github.com/bigbluebutton/bbb-install) script.  This script automates much of the [step-by-step](/2.2/install.html#before-you-install) commands to install/upgrade a BigBlueButton server. Alternatively, try one of the community-sourced Ansible roles.
 
 **Note:** `bbb-install.sh` cannot automate the configuration of your firewall, so there may still be some manual steps for you to do (read the `bbb-install.sh` docs for more information).  Nonetheless, if your server is on the internet, has a public IP address and a fully qualified domain name (FQDN), such as `bbb.example.com`, then `bbb-instal.sh` can usually install and configure the latest version of BigBlueButton for you in under 15 minutes.
 
-Next, read through the following documentation
+Next, read through the following documentation:
 
 1. [Install Guide](/2.2/install.html#before-you-install) (do this even if you have used `bbb-install.sh` as it will help you understand the various components of BigBlueButton)
-2. [Troubleshooting installation issues](#troubleshooting-installation-issues)
+2. [Troubleshooting installation issues](/2.2/troubleshooting.html)
 3. [Troubleshooting recordings](/dev/recording.html#troubleshooting) (if your issue is related to recordings)
 4. [Frequently Asked Questions](/support/faq.html)
 
@@ -83,13 +84,13 @@ For issues that may be client related -- such as the client screen goes blue or 
 3. If your testing from the desktop or laptop, does the problem occur in both FireFox and Chrome?
 4. Are there any errors in your browser's console?
 
-If you have multiple questions about the same server, you do not have to include the above information each time, just provide a URL to a previous post that covers this information.    
+If you have multiple questions about the same server, you do not have to include the above information each time, just provide a URL to a previous post that covers this information.
 
 There are many members of the BigBlueButton community that have been using and supporting BigBlueButton for years.  By including as much information as you can about your problem, you'll make it easier for them to volunteer their time to help you solve it quickly.
 
 # Help developing BigBlueButton
 
-BigBlueButton is a very customizable system, see [customizable options](/2.2/customize).  If you don't see an option to customize BigBlueButton to your needs and have some experience with JavaScript development, you can [setup a development environment](/2.2/dev.html) and modify BigBlueButton to your needs.
+BigBlueButton is a very customizable system, see [customizable options](/2.2/customize).  If you don't see an option to customize BigBlueButton to your needs and have some experience with software development, you can [setup a development environment](/2.2/dev.html) and modify BigBlueButton to your needs. If you end up designing new functionality, we encourage you to upstream the changes via a pull request so that others can seek benefit from it too.
 
 Post as much information as you can about your development problem to [bigbluebutton-dev](https://groups.google.com/forum/#!forum/bigbluebutton-dev).
 
