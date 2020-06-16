@@ -964,9 +964,8 @@ Useful tools for development:
 | Parameter                           | Description                                                                                                    | Default value |
 | ----------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------- |
 | `userdata-bbb_multi_user_pen_only=` | If set to `true`, the whiteboard will be multi-user only, meaning that all participants can annotate it freely | `false`       |
-| `userdata-bbb_presenter_tools=`     | If set to `false`, the client will display the presenter tools                                                 | `true`        |
-| `userdata-bbb_multi_user_tools=`    | If set to `true`, the client will display the multi-user tools                                                 | `false`       |
-
+| `userdata-bbb_presenter_tools=`     | Pass in an array of permitted tools from `settings.yml`                                                        | all enabled   |
+| `userdata-bbb_multi_user_tools=`    | Pass in an array of permitted tools for non-presenters from `settings.yml`                                     | all enabled   |
 
 ### Themeing & styling parameters
 
@@ -977,12 +976,12 @@ Useful tools for development:
 
 ### Layout parameters
 
-| Parameter                                  | Description                                                                                                           | Default value |
-| ------------------------------------------ | --------------------------------------------------------------------------------------------------------------------- | ------------- |
-| `userdata-bbb_auto_swap_layout=`           | If set to `true`, the client will display the ask for feedback screen on logout                                       | `false`       |
-| `userdata-bbb_hide_presentation=`          | If set to `true`, the presentation area will be minimized automatically                                               | `false`       |
-| `userdata-bbb_show_participants_on_login=` | If set to `false`, the participants panel will not be displayed until opened. | `true`       |
-| `userdata-bbb_show_public_chat_on_login=`  | If set to `false`, the chat panel will not be visible on page load until opened. Not the same as disabling chat.      | `true`        |
+| Parameter                                  | Description                                                                                                      | Default value |
+| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- | ------------- |
+| `userdata-bbb_auto_swap_layout=`           | If set to `true`, the presentation area will be minimized when a user joins a meeting.                           | `false`       |
+| `userdata-bbb_hide_presentation=`          | If set to `true`, the presentation area will be minimized until opened                                           | `false`       |
+| `userdata-bbb_show_participants_on_login=` | If set to `false`, the participants panel will not be displayed until opened.                                    | `true`        |
+| `userdata-bbb_show_public_chat_on_login=`  | If set to `false`, the chat panel will not be visible on page load until opened. Not the same as disabling chat. | `true`        |
 
 ### External parameters
 
