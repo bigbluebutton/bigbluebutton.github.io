@@ -886,11 +886,13 @@ $ sudo bbb-conf --start
 
 # HTML5 client configuration
 
+## Configuration of global settings
+
 The configuration file for the HTML5 client is located in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml`.  It contains all the settings for the HTML5 client.  
 
-## Change title in the HTML5 client
+### Modify the HTML5 client title
 
-To change the title, edit `settings.yml` and change the entry for `public.app.clientTitle`
+All changes to global HTML5 client settings are done in the file above. So to change the title, edit `settings.yml` and change the entry for `public.app.clientTitle`
 
 ```yaml
 public:
@@ -907,125 +909,111 @@ $ yq w -i $TARGET public.app.clientTitle "New Title"
 $ chown meteor:meteor $TARGET
 ```
 
-## Passing customization parameters to the client
+## Passing custom parameters to the client on join
 
-The HTML5 client supports a list of parameters which modify the look and default behaviour of the client. This list is accurate as of BigBlueButton version 2.2.9 (build 894)
+The HTML5 client supports a list of parameters that can be added to the `join` API call which modify the look and default behaviour of the client. This list is accurate as of BigBlueButton version 2.2.17 (build 937). These parameters override the global defaults set in `settings.yml`. As the parameters are passed on call to join, it allows for some powerful customization that can vary depending on which user is joining the session.
 
-Note: A tool like https://meyerweb.com/eric/tools/dencoder/ is useful in the encoding-decoding process for the fields expecting encoded value passed (see below)
+Useful tools for development:
 
-* `userdata-bbb_auto_join_audio=true`
-(default value is `false`)
+* A tool like (https://meyerweb.com/eric/tools/dencoder/) is useful in the encoding-decoding process for the fields expecting encoded value passed (see below).
+* The [API mate](http://mconf.github.com/api-mate) allows you to directly experiment with these custom parameters. To use the API mate, run the following command on your BigBlueButton machine: `sudo bbb-conf --secret`. This creates a link for you with your secret as a parameter so you can get started experimenting right away.
 
-If set to `true`, the client will start the process of joining the audio bridge automatically upon loading the client
+### Application parameters
 
-* `userdata-bbb_auto_share_webcam=true`
-(default value is `false`)
+| Parameter                                  | Description                                                                                                                         | Default value |
+| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `userdata-bbb_ask_for_feedback_on_logout=` | If set to `true`, the client will display the ask for feedback screen on logout                                                     | `false`       |
+| `userdata-bbb_auto_join_audio=`            | If set to `true`, the client will start the process of joining the audio bridge automatically upon loading the client               | `false`       |
+| `userdata-bbb_client_title=`               | Specifies a string to set as the HTML5 client title                                                                                 | BigBlueButton |
+| `userdata-bbb_force_listen_only=`          | If set to `true`, the user will be not be able to join with a microphone as an option                                               | `false`       |
+| `userdata-bbb_listen_only_mode=`           | If set to `false`, the user will not be able to join the audio part of the meeting without a microphone (disables listen-only mode) | `true`        |
+| `userdata-bbb_skip_check_audio=`           | If set to `true`, the user will not see the "echo test" prompt on login                                                             | `false`       |
 
-If set to `true`, the client will start the process of sharing webcam (if any) automatically upon loading the client
+### Branding parameters
 
+| Parameter                             | Description                                                                               | Default value |
+| ------------------------------------- | ----------------------------------------------------------------------------------------- | ------------- |
+| `userdata-bbb_display_branding_area=` | If set to `true`, the client will display the branding area in the upper left hand corner | `false`       |
 
-* `userdata-bbb_auto_swap_layout=true`
-(default value is `false`)
+### Shortcut parameters
 
-TODO
+| Parameter                 | Description                                                                                                                                                    | Default value      |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------ |
+| `userdata-bbb_shortcuts=` | The value passed has to be URL encoded. For example if you would like to disable shortcuts, pass `%5B%5D` which is the encoded version of the empty array `[]` | See `settings.yml` |
 
-* `userdata-bbb_hide_presentation=true`
-(default value is `false`)
+### Kurento parameters
 
-If set to `true`, the presentation area will be minimized automatically
-
-* `userdata-bbb_listen_only_mode=false`
-(default value is `false`)
-
-If set to `true`, the user will be able to join the audio part of the meeting without needing to share a microphone (listening only, without speaking)
-
-* `userdata-bbb_outside_toggle_recording=true`
-(default value is `false`)
-(only applicable when the client is embedded in an iframe)
-If set to `true`, the recording functionality in the meeting will be able to be started/stopped from the "parent" web page -- the same page where the BigBlueButton client is embedded
-
-* `userdata-bbb_outside_toggle_self_voice=true`
-(default value is `false`)
-(only applicable when the client is embedded in an iframe)
-
-If set to `true`, the current user's audio will be able to be muted/unmuted from the "parent" web page -- the same page where the BigBlueButton client is embedded
-
-
-* `userdata-bbb_shortcuts=%5B%5D`
-(default value is the set of shortcuts specified in settings.yml)
-The value passed has to be URL encoded.
-For example if you would like to disable shortcuts, pass `%5B%5D` which is the encoded version of the empty array `[]`
-The current implementation (July 2019) includes the following shortcuts:
- TODO
+| Parameter                                | Description                                                                                                          | Default value |
+| ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `userdata-bbb_auto_share_webcam=`        | If set to `true`, the client will start the process of sharing webcam (if any) automatically upon loading the client | `false`       |
+| `userdata-bbb_preferred_camera_profile=` | Specifies a preferred camera profile to use out of those defined in the `settings.yml`                               | none          |
+| `userdata-bbb_enable_screen_sharing=`    | If set to `false`, the client will display the screen sharing button if they are the current presenter               | `true`        |
+| `userdata-bbb_enable_video=`             | If set to `false`, the client will display the webcam sharing button (in effect disabling/enabling webcams)          | `true`        |
+| `userdata-bbb_enable_video_stats=`       | If set to `true`, the client will display connection statistics for the user                                         | `false`       |
+| `userdata-bbb_skip_video_preview=`       | If set to `true`, the client will not see a preview of their webcam before sharing it                                | `false`       |
 
 
-* `userdata-bbb_skip_check_audio=true`
-TODO
+### Presentation parameters
 
-* `userdata-bbb_custom_style=%3Aroot%7B--loader-bg%3A%23000%3B%7D.overlay--1aTlbi%7Bbackground-color%3A%23000!important%3B%7Dbody%7Bbackground-color%3A%23000!important%3B%7D`
-(default value is "" i.e. none)
-The value passed has to be URL encoded.
-For example if you want to change the backgroung colors you could pass the URL encoded version of
-`:root{--loader-bg:#000;}.overlay--1aTlbi{background-color:#000!important;}body{background-color:#000!important;}`
-which looks like 
-`%3Aroot%7B--loader-bg%3A%23000%3B%7D.overlay--1aTlbi%7Bbackground-color%3A%23000!important%3B%7Dbody%7Bbackground-color%3A%23000!important%3B%7D`
+| Parameter                                                | Description                                                                                                                                                                      | Default value |
+| -------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `userdata-bbb_force_restore_presentation_on_new_events=` | If set to `true`, new events related to the presentation will be pushed to viewers. See [this PR](https://github.com/bigbluebutton/bigbluebutton/pull/9517) for more information | `false`       |
 
- * `userdata-bbb_custom_style_url=https://bigbluebutton.org/myStyle.css`
- (default value is "" i.e. none)
- This parameter acts the same way as `userdata-bbb_custom_style` except that the css content is coming from a hosted file.
+### Whiteboard parameters
 
- * `userdata-bbb_ask_for_feedback_on_logout=true`
- TODO
- 
- * `userdata-bbb_client_title=MyTitle`
- TODO
- 
- * `userdata-bbb_force_listen_only=`
- TODO
- 
- * `userdata-bbb_display_branding_area=`
- TODO
- 
- * `userdata-bbb_preferred_camera_profile=`
- TODO
- 
- * `userdata-bbb_enable_screen_sharing=`
- TODO
- 
- * `userdata-bbb_enable_video=`
- TODO
- 
- * `userdata-bbb_skip_video_preview=`
- TODO
- 
- * `userdata-bbb_multi_user_pen_only=`
- TODO
- 
- * `userdata-bbb_presenter_tools=`
- TODO
- 
- * `userdata-bbb_multi_user_tools=`
- TODO
- 
- * `userdata-bbb_show_participants_on_login=`
- TODO
+| Parameter                           | Description                                                                                                    | Default value |
+| ----------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------- |
+| `userdata-bbb_multi_user_pen_only=` | If set to `true`, only the pen tool will be available to non-participants when multi-user whiteboard is enabled | `false`       |
+| `userdata-bbb_presenter_tools=`     | Pass in an array of permitted tools from `settings.yml`                                                        | all enabled   |
+| `userdata-bbb_multi_user_tools=`    | Pass in an array of permitted tools for non-presenters from `settings.yml`                                     | all enabled   |
 
- * `userdata-bbb_force_restore_presentation_on_new_events=`
- False by default;
- Introduced in https://github.com/bigbluebutton/bigbluebutton/pull/9517
- When enabled (set to true) the presentation area will be forcefully restored if it is minimized (Viewers only) for actions:
+### Themeing & styling parameters
 
+| Parameter                        | Description                                                                                                          | Default value |
+| -------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `userdata-bbb_custom_style=`     | URL encoded string with custom CSS                                                                                   | none          |
+| `userdata-bbb_custom_style_url=` | This parameter acts the same way as `userdata-bbb_custom_style` except that the CSS content comes from a hosted file | none          |
+
+### Layout parameters
+
+| Parameter                                  | Description                                                                                                      | Default value |
+| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- | ------------- |
+| `userdata-bbb_auto_swap_layout=`           | If set to `true`, the presentation area will be minimized when a user joins a meeting.                           | `false`       |
+| `userdata-bbb_hide_presentation=`          | If set to `true`, the presentation area will be minimized until opened                                           | `false`       |
+| `userdata-bbb_show_participants_on_login=` | If set to `false`, the participants panel will not be displayed until opened.                                    | `true`        |
+| `userdata-bbb_show_public_chat_on_login=`  | If set to `false`, the chat panel will not be visible on page load until opened. Not the same as disabling chat. | `true`        |
+
+### External parameters
+
+The following parameters are only applicable when the HTML5 client is embedded in an iframe.
+
+| Parameter                                 | Description                                                                                                                                                                            | Default value |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `userdata-bbb_outside_toggle_self_voice=` | If set to `true`, the current user's audio will be able to be muted/unmuted from the "parent" web page -- the same page where the BigBlueButton client is embedded                     | `false`       |
+| `userdata-bbb_outside_toggle_recording=`  | If set to `true`, the recording functionality in the meeting will be able to be started/stopped from the "parent" web page -- the same page where the BigBlueButton client is embedded | `false`       |
+
+### Examples
+
+#### Changing the background color of the HTML client
+
+For example if you want to change the background colors you could pass the URL encoded version of
+```css
+:root {
+  --loader-bg:#000;
+}
+
+.overlay--1aTlbi {
+  background-color:#000 !important;
+}
+
+body {
+  background-color:#000 !important;
+}
 ```
-presentation / slide / zoom change
-published poll
-added annotation
-uploaded new presentation
+which looks like
 ```
-
- * `userdata-bbb_show_public_chat_on_login=`
- default value: true
- If you set to false, the chat pannel will not be visible on page load. It will be visible if you toggle manually after page load. **Note that this is different than disabling chat**
-
+%3Aroot%7B--loader-bg%3A%23000%3B%7D.overlay--1aTlbi%7Bbackground-color%3A%23000!important%3B%7Dbody%7Bbackground-color%3A%23000!important%3B%7D
+```
 
 ## Send client logs to the server
 
