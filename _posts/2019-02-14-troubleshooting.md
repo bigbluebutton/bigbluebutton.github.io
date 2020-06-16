@@ -74,14 +74,14 @@ For issues that may be network related -- such as users unable to share their au
 3. Does the server have a static or dynamic IP?
 4. Does the server IPV4 and/or IPV6 address?
 
-For issues that may be client related -- such as the client screen goes blue or unexpectedly becomes disconnected -- also include: 
+For issues that may be client related -- such as the client screen goes blue or unexpectedly becomes disconnected -- also include:
 
 1. Are you able to reproduce the issue on [https://demo.bigbluebutton.org/](https://demo.bigbluebutton.org/)?
 2. What browser and OS are you using?  (include the version of both)?
 3. If your testing from the desktop or laptop, does the problem occur in both FireFox and Chrome?
 4. Are there any errors in your browser's console?
 
-If you have multiple questions about the same server, you do not have to include the above information each time, just provide a URL to a previous post that covers this information.    
+If you have multiple questions about the same server, you do not have to include the above information each time, just provide a URL to a previous post that covers this information.
 
 There are many members of the BigBlueButton community that have been using and supporting BigBlueButton for years.  By including as much information as you can about your problem, you'll make it easier for them to volunteer their time to help you solve it quickly.
 
@@ -177,7 +177,7 @@ $ chmod +x /etc/cron.daily/etc/cron.daily/delete-old-recordings
 
 If after updating from BigBlueButton 2.0 to BigBlueButton 2.2 your recordings are not processing, and if you are seeing `Permission denied` errors in `/var/log/bigbluebutton/bbb-rap-worker.log`
 
-```
+```log
 I, [2019-06-07T14:26:09.034878 #14808]  INFO -- : /usr/lib/ruby/2.5.0/logger.rb:754:in `initialize': Permission denied @ rb_sysopen - /var/log/bigbluebutton/presentation/process-02feca80700b3e95b877af85db972904397857a1-1559909318977.log (Errno::EACCES)
 ```
 
@@ -222,7 +222,7 @@ Save the file and restart.
 
 If `sudo bbb-conf --check` returns the warning
 
-```
+```bash
 Restarting BigBlueButton 2.0.0-RC9 (and cleaning out all log files) ...
 Stopping BigBlueButton
  ... cleaning log files
@@ -277,7 +277,7 @@ In rare occasions after shutdown/restart, the FreeSWITCH database can get corrup
 
 To check, look in `/opt/freeswitch/var/log/freeswitch/freeswitch.log` for errors related to loading the database.
 
-```
+```log
 2018-10-25 11:05:11.444727 [ERR] switch_core_db.c:108 SQL ERR [unsupported file format]
 2018-10-25 11:05:11.444737 [ERR] switch_core_db.c:223 SQL ERR [unsupported file format]
 2018-10-25 11:05:11.444759 [NOTICE] sofia.c:5949 Started Profile internal-ipv6 [sofia_reg_internal-ipv6]
@@ -297,12 +297,12 @@ $ sudo systemctl start freeswitch
 
 Let's assume the following:
 
-```
+```bash
 asterisk server ip:          192.168.1.100
 bigbluebutton/freeswitch ip: 192.168.1.200
 ```
 
-**Changes to your Asterisk server**
+#### Changes to your Asterisk server
 
 Setup your gateway to BigBlueButton/FreeSWITCH. in `/etc/asterisk/sip.conf` add
 
@@ -322,12 +322,12 @@ allow=ulaw
 
 Route the calls to the gateway. In `/etc/asterisk/extensions.conf` context where your calls are being handled, forward the calls to the gateway. Here, when someone dials 85001, the call is sent to the `fs-gw` defined above.
 
-```
+```conf
 exten => 85001,1,Dial(SIP/fs-gw/${EXTEN})
 exten => 85001,2,Hangup
 ```
 
-**Changes to your BigBlueButton/FreeSWITCH server**
+#### Changes to your BigBlueButton/FreeSWITCH server
 
 In BigBlueButton/FreeSWITCH, make the following changes:
 
@@ -368,7 +368,7 @@ $ ./fs_cli
 
 FreeSWITCH supports both IPV4 and IPV6.  However, if your server does not support IPV6, FreeSWITCH will be unable to bind to port 8021.  If you run `sudo bbb-conf --check` and see the following error
 
-```
+```bash
 # Error: Found text in freeswitch.log:
 #
 #    Thread ended for mod_event_socket
@@ -449,7 +449,7 @@ Then do `systemctl daemon-reload` and restart BigBlueButton.  FreeSWITCH should 
 
 When doing `sudo bbb-conf --check`, you may see the warning
 
-```
+```bash
 voice Application failed to register with sip server
 ```
 
@@ -470,7 +470,7 @@ $ netstat -ant | grep 5060
 
 You should see an output such as
 
-```
+```bash
 tcp        0      0 234.147.116.3:5060    0.0.0.0:*               LISTEN
 ```
 
@@ -499,7 +499,7 @@ Alternatively, if you have not made any customizations to BigBlueButton (outside
 
 If you've installed/uninstalled BigBlueButton packages, you may get a `No Symbolic Link` warning from `bbb-conf --check`:
 
-```
+```bash
 ** Potential Problems **
     nginx (conf): no symbolic link in /etc/nginx/sites-enabled for bigbluebutton
 ```
@@ -515,7 +515,7 @@ $ sudo /etc/init.d/nginx restart
 
 Some of the BigBlueButton packages use `sed` scripts to extract contents from configuration files.  If the file does not exist at the time of the script's execution, or the sed script matches multiple entries in a file (such as when a configuration line is commented out), you can see an error such as
 
-```
+```bash
 Setting up bbb-client (1:2.0.0-374) ...
 sed: -e expression #1, char 42: unterminated `s' command
 dpkg: error processing package bbb-client (--configure):
@@ -546,7 +546,7 @@ You should now see each command in `bbb-conf.postinst` as it executes upto the l
 
 Some hosting providers do not provide a complete `/etc/apt/source.list`.  If you are finding your are unable to install a package, try replacing your `/etc/apt/sources.list` with the following
 
-```
+```bash
 deb http://archive.ubuntu.com/ubuntu xenial main restricted universe multiverse
 deb http://archive.ubuntu.com/ubuntu xenial-updates main restricted universe multiverse
 deb http://security.ubuntu.com/ubuntu xenial-security main restricted universe multiverse
@@ -576,7 +576,7 @@ Here are the following lists the possible WebRTC error messages that a user may 
 * **1003: Browser version not supported** - Browser doesn’t implement the necessary WebRTC API methods.  Possible Causes:
   * Out of date browser
 * **1004: Failure on call** - The call was attempted, but failed.  Possible Causes:
-  * For a full list of causes refer here, http://sipjs.com/api/0.6.0/causes/
+  * For a full list of causes refer [here](http://sipjs.com/api/0.6.0/causes/)
   * There are 24 different causes so I don’t really want to list all of them
   * Solution for this issue [outlined here](https://groups.google.com/forum/#!msg/bigbluebutton-setup/F2MlW6Voj-0/ZXDq5_-uEQAJ).
 * **1005: Call ended unexpectedly** - The call was successful, but ended without user requesting to end the session.  Possible Causes:
@@ -611,7 +611,7 @@ To enable Chrome to access the user's microphone, see [Configure HTTPS on BigBlu
 
 When you attempt to join a BigBlueButton session, the client looks for supported browsers before fully loading.  The client gets its list of supported browsers from `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml`.  You can see the list of supported browsers at the bottom.  For example,
 
-```
+```yaml
   - browser: mobileSafari
     version:
     - 11
@@ -622,13 +622,13 @@ states that `Mobile Safari` version 11.1 or later is supported (notice the first
 
 To add a browser to the list, first open the following page [https://demo.bigbluebutton.org/html5client/useragent](https://demo.bigbluebutton.org/html5client/useragent) with the browser, which will print its useragent string.  For example, with the Vivaldi browser you might see
 
-```
+```log
 Vivaldi 2.8.1664 / Linux 0.0.0
 ```
 
 Next, to add this as a supported browser, append to `settings.yml`
 
-```
+```yaml
   - browser: vivaldi
     version:
     - 2
@@ -643,7 +643,7 @@ If your server has multiple IP addresses, Tomcat might not pick the right addres
 
 Check `/var/log/tomcat7/catalina.out` for the following error
 
-```
+```log
 Jan 30, 2018 9:17:37 AM org.apache.catalina.core.StandardServer await
 SEVERE: StandardServer.await: create[localhost:8005]:
 java.net.BindException: Cannot assign requested address (Bind failed)
@@ -682,7 +682,7 @@ $ sudo systemctl restart nginx
 
 and look for the output of
 
-```
+```log
    [ OK ]
 ```
 
@@ -712,7 +712,7 @@ BigBlueButton 2.2 requires Java 8 as the default Java.  Recently, some Ubuntu 16
 
 Use `java -version` to check that the default version of `1.8.0`.
 
-```
+```bash
 ~/dev$ java -version
 openjdk version "1.8.0_242"
 OpenJDK Runtime Environment (build 1.8.0_242-8u242-b08-0ubuntu3~16.04-b08)
@@ -721,7 +721,7 @@ OpenJDK 64-Bit Server VM (build 25.242-b08, mixed mode)
 
 If not, do the following
 
-```
+```bash
 sudo apt-get install openjdk-8-jre
 update-alternatives --config java  # Choose java-8 as default
 ```
@@ -732,22 +732,23 @@ Run `java -version` and confirm it now shows the default as `1.8.0`, and then re
 
 If you see the following error in `/var/log/bigbluebutton/bbb-web.log`
 
-```
+```log
   failed to map segment from shared object: Operation not permitted
 ```
 
 use the command `mount` to check that the `/tmp` director does not have `noexec` permissions (which would prevent executables from running in the /tmp directory). If you see `noexec` for `/tmp`, you need to remount the directory with permissions that enable processes (such as the slide conversion) to execute in the `/tmp` directory.
 
-### Too many open files 
+### Too many open files
+
 On servers with greater than 8 CPU cores, `bbb-web` log (`/var/log/bigbluebutton/bbb-web.log`) may throw an error of `Too many open files`
 
-~~~log
+```log
 Caused by: java.io.IOException: Too many open files
-~~~
+```
 
 To resolve, create an override file that increases the number of open files for `bbb-web`
 
-~~~bash
+```bash
 $  sudo mkdir -p /etc/systemd/system/bbb-web.service.d/
 $  sudo cat > /etc/systemd/system/bbb-web.service.d/override.conf << HERE
 [Service]
@@ -755,7 +756,7 @@ LimitNOFILE=
 LimitNOFILE=8192
 HERE
 $  sudo systemctl daemon-reload
-~~~
+```
 
 ### bbb-web takes a long time to startup
 
@@ -773,7 +774,7 @@ For more information see [How to Setup Additional Entropy for Cloud Servers Usin
 
 If you get the following error during upgrade to BigBlueButton
 
-```
+```bash
 Unpacking bbb-web (1:2.2.0-67) over (1:2.2.0-66) ...
 dpkg: error processing archive /var/cache/apt/archives/bbb-web_1%3a2.2.0-67_amd64.deb (--unpack):
  trying to overwrite '/etc/bigbluebutton/nginx/web', which is also in package bbb-client 1:2.2.0-28
@@ -839,7 +840,7 @@ For more information see [bbb-conf options](/install/bbb-conf.html).
 
 However, if you install BigBlueButton within an LXD container, you will get the following error from `sudo bbb-conf --check`
 
-```
+```bash
 ** Potential problems described below **
 
 #
@@ -902,10 +903,9 @@ You can run BigBlueButton within a LXD container.
 
 The command `sudo bbb-conf --debug` searches through the red5, tomcat7, and nginx logs looking for errors and exceptions.  However, the messages such as
 
-```
+```log
     -- ERRORS found in /usr/share/red5/log/* --
 /usr/share/red5/log/bigbluebutton.log:2015-05-02 13:50:37,681-04:00 [pool-17-thread-1] ERROR o.b.w.v.f.a.PopulateRoomCommand - Not XML: [Conference 78505 not found]
 ```
 
 are innocuous and can be ignored.
-
