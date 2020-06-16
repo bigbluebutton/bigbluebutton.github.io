@@ -3,6 +3,7 @@ layout: page
 title: "Troubleshooting"
 category: 2.2
 date: 2019-02-14 22:13:42
+order: 10
 ---
 
 If you encountered any problems with the installation of BigBlueButton, this document covers how to resolve many of the common issues.

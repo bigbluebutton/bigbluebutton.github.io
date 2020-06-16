@@ -2,9 +2,9 @@
 layout: page
 title: "Getting help"
 category: 2.2
-#date: 2020-06-16 14:30:00
-date: 2019-02-10 23:13:42
-order: 5
+date: 2020-06-16 14:30:00
+#date: 2019-02-10 23:13:42
+order: 2
 ---
 
 Have you encountered a problem with BigBluebutton?

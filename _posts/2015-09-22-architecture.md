@@ -6,6 +6,7 @@ redirect_from:
   - /1.0/10architecture
   - /architecture
 date: 2015-09-20 17:34:41
+order: 8
 ---
 
 BigBlueButton is built upon a solid foundation of underlying components, including nginx, FreeSWITCH, Kurento, redis, react, and others.  

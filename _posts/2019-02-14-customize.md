@@ -5,6 +5,7 @@ category: 2.2
 redirect_from: 
   - /admin/client-configuration.html
 date: 2019-02-14 22:13:42
+order: 3
 ---
 
 This document covers common customizations of BigBlueButton 2.2.
