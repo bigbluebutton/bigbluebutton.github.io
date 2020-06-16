@@ -285,11 +285,13 @@ Here are the following lists the possible WebRTC error messages that a user may 
 * **1002: Could not make a WebSocket connection** - The initial WebSocket connection was unsuccessful.  Possible Causes:
   * Firewall blocking ws protocol
   * Server is down or improperly configured
+  * See potential solution [here](https://github.com/bigbluebutton/bigbluebutton/issues/2628).
 * **1003: Browser version not supported** - Browser doesn’t implement the necessary WebRTC API methods.  Possible Causes:
   * Out of date browser
 * **1004: Failure on call** - The call was attempted, but failed.  Possible Causes:
   * For a full list of causes refer here, http://sipjs.com/api/0.6.0/causes/
   * There are 24 different causes so I don’t really want to list all of them
+  * Solution for this issue [outlined here](https://groups.google.com/forum/#!msg/bigbluebutton-setup/F2MlW6Voj-0/ZXDq5_-uEQAJ).
 * **1005: Call ended unexpectedly** - The call was successful, but ended without user requesting to end the session.  Possible Causes:
   * Unknown
 * **1006: Call timed out** - The library took too long to try and connect the call.  Possible Causes:
@@ -300,6 +302,7 @@ Here are the following lists the possible WebRTC error messages that a user may 
 * **1008: Call transfer failed** - A timeout while waiting for FreeSWITCH to transfer from the echo test to the real conference. This might be caused by a misconfiguration in FreeSWITCH, or there might be a media error and the DTMF command to transfer didn't go through (In this case, the voice in the echo test probably didn't work either.)
 * **1009: Could not fetch STUN/TURN server information** - This indicates either a BigBlueButton bug (or you're using an unsupported new client/old server combination), but could also happen due to a network interruption.
 * **1010: ICE negotiation timeout** - After the call is accepted the client's browser and the server try and negotiate a path for the audio data. In some network setups this negotiation takes an abnormally long time to fail and this timeout is set to avoid the client getting stuck.
+* **1020: Media cloud could not reach the server** - See how to solve this [here](https://github.com/bigbluebutton/bigbluebutton/issues/6797#issuecomment-607866043).
 
 ## Not running: nginx
 
@@ -650,73 +653,6 @@ If you still see the same error in `catalina.out`, then `/etc/tomcat7/server.xml
 
 Restart tomcat7 again and it should start normally.
 
-## Connect BigBlueButton to an external FreeSWITCH Server
-
-BigBlueButton bundles in FreeSWITCH, but you can configure BigBlueButton to use an external FreeSWITCH server.
-
-First, edit `/usr/share/red5/webapps/bigbluebutton/WEB-INF/bigbluebutton.properties`
-
-```properties
-freeswitch.esl.host=127.0.0.1
-freeswitch.esl.port=8021
-freeswitch.esl.password=ClueCon
-```
-
-Change `freeswitch.esl.host` to point to your external FreeSWITCH IP address. Change the default `freeswitch.esl.password` to the ESL password for your server.
-
-You can use http://strongpasswordgenerator.com/ to generate passwords.
-
-In your external FreeSWITCH server, edit `/opt/freeswitch/conf/autoload_configs/event_socket.conf.xml`.
-
-```xml
-<configuration name="event_socket.conf" description="Socket Client">
-  <settings>
-    <param name="nat-map" value="false"/>
-    <param name="listen-ip" value="127.0.0.1"/>
-    <param name="listen-port" value="8021"/>
-    <param name="password" value="ClueCon"/>
-    <!-- param name="apply-inbound-acl" value="localnet.auto"/ -->
-  </settings>
-</configuration>
-```
-
-Change the `listen-ip` to your external FreeSWITCH server IP and also change the `password` to be the same as `freeswitch.esl.password`.
-
-Edit `/usr/share/red5/webapps/sip/WEB-INF/bigbluebutton-sip.properties`
-
-```properties
-bbb.sip.app.ip=127.0.0.1
-bbb.sip.app.port=5070
-
-sip.server.username=bbbuser
-sip.server.password=secret
-
-freeswitch.ip=127.0.0.1
-freeswitch.port=5060
-```
-
-Change `bbb.sip.app.ip` to your BigBlueButton server ip.
-
-Change `sip.server.password` to something else.
-
-Change `freeswitch.ip` to your external FreeSWITCH ip.
-
-In your external FreeSWITCH server.
-
-Edit `/opt/freeswitch/conf/directory/default/bbbuser.xml`
-
-```xml
-  <user id="bbbuser">
-    <params>
-      <!-- omit password for authless registration -->
-      <param name="password" value="secret"/>
-      <!-- What this user is allowed to access -->
-      <!--<param name="http-allowed-api" value="jsapi,voicemail,status"/> -->
-    </params>
-```
-
-Change `password` to match the password you set in `sip.server.password`.
-
 ## WebRTC video not working with Kurento
 
 Check the value for `/proc/sys/net/ipv4/tcp_syncookies` that it contains the value `1`.
@@ -966,3 +902,6 @@ HERE
 $  sudo systemctl daemon-reload
 ~~~
 
+## Server running behind NAT
+
+The [following issue](https://github.com/bigbluebutton/bigbluebutton/issues/8792) might be helpful in debugging if you run into errors and your server is behind NAT.
