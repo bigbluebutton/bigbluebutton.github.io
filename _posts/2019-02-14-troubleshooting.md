@@ -11,13 +11,17 @@ If you encountered any problems with the installation of BigBlueButton, this doc
 
 Have you encountered a problem with BigBluebutton?
 
-For supporting you in resolving the problem quickly, the BigBlueButton project provides detailed documentation (what you are reading now), tutorial videos, [issues database](https://github.com/bigbluebutton/bigbluebutton/issues), and [public mailing lists](https://bigbluebutton.org/support/community/).
+If you need the problem to be solved quickly or lack the required technical knowledge, we suggest you [reach out to the companies](https://bigbluebutton.org/commercial-support/) that provide commercial support.  The revenue they earn helps to improve BigBlueButton for everyone.
+
+If you otherwise wish to tackle the problem yourself, the BigBlueButton project provides detailed documentation (what you are reading now), tutorial videos, [issues database](https://github.com/bigbluebutton/bigbluebutton/issues), and [public mailing lists](https://bigbluebutton.org/support/community/).
 
 > **Note**: If you apply to join one of our mailing lists, be sure to answer the challenge question; otherwise, your application will look like SPAM and will be denied.
 
-The first step is to solving any problem is to read the associated documentation.  The sections below will provide you relevant links.
+The first step is to solving any problem is to **read the associated documentation**.
 
-The our documentation, issue database, and mailing lists are all indexed by search engines.  When you encountered a problem, try searching for keywords around it.  If your receiving a specific error message when installing BigBlueButton, for example, then try searching the error message itself (be sure to include the word `bigbluebutton` to narrow your search).  There is an excellent chance that if others have encountered the same issue, a few minutes with Google will help you find one or more documentation links, issues, or mailing list discussions related to it.
+Our documentation, issue database, and mailing lists are all indexed by search engines.  When you encounter a problem, try searching for keywords around it.  If you're receiving a specific error message when installing BigBlueButton, for example, then try searching the error message itself (be sure to include the word `bigbluebutton` to narrow your search).  There is an excellent chance that if others have encountered the same issue, a few minutes with Google will help you find one or more documentation links, issues, or mailing list discussions related to it.
+
+If you find that the problem still persists or you have any other questions, you can ask other users in the mailing lists. If you suspect that your issue is a bug, you can post on our [issue tracker](https://github.com/bigbluebutton/bigbluebutton/issues/), otherwise **refrain from using the GitHub issue tracker for general queries**.
 
 ## Help using BigBlueButton
 
