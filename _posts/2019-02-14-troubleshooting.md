@@ -125,54 +125,6 @@ If you see text after the line `** Potential problems described below **`, then 
 
 ## Recording
 
-### Delete recordings older than N days
-
-You may want to not keep recordings that are older than N days.  Add the following script to `/etc/cron.daily/delete-old-recordings`:
-
-```bash
-#!/bin/bash
-
-MAXAGE=7
-
-LOGFILE=/var/log/bigbluebutton/bbb-recording-cleanup.log
-
-shopt -s nullglob
-
-NOW=$(date +%s)
-
-echo "$(date --rfc-3339=seconds) Deleting recordings older than ${MAXAGE} days" >>"${LOGFILE}"
-
-for donefile in /var/bigbluebutton/recording/status/published/*-presentation.done ; do
-        MTIME=$(stat -c %Y "${donefile}")
-        # Check the age of the recording
-        if [ $(( ( $NOW - $MTIME ) / 86400 )) -gt $MAXAGE ]; then
-                MEETING_ID=$(basename "${donefile}")
-                MEETING_ID=${MEETING_ID%-presentation.done}
-                echo "${MEETING_ID}" >> "${LOGFILE}"
-
-                bbb-record --delete "${MEETING_ID}" >>"${LOGFILE}"
-        fi
-done
-
-for eventsfile in /var/bigbluebutton/recording/raw/*/events.xml ; do
-        MTIME=$(stat -c %Y "${eventsfile}")
-        # Check the age of the recording
-        if [ $(( ( $NOW - $MTIME ) / 86400 )) -gt $MAXAGE ]; then
-                MEETING_ID="${eventsfile%/events.xml}"
-                MEETING_ID="${MEETING_ID##*/}"
-                echo "${MEETING_ID}" >> "${LOGFILE}"
-
-                bbb-record --delete "${MEETING_ID}" >>"${LOGFILE}"
-        fi
-done
-```
-
-You can modify length your server will retain recordings by changing `MAXAGE=7` to a different number.  After you create the file, make sure it is executable.
-
-```powershell
-$ chmod +x /etc/cron.daily/etc/cron.daily/delete-old-recordings
-```
-
 ### Recording not processing after upgrading
 
 If after updating from BigBlueButton 2.0 to BigBlueButton 2.2 your recordings are not processing, and if you are seeing `Permission denied` errors in `/var/log/bigbluebutton/bbb-rap-worker.log`

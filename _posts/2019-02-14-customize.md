@@ -75,7 +75,11 @@ for eventsfile in /var/bigbluebutton/recording/raw/*/events.xml ; do
 done
 ```
 
-Change the value for `MAXAGE` to specify how many days to retain the `presentation` format recordings on your BigBlueButton server.
+Change the value for `MAXAGE` to specify how many days to retain the `presentation` format recordings on your BigBlueButton server. After you create the file, make sure it is executable.
+
+```powershell
+$ chmod +x /etc/cron.daily/etc/cron.daily/delete-old-recordings
+```
 
 ### Move recordings to a different partition
 
