@@ -5,7 +5,7 @@ category: support
 date: 2015-04-04 22:26:10
 ---
 
-# Release 2.2-RC
+# Release 2.2
 
 Released: November 6, 2019 ([Installation Instructions](/2.2/install.html))
 

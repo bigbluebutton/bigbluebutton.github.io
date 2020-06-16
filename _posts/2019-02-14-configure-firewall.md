@@ -278,14 +278,16 @@ $ grep enableListenOnly /usr/share/meteor/bundle/programs/server/assets/app/conf
     enableListenOnly: true
 ```
 
-then Kurento is providing a listen only audio stream for users of the HTML5 client (just as red5 provides listen only audio stream for Flash users). In this case, edit `/usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml` change the value to `ip` to match the external IP address of the server.  For example, if the servers external IP address is `203.0.113.1`, then edit this file so the value for `ip` is as follows
+then Kurento is providing a listen only audio stream for users of the HTML5 client. In this case, edit `/usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml` change the value to `ip` to match the external IP address of the server, and the value of `sip_ip` to match the internal IP address of the server (where FreeSWITCH is listening to port 5066).  For example, if the servers external IP address is `203.0.113.1` and the internal IP address is `172.30.1.145` then edit `default.yml` and change the values for `ip` and `sip_ip` as follows:
 
 ```yaml
 freeswitch:
-    ip: '203.0.113.1'
-    port: '5066'
+    ip: 203.0.113.1
+    sip_ip: 172.30.1.145
+    port: 5066
 ```
 
+Next, change the value of sip+ip
 You also need to [setup Kurento to use a STUN server](#extra-steps-when-server-is-behind-nat).
 
 After making the above changes, restart BigBlueButton.
