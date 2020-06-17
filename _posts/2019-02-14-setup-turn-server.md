@@ -3,6 +3,7 @@ layout: page
 title: "Configure TURN"
 category: 2.2
 date: 2019-02-14 22:13:42
+order: 4
 ---
 
 This document covers how to setup a TURN server for BigBlueButton to allow users behind restrictive firewalls to connect.
