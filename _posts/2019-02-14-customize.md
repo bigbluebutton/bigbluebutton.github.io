@@ -1057,15 +1057,15 @@ Useful tools for development:
 
 ### Kurento parameters
 
-| Parameter                                | Description                                                                                                          | Default value |
-| ---------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | ------------- |
-| `userdata-bbb_auto_share_webcam=`        | If set to `true`, the client will start the process of sharing webcam (if any) automatically upon loading the client | `false`       |
-| `userdata-bbb_preferred_camera_profile=` | Specifies a preferred camera profile to use out of those defined in the `settings.yml`                               | none          |
-| `userdata-bbb_enable_screen_sharing=`    | If set to `false`, the client will display the screen sharing button if they are the current presenter               | `true`        |
-| `userdata-bbb_enable_video=`             | If set to `false`, the client will display the webcam sharing button (in effect disabling/enabling webcams)          | `true`        |
-| `userdata-bbb_enable_video_stats=`       | If set to `true`, the client will display connection statistics for the user                                         | `false`       |
-| `userdata-bbb_skip_video_preview=`       | If set to `true`, the client will not see a preview of their webcam before sharing it                                | `false`       |
-
+| Parameter                                | Description                                                                                                                        | Default value |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `userdata-bbb_auto_share_webcam=`        | If set to `true`, the client will start the process of sharing webcam (if any) automatically upon loading the client               | `false`       |
+| `userdata-bbb_preferred_camera_profile=` | Specifies a preferred camera profile to use out of those defined in the `settings.yml`                                             | none          |
+| `userdata-bbb_enable_screen_sharing=`    | If set to `false`, the client will display the screen sharing button if they are the current presenter                             | `true`        |
+| `userdata-bbb_enable_video=`             | If set to `false`, the client will display the webcam sharing button (in effect disabling/enabling webcams)                        | `true`        |
+| `userdata-bbb_enable_video_stats=`       | If set to `true`, the client will display connection statistics for the user                                                       | `false`       |
+| `userdata-bbb_skip_video_preview=`       | If set to `true`, the client will not see a preview of their webcam before sharing it                                              | `false`       |
+| `userdata-bbb_mirror_own_video=`         | If set to `true`, the client will see a mirrored version of their webcam. Doesn't affect the incoming video stream for other users. | `false`       |
 
 ### Presentation parameters
 
@@ -1075,11 +1075,11 @@ Useful tools for development:
 
 ### Whiteboard parameters
 
-| Parameter                           | Description                                                                                                    | Default value |
-| ----------------------------------- | -------------------------------------------------------------------------------------------------------------- | ------------- |
+| Parameter                           | Description                                                                                                     | Default value |
+| ----------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------------- |
 | `userdata-bbb_multi_user_pen_only=` | If set to `true`, only the pen tool will be available to non-participants when multi-user whiteboard is enabled | `false`       |
-| `userdata-bbb_presenter_tools=`     | Pass in an array of permitted tools from `settings.yml`                                                        | all enabled   |
-| `userdata-bbb_multi_user_tools=`    | Pass in an array of permitted tools for non-presenters from `settings.yml`                                     | all enabled   |
+| `userdata-bbb_presenter_tools=`     | Pass in an array of permitted tools from `settings.yml`                                                         | all enabled   |
+| `userdata-bbb_multi_user_tools=`    | Pass in an array of permitted tools for non-presenters from `settings.yml`                                      | all enabled   |
 
 ### Themeing & styling parameters
 
