@@ -583,6 +583,10 @@ update-alternatives --config java  # Choose java-8 as default
 
 Run `java -version` and confirm it now shows the default as `1.8.0`, and then restart BigBlueButton with `sudo bbb-conf --restart`
 
+### Blank presentation area on create or upload
+
+If you join a meeting and the default presentation is not visible or your uploaded presentation doesn't display, then this is most likely due to a permissions error. To solve this, ensure that `/var/bigbluebutton/` is owned by `bigbluebutton` rather than `root` or any other account. See [this issue](https://github.com/bigbluebutton/bigbluebutton/issues/9867) for more explanation.
+
 ### Unable to create presentation
 
 If you see the following error in `/var/log/bigbluebutton/bbb-web.log`
