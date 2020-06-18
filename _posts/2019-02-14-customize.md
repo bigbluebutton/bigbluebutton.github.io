@@ -1230,7 +1230,7 @@ To enable the feedback and it's logging to your server, run the following script
 
 HOST=$(cat /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties | grep -v '#' | sed -n '/^bigbluebutton.web.serverURL/{s/.*\///;p}')
 HTML5_CONFIG=/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
-PROTOCOL=https
+PROTOCOL=$(cat` /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties | grep -v '#' | grep '^bigbluebutton.web.serverURL' | sed 's/.*\(http[s]*\).*/\1/')
 
 apt-get install -y nginx-full
 
@@ -1244,6 +1244,7 @@ location /html5log {
         access_log /var/log/nginx/html5-client.log postdata;
         echo_read_request_body;
 }
+HERE
 
 cat > /etc/nginx/conf.d/html5-client-log.conf << HERE
 log_format postdata '\$remote_addr [\$time_iso8601] \$request_body';
@@ -1263,3 +1264,5 @@ The feedback will be written to `/var/log/nginx/html5-client.log`, which you wou
 ```bash
 tail -f /var/log/nginx/html5-client.log | sed -u 's/\\x22/"/g' | sed -u 's/\\x5C//g'
 ```
+
+There used to be an incorrect version of the script above on the docs. If you face any issues after updating it, refer to [this issue](https://github.com/bigbluebutton/bigbluebutton/issues/9065) for solutions.
