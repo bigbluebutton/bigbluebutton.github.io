@@ -22,6 +22,7 @@ sections: [
     ['overview', 'Overview'],
     ['2.2', 'Latest Version'],
     ['greenlight', 'Greenlight'],
+    ['scalelite', 'Scalelite'],
     ['support', 'Support'],
     ['install', '2.0'],
     ['admin', 'Administration'],
