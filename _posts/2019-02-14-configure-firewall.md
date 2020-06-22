@@ -4,6 +4,7 @@ title: "Configure Firewall"
 category: 2.2
 #redirect_from: "/2.0/20install.html"
 date: 2019-02-14 22:13:42
+order: 5
 ---
 
 This document covers firewall configuration for BigBlueButton 2.2.
