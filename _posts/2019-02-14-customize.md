@@ -1033,6 +1033,7 @@ To enable the feedback and it's logging to your server, run the following script
 
 HOST=$(cat /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties | grep -v '#' | sed -n '/^bigbluebutton.web.serverURL/{s/.*\///;p}')
 HTML5_CONFIG=/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
+PROTOCOL=$(cat /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties | grep -v '#' | grep '^bigbluebutton.web.serverURL' | sed 's/.*\(http[s]*\).*/\1/')
 
 apt-get install -y nginx-full
 
