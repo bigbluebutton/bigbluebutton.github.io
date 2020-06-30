@@ -209,8 +209,7 @@ Then we apply the ACL into the profile that receives the calls from external gat
 To debug, try connecting to FS CLI and increase logging level. Once connected, make your call and see what the logs say.
 
 ```bash
-$ cd /opt/freeswitch/bin
-$ ./fs_cli
+$ /opt/freeswitch/bin/fs_cli -p $(xmlstarlet sel -t -m 'configuration/settings/param[@name="password"]' -v @value /opt/freeswitch/etc/freeswitch/autoload_configs/event_socket.conf.xml)
 
   Once connected:
   help -- shows the available commands
