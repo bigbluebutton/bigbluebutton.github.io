@@ -173,11 +173,21 @@ To configure Kurento to use a STUN server from the above list, you need to edit 
 ;pemCertificateECDSA=<path>
 ```
 
-For example, to use the STUN server at 64.233.177.127 with port 19302, edit the lines with `stunServerAddress` and `stunServerPort` as follows:
+For example, to use the STUN server at 172.217.212.127 (the IP address for stun.l.google.com) with port 19302, edit the lines with `stunServerAddress` and `stunServerPort` as follows:
 
 ```ini
-stunServerAddress=64.233.177.127
+stunServerAddress=172.217.212.127
 stunServerPort=19302
+```
+
+To verify that the STUN server is accessible and working, use the `stun` client from the `stuntman-client` package.
+
+```bash
+# sudo apt-get install stuntman-client
+# stun 172.217.212.127:19302
+STUN client version 0.97
+Primary: Open
+Return value is 0x000001
 ```
 
 ## Update FreeSWITCH
