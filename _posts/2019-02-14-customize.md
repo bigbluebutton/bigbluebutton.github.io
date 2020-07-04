@@ -1065,7 +1065,7 @@ Useful tools for development:
 | `userdata-bbb_enable_video=`             | If set to `false`, the client will display the webcam sharing button (in effect disabling/enabling webcams)                         | `true`        |
 | `userdata-bbb_enable_video_stats=`       | If set to `true`, the client will display connection statistics for the user                                                        | `false`       |
 | `userdata-bbb_skip_video_preview=`       | If set to `true`, the client will not see a preview of their webcam before sharing it                                               | `false`       |
-| `userdata-bbb_mirror_own_video=`         | If set to `true`, the client will see a mirrored version of their webcam. Doesn't affect the incoming video stream for other users. | `false`       |
+| `userdata-bbb_mirror_own_webcam=`         | If set to `true`, the client will see a mirrored version of their webcam. Doesn't affect the incoming video stream for other users. | `false`       |
 
 ### Presentation parameters
 
