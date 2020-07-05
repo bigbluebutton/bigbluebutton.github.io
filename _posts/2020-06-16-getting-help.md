@@ -37,7 +37,7 @@ If you don't find a solution, then post a description of the issue to [bigbluebu
 2. Steps to reproduce the problem
 3. Can you reproduce the problem on our [demo server](https://demo.bigbluebutton.org)?
 
-# Help installing BigBlueButton
+# Help installing or running BigBlueButton
 
 If you have encountered a problem with installing or running your BigBlueButton server, then this section will guide you through systematically narrowing down the source of your problem.
 
