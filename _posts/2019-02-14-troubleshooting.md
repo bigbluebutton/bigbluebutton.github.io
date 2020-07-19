@@ -339,6 +339,19 @@ $ sudo bbb-conf --clean
 $ sudo bbb-conf --check
 ```
 
+### Unable to connect using fs_cli
+
+As of BigBlueButton 2.2.18, the packaging now replaces the default `ClueCon` password for connecting to the FreeSWITCH command line interface (`fs_cli`) with a random password.  
+
+(By default, FreeSWITCH only allowed unauthenticated connections from 127.0.0.1, but it's still good security practice to not use default passwords).
+
+To connect to `fs_cli`, use the following command which supplies the password for authenticating.
+
+```
+/opt/freeswitch/bin/fs_cli -p $(xmlstarlet sel -t -m 'configuration/settings/param[@name="password"]' -v @value /opt/freeswitch/etc/freeswitch/autoload_configs/event_socket.conf.xml)
+```
+
+
 ## Installation and packages
 
 ### The following packages have unmet dependencies
