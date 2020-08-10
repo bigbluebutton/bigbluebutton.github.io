@@ -1114,7 +1114,8 @@ The following parameters are only applicable when the HTML5 client is embedded i
 
 #### Changing the background color of the HTML client
 
-For example if you want to change the background colors you could pass the URL encoded version of
+You can change the background color of the HTML5 client with the following stylesheet:
+
 ```css
 :root {
   --loader-bg:#000;
@@ -1128,7 +1129,16 @@ body {
   background-color:#000 !important;
 }
 ```
-which looks like
+You can add this code to a hosted .css file and pass `userdata-bbb_custom_style_url=https://someservice.com/customStyles.css`
+
+Alternatively (for simple changes) you can achieve the same without hosted file.
+
+You can try this in API-MATE - you need the non-encoded version of the CSS
+```
+userdata-bbb_custom_style=:root{--loader-bg:#000;}.overlay--1aTlbi{background-color:#000!important;}body{background-color:#000!important;}
+```
+
+If you are adding this to a join-url you need to URI encode the string (see a sample encoding tool above) 
 ```
 %3Aroot%7B--loader-bg%3A%23000%3B%7D.overlay--1aTlbi%7Bbackground-color%3A%23000!important%3B%7Dbody%7Bbackground-color%3A%23000!important%3B%7D
 ```
