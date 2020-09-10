@@ -1053,7 +1053,7 @@ Useful tools for development:
 
 | Parameter                             | Description                                                                               | Default value |
 | ------------------------------------- | ----------------------------------------------------------------------------------------- | ------------- |
-| `userdata-bbb_display_branding_area=` | [Introduced in BigBlueButton 2.3] If set to `true`, the client will display the branding area in the upper left hand corner | `null`       |
+| `userdata-bbb_display_branding_area=` | If set to `true`, the client will display the branding area in the upper left hand corner | `false`       |
 
 ### Shortcut parameters
 
