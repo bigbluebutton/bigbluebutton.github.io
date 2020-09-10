@@ -1047,12 +1047,13 @@ Useful tools for development:
 | `userdata-bbb_force_listen_only=`          | If set to `true`, the user will be not be able to join with a microphone as an option                                               | `false`       |
 | `userdata-bbb_listen_only_mode=`           | If set to `false`, the user will not be able to join the audio part of the meeting without a microphone (disables listen-only mode) | `true`        |
 | `userdata-bbb_skip_check_audio=`           | If set to `true`, the user will not see the "echo test" prompt on login                                                             | `false`       |
+| `userdata-bbb_override_default_locale=`    | (Introduced in BigBlueButton 2.3) If set to `de`, the user's browser preference will be ignored - the client will be shown in 'de' (i.e. German) regardless of the otherwise preferred locale 'en' (or other)                                                             | `null`       |
 
 ### Branding parameters
 
 | Parameter                             | Description                                                                               | Default value |
 | ------------------------------------- | ----------------------------------------------------------------------------------------- | ------------- |
-| `userdata-bbb_display_branding_area=` | If set to `true`, the client will display the branding area in the upper left hand corner | `false`       |
+| `userdata-bbb_display_branding_area=` | [Introduced in BigBlueButton 2.3] If set to `true`, the client will display the branding area in the upper left hand corner | `null`       |
 
 ### Shortcut parameters
 
