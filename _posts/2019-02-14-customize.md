@@ -176,29 +176,31 @@ sed -i 's/autoStartRecording=.*/autoStartRecording=true/g' /usr/share/bbb-web/WE
 sed -i 's/allowStartStopRecording=.*/allowStartStopRecording=false/g' /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
 ```
 
-### Re-process raw recordings
+### Transfer recordings 
 
-After transfer of recordings (see above), view a sampling of the recordings to ensure they playback correctly (they should).  
+When setting up BigBlueButton on a server, you may want to transfer recordings from an older server.  If your old server has all of the original recording files in the `/var/bigbluebutton/recording/raw` directory, then you can transfer these files to the new server using `rsync`.
 
-If you have transferred over the raw content, you can also reprocess the recordings using the newer scripts to rebuild them with the latest playback format (including any bug fixes made in the latest version).  Note: Re-processing can take a long time (around 25% to 50% of the original length of the recordings), and will use a lot of CPU on your new BigBlueButton server while you wait for the recordings to process.
-
-If you are interested in reprocessing the older recordings, try it first with one or two of the larger recordings.  If there is no perceptible difference, you don't need to reprocess the others.
-
-If your old server has all of the original recording files in the `/var/bigbluebutton/recording/raw` directory, then you can transfer these files to the new server, for example with rsync:
-
-This example rsync command could be run on the new server, and will copy the recording file from the old server.
+For example, running this `rsync` command new server will copy over the recording file from the old server.
 
 ```bash
-$ rsync -rP root@old-bbb-server:/var/bigbluebutton/recording/raw/ /var/bigbluebutton/recording/raw/
+$ rsync -rP root@old-bbb-server.example.com:/var/bigbluebutton/recording/raw/ /var/bigbluebutton/recording/raw/
 ```
 
-There are other ways of transferring these files; for example, you could create a tar archive of the `/var/bigbluebutton/recording/raw` directory, and copy it with scp, or use a shared NFS mount. Any method should work fine.
+Alternatively, you could create a tar archive of the `/var/bigbluebutton/recording/raw` directory, and copy it with scp, or use a shared NFS mount. 
 
-You will then need to fix the permissions on the newly copied recordings:
+After you copy over the files (either through rsync or tar-and-copy), you will then need to fix the permissions on the new server using the following `chown` command.
 
 ```bash
 $ chown -R bigbluebutton:bigbluebutton /var/bigbluebutton/recording/raw
 ```
+
+After transfer of recordings, view a sampling of the recordings to ensure they playback correctly (they should).  
+
+### Re-process raw recordings
+
+If you have transferred over the raw content, you can also reprocess the recordings using the newer scripts to rebuild them with the latest playback format (including any bug fixes made in the latest version).  Note: Re-processing can take a long time (around 25% to 50% of the original length of the recordings), and will use a lot of CPU on your new BigBlueButton server while you wait for the recordings to process.
+
+If you are interested in reprocessing the older recordings, try it first with one or two of the larger recordings.  If there is no perceptible difference, you don't need to reprocess the others.
 
 And initiate the re-processing of a single recording, you can do
 
@@ -211,6 +213,8 @@ where `<recording_id>` is the the file name of the raw recording in `/var/bigblu
 ```bash
 $ sudo bbb-record --rebuild f4ae6fd61e2e95940e2e5a8a246569674c63cb4a-1517234271176
 ```
+
+If your old server has all of the original recording files in the `/var/bigbluebutton/recording/raw` directory, then you can transfer these files to the new server, for example with rsync:
 
 If you want to rebuild all your recordings, enter the command
 
@@ -328,6 +332,68 @@ yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[1].default false
 yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[2].default false
 yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[3].default false
 ```
+
+### Run three parallel Kurento media servers
+[ Available in BigBluebutton 2.2.24 ]
+
+Kurento media server handles three different types of media streams: listen only, webcams, and screen share.  
+
+Running three parallel Kurento media servers (KMS) -- one dedicated to each type of media stream -- should increase the stability of media handling as the load for starting/stopping media streams spreads over three separate KMS processes.  Also, it should increase the reliability of media handling as a crash (and automatic restart) by one KMS will not affect the two.
+
+
+To configure your BigBlueButton server to run three KMS processes, add the following line to `/etc/bigbluebutton/bbb-conf/apply-config.sh`
+
+```sh
+enableMultipleKurentos
+```
+
+and run `sudo bbb-conf --restart`.  You should see
+
+~~~
+  - Configuring three Kurento Media Servers: one for listen only, webcam, and screeshare
+Generating a 2048 bit RSA private key
+....................+++
+......+++
+writing new private key to '/tmp/dtls-srtp-key.pem'
+-----
+Created symlink from /etc/systemd/system/kurento-media-server.service.wants/kurento-media-server-8888.service to /usr/lib/systemd/system/kurento-media-server-8888.service.
+Created symlink from /etc/systemd/system/kurento-media-server.service.wants/kurento-media-server-8889.service to /usr/lib/systemd/system/kurento-media-server-8889.service.
+Created symlink from /etc/systemd/system/kurento-media-server.service.wants/kurento-media-server-8890.service to /usr/lib/systemd/system/kurento-media-server-8890.service.
+~~~
+
+After BigBlueButton finishess starting, three should be three KMS processes running.
+
+~~~
+# netstat -antp | grep kur
+tcp6       0      0 :::8888                 :::*                    LISTEN      5929/kurento-media-
+tcp6       0      0 :::8889                 :::*                    LISTEN      5943/kurento-media-
+tcp6       0      0 :::8890                 :::*                    LISTEN      5956/kurento-media-
+tcp6       0      0 127.0.0.1:8888          127.0.0.1:49132         ESTABLISHED 5929/kurento-media-
+tcp6       0      0 127.0.0.1:8890          127.0.0.1:55540         ESTABLISHED 5956/kurento-media-
+tcp6       0      0 127.0.0.1:8889          127.0.0.1:41000         ESTABLISHED 5943/kurento-media-
+~~~
+
+Each process has its own log file (distinguished by its process ID).
+
+~~~
+# ls -alt /var/log/kurento-media-server/
+total 92
+-rw-rw-r--  1 kurento kurento 11965 Sep 13 17:10 2020-09-13T170908.00000.pid5929.log
+-rw-rw-r--  1 kurento kurento 10823 Sep 13 17:10 2020-09-13T170908.00000.pid5943.log
+-rw-rw-r--  1 kurento kurento 10823 Sep 13 17:10 2020-09-13T170908.00000.pid5956.log
+~~~
+
+Now, if you now join a session and choose listen only (which causes Kurento setup a single listen only stream to FreeSWITCH), share your webcam, or share your screen, you'll see updates occuring independently to each of the above log files as each KMS process handles your request.
+
+To revert back to running a single KMS server (which handles all three meida streams), change the above line in `/etc/bigbluebutton/bbb-conf/apply-config.sh` to
+
+
+```sh
+disableMultipleKurentos
+```
+
+and run `sudo bbb-conf --restart` again.
+
 
 ## Audio
 
@@ -1213,17 +1279,6 @@ $ tail -f /var/log/nginx/html5-client.log | sed -u -e 's/\\x22/"/g' -e 's/\\x5C/
 Here's a sample log entry
 
 ```json
-{  
-   "name":"clientLogger",
-   "level":30,
-   "levelName":"info",
-   "msg":"[audio] iceServers",
-   "time":"2018-08-27T19:32:57.389Z",
-   "src":"https://demo.bigbluebutton.org/html5client/dfe4ad6bfad11b20d1904e76e71d385262781887.js?meteor_js_resource=true:147:782083",
-   "v":1,
-   "extraInfo":{  
-      "sessionToken":"e7boenucj1pwkbfc",
-      "meetingId":"183f0bf3a0982a127bdb8161e0c44eb696b3e75c-1535398242909",
       "requesterUserId":"w_klfavdlkumj8",
       "fullname":"Ios",
       "confname":"Demo Meeting",
