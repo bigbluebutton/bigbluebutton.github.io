@@ -334,7 +334,7 @@ yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[3].default false
 ```
 
 ### Run three parallel Kurento media servers
-[ Available in BigBluebutton 2.2.24 ]
+[ Available in BigBluebutton 2.2.24 (and later releases of 2.2.x) ]
 
 Kurento media server handles three different types of media streams: listen only, webcams, and screen share.  
 
