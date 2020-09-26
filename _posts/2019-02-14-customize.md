@@ -341,13 +341,18 @@ Kurento media server handles three different types of media streams: listen only
 Running three parallel Kurento media servers (KMS) -- one dedicated to each type of media stream -- should increase the stability of media handling as the load for starting/stopping media streams spreads over three separate KMS processes.  Also, it should increase the reliability of media handling as a crash (and automatic restart) by one KMS will not affect the two.
 
 
-To configure your BigBlueButton server to run three KMS processes, add the following line to `/etc/bigbluebutton/bbb-conf/apply-config.sh`
+To configure your BigBlueButton server to run three KMS processes, create a file `/etc/bigbluebutton/bbb-conf/apply-config.sh` with the following contents(or add `enableMultipleKurentos` to your existing `apply-config.sh` file).
 
 ```sh
+#!/bin/bash
+
+# Pull in the helper functions for configuring BigBlueButton
+source /etc/bigbluebutton/bbb-conf/apply-lib.sh
+
 enableMultipleKurentos
 ```
 
-and run `sudo bbb-conf --restart`.  You should see
+Make this file executable with `chmod +x /etc/bigbluebutton/bbb-conf/apply-config.sh` and run `sudo bbb-conf --restart`.  You should see
 
 ~~~
   - Configuring three Kurento Media Servers: one for listen only, webcam, and screeshare
@@ -361,7 +366,7 @@ Created symlink from /etc/systemd/system/kurento-media-server.service.wants/kure
 Created symlink from /etc/systemd/system/kurento-media-server.service.wants/kurento-media-server-8890.service to /usr/lib/systemd/system/kurento-media-server-8890.service.
 ~~~
 
-After BigBlueButton finishess starting, three should be three KMS processes running.
+After BigBlueButton finishess starting, you should see three KMS processes running using the `netstat -antp | grep kur` command.
 
 ~~~
 # netstat -antp | grep kur
