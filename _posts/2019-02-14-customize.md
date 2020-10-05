@@ -322,15 +322,15 @@ If you expect users to share many webcams, to [reduce bandwidth for webcams](#re
 
 ```bash
 echo "  - Setting camera defaults"
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[0].bitrate 50
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[1].bitrate 100
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[2].bitrate 200
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[3].bitrate 300
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==low).bitrate' 50
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==medium).bitrate' 100
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==high).bitrate' 200
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==hd).bitrate' 300
 
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[0].default true
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[1].default false
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[2].default false
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[3].default false
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==low).default' true
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==medium).default' false
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==high).default' false
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==hd).default' false
 ```
 
 ### Run three parallel Kurento media servers
