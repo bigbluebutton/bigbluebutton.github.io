@@ -45,12 +45,14 @@ You need to set up a fully qualified domain name that resolves to the external I
 
 ## Required Ports
 
-On the coturn server, you need to have the following ports (in addition port 22) available for BigBlueButton clients to connect (port 443) and for coturn to connect to your BigBlueButton server (49152 - 65535). In addition if you want to use the certbot you'll need port 80 open for the HTTP challenge.
+On the coturn server, you need to have the following ports (in addition to port 22) available for BigBlueButton clients to connect (port 443, 3478 and 5349) and for coturn to connect to your BigBlueButton server (49152 - 65535). If you want to use the certbot you'll need port 80 open for the HTTP challenge.
 
 | Ports       | Protocol | Description           |
 | ----------- | -------- | --------------------- |
 | 80          | TCP      | certbot               |
-| 443         | TCP      | TLS listening port    |
+| 443         | TCP/UDP  | TLS listening port    |
+| 3478        | TCP/UCP  | listening port        |
+| 5349        | TCP/UCP  | TLS listening port    |
 | 49152-65535 | UDP      | relay ports range     |
 
 ## Generating TLS certificates
@@ -90,6 +92,7 @@ You can repace the contents `/etc/turnserver.conf` with this file and make two c
 # as well as port 443 for TURN over TLS, which can bypass firewalls.
 listening-port=3478
 tls-listening-port=443
+alt-tls-listening-port=5349
 
 # If the server has multiple IP addresses, you may wish to limit which
 # addresses coturn is using. Do that by setting this option (it can be
@@ -218,12 +221,16 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
             ">
 
     <bean id="stun1" class="org.bigbluebutton.web.services.turn.StunServer">
-        <constructor-arg index="0" value="stun:turn.example.com:443"/>
+        <constructor-arg index="0" value="stun:turn.example.com:443?transport=tls"/>
     </bean>
 
-    <!--bean id="stun2" class="org.bigbluebutton.web.services.turn.StunServer">
-        <constructor-arg index="0" value="stun:stun2.example.com"/>
-    </bean-->
+    <bean id="stun2" class="org.bigbluebutton.web.services.turn.StunServer">
+        <constructor-arg index="0" value="stun:turn.example.com:3478?transport=tcp"/>
+    </bean>
+
+    <bean id="stun3" class="org.bigbluebutton.web.services.turn.StunServer">
+        <constructor-arg index="0" value="stun:turn.example.com:5349?transport=tls"/>
+    </bean>
 
     <!--bean id="iceCandidate1" class="org.bigbluebutton.web.services.turn.RemoteIceCandidate">
         <constructor-arg index="0" value="192.168.0.1"/>
@@ -235,27 +242,35 @@ with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
 
     <bean id="turn1" class="org.bigbluebutton.web.services.turn.TurnServer">
         <constructor-arg index="0" value="<random value>"/>
-        <constructor-arg index="1" value="turn:turn.example.com:443?transport=tcp"/>
+        <constructor-arg index="1" value="turn:turn.example.com:443?transport=tls"/>
         <constructor-arg index="2" value="86400"/>
     </bean>
 
-    <!--bean id="turn2" class="org.bigbluebutton.web.services.turn.TurnServer">
+    <bean id="turn2" class="org.bigbluebutton.web.services.turn.TurnServer">
         <constructor-arg index="0" value="secret"/>
-        <constructor-arg index="1" value="turns:turn2.example.com:443"/>
+        <constructor-arg index="1" value="turn:turn.example.com:3487?transport=tcp"/>
         <constructor-arg index="2" value="86400"/>
-    </bean-->
+    </bean>
+
+    <bean id="turn3" class="org.bigbluebutton.web.services.turn.TurnServer">
+        <constructor-arg index="0" value="secret"/>
+        <constructor-arg index="1" value="turn:turn.example.com:5349?transport=tls"/>
+        <constructor-arg index="2" value="86400"/>
+    </bean>
 
     <bean id="stunTurnService" class="org.bigbluebutton.web.services.turn.StunTurnService">
         <property name="stunServers">
             <set>
                 <ref bean="stun1" />
-                <!--ref bean="stun2" /-->
+                <ref bean="stun2" />
+                <ref bean="stun3" />
             </set>
         </property>
         <property name="turnServers">
             <set>
                 <ref bean="turn1" />
-                <!--ref bean="turn2" /-->
+                <ref bean="turn2" />
+                <ref bean="turn3" />
             </set>
         </property>
         <property name="remoteIceCandidates">
