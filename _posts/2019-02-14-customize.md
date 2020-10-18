@@ -322,15 +322,15 @@ If you expect users to share many webcams, to [reduce bandwidth for webcams](#re
 
 ```bash
 echo "  - Setting camera defaults"
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[0].bitrate 50
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[1].bitrate 100
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[2].bitrate 200
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[3].bitrate 300
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==low).bitrate' 50
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==medium).bitrate' 100
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==high).bitrate' 200
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==hd).bitrate' 300
 
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[0].default true
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[1].default false
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[2].default false
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[3].default false
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==low).default' true
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==medium).default' false
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==high).default' false
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==hd).default' false
 ```
 
 ### Run three parallel Kurento media servers
@@ -589,20 +589,20 @@ iptables -I INPUT  -p udp --dport 5060 -s 64.2.142.33 -j ACCEPT
 
 With these rules, you won't get spammed by bots scanning for SIP endpoints and trying to connect.
 
-### Turn off the "comfort noise" when no one is speaking
+### Turn on the "comfort noise" when no one is speaking
 
-FreeSWITCH applies a "comfort noise"'" that is a slight background hiss to let users know they are still in a voice conference even when no one is talking (otherwise, they may forget they are connected to the conference bridge and say something unintended for others).  
+FreeSWITCH has the ability to add a "comfort noise"'" that is a slight background hiss to let users know they are still in a voice conference even when no one is talking (otherwise, they may forget they are connected to the conference bridge and say something unintended for others).  
 
-If you want to remove the comfort noise, edit `/opt/freeswitch/conf/autoload_configs/conference.conf.xml` and change
+If you want to enable, edit `/opt/freeswitch/conf/autoload_configs/conference.conf.xml` and change
 
 ```xml
-<param name="comfort-noise" value="true"/>
+<param name="comfort-noise" value="false"/>
 ```
 
 to
 
 ```xml
-<param name="comfort-noise" value="false"/>
+<param name="comfort-noise" value="true"/>
 ```
 
 Then restart BigBlueButton
