@@ -36,7 +36,7 @@ is defined near the top of the BigBlueButton cron job.
 
 ### Delete recordings older than N days
 
-To delete recordings older than 14 days, add the following cron job to `/etc/cron.daily/bbb-recording-cleanup`
+To delete recordings older than 14 days, create the file `/etc/cron.daily/bbb-recording-cleanup` with the contents
 
 ```bash
 #!/bin/bash
@@ -76,9 +76,9 @@ for eventsfile in /var/bigbluebutton/recording/raw/*/events.xml ; do
 done
 ```
 
-Change the value for `MAXAGE` to specify how many days to retain the `presentation` format recordings on your BigBlueButton server. After you create the file, make sure it is executable.
+Change the value for `MAXAGE` to specify how many days to retain the `presentation` format recordings on your BigBlueButton server.  After you create the file, make it executable.
 
-```powershell
+```bash
 $ chmod +x /etc/cron.daily/etc/cron.daily/delete-old-recordings
 ```
 
