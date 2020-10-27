@@ -546,7 +546,7 @@ Internal MeetingID                                               Time           
 6e35e3b2778883f5db637d7a5dba0a427f692e91-1538941988186  Sun Oct 7 15:53:08 EDT 2018  XX   XX  X          6                      presentation        English 101
 ```
 
-The first recording has an internal `meetingID` of `238ff79fd66331a59274a8f3f05f1c0cd3e278b4-1538942925244`.  If this is the recoding you want to edit, you'll find the events.xml in the location `/var/bigbluebutton/recording/raw/238ff79fd66331a59274a8f3f05f1c0cd3e278b4-1538942925244\events.xml`.  Edit this file and look for the first `RecordingStatusEvent`, such as
+The first recording has an internal `meetingID` of `238ff79fd66331a59274a8f3f05f1c0cd3e278b4-1538942925244`.  If this is the recoding you want to edit, you'll find the events.xml in the location `/var/bigbluebutton/recording/raw/238ff79fd66331a59274a8f3f05f1c0cd3e278b4-1538942925244/events.xml`.  Edit this file and look for the first `RecordingStatusEvent`, such as
 
 ```
   <event timestamp="4585088638" module="PARTICIPANT" eventname="RecordStatusEvent">
