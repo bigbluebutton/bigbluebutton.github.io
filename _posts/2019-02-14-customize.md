@@ -79,7 +79,7 @@ done
 Change the value for `MAXAGE` to specify how many days to retain the `presentation` format recordings on your BigBlueButton server.  After you create the file, make it executable.
 
 ```bash
-$ chmod +x /etc/cron.daily/etc/cron.daily/delete-old-recordings
+$ chmod +x /etc/cron.daily/bbb-recording-cleanup
 ```
 
 ### Move recordings to a different partition
