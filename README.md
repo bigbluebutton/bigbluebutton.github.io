@@ -1,12 +1,16 @@
-This is repository contains the developer documentation for BigBlueButton.  This is located at [http://docs.bigbluebutton.org/](http://docs.bigbluebutton.org/).
+BigBlueButton Documentation
+===========================
 
-This repository uses Jekyll to build the documentation site.  When making changes to the docs, you should first setup Jekyll so you can build the documentation site locally to preview any changes before you push to git..
+This repository contains the documentation for BigBlueButton located at [docs.bigbluebutton.org](http://docs.bigbluebutton.org/).
+
+This repository uses Jekyll to build the documentation site.
+When making changes to the docs, you should setup Jekyll to build it locally.
+That way, you can preview any changes before creating pull requests.
 
 ### The easy way to preview (using Docker)
 
-The easy to generate the BigBlueButton documentation locally and see the effect of your changes before committing is to create a Docker image that runs Jekyll. For example, you've checked out this repository to `~/bigbluebutton.github.io`, then change your directory to `~/bigbluebutton.github.io`
-
-If you have installed Docker, then you can create a docker image called `github-pages` using the following command
+An easy way to generate the BigBlueButton documentation locally and see the effect of your changes before committing is to create a Docker image that runs Jekyll.
+If you have installed Docker, then you can create a docker image called `github-pages` by switching to the repository directory and executing the following command:
 
 ~~~
 docker build -t github-pages .
