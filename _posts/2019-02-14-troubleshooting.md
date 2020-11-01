@@ -351,6 +351,24 @@ To connect to `fs_cli`, use the following command which supplies the password fo
 /opt/freeswitch/bin/fs_cli -p $(xmlstarlet sel -t -m 'configuration/settings/param[@name="password"]' -v @value /opt/freeswitch/etc/freeswitch/autoload_configs/event_socket.conf.xml)
 ```
 
+We also added `/usr/local/bin/fs_clibbb` with the contents
+
+```bash
+#!/bin/bash
+
+/opt/freeswitch/bin/fs_cli -p $(xmlstarlet sel -t -m 'configuration/settings/param[@name="password"]' -v @value /opt/freeswitch/etc/freeswitch/autoload_configs/event_socket.conf.xml)
+```     
+
+that will let you type `fs_clibbb` at the command prompt to get into FreeSWITCH console.
+
+
+### Echo test hangs upgrading BigBlueButton 2.2
+
+The install scripts now change the default CLI password for FreeSWITCH and the other parts of BigBlueButton need to use this new password.  For a new installation, the install scripts will automatically set this new password.
+
+If you upgrade using [bbb-install.sh](https://github.com/bigbluebutton/bbb-install), the script will update the FreeSWITCH password using `sudo bbb-conf --setip <hostname>`.  
+
+If you upgraded using [manual steps](https://docs.bigbluebutton.org/2.2/install.html#upgrading-from-bigbluebutton-22), be sure to do ao `sudo bbb-conf --setip <hostname>` to sync all the FreeSWITCH passwords.
 
 ## Installation and packages
 
