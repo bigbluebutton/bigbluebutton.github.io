@@ -180,15 +180,16 @@ stunServerAddress=172.217.212.127
 stunServerPort=19302
 ```
 
-To verify that the STUN server is accessible and working, use the `stun` client from the `stuntman-client` package.
+To verify that the STUN server is accessible and working, use `stunclient` from the `stuntman-client` package.
 
 ```bash
-# sudo apt-get install stuntman-client
-# stun 172.217.212.127:19302
-STUN client version 0.97
-Primary: Open
-Return value is 0x000001
+# sudo apt install stuntman-client
+# stunclient 172.217.212.127 19302
+Binding test: success
+Local address: 10.128.0.8:41870
+Mapped address: 104.155.132.199:41870
 ```
+(The port 41870 is a random example.  Different runs of this command will choose different example ports.)
 
 ## Update FreeSWITCH
 
