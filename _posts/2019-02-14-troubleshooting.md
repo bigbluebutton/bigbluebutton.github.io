@@ -786,6 +786,59 @@ $ sudo bbb-conf --restart
 
 You can run BigBlueButton within a LXD container.
 
+### Unable to connect to redis 
+
+The packages `bbb-apps-akka`, `bbb-fsesl-akka`, and `bbb-transcode-akka` are packaged by sbt, but they need to have redis-server running before they startup.  If `sudo bbb-conf --debug` shows redis connection errors
+
+~~~
+Sep 22 15:32:12 sv21 bbb-apps-akka[7804]: Exception in thread "main" io.lettuce.core.RedisConnectionException: Unable to connect to 127.0.0.1:6379
+Sep 22 15:32:12 sv21 bbb-apps-akka[7804]: #011at io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:78)
+Sep 22 15:32:12 sv21 bbb-apps-akka[7804]: #011at io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:56)
+Sep 22 15:32:12 sv21 bbb-apps-akka[7804]: Caused by: io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: /127.0.0.1:6379
+Sep 22 15:32:12 sv21 bbb-apps-akka[7804]: Caused by: java.net.ConnectException: Connection refused
+Sep 22 15:32:12 sv21 bbb-fsesl-akka[7893]: Exception in thread "main" io.lettuce.core.RedisConnectionException: Unable to connect to 127.0.0.1:6379
+Sep 22 15:32:12 sv21 bbb-fsesl-akka[7893]: #011at io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:78)
+Sep 22 15:32:12 sv21 bbb-fsesl-akka[7893]: #011at io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:56)
+Sep 22 15:32:12 sv21 bbb-fsesl-akka[7893]: Caused by: io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: /127.0.0.1:6379
+Sep 22 15:32:12 sv21 bbb-fsesl-akka[7893]: Caused by: java.net.ConnectException: Connection refused
+Sep 22 15:32:13 sv21 bbb-transcode-akka[8001]: Exception in thread "main" io.lettuce.core.RedisConnectionException: Unable to connect to 127.0.0.1:6379
+Sep 22 15:32:13 sv21 bbb-transcode-akka[8001]: #011at io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:78)
+Sep 22 15:32:13 sv21 bbb-transcode-akka[8001]: #011at io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:56)
+Sep 22 15:32:13 sv21 bbb-transcode-akka[8001]: Caused by: io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: /127.0.0.1:6379
+Sep 22 15:32:13 sv21 bbb-transcode-akka[8001]: Caused by: java.net.ConnectException: Connection refused
+~~~
+
+you can add overrides for these three packages to ensure they start after redis.server.  Run the following script.
+
+~~~
+#!/bin/bash
+
+mkdir -p /etc/systemd/system/bbb-apps-akka.service.d
+cat > /etc/systemd/system/bbb-apps-akka.service.d/override.conf <<HERE
+[Unit]
+Requires=redis-server.service
+After=redis-server.service
+HERE
+
+mkdir -p /etc/systemd/system/bbb-fsesl-akka.service.d
+cat > /etc/systemd/system/bbb-fsesl-akka.service.d/override.conf <<HERE
+[Unit]
+Requires=redis-server.service
+After=redis-server.service
+HERE
+
+
+mkdir -p /etc/systemd/system/bbb-transcode-akka.service.d
+cat > /etc/systemd/system/bbb-transcode-akka.service.d/override.conf <<HERE
+[Unit]
+Requires=redis-server.service
+After=redis-server.service
+HERE
+~~~
+
+The script `bbb-install` now creates these overrides by default.
+
+
 ## Legacy errors
 
 ### Conference not found errors
