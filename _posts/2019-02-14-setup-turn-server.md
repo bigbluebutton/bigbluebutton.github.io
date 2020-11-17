@@ -82,6 +82,8 @@ You can repace the contents `/etc/turnserver.conf` with this file and make two c
 * Replace `turn.example.com` with the hostname of your TURN server, and  
 * Replace `<random value>` to a random value for a shared secret (instructions for generating a new secret are in a comment in the file).
 
+Attention: The `turnserver` process will run as the `turnserver` user, which usually doesn't have access to the certificates/keys in `/etc/letsencrypt/live`. It is recommended that you either create a `ssl-cert` user group, add the `turnserver` user to it and adjust the permissions for `/etc/letsencrypt/live` such that the group can read it or, alternatively, copy the certificates/keys to a safe location (that `turnserver` has access to) after each certificate renewal.
+
 ```ini
 # Example coturn configuration for BigBlueButton
 
