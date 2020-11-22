@@ -774,13 +774,13 @@ For more information see [Installing Greenlight](/greenlight/gl-install.html).
 
 ## Networking
 
-### Secure your system -- restrict access to specific ports
+### Setup a firewall
 
 Configuring IP firewalling is *essential for securing your installation*. By default, many services are reachable across the network. This allows BigBlueButton operate in clusters and private data center networks -- but if your BigBlueButton server is publicly available on the internet, you need to run a firewall to reduce access to the minimal required ports.
 
 If your server is behind a firewall already -- such as running within your company or on an EC2 instance behind a Amazon Security Group -- and the firewall is enforcing the above restrictions, you don't need a second firewall and can skip this section.
 
-BigBlueButton comes with a [UFW](https://launchpad.net/ufw) based ruleset. It it can be applied on restart (c.f. [Automatically apply configuration changes on restart](#automatically-apply-configuration-changes-on-restart)) and restricts access only to the following needed ports:
+BigBlueButton comes with a [UFW](https://launchpad.net/ufw) based ruleset.  It it can be applied on restart (c.f. [Automatically apply configuration changes on restart](#automatically-apply-configuration-changes-on-restart)) and restricts access only to the following needed ports:
 
 * TCP/IP port 22 for SSH
 * TCP/IP port 80 for HTTP
@@ -795,7 +795,9 @@ tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      
 tcp6       0      0 :::22                   :::*                    LISTEN      1739/sshd
 ```
 
-To restrict external access minimal needed ports for BigBlueButton (with [HTML5 client set as default](#make-the-html5-client-default)), use the following commands:
+To restrict external access minimal needed ports for BigBlueButton (with [HTML5 client set as default](#make-the-html5-client-default)).  BigBlueButton supplies a helper function that you can call in `/etc/bigbluebutton/bbb-conf/apply-conf.sh` to setup a minimal firewall (see [Setup Firewall](#setup-firewall).
+
+You can also do it manually with the following commands
 
 ```bash
 $ apt-get install -y ufw
@@ -805,13 +807,14 @@ ufw allow 16384:32768/udp
 ufw --force enable
 ```
 
-These `ufw` firewall rules will be automatically re-applied on server reboot.
+These `ufw` firewall rules will be automatically re-applied on server reboot.  
 
 Besides IP-based firewalling, you can explore web application firewalls such as [ModSecurity](https://modsecurity.org/) that provide additional security by checking requests to various web-based components.
 
+
 ### Setup Firewall
 
-To configure a firewall for your BigBlueButton server (recommended), add `enableUFWRules` to `apply-config.sh`, as in
+To configure a firewall for your BigBlueButton server (recommended), add `enableUFWRules` to `/etc/bigbluebutton/bbb-conf/apply-config.sh`, as in
 
 ```sh
 enableUFWRules
