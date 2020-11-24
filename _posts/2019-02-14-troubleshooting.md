@@ -370,6 +370,29 @@ If you upgrade using [bbb-install.sh](https://github.com/bigbluebutton/bbb-insta
 
 If you upgraded using [manual steps](https://docs.bigbluebutton.org/2.2/install.html#upgrading-from-bigbluebutton-22), be sure to do ao `sudo bbb-conf --setip <hostname>` to sync all the FreeSWITCH passwords.
 
+### FreeSWITCH using default stun server
+
+For many years, in BigBlueButton's FreeSWITCH configuration file `/opt/freeswitch/etc/freeswitch/vars.xml`, the default value for `external_rtp_ip` was `stun.freeswitch.org`
+
+```xml
+  <X-PRE-PROCESS cmd="set" data="external_rtp_ip=stun:stun.freeswitch.org"/>
+```
+
+However, this is not a reliable choice for stun server. Recommend either changing it to your servers external IP address.  For example, if your server has an external IP at 234.32.3.3, then change this to
+
+```xml
+  <X-PRE-PROCESS cmd="set" data="external_rtp_ip=234.32.3.3"/>
+```
+
+You can add a line in `/etc/bigbluebutton/bbb-conf/apply-conf.sh` to always apply this value.
+
+```bash
+xmlstarlet edit --inplace --update '//X-PRE-PROCESS[@cmd="set" and starts-with(@data, "external_rtp_ip=")]/@data' --value "external_rtp_ip=234.32.3.3" /opt/freeswitch/conf/vars.xml
+```
+Note: If your server has an internal/exteral IP address, such as on AWS EC2 server, be sure to set it to the external IP address configure a dummy network interface card (see [Update FreeSWITCH](https://docs.bigbluebutton.org/2.2/configure-firewall.html#update-freeswitch)).
+
+
+
 ## Installation and packages
 
 ### The following packages have unmet dependencies
