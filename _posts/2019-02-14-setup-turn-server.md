@@ -212,7 +212,7 @@ You must configure bbb-web so that it will provide the list of turn servers to t
     
     <bean id="turn1" class="org.bigbluebutton.web.services.turn.TurnServer">
         <constructor-arg index="0" value="<random value>"/>
-        <constructor-arg index="1" value="turn:turn.example.com:443?transport=tcp"/>
+        <constructor-arg index="1" value="turn:turn.example.com:3478?transport=tcp"/>
         <constructor-arg index="2" value="86400"/>
     </bean>
 
