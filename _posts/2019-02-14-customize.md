@@ -529,6 +529,14 @@ To create the dialplan, use the XML below and save it to `/opt/freeswitch/conf/d
    <action application="answer"/>
    <action application="sleep" data="1000"/>
    <action application="play_and_get_digits" data="5 5 3 7000 # conference/conf-pin.wav ivr/ivr-that_was_an_invalid_entry.wav pin \d+"/>
+
+   <!-- Uncomment the following block if you want to mask the phone number in the list of participants. -->
+   <!-- Instead of `01711233121` it will then show `xxx-xxx-3121`. -->
+   <!--
+   <action application="set" data="MASK=${system echo ${caller_id_name} | grep -o -P '.{0,4}$' | sed 's/^/xxx-xxx-/' }"/>
+   <action application="set_profile_var" data="caller_id_name=${MASK}"/>
+   -->
+
    <action application="transfer" data="SEND_TO_CONFERENCE XML public"/>
  </condition>
 </extension>
