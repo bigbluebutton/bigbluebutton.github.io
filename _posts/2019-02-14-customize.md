@@ -618,6 +618,17 @@ Then restart BigBlueButton
 $ sudo bbb-conf --restart
 ```
 
+### Adjust audio quality and microphone sensitivity
+
+FreeSWITCH allows for fine grained adjustment of audio quality, microphone sensitivity, channel count, bitrate, compress types and more. These settings affect audio quality, required bandwidth usage, how fault-tolerant audio transmission to/from the clients is and how much CPU resources are required, so make sure to test any changes of the default settings.
+
+- For example, in `/usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml` you can configure the `maxaveragebitrate` and `maxplaybackrate` of the selective forwarding unit (how BBB mixes and forwards audio to listen-only clients).
+- In `/opt/freeswitch/etc/freeswitch/autoload_configs/conference.conf.xml` you can change `cdquality` (or whichever profile you use) -> `channel` to 2 for stereo audio.
+- In `/opt/freeswitch/etc/freeswitch/dialplan/default/bbb_conference.xml` you can adjust general audio settigns of FreeSWITCH like jitter-buffer size and which audio profile to use from the conference.conf.xml. 
+- In `/opt/freeswitch/etc/freeswitch/autoload_configs/opus.conf.xml` you can configure settings for the audio codec opus - notable are `use-vbr` where you can choose between 0 for coded-bit-rate and 1 for variable-bit-rate, `sprop-stereo` for switching between mono and stereo and `sprop-maxcapturerate` + `maxplaybackrate` + `maxaveragebitrate` for setting the desired audio bitrate.
+
+For more details see the [FreeSWITCH documentation](https://freeswitch.org/confluence/display/FREESWITCH/mod_opus).
+
 ## Connect BigBlueButton to an external FreeSWITCH Server
 
 BigBlueButton bundles in FreeSWITCH, but you can configure BigBlueButton to use an external FreeSWITCH server.
