@@ -152,6 +152,8 @@ log-file=/var/log/coturn.log
 simple-log
 ```
 
+If the TURN server is used by many users concurrently, it might hit the open file-handles limit. Therefore it is recommended to increase this limit by adding `ulimit -n 49152` in `/etc/init.d/coturn` or editing the systemd service specification using `sudo systemctl edit --full coturn` and then adding `LimitNOFILE=49152`. Once this change is applied, restart the coturn service.
+
 ## Configure Log Rotation
 
 To rotate the logs for `coturn`, install the following configuration file to `/etc/logrotate.d/coturn`
