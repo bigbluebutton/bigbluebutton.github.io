@@ -297,28 +297,6 @@ IOSchedulingPriority=2
 CPUSchedulingPriority=89
 ```
 
-### bbb-html5 fails to start with a SETSCHEDULER error
-
-As of 2.2.30, the systemd unit file for `bbb-html5.service` now contains the following lines
-
-```ini
-CPUSchedulingPolicy=fifo
-Nice=19
-```
-
-You can override this with creating the following directory
-
-```
-mkdir /etc/systemd/system/bbb-html5.service.d
-```
-and creating `/etc/systemd/system/bbb-html5.service.d/override.conf` with the following contents
-
-```
-[Service]
-CPUSchedulingPolicy=other
-Nice=-10
-````
-
 Then do `systemctl daemon-reload` and restart BigBlueButton.  FreeSWITCH should now startup without error.
 
 ### Users not able to join Listen Only mode
@@ -413,6 +391,31 @@ xmlstarlet edit --inplace --update '//X-PRE-PROCESS[@cmd="set" and starts-with(@
 ```
 Note: If your server has an internal/exteral IP address, such as on AWS EC2 server, be sure to set it to the external IP address configure a dummy network interface card (see [Update FreeSWITCH](https://docs.bigbluebutton.org/2.2/configure-firewall.html#update-freeswitch)).
 
+## HTML5 Server
+
+### bbb-html5 fails to start with a SETSCHEDULER error
+
+As of 2.2.30, the systemd unit file for `bbb-html5.service` now contains the following lines
+
+```ini
+CPUSchedulingPolicy=fifo
+Nice=19
+```
+
+You can override this with creating the following directory
+
+```
+mkdir /etc/systemd/system/bbb-html5.service.d
+```
+and creating `/etc/systemd/system/bbb-html5.service.d/override.conf` with the following contents
+
+```
+[Service]
+CPUSchedulingPolicy=other
+Nice=-10
+````
+
+Then do `systemctl daemon-reload` and restart BigBlueButton.
 
 
 ## Installation and packages
