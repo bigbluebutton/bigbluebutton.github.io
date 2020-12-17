@@ -297,7 +297,9 @@ IOSchedulingPriority=2
 CPUSchedulingPriority=89
 ```
 
-Also, as of 2.2.30, the systemd unit file for `bbb-html5.service` now contains the following lines
+### bbb-html5 fails to start with a SETSCHEDULER error
+
+As of 2.2.30, the systemd unit file for `bbb-html5.service` now contains the following lines
 
 ```ini
 CPUSchedulingPolicy=fifo
