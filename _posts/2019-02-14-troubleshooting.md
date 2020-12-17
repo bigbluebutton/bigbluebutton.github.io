@@ -297,6 +297,26 @@ IOSchedulingPriority=2
 CPUSchedulingPriority=89
 ```
 
+Also, as of 2.2.30, the systemd unit file for `bbb-html5.service` now contains the following lines
+
+```ini
+CPUSchedulingPolicy=fifo
+Nice=19
+```
+
+You can override this with creating the following directory
+
+```
+mkdir /etc/systemd/system/bbb-html5.service.d
+```
+and creating `/etc/systemd/system/bbb-html5.service.d/override.conf` with the following contents
+
+```
+[Service]
+CPUSchedulingPolicy=other
+Nice=-10
+````
+
 Then do `systemctl daemon-reload` and restart BigBlueButton.  FreeSWITCH should now startup without error.
 
 ### Users not able to join Listen Only mode
@@ -378,13 +398,13 @@ For many years, in BigBlueButton's FreeSWITCH configuration file `/opt/freeswitc
   <X-PRE-PROCESS cmd="set" data="external_rtp_ip=stun:stun.freeswitch.org"/>
 ```
 
-However, this is not a reliable choice for stun server. Recommend either changing it to your servers external IP address.  For example, if your server has an external IP at 234.32.3.3, then change this to
+However, this is not a reliable choice for stun server. Recommend either changing it to your servers external IP address or setup your own [stun/turn server](/2.2/setup-turn-server.html).  For example, if your server has an external IP at 234.32.3.3
 
 ```xml
   <X-PRE-PROCESS cmd="set" data="external_rtp_ip=234.32.3.3"/>
 ```
 
-You can add a line in `/etc/bigbluebutton/bbb-conf/apply-conf.sh` to always apply this value.
+You can add a line in `/etc/bigbluebutton/bbb-conf/apply-conf.sh` to always apply this value even if the FreeSWITCH package upgrades.
 
 ```bash
 xmlstarlet edit --inplace --update '//X-PRE-PROCESS[@cmd="set" and starts-with(@data, "external_rtp_ip=")]/@data' --value "external_rtp_ip=234.32.3.3" /opt/freeswitch/conf/vars.xml
