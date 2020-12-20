@@ -268,9 +268,9 @@ $ sudo bbb-conf --check
 
 ### FreeSWITCH fails to start with a SETSCHEDULER error
 
-When running in a container (like a chroot, OpenVZ or LXC), it might not be possible for FreeSWITCH to set the CPU priority and other tasks is not possible.
+When running in a container (like a chroot, OpenVZ or LXC), it might not be possible for FreeSWITCH to set its CPU priority to [real-time round robin](https://man7.org/linux/man-pages/man2/sched_setscheduler.2.html).  If not, it will result in lower performance compared to a non-virtualized installation.
 
-If you see an error starting FreeSWITCH, try running `systemctl status freeswitch.service` and see if you see the error related to SETSCHEDULER
+If you running BigBlueButton in a container and an error starting FreeSWITCH, try running `systemctl status freeswitch.service` and see if you see the error related to SETSCHEDULER
 
 ```bash
 $ systemctl status freeswitch.service
@@ -289,7 +289,7 @@ Oct 02 16:17:29 scw-9e2305 systemd[1]: freeswitch.service: Start request repeate
 Oct 02 16:17:29 scw-9e2305 systemd[1]: Failed to start freeswitch.
 ```
 
-If so, then edit `/lib/systemd/system/freeswitch.service` and comment out the line containing `CPUSchedulingPolicy`
+If you see `SETSCHEDULER` in the error message, edit `/lib/systemd/system/freeswitch.service` and comment out the line containing `CPUSchedulingPolicy=rr` (round robin)
 
 ```ini
 IOSchedulingPriority=2
@@ -297,7 +297,7 @@ IOSchedulingPriority=2
 CPUSchedulingPriority=89
 ```
 
-Then do `systemctl daemon-reload` and restart BigBlueButton.  FreeSWITCH should now startup without error.
+Save the file, run `systemctl daemon-reload`, and then restart BigBlueButton.  FreeSWITCH should now startup without error.
 
 ### Users not able to join Listen Only mode
 
