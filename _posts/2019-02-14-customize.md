@@ -546,6 +546,15 @@ To create the dialplan, use the XML below and save it to `/opt/freeswitch/conf/d
    <action application="transfer" data="${pin} XML default"/>
  </condition>
 </extension>
+
+<extension name="conf_bad_pin">
+ <condition field="${pin}" expression="^\d{5}$">
+   <action application="answer"/>
+   <action application="sleep" data="1000"/>
+   <action application="play_and_get_digits" data="5 5 3 7000 # conference/conf-bad-pin.wav ivr/ivr-that_was_an_invalid_entry.wav pin \d+"/>
+   <action application="transfer" data="SEND_TO_CONFERENCE XML public"/>
+ </condition>
+</extension>
 ```
 
 Change ownership of this file to `freeswitch:daemon`
