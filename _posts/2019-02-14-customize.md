@@ -49,9 +49,9 @@ The contents of `apply-config.sh` are not owned by any package, so it will never
 
 When a meeting finishes, the BigBlueButton server [archives the meeting data](/dev/recording.html#archive) (referred to as the "raw" data).  
 
-Retaining the raw data lets you [rebuild](/dev/recording.html#rebuild-a-recording) a recording if it was accidentally deleted by a user; hHowever, the tradeoff is the storage of raw data will consume more disk space over time.
+Retaining the raw data lets you [rebuild](/dev/recording.html#rebuild-a-recording) a recording if it was accidentally deleted by a user; however, the tradeoff is the storage of raw data will consume more disk space over time.
 
-You an have the BigBlueButton server automatically remove the raw data for a recording after 14 days of its being published by editing the BigBlueButton cron job, located at `/etc/cron.daily/bigbluebutton`, and uncommenting the following line
+You can have the BigBlueButton server automatically remove the raw data for a recording after 14 days of its being published by editing the BigBlueButton cron job, located at `/etc/cron.daily/bigbluebutton`, and uncommenting the following line
 
 ```bash
 #remove_raw_of_published_recordings
