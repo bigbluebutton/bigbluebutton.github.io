@@ -241,56 +241,16 @@ to
     <param name="ext-sip-ip" value="$${external_sip_ip}"/>
 ```
 
-Next, edit `/usr/share/red5/webapps/sip/WEB-INF/bigbluebutton-sip.properties`, and make sure the values of `bbb.sip.app.ip` and `freeswitch.ip` have the internal IP address.
+Check `/etc/bigbluebutton/nginx/sip.nginx` to ensure its binding to the external IP address of the firewall [Configure FreeSWITCH for using SSL](/2.2/install.html#configure-freeswitch-for-using-ssl).
 
-```properties
-bbb.sip.app.ip=<internal_ip>
-bbb.sip.app.port=5070
-
-freeswitch.ip=<internal_ip>
-freeswitch.port=5060
-```
-
-Edit `/etc/bigbluebutton/nginx/sip.nginx` to connect to the external IP address.
-
-If you have configured SSL, use port 7443:
-
-```nginx
-location /ws {
-        proxy_pass https://EXTERNAL_IP_ADDRESS:7443;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "Upgrade";
-        proxy_read_timeout 6h;
-        proxy_send_timeout 6h;
-        client_body_timeout 6h;
-        send_timeout 6h;
-}
-```
-
-If you are not using SSL, use port 5066:
-
-```nginx
-location /ws {
-        proxy_pass http://EXTERNAL_IP_ADDRESS:5066;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "Upgrade";
-        proxy_read_timeout 6h;
-        proxy_send_timeout 6h;
-        client_body_timeout 6h;
-        send_timeout 6h;
-}
-```
-
-If you have the HTML5 client installed, you may need to a few more changes.  If `enableListenOnly` is set to true in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml`, as in
+Check that `enableListenOnly` is set to true in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml`, as in
 
 ```bash
 $ grep enableListenOnly /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
     enableListenOnly: true
 ```
 
-then Kurento is providing a listen only audio stream for users of the HTML5 client. In this case, edit `/usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml` change the value to `ip` to match the external IP address of the server, and the value of `sip_ip` to match the internal IP address of the server (where FreeSWITCH is listening to port 5066).  For example, if the servers external IP address is `203.0.113.1` and the internal IP address is `172.30.1.145` then edit `default.yml` and change the values for `ip` and `sip_ip` as follows:
+Next, edit `/usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml` change the value to `ip` to match the external IP address of the server.  
 
 ```yaml
 freeswitch:
@@ -299,7 +259,8 @@ freeswitch:
     port: 5066
 ```
 
-Next, change the value of sip+ip
+If your runnig 2.2.29 or later, the value of `sip_ip` depends on whether you have `sipjsHackViaWs` set to true or false in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml` (see [Configure FreeSWITCH for using SSL](/2.2/install.html#configure-freeswitch-for-using-ssl)).
+
 You also need to [setup Kurento to use a STUN server](#extra-steps-when-server-is-behind-nat).
 
 After making the above changes, restart BigBlueButton.
