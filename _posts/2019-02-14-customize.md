@@ -293,6 +293,22 @@ $ sudo bbb-conf --setip bigbluebutton.example.com
 
 The transferred recordings should be immediately visible via the BigBlueButton recordings API.
 
+
+### Change processing time
+
+On a 2.2.x BigBlueButton server, the server will process recordings as meetings finish.   You can restrict the recording processing interval to specific hours by creating the file `/etc/systemd/system/bbb-record-core.timer.d/override.conf` with the contents
+
+```
+[Timer]
+OnActiveSec=
+OnUnitInactiveSec=
+OnCalendar=21,22,23,00,01,02,03:*:00
+Persistent=false
+```
+
+and do `systemctl daemon-reload`.  This file overrides the timing of when systemd runs `bbb-record-core.target`.  In the above example, recordings will start processing between 11pm and 3am at night.
+
+
 ## Video
 
 ### Reduce bandwidth from webcams
