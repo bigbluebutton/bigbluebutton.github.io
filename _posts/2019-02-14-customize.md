@@ -306,7 +306,7 @@ OnCalendar=21,22,23,00,01,02,03:*:00
 Persistent=false
 ```
 
-and do `systemctl daemon-reload`.  This file overrides the timing of when systemd runs `bbb-record-core.target`.  In the above example, recordings will start processing between 11pm and 3am at night.
+and do `systemctl daemon-reload`.  This file overrides the timing of when systemd runs `bbb-record-core.target`.  In the above example, recordings will start processing between 21:00 and 03:59.
 
 
 ## Video
