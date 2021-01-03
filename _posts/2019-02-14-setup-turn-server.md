@@ -238,3 +238,72 @@ You must configure bbb-web so that it will provide the list of turn servers to t
 Restart your BigBlueButton server to apply the changes. 
 
 Going forward, when users connect behind a restrictive firewall that prevents outgoing UDP connections, the TURN server will enable BigBlueButton to connect to FreeSWITCH and Kurento via the TURN server through port 443 on their firewall.
+
+# Test you TURN server
+
+By default, your browser will try to connect directly to Kurento or FreeSWITCH using WebRTC.  If it is unable to make a direct connection, it will fall back to using the TURN server as one of the interconnectivity connectivity exchange (ICE) candidates to relay the media.
+
+Use FireFox to test your TURN server.  FireFox allows you to disable direct connections and require fallback to your TURN server.  Launch FireFox, open `about:config`, and search for 'relay`.  You should see a parameter `media.peerconnection.ice.relay_only`.  Set this value to `true`. 
+
+With FireFox configured to only use a TURN server, open a new tab and join a BigBlueButton session, and share your webcam.  If your webcam appears, you can verify that FireFox is using your TURN server by opening a new tab and choosing `about:webrtc`.  Click `show details` and you'll see a table for ICE Stats.  The successful connection, shown at the top of the table, should have `(relay-tcp)` in the Local Candidate column.  This means the video connection was successfully relayed through your TURN server.  
+
+If, however, you received a 1020 (unable to establish connection) when sharing a webcam the browser may not be able to connect to the TURN server or the TURN server is not running or configured correctly.  Check the browser console in FireFox.  If you see
+
+```
+WebRTC: ICE failed, your TURN server appears to be broken, see about:webrtc for more details
+```
+
+then FireFox was unable to communicate with your TURN server, or your TURN server was not running or configured correctly.  
+
+
+To ensure that your firewall is not blocking UDP connections over port 443, open a new tad visit [https://test.bigbluebutton.org/](https://test.bigbluebutton.org/), launch a test session, and try sharing your webcam.
+the browser may not be able to connect to the TURN server or the TURN server is not running or configured correctly.  
+
+The TURN server also acts as a STUN server, so you can first check that the STUN portion is working using the `stunclient`.  Run the following commands below and substitute `<youor-turn-server-host>` with the hostname of your TURN server.
+
+
+```
+sudo apt-get install -y stuntman-client 
+stunclient --mode full --localport 30000 <your-turn-server-host> 3478
+```
+
+If successful, you should see output for `stunclient` should be similar to the following.
+
+```
+Binding test: success
+Local address: xxx.xxx.xxx.xxx:30000
+Mapped address: xxx.xxx.xxx.xxx:30000
+Behavior test: success
+Nat behavior: Direct Mapping
+Filtering test: success
+Nat filtering: Endpoint Independent Filtering
+```
+
+If you get an error, check that `coturn` is running on the TURN server using `systemctl status coturn.service`.  Check the logs by doing `tail -f /var/log/coturn.log`.  You can get verbose logs by adding `verbose` to `/etc/turnserver.conf` and restarting the TURN server `systemctl restart coturn.service`
+
+
+You can test your TURN server using the [trickle ICE](https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/) page.  This gives you a log of the relay candidates as they are returned from ICE gathering.  To test using this page, you need to generate some test credentials.  Run the following BASH script and substitute `<host>` with the hostname of your TURN server and `<password>` with the password for your TURN server.
+
+```bash
+#!/bin/bash
+
+HOST=<host>
+SECRET=<password>
+
+time=$(date +%s)
+expiry=8400
+username=$(( $time + $expiry ))
+
+echo
+echo "          https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/"
+echo
+echo      URI : turn:$HOST:443
+echo username : $username 
+echo password : $(echo -n $username | openssl dgst -binary -sha1 -hmac $SECRET | openssl base64)
+echo
+
+```
+
+Enter the values into URI, username, and password into the trickle ICE page and click 'Gather candidates'.  You should see a list of relay candidates.  If you don't, again check that your TURN server is running and tail the logs TURN server logs via `tail -f /var/log/coturn.log` or `journalctl -f -u coturn.service`.
+
+You can get verbose logs by adding `verbose` to `/etc/turnserver.conf` and then restarting the TURN server `systemctl restart coturn.service`, and try testing again from FireFox or the above Tricke ICE page.
