@@ -91,6 +91,15 @@ You can unmask Kurento using the command
 $ systemctl unmask kurento-media-server.service
 ```
 
+### Unable to share webcam
+
+The default installation of BigBlueButton should work in most netowrk configurations; however, if your users ae behind a restrictive network that blocks outgoing UDP connections, they may encounter 1020 errors (media unable to reach server).
+
+If you get reports of these errors, setup TURN server to help their browsers send WebRTC audio and video streams via TCP over port 443 to the TURN server.  The TURN server will then relay the media to your BigBlueButton server.
+
+See [Configure TURN](/2.2/setup-turn-server.html).
+
+
 ## FreeSWITCH
 
 ### Configure BigBluebutton/FreeSWITCH to support IPV6
