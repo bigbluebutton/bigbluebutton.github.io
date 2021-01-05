@@ -142,8 +142,6 @@ At this point, proceed with the [installation of BigBlueButton](/2.2/install.htm
 
 # Configure BigBlueButton to work with your firewall
 
-Before doing these steps you need to have done XXX in the installation guide.
-
 ## Updating Kurento
 
 ### Extra steps when server is behind NAT
