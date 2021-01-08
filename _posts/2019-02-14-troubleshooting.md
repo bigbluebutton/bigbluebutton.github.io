@@ -404,7 +404,7 @@ Note: If your server has an internal/exteral IP address, such as on AWS EC2 serv
 
 ### bbb-html5 fails to start with a SETSCHEDULER error
 
-As of 2.2.30, the systemd unit file for `bbb-html5.service` now contains the following lines
+As of 2.2.31, the systemd unit file for `bbb-html5.service` now contains the following lines
 
 ```ini
 CPUSchedulingPolicy=fifo
