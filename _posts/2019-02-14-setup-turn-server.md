@@ -28,9 +28,9 @@ Having the server behind NAT (for example, on Amazon EC2) is OK, but all incomin
 
 ## Required Software
 
-We recommend using a minimal server installation of Ubuntu 18.04.  The [coturn](https://github.com/coturn/coturn) software requires port 443 for its exclusive use in our recommended configuration, which means the server cannot have any dashboard software or other web applications running.
+We recommend using a minimal server installation of Ubuntu 20.04.  The [coturn](https://github.com/coturn/coturn) software requires port 443 for its exclusive use in our recommended configuration, which means the server cannot have any dashboard software or other web applications running.
 
-coturn is already available in the Ubuntu packaging repositories for version 18.04 and later, and it can be installed with apt-get:
+Stable versions of coturn are already available in the Ubuntu packaging repositories for version 20.04 and later, and it can be installed with apt-get:
 
 ```bash
 $ sudo apt-get update
