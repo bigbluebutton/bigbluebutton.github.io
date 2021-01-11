@@ -386,7 +386,7 @@ chown meteor:meteor $HTML5_CONFIG
 ```
 
 ### Run three parallel Kurento media servers
-[ Available in BigBluebutton 2.2.24 (and later releases of 2.2.x) ]
+[ Available in BigBluebutton 2.2.24+ and 2.3 ]
 
 Kurento media server handles three different types of media streams: listen only, webcams, and screen share.  
 
