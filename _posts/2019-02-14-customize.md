@@ -445,7 +445,7 @@ disableMultipleKurentos
 
 and run `sudo bbb-conf --restart` again.
 
-### Limit overall number of webcams
+### Limit media streams
 
 On a typical BigBlueButton server Kurento can handle about 1000 media streams.  A media stream is created when a user broadcasts or receives a webcam or screen share video, or when a user joins audio listening only.  If your server will be using webcams, you can set limits per user, per room, and an overall limit per server in `/usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml`.  The default is no limit.
 
