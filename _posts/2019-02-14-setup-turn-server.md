@@ -41,16 +41,18 @@ Note: coturn will not automatically start until configuration is applied (see be
 
 ## Required DNS Entry
 
-You need to setup a fully qualified domain name that resolves to the external IP address of your turn server.  You'll used this domain name to generate a TLS certificate using Let's Encrypt (next section).
+You need to set up a fully qualified domain name that resolves to the external IP address of your turn server.  You'll use this domain name to generate a TLS certificate using Let's Encrypt (next section).
 
 ## Required Ports
 
-On the coturn server, you need to have the following ports (in addition port 22) available for BigBlueButton clients to connect (port 3478 and 443) and for coturn to connect to your BigBlueButton server (49152 - 65535).
+On the coturn server, you need to have the following ports (in addition to port 22) available for BigBlueButton clients to connect (port 443, 3478 and 5349) and for coturn to connect to your BigBlueButton server (49152 - 65535). If you want to use the certbot you'll need port 80 open for the HTTP challenge.
 
 | Ports       | Protocol | Description           |
 | ----------- | -------- | --------------------- |
-| 3478        | TCP/UDP  | coturn listening port |
+| 80          | TCP      | certbot               |
 | 443         | TCP/UDP  | TLS listening port    |
+| 3478        | TCP/UCP  | listening port        |
+| 5349        | TCP/UCP  | TLS listening port    |
 | 49152-65535 | UDP      | relay ports range     |
 
 ## Generating TLS certificates
@@ -92,6 +94,7 @@ Attention: The `turnserver` process will run as the `turnserver` user, which usu
 # as well as port 443 for TURN over TLS, which can bypass firewalls.
 listening-port=3478
 tls-listening-port=443
+alt-tls-listening-port=5349
 
 # If the server has multiple IP addresses, you may wish to limit which
 # addresses coturn is using. Do that by setting this option (it can be
@@ -196,39 +199,88 @@ You must configure bbb-web so that it will provide the list of turn servers to t
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+BigBlueButton open source conferencing system - http://www.bigbluebutton.org/
+
+Copyright (c) 2012 BigBlueButton Inc. and by respective authors (see below).
+
+This program is free software; you can redistribute it and/or modify it under the
+terms of the GNU Lesser General Public License as published by the Free Software
+Foundation; either version 3.0 of the License, or (at your option) any later
+version.
+
+BigBlueButton is distributed in the hope that it will be useful, but WITHOUT ANY
+WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. See the GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License along
+with BigBlueButton; if not, see <http://www.gnu.org/licenses/>.
+
+-->
 <beans xmlns="http://www.springframework.org/schema/beans"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.springframework.org/schema/beans
-        http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+            http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+            ">
 
-    <bean id="stun0" class="org.bigbluebutton.web.services.turn.StunServer">
-        <constructor-arg index="0" value="stun:turn.example.com"/>
+    <bean id="stun1" class="org.bigbluebutton.web.services.turn.StunServer">
+        <constructor-arg index="0" value="stun:turn.example.com:443?transport=tls"/>
     </bean>
 
-
-    <bean id="turn0" class="org.bigbluebutton.web.services.turn.TurnServer">
-        <constructor-arg index="0" value="<random value>"/>
-        <constructor-arg index="1" value="turns:turn.example.com:443?transport=tcp"/>
-        <constructor-arg index="2" value="86400"/>
+    <bean id="stun2" class="org.bigbluebutton.web.services.turn.StunServer">
+        <constructor-arg index="0" value="stun:turn.example.com:3478?transport=tcp"/>
     </bean>
-    
+
+    <bean id="stun3" class="org.bigbluebutton.web.services.turn.StunServer">
+        <constructor-arg index="0" value="stun:turn.example.com:5349?transport=tls"/>
+    </bean>
+
+    <!--bean id="iceCandidate1" class="org.bigbluebutton.web.services.turn.RemoteIceCandidate">
+        <constructor-arg index="0" value="192.168.0.1"/>
+    </bean-->
+
+    <!-- Turn servers are configured with a secret that's compatible with
+         http://tools.ietf.org/html/draft-uberti-behave-turn-rest-00
+         as supported by the coturn and rfc5766-turn-server turn servers -->
+
     <bean id="turn1" class="org.bigbluebutton.web.services.turn.TurnServer">
         <constructor-arg index="0" value="<random value>"/>
-        <constructor-arg index="1" value="turn:turn.example.com:443?transport=tcp"/>
+        <constructor-arg index="1" value="turn:turn.example.com:443?transport=tls"/>
         <constructor-arg index="2" value="86400"/>
     </bean>
 
-    <bean id="stunTurnService"
-            class="org.bigbluebutton.web.services.turn.StunTurnService">
+    <bean id="turn2" class="org.bigbluebutton.web.services.turn.TurnServer">
+        <constructor-arg index="0" value="secret"/>
+        <constructor-arg index="1" value="turn:turn.example.com:3487?transport=tcp"/>
+        <constructor-arg index="2" value="86400"/>
+    </bean>
+
+    <bean id="turn3" class="org.bigbluebutton.web.services.turn.TurnServer">
+        <constructor-arg index="0" value="secret"/>
+        <constructor-arg index="1" value="turn:turn.example.com:5349?transport=tls"/>
+        <constructor-arg index="2" value="86400"/>
+    </bean>
+
+    <bean id="stunTurnService" class="org.bigbluebutton.web.services.turn.StunTurnService">
         <property name="stunServers">
             <set>
-                <ref bean="stun0"/>
+                <ref bean="stun1" />
+                <ref bean="stun2" />
+                <ref bean="stun3" />
             </set>
         </property>
         <property name="turnServers">
             <set>
-                <ref bean="turn0"/>
-                <ref bean="turn1"/>
+                <ref bean="turn1" />
+                <ref bean="turn2" />
+                <ref bean="turn3" />
+            </set>
+        </property>
+        <property name="remoteIceCandidates">
+            <set>
+                <!--ref bean="iceCandidate1" /-->
+                <!--ref bean="iceCandidate2" /-->
             </set>
         </property>
     </bean>
@@ -236,6 +288,9 @@ You must configure bbb-web so that it will provide the list of turn servers to t
 ```
 
 Restart your BigBlueButton server to apply the changes. 
+```bash
+$ bbb-conf --restart
+```
 
 Going forward, when users connect behind a restrictive firewall that prevents outgoing UDP connections, the TURN server will enable BigBlueButton to connect to FreeSWITCH and Kurento via the TURN server through port 443 on their firewall.
 
