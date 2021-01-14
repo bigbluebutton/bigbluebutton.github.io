@@ -28,9 +28,9 @@ Having the server behind NAT (for example, on Amazon EC2) is OK, but all incomin
 
 ## Required Software
 
-We recommend using a minimal server installation of Ubuntu 18.04.  The [coturn](https://github.com/coturn/coturn) software requires port 443 for its exclusive use in our recommended configuration, which means the server cannot have any dashboard software or other web applications running.
+We recommend using a minimal server installation of Ubuntu 20.04.  The [coturn](https://github.com/coturn/coturn) software requires port 443 for its exclusive use in our recommended configuration, which means the server cannot have any dashboard software or other web applications running.
 
-coturn is already available in the Ubuntu packaging repositories for version 18.04 and later, and it can be installed with apt-get:
+Stable versions of coturn are already available in the Ubuntu packaging repositories for version 20.04 and later, and it can be installed with apt-get:
 
 ```bash
 $ sudo apt-get update
@@ -45,13 +45,13 @@ You need to setup a fully qualified domain name that resolves to the external IP
 
 ## Required Ports
 
-On the coturn server, you need to have the following ports (in addition port 22) available for BigBlueButton clients to connect (port 3478 and 443) and for coturn to connect to your BigBlueButton server (49152 - 65535).
+On the coturn server, you need to have the following ports (in addition port 22) available for BigBlueButton clients to connect (port 3478 and 443) and for coturn to connect to your BigBlueButton server (32768 - 65535).
 
 | Ports       | Protocol | Description           |
 | ----------- | -------- | --------------------- |
 | 3478        | TCP/UDP  | coturn listening port |
 | 443         | TCP/UDP  | TLS listening port    |
-| 49152-65535 | UDP      | relay ports range     |
+| 32768-65535 | UDP      | relay ports range     |
 
 ## Generating TLS certificates
 
@@ -150,6 +150,12 @@ log-file=/var/log/coturn.log
 
 # To enable single filename logs you need to enable the simple-log flag
 simple-log
+
+# Lower and upper bounds of the UDP relay endpoints:
+# (default values are 49152 and 65535)
+#
+min-port=32768
+max-port=65535
 ```
 
 If the TURN server is used by many users concurrently, it might hit the open file-handles limit. Therefore it is recommended to increase this limit by adding `ulimit -n 49152` in `/etc/init.d/coturn` or editing the systemd service specification using `sudo systemctl edit --full coturn` and then adding `LimitNOFILE=49152`. Once this change is applied, restart the coturn service.
