@@ -6,9 +6,12 @@ date: 2019-02-14 22:13:42
 order: 4
 ---
 
+
 This document covers how to setup a TURN server for BigBlueButton to allow users behind restrictive firewalls to connect.
 
 # Setup a TURN server
+
+** This section is being updated for steps to install on Ubuntu 20.04.  If you want to setup a TURN server, please use [bbb-install.sh](https://github.com/bigbluebutton/bbb-install#install-a-turn-server).  **
 
 BigBlueButton normally requires a wide range of UDP ports to be available for WebRTC communication. In some network restricted sites or development environments, such as those behind NAT or a firewall that restricts outgoing UDP connections, users may be unable to make outgoing UDP connections to your BigBlueButton server.
 
