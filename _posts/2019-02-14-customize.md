@@ -595,6 +595,7 @@ To create the dialplan, use the XML below and save it to `/opt/freeswitch/conf/d
 ```xml
 <extension name="from_my_provider">
  <condition field="destination_number" expression="^EXTERNALDID">
+   <action application="start_dtmf" />
    <action application="answer"/>
    <action application="sleep" data="1000"/>
    <action application="play_and_get_digits" data="5 5 3 7000 # conference/conf-pin.wav ivr/ivr-that_was_an_invalid_entry.wav pin \d+"/>
