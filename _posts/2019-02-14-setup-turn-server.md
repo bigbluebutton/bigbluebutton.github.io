@@ -114,8 +114,8 @@ tls-listening-port=443
 # Fingerprints in TURN messages are required for WebRTC
 fingerprint
 
-# The long-term credential mechanism is required for WebRTC
-lt-cred-mech
+# Long-term credentials mechanism can't be used concurrently with use-auth-secret. (see https://github.com/coturn/coturn/issues/360 )
+# lt-cred-mech
 
 # Configure coturn to use the "TURN REST API" method for validating time-
 # limited credentials. BigBlueButton will generate credentials in this
