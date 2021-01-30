@@ -8,7 +8,38 @@ date: 2019-02-14 22:13:42
 order: 3
 ---
 
-This document covers common customizations of BigBlueButton 2.2.
+BigBlueButton has many configuration files that offer you opportunities to customize your installation.  This document covers common customizations of BigBlueButton 2.2.
+
+# apply-conf.sh
+
+Whenever you upgrade a server to the latest version of BigBlueButton, either using the [manual upgrade steps](/2.2/install.html#upgrading-from-bigbluebutton-22) or the [bbb-install.sh](https://github.com/bigbluebutton/bbb-install) script, if you have made custom changes to BigBlueButton's configuration files, the packaging scripts may overwrite these changes.
+
+To make it easier to apply your configuration changes, you can create a BASH script at `/etc/bigbluebutton/bbb-conf/apply-config.sh` that contains commands to apply your changes.  The `bbb-conf` script, which is run as part of the last steps in a manual upgrade steps or using `bbb-install.sh`, will detect `apply-config.sh` and invoke it just before starting all of BigBlueButton's components.
+
+In this way, you can use `apply-conf.sh` to apply your custom configuration changes after all packages have updated but just before BigBlueButton starts.
+
+For example, if you create `/etc/bigbluebutton/bbb-conf/apply-config.sh` with the following contents and make it executable with `chmod +x /etc/bigbluebutton/bbb-conf/apply-config.sh`
+
+```sh
+#!/bin/bash
+
+# Pull in the helper functions for configuring BigBlueButton
+source /etc/bigbluebutton/bbb-conf/apply-lib.sh
+
+enableUFWRules
+
+echo " - Disable screen sharing"
+yq w -i $HTML5_CONFIG public.kurento.enableScreensharing false
+chown meteor:meteor $HTML5_CONFIG
+```
+
+then when called by `bbb-conf`, the above `apply-conf.sh` script will 
+  * use the helper function `enableUFWRules` to [restrict access to specific ports](#restrict-access-to-specific-ports), and 
+  * set `enableScreensharing` to `false` in the HTML5 configuration file at `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml`.
+
+Notice that `apply-conf.sh` includes a helper script [apply-lib.sh](https://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-config/bin/apply-lib.sh).  This helper script contains some functions to make it easy to apply common configuratino changes, along with some helper variables, such as `HTML5_CONFIG`.
+
+The contents of `apply-config.sh` are not owned by any package, so it will never be overwritten.
 
 # Common Customizations
 
@@ -18,9 +49,9 @@ This document covers common customizations of BigBlueButton 2.2.
 
 When a meeting finishes, the BigBlueButton server [archives the meeting data](/dev/recording.html#archive) (referred to as the "raw" data).  
 
-Retaining the raw data lets you [rebuild](/dev/recording.html#rebuild-a-recording) a recording if it was accidentally deleted by a user; hHowever, the tradeoff is the storage of raw data will consume more disk space over time.
+Retaining the raw data lets you [rebuild](/dev/recording.html#rebuild-a-recording) a recording if it was accidentally deleted by a user; however, the tradeoff is the storage of raw data will consume more disk space over time.
 
-You an have the BigBlueButton server automatically remove the raw data for a recording after 14 days of its being published by editing the BigBlueButton cron job, located at `/etc/cron.daily/bigbluebutton`, and uncommenting the following line
+You can have the BigBlueButton server automatically remove the raw data for a recording after 14 days of its being published by editing the BigBlueButton cron job, located at `/etc/cron.daily/bigbluebutton`, and uncommenting the following line
 
 ```bash
 #remove_raw_of_published_recordings
@@ -36,7 +67,7 @@ is defined near the top of the BigBlueButton cron job.
 
 ### Delete recordings older than N days
 
-To delete recordings older than 14 days, add the following cron job to `/etc/cron.daily/bbb-recording-cleanup`
+To delete recordings older than 14 days, create the file `/etc/cron.daily/bbb-recording-cleanup` with the contents
 
 ```bash
 #!/bin/bash
@@ -76,10 +107,10 @@ for eventsfile in /var/bigbluebutton/recording/raw/*/events.xml ; do
 done
 ```
 
-Change the value for `MAXAGE` to specify how many days to retain the `presentation` format recordings on your BigBlueButton server. After you create the file, make sure it is executable.
+Change the value for `MAXAGE` to specify how many days to retain the `presentation` format recordings on your BigBlueButton server.  After you create the file, make it executable.
 
-```powershell
-$ chmod +x /etc/cron.daily/etc/cron.daily/delete-old-recordings
+```bash
+$ chmod +x /etc/cron.daily/bbb-recording-cleanup
 ```
 
 ### Move recordings to a different partition
@@ -176,29 +207,31 @@ sed -i 's/autoStartRecording=.*/autoStartRecording=true/g' /usr/share/bbb-web/WE
 sed -i 's/allowStartStopRecording=.*/allowStartStopRecording=false/g' /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
 ```
 
-### Re-process raw recordings
+### Transfer recordings 
 
-After transfer of recordings (see above), view a sampling of the recordings to ensure they playback correctly (they should).  
+When setting up BigBlueButton on a server, you may want to transfer recordings from an older server.  If your old server has all of the original recording files in the `/var/bigbluebutton/recording/raw` directory, then you can transfer these files to the new server using `rsync`.
 
-If you have transferred over the raw content, you can also reprocess the recordings using the newer scripts to rebuild them with the latest playback format (including any bug fixes made in the latest version).  Note: Re-processing can take a long time (around 25% to 50% of the original length of the recordings), and will use a lot of CPU on your new BigBlueButton server while you wait for the recordings to process.
-
-If you are interested in reprocessing the older recordings, try it first with one or two of the larger recordings.  If there is no perceptible difference, you don't need to reprocess the others.
-
-If your old server has all of the original recording files in the `/var/bigbluebutton/recording/raw` directory, then you can transfer these files to the new server, for example with rsync:
-
-This example rsync command could be run on the new server, and will copy the recording file from the old server.
+For example, running this `rsync` command new server will copy over the recording file from the old server.
 
 ```bash
-$ rsync -rP root@old-bbb-server:/var/bigbluebutton/recording/raw/ /var/bigbluebutton/recording/raw/
+$ rsync -rP root@old-bbb-server.example.com:/var/bigbluebutton/recording/raw/ /var/bigbluebutton/recording/raw/
 ```
 
-There are other ways of transferring these files; for example, you could create a tar archive of the `/var/bigbluebutton/recording/raw` directory, and copy it with scp, or use a shared NFS mount. Any method should work fine.
+Alternatively, you could create a tar archive of the `/var/bigbluebutton/recording/raw` directory, and copy it with scp, or use a shared NFS mount. 
 
-You will then need to fix the permissions on the newly copied recordings:
+After you copy over the files (either through rsync or tar-and-copy), you will then need to fix the permissions on the new server using the following `chown` command.
 
 ```bash
 $ chown -R bigbluebutton:bigbluebutton /var/bigbluebutton/recording/raw
 ```
+
+After transfer of recordings, view a sampling of the recordings to ensure they playback correctly (they should).  
+
+### Re-process raw recordings
+
+If you have transferred over the raw content, you can also reprocess the recordings using the newer scripts to rebuild them with the latest playback format (including any bug fixes made in the latest version).  Note: Re-processing can take a long time (around 25% to 50% of the original length of the recordings), and will use a lot of CPU on your new BigBlueButton server while you wait for the recordings to process.
+
+If you are interested in reprocessing the older recordings, try it first with one or two of the larger recordings.  If there is no perceptible difference, you don't need to reprocess the others.
 
 And initiate the re-processing of a single recording, you can do
 
@@ -211,6 +244,8 @@ where `<recording_id>` is the the file name of the raw recording in `/var/bigblu
 ```bash
 $ sudo bbb-record --rebuild f4ae6fd61e2e95940e2e5a8a246569674c63cb4a-1517234271176
 ```
+
+If your old server has all of the original recording files in the `/var/bigbluebutton/recording/raw` directory, then you can transfer these files to the new server, for example with rsync:
 
 If you want to rebuild all your recordings, enter the command
 
@@ -258,6 +293,22 @@ $ sudo bbb-conf --setip bigbluebutton.example.com
 
 The transferred recordings should be immediately visible via the BigBlueButton recordings API.
 
+
+### Change processing time
+
+On a 2.2.x BigBlueButton server, the server will process recordings as meetings finish.   You can restrict the recording processing interval to specific hours by creating the file `/etc/systemd/system/bbb-record-core.timer.d/override.conf` with the contents
+
+```
+[Timer]
+OnActiveSec=
+OnUnitInactiveSec=
+OnCalendar=21,22,23,00,01,02,03:*:00
+Persistent=false
+```
+
+and do `systemctl daemon-reload`.  This file overrides the timing of when systemd runs `bbb-record-core.target`.  In the above example, recordings will start processing between 21:00 and 03:59.
+
+
 ## Video
 
 ### Reduce bandwidth from webcams
@@ -290,44 +341,133 @@ If you have sessions that like to share lots of webcams, such as ten or more, th
 
 ### Disable webcams
 
-You can disable webcams by modifying the `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml` file and setting `enableVideo` to `false`.  To modify this file, run the following commands as root:
+You can disable webcams by setting `enableVideo` to `false` in the `settings.yml` file for the HTML5 client.  
+
+To do this automatically between package upgrades and restarts of BigBlueButton, add the following lines to [apply-conf.sh](https://docs.bigbluebutton.org/2.2/customize.html#apply-confsh).
 
 ```bash
-TARGET=/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
-yq w -i $TARGET public.kurento.enableVideo false
-chown meteor:meteor $TARGET
+echo " - Disable webcams"
+yq w -i $HTML5_CONFIG public.kurento.enableVideo false
+chown meteor:meteor $HTML5_CONFIG
 ```
 
-Restart BigBlueButton (`sudo bbb-conf --restart`) to apply the change.
+and run `bbb-conf --restart`
 
 ### Disable screen sharing
 
-You can disable screen sharing by modifying the `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml` file and setting `enableScreensharing` to `false`.  To modify this file, run the following commands as root:
+You can disable screen sharing by setting `enableScreensharing` to `false` in the `settings.yml` file for the HTML5 client.  
+
+To do this automatically between package upgrades and restarts of BigBlueButton, add the following lines to [apply-conf.sh](https://docs.bigbluebutton.org/2.2/customize.html#apply-confsh).
 
 ```bash
-TARGET=/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml
-yq w -i $TARGET public.kurento.enableScreensharing false
-chown meteor:meteor $TARGET
+echo " - Disable screen sharing"
+yq w -i $HTML5_CONFIG public.kurento.enableScreensharing false
+chown meteor:meteor $HTML5_CONFIG
 ```
-
-Restart BigBlueButton (`sudo bbb-conf --restart`) to apply the change.
 
 ### Reduce bandwidth for webcams
 
-If you expect users to share many webcams, to [reduce bandwidth for webcams](#reduce-bandwidth-from-webcams), add the following to `apply-config.sh`.
+If you expect users to share many webcams, you can [reduce bandwidth for webcams](#reduce-bandwidth-from-webcams).
+
+To do this automatically between package upgrades and restarts of BigBlueButton, add the following lines to [apply-conf.sh](https://docs.bigbluebutton.org/2.2/customize.html#apply-confsh).
 
 ```bash
 echo "  - Setting camera defaults"
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[0].bitrate 50
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[1].bitrate 100
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[2].bitrate 200
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[3].bitrate 300
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==low).bitrate' 50
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==medium).bitrate' 100
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==high).bitrate' 200
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==hd).bitrate' 300
 
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[0].default true
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[1].default false
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[2].default false
-yq w -i $HTML5_CONFIG public.kurento.cameraProfiles.[3].default false
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==low).default' true
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==medium).default' false
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==high).default' false
+yq w -i $HTML5_CONFIG 'public.kurento.cameraProfiles.(id==hd).default' false
+chown meteor:meteor $HTML5_CONFIG
 ```
+
+### Run three parallel Kurento media servers
+[ Available in BigBluebutton 2.2.24+ and 2.3 ]
+
+Kurento media server handles three different types of media streams: listen only, webcams, and screen share.  
+
+Running three parallel Kurento media servers (KMS) -- one dedicated to each type of media stream -- should increase the stability of media handling as the load for starting/stopping media streams spreads over three separate KMS processes.  Also, it should increase the reliability of media handling as a crash (and automatic restart) by one KMS will not affect the two.
+
+To configure your BigBlueButton server to run three KMS processes, add the following line to [apply-conf.sh](https://docs.bigbluebutton.org/2.2/customize.html#apply-confsh)
+
+```sh
+enableMultipleKurentos
+```
+
+and run `sudo bbb-conf --restart`, you should see
+
+~~~
+  - Configuring three Kurento Media Servers: one for listen only, webcam, and screeshare
+Generating a 2048 bit RSA private key
+....................+++
+......+++
+writing new private key to '/tmp/dtls-srtp-key.pem'
+-----
+Created symlink from /etc/systemd/system/kurento-media-server.service.wants/kurento-media-server-8888.service to /usr/lib/systemd/system/kurento-media-server-8888.service.
+Created symlink from /etc/systemd/system/kurento-media-server.service.wants/kurento-media-server-8889.service to /usr/lib/systemd/system/kurento-media-server-8889.service.
+Created symlink from /etc/systemd/system/kurento-media-server.service.wants/kurento-media-server-8890.service to /usr/lib/systemd/system/kurento-media-server-8890.service.
+~~~
+
+After BigBlueButton finishes restarting, you should see three KMS processes running using the `netstat -antp | grep kur` command.
+
+~~~
+# netstat -antp | grep kur
+tcp6       0      0 :::8888                 :::*                    LISTEN      5929/kurento-media-
+tcp6       0      0 :::8889                 :::*                    LISTEN      5943/kurento-media-
+tcp6       0      0 :::8890                 :::*                    LISTEN      5956/kurento-media-
+tcp6       0      0 127.0.0.1:8888          127.0.0.1:49132         ESTABLISHED 5929/kurento-media-
+tcp6       0      0 127.0.0.1:8890          127.0.0.1:55540         ESTABLISHED 5956/kurento-media-
+tcp6       0      0 127.0.0.1:8889          127.0.0.1:41000         ESTABLISHED 5943/kurento-media-
+~~~
+
+Each process has its own log file (distinguished by its process ID).
+
+~~~
+# ls -alt /var/log/kurento-media-server/
+total 92
+-rw-rw-r--  1 kurento kurento 11965 Sep 13 17:10 2020-09-13T170908.00000.pid5929.log
+-rw-rw-r--  1 kurento kurento 10823 Sep 13 17:10 2020-09-13T170908.00000.pid5943.log
+-rw-rw-r--  1 kurento kurento 10823 Sep 13 17:10 2020-09-13T170908.00000.pid5956.log
+~~~
+
+Now, if you now join a session and choose listen only (which causes Kurento setup a single listen only stream to FreeSWITCH), share your webcam, or share your screen, you'll see updates occuring independently to each of the above log files as each KMS process handles your request.
+
+To revert back to running a single KMS server (which handles all three meida streams), change the above line in `/etc/bigbluebutton/bbb-conf/apply-config.sh` to
+
+
+```sh
+disableMultipleKurentos
+```
+
+and run `sudo bbb-conf --restart` again.
+
+### Limit overall media streams
+
+On a typical BigBlueButton server Kurento can handle about 1000 media streams.  A media stream is created when a user broadcasts or receives a webcam or screen share video, or when a user joins audio listening only.  If your server will be using webcams, you can set limits per user, per room, and an overall limit per server in `/usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml`.  The default is no limit.
+
+```
+mediaThresholds:
+  global: 0
+  perRoom: 0
+  perUser: 0
+```
+
+For example, the following settings would limit the overall number of media across all meetings to 1000 streams, the maximum number of webcam streams per meeting to 300, and no limit on the number of webcam streams per user.
+
+```
+mediaThresholds:
+  global: 1000
+  perRoom: 300
+  perUser: 0
+```
+
+If any of these thresholds are reached, then a user will receive a "Media resources not available (2002)" error when sharing webcams.  
+
+Recommend you [enable multiple Kurento](customize.html#run-three-parallel-kurento-media-servers) servers, thereby having one Kurento server for webcams, one for screen share, and one for listen only streams.  The settings apply to each Kurento server, so in the above example each Kurento server would have a maximum of 1000 media streams.   
 
 ## Audio
 
@@ -386,7 +526,7 @@ You can remove this sound for all users by editing `/opt/freeswitch/etc/freeswit
 ```
 
 ### Enable background music when only one person is in a session
-
+p
 FreeSWITCH enables you to have music play in the background when only one users is in the voice conference.  To enable background music, edit `/opt/freeswitch/conf/autoload_configs/conference.conf.xml` (as root) and around line 204 you'll see the music on hold (moh-sound) commented out
 
 ```xml
@@ -455,9 +595,17 @@ To create the dialplan, use the XML below and save it to `/opt/freeswitch/conf/d
 ```xml
 <extension name="from_my_provider">
  <condition field="destination_number" expression="^EXTERNALDID">
+   <action application="start_dtmf" />
    <action application="answer"/>
    <action application="sleep" data="1000"/>
    <action application="play_and_get_digits" data="5 5 3 7000 # conference/conf-pin.wav ivr/ivr-that_was_an_invalid_entry.wav pin \d+"/>
+
+   <!-- Uncomment the following block if you want to mask the phone number in the list of participants. -->
+   <!-- Instead of `01711233121` it will then show `xxx-xxx-3121`. -->
+   <!--
+   <action application="set_profile_var" data="caller_id_name=${regex(${caller_id_name}|^.*(.{4})$|xxx-xxx-%1)}"/>
+   -->
+
    <action application="transfer" data="SEND_TO_CONFERENCE XML public"/>
  </condition>
 </extension>
@@ -466,6 +614,15 @@ To create the dialplan, use the XML below and save it to `/opt/freeswitch/conf/d
  <condition field="destination_number" expression="^SEND_TO_CONFERENCE$">
    <action application="set" data="bbb_authorized=true"/>
    <action application="transfer" data="${pin} XML default"/>
+ </condition>
+</extension>
+
+<extension name="conf_bad_pin">
+ <condition field="${pin}" expression="^\d{5}$">
+   <action application="answer"/>
+   <action application="sleep" data="1000"/>
+   <action application="play_and_get_digits" data="5 5 3 7000 # conference/conf-bad-pin.wav ivr/ivr-that_was_an_invalid_entry.wav pin \d+"/>
+   <action application="transfer" data="SEND_TO_CONFERENCE XML public"/>
  </condition>
 </extension>
 ```
@@ -518,20 +675,20 @@ iptables -I INPUT  -p udp --dport 5060 -s 64.2.142.33 -j ACCEPT
 
 With these rules, you won't get spammed by bots scanning for SIP endpoints and trying to connect.
 
-### Turn off the "comfort noise" when no one is speaking
+### Turn on the "comfort noise" when no one is speaking
 
-FreeSWITCH applies a "comfort noise"'" that is a slight background hiss to let users know they are still in a voice conference even when no one is talking (otherwise, they may forget they are connected to the conference bridge and say something unintended for others).  
+FreeSWITCH has the ability to add a "comfort noise"'" that is a slight background hiss to let users know they are still in a voice conference even when no one is talking (otherwise, they may forget they are connected to the conference bridge and say something unintended for others).  
 
-If you want to remove the comfort noise, edit `/opt/freeswitch/conf/autoload_configs/conference.conf.xml` and change
+If you want to enable, edit `/opt/freeswitch/conf/autoload_configs/conference.conf.xml` and change
 
 ```xml
-<param name="comfort-noise" value="true"/>
+<param name="comfort-noise" value="false"/>
 ```
 
 to
 
 ```xml
-<param name="comfort-noise" value="false"/>
+<param name="comfort-noise" value="true"/>
 ```
 
 Then restart BigBlueButton
@@ -703,13 +860,13 @@ For more information see [Installing Greenlight](/greenlight/gl-install.html).
 
 ## Networking
 
-### Secure your system -- restrict access to specific ports
+### Setup a firewall
 
 Configuring IP firewalling is *essential for securing your installation*. By default, many services are reachable across the network. This allows BigBlueButton operate in clusters and private data center networks -- but if your BigBlueButton server is publicly available on the internet, you need to run a firewall to reduce access to the minimal required ports.
 
 If your server is behind a firewall already -- such as running within your company or on an EC2 instance behind a Amazon Security Group -- and the firewall is enforcing the above restrictions, you don't need a second firewall and can skip this section.
 
-BigBlueButton comes with a [UFW](https://launchpad.net/ufw) based ruleset. It it can be applied on restart (c.f. [Automatically apply configuration changes on restart](#automatically-apply-configuration-changes-on-restart)) and restricts access only to the following needed ports:
+BigBlueButton comes with a [UFW](https://launchpad.net/ufw) based ruleset.  It it can be applied on restart (c.f. [Automatically apply configuration changes on restart](#automatically-apply-configuration-changes-on-restart)) and restricts access only to the following needed ports:
 
 * TCP/IP port 22 for SSH
 * TCP/IP port 80 for HTTP
@@ -724,7 +881,9 @@ tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      
 tcp6       0      0 :::22                   :::*                    LISTEN      1739/sshd
 ```
 
-To restrict external access minimal needed ports for BigBlueButton (with [HTML5 client set as default](#make-the-html5-client-default)), use the following commands:
+To restrict external access minimal needed ports for BigBlueButton (with [HTML5 client set as default](#make-the-html5-client-default)).  BigBlueButton supplies a helper function that you can call in `/etc/bigbluebutton/bbb-conf/apply-conf.sh` to setup a minimal firewall (see [Setup Firewall](#setup-firewall).
+
+You can also do it manually with the following commands
 
 ```bash
 $ apt-get install -y ufw
@@ -734,13 +893,14 @@ ufw allow 16384:32768/udp
 ufw --force enable
 ```
 
-These `ufw` firewall rules will be automatically re-applied on server reboot.
+These `ufw` firewall rules will be automatically re-applied on server reboot.  
 
 Besides IP-based firewalling, you can explore web application firewalls such as [ModSecurity](https://modsecurity.org/) that provide additional security by checking requests to various web-based components.
 
+
 ### Setup Firewall
 
-To configure a firewall for your BigBlueButton server (recommended), add `enableUFWRules` to `apply-config.sh`, as in
+To configure a firewall for your BigBlueButton server (recommended), add `enableUFWRules` to `/etc/bigbluebutton/bbb-conf/apply-config.sh`, as in
 
 ```sh
 enableUFWRules
@@ -824,80 +984,6 @@ echo "  - Update TURN server configuration turn-stun-servers.xml"
 </beans>
 HERE
 ```
-
-## Configuration
-
-### Automatically apply configuration changes on restart
-
-When you upgrade to the latest build of BigBlueButton using either the [manual steps](/2.2/install.html#upgrading-from-bigbluebutton-22) or [bbb-install.sh](https://github.com/bigbluebutton/bbb-install) script, if you have made manual changes to BigBlueButton's configuration, the packaging scripts may overwrite your changes.
-
-Instead of an error-prone step to manually re-applying any changes after each upgrade, a better approach would be to have your custom configuration changes in a script that gets automatically applied when BigBlueButton restarts.
-
-Whenever you manually update BigBlueButton, the [instructions](/2.2/install.html#upgrading-from-bigbluebutton-22) state to run `sudo bbb-conf --setip <hostname>` to re-apply the `<hostname>` to BigBlueButton's configuration files ([bbb-install.sh](https://github.com/bigbluebutton/bbb-install) does this automatically for you).  
-
-`bbb-conf` will look for a BASH script at `/etc/bigbluebutton/bbb-conf/apply-config.sh` when doing either `--restart` or `--setip <hostname>` and, if found, execute this script before starting up BigBlueButton.
-
-You can put your configuration changes in `apply-config.sh` to ensure they are automatically applied.  Here's a sample script:
-
-```bash
-#!/bin/bash
-
-# Pull in the helper functions for configuring BigBlueButton
-source /etc/bigbluebutton/bbb-conf/apply-lib.sh
-
-enableUFWRules
-```
-
-Notice it includes `apply-lib.sh` which is another BASH script that contains some helper functions (see [apply-lib.sh](https://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-config/bin/apply-lib.sh) source).  It then calls `enableUFWRules` to apply the settings in [restrict access to specific ports](#restrict-access-to-specific-ports).  
-
-The contents of `apply-config.sh` are not owned by any package, so it will never be overwritten.  
-
-When you first create `apply-config.sh`, make it executable using the command `chmod +x /etc/bigbluebutton/bbb-conf/apply-config.sh`.
-
-### Extract the shared secret
-
-Any front-end to BigBlueButton needs two pieces of information: the hostname for the BigBlueButton server and its shared secret (for authenticating API calls).  To print out the hostname and shared secret for you BigBlueButton server, enter the command `bbb-conf --secret`:
-
-```bash
-$ bbb-conf --secret
-
-       URL: http://bigbluebutton.example.com/bigbluebutton/
-    Secret: 577fd5f05280c10fb475553d200f3322
-
-      Link to the API-Mate:
-      http://mconf.github.io/api-mate/#server=http://10.0.3.132/bigbluebutton/&sharedSecret=577fd5f05280c10fb475553d200f3322
-```
-
-The last line gives a link API-Mate, an excellent tool provided by [Mconf Technologies](https://mconf.com/) (a company that has made many contributions to the BigBlueButton project over the years) that makes it easy to create API calls.
-
-### Change the shared secret
-
-To validate incoming API calls, all external applications making API calls must checksum their API call using the same secret as configured in the BigBlueButton server.
-
-You’ll find the shared secret in `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties`
-
-```properties
-beans.dynamicConferenceService.securitySalt=<value_of_salt>
-```
-
-To change the shared secret, do the following:
-
-1. Generate a new Universal Unique ID (UUID) from a UUID generator such as at [http://www.somacon.com/p113.php](http://www.somacon.com/p113.php). This will give a long string of random numbers that will be impossible to reverse engineer.
-2. Run the command `sudo bbb-conf --setsecret new_secret`.
-
-Note: If you have created you own front-end or are using a [third-party plug-in](http://bigbluebutton.org/support) to connect to BigBlueButton, its shared secret; otherwise, if the shared secrets do not match, the checksum for the incoming API calls will not match and the BigBlueButton server will reject the API call with an error.
-
-### Install callback for events (webhooks)
-
-Want to receive callbacks to your application when an event occurs in BigBlueButton? BigBlueButton provides an optional web hooks package that installs a node.js application listens for all events on BigBlueButton and sends POST requests with details about these events to hooks registered via an API.  A hook can be any external URL that can receive HTTP POST requests.
-
-To install bbb-webhooks
-
-```bash
-$ sudo apt-get install bbb-webhooks
-```
-
-For information on cofiguring bbb-webhooks, see [bbb-webhooks](/dev/webhooks.html).
 
 ## HTML5 client
 
@@ -1047,6 +1133,7 @@ Useful tools for development:
 | `userdata-bbb_force_listen_only=`          | If set to `true`, the user will be not be able to join with a microphone as an option                                               | `false`       |
 | `userdata-bbb_listen_only_mode=`           | If set to `false`, the user will not be able to join the audio part of the meeting without a microphone (disables listen-only mode) | `true`        |
 | `userdata-bbb_skip_check_audio=`           | If set to `true`, the user will not see the "echo test" prompt on login                                                             | `false`       |
+| `userdata-bbb_override_default_locale=`    | (Introduced in BigBlueButton 2.3) If set to `de`, the user's browser preference will be ignored - the client will be shown in 'de' (i.e. German) regardless of the otherwise preferred locale 'en' (or other)                                                             | `null`       |
 
 ### Branding parameters
 
@@ -1068,6 +1155,7 @@ Useful tools for development:
 | `userdata-bbb_preferred_camera_profile=` | Specifies a preferred camera profile to use out of those defined in the `settings.yml`                                              | none          |
 | `userdata-bbb_enable_screen_sharing=`    | If set to `false`, the client will display the screen sharing button if they are the current presenter                              | `true`        |
 | `userdata-bbb_enable_video=`             | If set to `false`, the client will display the webcam sharing button (in effect disabling/enabling webcams)                         | `true`        |
+| `userdata-bbb_record_video=`             | If set to `false`, the user won't have her/his video stream recorded                                                                | `true`        |
 | `userdata-bbb_skip_video_preview=`       | If set to `true`, the client will not see a preview of their webcam before sharing it                                               | `false`       |
 | `userdata-bbb_mirror_own_webcam=`         | If set to `true`, the client will see a mirrored version of their webcam. Doesn't affect the incoming video stream for other users. | `false`       |
 
@@ -1211,17 +1299,6 @@ $ tail -f /var/log/nginx/html5-client.log | sed -u -e 's/\\x22/"/g' -e 's/\\x5C/
 Here's a sample log entry
 
 ```json
-{  
-   "name":"clientLogger",
-   "level":30,
-   "levelName":"info",
-   "msg":"[audio] iceServers",
-   "time":"2018-08-27T19:32:57.389Z",
-   "src":"https://demo.bigbluebutton.org/html5client/dfe4ad6bfad11b20d1904e76e71d385262781887.js?meteor_js_resource=true:147:782083",
-   "v":1,
-   "extraInfo":{  
-      "sessionToken":"e7boenucj1pwkbfc",
-      "meetingId":"183f0bf3a0982a127bdb8161e0c44eb696b3e75c-1535398242909",
       "requesterUserId":"w_klfavdlkumj8",
       "fullname":"Ios",
       "confname":"Demo Meeting",
@@ -1280,3 +1357,51 @@ tail -f /var/log/nginx/html5-client.log | sed -u 's/\\x22/"/g' | sed -u 's/\\x5C
 ```
 
 There used to be an incorrect version of the script above on the docs. If you face any issues after updating it, refer to [this issue](https://github.com/bigbluebutton/bigbluebutton/issues/9065) for solutions.
+
+
+## Other configuration changes
+
+### Extract the shared secret
+
+Any front-end to BigBlueButton needs two pieces of information: the hostname for the BigBlueButton server and its shared secret (for authenticating API calls).  To print out the hostname and shared secret for you BigBlueButton server, enter the command `bbb-conf --secret`:
+
+```bash
+$ bbb-conf --secret
+
+       URL: http://bigbluebutton.example.com/bigbluebutton/
+    Secret: 577fd5f05280c10fb475553d200f3322
+
+      Link to the API-Mate:
+      http://mconf.github.io/api-mate/#server=http://10.0.3.132/bigbluebutton/&sharedSecret=577fd5f05280c10fb475553d200f3322
+```
+
+The last line gives a link API-Mate, an excellent tool provided by [Mconf Technologies](https://mconf.com/) (a company that has made many contributions to the BigBlueButton project over the years) that makes it easy to create API calls.
+
+### Change the shared secret
+
+To validate incoming API calls, all external applications making API calls must checksum their API call using the same secret as configured in the BigBlueButton server.
+
+You’ll find the shared secret in `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties`
+
+```properties
+beans.dynamicConferenceService.securitySalt=<value_of_salt>
+```
+
+To change the shared secret, do the following:
+
+1. Generate a new Universal Unique ID (UUID) from a UUID generator such as at [http://www.somacon.com/p113.php](http://www.somacon.com/p113.php). This will give a long string of random numbers that will be impossible to reverse engineer.
+2. Run the command `sudo bbb-conf --setsecret new_secret`.
+
+Note: If you have created you own front-end or are using a [third-party plug-in](http://bigbluebutton.org/support) to connect to BigBlueButton, its shared secret; otherwise, if the shared secrets do not match, the checksum for the incoming API calls will not match and the BigBlueButton server will reject the API call with an error.
+
+### Install callback for events (webhooks)
+
+Want to receive callbacks to your application when an event occurs in BigBlueButton? BigBlueButton provides an optional web hooks package that installs a node.js application listens for all events on BigBlueButton and sends POST requests with details about these events to hooks registered via an API.  A hook can be any external URL that can receive HTTP POST requests.
+
+To install bbb-webhooks
+
+```bash
+$ sudo apt-get install bbb-webhooks
+```
+
+For information on cofiguring bbb-webhooks, see [bbb-webhooks](/dev/webhooks.html).

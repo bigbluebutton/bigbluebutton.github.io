@@ -91,6 +91,15 @@ You can unmask Kurento using the command
 $ systemctl unmask kurento-media-server.service
 ```
 
+### Unable to share webcam
+
+The default installation of BigBlueButton should work in most netowrk configurations; however, if your users ae behind a restrictive network that blocks outgoing UDP connections, they may encounter 1020 errors (media unable to reach server).
+
+If you get reports of these errors, setup TURN server to help their browsers send WebRTC audio and video streams via TCP over port 443 to the TURN server.  The TURN server will then relay the media to your BigBlueButton server.
+
+See [Configure TURN](/2.2/setup-turn-server.html).
+
+
 ## FreeSWITCH
 
 ### Configure BigBluebutton/FreeSWITCH to support IPV6
@@ -268,9 +277,9 @@ $ sudo bbb-conf --check
 
 ### FreeSWITCH fails to start with a SETSCHEDULER error
 
-When running in a container (like a chroot, OpenVZ or LXC), it might not be possible for FreeSWITCH to set the CPU priority and other tasks is not possible.
+When running in a container (like a chroot, OpenVZ or LXC), it might not be possible for FreeSWITCH to set its CPU priority to [real-time round robin](https://man7.org/linux/man-pages/man2/sched_setscheduler.2.html).  If not, it will result in lower performance compared to a non-virtualized installation.
 
-If you see an error starting FreeSWITCH, try running `systemctl status freeswitch.service` and see if you see the error related to SETSCHEDULER
+If you running BigBlueButton in a container and an error starting FreeSWITCH, try running `systemctl status freeswitch.service` and see if you see the error related to SETSCHEDULER
 
 ```bash
 $ systemctl status freeswitch.service
@@ -289,7 +298,7 @@ Oct 02 16:17:29 scw-9e2305 systemd[1]: freeswitch.service: Start request repeate
 Oct 02 16:17:29 scw-9e2305 systemd[1]: Failed to start freeswitch.
 ```
 
-If so, then edit `/lib/systemd/system/freeswitch.service` and comment out the line containing `CPUSchedulingPolicy`
+If you see `SETSCHEDULER` in the error message, edit `/lib/systemd/system/freeswitch.service` and comment out the line containing `CPUSchedulingPolicy=rr` (round robin)
 
 ```ini
 IOSchedulingPriority=2
@@ -297,7 +306,7 @@ IOSchedulingPriority=2
 CPUSchedulingPriority=89
 ```
 
-Then do `systemctl daemon-reload` and restart BigBlueButton.  FreeSWITCH should now startup without error.
+Save the file, run `systemctl daemon-reload`, and then restart BigBlueButton.  FreeSWITCH should now startup without error.
 
 ### Users not able to join Listen Only mode
 
@@ -350,6 +359,72 @@ To connect to `fs_cli`, use the following command which supplies the password fo
 ```
 /opt/freeswitch/bin/fs_cli -p $(xmlstarlet sel -t -m 'configuration/settings/param[@name="password"]' -v @value /opt/freeswitch/etc/freeswitch/autoload_configs/event_socket.conf.xml)
 ```
+
+We also added `/usr/local/bin/fs_clibbb` with the contents
+
+```bash
+#!/bin/bash
+
+/opt/freeswitch/bin/fs_cli -p $(xmlstarlet sel -t -m 'configuration/settings/param[@name="password"]' -v @value /opt/freeswitch/etc/freeswitch/autoload_configs/event_socket.conf.xml)
+```     
+
+that will let you type `fs_clibbb` at the command prompt to get into FreeSWITCH console.
+
+
+### Echo test hangs upgrading BigBlueButton 2.2
+
+The install scripts now change the default CLI password for FreeSWITCH and the other parts of BigBlueButton need to use this new password.  For a new installation, the install scripts will automatically set this new password.
+
+If you upgrade using [bbb-install.sh](https://github.com/bigbluebutton/bbb-install), the script will update the FreeSWITCH password using `sudo bbb-conf --setip <hostname>`.  
+
+If you upgraded using [manual steps](https://docs.bigbluebutton.org/2.2/install.html#upgrading-from-bigbluebutton-22), be sure to do ao `sudo bbb-conf --setip <hostname>` to sync all the FreeSWITCH passwords.
+
+### FreeSWITCH using default stun server
+
+For many years, in BigBlueButton's FreeSWITCH configuration file `/opt/freeswitch/etc/freeswitch/vars.xml`, the default value for `external_rtp_ip` was `stun.freeswitch.org`
+
+```xml
+  <X-PRE-PROCESS cmd="set" data="external_rtp_ip=stun:stun.freeswitch.org"/>
+```
+
+However, this is not a reliable choice for stun server. Recommend either changing it to your servers external IP address or setup your own [stun/turn server](/2.2/setup-turn-server.html).  For example, if your server has an external IP at 234.32.3.3
+
+```xml
+  <X-PRE-PROCESS cmd="set" data="external_rtp_ip=234.32.3.3"/>
+```
+
+You can add a line in `/etc/bigbluebutton/bbb-conf/apply-conf.sh` to always apply this value even if the FreeSWITCH package upgrades.
+
+```bash
+xmlstarlet edit --inplace --update '//X-PRE-PROCESS[@cmd="set" and starts-with(@data, "external_rtp_ip=")]/@data' --value "external_rtp_ip=234.32.3.3" /opt/freeswitch/conf/vars.xml
+```
+Note: If your server has an internal/exteral IP address, such as on AWS EC2 server, be sure to set it to the external IP address configure a dummy network interface card (see [Update FreeSWITCH](https://docs.bigbluebutton.org/2.2/configure-firewall.html#update-freeswitch)).
+
+## HTML5 Server
+
+### bbb-html5 fails to start with a SETSCHEDULER error
+
+As of 2.2.31, the systemd unit file for `bbb-html5.service` now contains the following lines
+
+```ini
+CPUSchedulingPolicy=fifo
+Nice=19
+```
+
+You can override this with creating the following directory
+
+```
+mkdir /etc/systemd/system/bbb-html5.service.d
+```
+and creating `/etc/systemd/system/bbb-html5.service.d/override.conf` with the following contents
+
+```
+[Service]
+CPUSchedulingPolicy=other
+Nice=-10
+````
+
+Then do `systemctl daemon-reload` and restart BigBlueButton.
 
 
 ## Installation and packages
@@ -767,6 +842,59 @@ $ sudo bbb-conf --restart
 ```
 
 You can run BigBlueButton within a LXD container.
+
+### Unable to connect to redis 
+
+The packages `bbb-apps-akka`, `bbb-fsesl-akka`, and `bbb-transcode-akka` are packaged by sbt, but they need to have redis-server running before they startup.  If `sudo bbb-conf --debug` shows redis connection errors
+
+~~~
+Sep 22 15:32:12 sv21 bbb-apps-akka[7804]: Exception in thread "main" io.lettuce.core.RedisConnectionException: Unable to connect to 127.0.0.1:6379
+Sep 22 15:32:12 sv21 bbb-apps-akka[7804]: #011at io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:78)
+Sep 22 15:32:12 sv21 bbb-apps-akka[7804]: #011at io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:56)
+Sep 22 15:32:12 sv21 bbb-apps-akka[7804]: Caused by: io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: /127.0.0.1:6379
+Sep 22 15:32:12 sv21 bbb-apps-akka[7804]: Caused by: java.net.ConnectException: Connection refused
+Sep 22 15:32:12 sv21 bbb-fsesl-akka[7893]: Exception in thread "main" io.lettuce.core.RedisConnectionException: Unable to connect to 127.0.0.1:6379
+Sep 22 15:32:12 sv21 bbb-fsesl-akka[7893]: #011at io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:78)
+Sep 22 15:32:12 sv21 bbb-fsesl-akka[7893]: #011at io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:56)
+Sep 22 15:32:12 sv21 bbb-fsesl-akka[7893]: Caused by: io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: /127.0.0.1:6379
+Sep 22 15:32:12 sv21 bbb-fsesl-akka[7893]: Caused by: java.net.ConnectException: Connection refused
+Sep 22 15:32:13 sv21 bbb-transcode-akka[8001]: Exception in thread "main" io.lettuce.core.RedisConnectionException: Unable to connect to 127.0.0.1:6379
+Sep 22 15:32:13 sv21 bbb-transcode-akka[8001]: #011at io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:78)
+Sep 22 15:32:13 sv21 bbb-transcode-akka[8001]: #011at io.lettuce.core.RedisConnectionException.create(RedisConnectionException.java:56)
+Sep 22 15:32:13 sv21 bbb-transcode-akka[8001]: Caused by: io.netty.channel.AbstractChannel$AnnotatedConnectException: Connection refused: /127.0.0.1:6379
+Sep 22 15:32:13 sv21 bbb-transcode-akka[8001]: Caused by: java.net.ConnectException: Connection refused
+~~~
+
+you can add overrides for these three packages to ensure they start after redis.server.  Run the following script.
+
+~~~
+#!/bin/bash
+
+mkdir -p /etc/systemd/system/bbb-apps-akka.service.d
+cat > /etc/systemd/system/bbb-apps-akka.service.d/override.conf <<HERE
+[Unit]
+Requires=redis-server.service
+After=redis-server.service
+HERE
+
+mkdir -p /etc/systemd/system/bbb-fsesl-akka.service.d
+cat > /etc/systemd/system/bbb-fsesl-akka.service.d/override.conf <<HERE
+[Unit]
+Requires=redis-server.service
+After=redis-server.service
+HERE
+
+
+mkdir -p /etc/systemd/system/bbb-transcode-akka.service.d
+cat > /etc/systemd/system/bbb-transcode-akka.service.d/override.conf <<HERE
+[Unit]
+Requires=redis-server.service
+After=redis-server.service
+HERE
+~~~
+
+The script `bbb-install` now creates these overrides by default.
+
 
 ## Legacy errors
 
