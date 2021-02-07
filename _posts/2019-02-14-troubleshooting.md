@@ -476,6 +476,10 @@ E: Sub-process /usr/bin/dpkg returned an error code (1)
 
 In the above example, the `/var/lib/dpkg/info/bbb-client.postinst` failed to finish.  To debug, edit this file and change the first line to read
 
+```
+#!/bin/bash -ex
+```
+
 and run
 
 ```bash
@@ -483,6 +487,7 @@ $ sudo apt-get install -f
 ```
 
 You should now see each command in `bbb-conf.postinst` as it executes upto the line in which the error occurs.  Post this output to `https://groups.google.com/forum/#!forum/bigbluebutton-setup` for help in resolving the issue.
+
 
 ### Errors with packages
 
