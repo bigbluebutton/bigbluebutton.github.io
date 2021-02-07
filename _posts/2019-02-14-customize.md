@@ -950,7 +950,7 @@ Kurento uses the range 24577 - 32768, which is defined in `/etc/kurento/modules/
 
 ### Apply custom settings for TURN server
 
-If always want a specific TURN server configuration, the following to `apply-config.sh` and modify `aaa.bbb.ccc.ddd` and `secret` with your values.
+If always want a specific TURN server configuration, the following to [apply-config.sh](#apply-confsh) and modify `aaa.bbb.ccc.ddd` and `secret` with your values.
 
 ```bash
 echo "  - Update TURN server configuration turn-stun-servers.xml"
