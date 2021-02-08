@@ -1132,7 +1132,8 @@ Useful tools for development:
 | `userdata-bbb_client_title=`               | Specifies a string to set as the HTML5 client title                                                                                 | BigBlueButton |
 | `userdata-bbb_force_listen_only=`          | If set to `true`, the user will be not be able to join with a microphone as an option                                               | `false`       |
 | `userdata-bbb_listen_only_mode=`           | If set to `false`, the user will not be able to join the audio part of the meeting without a microphone (disables listen-only mode) | `true`        |
-| `userdata-bbb_skip_check_audio=`           | If set to `true`, the user will not see the "echo test" prompt on login                                                             | `false`       |
+| `userdata-bbb_skip_check_audio=`           | If set to `true`, the user will not see the "echo test" prompt when sharing audio                                                             | `false`       |
+| `userdata-bbb_skip_check_audio_on_first_join=`      | (Introduced in BigBlueButton 2.3) If set to `true`, the user will not see the "echo test" when sharing audio for the first time in the session. If the user stops sharing, next time they try to share audio the echo test window will be displayed, allowing for configuration changes to be made prior to sharing audio again                                                             | `false`       |
 | `userdata-bbb_override_default_locale=`    | (Introduced in BigBlueButton 2.3) If set to `de`, the user's browser preference will be ignored - the client will be shown in 'de' (i.e. German) regardless of the otherwise preferred locale 'en' (or other)                                                             | `null`       |
 
 ### Branding parameters
