@@ -215,6 +215,7 @@ Ensure that the `coturn` has binded to port 443 with `netstat -antp | grep 443`.
 
 You must configure bbb-web so that it will provide the list of turn servers to the web browser. Edit the file `/usr/share/bbb-web/WEB-INF/classes/spring/turn-stun-servers.xml` using the contents below and make edits:
 
+* comment out all STUN servers. They are not needed when TURN servers are available, and
 * replace both instances of `<turn.example.com>` with the hostname of the TURN server, and 
 * replace `<secret_value>` with the secret you configured in `turnserver.conf`.
 
@@ -225,9 +226,9 @@ You must configure bbb-web so that it will provide the list of turn servers to t
         xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
 
-    <bean id="stun0" class="org.bigbluebutton.web.services.turn.StunServer">
-        <constructor-arg index="0" value="stun:<turn.example.com>"/>
-    </bean>
+    <!-- bean id="stun0" class="org.bigbluebutton.web.services.turn.StunServer">
+        <constructor-arg index="0" value="stun:stun.example.com"/>
+    </bean -->
 
 
     <bean id="turn0" class="org.bigbluebutton.web.services.turn.TurnServer">
@@ -238,7 +239,7 @@ You must configure bbb-web so that it will provide the list of turn servers to t
     
     <bean id="turn1" class="org.bigbluebutton.web.services.turn.TurnServer">
         <constructor-arg index="0" value="<secret_value>"/>
-        <constructor-arg index="1" value="turn:<turn.example.com>:443?transport=tcp"/>
+        <constructor-arg index="1" value="turn:<turn.example.com>:3478"/>
         <constructor-arg index="2" value="86400"/>
     </bean>
 
@@ -246,7 +247,7 @@ You must configure bbb-web so that it will provide the list of turn servers to t
             class="org.bigbluebutton.web.services.turn.StunTurnService">
         <property name="stunServers">
             <set>
-                <ref bean="stun0"/>
+                <!-- ref bean="stun0"/ -->
             </set>
         </property>
         <property name="turnServers">
