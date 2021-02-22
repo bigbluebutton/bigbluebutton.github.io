@@ -147,6 +147,38 @@ keep-address-family
 no-cli
 no-tlsv1
 no-tlsv1_1
+
+# Block connections to IP ranges which shouldn't be reachable
+no-loopback-peers
+no-multicast-peers
+# CVE-2020-26262 (If running coturn 4.5.2 or later you can remove these)
+denied-peer-ip=0.0.0.0-0.255.255.255
+denied-peer-ip=0000::-00ff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+# Private (LAN) addresses
+# If you are running BigBlueButton within a LAN, you might need to add an "allow" rule for your address range.
+# IPv4 Private-Use
+denied-peer-ip=10.0.0.0-10.255.255.255
+denied-peer-ip=172.16.0.0-172.31.255.255
+denied-peer-ip=192.168.0.0-192.168.255.255
+# Other IPv4 Special-Purpose addresses
+denied-peer-ip=100.64.0.0-100.127.255.255
+denied-peer-ip=169.254.0.0-169.254.255.255
+denied-peer-ip=192.0.0.0-192.0.0.255
+denied-peer-ip=192.0.2.0-192.168.0.2.255
+denied-peer-ip=198.18.0.0-198.19.255.255
+denied-peer-ip=198.51.100.0-198.51.100.255
+denied-peer-ip=203.0.113.0-203.0.113.255
+# IPv6 Unique-Local
+denied-peer-ip=fc00::-fdff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+# IPv6 Link-Local Unicast
+denied-peer-ip=fe80::-febf:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+# Other IPv6 Special-Purpose assignments
+denied-peer-ip=::ffff:0:0-::ffff:ffff:ffff
+denied-peer-ip=64:ff9b::-64:ff9b::ffff:ffff
+denied-peer-ip=64:ff9b:1::-64:ff9b:1:ffff:ffff:ffff:ffff:ffff
+denied-peer-ip=2001::-2001:1ff:ffff:ffff:ffff:ffff:ffff:ffff
+denied-peer-ip=2001:db8::-2001:db8:ffff:ffff:ffff:ffff:ffff:ffff
+denied-peer-ip=2002::-2002:ffff:ffff:ffff:ffff:ffff:ffff:ffff
 ```
 
 We need to create `dph.pem` file,
