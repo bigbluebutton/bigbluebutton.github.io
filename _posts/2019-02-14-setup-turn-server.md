@@ -48,13 +48,13 @@ You need to setup a fully qualified domain name that resolves to the external IP
 
 ## Required Ports
 
-On the coturn server, you need to have the following ports (in addition port 22) available for BigBlueButton clients to connect (port 3478 and 443) and for coturn to connect to your BigBlueButton server (32768 - 65535).
+On the coturn server, you need to have the following ports (in addition port 22) available for BigBlueButton clients to connect (port 3478 and 443) and for coturn to connect to your BigBlueButton server (32769 - 65535).
 
 | Ports       | Protocol | Description           |
 | ----------- | -------- | --------------------- |
 | 3478        | TCP/UDP  | coturn listening port |
 | 443         | TCP/UDP  | TLS listening port    |
-| 32768-65535 | UDP      | relay ports range     |
+| 32769-65535 | UDP      | relay ports range     |
 
 ## Generating TLS certificates
 
