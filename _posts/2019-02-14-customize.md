@@ -1081,6 +1081,35 @@ swfSlidesRequired=false
 
 The SWF files are not needed by the HTML5 client.
 
+### Change the default path for HTML5 client
+
+The default URL path for the client is `/html5client`, and it can be changed to match your preferences.
+
+Edit nginx configuration file (`/etc/bigbluebutton/nginx/bbb-html5.nginx`), replacing all instances of `/html5client` with the new path;
+
+Do the same in `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties` in the following lines:
+
+```
+defaultHTML5ClientUrl=${bigbluebutton.web.serverURL}/html5client/join
+
+defaultGuestWaitURL=${bigbluebutton.web.serverURL}/html5client/guestWait
+```
+
+In configuration file for the HTML5 client, located in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml`, change the entry for `public.app.basename`:
+
+```
+public:
+  app:
+    ...
+    basename: '/html5client'
+```
+
+Edit `systemd_start.sh` and `systemd_start_frontend.sh` files, located in `/usr/share/meteor/bundle`, replacing `/html5client` with the new path in both files;
+
+
+Finally, run the following command to reload configuration:
+
+`sudo service nginx reload && sudo bbb-conf --restart`
 
 ## Configuration of global settings
 
