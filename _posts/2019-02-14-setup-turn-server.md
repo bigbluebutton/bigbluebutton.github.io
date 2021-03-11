@@ -151,9 +151,12 @@ no-tlsv1_1
 # Block connections to IP ranges which shouldn't be reachable
 no-loopback-peers
 no-multicast-peers
-# CVE-2020-26262 (If running coturn 4.5.2 or later you can remove these)
-denied-peer-ip=0.0.0.0-0.255.255.255
-denied-peer-ip=0000::-00ff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+# CVE-2020-26262
+# If running coturn version older than 4.5.2, uncomment these rules and ensure
+# that you have listening-ip set to ipv4 addresses only.
+#denied-peer-ip=0.0.0.0-0.255.255.255
+#denied-peer-ip=127.0.0.0-127.255.255.255
+#denied-peer-ip=::1
 # Private (LAN) addresses
 # If you are running BigBlueButton within a LAN, you might need to add an "allow" rule for your address range.
 # IPv4 Private-Use
