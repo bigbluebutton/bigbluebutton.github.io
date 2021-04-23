@@ -12,7 +12,7 @@ Have you encountered a problem with BigBluebutton?
 
 If you need the problem to be solved quickly or lack the required technical knowledge, we suggest you [reach out to the companies](https://bigbluebutton.org/commercial-support/) that provide commercial support.  The revenue they earn helps to improve BigBlueButton for everyone.
 
-If you otherwise wish to tackle the problem yourself, the BigBlueButton project provides detailed documentation (what you are reading now), tutorial videos, [issues database](https://github.com/bigbluebutton/bigbluebutton/issues), and [public mailing lists](https://bigbluebutton.org/support/community/).
+If you otherwise wish to tackle the problem yourself, the BigBlueButton project provides detailed documentation (what you are reading now), tutorial videos, [issues database](https://github.com/bigbluebutton/bigbluebutton/issues), and [public mailing lists](https://bigbluebutton.org/community-support/).
 
 > **Note**: If you apply to join one of our mailing lists, be sure to answer the challenge question; otherwise, your application will look like SPAM and will be denied.
 

@@ -91,6 +91,15 @@ You can unmask Kurento using the command
 $ systemctl unmask kurento-media-server.service
 ```
 
+### Unable to share webcam
+
+The default installation of BigBlueButton should work in most netowrk configurations; however, if your users ae behind a restrictive network that blocks outgoing UDP connections, they may encounter 1020 errors (media unable to reach server).
+
+If you get reports of these errors, setup TURN server to help their browsers send WebRTC audio and video streams via TCP over port 443 to the TURN server.  The TURN server will then relay the media to your BigBlueButton server.
+
+See [Configure TURN](/2.2/setup-turn-server.html).
+
+
 ## FreeSWITCH
 
 ### Configure BigBluebutton/FreeSWITCH to support IPV6
@@ -268,9 +277,9 @@ $ sudo bbb-conf --check
 
 ### FreeSWITCH fails to start with a SETSCHEDULER error
 
-When running in a container (like a chroot, OpenVZ or LXC), it might not be possible for FreeSWITCH to set the CPU priority and other tasks is not possible.
+When running in a container (like a chroot, OpenVZ or LXC), it might not be possible for FreeSWITCH to set its CPU priority to [real-time round robin](https://man7.org/linux/man-pages/man2/sched_setscheduler.2.html).  If not, it will result in lower performance compared to a non-virtualized installation.
 
-If you see an error starting FreeSWITCH, try running `systemctl status freeswitch.service` and see if you see the error related to SETSCHEDULER
+If you running BigBlueButton in a container and an error starting FreeSWITCH, try running `systemctl status freeswitch.service` and see if you see the error related to SETSCHEDULER
 
 ```bash
 $ systemctl status freeswitch.service
@@ -289,7 +298,7 @@ Oct 02 16:17:29 scw-9e2305 systemd[1]: freeswitch.service: Start request repeate
 Oct 02 16:17:29 scw-9e2305 systemd[1]: Failed to start freeswitch.
 ```
 
-If so, then edit `/lib/systemd/system/freeswitch.service` and comment out the line containing `CPUSchedulingPolicy`
+If you see `SETSCHEDULER` in the error message, edit `/lib/systemd/system/freeswitch.service` and comment out the line containing `CPUSchedulingPolicy=rr` (round robin)
 
 ```ini
 IOSchedulingPriority=2
@@ -297,7 +306,7 @@ IOSchedulingPriority=2
 CPUSchedulingPriority=89
 ```
 
-Then do `systemctl daemon-reload` and restart BigBlueButton.  FreeSWITCH should now startup without error.
+Save the file, run `systemctl daemon-reload`, and then restart BigBlueButton.  FreeSWITCH should now startup without error.
 
 ### Users not able to join Listen Only mode
 
@@ -378,19 +387,44 @@ For many years, in BigBlueButton's FreeSWITCH configuration file `/opt/freeswitc
   <X-PRE-PROCESS cmd="set" data="external_rtp_ip=stun:stun.freeswitch.org"/>
 ```
 
-However, this is not a reliable choice for stun server. Recommend either changing it to your servers external IP address.  For example, if your server has an external IP at 234.32.3.3, then change this to
+However, this is not a reliable choice for stun server. Recommend either changing it to your servers external IP address or setup your own [stun/turn server](/2.2/setup-turn-server.html).  For example, if your server has an external IP at 234.32.3.3
 
 ```xml
   <X-PRE-PROCESS cmd="set" data="external_rtp_ip=234.32.3.3"/>
 ```
 
-You can add a line in `/etc/bigbluebutton/bbb-conf/apply-conf.sh` to always apply this value.
+You can add a line in `/etc/bigbluebutton/bbb-conf/apply-conf.sh` to always apply this value even if the FreeSWITCH package upgrades.
 
 ```bash
 xmlstarlet edit --inplace --update '//X-PRE-PROCESS[@cmd="set" and starts-with(@data, "external_rtp_ip=")]/@data' --value "external_rtp_ip=234.32.3.3" /opt/freeswitch/conf/vars.xml
 ```
 Note: If your server has an internal/exteral IP address, such as on AWS EC2 server, be sure to set it to the external IP address configure a dummy network interface card (see [Update FreeSWITCH](https://docs.bigbluebutton.org/2.2/configure-firewall.html#update-freeswitch)).
 
+## HTML5 Server
+
+### bbb-html5 fails to start with a SETSCHEDULER error
+
+As of 2.2.31, the systemd unit file for `bbb-html5.service` now contains the following lines
+
+```ini
+CPUSchedulingPolicy=fifo
+Nice=19
+```
+
+You can override this with creating the following directory
+
+```
+mkdir /etc/systemd/system/bbb-html5.service.d
+```
+and creating `/etc/systemd/system/bbb-html5.service.d/override.conf` with the following contents
+
+```
+[Service]
+CPUSchedulingPolicy=other
+Nice=-10
+````
+
+Then do `systemctl daemon-reload` and restart BigBlueButton.
 
 
 ## Installation and packages
@@ -442,6 +476,10 @@ E: Sub-process /usr/bin/dpkg returned an error code (1)
 
 In the above example, the `/var/lib/dpkg/info/bbb-client.postinst` failed to finish.  To debug, edit this file and change the first line to read
 
+```
+#!/bin/bash -ex
+```
+
 and run
 
 ```bash
@@ -449,6 +487,7 @@ $ sudo apt-get install -f
 ```
 
 You should now see each command in `bbb-conf.postinst` as it executes upto the line in which the error occurs.  Post this output to `https://groups.google.com/forum/#!forum/bigbluebutton-setup` for help in resolving the issue.
+
 
 ### Errors with packages
 
