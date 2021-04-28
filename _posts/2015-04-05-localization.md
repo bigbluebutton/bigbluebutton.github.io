@@ -7,8 +7,6 @@ date: 2015-04-05 10:33:37
 
 # Localizing BigBlueButton
 
-** Note: ** This document refers to the legacy Flash client.  For localization of the HTML5 cient, see [Localization the HTML5 client with Transifex](/2.2/dev.html#localization-with-transifex).
-
 Thanks to help from our community, BigBlueButton is localized in over twenty languages.
 
 If you would like to help translate BigBlueButton into your language, or you see an error in current localization for your language that you would like to fix, here are the steps to help:
@@ -17,17 +15,13 @@ If you would like to help translate BigBlueButton into your language, or you see
 
 2. Choose the project
 
-These docs are currently being updated for the HTML5 client.
-
-For helping to translate the HTML5 client, visit [BigBlueButton v2.2 HTML5 client](https://www.transifex.com/bigbluebutton/bigbluebutton-v22-html5-client/).  
-
-For the legacy Flash client, visit the [BigBlueButton project](https://www.transifex.com/bigbluebutton/bigbluebutton-dev/). 
+For helping to translate the HTML5 client, visit [BigBlueButton v2.3 HTML5 client](https://www.transifex.com/bigbluebutton/bigbluebutton-v23-html5-client/).
 
 You'll see a list of languages ready for translation.
 
 3. Click the name of the language you wish to translate  
    
-   If you don't find your language, please post on the [BigBlueButton Mailing List](http://groups.google.com/group/bigbluebutton-dev/topics?gvc=2) requesting it be added.
+   If you don't find your language, please request to have it added using the Transifex menu.
 
 4. Click 'Join team' to join the localization team for your language
    
@@ -37,7 +31,7 @@ You'll see a list of languages ready for translation.
    
    At this point, Transifex will send an e-mail to the coordinator for BigBlueButton localization requesting approval. You should receive approval very quickly.
 
-5. Once approved, click the 'bbbResource.properties' link
+5. Once approved, click the 'en.json' link
    
    ![bbbResources.properties](/images/image1.png)
    
@@ -65,41 +59,107 @@ Finally, if you have any questions or need help, please post to [bigbluebutton-d
 
 Thanks again for your help in localizing BigBlueButton into other languages!
 
-## Technical Background
 
-Note: This section applies only to the legacy Flash client.
 
-BigBlueButton localization follows the i18n standard. BigBlueButton Client will detect the locale of the language of the browser running it and attempt to load that language file.
+# Technical Background
 
-Language files are compiled into swf files and loaded dynamically based on the browser locale. This reduces the size of the client. Language codes follow the convention of a two letter lowercase language name, followed by an underscore, followed by two upper-case letters signifying the country code. So, for example, the default English for the United States would be: **en\_US**
+We use Transifex for crowdsourcing for BigBlueButton Internationalization(i18n). The following steps are not a part of the typical installation and are only required for bringing the language strings in github up to date. There are two ways to pull the translation files; using the transifex.sh script or the transifex client.
 
-![I18N](/images/I18N.png)
+## Using transifex.sh
 
-## Compiling your own language files into your client
+The transifex.sh script aims to make retrieving translation files on the Transifex servers as simple as possible. In order to use the script, you must provide your Transifex credentials which have the appropriate authorization. The script can be used in the following ways.
 
-If you created a custom language file but do not wish to contribute back to the project, here are the instructions on how to compile the language files yourself.
-
-1. Put the template file into a new folder. The folder name should follow the language code convention stated above for the language/country the language file is written for.  Put the folder under `bigbluebutton-client/locale`.
-2. The file will be loaded whenever the user's browser is set to that language/country code. Optionally, you could overwrite the English language files if you think that most of your users are running english language browsers, but would still like them to load a specific language.
-
-Rebuild the client. Go to the client source directory - on the VM usually `/home/firstuser/dev/bigbluebutton/bigbluebutton-client/`, and run the command
-
-```bash
-$ ant locales
+```
+$ ./transifex.sh all
 ```
 
-To have the client load your locale, you need to add it to the locales.xml located in resources/prod folder.
+Using the all argument will tell the script to download all available translation files.
 
-[locales.xml](http://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-client/resources/prod/locales.xml)
+```
+$ ./transifex.sh fr de pt-BR
+```
 
-Refer to the [FAQ](/support/faq.html#my-client-fails-at-startup-with-rsl-error;-error-2035:url-not-found) if you have problems with Ant and Flex
+If you only need a specific set of translations, the script can be run with the required locales as argument.
 
-## Testing your localization
+## Setup & Configure Transifex Client
 
-There is a Firefox plug-in, "Quick Locale Switcher", that can be used for testing the localizations. The plug-in is available [here](https://addons.mozilla.org/en-US/firefox/addon/1333). When this plug-in is installed, you will have a menu at the bottom right hand corner that allows you to change the locale in the browser.
+This is an alternative method to using the transifex.sh and is essentially the manual process for retrieving translation files from the Transifex servers.
 
-## Overwriting the English Translation with your Language
+### 1. Install Transifex Client
 
-If you think most of your users are running browsers set for English but would still like BigBlueButton to load with a different language, you can delete the en\_US.swf file from the directory where you deployed the bbb-client. Then rename your localization to en\_US.swf. So for example if you wanted the Spanish language to be the default, just rename the file es\_ES.swf to en\_US.swf.
+To installation the Transifex client we use pip, a package management system designed to manage and install Python packages.
 
-Or you can edit [bbb_localization.js](https://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-client/resources/prod/lib/bbb_localization.js) to force the default to locale to what you want.
+```
+$ sudo apt-get install python-pip
+```
+
+Next we use Pip to install the Transifex client.
+
+```
+$ sudo pip install transifex-client
+```
+
+The following command is used to upgrade the client to the most current version.
+
+```
+$ pip install --upgrade transifex-client
+```
+
+### 2. Transifex Project Initialization
+
+The `tx init` command is used to initialize a project. Run from the root directory of the application.
+
+```
+$ tx init
+Creating .tx folder. . .
+Transifex instance [https://www.transifex.com]:
+```
+
+Press Enter (will be prompted for your Transifex username and password)
+
+```
+Creating skeleton...
+Creating config file...
+​Done.
+```
+
+This will create a Transifex project file in the current directory containing the project’s configuration file.
+
+### 3. Transifex Client configuration
+
+#### .tx/config
+
+The Transifex client uses a per project configuration file. This is located in .tx/config of your project's root directory and is generated on running the `tx init` command. It should be updated with the following configuration:
+
+```
+[main]
+host = https://www.transifex.com
+
+[bigbluebutton-html5.enjson]
+file_filter = private/locales/<lang>.json
+source_file = private/locales/en_US.json
+source_lang = en_US
+type = KEYVALUEJSON
+```
+
+### 4. Set a Project Remote
+
+`tx set` allows you to configure and edit Transifex project files on your local computer.
+
+The following command is used to initialize a local project for the remote project specified by the URL.
+
+`$ tx set --auto-remote https://www.transifex.com/projects/p/bigbluebutton-html5/resources/enjson/`
+
+Next we can pull language files located on the Transifex server.
+
+### 5. Pull: Download Transifex Translations
+
+To pull all translation files from the Transifex server, the following command is used.
+
+`$ tx pull -a bigbluebutton-html5.enjson`
+
+In the event that there are a lot of translations, instead of pulling all, we can specify which translations we want to acquire.
+
+`$ tx pull -r bigbluebutton-html5.enjson -l pt_BR`
+
+Alternatively, simply download a ZIP archive of all languages in the project from the Transifex project page and unarchive it in the `public/locales/` directory.
