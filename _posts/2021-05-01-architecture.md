@@ -1,25 +1,21 @@
 ---
 layout: page
 title: "Architecture"
-category: 2.2
-redirect_from: 
-  - /1.0/10architecture
-  - /architecture
-date: 2015-09-20 17:34:41
-order: 8
+category: 2.3
+date: 2021-05-01 17:34:41
 ---
 
-**Note:** This page is for the older 2.2 release and is no longer updated.  BigBlueButton 2.3 is the latest version.  The newer version of this document is available at [Architecture for 2.3](/2.3/architecture). 
+*Note*: Updating for 2.3.
 
 BigBlueButton is built upon a solid foundation of underlying components, including nginx, FreeSWITCH, Kurento, redis, react, and others.  
 
-This page describes the overall architecture of BigBlueButton and how these components work together. 
+This page describes the overall architecture of BigBlueButton and how these components work together.
 
 # High-level architecture
 
 The following diagram provides a high-level view of how BigBlueButton's components work together.
 
-![Architecture Overview](/images/10/bbb-arch-overview.png)
+![Architecture Overview](/images/10/bbb-arch-overview.png) 
 
 We'll break down each component in more detail below.
 

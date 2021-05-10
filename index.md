@@ -10,7 +10,7 @@ title: "BigBlueButton"
 
 BigBlueButton is an open source web conferencing system for online learning.  This means
 
-* **Open source** - you have full access to BigBlueButton's [source code](https://github.com/bigbluebutton/bigbluebutton) under an [open source license](https://bigbluebutton.org/open-source-license/).  With the source code, [installation steps](/2.2/install.html), and [community support](https://bigbluebutton.org/support/), you can easily deploy your own BigBlueButton server (or 10 servers if you want).  For each server you can [customize it](2.2/customize.html), [modify it](/2.2/dev.html) and [integrate it](/dev/api.html) into your products and services.  Cool.
+* **Open source** - you have full access to BigBlueButton's [source code](https://github.com/bigbluebutton/bigbluebutton) under an [open source license](https://bigbluebutton.org/open-source-license/).  With the source code, [installation steps](/2.3/install.html), and [community support](https://bigbluebutton.org/support/), you can easily deploy your own BigBlueButton server (or 10 servers if you want).  For each server you can [customize it](2.2/customize.html), [modify it](/2.2/dev.html) and [integrate it](/dev/api.html) into your products and services.  Cool.
 
 * **Web conferencing system** - you get the core features you would expect from a commercial web conferencing system (but under an open source license).  These features include real-time sharing of audio, video, presentation, and screen -- along with collaboration tools such as whiteboard, shared notes, polling, and breakout rooms.   BigBlueButton can record your sessions for later playback.  
 
@@ -123,7 +123,7 @@ If your interested in using BigBlueButton in a production environment, [check ou
 
 ## Latest release
 
-The latest version of BigBlueButton is BigBlueButton 2.2 which features a pure HTML5 client.  See [install BigBlueButton](/2.2/install.html).
+The latest version of BigBlueButton is BigBlueButton 2.3.  See [install BigBlueButton](/2.2/install.html).
 
 Overview for Viewers (click image below to watch YouTube video):
 
