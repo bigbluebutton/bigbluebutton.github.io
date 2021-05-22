@@ -5,6 +5,10 @@ category: support
 date: 2015-04-04 22:26:10
 ---
 
+# Latest release notes
+
+Starting with BigBlueButton 2.2.1 we publish our Release Notes in [GitHub's BigBlueButton page](https://github.com/bigbluebutton/bigbluebutton/releases)
+
 # Release 2.2
 
 Released: November 6, 2019 ([Installation Instructions](/2.2/install.html))
