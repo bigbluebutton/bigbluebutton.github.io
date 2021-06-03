@@ -104,10 +104,12 @@ $ sudo chmod 0755 /etc/letsencrypt/renewal-hooks/deploy/coturn
 
 Use the file below for `/etc/turnserver.conf` and make the following changes:
 
-* Replace `<turn.example.com>` with the hostname of your TURN server, and  
-* Replace `<example.com>` with the realm of your TURN server, and  
-* Replace `<secret_value>` to a random value for a shared secret (you can generate one by running `openssl rand -hex 16`)
-* Replace `<IP>` with the external IP of your TURN server
+* Replace `<turn.example.com>` with the hostname of your TURN server.  
+* Replace `<example.com>` with the realm of your TURN server.  
+* Replace `<secret_value>` to a random value for a shared secret (you can generate one by running `openssl rand -hex 16`).
+* Replace `<IP>` with the external IP of your TURN server.
+* Replace `<bbb_server_ip>` with the IP Address of your BigBlueButton-Server.
+  * Repeat `allowed-peer-ip=<ip_address>` for each IPv4 and IPv6 for every BigBlueButton-Server.
 
 This configuration file assumes your TURN server is not behind NAT and has a public IP address.
 
@@ -115,8 +117,8 @@ This configuration file assumes your TURN server is not behind NAT and has a pub
 listening-port=3478
 tls-listening-port=443
 
-listening-ip=$IP
-relay-ip=$IP
+listening-ip=<IP>
+relay-ip=<IP>
 
 # If the server is behind NAT, you need to specify the external IP address.
 # If there is only one external address, specify it like this:
@@ -126,6 +128,23 @@ relay-ip=$IP
 # external ip, and the second address is the corresponding internal IP.
 #external-ip=172.17.19.131/10.0.0.11
 #external-ip=172.17.18.132/10.0.0.12
+
+# Flag that can be used to disallow peers on well-known broadcast addresses
+# (224.0.0.0 and above, and FFXX:*). This is an extra security measure.
+#
+no-multicast-peers
+
+# Option to allow or ban specific ip addresses or ranges of ip addresses. 
+# If an ip address is specified as both allowed and denied, then the ip address is 
+# considered to be allowed. This is useful when you wish to ban a range of ip 
+# addresses, except for a few specific ips within that range.
+#
+# This can be used when you do not want users of the turn server to be able to access
+# machines reachable by the turn server, but would otherwise be unreachable from the 
+# internet (e.g. when the turn server is sitting behind a NAT)
+denied-peer-ip=0.0.0.0-255.255.255.255
+denied-peer-ip=::-ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff
+allowed-peer-ip=<bbb_server_ip>
 
 min-port=32769
 max-port=65535
