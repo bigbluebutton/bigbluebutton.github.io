@@ -298,7 +298,7 @@ Restart your BigBlueButton server to apply the changes.
 
 Going forward, when users connect behind a restrictive firewall that prevents outgoing UDP connections, the TURN server will enable BigBlueButton to connect to FreeSWITCH and Kurento via the TURN server through port 443 on their firewall.
 
-# Test you TURN server
+# Test your TURN server
 
 By default, your browser will try to connect directly to Kurento or FreeSWITCH using WebRTC.  If it is unable to make a direct connection, it will fall back to using the TURN server as one of the interconnectivity connectivity exchange (ICE) candidates to relay the media.
 
