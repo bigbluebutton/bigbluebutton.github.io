@@ -115,8 +115,8 @@ This configuration file assumes your TURN server is not behind NAT and has a pub
 listening-port=3478
 tls-listening-port=443
 
-listening-ip=$IP
-relay-ip=$IP
+listening-ip=<IP>
+relay-ip=<IP>
 
 # If the server is behind NAT, you need to specify the external IP address.
 # If there is only one external address, specify it like this:
