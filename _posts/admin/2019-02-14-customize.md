@@ -342,7 +342,7 @@ If you have sessions that like to share lots of webcams, such as ten or more, th
 
 You can disable webcams by setting `enableVideo` to `false` in the `settings.yml` file for the HTML5 client.
 
-To do this automatically between package upgrades and restarts of BigBlueButton, add the following lines to [apply-conf.sh](https://docs.bigbluebutton.org/2.2/customize.html#apply-confsh).
+To do this automatically between package upgrades and restarts of BigBlueButton, add the following lines to [apply-conf.sh](https://docs.bigbluebutton.org/admin/customize.html#apply-confsh).
 
 ```bash
 echo " - Disable webcams"
@@ -356,7 +356,7 @@ and run `bbb-conf --restart`
 
 You can disable screen sharing by setting `enableScreensharing` to `false` in the `settings.yml` file for the HTML5 client.
 
-To do this automatically between package upgrades and restarts of BigBlueButton, add the following lines to [apply-conf.sh](https://docs.bigbluebutton.org/2.2/customize.html#apply-confsh).
+To do this automatically between package upgrades and restarts of BigBlueButton, add the following lines to [apply-conf.sh](https://docs.bigbluebutton.org/admin/customize.html#apply-confsh).
 
 ```bash
 echo " - Disable screen sharing"
@@ -368,7 +368,7 @@ chown meteor:meteor $HTML5_CONFIG
 
 If you expect users to share many webcams, you can [reduce bandwidth for webcams](#reduce-bandwidth-from-webcams).
 
-To do this automatically between package upgrades and restarts of BigBlueButton, add the following lines to [apply-conf.sh](https://docs.bigbluebutton.org/2.2/customize.html#apply-confsh).
+To do this automatically between package upgrades and restarts of BigBlueButton, add the following lines to [apply-conf.sh](https://docs.bigbluebutton.org/admin/customize.html#apply-confsh).
 
 ```bash
 echo "  - Setting camera defaults"
@@ -392,7 +392,7 @@ Kurento media server handles three different types of media streams: listen only
 
 Running three parallel Kurento media servers (KMS) -- one dedicated to each type of media stream -- should increase the stability of media handling as the load for starting/stopping media streams spreads over three separate KMS processes. Also, it should increase the reliability of media handling as a crash (and automatic restart) by one KMS will not affect the two.
 
-To configure your BigBlueButton server to run three KMS processes, add the following line to [apply-conf.sh](https://docs.bigbluebutton.org/2.2/customize.html#apply-confsh)
+To configure your BigBlueButton server to run three KMS processes, add the following line to [apply-conf.sh](https://docs.bigbluebutton.org/admin/customize.html#apply-confsh)
 
 ```sh
 enableMultipleKurentos

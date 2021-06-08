@@ -8,7 +8,7 @@ order: 10
 
 If you encountered any problems with the installation of BigBlueButton, this section covers how to resolve many of the common issues.
 
-If you have not already done so, read through the [getting help section](/2.2/getting-started.html).
+If you have not already done so, read through the [getting help section](/support/getting-help).
 
 ## Introduction
 
@@ -397,7 +397,7 @@ You can add a line in `/etc/bigbluebutton/bbb-conf/apply-conf.sh` to always appl
 xmlstarlet edit --inplace --update '//X-PRE-PROCESS[@cmd="set" and starts-with(@data, "external_rtp_ip=")]/@data' --value "external_rtp_ip=234.32.3.3" /opt/freeswitch/conf/vars.xml
 ```
 
-Note: If your server has an internal/exteral IP address, such as on AWS EC2 server, be sure to set it to the external IP address configure a dummy network interface card (see [Update FreeSWITCH](https://docs.bigbluebutton.org/2.2/configure-firewall.html#update-freeswitch)).
+Note: If your server has an internal/exteral IP address, such as on AWS EC2 server, be sure to set it to the external IP address configure a dummy network interface card (see [Update FreeSWITCH](https://docs.bigbluebutton.org/admin/configure-firewall.html#update-freeswitch)).
 
 ## HTML5 Server
 

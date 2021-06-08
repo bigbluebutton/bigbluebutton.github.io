@@ -52,7 +52,7 @@ If you installed BigBlueButton using the step-by-step instructions, try using th
 Next, read through the following documentation:
 
 1. [Install Guide](/2.2/install.html#before-you-install) (do this even if you have used `bbb-install.sh` as it will help you understand the various components of BigBlueButton)
-2. [Troubleshooting installation issues](/2.2/troubleshooting.html)
+2. [Troubleshooting installation issues](/support/troubleshooting.html)
 3. [Troubleshooting recordings](/dev/recording.html#troubleshooting) (if your issue is related to recordings)
 4. [Frequently Asked Questions](/support/faq.html)
 
@@ -90,7 +90,7 @@ There are many members of the BigBlueButton community that have been using and s
 
 # Help developing BigBlueButton
 
-BigBlueButton is a very customizable system, see [customizable options](/2.2/customize). If you don't see an option to customize BigBlueButton to your needs and have some experience with software development, you can [setup a development environment](/2.2/dev.html) and modify BigBlueButton to your needs. If you end up designing new functionality, we encourage you to upstream the changes via a pull request so that others can seek benefit from it too.
+BigBlueButton is a very customizable system, see [customizable options](/admin/customize). If you don't see an option to customize BigBlueButton to your needs and have some experience with software development, you can [setup a development environment](/2.3/dev.html) and modify BigBlueButton to your needs. If you end up designing new functionality, we encourage you to upstream the changes via a pull request so that others can seek benefit from it too.
 
 Post as much information as you can about your development problem to [bigbluebutton-dev](https://groups.google.com/forum/#!forum/bigbluebutton-dev).
 
