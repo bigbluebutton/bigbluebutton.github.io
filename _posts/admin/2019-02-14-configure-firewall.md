@@ -400,4 +400,4 @@ iface lo inet loopback
 
 The above will enable users outside the firewall to access your BigBlueButton server.
 
-For users themselves who are behind a firewall, you will want to setup a TURN server (next section).
+For users themselves who are behind a firewall, you will want to setup a TURN server (previous section).
