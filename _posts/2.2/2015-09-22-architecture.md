@@ -6,7 +6,7 @@ redirect_from:
   - /1.0/10architecture
   - /architecture
 date: 2015-09-20 17:34:41
-order: 8
+order: 3
 ---
 
 **Note:** This page is for the older 2.2 release and is no longer updated. BigBlueButton 2.3 is the latest version. The newer version of this document is available at [Architecture for 2.3](/2.3/architecture).

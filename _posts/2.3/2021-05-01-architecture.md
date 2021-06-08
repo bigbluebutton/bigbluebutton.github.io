@@ -3,6 +3,7 @@ layout: page
 title: 'Architecture'
 category: 2.3
 date: 2021-05-01 17:34:41
+order: 4
 ---
 
 _Note_: Updating for 2.3.
