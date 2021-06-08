@@ -1,7 +1,7 @@
 ---
 layout: page
-title: "Configure Firewall"
-category: 2.2
+title: 'Configure Firewall'
+category: admin
 #redirect_from: "/2.0/20install.html"
 date: 2019-02-14 22:13:42
 order: 5
@@ -15,16 +15,16 @@ If you are a developer setting up BigBlueButton on a local VM for testing, you c
 
 # Overview
 
-The easiest network configuration for installing BigBlueButton is on a server that has a single external IP address and the server is on the public Internet (and thus directly accessible by your users). Port-based access firewalling is implemented using [UFW](2.2/customize.html#secure-your-system--restrict-access-to-specific-ports).  Here is an example of such a setup with the BigBlueButton server having a (fictional) IP address 203.0.113.1 with hostname `bigbluebutton.example.com`.
+The easiest network configuration for installing BigBlueButton is on a server that has a single external IP address and the server is on the public Internet (and thus directly accessible by your users). Port-based access firewalling is implemented using [UFW](2.2/customize.html#secure-your-system--restrict-access-to-specific-ports). Here is an example of such a setup with the BigBlueButton server having a (fictional) IP address 203.0.113.1 with hostname `bigbluebutton.example.com`.
 
 ![Install](/images/11-install-net0.png)
 
-In this simple network configuration, BigBlueButton should work out-of-the-box after installation.  This is because the packaging scripts automatically configure BigBlueButton using the first non-loopback IP address, whereas access to sensitive ports is blocked.    
-A variation of this setup occurs when the server has multiple network interfaces, but the external IP is still the first network interface (such as `eth0`) picked up by the installation scripts.  
+In this simple network configuration, BigBlueButton should work out-of-the-box after installation. This is because the packaging scripts automatically configure BigBlueButton using the first non-loopback IP address, whereas access to sensitive ports is blocked.  
+A variation of this setup occurs when the server has multiple network interfaces, but the external IP is still the first network interface (such as `eth0`) picked up by the installation scripts.
 
 ![Install](/images/11-install-net1.png)
 
-If your server has `eth0` pointing to the external IP address on the internet, and there is no external firewall in place, then the packaging scripts should detect this external IP address and configure BigBlueButton accordingly.  You don't need to do any of the changes below.
+If your server has `eth0` pointing to the external IP address on the internet, and there is no external firewall in place, then the packaging scripts should detect this external IP address and configure BigBlueButton accordingly. You don't need to do any of the changes below.
 
 Don't worry if your server's IP address changes, BigBlueButton comes with a configuration utility called `bbb-conf` that lets you change all of BigBlueButton's configuration files to use any IP address or hostname.
 
@@ -34,15 +34,15 @@ The following diagram gives a typical setup with an external firewall (your setu
 
 ![Install](/images/11-install-net2.png)
 
-In this example, all users must connect to the BigBlueButton server via the uniform resource locator (URL) `https://bigbluebutton.example.com/`.  This hostname resolves to the IP address 203.0.113.1 which is the firewall.  The firewall must forward specific connections (described below) to the BigBlueButton server running at IP address 10.0.2.12.
+In this example, all users must connect to the BigBlueButton server via the uniform resource locator (URL) `https://bigbluebutton.example.com/`. This hostname resolves to the IP address 203.0.113.1 which is the firewall. The firewall must forward specific connections (described below) to the BigBlueButton server running at IP address 10.0.2.12.
 
 # Configure your firewall
 
 When BigBlueButton is protected behind a firewall, you need to configure the firewall to forward the following incoming connections to BigBlueButton:
 
-* TCP/IP port 22 (for SSH)
-* TCP/IP ports 80/443 (for HTTP/HTTPS)
-* UDP ports in the range 16384 - 32768 (for FreeSWITCH/HTML5 RTP streams)
+- TCP/IP port 22 (for SSH)
+- TCP/IP ports 80/443 (for HTTP/HTTPS)
+- UDP ports in the range 16384 - 32768 (for FreeSWITCH/HTML5 RTP streams)
 
 ## EC2
 
@@ -52,23 +52,23 @@ If you are using EC2, you should also assign your server an [Elastic IP address]
 
 On Microsot Azure, when you create an instance you need to add the following inbound port rules to enable incomming connections on ports 80, 443, and UDP port range 16384-32768:
 
-![Azure Cloud ](/images/azure-firewall.png?raw=true "Azure 80, 443, and UDP 16384-32768")
+![Azure Cloud ](/images/azure-firewall.png?raw=true 'Azure 80, 443, and UDP 16384-32768')
 
 ## Google Compute Engine
 
 On Google Compute Engine, when you create an instance you need to enable traffic on port 80 and 443.
 
-![Google Compute Engine 80-443](/images/gce-80-443.png?raw=true "GCE 80 and 443")
+![Google Compute Engine 80-443](/images/gce-80-443.png?raw=true 'GCE 80 and 443')
 
 After the instance is created, you need to add a firewall rule to allow incoming UDP traffic on the port range 16384-32768.
 
-![Google Compute Engine Firewall](/images/gce-firewall.png?raw=true "GCE Firewall")
+![Google Compute Engine Firewall](/images/gce-firewall.png?raw=true 'GCE Firewall')
 
 # Testing the firewall
 
 After you have made the changes to you firewall settings, before proceeding to the installation, take a moment and test that you have configured the firewall to correctly forward the above connections (this will save you time later on if you encounter issues).
 
-To test connections on various ports needed by BigBlueButton, you will use a tool called `netcat` to listen for connections.  You'll use `netcat` on the BigBlueButton server and on external server (outside the firewall) to generate connections.  If the connections test fail, then the firewall is forwarding the packets.
+To test connections on various ports needed by BigBlueButton, you will use a tool called `netcat` to listen for connections. You'll use `netcat` on the BigBlueButton server and on external server (outside the firewall) to generate connections. If the connections test fail, then the firewall is forwarding the packets.
 
 First, install `netcat` on the BigBlueButton using the following command:
 
@@ -76,7 +76,7 @@ First, install `netcat` on the BigBlueButton using the following command:
 $ sudo apt-get install netcat
 ```
 
-Next, stop BigBlueButton with the command `sudo bbb-conf --stop`.  This frees up the ports we want to test.  We can now run `netcat` to listen on ports and try connecting from an external computer.   As root, run the following command:
+Next, stop BigBlueButton with the command `sudo bbb-conf --stop`. This frees up the ports we want to test. We can now run `netcat` to listen on ports and try connecting from an external computer. As root, run the following command:
 
 ```bash
 $ netcat -l 443
@@ -84,13 +84,13 @@ $ netcat -l 443
 
 `netcat` is now going to echo to the terminal any text it receives on port 443 (you can quit the command later using Ctrl-c).
 
-Next, on a second computer that is external to the firewall -- that is, it must go through the firewall to access the BigBlueButton server -- install `netcat` as well.  Replace `EXTERNAL_HOST_NAME` with the hostname of your firewall, run the following command
+Next, on a second computer that is external to the firewall -- that is, it must go through the firewall to access the BigBlueButton server -- install `netcat` as well. Replace `EXTERNAL_HOST_NAME` with the hostname of your firewall, run the following command
 
 ```bash
 $ netcat EXTERNAL_HOST_NAME 443
 ```
 
-and type type the word 'test' and press ENTER.  
+and type type the word 'test' and press ENTER.
 
 If the firewall is forwarding incoming connections on port 443 to the internal BigBlueButton server, you should see the word 'test' appear after the `netcat -l 443` command, as in
 
@@ -99,11 +99,11 @@ $ netcat -l 443
 test
 ```
 
-If the word `test` does not appear, double-check the firewall configuration to ensure its forwarding connections on port 443 and then test again.  You want to see the word `test` appear before proceeding to the installation BigBlueButton.
+If the word `test` does not appear, double-check the firewall configuration to ensure its forwarding connections on port 443 and then test again. You want to see the word `test` appear before proceeding to the installation BigBlueButton.
 
 Repeat these tests with port 80.
 
-That covers the TCP/IP ports.  Next, we need to test that UDP connections in the range 16384-32768 are forwarded as well.  On your BigBlueButton server, run the following `netcat` command to listen for incoming data via UDP on port 17000 (here, we're picking a port in the range 16384-32768).
+That covers the TCP/IP ports. Next, we need to test that UDP connections in the range 16384-32768 are forwarded as well. On your BigBlueButton server, run the following `netcat` command to listen for incoming data via UDP on port 17000 (here, we're picking a port in the range 16384-32768).
 
 ```bash
 $ netcat -u -l 17000
@@ -115,7 +115,7 @@ Again, on a computer outside the firewall, replace `EXTERNAL_HOST_NAME` with the
 $ netcat -u EXTERNAL_HOST_NAME 17000
 ```
 
-Type 'test2' into the terminal and press ENTER.  You should see the word 'test2' appear on the terminal of the BigBlueButton server, as in
+Type 'test2' into the terminal and press ENTER. You should see the word 'test2' appear on the terminal of the BigBlueButton server, as in
 
 ```bash
 $ netcat -u -l 17000
@@ -124,7 +124,7 @@ test2
 
 As before, it the above test fails, double-check the settings of the firewall to ensure its properly fording UDP packets in the range 16384-32768 and test again.
 
-When BigBlueButton is running on a server, various component of BigBlueButton need to make connections to itself using the external hostname.  Programs running within the BigBlueButton server that try to connect to the external hostname should reach BigBlueButton itself.  
+When BigBlueButton is running on a server, various component of BigBlueButton need to make connections to itself using the external hostname. Programs running within the BigBlueButton server that try to connect to the external hostname should reach BigBlueButton itself.
 
 To enable the BigBlueButton server to connect to itself using the external hostname, edit file `/etc/hosts` and add the line
 
@@ -132,7 +132,7 @@ To enable the BigBlueButton server to connect to itself using the external hostn
 EXTERNAL_IP_ADDRESS EXTERNAL_HOST_NAME
 ```
 
-where `EXTERNAL_IP_ADDRESS` with the external IP of your firewall and `EXTERNAL_HOST_NAME` with the external hostname of your firewall.   For example, using the configuration in the above diagram, the addition to `/etc/hosts` would be
+where `EXTERNAL_IP_ADDRESS` with the external IP of your firewall and `EXTERNAL_HOST_NAME` with the external hostname of your firewall. For example, using the configuration in the above diagram, the addition to `/etc/hosts` would be
 
 ```
 172.34.56.78 bigbluebutton.example.com
@@ -146,10 +146,10 @@ At this point, proceed with the [installation of BigBlueButton](/2.2/install.htm
 
 ### Extra steps when server is behind NAT
 
-The HTML5 client uses the kurento media server to send/receive WebRTC video streams.  If you are installing on a BigBlueButton server behind a firewall that uses network address translation (NAT), you need to give kurento access to an external STUN server (which stans for Session Traversal of UDP through NAT).  A STUN server will help Kurento determine its external address when behind NAT.
+The HTML5 client uses the kurento media server to send/receive WebRTC video streams. If you are installing on a BigBlueButton server behind a firewall that uses network address translation (NAT), you need to give kurento access to an external STUN server (which stans for Session Traversal of UDP through NAT). A STUN server will help Kurento determine its external address when behind NAT.
 
 You'll find a list of publicly available STUN servers at the [kurento documentation](https://kurento.readthedocs.io/en/stable/doc/admin_guide.html#installation).  
-To configure Kurento to use a STUN server from the above list, you need to edit `/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini` and uncomment and assign values for `stunServerAddress` and `stunServerPort`.  Here's the default configuration.
+To configure Kurento to use a STUN server from the above list, you need to edit `/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini` and uncomment and assign values for `stunServerAddress` and `stunServerPort`. Here's the default configuration.
 
 ```ini
 # cat /etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
@@ -187,7 +187,8 @@ Binding test: success
 Local address: 10.128.0.8:41870
 Mapped address: 104.155.132.199:41870
 ```
-(The port 41870 is a random example.  Different runs of this command will choose different example ports.)
+
+(The port 41870 is a random example. Different runs of this command will choose different example ports.)
 
 ## Update FreeSWITCH
 
@@ -195,11 +196,11 @@ Let's revist the typical setup for BigBlueButton behind a firewall (yours would 
 
 ![Install](/images/11-install-net2.png)
 
-For WebRTC audio to work, FreeSWITCH needs to listen for connections on the external IP address of the firewall.  If you haven't modified your firewall to forward ports to your BigBlueButton server, see [configure a firewall](#configure-your-firewall).
+For WebRTC audio to work, FreeSWITCH needs to listen for connections on the external IP address of the firewall. If you haven't modified your firewall to forward ports to your BigBlueButton server, see [configure a firewall](#configure-your-firewall).
 
 With the firewall configured to forward incoming connections to the BigBlueButton server, the next step is to configure FreeSWITCH to bind to the firewall's external IP address.
 
-Edit the following files and substitute EXTERNAL\_IP\_ADDRESS for the external IP address (not the external hostname).
+Edit the following files and substitute EXTERNAL_IP_ADDRESS for the external IP address (not the external hostname).
 
 Edit `/opt/freeswitch/conf/vars.xml`, and change
 
@@ -248,13 +249,13 @@ $ grep enableListenOnly /usr/share/meteor/bundle/programs/server/assets/app/conf
     enableListenOnly: true
 ```
 
-Next, edit `/usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml` change the value to `ip` to match the external IP address of the server.  
+Next, edit `/usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml` change the value to `ip` to match the external IP address of the server.
 
 ```yaml
 freeswitch:
-    ip: 203.0.113.1
-    sip_ip: 172.30.1.145
-    port: 5066
+  ip: 203.0.113.1
+  sip_ip: 172.30.1.145
+  port: 5066
 ```
 
 If your runnig 2.2.29 or later, the value of `sip_ip` depends on whether you have `sipjsHackViaWs` set to true or false in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml` (see [Configure FreeSWITCH for using SSL](/2.2/install.html#configure-freeswitch-for-using-ssl)).
@@ -267,9 +268,9 @@ After making the above changes, restart BigBlueButton.
 $ bbb-conf --restart
 ```
 
-To test, launch FireFox and try connecting to your BigBlueButton server and join the audio.  If you see the words '[ WebRTC Audio ]' in the lower right-hand corner, it worked.
+To test, launch FireFox and try connecting to your BigBlueButton server and join the audio. If you see the words '[ WebRTC Audio ]' in the lower right-hand corner, it worked.
 
-If it didn't work, there are two likely error messages when you try to connect with audio.  
+If it didn't work, there are two likely error messages when you try to connect with audio.
 
 Detected the following WebRTC issue: Error 1002: Could not make a WebSocket connection. Do you want to try Flash instead?
 
@@ -278,7 +279,7 @@ Detected the following WebRTC issue: Error 1002: Could not make a WebSocket conn
 | 1002: Could not make a WebSocket connection | Note 1         |
 | 1007: ICE negotiation failed                | Note 2         |
 
-For Error 1002, check IP address for `proxy_pass` in `/etc/bigbluebutton/nginx/sip.nginx` is pointing to the external IP address of the firewall.  Next, check that FreeSWITCH has started without errors
+For Error 1002, check IP address for `proxy_pass` in `/etc/bigbluebutton/nginx/sip.nginx` is pointing to the external IP address of the firewall. Next, check that FreeSWITCH has started without errors
 
 <pre><code># systemctl status freeswitch
 ● freeswitch.service - freeswitch
@@ -299,7 +300,7 @@ Mar 03 23:13:07 t4 freeswitch[19349]: FreeSWITCH[19349] System Ready pid:19361
 Mar 03 23:13:07 t4 systemd[1]: Started freeswitch.
 </code></pre>
 
-You should see `active (running)`.  If FreeSWITCH is not running, you can check it's output log for clues on why it's not running `journalctl -u freeswitch.service`. If you continue to see the Error 1002, check the diagnostic stops below, under [Configure a dummy NIC](#configure-a-dummy-nic-if-required).
+You should see `active (running)`. If FreeSWITCH is not running, you can check it's output log for clues on why it's not running `journalctl -u freeswitch.service`. If you continue to see the Error 1002, check the diagnostic stops below, under [Configure a dummy NIC](#configure-a-dummy-nic-if-required).
 
 For Error 1007, it means that the web socket connect was successful (FreeSWITCH is running and received the request from the browser to setup a media path), but none of the IP/Port combinations returned by FreeSWITCH enabled the browser to connect and start transmitting media. To diagnose this error, open `about:webrtc` in FireFox and click ‘show details’ for the most recent connection. Look under the column Remote Candidate and check if you see the internal IP address of the BigBlueButton server. If so, you probably have a misconfiguration in the FreeSWITCH settings. Re-check against the examples shown above.
 
@@ -349,13 +350,13 @@ Here's the sample output from a success test.
 <response><returncode>SUCCESS</returncode><version>1.0</version></response>== Info: Connection #0 to host 203.0.113.1 left intact
 ```
 
-You should see the `<response>...</response>` at the end.  
+You should see the `<response>...</response>` at the end.
 
-If you don't see this, follow the steps below on your BigBlueButton server to setup a dummy NIC that has the same IP address as your firewall.  Here's a sample diagram of how it works.
+If you don't see this, follow the steps below on your BigBlueButton server to setup a dummy NIC that has the same IP address as your firewall. Here's a sample diagram of how it works.
 
 ![Install](/images/11-install-net3.png)
 
-In this diagram, we've setup a dummy NIC for 203.0.113.1, which will allow FreeSWITCH to connect back to itself.  This way, when FreeSWICH receives an internal connection from other parts of BigBlueButton, it will think that it's on the external interface. This will cause it to use the correct IP address on the response.
+In this diagram, we've setup a dummy NIC for 203.0.113.1, which will allow FreeSWITCH to connect back to itself. This way, when FreeSWICH receives an internal connection from other parts of BigBlueButton, it will think that it's on the external interface. This will cause it to use the correct IP address on the response.
 
 To setup a dummy NIC, on your BigBlueButton enter the following command and substitute `EXTERNAL_IP_ADDRESS` with the external IP address of your firewall.
 
@@ -377,7 +378,7 @@ $ ip addr
        valid_lft forever preferred_lft forever
 ```
 
-You should see the EXTERNAL\_IP\_ADDRESS for your firewall listed above.
+You should see the EXTERNAL_IP_ADDRESS for your firewall listed above.
 
 Next, edit `/opt/freeswitch/conf/sip_profiles/external.xml` and ensure the value for `wss-binding` uses the external IP address
 
@@ -397,6 +398,6 @@ iface lo inet loopback
         pre-down ip addr del EXTERNAL_IP_ADDRESS/32 dev lo
 ```
 
-The above will enable users outside the firewall to access your BigBlueButton server.  
+The above will enable users outside the firewall to access your BigBlueButton server.
 
 For users themselves who are behind a firewall, you will want to setup a TURN server (next section).

@@ -1,11 +1,10 @@
 ---
 layout: page
-title: "Configure TURN"
-category: 2.2
+title: 'Configure TURN'
+category: admin
 date: 2019-02-14 22:13:42
 order: 4
 ---
-
 
 This document covers how to setup a TURN server for BigBlueButton to allow users behind restrictive firewalls to connect.
 
@@ -31,7 +30,7 @@ Having the server behind NAT (for example, on Amazon EC2) is OK, but all incomin
 
 ## Required Software
 
-We recommend using a minimal server installation of Ubuntu 20.04.  The [coturn](https://github.com/coturn/coturn) software requires port 443 for its exclusive use in our recommended configuration, which means the server cannot have any dashboard software or other web applications running.
+We recommend using a minimal server installation of Ubuntu 20.04. The [coturn](https://github.com/coturn/coturn) software requires port 443 for its exclusive use in our recommended configuration, which means the server cannot have any dashboard software or other web applications running.
 
 Stable versions of coturn are already available in the Ubuntu packaging repositories for version 20.04 and later, and it can be installed with apt-get:
 
@@ -44,7 +43,7 @@ Note: coturn will not automatically start until configuration is applied (see be
 
 ## Required DNS Entry
 
-You need to setup a fully qualified domain name that resolves to the external IP address of your turn server.  You'll use this domain name to generate a TLS certificate using Let's Encrypt (next section).
+You need to setup a fully qualified domain name that resolves to the external IP address of your turn server. You'll use this domain name to generate a TLS certificate using Let's Encrypt (next section).
 
 ## Required Ports
 
@@ -58,7 +57,7 @@ On the coturn server, you need to have the following ports (in addition port 22)
 
 ## Generating TLS certificates
 
-You can use `certbot` from [Let's Encrypt](https://letsencrypt.org/) to easily generate free TLS certificates.   To setup `certbot` enter the following commands on your TURN server (not your BigBlueButton server).
+You can use `certbot` from [Let's Encrypt](https://letsencrypt.org/) to easily generate free TLS certificates. To setup `certbot` enter the following commands on your TURN server (not your BigBlueButton server).
 
 ```bash
 $ sudo add-apt-repository ppa:certbot/certbot
@@ -73,14 +72,13 @@ $ sudo certbot certonly --standalone --preferred-challenges http \
     -d <turn.example.com>
 ```
 
-Current versions of the certbot command set up automatic renewal by default.  To ensure that the certificates are readable by `coturn`, which runs as the `turnserver` user, add the following renewal-hook to Let's Encrypt.  First, create the directory `/etc/letsencrypt/renewal-hooks/deploy`.
-
+Current versions of the certbot command set up automatic renewal by default. To ensure that the certificates are readable by `coturn`, which runs as the `turnserver` user, add the following renewal-hook to Let's Encrypt. First, create the directory `/etc/letsencrypt/renewal-hooks/deploy`.
 
 ```bash
 $ sudo mkdir -p /etc/letsencrypt/renewal-hooks/deploy
 ```
 
-Next, create the file `/etc/letsencrypt/renewal-hooks/deploy/coturn` with the following contents.  Replace <turn.example.com> with the hostname of your TURN server.
+Next, create the file `/etc/letsencrypt/renewal-hooks/deploy/coturn` with the following contents. Replace <turn.example.com> with the hostname of your TURN server.
 
 ```
 #!/bin/bash -e
@@ -100,14 +98,14 @@ $ sudo chmod 0755 /etc/letsencrypt/renewal-hooks/deploy/coturn
 
 ## Configure coturn
 
-`coturn` configuration is stored in the file `/etc/turnserver.conf`. There are a lot of options available, all documented in comments in the default configuration file.  We include a sample configuration below with the recommended settings (refer to the default configuration file for more information on the settings)..
+`coturn` configuration is stored in the file `/etc/turnserver.conf`. There are a lot of options available, all documented in comments in the default configuration file. We include a sample configuration below with the recommended settings (refer to the default configuration file for more information on the settings)..
 
 Use the file below for `/etc/turnserver.conf` and make the following changes:
 
-* Replace `<turn.example.com>` with the hostname of your TURN server, and  
-* Replace `<example.com>` with the realm of your TURN server, and  
-* Replace `<secret_value>` to a random value for a shared secret (you can generate one by running `openssl rand -hex 16`)
-* Replace `<IP>` with the external IP of your TURN server
+- Replace `<turn.example.com>` with the hostname of your TURN server, and
+- Replace `<example.com>` with the realm of your TURN server, and
+- Replace `<secret_value>` to a random value for a shared secret (you can generate one by running `openssl rand -hex 16`)
+- Replace `<IP>` with the external IP of your TURN server
 
 This configuration file assumes your TURN server is not behind NAT and has a public IP address.
 
@@ -191,7 +189,7 @@ $ sudo mkdir -p /etc/turnserver
 $ sudo openssl dhparam -dsaparam  -out /etc/turnserver/dhp.pem 2048
 ```
 
-To increase the file handle limit for the TURN server and to give it the ability to bind to port 443, add the following systemd override file.  First, create the directory.
+To increase the file handle limit for the TURN server and to give it the ability to bind to port 443, add the following systemd override file. First, create the directory.
 
 ```bash
 $ sudo mkdir -p /etc/systemd/system/coturn.service.d
@@ -238,20 +236,19 @@ $ sudo chown turnserver:turnserver /var/log/turnserver
 With the above steps completed, restart the TURN server
 
 ```bash
-$ sudo /etc/letsencrypt/renewal-hooks/deploy/coturn    # Initial copy of certificates 
+$ sudo /etc/letsencrypt/renewal-hooks/deploy/coturn    # Initial copy of certificates
 $ sudo systemctl daemon-reload                         # Ensure the override file is loaded
 $ sudo systemctl restart coturn                        # Restart
 ```
 
-Ensure that the `coturn` has binded to port 443 with `netstat -antp | grep 443`.  Also restart your TURN server and ensure that `coturn` is running (and binding to port 443 after restart).
-
+Ensure that the `coturn` has binded to port 443 with `netstat -antp | grep 443`. Also restart your TURN server and ensure that `coturn` is running (and binding to port 443 after restart).
 
 # Configure BigBlueButton to use your TURN server
 
 You must configure bbb-web so that it will provide the list of turn servers to the web browser. Edit the file `/usr/share/bbb-web/WEB-INF/classes/spring/turn-stun-servers.xml` using the contents below and make edits:
 
-* replace both instances of `<turn.example.com>` with the hostname of the TURN server, and 
-* replace `<secret_value>` with the secret you configured in `turnserver.conf`.
+- replace both instances of `<turn.example.com>` with the hostname of the TURN server, and
+- replace `<secret_value>` with the secret you configured in `turnserver.conf`.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -270,7 +267,7 @@ You must configure bbb-web so that it will provide the list of turn servers to t
         <constructor-arg index="1" value="turns:<turn.example.com>:443?transport=tcp"/>
         <constructor-arg index="2" value="86400"/>
     </bean>
-    
+
     <bean id="turn1" class="org.bigbluebutton.web.services.turn.TurnServer">
         <constructor-arg index="0" value="<secret_value>"/>
         <constructor-arg index="1" value="turn:<turn.example.com>:443?transport=tcp"/>
@@ -294,35 +291,33 @@ You must configure bbb-web so that it will provide the list of turn servers to t
 </beans>
 ```
 
-Restart your BigBlueButton server to apply the changes. 
+Restart your BigBlueButton server to apply the changes.
 
 Going forward, when users connect behind a restrictive firewall that prevents outgoing UDP connections, the TURN server will enable BigBlueButton to connect to FreeSWITCH and Kurento via the TURN server through port 443 on their firewall.
 
 # Test your TURN server
 
-By default, your browser will try to connect directly to Kurento or FreeSWITCH using WebRTC.  If it is unable to make a direct connection, it will fall back to using the TURN server as one of the interconnectivity connectivity exchange (ICE) candidates to relay the media.
+By default, your browser will try to connect directly to Kurento or FreeSWITCH using WebRTC. If it is unable to make a direct connection, it will fall back to using the TURN server as one of the interconnectivity connectivity exchange (ICE) candidates to relay the media.
 
-Use FireFox to test your TURN server.  FireFox allows you to disable direct connections and require fallback to your TURN server.  Launch FireFox, open `about:config`, and search for 'relay`.  You should see a parameter `media.peerconnection.ice.relay_only`.  Set this value to `true`. 
+Use FireFox to test your TURN server. FireFox allows you to disable direct connections and require fallback to your TURN server. Launch FireFox, open `about:config`, and search for 'relay`. You should see a parameter `media.peerconnection.ice.relay_only`. Set this value to `true`.
 
-With FireFox configured to only use a TURN server, open a new tab and join a BigBlueButton session, and share your webcam.  If your webcam appears, you can verify that FireFox is using your TURN server by opening a new tab and choosing `about:webrtc`.  Click `show details` and you'll see a table for ICE Stats.  The successful connection, shown at the top of the table, should have `(relay-tcp)` in the Local Candidate column.  This means the video connection was successfully relayed through your TURN server.  
+With FireFox configured to only use a TURN server, open a new tab and join a BigBlueButton session, and share your webcam. If your webcam appears, you can verify that FireFox is using your TURN server by opening a new tab and choosing `about:webrtc`. Click `show details` and you'll see a table for ICE Stats. The successful connection, shown at the top of the table, should have `(relay-tcp)` in the Local Candidate column. This means the video connection was successfully relayed through your TURN server.
 
-If, however, you received a 1020 (unable to establish connection) when sharing a webcam the browser may not be able to connect to the TURN server or the TURN server is not running or configured correctly.  Check the browser console in FireFox.  If you see
+If, however, you received a 1020 (unable to establish connection) when sharing a webcam the browser may not be able to connect to the TURN server or the TURN server is not running or configured correctly. Check the browser console in FireFox. If you see
 
 ```
 WebRTC: ICE failed, your TURN server appears to be broken, see about:webrtc for more details
 ```
 
-then FireFox was unable to communicate with your TURN server, or your TURN server was not running or configured correctly.  
-
+then FireFox was unable to communicate with your TURN server, or your TURN server was not running or configured correctly.
 
 To ensure that your firewall is not blocking UDP connections over port 443, open a new tad visit [https://test.bigbluebutton.org/](https://test.bigbluebutton.org/), launch a test session, and try sharing your webcam.
-the browser may not be able to connect to the TURN server or the TURN server is not running or configured correctly.  
+the browser may not be able to connect to the TURN server or the TURN server is not running or configured correctly.
 
-The TURN server also acts as a STUN server, so you can first check that the STUN portion is working using the `stunclient`.  Run the following commands below and substitute `<youor-turn-server-host>` with the hostname of your TURN server.
-
+The TURN server also acts as a STUN server, so you can first check that the STUN portion is working using the `stunclient`. Run the following commands below and substitute `<youor-turn-server-host>` with the hostname of your TURN server.
 
 ```
-sudo apt-get install -y stuntman-client 
+sudo apt-get install -y stuntman-client
 stunclient --mode full --localport 30000 <your-turn-server-host> 3478
 ```
 
@@ -338,10 +333,9 @@ Filtering test: success
 Nat filtering: Endpoint Independent Filtering
 ```
 
-If you get an error, check that `coturn` is running on the TURN server using `systemctl status coturn.service`.  Check the logs by doing `tail -f /var/log/turnserver/coturn.log`.  You can get verbose logs by adding `verbose` to `/etc/turnserver.conf` and restarting the TURN server `systemctl restart coturn.service`
+If you get an error, check that `coturn` is running on the TURN server using `systemctl status coturn.service`. Check the logs by doing `tail -f /var/log/turnserver/coturn.log`. You can get verbose logs by adding `verbose` to `/etc/turnserver.conf` and restarting the TURN server `systemctl restart coturn.service`
 
-
-You can test your TURN server using the [trickle ICE](https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/) page.  This gives you a log of the relay candidates as they are returned from ICE gathering.  To test using this page, you need to generate some test credentials.  Run the following BASH script and substitute `<turn.example.com>` with the hostname of your TURN server and `<secret_value>` with the password for your TURN server.
+You can test your TURN server using the [trickle ICE](https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/) page. This gives you a log of the relay candidates as they are returned from ICE gathering. To test using this page, you need to generate some test credentials. Run the following BASH script and substitute `<turn.example.com>` with the hostname of your TURN server and `<secret_value>` with the password for your TURN server.
 
 ```bash
 #!/bin/bash
@@ -357,12 +351,12 @@ echo
 echo "          https://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/"
 echo
 echo      URI : turn:$HOST:443
-echo username : $username 
+echo username : $username
 echo password : $(echo -n $username | openssl dgst -binary -sha1 -hmac $SECRET | openssl base64)
 echo
 
 ```
 
-Enter the values into URI, username, and password into the trickle ICE page and click 'Gather candidates'.  You should see a list of relay candidates.  If you don't, again check that your TURN server is running and tail the logs TURN server logs via `tail -f /var/log/turnserver/coturn.log` or `journalctl -f -u coturn.service`.
+Enter the values into URI, username, and password into the trickle ICE page and click 'Gather candidates'. You should see a list of relay candidates. If you don't, again check that your TURN server is running and tail the logs TURN server logs via `tail -f /var/log/turnserver/coturn.log` or `journalctl -f -u coturn.service`.
 
 You can get verbose logs by adding `verbose` to `/etc/turnserver.conf` and then restarting the TURN server `systemctl restart coturn.service`, and try testing again from FireFox or the above Tricke ICE page.
