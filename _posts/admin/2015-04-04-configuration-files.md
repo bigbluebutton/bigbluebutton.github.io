@@ -1,18 +1,70 @@
 ---
 layout: page
-title: "Configuration Files"
+title: 'Configuration Files'
 category: admin
 date: 2015-04-04 22:27:43
-redirect_from: "/install/configuration-files"
+redirect_from: '/install/configuration-files'
 ---
 
 # Overview
 
-(This document still needs to be updated.)
-
 This document gives an overview of the BigBlueButton configuration files.
 
-The configuration files show an IP address of `192.168.0.100` -- you'll need to change it to match your local IP address when setting up BigBlueButton.
+We recommend you make changes only to the override files (`/etc/bigbluebutton`) so that when you update to a newer version of BigBlueButton your configuration changes are not overwritten by the new packages.
+
+# Local overrides for configuration settings
+
+Starting with BigBlueButton 2.3 many of the configuration files have local overrides so the administrator can specify the local equivalents. We recommend you make changes only to the override files (`/etc/bigbluebutton`) so that when you update to a newer version of BigBlueButton your configuration changes are not overwritten by the new packages.
+
+| Package                                                                 | Override                                         | Notes                            |
+| :---------------------------------------------------------------------- | :----------------------------------------------- | -------------------------------- |
+| /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties             | /etc/bigbluebutton/bbb-web.properties            |                                  |
+| /usr/share/bbb-apps-akka/conf/application.conf                          | /etc/bigbluebutton/bbb-apps-akka.conf            |                                  |
+| /usr/share/bbb-fsesl-akka/conf/application.conf                         | /etc/bigbluebutton/bbb-fsesl-akka.conf           |                                  |
+| /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml | /etc/bigbluebutton/bbb-html5.yml                 |                                  |
+| /usr/share/meteor/bundle/bbb-html5-with-roles.conf                      | /etc/bigbluebutton/bbb-html5-with-roles.conf     |                                  |
+| /usr/share/bbb-web/WEB-INF/classes/spring/turn-stun-servers.xml         | /etc/bigbluebutton/turn-stun-servers.xml         | Replaces the original file       |
+| /usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml              | /etc/bigbluebutton/bbb-webrtc-sfu/production.yml | Arrays are merged by replacement |
+
+<br /><br />
+
+For `bbb-web.properties`, the settings are name/value pair. For example, the following `bbb-web.properties` overrides the settings for `bigbluebutton.web.serverURL` and `securitySalt` (shared secret).
+
+```
+#
+# Use this file to override default entries in /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
+#
+
+bigbluebutton.web.serverURL=https://droplet-7162.meetbbb.com
+securitySalt=UsanRxRk938d02cTWfAqSM9Cvin7bnzsREfqFfzpf2U
+```
+
+This override will ensure that `bbb-web` uses the above values regardless of changes the packaging scripts make to the upgrade.
+
+For `bbb-apps-akka` and `bbb-fsesl-akka`, the settings file are formatted as shown below. For example, the file `bbb-apps-akka.conf` overrides the settings for `/usr/share/bbb-apps-akka/conf/application.conf`.
+
+```
+// include default config from upstream
+include "/usr/share/bbb-apps-akka/conf/application.conf"
+
+// you can customize everything here. API endpoint and secret have to be changed
+// This file will not be overridden by packages
+
+services {
+  bbbWebAPI="https://bbb.example.com/bigbluebutton/api"
+  sharedSecret="UsanRxRk938d02cTWfAqSM9Cvin7bnzsREfqFfzpf2U"
+}
+```
+
+For `bbb-html5.yml` the settings file are YAML formatted. Any setting in this file overrides the corresponding setting in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml`. For example, the following `bbb-html5.yml` overrides the values for `public.kurento.screenshare.constraints.audio` to `true`.
+
+```
+public:
+  kurento:
+    screenshare:
+      constraints:
+        audio: true
+```
 
 # nginx
 
@@ -20,83 +72,33 @@ The configuration files show an IP address of `192.168.0.100` -- you'll need to 
 
 Located in `/etc/nginx/sites-enabled/bigbluebutton`
 
-This configures nginx to use ```/var/www/bigbluebutton-default``` as the default site.  ([src](http://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-client/config/bigbluebutton.nginx))
+This configures nginx to use `/var/www/bigbluebutton-default` as the default site. ([src](http://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-client/config/bigbluebutton.nginx))
 
 ## Log files
 
 | Log                                     | Description                                                     |
-|:--------------------------------------- |:--------------------------------------------------------------- |
+| :-------------------------------------- | :-------------------------------------------------------------- |
 | /var/log/nginx/bigbluebutton.access.log | Web log of access to BigBlueButton HTML pages.                  |
 | /var/log/nginx/error.log                | Web log of errors generated by nginx based on browser requests. |
 
-# Red5
+# Tomcat
 
 ## Configuration files
 
 ```
- /usr/share/red5/conf/red5-core.xml
-```
-
-The main configuration file for red5.  You shouldn't need to modify this file.
-
-```
- /usr/share/red5/webapps/bigbluebutton/WEB-INF/bigbluebutton.properties
-```
-
-Properties for bbb-apps, the core BigBlueButton red5 module (
-
-http://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-apps/src/main/webapp/WEB-INF/bigbluebutton.properties
-
-```
- /usr/share/red5/webapps/sip/WEB-INF/bigbluebutton-sip.properties
-```
-
-Properties for bbb-apps-sip, which specifies the range of ports for connecting to the FreeSWITCH server.  Used with bbb\_sip.conf.
-
-http://github.com/bigbluebutton/bigbluebutton/blob/master/bbb-voice/src/main/webapp/WEB-INF/bigbluebutton-sip.properties
-
-```
-/usr/share/red5/log/deskshare.log
-```
-
-Debug output from the deskshare red5 application, which is the red5 server component  for supporting desktop sharing in the BigBlueButton client.
-
-```
- /usr/share/red5/log/sip.log
-```
-
-Debug output from the sip red5 application, which is the red5 server component (based on Red5Phone) for supporting voice over IP in the BigBlueButton client.
-
-```
- /usr/share/red5/log/video.log
-```
-
-Debug output from the video red5 application, which is the red5 server component for supporting video in the BigBlueButton client.
-
-```
- /usr/share/red5/log/bigbluebutton.log
-```
-
-Debug output from the bigbluebutton red5 application, which contains information on client connections to the red5 server.
-
-# Tomcat 7
-
-## Configuration files
-
-```
- /var/lib/tomcat7/webapps/bigbluebutton/WEB-INF/classes/bigbluebutton.properties
+ /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
 ```
 
 This is one of the main configuration files for BigBlueButton applications.
 
-http://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-web/grails-app/conf/bigbluebutton.properties
+https://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-web/grails-app/conf/bigbluebutton.properties
 
 ## Log files
 
-Locate in ```/var/log/tomcat7```
+Locate in `/var/log/tomcat8`
 
 | Log                      | Description                                                  |
-|:------------------------ |:------------------------------------------------------------ |
+| :----------------------- | :----------------------------------------------------------- |
 | catalina.yyyy-mm-dd.log  | General log information from startup of tomcat.              |
 | localhost.yyyy-mm-dd.log | General log information from startup of tomcat applications. |
 | /var/log/syslog          | Also contains output from tomcat.                            |
@@ -122,5 +124,3 @@ Setup voice conference properties.
 /opt/freeswitch/conf/dialplan/default
 /opt/freeswitch/conf/dialplan/public
 ```
-
-
