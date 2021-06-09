@@ -71,7 +71,7 @@ You can then run a `certbot` command like the following to generate the certific
 $ sudo certbot certonly --standalone --preferred-challenges http \
     -d <turn.example.com>
 ```
-Be aware that TCP 80 needs to be open at least temporarily to get it work.
+Be aware that TCP 80 needs to be open temporarily to get it to work.
 
 Current versions of the certbot command set up automatic renewal by default. To ensure that the certificates are readable by `coturn`, which runs as the `turnserver` user, add the following renewal-hook to Let's Encrypt. First, create the directory `/etc/letsencrypt/renewal-hooks/deploy`.
 
