@@ -6,9 +6,7 @@ date: 2021-05-01 17:34:41
 order: 4
 ---
 
-_Note_: Updating for 2.3.
-
-BigBlueButton is built upon a solid foundation of underlying components, including nginx, FreeSWITCH, Kurento, redis, react, and others.
+BigBlueButton is built upon a solid foundation of underlying components, including NginX, FreeSWITCH, Kurento, Redis, Node.js, React.js, and others.
 
 This page describes the overall architecture of BigBlueButton and how these components work together.
 
@@ -29,8 +27,6 @@ The HTML5 client is a single page, responsive web application that is built upon
 
 The HTML5 client connects directly with the BigBlueButton server over port 443 (SSL), from loading the BigBlueButton client to making a web socket connection. These connections are all handled by nginx.
 
-## HTML5 server
-
 The HTML5 server sits behind nginx.
 
 The HTML5 server is built upon
@@ -43,7 +39,33 @@ The MongoDB database contains information about all meetings on the server and, 
 
 The following diagram gives an overview of the architecture of the HTML5 client and its communications with the other components in BigBlueButton.
 
-![HTML5 Overview](/images/html5-client-architecture.png)
+![HTML5 Overview](/images/diagrams/23-html5-client-architecture.png)
+
+### Scalability of HTML5 server component
+
+BigBlueButton 2.2 used a single `nodejs` process for all client-side communication. This process would start to bottleneck (the `nodejs` process, running on a single CPU core, started to use 100% of the core). Because `nodejs` was running on a single CPU core, having a 16 or 32 CPU core server for BigBlueButton 2.2 failed to yield much additional scalability.
+
+BigBlueButton 2.3 moves away from a single `nodejs` process for `bbb-html5` towards multiple `nodejs` processes handling incoming messages from clients. This means that `bbb-html5` could use multiple CPU cores for processing messages and handling browser sessions (each `nodejs` process runs on a single CPU core).
+
+As of [2.3-alpha-7](https://github.com/bigbluebutton/bigbluebutton/releases/tag/v2.3-alpha-7), `bbb-html5` uses 2 "frontend" and two "backend" processes (this value is configurable in `bbb-html5-with-roles.conf`, see [Configuration Files](/admin/configuration-files)). A restart of BigBlueButton is required if you make changes to these files.
+
+The breakdown of functionality between front-end and back-end is as follows
+
+#### Frontend(s):
+
+- receive the `ValidateAuthTokenResp` event to complete authentication
+- collection subscription and publishing
+- other DDP events including method calls to send events to `akka-apps`
+- handle completely the Streamer redis events: Cursor, Annotations, External video share
+- still require `MeetingStarted` and `MeetingEnded` events to create/destroy per-meeting event processing queues
+
+#### Backend(s):
+
+- handle all the non-streamer events
+- if more than one backend is running, bbb-web splits the load in round-robin fashion by assigning an `instanceId`. So individual backends only process redis events for the meetings matching the associated `instanceId`
+- `ValidateAuthTokenResp` is passed to backends as well, which is needed for the cases where you only have a backend, no frontends - for example dev environments that do not need to care about scaling
+
+When you use `sudo bbb-conf --setip <hostname>` or `sudo bbb-conf --restart`, `bbb-conf` will run `/etc/bigbluebutton/bbb-conf/apply-config.sh` between shutdown and restart of the BigBlueButton processes. In this way, you can change configuration values of BigBlueButton, or use some of the helper functions in `apply-lib.sh`. See [Automatically apply configuration changes on restart](https://docs.bigbluebutton.org/admin/customize.html#automatically-apply-configuration-changes-on-restart).
 
 ## BBB web
 

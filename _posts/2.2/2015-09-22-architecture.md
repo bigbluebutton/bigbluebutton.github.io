@@ -46,7 +46,7 @@ The MongoDB database contains information about all meetings on the server and, 
 
 The following diagram gives an overview of the architecture of the HTML5 client and its communications with the other components in BigBlueButton.
 
-![HTML5 Overview](/images/html5-client-architecture.png)
+![HTML5 Overview](/images/22-html5-client-architecture.png)
 
 ## BBB web
 
