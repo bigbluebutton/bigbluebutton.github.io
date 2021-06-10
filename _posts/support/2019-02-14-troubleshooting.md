@@ -385,7 +385,7 @@ For many years, in BigBlueButton's FreeSWITCH configuration file `/opt/freeswitc
   <X-PRE-PROCESS cmd="set" data="external_rtp_ip=stun:stun.freeswitch.org"/>
 ```
 
-However, this is not a reliable choice for stun server. Recommend either changing it to your servers external IP address or setup your own [stun/turn server](/2.2/setup-turn-server.html). For example, if your server has an external IP at 234.32.3.3
+However, this is not a reliable choice for stun server. Recommend either changing it to your servers external IP address or setup your own [stun/turn server](/admin/setup-turn-server.html). For example, if your server has an external IP at 234.32.3.3
 
 ```xml
   <X-PRE-PROCESS cmd="set" data="external_rtp_ip=234.32.3.3"/>
