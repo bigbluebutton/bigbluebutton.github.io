@@ -830,6 +830,23 @@ The next changes are for the client-side checks and it depends on which clients 
 
 Restart BigBlueButton with `sudo bbb-conf --restart`. You should now be able to upload larger presentations within the new limit.
 
+### Add custom fonts for presentation conversion
+
+In BigBlueButton 2.3 we added support for using additional fonts when converting presentation files.
+
+On the server where you want the new fonts supported you would want to download the fonts (.ttf) file. For example:
+
+```
+wget https://github.com/bigbluebutton/bigbluebutton/files/6391912/Street.Ruler.zip
+unzip Street.Ruler.zip
+```
+
+Then copy the font (.ttf) to `/usr/share/fonts/`
+
+`sudo cp 'Street Ruler.ttf' /usr/share/fonts/`
+
+That's all! The font will be available on next presentations.
+
 ## Frontends
 
 ### Remove the API demos
