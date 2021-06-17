@@ -14,8 +14,8 @@ The BigBlueButton HTML5 client is WCAG 2.0 AA accessible (with exceptions) and S
 Based on the scope of the project, focus has been placed on disabilities related to visual, auditory and motor impairments.
 We have designed the BigBlueButton HTML5 client to be accessible to as many users as possible regardless of any underlying disability.
 
-The client follow the WCAG 2.0 color contrast guidelines for all visual elements, in addition to an aesthetically pleasing inclusive design.
-Keyboard and screen reader support has been implemented, in particular for the open source NVDA screen reader. JAWS, the markets leading paid screen reader software is also compatible with the client.
+The client follows the WCAG 2.0 color contrast guidelines for all visual elements, in addition to an aesthetically pleasing inclusive design.
+Keyboard and screen reader support has been improved, in particular for the open source NVDA screen reader. JAWS, the markets leading paid screen reader software is also compatible with the client.
 
 **_Note:
 There are a few minor controls within the client that are not fully accessible, The colour picker in the closed caption settings for example._**
@@ -59,6 +59,34 @@ offered by ngzhian
 https://chrome.google.com/webstore/detail/chromelens/idikgljglpfilbhaboonnpnnincjhjkd?hl=en
 
 ## Focus
+
+Determines where keyboard events go on the page at any given moment. It is represented visually by a ring around the focused element and important for users to distinguish what element on the screen they currently have selected. The interactive elements in the html5 client UI have a custom focus ring applied to them.
+
+![Contrast Ratio Calculator](/images/accessibility-focusring.jpg)
+
+HTML5 by default uses the `outline` attribute to visually indicate focus. Due to it's limitations the outline is set to transparent so it is only becomes visible in window high contrast themes (for those with visual impairments related to color).
+
+![Contrast Ratio Calculator](/images/accessibility-focusring-hc.jpg)
+
+Aria labels are important to focus when navigating with a screen reader, these labels have been used extensivley through out the client to provide audible announcments for selected
+elements.
+
+### Keyboard Navigation 
+
+The HTML5 Client has made several improvements to the default keyboard navigation. The most notable addition being breakout room managment, assigning users to various rooms is now possible.
+
+![Contrast Ratio Calculator](/images/accessibility-br-manage.gif)
+
+### Shortcuts
+
+There are a number of provided keyboard shortcuts which have been set up using HTML5's `accessKey` property. 
+
+![Contrast Ratio Calculator](/images/accessibility-shortcuts.jpg)
+
+**_Note: the accessKey attribute has certain limitation like not being able to set the modifier key to activate the shortcut._**
+
+**_The benefit is the visibility it provides for screen readers about available shortcuts._**
+
 
 ## Color Contrast
 
