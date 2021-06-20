@@ -5,6 +5,12 @@ category: support
 date: 2015-04-04 22:26:10
 ---
 
+# Release 2.3
+
+Released: April 30, 2021 ([Release Notes](https://github.com/bigbluebutton/bigbluebutton/releasesl))
+
+Another huge release -- the culmination of ~20 months of development, 2150 commits, 8 alpha, 5 beta and 2 release candidates. This release focused on usability and features for engagement for the teacher and students.  For more details, see [What's new](https://docs.bigbluebutton.org/2.3/new.html).  
+
 # Release 2.2
 
 Released: November 6, 2019 ([Installation Instructions](/2.2/install.html))
