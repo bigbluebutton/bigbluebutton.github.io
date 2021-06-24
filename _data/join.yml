@@ -56,7 +56,8 @@
 - name: "joinViaHtml5"
   required: false
   type: "String"
-  description: "Set to “true” to force the HTML5 client to load for the user."
+  description: "Set to “true” to force the HTML5 client to load for the user. (removed in 2.3 since HTML5 is the only client)"
+  deprecated: true
 
 - name: "guest"
   required: false

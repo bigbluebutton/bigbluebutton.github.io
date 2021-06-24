@@ -163,8 +163,8 @@ figure {
 	vertical-align: top;
 }
 
-.api-params code {
-	/* color: #c7254e; */
+.api-deprecated {
+	text-decoration: line-through;
 }
 
 .api-required {

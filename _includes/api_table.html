@@ -13,7 +13,12 @@
     <tbody>
     {% for entry in endpointData %}
         <tr>
-          <td><code>{{ entry.name }}</code>
+          <td>
+            {% if entry.deprecated %}
+                <code class="api-deprecated">{{ entry.name }}</code>
+            {% else %}
+                <code>{{ entry.name }}</code>
+            {% endif %}
             {% if entry.required %}
                 {% if entry.required == true %}
                     <p class="api-required">(required)</p>
