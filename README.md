@@ -9,34 +9,10 @@ That way, you can preview any changes before creating pull requests.
 
 ### The easy way to preview (using Docker)
 
-An easy way to generate the BigBlueButton documentation locally and see the effect of your changes before committing is to create a Docker image that runs Jekyll.
-If you have installed Docker, then you can create a docker image called `github-pages` by switching to the repository directory and executing the following command:
+An easy way to generate the BigBlueButton documentation locally and see the effect of your changes before committing is to use Docker to run Jekyll.
 
 ~~~
-docker build -t github-pages .
-~~~
-
-After the images builds, then you can render it locally using the command
-
-~~~
-docker run --rm -v ~/bigbluebutton.github.io:/site -p 4000:4000 github-pages serve --watch --host 0.0.0.0
-~~~
-
-When you run this command you'll see
-
-~~~
-$ docker run --rm -v ~/bigbluebutton.github.io:/site -p 4000:4000 github-pages serve --watch --host 0.0.0.0
-Configuration file: /site/_config.yml
-Configuration file: /site/_config.yml
-            Source: /site
-       Destination: /site/_site
- Incremental build: disabled. Enable with --incremental
-      Generating... 
-                    done in 8.521 seconds.
- Auto-regeneration: enabled for '/site'
-Configuration file: /site/_config.yml
-    Server address: http://0.0.0.0:4000/
-  Server running... press ctrl-c to stop.
+docker run --rm -p 127.0.0.1:4000:4000/tcp --volume="$PWD:/srv/jekyll" -it jekyll/jekyll:3.4 jekyll serve --incremental
 ~~~
 
 And you can now view the site using the URL http://localhost:4000/.  If the Docker approach does not work, you can setup Jekyll using the steps below.
@@ -106,7 +82,7 @@ Jekyll will run a server on port 4000 that lets you see a live update of the sit
 Configuration file: /Users/ffdixon/bigbluebutton.github.io/_config.yml
             Source: /Users/ffdixon/bigbluebutton.github.io
        Destination: /Users/ffdixon/bigbluebutton.github.io/_site
-      Generating... 
+      Generating...
                     done.
  Auto-regeneration: enabled for '/Users/ffdixon/bigbluebutton.github.io'
 Configuration file: /Users/ffdixon/bigbluebutton.github.io/_config.yml

@@ -69,5 +69,5 @@ redcarpet:
     ]
 
 # Load additional plugins
-plugins:
-  - jekyll-redirect-from
+plugins_dir:
+  - "jekyll-redirect-from"
