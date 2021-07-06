@@ -3,7 +3,7 @@ body {
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);
     font-family: 'Roboto', sans-serif;
     line-height: 1.5;
-    font-size: 18px; 
+    font-size: 18px;
 	letter-spacing: 0.005em;
 }
 
@@ -152,4 +152,29 @@ img {
 
 figure {
 	margin: 0;
+}
+
+.api-params th {
+	white-space: nowrap;
+}
+
+.api-params td {
+	padding: 1em 5px;
+	vertical-align: top;
+}
+
+.api-deprecated {
+	text-decoration: line-through;
+}
+
+.api-required {
+	font-size: 0.7em;
+	font-style: italic;
+	margin: 0;
+}
+
+.api-default {
+	font-style: italic;
+	margin-top: 10px;
+	margin-bottom: 0;
 }
