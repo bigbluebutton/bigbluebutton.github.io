@@ -41,7 +41,7 @@
 - name: "avatarURL"
   required: false
   type: "String"
-  description: "The link for the user’s avatar to be displayed when displayAvatar in config.xml is set to true (default can be enabled/disabled and set with “useDefaultAvatar“ and “defaultAvatarURL“ in bigbluebutton.properties)."
+  description: "The link for the user’s avatar to be displayed when displayAvatar in config.xml is set to true (default can be enabled/disabled and set with “useDefaultAvatar“ and “defaultAvatarURL“ in bbb-web.properties)."
 
 - name: "redirect"
   required: false
