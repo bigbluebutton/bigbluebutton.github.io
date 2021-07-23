@@ -227,6 +227,6 @@
 
 - name: "activityReportTracking"
   type: "Boolean"
-  default: "false"
-  description: "Default <code class=\"language-plaintext highlighter-rouge\">activityReportTracking=false</code>. If <code class=\"language-plaintext highlighter-rouge\">activityReportTracking</code> is true BigBlueButton generates a Dashboard where moderators can view a summary of the activities of the meeting"
+  default: "true"
+  description: "Default <code class=\"language-plaintext highlighter-rouge\">activityReportTracking=true</code>. When this option is enabled BigBlueButton generates a Dashboard where moderators can view a summary of the activities of the meeting"
 
