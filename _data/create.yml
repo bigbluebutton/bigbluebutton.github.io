@@ -224,3 +224,9 @@
   type: "Enum"
   default: "SMART_LAYOUT"
   description: "Will set the default layout for the meeting. Possible values are: LEGACY, CUSTOM_LAYOUT, SMART_LAYOUT, PRESENTATION_FOCUS, VIDEO_FOCUS. (added 2.4)"
+
+- name: "activityReportTracking"
+  type: "Boolean"
+  default: "false"
+  description: "Default <code class=\"language-plaintext highlighter-rouge\">activityReportTracking=false</code>. If <code class=\"language-plaintext highlighter-rouge\">activityReportTracking</code> is true BigBlueButton generates a Dashboard where moderators can view a summary of the activities of the meeting"
+
