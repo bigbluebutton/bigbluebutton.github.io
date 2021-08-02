@@ -78,7 +78,7 @@
   type: "Boolean"
   default: "true"
   description: "If set to false, breakout rooms will be disabled."
-  
+
 - name: "breakoutRoomsPrivateChatEnabled"
   required: "Optional(Breakout Room)"
   type: "Boolean"
@@ -219,3 +219,14 @@
   type: "Number"
   default: "1"
   description: "Defaults to the value of <code class=\"language-plaintext highlighter-rouge\">endWhenNoModeratorDelayInMinutes=1</code>. If <code class=\"language-plaintext highlighter-rouge\">endWhenNoModerator</code> is true, the meeting will be automatically ended after this many minutes (added in 2.2)"
+
+- name: "meetingLayout"
+  type: "Enum"
+  default: "SMART_LAYOUT"
+  description: "Will set the default layout for the meeting. Possible values are: LEGACY, CUSTOM_LAYOUT, SMART_LAYOUT, PRESENTATION_FOCUS, VIDEO_FOCUS. (added 2.4)"
+
+- name: "activityReportTracking"
+  type: "Boolean"
+  default: "true"
+  description: "Default <code class=\"language-plaintext highlighter-rouge\">activityReportTracking=true</code>. When this option is enabled BigBlueButton generates a Dashboard where moderators can view a summary of the activities of the meeting"
+
