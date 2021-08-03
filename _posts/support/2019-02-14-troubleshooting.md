@@ -902,7 +902,7 @@ The script `bbb-install` now creates these overrides by default.
 
 It is most likely an error on GreenLight. Check the log file according to [Troubleshooting Greenlight](/greenlight/gl-install.html#troubleshooting-greenlight).
 
-If this error occurrs on just a small number of PCs accessing a BigBlueButton server on the same LAN through a proxy server and you find the description "Error::Unsafe Host Error (xxx.xxx.xxx.xxx is not a safe host)" (where xxxs are numbers) in the log file, check if the "Don't use the proxy server for local (intranet) addresses" (in the proxy setting of Windows Setting) is checked. 
+If this error occurrs on just a small number of PCs accessing a BigBlueButton server within a LAN through a proxy server and you find the description "Error::Unsafe Host Error (x.x.x.x is not a safe host)" (where x.x.x.x is an IP address) in the log file, check if the "Don't use the proxy server for local (intranet) addresses" (in the Windows proxy setting) is ticked. 
 
 ## Legacy errors
 
