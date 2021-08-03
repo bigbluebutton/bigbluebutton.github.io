@@ -898,6 +898,12 @@ HERE
 
 The script `bbb-install` now creates these overrides by default.
 
+### 500 Internal Server Error
+
+It is most likely an error on GreenLight. Check the log file according to [Troubleshooting Greenlight](/greenlight/gl-install.html#troubleshooting-greenlight).
+
+If this error occurrs on just a small number of PCs accessing a BigBlueButton server on the same LAN through a proxy server and you find the description "Error::Unsafe Host Error (xxx.xxx.xxx.xxx is not a safe host)" (where xxxs are numbers) in the log file, check if the "Don't use the proxy server for local (intranet) addresses" (in the proxy setting of Windows Setting) is checked. 
+
 ## Legacy errors
 
 ### Conference not found errors
