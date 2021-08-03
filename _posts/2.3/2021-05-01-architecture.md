@@ -110,7 +110,7 @@ FreeSWITCH provides the voice conferencing capability in BigBlueButton. Users ar
 
 ## Kurento and WebRTC-SFU
 
-Kurento Media Server KMS is a media server that implements both SFU and MCU models. KMS is reponsible for streaming of webcams, listen-only audio, and screensharing. The WebRTC-SFU acts as the media controller handling negotiations and to manage the media streams.
+Kurento Media Server KMS is a media server that implements both SFU and MCU models. KMS is responsible for streaming of webcams, listen-only audio, and screensharing. The WebRTC-SFU acts as the media controller handling negotiations and to manage the media streams.
 
 ## Joining a voice conference
 
