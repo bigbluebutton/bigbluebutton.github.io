@@ -81,7 +81,30 @@ For this test multiple users should speak.
 
 ### Multiple moderators
 
+* moderator status should be indicated by a rectangular icon next to the name
+  of each person in the users list. Regular viewers should have a rounded icon
+  next to the name
+* If you are moderator:
+  * in the users list click on a name of a viewer (not moderator)
+  * grant other users moderator access
+  * verify that moderator status icon has changed in the users list of all participants
+  * remvoke moderator access from other users
+  * verify that moderator status icon has changed in the users list of all participants
+* If you are regular viewer (not moderator)
+  * You should not be able to switch moderator status of other users
+
 ### Switch presenter
+
+* If you are moderator:
+  * in the users list click on a name of someone else
+  * click on "Make presenter" in the menu
+  * The person you have chosen should be presenter. Verify that:
+    * the presenter status is indicated in the users list
+    * the person you chose could switch the slides, upload slides and so on
+    * Other moderators who are not presenter should have only the "Take presenter" option
+      in the (+) Action menu.
+* If you are regular user (not moderator):
+  * You should not be able to make someon else presenter
 
 ## Video tests
 
@@ -191,7 +214,30 @@ example using OBS Studio).
 
 ### Share an external Youtube/Vimeo video
 
+* choose a video URL from a supported video CDN like Youtube or Vimeo
+* as a presenter choose "share external video" from the actions menu
+* paste in the selected video URL
+* playback of the video should start, ensure that the video starts for all
+  participants in the meeting
+* pause the video, ensure that it pauses for all participants. Compare the
+  playback time of the video. It should be synchronized
+* play the video again. All participants should see the video playing
+* skip to some point in the timeline of the video. It should skip in the
+  timeline for all participants
+* terminate sharing of the video. No participant should see the shared
+  video anymore
+* Share a video again
+* switch the presenter
+* playback of the external video should be terminated immediately for all
+  participants
+
 ### Share an external mp4 video
+
+* Choose a video URL for an MP4 or WebM video
+* ensure that browsers can play the video. For MP4 videos this depends on
+  the settings chosen during video encoding. Not all browser can play all mp4
+  videos
+* repeat the steps from "Share an external Youtube/Vimeo video"
 
 ## Polls
 
@@ -220,8 +266,35 @@ example using OBS Studio).
 
 ## Chat
 
+### Scrolling
+
+* Type in some random messages in the public chat until there is a scroll bar in the chat panel
+* Scroll down to the last message
+* when someone else sends a chat message, the new message should appear after the other messages
+* The recently typed chat message should be visible without user interaction (it should scroll down)
+* scroll up a little bit, so that the last chat message is no longer visible
+* let someone else send a chat message
+* The messages in the chat panel should *not* scroll down to the latest chat message
+
+### Message indicator
+
+* Close the chat panel
+* let someone else send a chat message
+* you should see a new message indicator next to the name of the chat showing the number of unread chat messages
+* you shoud see an indicator (red bullet) next to the users and messages toggle
+* the indicators should disappear as soon as you read the messages
+* repeat this for private chats
+
 ## Shared notes
 
+* Open the shared notes
+* Type in something
+* Multiple users should be able to type at the same time
+* Users who did not open the shared notes should see an indicator next to ne shared notes button
+* the indicator shoudl disappear as soon as they open the shared notes
+
 ## Lock settings
+
+## Breakout rooms
 
 ## Closed captions
