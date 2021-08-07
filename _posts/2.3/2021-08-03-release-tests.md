@@ -295,6 +295,87 @@ example using OBS Studio).
 
 ## Lock settings
 
+* To open the lock settings dialog open the manage users menu (gear icon next to the users list)
+* choose lock viewers
+* select the options as described in the following tests. Settings will take effect as soon as the dialog is closed by clicking on the Apply button
+* Lock settings apply to regular viewers (not moderators)
+* For each test:
+  * You should be able to unlock individual users
+  * Click to a name of a locked user in the users list. Choose Unlock user from the menu
+  * the setting should not be in effect for the chosen user
+  * Lock the user again
+  * the setting should be in effect for the chosen user again
+
+### Share webcam
+
+* let some regular users (non-moderators) share their webcam
+* lock the share webcam setting
+* regular users should *not* be able to share their webcam. If they had shared their webcam before, the webcam share should be terminated
+* moderators should be able to share their webcam
+* unlock the share webcam setting
+* regular users should be able to share their webcam. Cameras from users who had shared their webcam before this test should *not* start automatically
+
+### See other viewers webcams
+
+* For this test you need at least 3 participants, (better 4):
+  * at least 2 regular users
+  * at leas 1 moderator (better 2)
+* all users should enable their webcams
+* lock the see other users webcams setting
+* moderators should see the webcam of all users
+* regular users should ony see the webcam of moderators and their own camera. They shoud *not* see the camera of other regular viewers
+* unlock the setting again
+* regulat users should see the cameras of all participants again. Camera streams should appear automatically without interaction from the regular users
+
+### Share microphone
+
+* lock the setting
+* Regular users should be muted and should not be able to unmute themselves. The mute/unmute button should disappear from the action items
+* Moderators should be able to allow individual users to unmute themselves:
+  * Click to a name of a locked user in the users list. Choose Unlock user from the menu
+  * The mute/unmute button should appear for this user
+  * Lock the user again
+  * The mute/unmute button should disappear and the user should be muted
+* unlock the setting
+* All users should be able to unmute themselves
+* no user should be unmuted automatically
+
+### Send public chat messages
+
+* lock the setting
+* regular users should not be able to send chat messages in the public chat. They should be able to send private chat messages
+* The input element for chat messages should be unusable. An message below the input element should explain that the public chat is locked
+* moderators should be able to send public chat messages
+* unlock the setting
+* all users should be able to send public chat messages
+
+### Send private chat messages
+
+* for this test you need at least 2 regular users (not moderators)
+* lock the setting
+* regular users should not be able to send chat messages to other regular users
+* regular users should be able to send messages to moderators
+* moderators should be able to send messages to all users
+* unlock the setting
+* everyone should be able to send messages to anymone
+
+### Edit shared notes
+
+* lock the setting
+* regular users should not be able to change the content of the shared notes
+* they should be able to see changes in the shared notes which are written by moderators (or unlocked users)
+* unlock the settings
+* everyone should be able to change the content of the shared notes
+
+### See other viewers in the Users list
+
+* for this test you need at least 2 regular users (not moderators)
+* lock the settings
+* regular users should see only their name and the names of all moderators in the users list
+* moderators should see the names of all users in the users list
+* unlock the setting
+* everyone should see the names of all users again
+
 ## Breakout rooms
 
 ## Closed captions
