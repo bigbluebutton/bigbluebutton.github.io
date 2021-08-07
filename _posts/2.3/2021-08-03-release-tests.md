@@ -378,4 +378,40 @@ example using OBS Studio).
 
 ## Breakout rooms
 
+### Users choose their breakout room
+* as a moderator:
+  * open the manage users menu (gear icon next to the users list)
+  * Choose "Create breakout rooms"
+  * check the options "Allow users to choose a breakout room to join"
+  * do not assign users to breakout rooms
+  * Create breakout rooms
+* All users should be able to choose a breakout room
+* Breakout rooms should open in a different tab in the browser
+* Audio should be disconnected from the main room and connected in the breakout room
+* If the breakout room terminates users should be (audio) connected to the main room.
+
+### Moderators choose breakout rooms
+* as a moderator:
+  * open the manage users menu (gear icon next to the users list)
+  * Choose "Create breakout rooms"
+  * do not check the options "Allow users to choose a breakout room to join"
+  * assign users to breakout rooms
+  * Create breakout rooms
+* All users should be asked to join the specified breakout room
+* Breakout rooms should open in a different tab in the browser
+* Audio should be disconnected from the main room and connected in the breakout room
+* If the breakout room terminates users should be (audio) connected to the main room.
+
 ## Closed captions
+
+* as a moderator:
+  * open the manage users menu (gear icon next to the users list)
+  * choose "Write closed captions"
+  * Select a language
+  * a panel should open with an embedded etherpad
+  * You should be able to write in this pad
+* as anyone else:
+  * A new button (CC) should appear in the actions bar
+  * Click on that button
+  * You should be able to choose a language. In the captions language select box you shoudl see only those languages for which moderators have started writing closed captions
+  * If someone writes closed captions, they should appear in the presentation area as an overlay
