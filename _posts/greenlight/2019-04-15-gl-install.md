@@ -123,7 +123,7 @@ To have this change take effect, you must once again restart Nginx.
 
 To start the Greenlight Docker container, you must install `docker-compose`, which simplifies the start and stop process for Docker containers.
 
-Install `docker-compose` by following the steps for installing on Linux in the [Docker documentation](https://docs.docker.com/compose/install/). You may be required to run all `docker-compose` commands using sudo. If you wish to change this, check out [managing docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user). Do not install (via `apt-get`) the version of `docker-compose` packaged in Ubuntu 16.04 as it is too old.
+Install `docker-compose` by following the steps for installing on Linux in the [Docker documentation](https://docs.docker.com/compose/install/). You may be required to run all `docker-compose` commands using sudo. If you wish to change this, check out [managing docker as a non-root user](https://docs.docker.com/install/linux/linux-postinstall/#manage-docker-as-a-non-root-user). Do not install (via `apt-get`) the version of `docker-compose` packaged in Ubuntu is typically outdated.
 
 ### Using `docker-compose`
 
