@@ -300,7 +300,7 @@ Released: April 3, 2010
 
 * **Localization** - Thanks to members of the mailing list -- and to DJP for checking in language contributions -- there are now [sixteen localizations](/dev/localization.html) for BigBlueButton.
 
-* **RPM packages for CentOS 5.4** - We now provide RMP for installation on CentOS 5.4 (32-bit and 64-bit) for this release.
+* **RPM packages for CentOS 5.4** - We now provide RPM for installation on CentOS 5.4 (32-bit and 64-bit) for this release.
 
 ## Fixed Issues
 
