@@ -464,9 +464,68 @@ mediaThresholds:
   perUser: 0
 ```
 
+On a BigBlueButton 2.3 (or later) server, you can place the above in `/etc/bigbluebutton/bbb-webrtc-sfu/production.yml`, which `bbb-webrtc-sfu` will use to override the settings in `default.yml` (even after package upgrades).
+
 If any of these thresholds are reached, then a user will receive a "Media resources not available (2002)" error when sharing webcams.
 
-Recommend you [enable multiple Kurento](customize.html#run-three-parallel-kurento-media-servers) servers, thereby having one Kurento server for webcams, one for screen share, and one for listen only streams. The settings apply to each Kurento server, so in the above example each Kurento server would have a maximum of 1000 media streams.
+Thus, we recommend you [enable multiple Kurento](customize.html#run-three-parallel-kurento-media-servers) servers, thereby having one Kurento server for webcams, one for screen share, and one for listen only streams. The settings apply to each Kurento server, so in the above example each Kurento server would have a maximum of 1000 media streams.
+
+BigBlueButton will dynamically reduce the number of webcams in a meeting as the meeting grows larger.  These are set in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml`, but you can override them by placing them in `/etc/bigbluebutton/bbb-html5.yml`.
+
+For example, the follwing `/etc/bigbluebutton/bbb-html5.yml` file would ensure that no single meeting will have more than 300 streams.  For example, in a meeting with 30 users, the moderator will see 25 webcams and the viewers 6 webcams.  This gives 25 + 29 * 6 = 196 webcam streams. If the meeting grows to 100 users, the moderator will see 8 webcams and viewers will see 2 webcams.  This gives 8 + 99 * 2 = 206 webcam streams.
+
+```
+public:
+    app:
+        defaultSettings:
+            application:
+                paginationEnabled: true
+    kurento:
+        pagination:
+            desktopPageSizes:
+                moderator: 0
+                viewer: 5
+            mobilePageSizes:
+                moderator: 2
+                viewer: 2
+            paginationToggleEnabled: false
+        paginationThresholds:
+            enabled: true
+            thresholds:
+            -   desktopPageSizes:
+                    moderator: 25
+                    viewer: 6
+                users: 30
+            -   desktopPageSizes:
+                    moderator: 20
+                    viewer: 5
+                users: 40
+            -   desktopPageSizes:
+                    moderator: 16
+                    viewer: 4
+                users: 50
+            -   desktopPageSizes:
+                    moderator: 12
+                    viewer: 4
+                users: 60
+            -   desktopPageSizes:
+                    moderator: 8
+                    viewer: 3
+                users: 70
+            -   desktopPageSizes:
+                    moderator: 8
+                    viewer: 2
+                users: 80
+            -   desktopPageSizes:
+                    moderator: 8
+                    viewer: 2
+                users: 90
+            -   desktopPageSizes:
+                    moderator: 8
+                    viewer: 2
+                users: 100
+HERE
+```
 
 ## Audio
 
