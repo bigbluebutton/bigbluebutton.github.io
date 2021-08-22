@@ -22,19 +22,21 @@ sections:
   [
     ['overview', 'Overview'],
     ['2.3', '2.3 Latest Version'],
-    ['2.4', '2.4 Under Development'],
-    ['2.2', '2.2 Legacy'],
+    ['dev', 'Develop'],
+    ['admin', 'Administration'],
     ['greenlight', 'Greenlight'],
+    ['2.4', '2.4 Under Development'],
     ['support', 'Support'],
     ['install', '2.0'],
-    ['admin', 'Administration'],
     ['dev', 'Develop'],
+    ['2.2', '2.2 Legacy'],
     ['mobile', 'Mobile (dev)'],
     ['html', 'HTML5'],
     ['labs', 'Labs (dev)'],
     ['1.1', '1.1 (beta)'],
     ['2.0', '2.0 (beta)'],
     ['post', 'Posts'],
+    ['install', '2.0'],
   ]
 
 # Keep as an empty string if served up at the root. If served up at a specific
