@@ -1,0 +1,232 @@
+- name: "name"
+  required: false
+  type: "String"
+  description: "A name for the meeting."
+
+- name: "meetingID"
+  required: true
+  type: "String"
+  description: "A meeting ID that can be used to identify this meeting by the 3rd-party application. <br><br> This must be unique to the server that you are calling: different active meetings can not have the same meeting ID. <br><br> If you supply a non-unique meeting ID (a meeting is already in progress with the same meeting ID), then if the other parameters in the create call are identical, the create call will succeed (but will receive a warning message in the response). The create call is idempotent: calling multiple times does not have any side effect.  This enables a 3rd-party applications to avoid checking if the meeting is running and always call create before joining each user.<br><br> Meeting IDs should only contain upper/lower ASCII letters, numbers, dashes, or underscores.  A good choice for the meeting ID is to generate a <a href=\"http://en.wikipedia.org/wiki/Globally_unique_identifier\">GUID</a> value as this all but guarantees that different meetings will not have the same meetingID."
+
+- name: "attendeePW"
+  required: "(recommended)"
+  type: "String"
+  description: "The password that the <a href=\"#join\">join</a> URL can later provide as its <code class=\"language-plaintext highlighter-rouge\">password</code> parameter to indicate the user will join as a viewer.  If no <code class=\"language-plaintext highlighter-rouge\">attendeePW</code> is provided, the <code class=\"language-plaintext highlighter-rouge\">create</code> call will return a randomly generated <code class=\"language-plaintext highlighter-rouge\">attendeePW</code> password for the meeting."
+
+- name: "moderatorPW"
+  required: "(recommended)"
+  type: "String"
+  description: "The password that will <a href=\"#join\">join</a> URL can later provide as its <code class=\"language-plaintext highlighter-rouge\">password</code> parameter to indicate the user will as a moderator.  if no <code class=\"language-plaintext highlighter-rouge\">moderatorPW</code> is provided, <code class=\"language-plaintext highlighter-rouge\">create</code> will return a randomly generated <code class=\"language-plaintext highlighter-rouge\">moderatorPW</code> password for the meeting."
+
+- name: "welcome"
+  required: false
+  type: "String"
+  description: "A welcome message that gets displayed on the chat window when the participant joins. You can include keywords (<code class=\"language-plaintext highlighter-rouge\">%%CONFNAME%%</code>, <code class=\"language-plaintext highlighter-rouge\">%%DIALNUM%%</code>, <code class=\"language-plaintext highlighter-rouge\">%%CONFNUM%%</code>) which will be substituted automatically.<br><br> This parameter overrides the default <code class=\"language-plaintext highlighter-rouge\">defaultWelcomeMessage</code> in <code class=\"language-plaintext highlighter-rouge\">bigbluebutton.properties</code>.<br><br> The welcome message has limited support for HTML formatting. Be careful about copy/pasted HTML from e.g. MS Word, as it can easily exceed the maximum supported URL length when used on a GET request."
+
+- name: "dialNumber"
+  required: false
+  type: "String"
+  description: "The dial access number that participants can call in using regular phone. You can set a default dial number via <code class=\"language-plaintext highlighter-rouge\">defaultDialAccessNumber</code> in <a href=\"https://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-web/grails-app/conf/bigbluebutton.properties\">bigbluebutton.properties</a>"
+
+- name: "voiceBridge"
+  required: false
+  type: "String"
+  description: "Voice conference number for the FreeSWITCH voice conference associated with this meeting.  This must be a 5-digit number in the range 10000 to 99999.  If you <a href=\"/2.2/customize.html#add-a-phone-number-to-the-conference-bridge\">add a phone number</a> to your BigBlueButton server, This parameter sets the personal identification number (PIN) that FreeSWITCH will prompt for a phone-only user to enter.  If you want to change this range, edit FreeSWITCH dialplan and <code class=\"language-plaintext highlighter-rouge\">defaultNumDigitsForTelVoice</code> of <a href=\"https://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-web/grails-app/conf/bigbluebutton.properties\">bigbluebutton.properties</a>.<br><br>The <code class=\"language-plaintext highlighter-rouge\">voiceBridge</code> number must be different for every meeting.<br><br>This parameter is optional. If you do not specify a <code class=\"language-plaintext highlighter-rouge\">voiceBridge</code> number, then BigBlueButton will assign a random unused number for the meeting.<br><br>If do you pass a <code class=\"language-plaintext highlighter-rouge\">voiceBridge</code> number, then you must ensure that each meeting has a unique <code class=\"language-plaintext highlighter-rouge\">voiceBridge</code> number; otherwise, reusing same <code class=\"language-plaintext highlighter-rouge\">voiceBridge</code> number for two different meetings will cause users from one meeting to appear as phone users in the other, which will be very confusing to users in both meetings."
+
+- name: "maxParticipants"
+  required: false
+  type: "Number"
+  description: "Set the maximum number of users allowed to joined the conference at the same time."
+
+- name: "logoutURL"
+  required: false
+  type: "String"
+  description: "The URL that the BigBlueButton client will go to after users click the OK button on the ‘You have been logged out message’.  This overrides the value for <code class=\"language-plaintext highlighter-rouge\">bigbluebutton.web.logoutURL</code> in <a href=\"https://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-web/grails-app/conf/bigbluebutton.properties\">bigbluebutton.properties</a>."
+
+- name: "record"
+  required: false
+  type: "Boolean"
+  description: "Setting ‘record=true’ instructs the BigBlueButton server to record the media and events in the session for later playback. The default is false.<br><br> In order for a playback file to be generated, a moderator must click the Start/Stop Recording button at least once during the sesssion; otherwise, in the absence of any recording marks, the record and playback scripts will not generate a playback file. See also the <code class=\"language-plaintext highlighter-rouge\">autoStartRecording</code> and <code class=\"language-plaintext highlighter-rouge\">allowStartStopRecording</code> parameters in <a href=\"https://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-web/grails-app/conf/bigbluebutton.properties\">bigbluebutton.properties</a>."
+
+- name: "duration"
+  required: false
+  type: "Number"
+  description: "The maximum length (in minutes) for the meeting.<br><br> Normally, the BigBlueButton server will end the meeting when either (a) the last person leaves (it takes a minute or two for the server to clear the meeting from memory) or when the server receives an <a href=\"#end\">end</a> API request with the associated meetingID (everyone is kicked and the meeting is immediately cleared from memory).<br><br> BigBlueButton begins tracking the length of a meeting when it is created.  If duration contains a non-zero value, then when the length of the meeting exceeds the duration value the server will immediately end the meeting (equivalent to receiving an end API request at that moment)."
+
+- name: "isBreakout"
+  required: false
+  type: "Boolean"
+  description: "Must be set to <code class=\"language-plaintext highlighter-rouge\">true</code> to create a breakout room."
+
+- name: "parentMeetingID"
+  required: "(required for breakout room)"
+  type: "String"
+  description: "Must be provided when creating a breakout room, the parent room must be running."
+
+- name: "sequence"
+  required: "(required for breakout room)"
+  type: "Number"
+  description: "The sequence number of the breakout room."
+
+- name: "freeJoin"
+  required: "(only breakout room)"
+  type: "Boolean"
+  description: "If set to true, the client will give the user the choice to choose the breakout rooms he wants to join."
+
+- name: "breakoutRoomsEnabled"
+  required: "Optional(Breakout Room)"
+  type: "Boolean"
+  default: "true"
+  description: "If set to false, breakout rooms will be disabled."
+
+- name: "breakoutRoomsPrivateChatEnabled"
+  required: "Optional(Breakout Room)"
+  type: "Boolean"
+  default: "true"
+  description: "If set to false, the private chat will be disabled in breakout rooms."
+
+- name: "breakoutRoomsRecord"
+  required: "Optional(Breakout Room)"
+  type: "Boolean"
+  default: "true"
+  description: "If set to false, breakout rooms will not be recorded."
+- name: "meta"
+  required: false
+  type: "String"
+  description: "This is a special parameter type (there is no parameter named just <code class=\"language-plaintext highlighter-rouge\">meta</code>).<br><br> You can pass one or more metadata values when creating a meeting. These will be stored by BigBlueButton can be retrieved later via the getMeetingInfo and getRecordings calls.<br><br> Examples of the use of the meta parameters are <code class=\"language-plaintext highlighter-rouge\">meta_Presenter=Jane%20Doe</code>, <code class=\"language-plaintext highlighter-rouge\">meta_category=FINANCE</code>, and <code class=\"language-plaintext highlighter-rouge\">meta_TERM=Fall2016</code>."
+
+- name: "moderatorOnlyMessage"
+  required: false
+  type: "String"
+  description: "Display a message to all moderators in the public chat.<br><br> The value is interpreted in the same way as the <code class=\"language-plaintext highlighter-rouge\">welcome</code> parameter."
+
+- name: "autoStartRecording"
+  required: false
+  type: "Boolean"
+  description: "Whether to automatically start recording when first user joins (default <code class=\"language-plaintext highlighter-rouge\">false</code>).<br><br> When this parameter is <code class=\"language-plaintext highlighter-rouge\">true</code>, the recording UI in BigBlueButton will be initially active. Moderators in the session can still pause and restart recording using the UI control.&lt;br/<br> NOTE: Don’t pass <code class=\"language-plaintext highlighter-rouge\">autoStartRecording=false</code> and <code class=\"language-plaintext highlighter-rouge\">allowStartStopRecording=false</code> - the moderator won’t be able to start recording!"
+
+- name: "allowStartStopRecording"
+  required: false
+  type: "Boolean"
+  description: "Allow the user to start/stop recording. (default true)<br><br> If you set both <code class=\"language-plaintext highlighter-rouge\">allowStartStopRecording=false</code> and <code class=\"language-plaintext highlighter-rouge\">autoStartRecording=true</code>, then the entire length of the session will be recorded, and the moderators in the session will not be able to pause/resume the recording."
+
+- name: "webcamsOnlyForModerator"
+  required: false
+  type: "Boolean"
+  description: "Setting <code class=\"language-plaintext highlighter-rouge\">webcamsOnlyForModerator=true</code> will cause all webcams shared by viewers during this meeting to only appear for moderators (added 1.1)"
+
+- name: "logo"
+  required: false
+  type: "String"
+  description: "Setting <code class=\"language-plaintext highlighter-rouge\">logo=http://www.example.com/my-custom-logo.png</code> will replace the default logo in the Flash client. (added 2.0)"
+
+- name: "bannerText"
+  required: false
+  type: "String"
+  description: "Will set the banner text in the client. (added 2.0)"
+
+- name: "bannerColor"
+  required: false
+  type: "String"
+  description: "Will set the banner background color in the client. The required format is color hex #FFFFFF. (added 2.0)"
+
+- name: "copyright"
+  required: false
+  type: "String"
+  description: "Setting <code class=\"language-plaintext highlighter-rouge\">copyright=My custom copyright</code> will replace the default copyright on the footer of the Flash client. (added 2.0)"
+
+- name: "muteOnStart"
+  required: false
+  type: "Boolean"
+  description: "Setting <code class=\"language-plaintext highlighter-rouge\">true</code> will mute all users when the meeting starts. (added 2.0)"
+
+- name: "allowModsToUnmuteUsers"
+  required: false
+  type: "Boolean"
+  default: "false"
+  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will allow moderators to unmute other users in the meeting. (added 2.2)"
+
+- name: "lockSettingsDisableCam"
+  required: false
+  type: "Boolean"
+  default: "false"
+  description: "Setting <code class=\"language-plaintext highlighter-rouge\">true</code> will prevent users from sharing their camera in the meeting. (added 2.2)"
+
+- name: "lockSettingsDisableMic"
+  required: false
+  type: "Boolean"
+  default: "false"
+  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will only allow user to join listen only. (added 2.2)"
+
+- name: "lockSettingsDisablePrivateChat"
+  required: false
+  type: "Boolean"
+  default: "false"
+  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will disable private chats in the meeting. (added 2.2)"
+
+- name: "lockSettingsDisablePublicChat"
+  required: false
+  type: "Boolean"
+  default: "false"
+  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will disable public chat in the meeting. (added 2.2)"
+
+- name: "lockSettingsDisableNote"
+  required: false
+  type: "Boolean"
+  default: "false"
+  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will disable notes in the meeting. (added 2.2)"
+
+- name: "lockSettingsLockedLayout"
+  required: false
+  type: "Boolean"
+  default: "false"
+  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will lock the layout in the meeting. (added 2.2)"
+
+- name: "lockSettingsLockOnJoin"
+  required: false
+  type: "Boolean"
+  default: "true"
+  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">false</code> will not apply lock setting to users when they join. (added 2.2)"
+
+- name: "lockSettingsLockOnJoinConfigurable"
+  required: false
+  type: "Boolean"
+  default: "false"
+  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">lockSettingsLockOnJoinConfigurable=true` will allow applying of `lockSettingsLockOnJoin</code>."
+
+- name: "guestPolicy"
+  required: false
+  type: "Enum"
+  default: "ALWAYS_ACCEPT"
+  description: "Will set the guest policy for the meeting. The guest policy determines whether or not users who send a join request with <code class=\"language-plaintext highlighter-rouge\">guest=true</code> will be allowed to join the meeting. Possible values are ALWAYS_ACCEPT, ALWAYS_DENY, and ASK_MODERATOR."
+
+- name: "keepEvents"
+  type: "Boolean"
+  deprecated: true
+  description: "Removed in 2.3 in favor of <code class=\"language-plaintext highlighter-rouge\">meetingKeepEvents</code> and bigbluebutton.properties <code class=\"language-plaintext highlighter-rouge\">defaultKeepEvents</code>."
+
+- name: "meetingKeepEvents"
+  type: "Boolean"
+  default: "false"
+  description: "Defaults to the value of <code class=\"language-plaintext highlighter-rouge\">defaultKeepEvents</code>. If <code class=\"language-plaintext highlighter-rouge\">meetingKeepEvents</code> is true BigBlueButton saves meeting events even if the meeting is not recorded (added in 2.3)"
+
+- name: "endWhenNoModerator"
+  type: "Boolean"
+  default: "false"
+  description: "Default <code class=\"language-plaintext highlighter-rouge\">endWhenNoModerator=false</code>. If <code class=\"language-plaintext highlighter-rouge\">endWhenNoModerator</code> is true the meeting will end automatically after a delay - see <code class=\"language-plaintext highlighter-rouge\">endWhenNoModeratorDelayInMinutes</code> (added in 2.3)"
+
+- name: "endWhenNoModeratorDelayInMinutes"
+  type: "Number"
+  default: "1"
+  description: "Defaults to the value of <code class=\"language-plaintext highlighter-rouge\">endWhenNoModeratorDelayInMinutes=1</code>. If <code class=\"language-plaintext highlighter-rouge\">endWhenNoModerator</code> is true, the meeting will be automatically ended after this many minutes (added in 2.2)"
+
+- name: "meetingLayout"
+  type: "Enum"
+  default: "SMART_LAYOUT"
+  description: "Will set the default layout for the meeting. Possible values are: LEGACY, CUSTOM_LAYOUT, SMART_LAYOUT, PRESENTATION_FOCUS, VIDEO_FOCUS. (added 2.4)"
+
+- name: "activityReportTracking"
+  type: "Boolean"
+  default: "true"
+  description: "Default <code class=\"language-plaintext highlighter-rouge\">activityReportTracking=true</code>. When this option is enabled BigBlueButton generates a Dashboard where moderators can view a summary of the activities of the meeting"
+

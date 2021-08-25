@@ -1,0 +1,51 @@
+{% assign endpointName = {{include.endpoint}} %}
+{% assign endpointData = site.data[endpointName] %}
+
+<table class="api-params">
+    {% if include.caption %}<caption>{{include.caption}}</caption>{% endif %}
+    <thead>
+        <tr class="header">
+            <th>Param Name</th>
+            <th>Type</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entry in endpointData %}
+        <tr>
+          <td>
+            {% if entry.deprecated %}
+                <code class="api-deprecated">{{ entry.name }}</code>
+            {% else %}
+                <code>{{ entry.name }}</code>
+            {% endif %}
+            {% if entry.required %}
+                {% if entry.required == true %}
+                    <p class="api-required">(required)</p>
+                {% else %}
+                    <p class="api-required">{{entry.required}}</p>
+                {% endif %}
+            {% endif %}</td>
+          <td>{{ entry.type }}</td>
+          <td>{{entry.description}}
+            {% if entry.default %}<p class="api-default">Default: <code>{{entry.default}}</code></p>{% endif %}
+            {% if entry.values != empty %}{{ entry.values }}{% endif %}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<!--
+$('#tbody-foo tr').map(function() {
+    let tr = $(this);
+    let name = tr.find('td:eq(0)').text().trim();
+    let isRequired = tr.find('td:eq(1)').text().trim() === 'Required';
+    let type = tr.find('td:eq(2)').text().trim();
+    let description = tr.find('td:eq(3)').html().replaceAll('"', '\\"');
+
+    return `- name: "${name}"
+  required: ${isRequired}
+  type: "${type}"
+  description: "${description}"`
+}).get().join('\n\n')
+-->

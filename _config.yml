@@ -18,21 +18,26 @@ navigation: 2
 codeurl: 'https://github.com/bruth/jekyll-docs-template'
 
 # Default categories (in order) to appear in the navigation
-sections: [
+sections:
+  [
     ['overview', 'Overview'],
-    ['2.2', 'Latest Version'],
+    ['2.3', '2.3 Latest Version'],
+    ['dev', 'Develop'],
+    ['admin', 'Administration'],
     ['greenlight', 'Greenlight'],
+    ['2.4', '2.4 Under Development'],
     ['support', 'Support'],
     ['install', '2.0'],
-    ['admin', 'Administration'],
     ['dev', 'Develop'],
+    ['2.2', '2.2 Legacy'],
     ['mobile', 'Mobile (dev)'],
     ['html', 'HTML5'],
     ['labs', 'Labs (dev)'],
     ['1.1', '1.1 (beta)'],
     ['2.0', '2.0 (beta)'],
-    ['post', 'Posts']
-]
+    ['post', 'Posts'],
+    ['install', '2.0'],
+  ]
 
 # Keep as an empty string if served up at the root. If served up at a specific
 # path (e.g. on GitHub pages) leave off the trailing slash, e.g. /my-project
@@ -44,7 +49,7 @@ permalink: none
 # Syntax highlighting
 highlighter: rouge
 
-# Since these are pages, it doesn't really matter 
+# Since these are pages, it doesn't really matter
 future: true
 
 # Exclude non-site files
@@ -53,17 +58,18 @@ exclude: ['bin', 'vendor', 'README.md']
 # Use the redcarpet Markdown renderer
 markdown: kramdown
 redcarpet:
-    extensions: [
-        'no_intra_emphasis',
-        'fenced_code_blocks',
-        'autolink',
-        'strikethrough',
-        'superscript',
-        'with_toc_data',
-        'tables',
-        'hardwrap'
+  extensions:
+    [
+      'no_intra_emphasis',
+      'fenced_code_blocks',
+      'autolink',
+      'strikethrough',
+      'superscript',
+      'with_toc_data',
+      'tables',
+      'hardwrap',
     ]
 
 # Load additional plugins
-plugins:
-  - jekyll-redirect-from
+plugins_dir:
+  - "jekyll-redirect-from"

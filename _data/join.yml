@@ -1,0 +1,65 @@
+- name: "fullName"
+  required: true
+  type: "String"
+  description: "The full name that is to be used to identify this user to other conference attendees."
+
+- name: "meetingID"
+  required: true
+  type: "String"
+  description: "The meeting ID that identifies the meeting you are attempting to join."
+
+- name: "password"
+  required: true
+  type: "String"
+  description: "The password that this attendee is using. If the moderator password is supplied, he will be given moderator status (and the same for attendee password, etc)"
+
+- name: "createTime"
+  required: false
+  type: "String"
+  description: "Third-party apps using the API can now pass createTime parameter (which was created in the create call), BigBlueButton will ensure it matches the ‘createTime’ for the session.  If they differ, BigBlueButton will not proceed with the join request. This prevents a user from reusing their join URL for a subsequent session with the same meetingID."
+
+- name: "userID"
+  required: false
+  type: "String"
+  description: "An identifier for this user that will help your application to identify which person this is.  This user ID will be returned for this user in the getMeetingInfo API call so that you can check"
+
+- name: "webVoiceConf"
+  required: false
+  type: "String"
+  description: "If you want to pass in a custom voice-extension when a user joins the voice conference using voip. This is useful if you want to collect more info in you Call Detail Records about the user joining the conference. You need to modify your /etc/asterisk/bbb-extensions.conf to handle this new extensions."
+
+- name: "configToken"
+  required: false
+  type: "String"
+  description: "The token returned by a setConfigXML API call.  This causes the BigBlueButton client to load the config.xml associated with the token (not the default config.xml)"
+
+- name: "defaultLayout"
+  required: false
+  type: "String"
+  description: "The layout name to be loaded first when the application is loaded."
+
+- name: "avatarURL"
+  required: false
+  type: "String"
+  description: "The link for the user’s avatar to be displayed (default can be enabled/disabled and set with “useDefaultAvatar“ and “defaultAvatarURL“ in bbb-web.properties)."
+
+- name: "redirect"
+  required: false
+  type: "String"
+  description: "The default behaviour of the JOIN API is to redirect the browser to the Flash client when the JOIN call succeeds. There have been requests if it’s possible to embed the Flash client in a “container” page and that the client starts as a hidden DIV tag which becomes visible on the successful JOIN. Setting this variable to FALSE will not redirect the browser but returns an XML instead whether the JOIN call has succeeded or not. The third party app is responsible for displaying the client to the user."
+
+- name: "clientURL"
+  required: false
+  type: "String"
+  description: "Some third party apps what to display their own custom client. These apps can pass the URL containing the custom client and when redirect is not set to false, the browser will get redirected to the value of clientURL."
+
+- name: "joinViaHtml5"
+  required: false
+  type: "String"
+  description: "Set to “true” to force the HTML5 client to load for the user. (removed in 2.3 since HTML5 is the only client)"
+  deprecated: true
+
+- name: "guest"
+  required: false
+  type: "String"
+  description: "Set to “true” to indicate that the user is a guest, otherwise do NOT send this parameter."
