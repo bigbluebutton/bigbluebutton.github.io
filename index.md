@@ -14,7 +14,7 @@ BigBlueButton is an open source web conferencing system for online learning. Thi
 
 - **Web conferencing system** - BigBluebutton provides you all the core features you would expect from a commercial web conferencing system (but under an open source license) including real-time sharing of audio, video, presentation, and screen -- along with collaboration tools such as chat (public and private), whiteboard, shared notes, polling, and breakout rooms.  BigBlueButton can record your sessions for later playback.
 
-- **Online learning** - BigBlueButton extends these core features for online learning. For example, a tutor can enable multi-user whiteboard to direclty work with a student on solving a math problem.  BigBlueButton has [deep integrations](https://bigbluebutton.org/schools/integrations/) with all the major learning management systems (LMS). It also supports Learning Tools Interoperability (LTI) 1.0 for integration with other LMS systems.
+- **Online learning** - BigBlueButton extends these core features for online learning. For example, a tutor can enable multi-user whiteboard to directly work with a student on solving a math problem.  BigBlueButton has [deep integrations](https://bigbluebutton.org/schools/integrations/) with all the major learning management systems (LMS). It also supports Learning Tools Interoperability (LTI) 1.0 for integration with other LMS systems.
 
 Want to try out BigBlueButton? Visit our demo server at [https://demo.bigbluebutton.org](https://demo.bigbluebutton.org) and setup a free account. The demo server also runs [Greenlight](https://github.com/bigbluebutton/greenlight), an easy-to-use front-end for creating rooms, starting meetings, inviting others, and managing recordings. Greenlight is open source as well.
 
