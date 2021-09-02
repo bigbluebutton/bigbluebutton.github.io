@@ -223,7 +223,7 @@
 - name: "meetingLayout"
   type: "Enum"
   default: "SMART_LAYOUT"
-  description: "Will set the default layout for the meeting. Possible values are: LEGACY, CUSTOM_LAYOUT, SMART_LAYOUT, PRESENTATION_FOCUS, VIDEO_FOCUS. (added 2.4)"
+  description: "Will set the default layout for the meeting. Possible values are: CUSTOM_LAYOUT, SMART_LAYOUT, PRESENTATION_FOCUS, VIDEO_FOCUS. (added 2.4)"
 
 - name: "learningDashboardEnabled"
   type: "Boolean"
