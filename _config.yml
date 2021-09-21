@@ -22,12 +22,12 @@ sections:
   [
     ['overview', 'Overview'],
     ['2.3', '2.3 Latest Version'],
+    ['dev', 'Develop'],
     ['admin', 'Administration'],
     ['greenlight', 'Greenlight'],
     ['2.4', '2.4 Under Development'],
     ['support', 'Support'],
     ['install', '2.0'],
-    ['dev', 'Develop'],
     ['2.2', '2.2 Legacy'],
     ['mobile', 'Mobile (dev)'],
     ['html', 'HTML5'],
