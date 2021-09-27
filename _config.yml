@@ -28,7 +28,6 @@ sections:
     ['2.4', '2.4 Under Development'],
     ['support', 'Support'],
     ['install', '2.0'],
-    ['dev', 'Develop'],
     ['2.2', '2.2 Legacy'],
     ['mobile', 'Mobile (dev)'],
     ['html', 'HTML5'],
