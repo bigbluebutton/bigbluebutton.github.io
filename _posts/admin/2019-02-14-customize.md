@@ -736,21 +736,15 @@ With these rules, you won't get spammed by bots scanning for SIP endpoints and t
 
 ### Turn on the "comfort noise" when no one is speaking
 
-FreeSWITCH has the ability to add a "comfort noise"'" that is a slight background hiss to let users know they are still in a voice conference even when no one is talking (otherwise, they may forget they are connected to the conference bridge and say something unintended for others).
+FreeSWITCH has the ability to add a "comfort noise" that is a slight background hiss to let users know they are still in a voice conference even when no one is talking (otherwise, they may forget they are connected to the conference bridge and say something unintended for others).
 
-If you want to enable, edit `/opt/freeswitch/conf/autoload_configs/conference.conf.xml` and change
-
-```xml
-<param name="comfort-noise" value="false"/>
-```
-
-to
+If you want to enable, edit `/opt/freeswitch/conf/autoload_configs/conference.conf.xml`, look for the block `<profile name="cdquality">`, and change the value for `comfort-noise`.  You can specify a level of noise, such as 0 (no noise), 350, 1400, etc.  Try different values to get the level you desire.
 
 ```xml
-<param name="comfort-noise" value="true"/>
+<param name="comfort-noise" value="1400"/>
 ```
 
-Then restart BigBlueButton
+You need to restart BigBlueButton between each change.  For more information, see [comfort-noise](https://freeswitch.org/confluence/display/FREESWITCH/mod_conference) in FreeSWITCH documentation.
 
 ```bash
 $ sudo bbb-conf --restart
