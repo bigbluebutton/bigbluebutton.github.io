@@ -1281,7 +1281,7 @@ Useful tools for development:
 | Parameter                                  | Description                                                                                                      | Default value |
 | ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- | ------------- |
 | `userdata-bbb_auto_swap_layout=`           | If set to `true`, the presentation area will be minimized when a user joins a meeting.                           | `false`       |
-| `userdata-bbb_hide_presentation=`          | If set to `true`, the presentation area will be minimized until opened                                           | `false`       |
+| `userdata-bbb_hide_presentation=`          | If set to `true`, the presentation area will not be displayed.                                           | `false`       |
 | `userdata-bbb_show_participants_on_login=` | If set to `false`, the participants panel (and the chat panel) will not be displayed until opened.               | `true`        |
 | `userdata-bbb_show_public_chat_on_login=`  | If set to `false`, the chat panel will not be visible on page load until opened. Not the same as disabling chat. | `true`        |
 
