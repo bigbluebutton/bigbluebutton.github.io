@@ -55,18 +55,19 @@ The following extension gives a visual representation of the tab order of a curr
 
 offered by ngzhian
 
-![Contrast Ratio Calculator](/images/accessibility_chromelense.jpg)
+![Screenshot of ChromeLens a browser extension to aid in website accessibility testing](/images/accessibility_chromelense.jpg)
+
 https://chrome.google.com/webstore/detail/chromelens/idikgljglpfilbhaboonnpnnincjhjkd?hl=en
 
 ## Focus
 
 Determines where keyboard events go on the page at any given moment. It is represented visually by a ring around the focused element and important for users to distinguish what element on the screen they currently have selected. The interactive elements in the html5 client UI have a custom focus ring applied to them.
 
-![Contrast Ratio Calculator](/images/accessibility-focusring.jpg)
+![Image showing an icon with focus and an icon without focus](/images/accessibility-focusring.jpg)
 
 HTML5 by default uses the `outline` attribute to visually indicate focus. Due to it's limitations the outline is set to transparent so it is only becomes visible in window high contrast themes (for those with visual impairments related to color).
 
-![Contrast Ratio Calculator](/images/accessibility-focusring-hc.jpg)
+![Image showing join audio aria label over the join audio icon](/images/accessibility-focusring-hc.jpg)
 
 Aria labels are important to focus when navigating with a screen reader, these labels have been used extensivley through out the client to provide audible announcments for selected
 elements.
@@ -75,13 +76,21 @@ elements.
 
 The HTML5 Client has made several improvements to the default keyboard navigation. The most notable addition being breakout room managment, assigning users to various rooms is now possible.
 
-![Contrast Ratio Calculator](/images/accessibility-br-manage.gif)
+![Animated image showing assignment of users to different rooms](/images/accessibility-br-manage.gif)
 
-### Shortcuts
+### Keyboard Shortcuts
 
 There are a number of provided keyboard shortcuts which have been set up using HTML5's `accessKey` property. 
 
-![Contrast Ratio Calculator](/images/accessibility-shortcuts.jpg)
+| Combination     | Function                                    |
+|:---------------:|:--------------------------------------------|
+| Shift + Alt + O | Open Options                                |
+| Shift + Alt + U | Toggle UserList                             |
+| Shift + Alt + M | Mute/Unmute                                 |
+| Shift + Alt + J | Join Audio                                  |
+| Shift + Alt + L | Leave Audio                                 |
+| Shift + Alt + P | Toggle Public Chat (User list must be open) |
+| Shift + Alt + H | Hide Private Chat                           |
 
 **_Note: the accessKey attribute has certain limitation like not being able to set the modifier key to activate the shortcut._**
 
@@ -96,13 +105,14 @@ The HTML5 client ensures that all visual designs meet the minimum color-contrast
 
 To make sure that we have met these guidelines, there are numerous tools available online which allow the comparison of foreground and background colors using hex values, to see if they fall within the appropriate contrast ratio.
 
-![Contrast Ratio Calculator](/images/accessibility_colorchecker.jpg)
+![Image showing contrast ratio calculator](/images/accessibility_colorchecker.jpg)
+
 http://webaim.org/resources/contrastchecker/
 
 ### Currently implemented colors:
 
-![Currently implemented element colors](/images/accessibility_colors1.jpg)
-![Currently implemented typography colors](/images/accessibility_colors2.jpg)
+![Image showing currently implemented element colors](/images/accessibility_colors1.jpg)
+![Image showing currently implemented typography colors](/images/accessibility_colors2.jpg)
 
 - Blue - primary color - action buttons
 - Red - closing audio, indicators and error alerts
@@ -112,7 +122,7 @@ http://webaim.org/resources/contrastchecker/
 - Grey - base typography color
 
 **_Note:_**
-**_The ChromeLense extension also provides the ability to view your browser using different personas of users who may view web content with various different visual impairments. This is particularly useful when deciding on appropriate color schemes to best suit a wider range of users._**
+**_The ChromeLens extension also provides the ability to view your browser using different personas of users who may view web content with various different visual impairments. This is particularly useful when deciding on appropriate color schemes to best suit a wider range of users._**
 
 ## Semantics
 
@@ -147,16 +157,18 @@ Testing for accessibility can be a somewhat painful process, if you try to manua
 
 #### aXe
 
-offered by Deque Systems
+Offered by Deque Systems
 
-![aXe](/images/accessibility_axe.jpg)
+![Image of aXe browser extension accessibility checker](/images/accessibility_axe.jpg)
+
 https://chrome.google.com/webstore/detail/axe/lhdoppojpmngadmnindnejefpokejbdd
 
 #### Accessibility Developer Tools
 
 offered by Google Accessibility
 
-![Accessibility Developer Tools](/images/accessibility_audit.jpg)
+![Image of Google browser extension accessibility developer tools](/images/accessibility_audit.jpg)
+
 https://chrome.google.com/webstore/detail/accessibility-developer-t/fpkknkljclfencbdbgkenhalefipecmb
 
 Both of these extensions provide the ability to scan the DOM and report on any accessibility issues based on levels which can be set, weather AA or AAA standards. For the purposes of the HTML5 client we follow the AA guidelines. Any reported errors also come with a listing of potential fixes.
