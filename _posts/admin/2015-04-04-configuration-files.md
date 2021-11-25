@@ -21,7 +21,7 @@ Starting with BigBlueButton 2.3 many of the configuration files have local overr
 | /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties             | /etc/bigbluebutton/bbb-web.properties            |                                  |
 | /usr/share/bbb-apps-akka/conf/application.conf                          | /etc/bigbluebutton/bbb-apps-akka.conf            |                                  |
 | /usr/share/bbb-fsesl-akka/conf/application.conf                         | /etc/bigbluebutton/bbb-fsesl-akka.conf           |                                  |
-| /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml | /etc/bigbluebutton/bbb-html5.yml                 |                                  |
+| /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml | /etc/bigbluebutton/bbb-html5.yml                 | Arrays are merged by replacement (as of 2.4-rc-5) |
 | /usr/share/meteor/bundle/bbb-html5-with-roles.conf                      | /etc/bigbluebutton/bbb-html5-with-roles.conf     |                                  |
 | /usr/share/bbb-web/WEB-INF/classes/spring/turn-stun-servers.xml         | /etc/bigbluebutton/turn-stun-servers.xml         | Replaces the original file       |
 | /usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml              | /etc/bigbluebutton/bbb-webrtc-sfu/production.yml | Arrays are merged by replacement |
