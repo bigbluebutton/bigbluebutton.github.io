@@ -172,7 +172,7 @@ To update Greenlight, all you need to do is pull the latest image from [Dockerhu
 
 ```bash
 cd ~/greenlight
-docker pull bigbluebutton/greenlight:v2
+docker-compose pull
 docker-compose down
 docker-compose up -d
 ```
