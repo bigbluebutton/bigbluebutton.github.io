@@ -531,38 +531,30 @@ HERE
 
 Starting from version 2.4 BigBlueButton offers virtual background for webcams.
 To use your own background images copy them into the directory
-`/usr/share/meteor/bundle/programs/web.browser/app/resources/images/virtual-backgrounds`.
-For each image copy a thumbnail of the image of  50x50 pixels size into
-`/usr/share/meteor/bundle/programs/web.browser/app/resources/images/virtual-backgrounds/thumbnails`.
+`/var/www/bigbluebutton/client/images/virtual-backgrounds`.
+For each image copy a thumbnail of the image of 50x50 pixels size into
+`/var/www/bigbluebutton/client/images/virtual-backgrounds/thumbnails`.
 
 To generate thumbnails you can use the following shell snippet:
 
 ```bash
 #!/bin/bash
-FULL="/usr/share/meteor/bundle/programs/web.browser/app/resources/images/virtual-backgrounds"
+FULL="/var/www/bigbluebutton/client/images/virtual-backgrounds"
 THUMB="${FULL}/thumbnails"
 
 cd "$FULL"
 for pic in *.jpg; do
-    convert "$pic" -resize 50x50^ -gravity Center -extent 50x50 "${THUMB}/${pic}"
+    convert "$pic" -resize 50x50^ -gravity center -extent 50x50 "${THUMB}/${pic}"
 done
-```
-
-Reference them in the configuration file `/etc/bigbluebutton/bbb-html5.yml`:
-
-```
-public:
-  virtualBackgrounds:
-    fileNames:
-      - image1.jpg
-      - image2.jpg
-      - image3.jpg
 ```
 
 Background images should not be too large as clients have to download them. You
 can optimize them using the `jpegoptim` command which is available as an Ubuntu
 package.
 
+If the previous directories does not exist, you can create them, or you can use your own directory by setting the `BBB_HTML5_CUSTOM_VIRTUAL_BG` environment variable. In that case, make sure to create a `thumbnails` folder within that directory if you wish to use your own thumbnails.
+
+To remove a custom virtual background, just delete the image from `/var/www/bigbluebutton/client/images/virtual-backgrounds` or from your custom directory.
 
 ## Audio
 
