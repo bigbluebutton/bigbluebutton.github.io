@@ -16,6 +16,8 @@ docker run --rm -p 127.0.0.1:4000:4000/tcp --volume="$PWD:/srv/jekyll" -it jekyl
 
 And you can now view the site using the URL http://localhost:4000/. If the Docker approach does not work, you can setup Jekyll using the steps below.
 
+Note: If you're having troubles with page changes (especially page categories) not being correctly updated and symptoms similar to cached files, try to remove `_site/*` and re-run the docker command. The entire `_site/` directory will be recreated using the local files.
+
 ### Ruby
 
 To install Ruby, we suggest the use of [rbenv](https://github.com/rbenv/rbenv).
