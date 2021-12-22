@@ -234,3 +234,9 @@
   type: "Number"
   default: "2"
   description: "Default <code class=\"language-plaintext highlighter-rouge\">learningDashboardCleanupDelayInMinutes=2</code>. This option set the delay (in minutes) before the Learning Dashboard become unavailable after the end of the meeting. If this value is zero, the Learning Dashboard will keep available permanently. (added 2.4)"
+
+- name: "allowModsToEjectCameras"
+  required: false
+  type: "Boolean"
+  default: "false"
+  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will allow moderators to close other users cameras in the meeting. (added 2.4)"
