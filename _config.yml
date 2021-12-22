@@ -21,21 +21,13 @@ codeurl: 'https://github.com/bruth/jekyll-docs-template'
 sections:
   [
     ['overview', 'Overview'],
-    ['2.3', '2.3 Latest Version'],
+    ['2.4', '2.4 Latest Version'],
     ['dev', 'Develop'],
     ['admin', 'Administration'],
     ['greenlight', 'Greenlight'],
-    ['2.4', '2.4 Under Development'],
     ['support', 'Support'],
-    ['install', '2.0'],
-    ['2.2', '2.2 Legacy'],
-    ['mobile', 'Mobile (dev)'],
-    ['html', 'HTML5'],
-    ['labs', 'Labs (dev)'],
-    ['1.1', '1.1 (beta)'],
-    ['2.0', '2.0 (beta)'],
+    ['2.3', '2.3 Legacy'],
     ['post', 'Posts'],
-    ['install', '2.0'],
   ]
 
 # Keep as an empty string if served up at the root. If served up at a specific
@@ -71,4 +63,4 @@ redcarpet:
 
 # Load additional plugins
 plugins_dir:
-  - "jekyll-redirect-from"
+  - 'jekyll-redirect-from'

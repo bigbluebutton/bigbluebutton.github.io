@@ -386,7 +386,7 @@ chown meteor:meteor $HTML5_CONFIG
 
 ### Run three parallel Kurento media servers
 
-[ Available in BigBluebutton 2.2.24+ and 2.3 ]
+[ Available since BigBluebutton 2.2.24+ ]
 
 Kurento media server handles three different types of media streams: listen only, webcams, and screen share.
 
@@ -470,9 +470,9 @@ If any of these thresholds are reached, then a user will receive a "Media resour
 
 Thus, we recommend you [enable multiple Kurento](customize.html#run-three-parallel-kurento-media-servers) servers, thereby having one Kurento server for webcams, one for screen share, and one for listen only streams. The settings apply to each Kurento server, so in the above example each Kurento server would have a maximum of 1000 media streams.
 
-BigBlueButton will dynamically reduce the number of webcams in a meeting as the meeting grows larger.  These are set in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml`, but you can override them by placing them in `/etc/bigbluebutton/bbb-html5.yml`.
+BigBlueButton will dynamically reduce the number of webcams in a meeting as the meeting grows larger. These are set in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml`, but you can override them by placing them in `/etc/bigbluebutton/bbb-html5.yml`.
 
-For example, the follwing `/etc/bigbluebutton/bbb-html5.yml` file would ensure that no single meeting will have more than 300 streams.  For example, in a meeting with 30 users, the moderator will see 25 webcams and the viewers 6 webcams.  This gives 25 + 29 * 6 = 196 webcam streams. If the meeting grows to 100 users, the moderator will see 8 webcams and viewers will see 2 webcams.  This gives 8 + 99 * 2 = 206 webcam streams.
+For example, the follwing `/etc/bigbluebutton/bbb-html5.yml` file would ensure that no single meeting will have more than 300 streams. For example, in a meeting with 30 users, the moderator will see 25 webcams and the viewers 6 webcams. This gives 25 + 29 _ 6 = 196 webcam streams. If the meeting grows to 100 users, the moderator will see 8 webcams and viewers will see 2 webcams. This gives 8 + 99 _ 2 = 206 webcam streams.
 
 ```
 public:
@@ -532,7 +532,7 @@ HERE
 Starting from version 2.4 BigBlueButton offers virtual background for webcams.
 To use your own background images copy them into the directory
 `/usr/share/meteor/bundle/programs/web.browser/app/resources/images/virtual-backgrounds`.
-For each image copy a thumbnail of the image of  50x50 pixels size into
+For each image copy a thumbnail of the image of 50x50 pixels size into
 `/usr/share/meteor/bundle/programs/web.browser/app/resources/images/virtual-backgrounds/thumbnails`.
 
 To generate thumbnails you can use the following shell snippet:
@@ -562,7 +562,6 @@ public:
 Background images should not be too large as clients have to download them. You
 can optimize them using the `jpegoptim` command which is available as an Ubuntu
 package.
-
 
 ## Audio
 
@@ -775,13 +774,13 @@ With these rules, you won't get spammed by bots scanning for SIP endpoints and t
 
 FreeSWITCH has the ability to add a "comfort noise" that is a slight background hiss to let users know they are still in a voice conference even when no one is talking (otherwise, they may forget they are connected to the conference bridge and say something unintended for others).
 
-If you want to enable, edit `/opt/freeswitch/conf/autoload_configs/conference.conf.xml`, look for the block `<profile name="cdquality">`, and change the value for `comfort-noise`.  You can specify a level of noise, such as 0 (no noise), 350, 1400, etc.  Try different values to get the level you desire.
+If you want to enable, edit `/opt/freeswitch/conf/autoload_configs/conference.conf.xml`, look for the block `<profile name="cdquality">`, and change the value for `comfort-noise`. You can specify a level of noise, such as 0 (no noise), 350, 1400, etc. Try different values to get the level you desire.
 
 ```xml
 <param name="comfort-noise" value="1400"/>
 ```
 
-You need to restart BigBlueButton between each change.  For more information, see [comfort-noise](https://freeswitch.org/confluence/display/FREESWITCH/mod_conference) in FreeSWITCH documentation.
+You need to restart BigBlueButton between each change. For more information, see [comfort-noise](https://freeswitch.org/confluence/display/FREESWITCH/mod_conference) in FreeSWITCH documentation.
 
 ```bash
 $ sudo bbb-conf --restart
@@ -922,7 +921,7 @@ Restart BigBlueButton with `sudo bbb-conf --restart`. You should now be able to 
 
 ### Add custom fonts for presentation conversion
 
-In BigBlueButton 2.3 we added support for using additional fonts when converting presentation files.
+Starting with BigBlueButton 2.3 we added support for using additional fonts when converting presentation files.
 
 On the server where you want the new fonts supported you would want to download the fonts (.ttf) file. For example:
 
@@ -1315,14 +1314,14 @@ Useful tools for development:
 
 ### Layout parameters
 
-| Parameter                                  | Description                                                                                                      | Default value |
-| ------------------------------------------ | ---------------------------------------------------------------------------------------------------------------- | ------------- |
-| `userdata-bbb_auto_swap_layout=`           | If set to `true`, the presentation area will be minimized when a user joins a meeting.                           | `false`       |
-| `userdata-bbb_hide_presentation=`          | If set to `true`, the presentation area will not be displayed.                                           | `false`       |
-| `userdata-bbb_show_participants_on_login=` | If set to `false`, the participants panel (and the chat panel) will not be displayed until opened.               | `true`        |
-| `userdata-bbb_show_public_chat_on_login=`  | If set to `false`, the chat panel will not be visible on page load until opened. Not the same as disabling chat. | `true`        |
-| `userdata-bbb_hide_nav_bar=`  | If set to `true`, the navigation bar (the top portion of the client) will not be displayed. Introduced in BBB 2.4-rc-3.| `false`        |
-| `userdata-bbb_hide_actions_bar=`  | If set to `true`, the actions bar (the bottom portion of the client) will not be displayed. Introduced in BBB 2.4-rc-3.| `false`        |
+| Parameter                                  | Description                                                                                                             | Default value |
+| ------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------- | ------------- |
+| `userdata-bbb_auto_swap_layout=`           | If set to `true`, the presentation area will be minimized when a user joins a meeting.                                  | `false`       |
+| `userdata-bbb_hide_presentation=`          | If set to `true`, the presentation area will not be displayed.                                                          | `false`       |
+| `userdata-bbb_show_participants_on_login=` | If set to `false`, the participants panel (and the chat panel) will not be displayed until opened.                      | `true`        |
+| `userdata-bbb_show_public_chat_on_login=`  | If set to `false`, the chat panel will not be visible on page load until opened. Not the same as disabling chat.        | `true`        |
+| `userdata-bbb_hide_nav_bar=`               | If set to `true`, the navigation bar (the top portion of the client) will not be displayed. Introduced in BBB 2.4-rc-3. | `false`       |
+| `userdata-bbb_hide_actions_bar=`           | If set to `true`, the actions bar (the bottom portion of the client) will not be displayed. Introduced in BBB 2.4-rc-3. | `false`       |
 
 ### External parameters
 

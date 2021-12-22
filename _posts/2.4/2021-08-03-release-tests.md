@@ -11,8 +11,6 @@ be performed by humans using different browsers. It is usefull to have multiple
 humans performing these tests together. You should plan at least an hour to perform
 all of these tests.
 
-### This list of tests contains the [list from version 2.3](/2.3/release-tests.html).
-
 ## Audio tests
 
 ### Join audio by microphone

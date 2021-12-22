@@ -90,7 +90,7 @@ There are many members of the BigBlueButton community that have been using and s
 
 # Help developing BigBlueButton
 
-BigBlueButton is a very customizable system, see [customizable options](/admin/customize). If you don't see an option to customize BigBlueButton to your needs and have some experience with software development, you can [setup a development environment](/2.3/dev.html) and modify BigBlueButton to your needs. If you end up designing new functionality, we encourage you to upstream the changes via a pull request so that others can seek benefit from it too.
+BigBlueButton is a very customizable system, see [customizable options](/admin/customize). If you don't see an option to customize BigBlueButton to your needs and have some experience with software development, you can [set up a development environment](/2.4/dev.html) and modify BigBlueButton to your needs. If you end up designing new functionality, we encourage you to upstream the changes via a pull request so that others can seek benefit from it too.
 
 Post as much information as you can about your development problem to [bigbluebutton-dev](https://groups.google.com/forum/#!forum/bigbluebutton-dev).
 
