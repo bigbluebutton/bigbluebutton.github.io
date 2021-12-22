@@ -16,15 +16,15 @@ We recommend you make changes only to the override files (`/etc/bigbluebutton`) 
 
 Starting with BigBlueButton 2.3 many of the configuration files have local overrides so the administrator can specify the local equivalents. We recommend you make changes only to the override files (`/etc/bigbluebutton`) so that when you update to a newer version of BigBlueButton your configuration changes are not overwritten by the new packages.
 
-| Package                                                                 | Override                                         | Notes                            |
-| :---------------------------------------------------------------------- | :----------------------------------------------- | -------------------------------- |
-| /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties             | /etc/bigbluebutton/bbb-web.properties            |                                  |
-| /usr/share/bbb-apps-akka/conf/application.conf                          | /etc/bigbluebutton/bbb-apps-akka.conf            |                                  |
-| /usr/share/bbb-fsesl-akka/conf/application.conf                         | /etc/bigbluebutton/bbb-fsesl-akka.conf           |                                  |
-| /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml | /etc/bigbluebutton/bbb-html5.yml                 | Arrays are merged by replacement (as of 2.4-rc-5) |
-| /usr/share/meteor/bundle/bbb-html5-with-roles.conf                      | /etc/bigbluebutton/bbb-html5-with-roles.conf     |                                  |
-| /usr/share/bbb-web/WEB-INF/classes/spring/turn-stun-servers.xml         | /etc/bigbluebutton/turn-stun-servers.xml         | Replaces the original file       |
-| /usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml              | /etc/bigbluebutton/bbb-webrtc-sfu/production.yml | Arrays are merged by replacement |
+| Package                                                                 | Override                                         | Notes                                                                            |
+| :---------------------------------------------------------------------- | :----------------------------------------------- | -------------------------------------------------------------------------------- |
+| /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties             | /etc/bigbluebutton/bbb-web.properties            | The values for `securitySalt` and `serverURL` are automatically set in the file. |
+| /usr/share/bbb-apps-akka/conf/application.conf                          | /etc/bigbluebutton/bbb-apps-akka.conf            |                                                                                  |
+| /usr/share/bbb-fsesl-akka/conf/application.conf                         | /etc/bigbluebutton/bbb-fsesl-akka.conf           |                                                                                  |
+| /usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml | /etc/bigbluebutton/bbb-html5.yml                 | Arrays are merged by replacement (as of 2.4-rc-5)                                |
+| /usr/share/meteor/bundle/bbb-html5-with-roles.conf                      | /etc/bigbluebutton/bbb-html5-with-roles.conf     |                                                                                  |
+| /usr/share/bbb-web/WEB-INF/classes/spring/turn-stun-servers.xml         | /etc/bigbluebutton/turn-stun-servers.xml         | Replaces the original file                                                       |
+| /usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml              | /etc/bigbluebutton/bbb-webrtc-sfu/production.yml | Arrays are merged by replacement                                                 |
 
 <br /><br />
 
@@ -74,7 +74,7 @@ public:
 
 ### Log monitoring for server logs (bbb-html5)
 
-In BigBlueButton 2.3 we run multiple nodejs processes in production mode, so tailing logs is slightly different from `journalctl -f bbb-html5.service` which was used in 2.2. Rather than listing all the services ( `bbb-html5-backend@1.service bbb-html5-backend@2.service bbb-html5-frontend@1.service bbb-html5-frontend@2.service bbb-html5-frontend@3.service bbb-html5-frontend@4.service ...` ) you can use the wildcard operator `*`. Notice the different process id for each bbb-html5-\* service. Also notice `systemd_start_frontend.sh` signifying a log from a frontend process vs `systemd_start.sh` - backend process.
+Since BigBlueButton 2.3 we run multiple nodejs processes in production mode, so tailing logs is slightly different from `journalctl -f bbb-html5.service` which was used in 2.2. Rather than listing all the services ( `bbb-html5-backend@1.service bbb-html5-backend@2.service bbb-html5-frontend@1.service bbb-html5-frontend@2.service bbb-html5-frontend@3.service bbb-html5-frontend@4.service ...` ) you can use the wildcard operator `*`. Notice the different process id for each bbb-html5-\* service. Also notice `systemd_start_frontend.sh` signifying a log from a frontend process vs `systemd_start.sh` - backend process.
 
 ```
 # journalctl -f -u bbb-html5-*

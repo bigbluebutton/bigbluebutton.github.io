@@ -15,7 +15,7 @@ If you would like to help translate BigBlueButton into your language, or you see
 
 2. Choose the project
 
-For helping to translate the HTML5 client, visit [BigBlueButton v2.3 HTML5 client](https://www.transifex.com/bigbluebutton/bigbluebutton-v23-html5-client/).
+For helping to translate the HTML5 client, visit [BigBlueButton v2.4 HTML5 client](https://www.transifex.com/bigbluebutton/bigbluebutton-v24-html5-client/).
 
 You'll see a list of languages ready for translation.
 
