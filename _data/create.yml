@@ -1,7 +1,7 @@
 - name: "name"
-  required: false
+  required: true
   type: "String"
-  description: "A name for the meeting."
+  description: "A name for the meeting.  This is now required as of BigBlueButton 2.4."
 
 - name: "meetingID"
   required: true
