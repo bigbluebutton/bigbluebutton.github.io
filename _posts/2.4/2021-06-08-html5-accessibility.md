@@ -91,6 +91,14 @@ There are a number of provided keyboard shortcuts which have been set up using H
 | Shift + Alt + L | Leave Audio                                 |
 | Shift + Alt + P | Toggle Public Chat (User list must be open) |
 | Shift + Alt + H | Hide Private Chat                           |
+| Shift + Alt + G | Close private chat                          |
+| Shift + Alt + R | Toggle Raise Hand                           |
+| Shift + Alt + A | Open actions menu                           |
+| Shift + Alt + K | Open debug window                           |
+| Spacebar        | Activate Pan tool (Presenter)               |
+| Enter	          | Toggle Full-screen (Presenter)              |
+| Right Arrow     | Next slide (Presenter)                      |
+| Left Arrow      | Previous slide (Presenter)                  |
 
 **_Note: the accessKey attribute has certain limitation like not being able to set the modifier key to activate the shortcut._**
 
