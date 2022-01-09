@@ -52,10 +52,10 @@ When a meeting finishes, the BigBlueButton server [archives the meeting data](/d
 
 Retaining the raw data lets you [rebuild](/dev/recording.html#rebuild-a-recording) a recording if it was accidentally deleted by a user; however, the tradeoff is the storage of raw data will consume more disk space over time.
 
-You can have the BigBlueButton server automatically remove the raw data for a recording after 14 days of its being published by editing the BigBlueButton cron job, located at `/etc/cron.daily/bigbluebutton`, and uncommenting the following line
+By default, BigBlueButton server automatically remove the raw data for a recording after 14 days of its being published. To disable this, edit the BigBlueButton cron job, located at `/etc/cron.daily/bigbluebutton`, and comment the following line
 
 ```bash
-#remove_raw_of_published_recordings
+remove_raw_of_published_recordings
 ```
 
 The default duration (days)
