@@ -531,33 +531,42 @@ HERE
 
 Starting from version 2.4 BigBlueButton offers virtual background for webcams.
 To use your own background images copy them into the directory
-`/usr/share/meteor/bundle/programs/web.browser/app/resources/images/virtual-backgrounds`.
-For each image copy a thumbnail of the image of 50x50 pixels size into
-`/usr/share/meteor/bundle/programs/web.browser/app/resources/images/virtual-backgrounds/thumbnails`.
+`/var/www/bigbluebutton/client/images/virtual-backgrounds`.
+For each image copy a thumbnail of the image with the same filename of 50x50 pixels size into
+`/var/www/bigbluebutton/client/images/virtual-backgrounds/thumbnails`.
+
+You can use jpg or png images/thumbnails.
+
+If you don't want to use the directory `/var/www/bigbluebutton/client/images/virtual-backgrounds`, you can specify your own directory by setting the BBB_HTML5_CUSTOM_VIRTUAL_BACKGROUNDS environment variable:
+
+```bash
+  export BBB_HTML5_CUSTOM_VIRTUAL_BACKGROUNDS=/your/own/directory
+```
 
 To generate thumbnails you can use the following shell snippet:
 
 ```bash
 #!/bin/bash
-FULL="/usr/share/meteor/bundle/programs/web.browser/app/resources/images/virtual-backgrounds"
+FULL="/var/www/bigbluebutton/client/images/virtual-backgrounds"
 THUMB="${FULL}/thumbnails"
 
 cd "$FULL"
 for pic in *.jpg; do
-    convert "$pic" -resize 50x50^ -gravity Center -extent 50x50 "${THUMB}/${pic}"
+  convert "$pic" -resize 50x50^ -gravity center -extent 50x50 "${THUMB}/${pic}"
 done
 ```
 
-Reference them in the configuration file `/etc/bigbluebutton/bbb-html5.yml`:
+Optionally, you can customize the tooltip text for the virtual background by appending
 
+```json
+  "app.video.virtualBackground.filename": "Tooltip Text"
 ```
-public:
-  virtualBackgrounds:
-    fileNames:
-      - image1.jpg
-      - image2.jpg
-      - image3.jpg
-```
+
+to the locale files (`/usr/share/meteor/bundle/programs/web.browser/app/locales` in production environment and `bigbluebutton/bigbluebutton-html5/public/locales` in development environment) for the languages of your choice (where _filename_ is the filename of the virtual background with no extension). Otherwise, the tooltip will fall back to numbering.
+
+After that, restart the client for the changes to take effect.
+
+To remove a custom virtual background, just delete its image from `/var/www/bigbluebutton/client/images/virtual-backgrounds` or from the directory specified with `BBB_HTML5_CUSTOM_VIRTUAL_BACKGROUNDS`, and restart the client.
 
 Background images should not be too large as clients have to download them. You
 can optimize them using the `jpegoptim` command which is available as an Ubuntu
