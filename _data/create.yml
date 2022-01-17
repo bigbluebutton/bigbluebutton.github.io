@@ -240,3 +240,9 @@
   type: "Boolean"
   default: "false"
   description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will allow moderators to close other users cameras in the meeting. (added 2.4)"
+
+- name: "allowRequestsWithoutSession"
+  required: false
+  type: "Boolean"
+  default: "false"
+  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will allow users to join meetings without session cookie's validation. (added 2.4)"
