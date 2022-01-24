@@ -245,4 +245,4 @@
   required: false
   type: "Boolean"
   default: "false"
-  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will disable Virtual Backgrounds for all users in the meeting. (added 2.4)"
+  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will disable Virtual Backgrounds for all users in the meeting. (added 2.4.3)"
