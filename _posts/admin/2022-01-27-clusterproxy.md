@@ -121,7 +121,7 @@ Each should have the following content:
 ```
 [Service]
 Environment=ROOT_URL=https://127.0.0.1/bbb-01/html5client
-Environment=DDP_DEFAULT_CONNECTION_URL=https://bbb01.example.com/bbb01/html5client
+Environment=DDP_DEFAULT_CONNECTION_URL=https://bbb-01.example.com/bbb-01/html5client
 ```
 
 Change the nginx `$bbb_loadbalancer_node` variable to the name of the load
