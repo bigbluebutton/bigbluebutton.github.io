@@ -115,11 +115,6 @@
   type: "Boolean"
   description: "Setting <code class=\"language-plaintext highlighter-rouge\">webcamsOnlyForModerator=true</code> will cause all webcams shared by viewers during this meeting to only appear for moderators (added 1.1)"
 
-- name: "logo"
-  required: false
-  type: "String"
-  description: "Setting <code class=\"language-plaintext highlighter-rouge\">logo=http://www.example.com/my-custom-logo.png</code> will replace the default logo in the Flash client. (added 2.0)"
-
 - name: "bannerText"
   required: false
   type: "String"
