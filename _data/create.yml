@@ -125,11 +125,6 @@
   type: "String"
   description: "Will set the banner background color in the client. The required format is color hex #FFFFFF. (added 2.0)"
 
-- name: "copyright"
-  required: false
-  type: "String"
-  description: "Setting <code class=\"language-plaintext highlighter-rouge\">copyright=My custom copyright</code> will replace the default copyright on the footer of the Flash client. (added 2.0)"
-
 - name: "muteOnStart"
   required: false
   type: "Boolean"
