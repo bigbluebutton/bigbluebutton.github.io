@@ -11,8 +11,14 @@
 - name: "password"
   required: true
   type: "String"
-  description: "The password that this attendee is using. If the moderator password is supplied, he will be given moderator status (and the same for attendee password, etc)"
+  description: "This password value is used to determine the role of the user based on whether it matches the moderator or attendee password.  Note: This parameter is *not* required when the role parameter is passed."
 
+- name: "role"
+  required: true
+  type: "String"
+  description: "Define user role for the meeting.  Valid values are MODERATOR or VIEWER (case insensitive). If the role parameter is present and valid, it overrides the password parameter.  You must specify either password parameter or role parameter in the join request.
+    
+  
 - name: "createTime"
   required: false
   type: "String"
