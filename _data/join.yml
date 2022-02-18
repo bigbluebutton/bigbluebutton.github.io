@@ -16,7 +16,7 @@
 - name: "role"
   required: true
   type: "String"
-  description: "Define user role for the meeting.  Valid values are MODERATOR or VIEWER (case insensitive). If the role parameter is present and valid, it overrides the password parameter.  You must specify either password parameter or role parameter in the join request.
+  description: "Define user role for the meeting.  Valid values are MODERATOR or VIEWER (case insensitive). If the role parameter is present and valid, it overrides the password parameter.  You must specify either password parameter or role parameter in the join request."
   
 - name: "createTime"
   required: false
