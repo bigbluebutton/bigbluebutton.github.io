@@ -242,3 +242,9 @@
   type: "Boolean"
   default: "false"
   description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will disable Virtual Backgrounds for all users in the meeting. (added 2.4.3)"
+
+- name: "userCameraCap"
+  required: false
+  type: "Number"
+  default: "3"
+  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">0</code> will disable this threshold. Defines the max number of webcams a single user can share simultaneously. (added 2.4.5)"
