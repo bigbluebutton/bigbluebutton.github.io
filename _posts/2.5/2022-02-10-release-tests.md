@@ -27,20 +27,22 @@ all of these tests.
 
 1. As a moderator, select Moderator/Presenter Action menu (+)
 
-2. choosing upload Presentation
+2. Choosing "Manage presentations"
 
 3. Uploading presentation options:
 
    - using Drag and Drop
    - Upload presentation using File Explorer(browsing for files.)
 
-4. Presentation should appear on All Clients in sync with updates (PAAC)
+4. You should see the notification displaying the upload progress
+
+5. Presentation should appear on All Clients in sync with updates, and All Clients should see the notification with the new presentation name
 
 ### Enabling and Disabling Presentation Download
 
 1. Select Moderator/Presenter Action menu
 
-2. Choose Upload Presentation
+2. Choose "Manage presentations"
 
 3. Set current file as enabled/disabled for download:
 
@@ -52,7 +54,7 @@ all of these tests.
 
 1. Select Moderator/Presenter Action menu
 
-2. Choose Upload Presentation
+2. Choose "Manage presentations"
 
 3. Selecting trash icon to delete
 
@@ -62,15 +64,17 @@ all of these tests.
 
 1. Select Moderator/Presenter Action menu
 
-2. Choose Upload Presentation
+2. Choose "Manage presentation"
 
-3. Upload multiple presentations at once using Browse for files option
+3. Select multiple presentations at once using Browse for files option
 
 4. Set a current presentation
 
-5. select upload
+5. Select upload
 
-(Note : Current file selected should display to the presentation area)
+6. You should see the notification displaying the upload progress
+
+7. Current selected file should appear for all clients
 
 ### Navigation
 
@@ -80,17 +84,15 @@ all of these tests.
 
 3. Select previous slide (<)
 
-4. Use drop down to select a specific slide.
+4. Use dropdown to select a specific slide.
 
-5. Presentation should appear on All Clients in sync with updates (PAAC)
+5. The selected slide should appear
 
 ### Zoom
 
 1. Zoom in (+) and out (-) by clicking in the buttons or using the scroll
 
 2. Using the Pan tool, move document around while zoomed in.
-
-3. Presentation should appear on All Clients in sync with updates (PAAC)
 
 ### Draw and Pan
 
@@ -102,35 +104,48 @@ all of these tests.
 
 4. Hold down the space while moving mouse to pan.
 
-### Minimizing and Hiding presentation
 
-1. Select Share webcam.
-
-2. Selecting hide presentation icon or Click Minimize presentation area.
-
-3. Presentation is minimized.
-
-(Note : Presentation area will auto expand when the presenter engages Screen Sharing or YouTube Link Share)
-
-### Restore Presentation
+### Minimize/Restore Presentation
 
 1. Clicking on Share webcam.
 
 2. Minimizing presentation.
 
-3. Selecting restore presentation.
+3. Presentation should be minimized, the button should change to "Restore presentation"
 
-4. Presentation should be restored.
+4. Selecting "Restore presentation"
+
+5. Presentation should be restored.
+
+(Note : Presentation area will auto expand when the presenter engages Screen Sharing or YouTube Link Share)
 
 ### Full Screen option
 
-1. Click on full screen button
+1. Click on full screen button ("Make presentation fullscreen")
 
-2. Draw on the whiteboard
+2. Application should go to full screen
 
-3. select Escape key on local keyboard.
+3. Draw on the whiteboard
 
-Application should go to full screen, then back to normal screen.
+4. Select Escape key on local keyboard.
+
+5. Application should return to normal screen
+
+6. Click on full screen button again
+
+7. Click on "Undo Presentation fullscreen" button
+
+8. Application should return to normal screen
+
+### Fit to width option
+
+1. Click on "Fit to width" button
+
+2. Presentation should be re-positioned to fit to width
+
+3. Click on "Fit to page" button
+
+4. Presentation should return to normal view
 
 ### Make viewer a presenter
 
@@ -138,7 +153,7 @@ Application should go to full screen, then back to normal screen.
 
 2. Selecting make presenter for the user.
 
-Viewer selected should have all presenter capabilities and presenter Icon should appear over user icon in the users list.
+3. Viewer selected should have all presenter capabilities and presenter Icon should appear over user icon in the users list.
 
 ### Taking presenter status back
 
@@ -147,30 +162,36 @@ Viewer selected should have all presenter capabilities and presenter Icon should
    1.1
 
 - Click on your user icon in users list.
-- choose take presenter
+- choose "Take presenter"
 
   1.2
 
 - Select Moderator/Presenter Actions menu (+)
-- choose take presenter
+- choose "Take presenter"
 
-Selected user or moderator should now have presenter capabilities and presenter icon should appear over user icon in the users list.
+You should now have presenter capabilities and presenter icon should appear over your icon in the users list.
 
 ## Webcams
 
 ### Joining Webcam
 
-1. Click on share webcam icon.
+1. Click on "Share webcam" icon
 
-2. Allow browser permissions if prompted.
+2. Allow browser permissions if prompted
 
-3. Select your webcam.
+3. Select your webcam
 
-4. Choose the video quality from the available option.
+4. Choose the video quality from the available option
 
-5. Click Start sharing.
+5. Select the virtual background setting
 
-A small webcam video should show up and the camera share will start highlighting.
+6. Click "Start sharing"
+
+7. A small webcam video should show up and the camera share will start highlighting
+
+8. Click "Stop sharing webcam"
+
+9. The webcam video should disappear
 
 ### Make webcam full screen
 
