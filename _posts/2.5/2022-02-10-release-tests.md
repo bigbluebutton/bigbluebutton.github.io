@@ -193,35 +193,59 @@ You should now have presenter capabilities and presenter icon should appear over
 
 9. The webcam video should disappear
 
-### Make webcam full screen
+### Make webcam fullscreen
 
-- Click the full screen icon on the desired user will display in full screen.
+1. Click the webcam's fullscreen button ("Make [user name] fullscreen").
 
-- Pressing ESC key to exit the full screen mode, will bring back the video to the normal size and will leave the full screen.
+2. The webcam should appear in fullscreen.
 
-### Focus and removing focus option on webcam
+3. Press the Esc key.
 
-A. (Note: There must be 3 (three) or more webcams shared for testing purpose.)
+4. The webcam should exit the fullscreen and go back to normal size.
 
-1. Joining with at least 3 webcams.
+5. Click the webcam's fullscreen button again.
 
-2. Hover over individual's webcam user name
+6. Click the undo fulscreen button ("Undo [user name] fullscreen").
 
-3. Select drop down and choose focus.
+7. The webcam should exit the fullscreen and go back to normal size.
 
-Webcam chosen should enlarge (larger than the other webcams but not full screen), while other shared webcams decrease in size.
+### Focus/unfocus a webcam
 
-B. With an enlarged or focused webcam:
+1. Join meeting with at least 3 webcams.
 
-1. Hover over the focused webcam username.
+2. Hover over one of the webcam's user name.
 
-2. Selecting drop down and choose unfocus.
+3. Select dropdown and choose "Focus".
 
-### Maximize webcams
+4. The chosen webcam should expand (not fullscreen), while other webcams become smaller.
+
+5. Hover over the focused webcam's user name.
+
+6. Select dropdown and choose "Unfocus".
+
+7. The webcams should get back to normal sizes and positions.
+
+### Maximize/minimize webcam
 
 - With webcams shared, click on the Hide Presentation icon to minimize presentation area and maximize webcam.
 
 The presentation will be minimized, and a button will be highlighted to restore the presentation.
+
+### Mirror webcam
+
+1. Join meeting with a webcam.
+
+2. Hover over the webcam's user name.
+
+3. Select dropdown and choose "Mirror".
+
+4. Webcam's stream should flip horizontally.
+
+5. Hover over the webcam's user name.
+
+6. Select dropdown and choose "Mirror" again.
+
+7. Webcam's stream should get back to normal.
 
 ### Drag webcams
 
@@ -265,9 +289,19 @@ The webcams should be resized as per the size we want.
 
 ### Stop Sharing webcam
 
-- Click the Share/Stop sharing webcam icon.
+1. Start sharing webcam.
 
-The webcam sharing will be unhighlighted and the webcam sharing will stop.
+2. Click "Stop sharing webcam".
+
+3. The webcam sharing should stop.
+
+4. Start sharing webcam again.
+
+5. Click "Open advanced settings" icon near the "Stop sharing webcam" button.
+
+6. Click "Stop sharing".
+
+7. The webcam sharing should stop.
 
 ## Screenshare
 
