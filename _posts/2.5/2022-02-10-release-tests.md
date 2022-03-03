@@ -8,12 +8,6 @@ order: 6
 
 This document is meant to be a combination of manual and (labeled so) automated tests, listed per feature of BigBlueButton.
 
-TODO:
-
-- ensure all test cases from [BigBlueButton's 2.4 test plan](https://docs.bigbluebutton.org/2.4/release-tests.html) are integrated here.
-- include the automated tests developed during 2.4 and label as `(automated) ...`
-- try to keep this document as useful as possible, even at the expense of it looking polished... (i.e. if you think of an edge case that is good to be tested, let's include it, even if it's not super well defined)
-
 The <b>automated tests</b> are only a portion of the testing done before a release. Ideally they should be triggered often, for example when testing pull requests, or once a day automatically.
 
 The <b>manual tests</b> really help to ensure release quality. They should
