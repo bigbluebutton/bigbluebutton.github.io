@@ -247,4 +247,4 @@
 - name: "disabledFeatures"
   required: false
   type: "String"
-  description: "List (comma-separated) of features to disable in a particular meeting. Available options:  <code class=\"language-plaintext highlighter-rouge\">screenshare, learningDashboard</code>."
+  description: "List (comma-separated) of features to disable in a particular meeting. <br><br>Available options to disable:<br><ul><li><code class=\"language-plaintext highlighter-rouge\">screenshare</code>- <b>Screen Sharing</b> where presenters can share their screen with others.</li><li><code class=\"language-plaintext highlighter-rouge\">learningDashboard</code>- <b>Learning Analytics Dashboard</b> where moderators can view a summary of the activities of the meeting.</li></ul>"
