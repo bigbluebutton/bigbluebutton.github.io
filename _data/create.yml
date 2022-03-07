@@ -247,7 +247,7 @@
 - name: "groups"
   required: false
   type: "String"
-  description: "Pre-defined groups to automatically assign the students to a given breakout room. (added 2.5)<br><br><b>Expected value:</b> Json with Array of groups.<br><b>Group properties:</b><br><ul><li><code class=\"language-plaintext highlighter-rouge\">id</code> - Number with group unique id.</li><li><code class=\"language-plaintext highlighter-rouge\">name</code> - String with name of the group <i>(optional)</i>.</li><li><code class=\"language-plaintext highlighter-rouge\">roster</code> - Array with objects of users ids. e.g: <code class=\"language-plaintext highlighter-rouge\">[{id:1235}]</code></li></ul><br>E.g:<br><code class=\"language-json highlighter-rouge\">[<br>{id:1,name:'GroupA',roster:[{id:1235}]},<br>{id:2,name:'GroupB',roster:[{id:2333},{id:2335}]},<br>{id:3,roster:[]}<br>]</code>"
+  description: "Pre-defined groups to automatically assign the students to a given breakout room. (added 2.5)<br><br><b>Expected value:</b> Json with Array of groups.<br><b>Group properties:</b><br><ul><li><code class=\"language-plaintext highlighter-rouge\">id</code> - String with group unique id.</li><li><code class=\"language-plaintext highlighter-rouge\">name</code> - String with name of the group <i>(optional)</i>.</li><li><code class=\"language-plaintext highlighter-rouge\">roster</code> - Array with IDs of the users.</li></ul><br>E.g:<br><code class=\"language-json highlighter-rouge\">[<br>{id:'1',name:'GroupA',roster:['1235']},<br>{id:'2',name:'GroupB',roster:['2333','2335']},<br>{id:'3',roster:[]}<br>]</code>"
 
 - name: "disabledFeatures"
   required: false
