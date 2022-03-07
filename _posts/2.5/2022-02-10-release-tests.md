@@ -503,137 +503,183 @@ Enable Microphone : This will cause a user name to appear on left top corner of 
 
 - The Talking User should not get muted
 
-## ClosedCaptions
+## Closed Captions
 
-### Start Recording
+### Launch closed captions menu (and toggle the menu)
 
-- Select Start/Stop recording.
+1. Join meeting as moderator.
 
-### Launching Closed Captions Menu
+2. Click "Manage users" (cog wheel icon in user list) and select "Write close captions".
 
-(Note : Only (Presenter/Moderator) can perform launching Closed Captions Menu)
+3. Select the language. Click "Start".
 
-1. Click on manage users icon (cog wheel in users list)
+4. The closed captions button should appear in left-hand menu (above the shared notes) and it should indicate the chosen language.
 
-2. select write closed captions
+5. Type text into closed captions panel.
 
-3. Choose captions language to use
+6. Click on the language button in the closed captions menu.
 
-4. select start
+7. The closed captions menu should close.
 
-5. Type text into closed captions panel
+8. Click on the closed captions button above the shared notes in the left-hand menu.
 
-The Closed Captions is loaded in the selected language and Start dictation button will be highlighting.
+9. The closed captions menu should open.
 
-### ClosedCaptions(CC) formatting tools
+10. Click the same button again.
 
-(Note : Only (Presenter/Moderator) have the ability to use CC formatting tools)
+11. The closed captions menu should close.
 
-1. Launching Closed caption.
+### Closed captions formatting
 
-2. Write text into closed captions panel
+1. Join meeting as moderator.
 
-3. Testing all of the available formatting tools that are available (for example: bold, Italic,..)
+2. Click "Manage users" (cog wheel icon in user list) and select "Write close captions".
 
-Whatever is typed as text, should be shown exactly as presenter/moderator wants it. An element of list should show as element of list, and returning to normal writing should show without any errors. Every single word typed will be shown instantly.
+3. Select the language.
 
-### Viewing/Hiding Closed captions
+4. Type text into closed captions panel.
 
-1. Presenter/Moderator/Viewer can click on (CC) button appearing in the left bottom of the presentation screen to show the Closed Captions
+5. Test all of the available formatting tools that are available (Bold, Italic, ...). Whatever is typed as text should be shown exactly as intended.
 
-2. Choose the language, text and font settings.
+### View/Hide closed captions
 
-3. select on start to begin viewing Closed Captions.
+1. Join as viewer or moderator.
 
-The Closed Captions are appearing in the screen and the (CC) button is highlighting.
+2. Click "Start viewing closed captions" button.
 
-4. Clicking on (CC) button again will hide the Closed Captions.
+3. The closed captions button should be highlighted.
 
-The Closed Captions will not be shown anymore in the screen
-and the (CC) button will be unhighlighted.
+4. Choose the language and other UI settings for closed captions. Click "Start".
+
+5. Join meeting as moderator.
+
+6. Moderator: click "Manage users" (cog wheel icon in user list) and select "Write close captions", then select the language.
+
+7. Moderator: Type text into closed captions panel.
+
+8. User: should see the closed captions on top of the whiteboard. The text should be the same as the one typed by moderator. The closed captions should appear according to the UI settings chosen by the user.
+
+9. User: click the closed captions button.
+
+10. User: closed captions button should not be highlighted anymore, the closed captions should disappear.
 
 ## Whiteboard
 
-### Using Pen tool
+### Use pencil tool
 
-1. Choose pen tool option from whiteboard tools.
+1. Join meeting with two or more users.
 
-2. Draw in the whiteboard area.
+2. Presenter: Click "Tools" whiteboard button.
 
-Presentation should appear on all Clients in sync with updates(PAAC).
+3. Presenter: Select "Pencil".
 
-### Changing pen tool thickness
+4. Presenter: Draw on the whiteboard area.
 
-1. Choose pen tool
+5. All clients should see the drawing.
 
-2. Select line thickness from options
+### Change pencil tool thickness
 
-3. Draw in the whiteboard area
+1. Join meeting with two or more users.
 
-Presentation should appear on all Clients in sync with updates(PAAC).
+2. Presenter: Click "Tools" whiteboard button.
 
-### Changing pen tool colour
+3. Presenter: Select "Pencil".
 
-1. Choose pen tool
+4. Presenter: Click "Drawing thickness" button.
 
-2. select colour from options
+5. Presenter: Select a new thickness.
 
-3. Draw in the whiteboard area
+6. Presenter: Draw on the whiteboard area.
 
-Presentation should appear on all Clients in sync with updates(PAAC).
+7. All clients should see the drawing and the drawing should appear according to the chosed thickness.
+
+### Changing pencil tool colour
+
+1. Join meeting with two or more users.
+
+2. Presenter: Click "Tools" whiteboard button.
+
+3. Presenter: Select "Pencil".
+
+4. Presenter: Click "Colors" button.
+
+5. Presenter: Select a new color.
+
+6. Presenter: Draw on the whiteboard area.
+
+7. All clients should see the drawing and the drawing should be colored accordingly.
 
 ### Use shape tools
 
-1. Selecting different available shape tools such as rectangle, triangle, ellipse , line.
+1. Join meeting with two or more users.
 
-2. Drawing with each shape tool on the whiteboard area.
+2. Presenter: Click "Tools" whiteboard button.
 
-Presentation should appear on all Clients in sync with updates(PAAC).
+3. Presenter: Select available shapes one by one and draw on the whiteboard area. All clients should see the shapes on the whiteboard.
 
-### Changing shape tool thickness and color
+### Change shape tool thickness and color
 
-1. Once, a shape tool is selected, tool thickness or color can be changed from the given option and drawn in the presentation area.
+1. Join meeting with two or more users.
 
-2. Different available shape tools can be selected and their thickness and color can be varied.
+2. Presenter: Click "Tools" whiteboard button.
 
-### Using text tool
+3. Presenter: Select available shapes one by one and draw on the whiteboard area. Change their thickness and color. All clients should see the shapes on the whiteboard with the correct thickness and color.
 
-1. Choose text tool from whiteboard tools
+### Use text tool
 
-2. create a text box
+1. Join meeting with two or more users.
 
-3. Type text on it.
+2. Presenter: Click "Tools" whiteboard button.
 
-Presentation should appear on all Clients in sync with updates(PAAC).
+3. Presenter: Select "Text".
+
+4. Presenter: Adjust the font size and color.
+
+5. Presenter: Create a text box on the whiteboard and type text inside. Click somewhere else on the whiteboard.
+
+6. All clients should see the text inside a text box. The text should appear according to the selected font size and color.
 
 ### Undo last annotation
 
-1. Make annotations in the whiteboard area
+1. Join meeting with two or more users.
 
-2. choose undo last annotation.
+2. Presenter: Click "Tools" whiteboard button, choose annotation and put two such annotations on the whiteboard.
 
-Presentation should appear on all Clients in sync with updates(PAAC).
+3. All clients should see both annotations.
+
+4. Presenter: Click "Undo annotation".
+
+5. All clients should see only the first annotation now.
 
 ### Clear all annotations
 
-1. Make annotations in the whiteboard area
+1. Join meeting with two or more users.
 
-2. choose clear all annotations.
+2. Presenter: Click "Tools" whiteboard button, choose annotation and put two such annotations on the whiteboard.
 
-Presentation should appear on all Clients in sync with updates(PAAC).
+3. All clients should see both annotations.
+
+4. Presenter: Click "Client all annotations".
+
+5. Both annotations should disappear for all clients.
 
 ### Multi-user whiteboard
 
-- As a Presenter, enable multi-user whiteboard and drawing with each client.
+1. Join meeting with two or more users.
 
-  A. Viewers can draw too and Presentation Appears on All Clients in sync with updates.
+2. Presenter: click "Turn multi-user whiteboard on", the button's icon should change and the counter of the current number of viewers should appear.
 
-  - As a viewer erase all whiteboard marks.
-    (Note : Only viewer's whiteboard marks are erased.)
+3. All clients should be able to draw and see each other's changes on the whiteboard.
 
-- As a presenter, disable multi-user whiteboard, viewers can no longer draw.
+3. Join meeting with another viewer.
 
-- As presenter, disable multi-user whiteboard and click on trash icon, all whiteboard marks disappear.
+4. The counter of multi-user whiteboard viewers shouldn't change. The recently joined viewer shouldn't be able to draw.
+
+5. Presenter: click "Turn multi-user whiteboard off", button's icon should change back to normal. All clients shouldn't be able to draw anymore.
+
+6. Presenter: click "Turn multi-user whiteboard on", the button's icon should change and the counter should include the recently joined viewer.
+
+7. All clients should be able to draw and see each other's changes on the whiteboard (including the recently joined viewer).
 
 ## YouTube Video sharing
 
