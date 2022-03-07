@@ -342,130 +342,129 @@ The screen sharing stops, a sound effect of disconnection is heard and the prese
 
 ### Moderators creating breakout rooms and assiging users
 
-1. Launching create breakout rooms from Manage users (cog wheel in user lists.)
+1. Click "Manage users" (cog wheel icon in the user list).
 
-2. Choosing Number of rooms and duration for the breakout room.
+2. Select "Create breakout rooms".
 
-3. Assigning users in 2 different ways:
+3. "Breakout Rooms" modal should appear.
 
-   3.1 Randomly assigning users to the breakout rooms by clicking on Randomly assign option.
+4. Choose number of rooms and duration.
 
-   3.2 Chosing Drag and drop users to the rooms.
+5. Two ways to assign users: Drag and drop users to the rooms or .
 
-4. Breakout rooms are created and accept invite screen is displayed to all the viewers, while only the moderators who were assigned to rooms manually receive the invite.
+6. Click "Create" button.
 
-5. All the configured settings appear exactly as set in the pre-creation settings.
+7. Viewers: invite screen should pop up. Moderators: "Breakout Rooms" section should appear in the left-hand panel.
 
-### Moderators creating breakout rooms and users Choosing the breakout rooms
+8. Viewers: click "Join room" button, viewer should successfully join the breakout room. Moderators: click "Breakout Rooms", click "Join room" (moderators should only see that button for the rooms they got invited to), moderator should successfully join the breakout room.
 
-1. Launching create breakout rooms from Manage users (cog wheel in user lists.)
+9. All the selected settings are applied to the rooms.
 
-2. Choosing Number of rooms and duration for the breakout room.
+### Viewers choosing the breakout rooms
 
-3. Selecting allow users to choose a breakout room to join.
+1. Click "Manage users" (cog wheel icon in the user list).
 
-4. Breakout rooms are created and accept invite screen is displayed to users, allowing them to chose the room they want to join.
+2. Select "Create breakout rooms".
 
-5. All the configured settings appear exactly as set in the pre-creation settings.
+3. "Breakout Rooms" modal should appear.
+
+4. Choose number of rooms and duration. Select the "Allow users to choose a breakout room to join" checkbox.
+
+6. Click "Create" button.
+
+7. Viewers: invite screen should pop up (including the rooms dropdown). Moderators: "Breakout Rooms" section should appear in the left-hand panel.
+
+8. Viewers: select the room using the dropdown, click "Join room", viewer should successfully join the selected breakout room. Moderators: click "Breakout Rooms", click "Ask to join" for the specific room, moderator should successfully join the breakout room.
+
+9. All the selected settings are applied to the rooms.
 
 ### Logout from a Breakout Room
 
-1. In the breakout room, click on the option in the top right corner and selecting logout from breakout room.
+1. Join breakout room.
 
-2. The Breakout Room Tab should close directly after clicking Logout,
-   without getting redirected to the feedback screen.
+2. Click "Options" and then "Leave meeting".
 
-### Joining Breakout room as a Moderator
+3. You should successfully leave the breakout room and shouldn't be redirected to the feedback screen.
 
-1. click on breakout rooms control panel
+### Switch between breakout rooms
 
-2. click join room
+1. Create breakout rooms.
 
-3. choose audio format to join breakout room OR (2) click join audio to toggle audio only.
+2. As moderator, click on the breakout rooms control panel and choose "Ask to join" or "Join room" to join specific room.
 
-4. Onclick on join room, a new window is opened with the name of the room clicked and on onclick on join audio, call icon is highlighting you are now in the audio conferance.
-   (Note : The join audio toggle format only works when the main room has an audio source connected)
+3. Moderator should successfully join the room you chose.
 
-### Switching Breakout rooms
+### Destroy breakout rooms
 
-1. click on breakout rooms control panel and selecting join room and choose audio format to join breakout room.
+1. Join breakout room as moderator.
 
-(Note : In case the free join is enabled)
+2. Inside the breakout rooms control panel ("Breakout Rooms" button in the left-hand panel), select the "Breakout options" dropdown and choose "Destroy breakouts".
 
-2. As a viewer:
+3. All of the breaout rooms should end and all users should get back to the main room. If users already got the audio on, they shouldn't get propmted for the audio modal.
 
-- click on breakout rooms menu
-- click on a room to join
-- join any room
-- go back to the main presentation screen
-- go to BreakoutRooms menu
-- click to join another room
+### Reset duration for a breakout room
 
-(Note : you're able to join other rooms and with one single Viewer by room)
+1. Join breakout room as moderator.
 
-3. Aa a moderator:
+2. Inside the breakout rooms control panel ("breakout Rooms" button in the left-hand panel), select the "Breakout options" dropdown and choose "Manage duration".
 
-- click on breakout rooms menu
-  -click on a room to join
-  -join any room
-  -go back to the main presentation screen
-  -go to BreakoutRooms menu
-  -click to join another room
+3. Edit the duration and click "Apply".
 
-(Note : you're able to join other rooms and with one single Viewer by room)
-
-4. In case the free join is disabled, repeating the above steps for both the viewers and moderators.
-   (Note: Viewers will not be able to join other rooms but moderators can join any room.)
-
-### End BreakoutRooms
-
-1. Click End all breakoutrooms in the BreakoutRooms control panel.
-
-2. All of the the breakoutrooms end and all of the users are back to
-   the main presentation room and if the User has already Audio ON,
-   he won't get prompted the Audio modal.
+4. The duration of the breakout room should reset.
 
 ## Audio
 
-### Joining audio
+### Join audio
 
-Click microphone and allow for browser permissions if applicable
-and Verify if you can hear yourself in the echo test and click Yes.
+1. Join a meeting.
 
-- You will be directed to the audio bridge and your microphone and avatar in the users list highlights as you speak.
+2. Click microphone and allow for browser permissions (if applicable).
+
+3. Verify if you can hear yourself in the echo test.
+
+4. Click "Yes".
+
+5. You should be redirected to the meeting and your microphone button and avatar in the in the user list should indicate the you are unmuted.
 
 ### Mute/unmute
 
-Click on microphone icon several times to mute/unmute yourself.
+1. Join a meeting.
 
-- User hear you are now muted/your are now unmuted sound and the microphone stops highlighting when you are muted.
+2. Click microphone and allow for browser permissions (if applicable).
 
-#### As a moderator
+3. Verify if you can hear yourself in the echo test.
 
-Select a user joined with microphone in the Users list and click on mute/unmute user.
+4. Click "Yes".
 
-- You hear you are now muted/your are now unmuted sound and the microphone stops highlighting when you are muted.
-  (Note : In production Moderator cannot unmute other users unless enabled at the account level)
+5. The microphone button should indicate the unmuted state.
 
-### Leaving audio
+6. Click the microphone button several times. You should change between unmuted and muted states and the button should indicate it.
 
-Click on the phone icon to hang up.
+### Leave audio
 
-- User hear the disconnect sound and is no longer in the audio.
+1. Join meeting with audio.
 
-### Cancel Audio Join
+2. Click "Leave audio".
 
-Click on microphone and click 'x' in Audio dialog.
+3. You should hear the disconnect sound and leave audio. "You have left audio conference" notification should appear.
 
-- User will be back to main screen with phone icon unhighlighted.
+### Join without audio
+
+1. Join a meeting.
+
+2. Click "x" in the audio modal.
+
+3. You should be redirected to the meeting and your microphone button should not be highlighted.
 
 ### Listen Only Mode
 
-Click Listen Only and join another user using the microphone.
+1. Join a meeting.
 
-- The Listen Only icon will appears and you hear yourself as you speak (microphone will be picked up from other user).
+2. Click "Listen only" in the audio modal.
 
-### Testing Microphone
+3. You should be redirected to the meeting and your microphone button and user list avatar should indicate that you are in listen only mode.
+
+### Testing microphone
 
 Click on microphone and go through echo test and then click No.
 
