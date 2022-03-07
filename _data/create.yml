@@ -215,11 +215,6 @@
   default: "SMART_LAYOUT"
   description: "Will set the default layout for the meeting. Possible values are: CUSTOM_LAYOUT, SMART_LAYOUT, PRESENTATION_FOCUS, VIDEO_FOCUS. (added 2.4)"
 
-- name: "learningDashboardEnabled"
-  type: "Boolean"
-  default: "true"
-  description: "Default <code class=\"language-plaintext highlighter-rouge\">learningDashboardEnabled=true</code>. When this option is enabled BigBlueButton generates a Dashboard where moderators can view a summary of the activities of the meeting. (added 2.4)"
-
 - name: "learningDashboardCleanupDelayInMinutes"
   type: "Number"
   default: "2"
@@ -248,3 +243,8 @@
   type: "Number"
   default: "3"
   description: "Setting to <code class=\"language-plaintext highlighter-rouge\">0</code> will disable this threshold. Defines the max number of webcams a single user can share simultaneously. (added 2.4.5)"
+
+- name: "disabledFeatures"
+  required: false
+  type: "String"
+  description: "List (comma-separated) of features to disable in a particular meeting. <br><br>Available options to disable:<br><ul><li><code class=\"language-plaintext highlighter-rouge\">screenshare</code>- <b>Screen Sharing</b> where presenters can share their screen with others.</li><li><code class=\"language-plaintext highlighter-rouge\">learningDashboard</code>- <b>Learning Analytics Dashboard</b> where moderators can view a summary of the activities of the meeting.</li></ul>"
