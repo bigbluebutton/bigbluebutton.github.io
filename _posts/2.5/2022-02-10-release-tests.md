@@ -683,86 +683,97 @@ Enable Microphone : This will cause a user name to appear on left top corner of 
 
 ## YouTube Video sharing
 
-(Note: Only Presenter can perform below functions.)
+### Start YouTube video sharing
 
-### Starting YouTube Video sharing
+1. Join a meeting.
 
-1. Click on the moderator/presenter action menu (+) button
+2. Presenter: Click on the action ("+" icon) button.
 
-2. Insert a Youtube video link in the popup window appearing on screen.
+3. Presenter: Select "Share an external video".
 
-3. click share a new video button.
+4. Presenter: The popup modal should appear. Paste a YouTube link there.
 
-The Youtube video chosen will be played in the presentation stream.
+5. Presenter: Click "Share a new video".
+
+6. All clients will see the YouTube video playing in the presentation area.
 
 ### Volume/Skipping/Pausing
 
-- Presenter should be available to perform all the available commands/options of the Youtube video such as muting the video, decreasing or increasing the volume and pausing or Resuming the video.
+1. Join a meeting.
 
-The options should work fine as watching a regular youtube video on the Youtube Website.
+2. Presenter: Click on the action ("+" icon) button.
 
-### Playing another Video
+3. Presenter: Select "Share an external video".
 
-1. click on the moderator/presenter action menu (+) button
+4. Presenter: The popup modal should appear. Paste a YouTube link there.
 
-2. Click on stop Sharing Youtube Video
+5. Presenter: Click "Share a new video".
 
-3. Clicking again on the highlighting (+) button
+6. Presenter should be able to perform all the available actions on the YouTube video such as muting, increasing/decreasing the volume, pausing/resuming.
 
-4. Sharing youtube video
-
-5. Insert a youtube video link in the popup window appearing on screen.
-
-6. click share a new video button.
-
-The current playing video will stop, and the presentation returns to show the current slide and after clicking share a new video button, the new video will start playing.
+7. The result of those actions should be visible for all clients.
 
 ### Stoping Youtube Video Sharing
 
-1. Click on the moderator/presenter action menu (+) button
+1. Join a meeting.
 
-2. Click stop Sharing Youtube Video.
+2. Presenter: Click on the action ("+" icon) button.
 
-The current playing video will stop, and the presentation returns
-to show the current slide.
+3. Presenter: Select "Share an external video".
+
+4. Presenter: The popup modal should appear. Paste a YouTube link there.
+
+5. Presenter: Click "Share a new video".
+
+6. All clients will see the YouTube video playing in the presentation area.
+
+7. Presenter: Click on the action ("+" icon) button.
+
+8. Presenter: Select "Stop sharing external video".
+
+9. All clients will see the video disappear and the presentation visible again.
+
+### Playing another Video
+
+1. Join a meeting.
+
+2. Presenter: Click on the action ("+" icon) button.
+
+3. Presenter: Select "Share an external video".
+
+4. Presenter: The popup modal should appear. Paste a YouTube link there.
+
+5. Presenter: Click "Share a new video".
+
+6. All clients will see the YouTube video playing in the presentation area.
+
+7. Presenter: Click on the action ("+" icon) button.
+
+8. Presenter: Select "Stop sharing external video".
+
+9. Presenter: Click on the action ("+" icon) button.
+
+10. Presenter: Select "Share an external video".
+
+11. Presenter: The popup modal should appear. Paste a new YouTube link there.
+
+12. Presenter: Click "Share a new video".
+
+13. All clients will see the new YouTube video playing in the presentation area.
 
 ## Shared Notes
 
 ### Using shared notes panel
 
-(Note: Only Presenter/Moderator can perform this function.)
+1. Join a meeting with two or more users.
 
-1. Select shared notes to open panel.
+2. Click "Shared Notes" on the left-hand panel.
 
-2. Begin writing in the shared notes panel.
+3. Start writing in the opened shared notes panel.
 
-Notification appears to indicate share notes is in use, viewers/other users should see content updating when they open and view shared notes from their local interface.
+4. Notification should appear on the "Shared Notes" button for those users whose shared notes panel is closed.
 
-### Using shared notes formatting tools
-
-(Note: Only Presenter/Moderator can perform this function.)
-
-1. Type in the shared notes panel
-
-2. Use the available formatting tools (such as bold, italic, underlined etc.)
-
-3. Make a bulleted list
-
-4. Make a numbered list
-
-Viewers/other users should see content updating when they open or view the shared notes from their local interface
-
-### Use/contribute to shared notes
-
-1. As a viewer, select shared notes to open panel.
-
-2. Begin writing in the shared notes panel.
-
-Shared notes should update with edits or contributions made by viewers/other users.
-
-### Local view
-
-- Viewer and other moderators local view, should see a notification to indicate Shared Notes are in use.
+4. After opening the shared notes panel, all clients should see the writing as well. The username will appear near the test that user is currently typing.
 
 ### Exporting Shared notes
 
@@ -773,6 +784,20 @@ Shared notes should update with edits or contributions made by viewers/other use
 3. Save as to local device
 
 Share notes should export and download in the chosen format.
+
+### Using shared notes formatting tools
+
+1. Join a meeting with two or more users.
+
+2. Click "Shared Notes" on the left-hand panel.
+
+3. Use the available formatting tool (Bold, Italic, etc.).
+
+4. Make a bulleted list.
+
+5. Make a numbered list.
+
+6. After opening the shared notes panel, all clients should see the text according to the formatting.
 
 ## Lock Settings
 
