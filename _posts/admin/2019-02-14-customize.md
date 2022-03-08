@@ -1322,15 +1322,6 @@ Useful tools for development:
 | `userdata-bbb_hide_nav_bar=`               | If set to `true`, the navigation bar (the top portion of the client) will not be displayed. Introduced in BBB 2.4-rc-3. | `false`       |
 | `userdata-bbb_hide_actions_bar=`           | If set to `true`, the actions bar (the bottom portion of the client) will not be displayed. Introduced in BBB 2.4-rc-3. | `false`       |
 
-### External parameters
-
-The following parameters are only applicable when the HTML5 client is embedded in an iframe.
-
-| Parameter                                 | Description                                                                                                                                                                            | Default value |
-| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- |
-| `userdata-bbb_outside_toggle_self_voice=` | If set to `true`, the current user's audio will be able to be muted/unmuted from the "parent" web page -- the same page where the BigBlueButton client is embedded                     | `false`       |
-| `userdata-bbb_outside_toggle_recording=`  | If set to `true`, the recording functionality in the meeting will be able to be started/stopped from the "parent" web page -- the same page where the BigBlueButton client is embedded | `false`       |
-
 ### Examples
 
 #### Changing the background color of the HTML client
