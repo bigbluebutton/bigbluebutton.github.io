@@ -350,7 +350,7 @@ The screen sharing stops, a sound effect of disconnection is heard and the prese
 
 4. Choose number of rooms and duration.
 
-5. Two ways to assign users: Drag and drop users to the rooms or .
+5. Two ways to assign users: Drag and drop users to the rooms or click "Randomly assign" (it randomly assigns viewers only).
 
 6. Click "Create" button.
 
@@ -359,6 +359,30 @@ The screen sharing stops, a sound effect of disconnection is heard and the prese
 8. Viewers: click "Join room" button, viewer should successfully join the breakout room. Moderators: click "Breakout Rooms", click "Join room" (moderators should only see that button for the rooms they got invited to), moderator should successfully join the breakout room.
 
 9. All the selected settings are applied to the rooms.
+
+10. Once joined, breakout room label should appear below the user name in the user list of the main room.
+
+11. In the main room, click "Breakout Rooms". The breakout rooms panel should appear and it should contain the timer for the rooms (according to the duration that was set during the creation of the breakout rooms).
+
+### Message to all breakout rooms
+
+1. Click "Manage users" (cog wheel icon in the user list).
+
+2. Select "Create breakout rooms".
+
+3. "Breakout Rooms" modal should appear.
+
+5. Assign users to the room.
+
+6. Click "Create" button.
+
+7. Join the breakout rooms with the users.
+
+8. Moderator: open the breakout rooms panel (click "Breakout Rooms"), type a message into "Message all rooms" textbox and Press Enter / click "Send message" button.
+
+9. Notification "Message was sent to N breakout rooms" (N - number of rooms created) should appear in the main room for the user who sent the message.
+
+10. Public chats in all the breakout rooms should get the message highlighted by a special background color.
 
 ### Viewers choosing the breakout rooms
 
@@ -402,7 +426,7 @@ The screen sharing stops, a sound effect of disconnection is heard and the prese
 
 3. All of the breaout rooms should end and all users should get back to the main room. If users already got the audio on, they shouldn't get propmted for the audio modal.
 
-### Reset duration for a breakout room
+### Edit the duration of a breakout room
 
 1. Join breakout room as moderator.
 
@@ -410,7 +434,7 @@ The screen sharing stops, a sound effect of disconnection is heard and the prese
 
 3. Edit the duration and click "Apply".
 
-4. The duration of the breakout room should reset.
+4. The duration of the breakout room should reset. Public chats in all of the breakout rooms should get the message saying "Breakout time is now N minutes" (N - new duration).
 
 ## Audio
 
