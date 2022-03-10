@@ -803,255 +803,353 @@ Share notes should export and download in the chosen format.
 
 ### Webcam
 
-1. As a moderator, click on the manage users list cog
+1. Join meeting with moderators and viewers.
 
-2. Click on ON/OFF Webcam
+2. All users start sharing webcams.
 
-3. As a Viewer, try to click or enable Webcam(turn ON) and Viewers whose Webcams are ON, automatically turns OFF for all Viewers.
+3. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
 
-- Once Webcam Lock is turned ON, none of the Viewers is able to turn ON their Webcams and all the Viewers Webcams already turned ON should all turn OFF.
+4. Moderator: "Lock viewers" modal should appear.
 
-4. As a new Viewer joins, he shouldn't be able to turn
-   ON his Webcam
+5. Moderator: toggle "Share webcam" (it becomes "Locked"), click "Apply".
 
-- All the newly joining Viewers should get affected with the Webcam Lock Setting
+6. "Viewers' webcams are disabled" notification should appear for all users.
 
-5. As a moderator, try to turn ON/OFF their Webcams.
+7. Viewer's webcam should stop sharing and the webcam button should be disabled.
 
-- Moderator should be able to turn ON/OFF their webcams.
+8. Join meeting with a new viewer.
 
-6. Checking if a demoted Moderator, should not be able to turn
-   ON his Webcam, and if already with Webcam turned ON, it should automatically turn OFF.
+9. New viewer: webcam button should be disabled.
 
-Note : All the newly joining Moderators should be freely able to turn ON/OFF their Webcams
+10. Join meeting with a new moderator.
+
+11. New moderator: should be able to share a webcam.
+
+12. Moderator: demote another moderator (click on the user name in the user list and select "Demote to viewer".
+
+13. Demoted moderator: webcam button should be disabled.
+
+14. Moderator: promote a viewer (click on the user name in the user list and select "Promote to moderator").
+
+15. Promoted viewer: should be able to share a webcam.
+
+16. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
+
+17. Moderator: "Lock viewers" modal should appear.
+
+18. Moderator: toggle "Share webcam" (it becomes "Unlocked"), click "Apply".
+
+19. Viewer: should be able to share a webcam.
+
+20. Join meeting with a new viewer.
+
+21. New viewer: should be able to share a webcam.
 
 ### See other viewers webcams
 
-1.  Click on the user list cog
+1. Join meeting with moderators and viewers.
 
-2.  click ON/OFF Webcam as a Moderator and as a Viewer
+2. All users start sharing webcams.
 
-3.  check if a Viewer can see other Viewers Webcams
+3. Each user should see all webcams.
 
-4.  check if a Viewer can see Moderators Webcams
+4. Moderator: demote another moderator (click on the user name in the user list and select "Demote to viewer").
 
-5.  check if a demoted Moderator Webcam is visible to other Viewers and if he can see other Viewers Webcams
+5. Each user should see all webcams.
 
-6.  check if a promoted Viewer is now able to see other Viewers Webcams
+6. Moderator: promote a viewer (click on the user name in the user list and select "Promote to moderator").
 
-- Once See other Viewers Webcams is turned ON, none of the Viewers can see other Viewers Webcams
+7. Each user should see all webcams.
 
-- All the promoted Viewers can see the other Viewers Webcams
+8. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
 
-- All the demoted Viewers aren't able to see the other Viewers Webcams
+9. Moderator: "Lock viewers" modal should appear.
 
-- All the newly joining Moderators should be freely able to see other Viewers Webcams
+10. Moderator: toggle "See other viewers webcams" (it becomes "Locked"), click "Apply".
 
-- All the newly joining Viewers should be unable to see other Viewers Webcams.
+11. All users should see "Only moderators are able to see users' webcams (due to lock settings)" notification.
+
+12. Nothing should change for moderators, while viewers shouldn't be able to see other viewers' webcams (each viewer should still see own webcam).
+
+13. Moderator: promote a viewer (click on the user name in the user list and select "Promote to moderator").
+
+14. Promoted viewer: should be able to see other viewers' webcams.
+
+15. Moderator: demote another moderator (click on the user name in the user list and select "Demote to viewer").
+
+16. Demoted moderator: shouldn't be able to see other viewers' webcams (should still see own webcam).
+
+17. Join meeting with a new viewer.
+
+18. New viewer: shouldn't see other viewers' webcams (should still see own webcam).
+
+19. Join meeting with a new moderator.
+
+20. New moderator: should see all webcams.
+
+21. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
+
+22. Moderator: "Lock viewers" modal should appear.
+
+23. Moderator: toggle "See other viewers webcams" (it becomes "Unlocked"), click "Apply".
+
+24. All users should see "You can enable your webcam now, everyone will see you" notification.
+
+25. Each user should see all webcams again.
 
 ### Microphone
 
-1. Click on the user list cog
+1. Join meeting with moderators and viewers, all - with audio.
 
-2. Click ON/OFF Webcam as a Moderator and as a Viewer
+2. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
 
-3. Check if a Viewer can join the audio conferance with
-   Microphone or not
+3. Moderator: "Lock viewers" modal should appear.
 
-4. Check if a Viewer can click to join conferance with
-   Microphone or not
+4. Moderator: toggle "Share microphone" (it becomes "Locked"), click "Apply".
 
-5. Check if a demoted Moderator is affected with the Lock of
-   the use of the Microphone or not
+5. All users should see "Viewers' microphones are disabled" notification.
 
-6. Check if a promoted Viewer is affected with the Lock of
-   the use of the Microphone or not.
+6. Nothing should change for moderators, mute/unmute button should disappear for viewers.
 
-- Once Microphone Lock is enabled, none of the Viewers can use his Microphone
+7. Moderator: demote another moderator (click on the user name in the user list and select "Demote to viewer").
 
-- All the promoted Viewers can unmute their Microphones
+8. Demoted moderator: mute/unmute button should disappear.
 
-- All the demoted Moderators can't unmute their Microphones
+9. Moderator: promote a viewer (click on the user name in the user list and select "Promote to moderator").
 
-- All the newly joining Moderators should be freely able to mute/unmute their Microphones
+10. Promoted viewer: mute/unmute button should appear and it should be possible to mute/unmute.
 
-- All the newly joining Viewers should be unable to unmute their Microphones.
+11. Join meeting as moderator.
+
+12. New moderator: should be able to mute/unmute.
+
+13. Join meeting as viewer.
+
+14. New viewer: mute/unmute button shouldn't appear.
+
+15. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
+
+16. Moderator: "Lock viewers" modal should appear.
+
+17. Moderator: toggle "Share microphone" (it becomes "Unlocked"), click "Apply".
+
+18. All users should see "Viewers' microphones are enabled" notification.
+
+19. All users should be able to join audio or mute/unmute now.
 
 ### Public chat
 
-1. Click on the user list cog
+1. Join meeting with moderators and viewers.
 
-2. Click on Public Chat Tab as a Moderator and as a Viewer
+2. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
 
-3. Check if a Viewer can write a message in the Public Chat
-   box
+3. Moderator: "Lock viewers" modal should appear.
 
-4. Check if a Viewer can click the Send Message Button
+4. Moderator: toggle "Send Public chat messages" (it becomes "Locked"), click "Apply".
 
-5. Check if a demoted Moderator can send a message in
-   Public Chat
+5. All users should see "Public chat is disabled" notification.
 
-6. Check if a promoted Viewer can send a message in Public
-   Chat
+6. Nothing should change for moderators, they should still be able to send public chat messages. Viewers should see the public chat textbox disabled and "Chat is locked, messages can't be sent" text below the textbox.
 
-- Once Public Chat Lock is enabled, none of the Viewers can send a Public Chat
-  message
+7. Moderator: demote another moderator (click on the user name in the user list and select "Demote to viewer").
 
-- All the promoted Viewers can send a Public Chat messages
+8. Demoted moderator: should see the public chat textbox disabled and "Chat is locked, messages can't be sent" text below the textbox.
 
-- All the demoted Moderators can't send a Public Chat message
+9. Moderator: promote a viewer (click on the user name in the user list and select "Promote to moderator").
 
-- All the newly joining Moderators should freely be able to send messages in Public Chat
+10. Promoted viewer: should be able to send public chat messages.
 
-- All the newly joining Viewers should be unable to send Public Chat messages
+11. Join meeting as moderator.
+
+12. New moderator: should be able to send public chat messages.
+
+13. Join meeting as viewer.
+
+14. New viewer: should see the public chat textbox disabled and "Chat is locked, messages can't be sent" text below the textbox.
+
+15. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
+
+16. Moderator: "Lock viewers" modal should appear.
+
+17. Moderator: toggle "Send Public chat messages" (it becomes "Unlocked"), click "Apply".
+
+18. All users should see "Public chat is enabled" notification.
+
+19. All users should be able to send public chat messages now.
 
 ### Private chat
 
-1. Click on the user list cog
+1. Join meeting with moderators and viewers.
 
-2. Click on a Viewer to Private Chat him
+2. Start private chats between viewer and viewer, moderator and viewer, moderator and moderator.
 
-3. Check if a Viewer can send a Private Chat message to
-   another Viewer
+3. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
 
-4. check if on Viewer's click on another Viewer, there will be
-   Start Private Chat button displaying or not
+4. Moderator: "Lock viewers" modal should appear.
 
-5. Check if a demoted Moderator can send Private Chat
-   message or not to another Viewer
+5. Moderator: toggle "Send Private chat messages" (it becomes "Locked"), click "Apply".
 
-6. Check if an already open Private Chat Tab with another
-   Viewer is still open or not
+6. All users should see "Private chat is disabled" notification.
 
-7. Check if a promoted Viewer is now able to send
-   Private Chat message or not
+7. Nothing should be changed for moderators and for the private chats between viewer and moderator. Viewers shouldn't be able to send private messages to other viewers (textbox disabled). Viewers should still be able to send private messages to moderators.
 
-- Once Private Chat Lock is enabled, none of the Viewers can send Private Chat messages to others Viewers anymore
+8. Moderator: demote another moderator (click on the user name in the user list and select "Demote to viewer").
 
-- All the promoted Viewer can send a Private Chat messages to the Viewers
+9. Demoted moderator: shouldn't be able to send private chat messages to viewrs.
 
-- All the demoted Moderators can not send anymore Private Chat messages to the other Viewers
+10. Moderator: promote a viewer (click on the user name in the user list and select "Promote to moderator").
 
-- All the newly joining Moderators should freely be able to send messages in Private Chat to the Viewers
+11. Promoted viewer: should be able to send private chat messages to viewers and moderators.
 
-- All the newly joining Viewers should be unable to send Private Chat messages to the other Viewers
+12. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
 
-- On a Viewer click on another Viewer, he should not be able to see any available user option
+13. Moderator: "Lock viewers" modal should appear.
 
-- On a Moderator click on a Viewer, he should be able to see the user options
+14. Moderator: toggle "Send Private chat messages" (it becomes "Unlocked"), click "Apply".
 
-- If there was an existing open private chat tab between 2 users, they should be unavailable to Viewers when the Lock is enabled.
+15. All users should see "Private chat is enabled" notification.
+
+16. All private chats should get back to normal.
 
 ### Shared notes
 
-1. Click on the user list cog
+1. Join meeting with moderators and viewers.
 
-2. Click on a Shared Notes as a Viewer
+2. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
 
-3. Check if a Viewer can write in Shared Notes
+3. Moderator: "Lock viewers" modal should appear.
 
-4. Check if on click on Shared Notes a Viewer can Export
-   the Shared Notes
+4. Moderator: toggle "Edit Shared Notes" (it becomes "Locked"), click "Apply".
 
-5. Check if a demoted Moderator can write in Shared Notes
+5. All users should see "Shared notes are now locked" notification.
 
-6. Check if a Viewer is already able to write in Shared Note at Shared Notes Lock, it should reload for him with avoiding him to write in Shared notes or even see the writing tools
+6. Nothing should change for moderators, they should still be able to use shared notes. Viewers shouldn't be able to edit shared notes (when you click "SHared Notes", the panel opens, but the editor isn't loaded).
 
-7. Check if at a Viewer promotion to Moderator, the Shared Note should reload for him with granting him access to write in Shared Notes.
+7. Moderator: demote another moderator (click on the user name in the user list and select "Demote to viewer").
 
-- Once Shared Notes Lock is enabled, none of the Viewers is able to write or to modify
-  text neither
+8. Demoted moderator: shouldn't be able to edit shared notes (when you click "SHared Notes", the panel opens, but the editor isn't loaded).
 
-- All the promoted Viewers can write in Shared Notes
+9. Moderator: promote a viewer (click on the user name in the user list and select "Promote to moderator").
 
-- All the demoted Moderators can not write in Shared Notes
+10. Promoted viewer: should be able to use shared notes.
 
-- All the newly joining Moderators should freely be able to write in Shared Notes
+11. Join meeting as moderator.
 
-- All the newly joining Viewers should be unable to write in Shared Notes or to use the writing tools neither.
+12. New moderator: should be able to use shared notes.
+
+13. Join meeting as viewer.
+
+14. New viewer: shouldn't be able to edit shared notes (when you click "SHared Notes", the panel opens, but the editor isn't loaded).
+
+15. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
+
+16. Moderator: "Lock viewers" modal should appear.
+
+17. Moderator: toggle "Edit Shared Notes" (it becomes "Unlocked"), click "Apply".
+
+18. All users should see "Shared notes are now enabled" notification.
+
+19. All users should be able to use shared notes now.
 
 ### See other viewers in the Users list
 
-1. Click on the user list cog
+1. Join meeting with moderators and viewers.
 
-2. Check if a Viewer can see other Viewers in the Users list
+2. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
 
-3. Check if a Viewer can see Moderators in the Users list
+3. Moderator: "Lock viewers" modal should appear.
 
-4. Check if a demoted Moderator is able to see other Viewers
-   in the Users list
+4. Moderator: toggle "See other viewers in the Users list" (it becomes "Locked"), click "Apply".
 
-5. Check if a promoted Viewer is now able to see other
-   Viewers in the Users list
+5. All users should see "User list is now hidden for viewers" notification.
 
-- Once See other viewers in the Users list is turned ON, none of the Viewers can see
-  other Viewers in Users list
+6. Nothing should change for moderators, they should still be able to see all users in the user list. Viewers shouldn't be able to see other viewers in the user list.
 
-- All the promoted Viewers can see the other Viewers in the Users list
+7. Moderator: demote another moderator (click on the user name in the user list and select "Demote to viewer").
 
-- All the demoted Viewers aren't able to see the other Viewers in the Users list
+8. Demoted moderator: shouldn't be able to see other viewers in the user list.
 
-- All the newly joining Moderators should be freely able to see other Viewers in the Users list
+9. Moderator: promote a viewer (click on the user name in the user list and select "Promote to moderator").
 
-- All the newly joining Viewers should be unable to see other Viewers in the Users list
+10. Promoted viewer: should be able to see all users in the user list.
+
+11. Join meeting as moderator.
+
+12. New moderator: should be able to see all users in the user list.
+
+13. Join meeting as viewer.
+
+14. New viewer: shouldn't be able to see other views in the user list.
+
+15. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
+
+16. Moderator: "Lock viewers" modal should appear.
+
+17. Moderator: toggle "Edit Shared Notes" (it becomes "Unlocked"), click "Apply".
+
+18. All users should see "Shared notes are now enabled" notification.
+
+19. All users should be able to use shared notes now.
 
 ### Unlock a specific user
 
-1. Click on the user list cog
+1. Join meeting with viewers and moderators.
 
-2. Block some feature
+2. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
 
-3. Go back to users list
+3. Moderator: "Lock viewers" modal should appear.
 
-4. Click in a user and select unlock user
+4. Moderator: toggle one of the lock setting (it becomes "Locked"), click "Apply".
 
-- You can completely unlock a specific student and let the others locked yet
+5. Moderator: click on a vewer's user name in the user list, then select "Unlock User [user name]".
 
-- The unlocked user must have all features unlocked and other users must keep locked
+6. Unlocked user: should be able to use the features that were previously unlocked.
+
+7. Locked user: should still see the features locked.
 
 ## Chat (Public/Private)
 
 ### Public message
 
-1. Click on Public Chat Tab
+1. Join meeting with viewers and moderators.
 
-2. Type a message in the text box
+2. Click on "Public Chat" tab (if the public chat tab was closed).
 
-3. Press Enter key or click the send button
+3. Type a message in the public chat's textbox.
 
-A message should be sent to the public channel and can be seen by any type of user.
+4. Press Enter key or click "Send message" button.
+
+5. All users should see the message.
 
 ### Private message
 
-1. Click on any available user
+1. Join meeting with viewers and moderators.
 
-2. Click on Start a Private Chat
+2. Click on any available user's user name in the user list, then select "Start a private chat".
 
-3. Type a message in private chat text box
+3. Private chat message panel should open.
 
-4. Press enter or click on send button.
+4. Type a message in the textbox.
 
-A private message will be sent to the user we chose from the online users, and its been sent in a new message tab with the name of the selected user.
+5. Press Enter key or click "Send message" button.
+
+6. Another user should see the private chat message tab and a message counter notification. After clicking on the tab, user should see the private message. 
 
 ### Chat Character Limit
 
-1. Click on public chat tab
+1. Join meeting.
 
-2. Enter max number of characters (max message length is 5000 per single message)
+2. Enter maximum number of characters in the public chat textbox (the limit is 5,000 characters per single message).
 
-A Warning message should appear to inform user message is over max limit.
+3. Warning should appear to inform about the character limit and you shouldn't be able to send the message.
 
 ### Sending Empty chat message
 
-1. Click on public chat tab
+1. Join meeting.
 
-2. Hit enter or select send
+2. Focus on the public chat textbox. Press Enter or click "Send message" button.
 
-3. Type in public chat and erase
-
-4. Press enter or select send button.
-
-Message will not be send and a warning message will be displayed "The message is 1 characters(s) too short"
+3. You shouldn't be able to send an empty chat message.
 
 Note :
 
@@ -1067,50 +1165,25 @@ Note :
 
 ### Starting a Polling
 
-(Presenter feature)
+1. Join meeting
 
-1. As a presenter, click on the presenter menu (+) button in the bottom left corner of the screen
+1. Presenter: click on the presenter menu ("+" icon) button, select "Start a poll".
 
-2. click Start Poll
+2. Presenter: Select one of the poll options.
 
-3. Choose one of the Poll options
+3. Poll popup should appear for all users except the presenter. Sound effect notification should play. Make the selection.
 
-4. wait for Poll votes by the users.
+5. Presenter: live poll results panel should show up.
 
-5. Click on Publish Poll Results
+5. Presenter: click "Publish poll".
 
-- A Poll will show up for all of the available
-  users except the Presenter
-- A sound effect notification is heard to notify all of the available Viewers/Moderators that there is a Live Poll and the options to vote
-  on it are available.
-- A live Poll Results Tab will show up to the presenter.
-
-### Sending Poll votes
-
-(Moderator/viewer feature)
-
-1. As a viewer/user, Click one of the available Poll options
-   from the Poll Options Card showing in the Bottom Left corner of the Presentation.
-
-- After hearing the Notification sound effect, Poll Vote Options are shown in the bottom right corner of the screen.
-
-### Publishing Poll Results
-
-(Presenter feature)
-
-1. As a presenter, wait for the submissions of the Poll votes
-
-2. click on Publish polling results.
-
-- Poll Results displays in the live results table will show in the presentation to all of the available Viewers/Moderators in the bottom right corner of the presentation.
+6. Poll results will show up for all users except presenter.
 
 ### Custom Poll
 
-(Presenter feature)
+1. Click on the options (+) button in the bottom left corner of the whiteboard area.
 
-1. Click on the highlighting (+) button in the bottom left corner of the screen
-
-2. click Start Poll
+2. Click "Start a poll".
 
 3. select Custom Poll
 
@@ -1166,49 +1239,41 @@ Note :
 
 ## User list settings
 
-### Set status
+### Set status / Raise hand
 
-(Viewer: Set Status/Raise hand)
-
-1. As a viewer, select your user icon from user list
+1. Viewer: select your user icon from user list
 
 2. From menu options choose set status
 
 3. Set a status/raise hand.
 
-- Icon in the users list will update to display emoticon chosen by the user, when status is set by a user the moderator will see their user icon move to the top of the list.
+4. Icon in the users list should update to display emoticon chosen by the user, when status is set by a user the moderator will see their user icon move to the top of the list.
 
 ### Clear status
 
-(Moderator: Clear all status icon)
-
-1. Select manage users icon (cog wheel in users list)
+1. Select manage users icon (cog wheel icon in users list)
 
 2. choose clear all status icons.
 
-- All status icons in the users list will clear.
+3. All status icons in the users list should clear.
 
 ### Mute users
 
-(Moderator: Mute all Users)
-
-1. Select manage users icon (cog wheel in users list)
+1. Moderator: select manage users icon (cog wheel icon in users list)
 
 2. In lock viewers, select share microphone is locked.
 
 3. Click apply.
 
-- All users (moderator/presenter included) who are already joined in the client with a functioning mic will be muted (if unmuted) and unable to unmute their mics. All users (moderator/presenter included) who join after setting is applied will be automatically joined listen only with no mic options available.
+4. All users (moderator/presenter included) who are already joined in the client with a functioning mic will be muted (if unmuted) and unable to unmute their mics. All users (moderator/presenter included) who join after setting is applied will be automatically joined listen only with no mic options available.
 
 ### Unmute users
 
-(Moderator: Undo mute all users)
-
-1. Select manage users icon (cog wheel in users list)
+1. Moderator: select manage users icon (cog wheel in users list)
 
 2. In lock viewers, click share microphone to unlock in the status and click apply.
 
-- All users will remain muted until they unmute themselves. All users who enter after the meeting mute is removed will have the option to join with a mic
+3. All users will remain muted until they unmute themselves. All users who enter after the meeting mute is removed will have the option to join with a mic
 
 ### Mute and unmute users except Presenter
 
@@ -1226,62 +1291,60 @@ Note :
 
 2. Choose lock viewers and selecting shared microphone is unlocked and undo meeting mute.
 
-- All users will remain muted until they unmute themselves. All users who enter after the meeting mute is removed will have the option to join with a mic
+3. All users will remain muted until they unmute themselves. All users who enter after the meeting mute is removed will have the option to join with a mic
 
 ### Saving Usernames
 
-(Moderator: Save user names)
+1. Moderator: Select manage users icon (cog wheel in users list)
 
-1. Select manage users icon (cog wheel in users list)
+2. Moderator: Choose save user names.
 
-2. Choose save user names.
-
-- Users list names will download as a TXT based document to local device.
+3. Users list names will download as a TXT based document to local device.
 
 ### Shared Notes
 
-As a moderator:
+1. Moderator: Select manage users icon (cog wheel in users list).
 
-1. Select manage users icon (cog wheel in users list)
+2. Moderator: Choose lock viewers.
 
-2. Choose lock viewers
+3. Moderator: Lock shared notes.
 
-3. Lock shared notes
+4. Moderator: exit menu.
 
-4. exit menu
+5. Viewer: Open shared notes panel.
 
-As a viewer:
-
-1. Open shared notes panel
-
-2. Attempt to contribute to shared notes to confirm if it's locked.
+6. Viewer: Attempt to contribute to shared notes to confirm if it's locked.
 
 ## Options menu
 
 ### Access Options Menu
 
-1. Clicking on Option Menu in top right (three dots)
+1. Join meeting.
 
-- A dropdown list appears with a list of
-  available commands.
+2. Click on the "Options" button in the top-right corver of the client (three dots icon).
+
+3. Dropdown list should appear with a list of available options.
 
 ### Make Full screen
 
-1. Click on Make Full-screen in the Options Menu
+1. Click "Make fullscreen".
 
-- The Presentation goes in Full Screen Mode
+2. The client should got to full screen mode.
 
 ### Settings
 
-1. Click on Settings in the Options Menu
+1. Click "Settings" in the Options dropdown menu.
 
-- Settings screen appears with serval options.
+2. Settings modal should appear.
 
 ### Application Settings
 
 #### A. Animations
 
-1.  click on the [On/Off] the switch button
+(Inside the Settings modal)
+
+1. Click on the [On/Off] the switch button
+
 2.  Enable/Disable Animations
 3.  click Save to Validate your new Settings
 
@@ -1289,61 +1352,71 @@ As a viewer:
 
 #### B. Audio Alerts for Chat
 
-1.  Click on the [On/Off] the switch button to Enable/Disable Audio Alerts for Chat
+(Inside the Settings modal)
 
-2.  Click Save to Validate your new Settings.
+1. Click on the [On/Off] the switch button to Enable/Disable Audio Alerts for Chat
 
-- The beeps alerts for chat are now Disabled/Enabled
+2. Click Save to Validate your new Settings.
+
+3. The beeps alerts for chat are now Disabled/Enabled
 
 #### C. Popup Alerts for Chat
 
-1.  click on the [On/Off] the switch button to Enable/Disable Popup alerts for Chat
+(Inside the Settings modal)
 
-2.  click Save to Validate your new Settings.
+1. Click on the [On/Off] the switch button to Enable/Disable Popup alerts for Chat
 
-- The Popup Alerts for Chat are now Disabled/Enabled.
+2. Click Save to Validate your new Settings.
+
+3. The Popup Alerts for Chat are now Disabled/Enabled.
 
 #### D. Application Language
 
-1.  click on the Application Language Options List
+(Inside "Application" section of the Settings modal)
 
-2.  choose a language from the dropdown list
+1. Click on the Application Language Options List
 
-3.  click Save to Validate your new Settings
+2. Choose a language from the dropdown list
 
-- The screen quickly reloads to apply the language change action
+3. Click Save to Validate your new Settings
+
+4. The screen quickly reloads to apply the language change action
 
 #### E. Font Size
 
-1.  click on (+) or (-) buttons to increase or decrease the font size of Presentation
+(Inside the Settings modal)
 
-2.  click Save to Validate your new Settings
+1. Click on (+) or (-) buttons to increase or decrease the font size of Presentation.
 
-- The font size increases/decreases according to the set percentage
+2. Click Save to Validate your new Settings.
+
+3. The font size increases/decreases according to the set percentage.
 
 ### Data Savings Settings
 
+(Inside the Settings modal)
+
 #### A. Enable/Disable Webcams
 
-1.  click on the [On/Off] the switch button to Enable/Disable Webcams
+1. Click on the [On/Off] the switch button to enable/disable Webcams.
 
-2.  click Save to Validate your new Settings
+2. Click Save to Validate your new Settings.
 
-- The Webcams are now Disabled/Enabled
+3. The Webcams should now be disabled/enabled.
 
 #### B. Enable/Disable Desktop Sharing
 
-1.  click on the [On/Off] the switch button to Enable/Disable Desktop Sharing
+1. Click on the [On/Off] the switch button to enable/disable desktop sharing.
 
-2.  click Save to Validate your new Settings.
+2. Click Save to Validate your new Settings.
 
-- Desktop Sharing is Disabled/Enabled
+3. Desktop Sharing is disabled/enabled.
 
 ### Shortcut keys
 
 #### Keyboard Shortcuts
 
-1. click on the Keyboard Shortcuts in the options menu.
+1. Click on the Keyboard Shortcuts in the options menu.
 
 2. Press the below keys to get the desired results.
 
@@ -1363,21 +1436,25 @@ As a viewer:
 - Right Arrow ------> Next slide (Presenter)
 - Left Arrow ------> Previous slide (Presenter)
 
-### Log out
+### Leave meeting
 
-1.  Click on Options Menu in top right (three dots)
+1. Join meeting.
 
-2.  Select log out.
+2. Click "Options" button in top-right corner (three dots icon).
 
-- User who selects log out is only user who is disconnected from the meeting and a feedback should prompt to the user
+3. Select "Leave meeting".
 
-#### (For Moderator) : End meeting on log out
+4. You should be disconnected from the meeting and a feedback should prompt should be displayed.
 
-1. Click on Options Menu in top right (three dots)
+#### End meeting
 
-2. Select end meeting and choose yes.
+1. Join meeting as moderator.
 
-   - All users kicked from meeting, meeting feedback form appears and meeting ends
+2. Click "Options" button in top-right corner (three dots icon).
+
+3. Select "End meeting" and choose "Yes".
+
+4. All users should be kicked from meeting, meeting feedback form should appear and meeting should end.
 
 ## Guest Management
 
