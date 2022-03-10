@@ -131,6 +131,16 @@ all of these tests.
 
 8. Application should return to normal screen
 
+### Snapshot of current presentation
+
+1. Join meeting.
+
+2. Apply some annotations to the whiteboard.
+
+2. Click "Options" (three dots icon on top-right of the presentation area), select "Snapshot of current presentation".
+
+3. You should get promted to save the file. The file should contains the image of the current slide of the presentation, including the annotations applied.
+
 ### Fit to width option
 
 1. Click on "Fit to width" button
@@ -1187,21 +1197,64 @@ Note :
 
 ## Polling
 
-### Starting a Polling
+### Start a single-choice poll
 
 1. Join meeting
 
-1. Presenter: click on the presenter menu ("+" icon) button, select "Start a poll".
+2. Presenter: click on the presenter menu ("+" icon) button, select "Start a poll".
 
-2. Presenter: Select one of the poll options.
+3. Presenter: Select one of the response types.
 
-3. Poll popup should appear for all users except the presenter. Sound effect notification should play. Make the selection.
+4. Presenter: you can edit the responses (modify, add new one, delete).
 
-5. Presenter: live poll results panel should show up.
+4. Poll popup should appear for all users except the presenter. Sound effect notification should play. Make the selection.
+
+5. Presenter: live poll results panel should show up, indicating the overall results and how each user responded.
 
 5. Presenter: click "Publish poll".
 
-6. Poll results will show up for all users except presenter.
+6. Poll results will show up in public chat and presentation area for all users.
+
+### Start a multiple-choice poll
+
+1. Join meeting
+
+2. Presenter: click on the presenter menu ("+" icon) button, select "Start a poll".
+
+3. Presenter: Select one of the response types.
+
+4. Presenter: you can edit the responses.
+
+5. Presenter: enable the "Allow multiple answers per" checkbox.
+
+6. Poll popup should appear for all users except the presenter. Sound effect notification should play. Each user should be able to make multiple selections.
+
+7. Presenter: live poll results panel should show up, indicating the overall results and how each user responded (each of the user's multiple responses should be counted).
+
+8. Presenter: click "Publish poll".
+
+9. Poll results will show up in public chat and presentation area for all users.
+
+### Start an anonymous poll
+
+1. Join meeting
+
+2. Presenter: click on the presenter menu ("+" icon) button, select "Start a poll".
+
+3. Presenter: Select one of the response types.
+
+4. Presenter: you can edit the responses.
+
+5. Presenter: enable "Anonymous Poll".
+
+4. Poll popup should appear for all users except the presenter. Sound effect notification should play. Make the selection.
+
+5. Presenter: live poll results panel should show up, without the information on how each user responded.
+
+5. Presenter: click "Publish poll".
+
+6. Poll results will show up in public chat and presentation area for all users.
+
 
 ### Custom Poll
 
@@ -1219,21 +1272,6 @@ Note :
 - A sound effect notification is heard to notify all of the available Viewers/Moderators that there is a Live Poll and the options to vote
   on it are available
 - A live Poll Results Tab will show up to the presenter.
-
-### Loading Poll from files
-
-(Presenter feature)
-
-1. Click on the highlighting (+) button in the bottom left corner of the presentation screen
-
-2. Click upload a Presentation
-
-3. Load your Quick Poll file
-
-4. Click upload
-
-- The custom Quick Poll file uploaded is displaying in the Presentation screen
-- A Quick Poll button is highlighting in the bottom left corner of the Presentation screen.
 
 ### Quick Poll Option
 
@@ -1484,4 +1522,8 @@ Note :
 
 ## Custom Parameters
 
+Client should apply custom parameters according to the descriptions from [here](https://docs.bigbluebutton.org/admin/customize.html#application-parameters).
+
 ## iFrame
+
+## Learning Dashboard
