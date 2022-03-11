@@ -1508,7 +1508,7 @@ Note :
 
 4. You should be disconnected from the meeting and a feedback should prompt should be displayed.
 
-#### End meeting
+### End meeting
 
 1. Join meeting as moderator.
 
@@ -1518,7 +1518,65 @@ Note :
 
 4. All users should be kicked from meeting, meeting feedback form should appear and meeting should end.
 
-## Guest Management
+## Guest Policy
+
+### Always deny
+
+1. Join meeting as moderator.
+
+2. Moderator: click on the cog wheel icon in the user list, select "Guest policy".
+
+3. Moderator: "Guest policy" modal should appear.
+
+4. Moderator: choose "Always deny".
+
+5. Try to join the meeting as moderator. Moderators should be able to join.
+
+6. Try to join the meeting as viewer. Viewers should be denied and redirected to home page.
+
+7. Moderator: click on the cog wheel icon in the user list, select "Guest policy".
+
+8. Moderator: "Guest policy" modal should appear.
+
+9. Moderator: choose "Always accept".
+
+10. Try to join the meeting with moderator and with viewer. All users should be able to join.
+
+### Ask moderator
+
+1. Join meeting as moderator.
+
+2. Moderator: click on the cog wheel icon in the user list, select "Guest policy".
+
+3. Moderator: "Guest policy" modal should appear.
+
+4. Moderator: choose "Ask moderator".
+
+5. "Waiting Users" tab should appear above the user list for all moderators.
+
+6. Moderator: click "Waiting Users" tab, the waiting users panel should open and include "Currently no pending users..." label.
+
+7. Try to join the meeting as moderator. Moderators should be able to join bypassing lobby.
+
+8. Try to join the meeting as viewer. You should get into a lobby screen indicating your position in the queue.
+
+9. Moderator: the waiting users panel should be populated with the list of pending viewers and options of how to proceed (if the panel is closed, the pending users counter should appear on top of the "Waiting Users" tab).
+
+10. Moderator: type in the textbox, press Enter or click "Send" button. The message should be visible to all waiting viewers on their lobby screens (as well as in the moderator's waiting users panel).
+
+11. Moderator: click "Message" for a specific viewer in the list, type in the textbox, press Enter or click "Send" button. The message should appear only for that cpecific viewer.
+
+- Click "Deny everyone". All the waiting viewers should see the message "Guest denied of joining the meeting" and should soon be redirected to the home page. All new viewers should not be effected by this, but instead they should be placed in the waiting lobby.
+
+- Select "Remember choice" and click "Deny everyone". All the waiting viewers should see the message "Guest denied of joining the meeting" and should soon be redirected to the home page. "Always deny" option should become current in the waiting users modal and all new viewers should be redirected to the home page.
+
+- Click "Allow everyone". All the waiting viewers should successfully join the meeting. All new viewers should not be effected by this, but instead they should be placed in the waiting lobby.
+
+- Select "Remember choice" and click "Allow everyone". All the waiting viewers should successfully join the meeting. "Always allow" option should become current in the waiting users modal and all new viewers should be able to join bypassing the waiting lobby.
+
+- Click "Accept" for the specific user in the waiting users panel. That viewer should be accepted into the meeting.
+
+- Click "Deny" for the specific user in teh waiting users panel. That viewer should see the message "Guest denied of joining the meeting" and should soon be redirected to the home page.
 
 ## Custom Parameters
 
