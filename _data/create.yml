@@ -77,7 +77,7 @@
   required: "Optional(Breakout Room)"
   type: "Boolean"
   default: "true"
-  description: "If set to false, breakout rooms will be disabled."
+  description: "<b>[DEPRECATED]</b> Removed in 2.5, temporarily still handled, please transition to disabledFeatures.<br><br>If set to false, breakout rooms will be disabled."
 
 - name: "breakoutRoomsPrivateChatEnabled"
   required: "Optional(Breakout Room)"
@@ -215,6 +215,11 @@
   default: "SMART_LAYOUT"
   description: "Will set the default layout for the meeting. Possible values are: CUSTOM_LAYOUT, SMART_LAYOUT, PRESENTATION_FOCUS, VIDEO_FOCUS. (added 2.4)"
 
+- name: "learningDashboardEnabled"
+  type: "Boolean"
+  default: "true"
+  description: "<b>[DEPRECATED]</b> Removed in 2.5, temporarily still handled, please transition to disabledFeatures.<br><br>Default <code class=\"language-plaintext highlighter-rouge\">learningDashboardEnabled=true</code>. When this option is enabled BigBlueButton generates a Dashboard where moderators can view a summary of the activities of the meeting. (added 2.4)"
+
 - name: "learningDashboardCleanupDelayInMinutes"
   type: "Number"
   default: "2"
@@ -252,4 +257,4 @@
 - name: "disabledFeatures"
   required: false
   type: "String"
-  description: "List (comma-separated) of features to disable in a particular meeting. (added 2.5)<br><br>Available options to disable:<br><ul><li><code class=\"language-plaintext highlighter-rouge\">screenshare</code>- <b>Screen Sharing</b> where presenters can share their screen with others.</li><li><code class=\"language-plaintext highlighter-rouge\">learningDashboard</code>- <b>Learning Analytics Dashboard</b> where moderators can view a summary of the activities of the meeting.</li></ul>"
+  description: "List (comma-separated) of features to disable in a particular meeting. (added 2.5)<br><br>Available options to disable:<br><ul><li><code class=\"language-plaintext highlighter-rouge\">breakoutRooms</code>- <b>Breakout Rooms</b> </li><li><code class=\"language-plaintext highlighter-rouge\">captions</code>- <b>Closed Caption</b> </li><li><code class=\"language-plaintext highlighter-rouge\">chat</code>- <b>Chat</b></li><li><code class=\"language-plaintext highlighter-rouge\">externalVideos</code>- <b>Share an external video</b> </li><li><code class=\"language-plaintext highlighter-rouge\">layouts</code>- <b>Layouts</b> (allow only default layout)</li><li><code class=\"language-plaintext highlighter-rouge\">learningDashboard</code>- <b>Learning Analytics Dashboard</b></li><li><code class=\"language-plaintext highlighter-rouge\">polls</code>- <b>Polls</b> </li><li><code class=\"language-plaintext highlighter-rouge\">screenshare</code>- <b>Screen Sharing</b></li><li><code class=\"language-plaintext highlighter-rouge\">sharedNotes</code>- <b>Shared Notes</b> </li></ul>"
