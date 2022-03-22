@@ -188,7 +188,7 @@
   required: false
   type: "Boolean"
   default: "false"
-  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will prevent viewers to see other viewers cursor when multi-user whiteboard is on."
+  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will prevent viewers to see other viewers cursor when multi-user whiteboard is on. (added 2.5)"
 
 - name: "guestPolicy"
   required: false
