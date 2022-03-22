@@ -182,7 +182,13 @@
   required: false
   type: "Boolean"
   default: "false"
-  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">lockSettingsLockOnJoinConfigurable=true` will allow applying of `lockSettingsLockOnJoin</code>."
+  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will allow applying of <code class=\"language-plaintext highlighter-rouge\">lockSettingsLockOnJoin</code>."
+
+- name: "lockSettingsHideViewersCursor"
+  required: false
+  type: "Boolean"
+  default: "false"
+  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will prevent viewers to see other viewers cursor when multi-user whiteboard is on."
 
 - name: "guestPolicy"
   required: false
