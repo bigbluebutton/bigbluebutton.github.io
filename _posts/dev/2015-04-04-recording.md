@@ -230,14 +230,14 @@ Internal MeetingID                   Time   APVD APVDE RAS Slides Processed Publ
            └─3509 /usr/bin/ruby /usr/local/bigbluebutton/core/scripts/rap-starter.rb
 
 ● bbb-rap-resque-worker.service - BigBlueButton resque worker for recordings
-   Loaded: loaded (/usr/lib/systemd/system/bbb-rap-resque-worker.service; enabled; vendor preset: enabled)
+   Loaded: loaded (/usr/lib/systemd/system/bbb-rap-resque-worker.service; enabled)
    Active: active (running) since Tue 2022-03-01 18:27:19 CET; 2 weeks 0 days ago
  Main PID: 3847 (sh)
     Tasks: 7 (limit: 4915)
    CGroup: /system.slice/bbb-rap-resque-worker.service
-           ├─3847 /bin/sh -c /usr/bin/rake -f ../Rakefile resque:workers >> /var/log/bigbluebutton/bbb-rap-worker.log
-           ├─3859 /usr/bin/ruby /usr/bin/rake -f ../Rakefile resque:workers
-           └─4103 resque-2.0.0: Waiting for rap:archive,rap:publish,rap:process,rap:sanity,rap:captions,rap:events
+           ├─ /usr/bin/rake -f ../Rakefile resque:workers >> /var/log/bigbluebutton/bbb-rap-worker.log
+           ├─ /usr/bin/ruby /usr/bin/rake -f ../Rakefile resque:workers
+           └─ Waiting for rap:archive,rap:publish,rap:process,rap:sanity,rap:captions,rap:events
 --
 ```
 
@@ -248,7 +248,7 @@ This options makes a recording go through the Process and Publish phases again.
 If you run `bbb-record --rebuild` on a recording where the process and publish scripts were not run because the moderator of the session did not click the record button, this will force the meeting to be processed as long as the raw files are still available and `record` was set to `true`. In this case, the entire length of the meeting will be included in the recording.
 
 ```bash
-$ sudo bbb-record --rebuild 6e35e3b2778883f5db637d7a5dba0a427f692e91-1379965122603
+$ sudo bbb-record --rebuild 29173583cf1ca21508b2efd7db566090bbefb36a-1647630316965
 ```
 
 ### Rebuild every recording
@@ -265,7 +265,7 @@ $ sudo bbb-record --rebuildall
 Removes the meeting's data (such as uploaded files) and its recording.
 
 ```bash
-$ sudo bbb-record --delete 6e35e3b2778883f5db637d7a5dba0a427f692e91-1379965122603
+$ sudo bbb-record --delete 29173583cf1ca21508b2efd7db566090bbefb36a-1647630316965
 ```
 
 Warning -- this also wipes running meetings! To only remove a single published recording and its raw data, delete 
@@ -317,7 +317,7 @@ $ sudo bbb-record --disable presentation
 ### Get internal meeting ids
 
 ```bash
-$ sudo bbb-record --tointernal "English 101"
+$ sudo bbb-record --tointernal "English 102"
 ```
 
 will show
@@ -325,7 +325,7 @@ will show
 ```
 Internal meeting ids related to the given external meeting id:
 -------------------------------------------------------------
-6e35e3b2778883f5db637d7a5dba0a427f692e91-1379965122603
+29173583cf1ca21508b2efd7db566090bbefb36a-1647630316965
 ```
 
 Use double quotes for the external meeting id.
@@ -333,17 +333,22 @@ Use double quotes for the external meeting id.
 ### Get external meeting ids
 
 ```bash
-$ sudo bbb-record --toexternal "English 101"
+$ sudo bbb-record --toexternal 29173583cf1ca21508b2efd7db566090bbefb36a-1647630316965
 ```
 
-Use double quotes for the external meeting id.
+```
+External meeting id related to the given internal meeting id:
+-------------------------------------------------------------
+English 102" meetingName="English 102
+-------------------------------------------------------------
+```
 
 ### Republish recordings
 
 Republish recordings.
 
 ```bash
-$ sudo bbb-record --republish 6e35e3b2778883f5db637d7a5dba0a427f692e91-1379965122603
+$ sudo bbb-record --republish 29173583cf1ca21508b2efd7db566090bbefb36a-1647630316965
 ```
 
 ## For Developers
@@ -356,7 +361,7 @@ The way to start a recorded session in BigBlueButton is setting the "record" par
 
 The Capture phase is handled by many components.
 
-To understand how it works, you should have basic, intermediate or advanced understanding about tools like FreeSWITCH, Flex, Red5, and Redis. Dig into the [BigBlueButton source code](https://github.com/bigbluebutton/bigbluebutton) and search for information in the [BigBlueButton mailing list for developers](https://groups.google.com/forum/#!forum/bigbluebutton-dev) if you have more questions.
+To understand how it works, you should have basic, intermediate, or advanced understanding about tools like FreeSWITCH, Flex, Red5, and Redis. Dig into the [BigBlueButton source code](https://github.com/bigbluebutton/bigbluebutton) and search for information in the [BigBlueButton mailing list for developers](https://groups.google.com/forum/#!forum/bigbluebutton-dev) if you have more questions.
 
 ### Archive, Sanity, Process and Publish
 
@@ -495,7 +500,12 @@ Playback files are located in `/var/bigbluebutton/playback/presentation/` and us
 If you intend on developing recording scripts, manually running them through each of the RaP steps will enable you to improve existing workflows or add new ones.
 The following example is based on the presentation format.
 
-First, create the required temporary directories:
+First, stop the recording service and create the required temporary directories:
+
+```bash
+systemctl stop bbb-rap-starter
+systemctl stop bbb-rap-resque-worker
+```
 
 ```bash
 mkdir -p ~/temp/log/presentation ~/temp/recording/{process,publish,raw} ~/temp/recording/status/{recorded,archived,processed,sanity} ~/temp/published
@@ -522,8 +532,9 @@ published_dir: /home/ubuntu/temp/published
 playback_host: 127.0.0.1
 ```
 
-Next, run `bbb-record --list-recent` and make note of the latest internal meeting ID. 
-This id is used to tell our scripts which recording to process.
+Now, create a recording using BigBlueButton. After ending the session, there should be a `<meeting-id>.done` file in the
+`/var/bigbluebutton/recording/status/recorded`. Make note of the latest internal meeting ID, as we'll use it
+to tell our scripts which recording to process.
 
 Before running the scripts, we have to make sure our scripts have the paths set up correctly.
 In your development environment (`~/dev/bigbluebutton/record-and-playback`), edit
@@ -553,7 +564,7 @@ video_formats:
 # - mp4
 
 # For DEVELOPMENT
-publish_dir: /home/dpetri/temp/published/presentation
+publish_dir: /home/ubuntu/temp/published/presentation
 ```
 
 Now we run the archive step. Go to `record-and-playback/core/scripts` and type
@@ -574,7 +585,7 @@ that a `.done` entry in `~/temp/recording/status/sanity` exists.
 
 Assuming the recording passed the sanity check, it's time to process the recording.
 
-Set the path of the captions generation script. Otherwise, comment it out.
+Set the path of the captions generation script:
 
 ```ruby
 # ret = BigBlueButton.exec_ret('utils/gen_webvtt', '-i', raw_archive_dir, '-o', target_dir)
@@ -586,16 +597,15 @@ ret = BigBlueButton.exec_ret(
 Now, the presentation processing script can run without throwing an error.
 
 ```bash
-   cd ~/dev/bigbluebutton/record-and-playback/presentation/scripts
-   ruby process/presentation.rb -m <meeting-id>
+cd ~/dev/bigbluebutton/record-and-playback/presentation/scripts
+ruby process/presentation.rb -m <meeting-id>
 ```
 
-You can monitor the progress by tailing the log at `~/temp/log/presentation/process-<meeting-id>.log`. Note that each time one of the scripts fails, the corresponding directory at
-`~/temp/recording/process/presentation` needs to be deleted before the script is executed again.
+You can monitor the progress by tailing the log at `~/temp/log/presentation/process-<meeting-id>.log`.
 
 If everything went well, we can now run the publish script. However, we need to cheat a little bit.
 The publish script will be looking for a `processing_time` file which contains information on how long the
-processing took. Unfortunately, that file is created by the `rap-worker.rb`, script which we don't run.
+processing took. Unfortunately, that file is created by the `rap-worker.rb`, a script which we don't run.
 
 Manually create the file at
 
@@ -609,7 +619,7 @@ Then, once again, the path to the poll generation utility needs to be updated:
 #ret = BigBlueButton.exec_ret('utils/gen_poll_svg', ...)
 ret = BigBlueButton.exec_ret(
    '/home/ubuntu/dev/bigbluebutton/record-and-playback/core/scripts/utils/gen_webvtt',
-...)
+   ...)
 ```
 
 Finally, run the publish script:
@@ -620,7 +630,11 @@ ruby publish/presentation.rb -m <meeting-id>-presentation
 
 Notice we appended "presentation" to the meetingId, this will tell the script to publish using the "presentation" format.
 
-You can deploy your changes with `deploy.sh`.
+You can deploy your changes by running `deploy.sh` and restarting the recording-related services:
+```
+systemctl restart bbb-rap-starter
+systemctl restart bbb-rap-resque-worker
+```
 
 ## Troubleshooting
 
@@ -713,7 +727,7 @@ $ grep <internal meeting id> /var/log/bigbluebutton/sanity.log
 This section is related to recorded media. By default, Audio and Presentation are recorded. If you don't see any **_X_** under **V** or **D**, then you either didn't
 share your webcam or desktop, or you haven't enabled them to be recorded.
 
-##### APVDE (Audio, Presentation, Video, Deskshare, Events)
+#### APVDE (Audio, Presentation, Video, Deskshare, Events)
 
 This section is related to archived media. If you don't see an **_X_** under media you are sure was recorded, check out
 the sanity log. Execute this command to find the problem:
@@ -734,7 +748,7 @@ $ grep -B 3 "status: 1" /var/log/bigbluebutton/presentation/process-<internal me
 The problem should then be shown. If there is no output, tail the file to see which task was executed last.
 Its error message describes the issue.
 
-##### Published
+#### Published
 
 If a script is applied to publish your recording, its name should be listed under the column 'Published.'
 
@@ -766,12 +780,12 @@ Internal MeetingID                   Time   APVD APVDE RAS Slides Processed Publ
 The first recording has an internal `meetingID` of `29173583cf1ca21508b2efd7db566090bbefb36a-1647630316965`. If this is the recoding you want to edit, you'll find `events.xml` in the location `/var/bigbluebutton/recording/raw/29173583cf1ca21508b2efd7db566090bbefb36a-1647630316965/events.xml`. Edit this file and look for the first `RecordingStatusEvent`, such as:
 
 ```xml
-  <event timestamp="7610895212" module="PARTICIPANT" eventname="RecordStatusEvent">
-    <timestampUTC>1647630325790</timestampUTC>
-    <date>2022-03-18T20:05:25.790+01</date>
-    <status>true</status>
-    <userId>w_j0ke0updyniq</userId>
-  </event>
+<event timestamp="7610895212" module="PARTICIPANT" eventname="RecordStatusEvent">
+   <timestampUTC>1647630325790</timestampUTC>
+   <date>2022-03-18T20:05:25.790+01</date>
+   <status>true</status>
+   <userId>w_j0ke0updyniq</userId>
+</event>
 ```
 
 Next, find when the first moderator joined, and then move the `RecordStatusEvent` after the moderator join event. Also, edit the `timestamp` for `RecordStatusEvent` so it occurs **after** the moderator's `timestamp`. For example:
@@ -797,7 +811,7 @@ Next, find when the first moderator joined, and then move the `RecordStatusEvent
 This is equivalent to the first moderator clicking the Start/Stop Record button. Save the modified `events.xml` and regenerate recording using the `bbb-record --rebuild` command, as in
 
 ```bash
-$ sudo bbb-record --rebuild c8ac62b90ea6ae25b9c82e5cc8aeff0903b417cf-1647856967562
+$ sudo bbb-record --rebuild 29173583cf1ca21508b2efd7db566090bbefb36a-1647630316965
 ```
 
 If there are no other recordings processing, you should see the recording re-process using the `sudo bbb-record --watch` command. After the processing is finished, your users can view the recording and see all the content from the time the first moderator joined.
