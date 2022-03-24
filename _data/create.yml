@@ -182,7 +182,13 @@
   required: false
   type: "Boolean"
   default: "false"
-  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">lockSettingsLockOnJoinConfigurable=true` will allow applying of `lockSettingsLockOnJoin</code>."
+  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will allow applying of <code class=\"language-plaintext highlighter-rouge\">lockSettingsLockOnJoin</code>."
+
+- name: "lockSettingsHideViewersCursor"
+  required: false
+  type: "Boolean"
+  default: "false"
+  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will prevent viewers to see other viewers cursor when multi-user whiteboard is on. (added 2.5)"
 
 - name: "guestPolicy"
   required: false
@@ -241,7 +247,7 @@
   required: false
   type: "Boolean"
   default: "false"
-  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will disable Virtual Backgrounds for all users in the meeting. (added 2.4.3)"
+  description: "<b>[DEPRECATED]</b> Removed in 2.5, temporarily still handled, please transition to disabledFeatures.<br><br>Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will disable Virtual Backgrounds for all users in the meeting. (added 2.4.3)"
 
 - name: "userCameraCap"
   required: false
@@ -257,4 +263,4 @@
 - name: "disabledFeatures"
   required: false
   type: "String"
-  description: "List (comma-separated) of features to disable in a particular meeting. (added 2.5)<br><br>Available options to disable:<br><ul><li><code class=\"language-plaintext highlighter-rouge\">breakoutRooms</code>- <b>Breakout Rooms</b> </li><li><code class=\"language-plaintext highlighter-rouge\">captions</code>- <b>Closed Caption</b> </li><li><code class=\"language-plaintext highlighter-rouge\">chat</code>- <b>Chat</b></li><li><code class=\"language-plaintext highlighter-rouge\">externalVideos</code>- <b>Share an external video</b> </li><li><code class=\"language-plaintext highlighter-rouge\">layouts</code>- <b>Layouts</b> (allow only default layout)</li><li><code class=\"language-plaintext highlighter-rouge\">learningDashboard</code>- <b>Learning Analytics Dashboard</b></li><li><code class=\"language-plaintext highlighter-rouge\">polls</code>- <b>Polls</b> </li><li><code class=\"language-plaintext highlighter-rouge\">screenshare</code>- <b>Screen Sharing</b></li><li><code class=\"language-plaintext highlighter-rouge\">sharedNotes</code>- <b>Shared Notes</b> </li></ul>"
+  description: "List (comma-separated) of features to disable in a particular meeting. (added 2.5)<br><br>Available options to disable:<br><ul><li><code class=\"language-plaintext highlighter-rouge\">breakoutRooms</code>- <b>Breakout Rooms</b> </li><li><code class=\"language-plaintext highlighter-rouge\">captions</code>- <b>Closed Caption</b> </li><li><code class=\"language-plaintext highlighter-rouge\">chat</code>- <b>Chat</b></li><li><code class=\"language-plaintext highlighter-rouge\">externalVideos</code>- <b>Share an external video</b> </li><li><code class=\"language-plaintext highlighter-rouge\">layouts</code>- <b>Layouts</b> (allow only default layout)</li><li><code class=\"language-plaintext highlighter-rouge\">learningDashboard</code>- <b>Learning Analytics Dashboard</b></li><li><code class=\"language-plaintext highlighter-rouge\">polls</code>- <b>Polls</b> </li><li><code class=\"language-plaintext highlighter-rouge\">screenshare</code>- <b>Screen Sharing</b></li><li><code class=\"language-plaintext highlighter-rouge\">sharedNotes</code>- <b>Shared Notes</b></li><li><code class=\"language-plaintext highlighter-rouge\">virtualBackgrounds</code>- <b>Virtual Backgrounds</b></li></ul>"
