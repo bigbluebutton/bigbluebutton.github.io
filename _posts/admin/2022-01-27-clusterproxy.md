@@ -148,6 +148,32 @@ location /bbb-01/html5client/locales {
 **Note:** It is important that the location configuration is equal between the
 BigBlueButton server and the proxy.
 
+The urls of the guest lobby needs to be changed at two places in `/usr/share/meteor/bundle/programs/server/assets/app/static/guest-wait/guest-wait.html`:
+
+- Change the locales endpoint path from
+
+  ```javascript
+        const LOCALES_ENDPOINT = '/html5client/locale';
+  ```
+
+  to
+
+  ```javascript
+        const LOCALES_ENDPOINT = '/bbb-01/html5client/locale';
+  ```
+
+- Change the guest wait endpoint url from
+
+  ```javascript
+        const url = new URL(`${window.location.origin}${GUEST_WAIT_ENDPOINT}`);
+  ```
+
+  to
+
+  ```javascript
+        const url = new URL(`https://bbb-01.example.com${GUEST_WAIT_ENDPOINT}`);
+  ```
+
 Restart BigBlueButton:
 
 ```shell
