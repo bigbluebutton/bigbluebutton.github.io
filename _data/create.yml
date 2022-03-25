@@ -261,6 +261,18 @@
   default: "0"
   description: "Setting to <code class=\"language-plaintext highlighter-rouge\">0</code> will disable this threshold. Defines the max number of webcams a meeting can have simultaneously. (added 2.5.0)"
 
+- name: "meetingExpireIfNoUserJoinedInMinutes"
+  required: false
+  type: "Number"
+  default: "5"
+  description: "Automatically end meeting if no user joined within a period of time after meeting created. (added 2.4.6)"
+
+- name: "meetingExpireWhenLastUserLeftInMinutes"
+  required: false
+  type: "Number"
+  default: "1"
+  description: "Number of minutes to automatically end meeting after last user left. (added 2.4.6)<br>Setting to <code class=\"language-plaintext highlighter-rouge\">0</code> will disable this function."
+
 - name: "groups"
   required: false
   type: "String"
