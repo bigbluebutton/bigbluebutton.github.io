@@ -5,7 +5,7 @@ category: dev
 date: 2015-04-04 22:47:38
 ---
 
-This document assumes the reader understands the current [BigBlueButton architecture](/overview/architecture.html).
+This document assumes the reader understands the current [BigBlueButton architecture](2.4/architecture.html).
 
 # Overview
 
