@@ -3,6 +3,8 @@ layout: page
 title: 'Architecture'
 category: 2.4
 date: 2021-05-01 17:34:41
+redirect_from:
+  - /overview/architecture.html
 order: 4
 ---
 
@@ -73,9 +75,9 @@ BigBlueButton web application is a Java-based application written in Scala. It i
 
 The BigBlueButton API provides a third-party integration (such as the [BigBlueButtonBN plugin](https://moodle.org/plugins/mod_bigbluebuttonbn) for Moodle) with an endpoint to control the BigBlueButton server.
 
-Every access to BigBlueButton comes through a front-end portal (we refer to as a third-party application). BigBlueButton integrates Moodle, Wordpress, Canvas, Sakai, and others (see [third-party integrations](http://bigbluebutton.org/integrations/)). BigBlueButton comes with its own front-end called [Greenlight](/install/greenlight-v2.html). When using a learning management system (LMS) such as Moodle, teachers can setup BigBlueButton rooms within their course and students can access the rooms and their recordings.
+Every access to BigBlueButton comes through a front-end portal (we refer to as a third-party application). BigBlueButton integrates Moodle, Wordpress, Canvas, Sakai, MatterMost, and others (see [third-party integrations](http://bigbluebutton.org/integrations/)). BigBlueButton comes with its own front-end called [Greenlight](/greenlight/gl-install.html). When using a learning management system (LMS) such as Moodle, teachers can setup BigBlueButton rooms within their course and students can access the rooms and their recordings.
 
-The BigBlueButton comes with some simple [API demos](http://demo.bigbluebutton.org/demo/demo1.jsp). Regardless of which front-end you use, they all use the [API](/dev/api.html) under the hood.
+The BigBlueButton comes with some simple [API demos](2.4/install.html#install). Regardless of which front-end you use, they all use the [API](/dev/api.html) under the hood.
 
 ## Redis PubSub
 
@@ -106,7 +108,7 @@ FreeSWITCH to easily create their own integration. Communication between apps an
 
 We think FreeSWITCH is an amazing piece of software for handling audio.
 
-FreeSWITCH provides the voice conferencing capability in BigBlueButton. Users are able to join the voice conference through the headset. Users joining through Google Chrome or Mozilla Firefox are able to take advantage of higher quality audio by connecting using WebRTC. FreeSWITCH can also be [integrated with VOIP providers](/install/install.html#add-a-phone-number-to-the-conference-bridge) so that users who are not able to join using the headset will be able to call in using their phone.
+FreeSWITCH provides the voice conferencing capability in BigBlueButton. Users are able to join the voice conference through the headset. Users joining through Google Chrome or Mozilla Firefox are able to take advantage of higher quality audio by connecting using WebRTC. FreeSWITCH can also be [integrated with VOIP providers](/admin/customize.html#add-a-phone-number-to-the-conference-bridge) so that users who are not able to join using the headset will be able to call in using their phone.
 
 ## Kurento and WebRTC-SFU
 
