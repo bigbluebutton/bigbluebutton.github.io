@@ -8,12 +8,6 @@ order: 6
 
 This document is meant to be a combination of manual and (labeled so) automated tests, listed per feature of BigBlueButton.
 
-TODO:
-
-- ensure all test cases from [BigBlueButton's 2.4 test plan](https://docs.bigbluebutton.org/2.4/release-tests.html) are integrated here.
-- include the automated tests developed during 2.4 and label as `(automated) ...`
-- try to keep this document as useful as possible, even at the expense of it looking polished... (i.e. if you think of an edge case that is good to be tested, let's include it, even if it's not super well defined)
-
 The <b>automated tests</b> are only a portion of the testing done before a release. Ideally they should be triggered often, for example when testing pull requests, or once a day automatically.
 
 The <b>manual tests</b> really help to ensure release quality. They should
@@ -27,20 +21,22 @@ all of these tests.
 
 1. As a moderator, select Moderator/Presenter Action menu (+)
 
-2. choosing upload Presentation
+2. Choosing "Manage presentations"
 
 3. Uploading presentation options:
 
    - using Drag and Drop
    - Upload presentation using File Explorer(browsing for files.)
 
-4. Presentation should appear on All Clients in sync with updates (PAAC)
+4. You should see the notification displaying the upload progress
+
+5. Presentation should appear on All Clients in sync with updates, and All Clients should see the notification with the new presentation name
 
 ### Enabling and Disabling Presentation Download
 
 1. Select Moderator/Presenter Action menu
 
-2. Choose Upload Presentation
+2. Choose "Manage presentations"
 
 3. Set current file as enabled/disabled for download:
 
@@ -52,7 +48,7 @@ all of these tests.
 
 1. Select Moderator/Presenter Action menu
 
-2. Choose Upload Presentation
+2. Choose "Manage presentations"
 
 3. Selecting trash icon to delete
 
@@ -62,15 +58,17 @@ all of these tests.
 
 1. Select Moderator/Presenter Action menu
 
-2. Choose Upload Presentation
+2. Choose "Manage presentation"
 
-3. Upload multiple presentations at once using Browse for files option
+3. Select multiple presentations at once using Browse for files option
 
 4. Set a current presentation
 
-5. select upload
+5. Select upload
 
-(Note : Current file selected should display to the presentation area)
+6. You should see the notification displaying the upload progress
+
+7. Current selected file should appear for all clients
 
 ### Navigation
 
@@ -80,17 +78,15 @@ all of these tests.
 
 3. Select previous slide (<)
 
-4. Use drop down to select a specific slide.
+4. Use dropdown to select a specific slide.
 
-5. Presentation should appear on All Clients in sync with updates (PAAC)
+5. The selected slide should appear
 
 ### Zoom
 
 1. Zoom in (+) and out (-) by clicking in the buttons or using the scroll
 
 2. Using the Pan tool, move document around while zoomed in.
-
-3. Presentation should appear on All Clients in sync with updates (PAAC)
 
 ### Draw and Pan
 
@@ -102,35 +98,58 @@ all of these tests.
 
 4. Hold down the space while moving mouse to pan.
 
-### Minimizing and Hiding presentation
 
-1. Select Share webcam.
-
-2. Selecting hide presentation icon or Click Minimize presentation area.
-
-3. Presentation is minimized.
-
-(Note : Presentation area will auto expand when the presenter engages Screen Sharing or YouTube Link Share)
-
-### Restore Presentation
+### Minimize/Restore Presentation
 
 1. Clicking on Share webcam.
 
 2. Minimizing presentation.
 
-3. Selecting restore presentation.
+3. Presentation should be minimized, the button should change to "Restore presentation"
 
-4. Presentation should be restored.
+4. Selecting "Restore presentation"
+
+5. Presentation should be restored.
+
+(Note : Presentation area will auto expand when the presenter engages Screen Sharing or YouTube Link Share)
 
 ### Full Screen option
 
-1. Click on full screen button
+1. Click on full screen button ("Make presentation fullscreen")
 
-2. Draw on the whiteboard
+2. Application should go to full screen
 
-3. select Escape key on local keyboard.
+3. Draw on the whiteboard
 
-Application should go to full screen, then back to normal screen.
+4. Select Escape key on local keyboard.
+
+5. Application should return to normal screen
+
+6. Click on full screen button again
+
+7. Click on "Undo Presentation fullscreen" button
+
+8. Application should return to normal screen
+
+### Snapshot of current presentation
+
+1. Join meeting.
+
+2. Apply some annotations to the whiteboard.
+
+2. Click "Options" (three dots icon on top-right of the presentation area), select "Snapshot of current presentation".
+
+3. You should get promted to save the file. The file should contains the image of the current slide of the presentation, including the annotations applied.
+
+### Fit to width option
+
+1. Click on "Fit to width" button
+
+2. Presentation should be re-positioned to fit to width
+
+3. Click on "Fit to page" button
+
+4. Presentation should return to normal view
 
 ### Make viewer a presenter
 
@@ -138,7 +157,7 @@ Application should go to full screen, then back to normal screen.
 
 2. Selecting make presenter for the user.
 
-Viewer selected should have all presenter capabilities and presenter Icon should appear over user icon in the users list.
+3. Viewer selected should have all presenter capabilities and presenter Icon should appear over user icon in the users list.
 
 ### Taking presenter status back
 
@@ -147,60 +166,90 @@ Viewer selected should have all presenter capabilities and presenter Icon should
    1.1
 
 - Click on your user icon in users list.
-- choose take presenter
+- choose "Take presenter"
 
   1.2
 
 - Select Moderator/Presenter Actions menu (+)
-- choose take presenter
+- choose "Take presenter"
 
-Selected user or moderator should now have presenter capabilities and presenter icon should appear over user icon in the users list.
+You should now have presenter capabilities and presenter icon should appear over your icon in the users list.
 
 ## Webcams
 
 ### Joining Webcam
 
-1. Click on share webcam icon.
+1. Click on "Share webcam" icon
 
-2. Allow browser permissions if prompted.
+2. Allow browser permissions if prompted
 
-3. Select your webcam.
+3. Select your webcam
 
-4. Choose the video quality from the available option.
+4. Choose the video quality from the available option
 
-5. Click Start sharing.
+5. Select the virtual background setting
 
-A small webcam video should show up and the camera share will start highlighting.
+6. Click "Start sharing"
 
-### Make webcam full screen
+7. A small webcam video should show up and the camera share will start highlighting
 
-- Click the full screen icon on the desired user will display in full screen.
+8. Click "Stop sharing webcam"
 
-- Pressing ESC key to exit the full screen mode, will bring back the video to the normal size and will leave the full screen.
+9. The webcam video should disappear
 
-### Focus and removing focus option on webcam
+### Make webcam fullscreen
 
-A. (Note: There must be 3 (three) or more webcams shared for testing purpose.)
+1. Click the webcam's fullscreen button ("Make [user name] fullscreen").
 
-1. Joining with at least 3 webcams.
+2. The webcam should appear in fullscreen.
 
-2. Hover over individual's webcam user name
+3. Press the Esc key.
 
-3. Select drop down and choose focus.
+4. The webcam should exit the fullscreen and go back to normal size.
 
-Webcam chosen should enlarge (larger than the other webcams but not full screen), while other shared webcams decrease in size.
+5. Click the webcam's fullscreen button again.
 
-B. With an enlarged or focused webcam:
+6. Click the undo fulscreen button ("Undo [user name] fullscreen").
 
-1. Hover over the focused webcam username.
+7. The webcam should exit the fullscreen and go back to normal size.
 
-2. Selecting drop down and choose unfocus.
+### Focus/unfocus a webcam
 
-### Maximize webcams
+1. Join meeting with at least 3 webcams.
+
+2. Hover over one of the webcam's user name.
+
+3. Select dropdown and choose "Focus".
+
+4. The chosen webcam should expand (not fullscreen), while other webcams become smaller.
+
+5. Hover over the focused webcam's user name.
+
+6. Select dropdown and choose "Unfocus".
+
+7. The webcams should get back to normal sizes and positions.
+
+### Maximize/minimize webcam
 
 - With webcams shared, click on the Hide Presentation icon to minimize presentation area and maximize webcam.
 
 The presentation will be minimized, and a button will be highlighted to restore the presentation.
+
+### Mirror webcam
+
+1. Join meeting with a webcam.
+
+2. Hover over the webcam's user name.
+
+3. Select dropdown and choose "Mirror".
+
+4. Webcam's stream should flip horizontally.
+
+5. Hover over the webcam's user name.
+
+6. Select dropdown and choose "Mirror" again.
+
+7. Webcam's stream should get back to normal.
 
 ### Drag webcams
 
@@ -244,9 +293,19 @@ The webcams should be resized as per the size we want.
 
 ### Stop Sharing webcam
 
-- Click the Share/Stop sharing webcam icon.
+1. Start sharing webcam.
 
-The webcam sharing will be unhighlighted and the webcam sharing will stop.
+2. Click "Stop sharing webcam".
+
+3. The webcam sharing should stop.
+
+4. Start sharing webcam again.
+
+5. Click "Open advanced settings" icon near the "Stop sharing webcam" button.
+
+6. Click "Stop sharing".
+
+7. The webcam sharing should stop.
 
 ## Screenshare
 
@@ -293,130 +352,153 @@ The screen sharing stops, a sound effect of disconnection is heard and the prese
 
 ### Moderators creating breakout rooms and assiging users
 
-1. Launching create breakout rooms from Manage users (cog wheel in user lists.)
+1. Click "Manage users" (cog wheel icon in the user list).
 
-2. Choosing Number of rooms and duration for the breakout room.
+2. Select "Create breakout rooms".
 
-3. Assigning users in 2 different ways:
+3. "Breakout Rooms" modal should appear.
 
-   3.1 Randomly assigning users to the breakout rooms by clicking on Randomly assign option.
+4. Choose number of rooms and duration.
 
-   3.2 Chosing Drag and drop users to the rooms.
+5. Two ways to assign users: Drag and drop users to the rooms or click "Randomly assign" (it randomly assigns viewers only).
 
-4. Breakout rooms are created and accept invite screen is displayed to all the viewers, while only the moderators who were assigned to rooms manually receive the invite.
+6. Click "Create" button.
 
-5. All the configured settings appear exactly as set in the pre-creation settings.
+7. Viewers: invite screen should pop up. Moderators: "Breakout Rooms" section should appear in the left-hand panel.
 
-### Moderators creating breakout rooms and users Choosing the breakout rooms
+8. Viewers: click "Join room" button, viewer should successfully join the breakout room. Moderators: click "Breakout Rooms", click "Join room" (moderators should only see that button for the rooms they got invited to), moderator should successfully join the breakout room.
 
-1. Launching create breakout rooms from Manage users (cog wheel in user lists.)
+9. All the selected settings are applied to the rooms.
 
-2. Choosing Number of rooms and duration for the breakout room.
+10. Once joined, breakout room label should appear below the user name in the user list of the main room.
 
-3. Selecting allow users to choose a breakout room to join.
+11. In the main room, click "Breakout Rooms". The breakout rooms panel should appear and it should contain the timer for the rooms (according to the duration that was set during the creation of the breakout rooms).
 
-4. Breakout rooms are created and accept invite screen is displayed to users, allowing them to chose the room they want to join.
+### Message to all breakout rooms
 
-5. All the configured settings appear exactly as set in the pre-creation settings.
+1. Click "Manage users" (cog wheel icon in the user list).
+
+2. Select "Create breakout rooms".
+
+3. "Breakout Rooms" modal should appear.
+
+5. Assign users to the room.
+
+6. Click "Create" button.
+
+7. Join the breakout rooms with the users.
+
+8. Moderator: open the breakout rooms panel (click "Breakout Rooms"), type a message into "Message all rooms" textbox and Press Enter / click "Send message" button.
+
+9. Notification "Message was sent to N breakout rooms" (N - number of rooms created) should appear in the main room for the user who sent the message.
+
+10. Public chats in all the breakout rooms should get the message highlighted by a special background color.
+
+### Viewers choosing the breakout rooms
+
+1. Click "Manage users" (cog wheel icon in the user list).
+
+2. Select "Create breakout rooms".
+
+3. "Breakout Rooms" modal should appear.
+
+4. Choose number of rooms and duration. Select the "Allow users to choose a breakout room to join" checkbox.
+
+6. Click "Create" button.
+
+7. Viewers: invite screen should pop up (including the rooms dropdown). Moderators: "Breakout Rooms" section should appear in the left-hand panel.
+
+8. Viewers: select the room using the dropdown, click "Join room", viewer should successfully join the selected breakout room. Moderators: click "Breakout Rooms", click "Ask to join" for the specific room, moderator should successfully join the breakout room.
+
+9. All the selected settings are applied to the rooms.
 
 ### Logout from a Breakout Room
 
-1. In the breakout room, click on the option in the top right corner and selecting logout from breakout room.
+1. Join breakout room.
 
-2. The Breakout Room Tab should close directly after clicking Logout,
-   without getting redirected to the feedback screen.
+2. Click "Options" and then "Leave meeting".
 
-### Joining Breakout room as a Moderator
+3. You should successfully leave the breakout room and shouldn't be redirected to the feedback screen.
 
-1. click on breakout rooms control panel
+### Switch between breakout rooms
 
-2. click join room
+1. Create breakout rooms.
 
-3. choose audio format to join breakout room OR (2) click join audio to toggle audio only.
+2. As moderator, click on the breakout rooms control panel and choose "Ask to join" or "Join room" to join specific room.
 
-4. Onclick on join room, a new window is opened with the name of the room clicked and on onclick on join audio, call icon is highlighting you are now in the audio conferance.
-   (Note : The join audio toggle format only works when the main room has an audio source connected)
+3. Moderator should successfully join the room you chose.
 
-### Switching Breakout rooms
+### Destroy breakout rooms
 
-1. click on breakout rooms control panel and selecting join room and choose audio format to join breakout room.
+1. Join breakout room as moderator.
 
-(Note : In case the free join is enabled)
+2. Inside the breakout rooms control panel ("Breakout Rooms" button in the left-hand panel), select the "Breakout options" dropdown and choose "Destroy breakouts".
 
-2. As a viewer:
+3. All of the breaout rooms should end and all users should get back to the main room. If users already got the audio on, they shouldn't get propmted for the audio modal.
 
-- click on breakout rooms menu
-- click on a room to join
-- join any room
-- go back to the main presentation screen
-- go to BreakoutRooms menu
-- click to join another room
+### Edit the duration of a breakout room
 
-(Note : you're able to join other rooms and with one single Viewer by room)
+1. Join breakout room as moderator.
 
-3. Aa a moderator:
+2. Inside the breakout rooms control panel ("breakout Rooms" button in the left-hand panel), select the "Breakout options" dropdown and choose "Manage duration".
 
-- click on breakout rooms menu
-  -click on a room to join
-  -join any room
-  -go back to the main presentation screen
-  -go to BreakoutRooms menu
-  -click to join another room
+3. Edit the duration and click "Apply".
 
-(Note : you're able to join other rooms and with one single Viewer by room)
-
-4. In case the free join is disabled, repeating the above steps for both the viewers and moderators.
-   (Note: Viewers will not be able to join other rooms but moderators can join any room.)
-
-### End BreakoutRooms
-
-1. Click End all breakoutrooms in the BreakoutRooms control panel.
-
-2. All of the the breakoutrooms end and all of the users are back to
-   the main presentation room and if the User has already Audio ON,
-   he won't get prompted the Audio modal.
+4. The duration of the breakout room should reset. Public chats in all of the breakout rooms should get the message saying "Breakout time is now N minutes" (N - new duration).
 
 ## Audio
 
-### Joining audio
+### Join audio
 
-Click microphone and allow for browser permissions if applicable
-and Verify if you can hear yourself in the echo test and click Yes.
+1. Join a meeting.
 
-- You will be directed to the audio bridge and your microphone and avatar in the users list highlights as you speak.
+2. Click microphone and allow for browser permissions (if applicable).
+
+3. Verify if you can hear yourself in the echo test.
+
+4. Click "Yes".
+
+5. You should be redirected to the meeting and your microphone button and avatar in the in the user list should indicate the you are unmuted.
 
 ### Mute/unmute
 
-Click on microphone icon several times to mute/unmute yourself.
+1. Join a meeting.
 
-- User hear you are now muted/your are now unmuted sound and the microphone stops highlighting when you are muted.
+2. Click microphone and allow for browser permissions (if applicable).
 
-#### As a moderator
+3. Verify if you can hear yourself in the echo test.
 
-Select a user joined with microphone in the Users list and click on mute/unmute user.
+4. Click "Yes".
 
-- You hear you are now muted/your are now unmuted sound and the microphone stops highlighting when you are muted.
-  (Note : In production Moderator cannot unmute other users unless enabled at the account level)
+5. The microphone button should indicate the unmuted state.
 
-### Leaving audio
+6. Click the microphone button several times. You should change between unmuted and muted states and the button should indicate it.
 
-Click on the phone icon to hang up.
+### Leave audio
 
-- User hear the disconnect sound and is no longer in the audio.
+1. Join meeting with audio.
 
-### Cancel Audio Join
+2. Click "Leave audio".
 
-Click on microphone and click 'x' in Audio dialog.
+3. You should hear the disconnect sound and leave audio. "You have left audio conference" notification should appear.
 
-- User will be back to main screen with phone icon unhighlighted.
+### Join without audio
+
+1. Join a meeting.
+
+2. Click "x" in the audio modal.
+
+3. You should be redirected to the meeting and your microphone button should not be highlighted.
 
 ### Listen Only Mode
 
-Click Listen Only and join another user using the microphone.
+1. Join a meeting.
 
-- The Listen Only icon will appears and you hear yourself as you speak (microphone will be picked up from other user).
+2. Click "Listen only" in the audio modal.
 
-### Testing Microphone
+3. You should be redirected to the meeting and your microphone button and user list avatar should indicate that you are in listen only mode.
+
+### Testing microphone
 
 Click on microphone and go through echo test and then click No.
 
@@ -455,220 +537,277 @@ Enable Microphone : This will cause a user name to appear on left top corner of 
 
 - The Talking User should not get muted
 
-## ClosedCaptions
+## Closed Captions
 
-### Start Recording
+### Launch closed captions menu (and toggle the menu)
 
-- Select Start/Stop recording.
+1. Join meeting as moderator.
 
-### Launching Closed Captions Menu
+2. Click "Manage users" (cog wheel icon in user list) and select "Write close captions".
 
-(Note : Only (Presenter/Moderator) can perform launching Closed Captions Menu)
+3. Select the language. Click "Start".
 
-1. Click on manage users icon (cog wheel in users list)
+4. The closed captions button should appear in left-hand menu (above the shared notes) and it should indicate the chosen language.
 
-2. select write closed captions
+5. Type text into closed captions panel.
 
-3. Choose captions language to use
+6. Click on the language button in the closed captions menu.
 
-4. select start
+7. The closed captions menu should close.
 
-5. Type text into closed captions panel
+8. Click on the closed captions button above the shared notes in the left-hand menu.
 
-The Closed Captions is loaded in the selected language and Start dictation button will be highlighting.
+9. The closed captions menu should open.
 
-### ClosedCaptions(CC) formatting tools
+10. Click the same button again.
 
-(Note : Only (Presenter/Moderator) have the ability to use CC formatting tools)
+11. The closed captions menu should close.
 
-1. Launching Closed caption.
+### Closed captions formatting
 
-2. Write text into closed captions panel
+1. Join meeting as moderator.
 
-3. Testing all of the available formatting tools that are available (for example: bold, Italic,..)
+2. Click "Manage users" (cog wheel icon in user list) and select "Write close captions".
 
-Whatever is typed as text, should be shown exactly as presenter/moderator wants it. An element of list should show as element of list, and returning to normal writing should show without any errors. Every single word typed will be shown instantly.
+3. Select the language.
 
-### Viewing/Hiding Closed captions
+4. Type text into closed captions panel.
 
-1. Presenter/Moderator/Viewer can click on (CC) button appearing in the left bottom of the presentation screen to show the Closed Captions
+5. Test all of the available formatting tools that are available (Bold, Italic, ...). Whatever is typed as text should be shown exactly as intended.
 
-2. Choose the language, text and font settings.
+### View/Hide closed captions
 
-3. select on start to begin viewing Closed Captions.
+1. Join as viewer or moderator.
 
-The Closed Captions are appearing in the screen and the (CC) button is highlighting.
+2. Click "Start viewing closed captions" button.
 
-4. Clicking on (CC) button again will hide the Closed Captions.
+3. The closed captions button should be highlighted.
 
-The Closed Captions will not be shown anymore in the screen
-and the (CC) button will be unhighlighted.
+4. Choose the language and other UI settings for closed captions. Click "Start".
+
+5. Join meeting as moderator.
+
+6. Moderator: click "Manage users" (cog wheel icon in user list) and select "Write close captions", then select the language.
+
+7. Moderator: Type text into closed captions panel.
+
+8. User: should see the closed captions on top of the whiteboard. The text should be the same as the one typed by moderator. The closed captions should appear according to the UI settings chosen by the user.
+
+9. User: click the closed captions button.
+
+10. User: closed captions button should not be highlighted anymore, the closed captions should disappear.
 
 ## Whiteboard
 
-### Using Pen tool
+### Use pencil tool
 
-1. Choose pen tool option from whiteboard tools.
+1. Join meeting with two or more users.
 
-2. Draw in the whiteboard area.
+2. Presenter: Click "Tools" whiteboard button.
 
-Presentation should appear on all Clients in sync with updates(PAAC).
+3. Presenter: Select "Pencil".
 
-### Changing pen tool thickness
+4. Presenter: Draw on the whiteboard area.
 
-1. Choose pen tool
+5. All clients should see the drawing.
 
-2. Select line thickness from options
+### Change pencil tool thickness
 
-3. Draw in the whiteboard area
+1. Join meeting with two or more users.
 
-Presentation should appear on all Clients in sync with updates(PAAC).
+2. Presenter: Click "Tools" whiteboard button.
 
-### Changing pen tool colour
+3. Presenter: Select "Pencil".
 
-1. Choose pen tool
+4. Presenter: Click "Drawing thickness" button.
 
-2. select colour from options
+5. Presenter: Select a new thickness.
 
-3. Draw in the whiteboard area
+6. Presenter: Draw on the whiteboard area.
 
-Presentation should appear on all Clients in sync with updates(PAAC).
+7. All clients should see the drawing and the drawing should appear according to the chosed thickness.
+
+### Changing pencil tool colour
+
+1. Join meeting with two or more users.
+
+2. Presenter: Click "Tools" whiteboard button.
+
+3. Presenter: Select "Pencil".
+
+4. Presenter: Click "Colors" button.
+
+5. Presenter: Select a new color.
+
+6. Presenter: Draw on the whiteboard area.
+
+7. All clients should see the drawing and the drawing should be colored accordingly.
 
 ### Use shape tools
 
-1. Selecting different available shape tools such as rectangle, triangle, ellipse , line.
+1. Join meeting with two or more users.
 
-2. Drawing with each shape tool on the whiteboard area.
+2. Presenter: Click "Tools" whiteboard button.
 
-Presentation should appear on all Clients in sync with updates(PAAC).
+3. Presenter: Select available shapes one by one and draw on the whiteboard area. All clients should see the shapes on the whiteboard.
 
-### Changing shape tool thickness and color
+### Change shape tool thickness and color
 
-1. Once, a shape tool is selected, tool thickness or color can be changed from the given option and drawn in the presentation area.
+1. Join meeting with two or more users.
 
-2. Different available shape tools can be selected and their thickness and color can be varied.
+2. Presenter: Click "Tools" whiteboard button.
 
-### Using text tool
+3. Presenter: Select available shapes one by one and draw on the whiteboard area. Change their thickness and color. All clients should see the shapes on the whiteboard with the correct thickness and color.
 
-1. Choose text tool from whiteboard tools
+### Use text tool
 
-2. create a text box
+1. Join meeting with two or more users.
 
-3. Type text on it.
+2. Presenter: Click "Tools" whiteboard button.
 
-Presentation should appear on all Clients in sync with updates(PAAC).
+3. Presenter: Select "Text".
+
+4. Presenter: Adjust the font size and color.
+
+5. Presenter: Create a text box on the whiteboard and type text inside. Click somewhere else on the whiteboard.
+
+6. All clients should see the text inside a text box. The text should appear according to the selected font size and color.
 
 ### Undo last annotation
 
-1. Make annotations in the whiteboard area
+1. Join meeting with two or more users.
 
-2. choose undo last annotation.
+2. Presenter: Click "Tools" whiteboard button, choose annotation and put two such annotations on the whiteboard.
 
-Presentation should appear on all Clients in sync with updates(PAAC).
+3. All clients should see both annotations.
+
+4. Presenter: Click "Undo annotation".
+
+5. All clients should see only the first annotation now.
 
 ### Clear all annotations
 
-1. Make annotations in the whiteboard area
+1. Join meeting with two or more users.
 
-2. choose clear all annotations.
+2. Presenter: Click "Tools" whiteboard button, choose annotation and put two such annotations on the whiteboard.
 
-Presentation should appear on all Clients in sync with updates(PAAC).
+3. All clients should see both annotations.
+
+4. Presenter: Click "Client all annotations".
+
+5. Both annotations should disappear for all clients.
 
 ### Multi-user whiteboard
 
-- As a Presenter, enable multi-user whiteboard and drawing with each client.
+1. Join meeting with two or more users.
 
-  A. Viewers can draw too and Presentation Appears on All Clients in sync with updates.
+2. Presenter: click "Turn multi-user whiteboard on", the button's icon should change and the counter of the current number of viewers should appear.
 
-  - As a viewer erase all whiteboard marks.
-    (Note : Only viewer's whiteboard marks are erased.)
+3. All clients should be able to draw and see each other's changes on the whiteboard.
 
-- As a presenter, disable multi-user whiteboard, viewers can no longer draw.
+3. Join meeting with another viewer.
 
-- As presenter, disable multi-user whiteboard and click on trash icon, all whiteboard marks disappear.
+4. The counter of multi-user whiteboard viewers shouldn't change. The recently joined viewer shouldn't be able to draw.
+
+5. Presenter: click "Turn multi-user whiteboard off", button's icon should change back to normal. All clients shouldn't be able to draw anymore.
+
+6. Presenter: click "Turn multi-user whiteboard on", the button's icon should change and the counter should include the recently joined viewer.
+
+7. All clients should be able to draw and see each other's changes on the whiteboard (including the recently joined viewer).
 
 ## YouTube Video sharing
 
-(Note: Only Presenter can perform below functions.)
+### Start YouTube video sharing
 
-### Starting YouTube Video sharing
+1. Join a meeting.
 
-1. Click on the moderator/presenter action menu (+) button
+2. Presenter: Click on the action ("+" icon) button.
 
-2. Insert a Youtube video link in the popup window appearing on screen.
+3. Presenter: Select "Share an external video".
 
-3. click share a new video button.
+4. Presenter: The popup modal should appear. Paste a YouTube link there.
 
-The Youtube video chosen will be played in the presentation stream.
+5. Presenter: Click "Share a new video".
+
+6. All clients will see the YouTube video playing in the presentation area.
 
 ### Volume/Skipping/Pausing
 
-- Presenter should be available to perform all the available commands/options of the Youtube video such as muting the video, decreasing or increasing the volume and pausing or Resuming the video.
+1. Join a meeting.
 
-The options should work fine as watching a regular youtube video on the Youtube Website.
+2. Presenter: Click on the action ("+" icon) button.
 
-### Playing another Video
+3. Presenter: Select "Share an external video".
 
-1. click on the moderator/presenter action menu (+) button
+4. Presenter: The popup modal should appear. Paste a YouTube link there.
 
-2. Click on stop Sharing Youtube Video
+5. Presenter: Click "Share a new video".
 
-3. Clicking again on the highlighting (+) button
+6. Presenter should be able to perform all the available actions on the YouTube video such as muting, increasing/decreasing the volume, pausing/resuming.
 
-4. Sharing youtube video
-
-5. Insert a youtube video link in the popup window appearing on screen.
-
-6. click share a new video button.
-
-The current playing video will stop, and the presentation returns to show the current slide and after clicking share a new video button, the new video will start playing.
+7. The result of those actions should be visible for all clients.
 
 ### Stoping Youtube Video Sharing
 
-1. Click on the moderator/presenter action menu (+) button
+1. Join a meeting.
 
-2. Click stop Sharing Youtube Video.
+2. Presenter: Click on the action ("+" icon) button.
 
-The current playing video will stop, and the presentation returns
-to show the current slide.
+3. Presenter: Select "Share an external video".
+
+4. Presenter: The popup modal should appear. Paste a YouTube link there.
+
+5. Presenter: Click "Share a new video".
+
+6. All clients will see the YouTube video playing in the presentation area.
+
+7. Presenter: Click on the action ("+" icon) button.
+
+8. Presenter: Select "Stop sharing external video".
+
+9. All clients will see the video disappear and the presentation visible again.
+
+### Playing another Video
+
+1. Join a meeting.
+
+2. Presenter: Click on the action ("+" icon) button.
+
+3. Presenter: Select "Share an external video".
+
+4. Presenter: The popup modal should appear. Paste a YouTube link there.
+
+5. Presenter: Click "Share a new video".
+
+6. All clients will see the YouTube video playing in the presentation area.
+
+7. Presenter: Click on the action ("+" icon) button.
+
+8. Presenter: Select "Stop sharing external video".
+
+9. Presenter: Click on the action ("+" icon) button.
+
+10. Presenter: Select "Share an external video".
+
+11. Presenter: The popup modal should appear. Paste a new YouTube link there.
+
+12. Presenter: Click "Share a new video".
+
+13. All clients will see the new YouTube video playing in the presentation area.
 
 ## Shared Notes
 
 ### Using shared notes panel
 
-(Note: Only Presenter/Moderator can perform this function.)
+1. Join a meeting with two or more users.
 
-1. Select shared notes to open panel.
+2. Click "Shared Notes" on the left-hand panel.
 
-2. Begin writing in the shared notes panel.
+3. Start writing in the opened shared notes panel.
 
-Notification appears to indicate share notes is in use, viewers/other users should see content updating when they open and view shared notes from their local interface.
+4. Notification should appear on the "Shared Notes" button for those users whose shared notes panel is closed.
 
-### Using shared notes formatting tools
-
-(Note: Only Presenter/Moderator can perform this function.)
-
-1. Type in the shared notes panel
-
-2. Use the available formatting tools (such as bold, italic, underlined etc.)
-
-3. Make a bulleted list
-
-4. Make a numbered list
-
-Viewers/other users should see content updating when they open or view the shared notes from their local interface
-
-### Use/contribute to shared notes
-
-1. As a viewer, select shared notes to open panel.
-
-2. Begin writing in the shared notes panel.
-
-Shared notes should update with edits or contributions made by viewers/other users.
-
-### Local view
-
-- Viewer and other moderators local view, should see a notification to indicate Shared Notes are in use.
+4. After opening the shared notes panel, all clients should see the writing as well. The username will appear near the test that user is currently typing.
 
 ### Exporting Shared notes
 
@@ -680,259 +819,371 @@ Shared notes should update with edits or contributions made by viewers/other use
 
 Share notes should export and download in the chosen format.
 
+### Using shared notes formatting tools
+
+1. Join a meeting with two or more users.
+
+2. Click "Shared Notes" on the left-hand panel.
+
+3. Use the available formatting tool (Bold, Italic, etc.).
+
+4. Make a bulleted list.
+
+5. Make a numbered list.
+
+6. After opening the shared notes panel, all clients should see the text according to the formatting.
+
 ## Lock Settings
 
 ### Webcam
 
-1. As a moderator, click on the manage users list cog
+1. Join meeting with moderators and viewers.
 
-2. Click on ON/OFF Webcam
+2. All users start sharing webcams.
 
-3. As a Viewer, try to click or enable Webcam(turn ON) and Viewers whose Webcams are ON, automatically turns OFF for all Viewers.
+3. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
 
-- Once Webcam Lock is turned ON, none of the Viewers is able to turn ON their Webcams and all the Viewers Webcams already turned ON should all turn OFF.
+4. Moderator: "Lock viewers" modal should appear.
 
-4. As a new Viewer joins, he shouldn't be able to turn
-   ON his Webcam
+5. Moderator: toggle "Share webcam" (it becomes "Locked"), click "Apply".
 
-- All the newly joining Viewers should get affected with the Webcam Lock Setting
+6. "Viewers' webcams are disabled" notification should appear for all users.
 
-5. As a moderator, try to turn ON/OFF their Webcams.
+7. Viewer's webcam should stop sharing and the webcam button should be disabled.
 
-- Moderator should be able to turn ON/OFF their webcams.
+8. Join meeting with a new viewer.
 
-6. Checking if a demoted Moderator, should not be able to turn
-   ON his Webcam, and if already with Webcam turned ON, it should automatically turn OFF.
+9. New viewer: webcam button should be disabled.
 
-Note : All the newly joining Moderators should be freely able to turn ON/OFF their Webcams
+10. Join meeting with a new moderator.
+
+11. New moderator: should be able to share a webcam.
+
+12. Moderator: demote another moderator (click on the user name in the user list and select "Demote to viewer".
+
+13. Demoted moderator: webcam button should be disabled.
+
+14. Moderator: promote a viewer (click on the user name in the user list and select "Promote to moderator").
+
+15. Promoted viewer: should be able to share a webcam.
+
+16. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
+
+17. Moderator: "Lock viewers" modal should appear.
+
+18. Moderator: toggle "Share webcam" (it becomes "Unlocked"), click "Apply".
+
+19. Viewer: should be able to share a webcam.
+
+20. Join meeting with a new viewer.
+
+21. New viewer: should be able to share a webcam.
 
 ### See other viewers webcams
 
-1.  Click on the user list cog
+1. Join meeting with moderators and viewers.
 
-2.  click ON/OFF Webcam as a Moderator and as a Viewer
+2. All users start sharing webcams.
 
-3.  check if a Viewer can see other Viewers Webcams
+3. Each user should see all webcams.
 
-4.  check if a Viewer can see Moderators Webcams
+4. Moderator: demote another moderator (click on the user name in the user list and select "Demote to viewer").
 
-5.  check if a demoted Moderator Webcam is visible to other Viewers and if he can see other Viewers Webcams
+5. Each user should see all webcams.
 
-6.  check if a promoted Viewer is now able to see other Viewers Webcams
+6. Moderator: promote a viewer (click on the user name in the user list and select "Promote to moderator").
 
-- Once See other Viewers Webcams is turned ON, none of the Viewers can see other Viewers Webcams
+7. Each user should see all webcams.
 
-- All the promoted Viewers can see the other Viewers Webcams
+8. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
 
-- All the demoted Viewers aren't able to see the other Viewers Webcams
+9. Moderator: "Lock viewers" modal should appear.
 
-- All the newly joining Moderators should be freely able to see other Viewers Webcams
+10. Moderator: toggle "See other viewers webcams" (it becomes "Locked"), click "Apply".
 
-- All the newly joining Viewers should be unable to see other Viewers Webcams.
+11. All users should see "Only moderators are able to see users' webcams (due to lock settings)" notification.
+
+12. Nothing should change for moderators, while viewers shouldn't be able to see other viewers' webcams (each viewer should still see own webcam).
+
+13. Moderator: promote a viewer (click on the user name in the user list and select "Promote to moderator").
+
+14. Promoted viewer: should be able to see other viewers' webcams.
+
+15. Moderator: demote another moderator (click on the user name in the user list and select "Demote to viewer").
+
+16. Demoted moderator: shouldn't be able to see other viewers' webcams (should still see own webcam).
+
+17. Join meeting with a new viewer.
+
+18. New viewer: shouldn't see other viewers' webcams (should still see own webcam).
+
+19. Join meeting with a new moderator.
+
+20. New moderator: should see all webcams.
+
+21. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
+
+22. Moderator: "Lock viewers" modal should appear.
+
+23. Moderator: toggle "See other viewers webcams" (it becomes "Unlocked"), click "Apply".
+
+24. All users should see "You can enable your webcam now, everyone will see you" notification.
+
+25. Each user should see all webcams again.
 
 ### Microphone
 
-1. Click on the user list cog
+1. Join meeting with moderators and viewers, all - with audio.
 
-2. Click ON/OFF Webcam as a Moderator and as a Viewer
+2. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
 
-3. Check if a Viewer can join the audio conferance with
-   Microphone or not
+3. Moderator: "Lock viewers" modal should appear.
 
-4. Check if a Viewer can click to join conferance with
-   Microphone or not
+4. Moderator: toggle "Share microphone" (it becomes "Locked"), click "Apply".
 
-5. Check if a demoted Moderator is affected with the Lock of
-   the use of the Microphone or not
+5. All users should see "Viewers' microphones are disabled" notification.
 
-6. Check if a promoted Viewer is affected with the Lock of
-   the use of the Microphone or not.
+6. Nothing should change for moderators, mute/unmute button should disappear for viewers.
 
-- Once Microphone Lock is enabled, none of the Viewers can use his Microphone
+7. Moderator: demote another moderator (click on the user name in the user list and select "Demote to viewer").
 
-- All the promoted Viewers can unmute their Microphones
+8. Demoted moderator: mute/unmute button should disappear.
 
-- All the demoted Moderators can't unmute their Microphones
+9. Moderator: promote a viewer (click on the user name in the user list and select "Promote to moderator").
 
-- All the newly joining Moderators should be freely able to mute/unmute their Microphones
+10. Promoted viewer: mute/unmute button should appear and it should be possible to mute/unmute.
 
-- All the newly joining Viewers should be unable to unmute their Microphones.
+11. Join meeting as moderator.
+
+12. New moderator: should be able to mute/unmute.
+
+13. Join meeting as viewer.
+
+14. New viewer: mute/unmute button shouldn't appear.
+
+15. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
+
+16. Moderator: "Lock viewers" modal should appear.
+
+17. Moderator: toggle "Share microphone" (it becomes "Unlocked"), click "Apply".
+
+18. All users should see "Viewers' microphones are enabled" notification.
+
+19. All users should be able to join audio or mute/unmute now.
 
 ### Public chat
 
-1. Click on the user list cog
+1. Join meeting with moderators and viewers.
 
-2. Click on Public Chat Tab as a Moderator and as a Viewer
+2. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
 
-3. Check if a Viewer can write a message in the Public Chat
-   box
+3. Moderator: "Lock viewers" modal should appear.
 
-4. Check if a Viewer can click the Send Message Button
+4. Moderator: toggle "Send Public chat messages" (it becomes "Locked"), click "Apply".
 
-5. Check if a demoted Moderator can send a message in
-   Public Chat
+5. All users should see "Public chat is disabled" notification.
 
-6. Check if a promoted Viewer can send a message in Public
-   Chat
+6. Nothing should change for moderators, they should still be able to send public chat messages. Viewers should see the public chat textbox disabled and "Chat is locked, messages can't be sent" text below the textbox.
 
-- Once Public Chat Lock is enabled, none of the Viewers can send a Public Chat
-  message
+7. Moderator: demote another moderator (click on the user name in the user list and select "Demote to viewer").
 
-- All the promoted Viewers can send a Public Chat messages
+8. Demoted moderator: should see the public chat textbox disabled and "Chat is locked, messages can't be sent" text below the textbox.
 
-- All the demoted Moderators can't send a Public Chat message
+9. Moderator: promote a viewer (click on the user name in the user list and select "Promote to moderator").
 
-- All the newly joining Moderators should freely be able to send messages in Public Chat
+10. Promoted viewer: should be able to send public chat messages.
 
-- All the newly joining Viewers should be unable to send Public Chat messages
+11. Join meeting as moderator.
+
+12. New moderator: should be able to send public chat messages.
+
+13. Join meeting as viewer.
+
+14. New viewer: should see the public chat textbox disabled and "Chat is locked, messages can't be sent" text below the textbox.
+
+15. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
+
+16. Moderator: "Lock viewers" modal should appear.
+
+17. Moderator: toggle "Send Public chat messages" (it becomes "Unlocked"), click "Apply".
+
+18. All users should see "Public chat is enabled" notification.
+
+19. All users should be able to send public chat messages now.
 
 ### Private chat
 
-1. Click on the user list cog
+1. Join meeting with moderators and viewers.
 
-2. Click on a Viewer to Private Chat him
+2. Start private chats between viewer and viewer, moderator and viewer, moderator and moderator.
 
-3. Check if a Viewer can send a Private Chat message to
-   another Viewer
+3. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
 
-4. check if on Viewer's click on another Viewer, there will be
-   Start Private Chat button displaying or not
+4. Moderator: "Lock viewers" modal should appear.
 
-5. Check if a demoted Moderator can send Private Chat
-   message or not to another Viewer
+5. Moderator: toggle "Send Private chat messages" (it becomes "Locked"), click "Apply".
 
-6. Check if an already open Private Chat Tab with another
-   Viewer is still open or not
+6. All users should see "Private chat is disabled" notification.
 
-7. Check if a promoted Viewer is now able to send
-   Private Chat message or not
+7. Nothing should be changed for moderators and for the private chats between viewer and moderator. Viewers shouldn't be able to send private messages to other viewers (textbox disabled). Viewers should still be able to send private messages to moderators.
 
-- Once Private Chat Lock is enabled, none of the Viewers can send Private Chat messages to others Viewers anymore
+8. Moderator: demote another moderator (click on the user name in the user list and select "Demote to viewer").
 
-- All the promoted Viewer can send a Private Chat messages to the Viewers
+9. Demoted moderator: shouldn't be able to send private chat messages to viewrs.
 
-- All the demoted Moderators can not send anymore Private Chat messages to the other Viewers
+10. Moderator: promote a viewer (click on the user name in the user list and select "Promote to moderator").
 
-- All the newly joining Moderators should freely be able to send messages in Private Chat to the Viewers
+11. Promoted viewer: should be able to send private chat messages to viewers and moderators.
 
-- All the newly joining Viewers should be unable to send Private Chat messages to the other Viewers
+12. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
 
-- On a Viewer click on another Viewer, he should not be able to see any available user option
+13. Moderator: "Lock viewers" modal should appear.
 
-- On a Moderator click on a Viewer, he should be able to see the user options
+14. Moderator: toggle "Send Private chat messages" (it becomes "Unlocked"), click "Apply".
 
-- If there was an existing open private chat tab between 2 users, they should be unavailable to Viewers when the Lock is enabled.
+15. All users should see "Private chat is enabled" notification.
+
+16. All private chats should get back to normal.
 
 ### Shared notes
 
-1. Click on the user list cog
+1. Join meeting with moderators and viewers.
 
-2. Click on a Shared Notes as a Viewer
+2. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
 
-3. Check if a Viewer can write in Shared Notes
+3. Moderator: "Lock viewers" modal should appear.
 
-4. Check if on click on Shared Notes a Viewer can Export
-   the Shared Notes
+4. Moderator: toggle "Edit Shared Notes" (it becomes "Locked"), click "Apply".
 
-5. Check if a demoted Moderator can write in Shared Notes
+5. All users should see "Shared notes are now locked" notification.
 
-6. Check if a Viewer is already able to write in Shared Note at Shared Notes Lock, it should reload for him with avoiding him to write in Shared notes or even see the writing tools
+6. Nothing should change for moderators, they should still be able to use shared notes. Viewers shouldn't be able to edit shared notes (when you click "SHared Notes", the panel opens, but the editor isn't loaded).
 
-7. Check if at a Viewer promotion to Moderator, the Shared Note should reload for him with granting him access to write in Shared Notes.
+7. Moderator: demote another moderator (click on the user name in the user list and select "Demote to viewer").
 
-- Once Shared Notes Lock is enabled, none of the Viewers is able to write or to modify
-  text neither
+8. Demoted moderator: shouldn't be able to edit shared notes (when you click "SHared Notes", the panel opens, but the editor isn't loaded).
 
-- All the promoted Viewers can write in Shared Notes
+9. Moderator: promote a viewer (click on the user name in the user list and select "Promote to moderator").
 
-- All the demoted Moderators can not write in Shared Notes
+10. Promoted viewer: should be able to use shared notes.
 
-- All the newly joining Moderators should freely be able to write in Shared Notes
+11. Join meeting as moderator.
 
-- All the newly joining Viewers should be unable to write in Shared Notes or to use the writing tools neither.
+12. New moderator: should be able to use shared notes.
+
+13. Join meeting as viewer.
+
+14. New viewer: shouldn't be able to edit shared notes (when you click "SHared Notes", the panel opens, but the editor isn't loaded).
+
+15. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
+
+16. Moderator: "Lock viewers" modal should appear.
+
+17. Moderator: toggle "Edit Shared Notes" (it becomes "Unlocked"), click "Apply".
+
+18. All users should see "Shared notes are now enabled" notification.
+
+19. All users should be able to use shared notes now.
 
 ### See other viewers in the Users list
 
-1. Click on the user list cog
+1. Join meeting with moderators and viewers.
 
-2. Check if a Viewer can see other Viewers in the Users list
+2. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
 
-3. Check if a Viewer can see Moderators in the Users list
+3. Moderator: "Lock viewers" modal should appear.
 
-4. Check if a demoted Moderator is able to see other Viewers
-   in the Users list
+4. Moderator: toggle "See other viewers in the Users list" (it becomes "Locked"), click "Apply".
 
-5. Check if a promoted Viewer is now able to see other
-   Viewers in the Users list
+5. All users should see "User list is now hidden for viewers" notification.
 
-- Once See other viewers in the Users list is turned ON, none of the Viewers can see
-  other Viewers in Users list
+6. Nothing should change for moderators, they should still be able to see all users in the user list. Viewers shouldn't be able to see other viewers in the user list.
 
-- All the promoted Viewers can see the other Viewers in the Users list
+7. Moderator: demote another moderator (click on the user name in the user list and select "Demote to viewer").
 
-- All the demoted Viewers aren't able to see the other Viewers in the Users list
+8. Demoted moderator: shouldn't be able to see other viewers in the user list.
 
-- All the newly joining Moderators should be freely able to see other Viewers in the Users list
+9. Moderator: promote a viewer (click on the user name in the user list and select "Promote to moderator").
 
-- All the newly joining Viewers should be unable to see other Viewers in the Users list
+10. Promoted viewer: should be able to see all users in the user list.
+
+11. Join meeting as moderator.
+
+12. New moderator: should be able to see all users in the user list.
+
+13. Join meeting as viewer.
+
+14. New viewer: shouldn't be able to see other views in the user list.
+
+15. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
+
+16. Moderator: "Lock viewers" modal should appear.
+
+17. Moderator: toggle "Edit Shared Notes" (it becomes "Unlocked"), click "Apply".
+
+18. All users should see "Shared notes are now enabled" notification.
+
+19. All users should be able to use shared notes now.
 
 ### Unlock a specific user
 
-1. Click on the user list cog
+1. Join meeting with viewers and moderators.
 
-2. Block some feature
+2. Moderator: click on the cog wheel icon in the user list, select "Lock viewers".
 
-3. Go back to users list
+3. Moderator: "Lock viewers" modal should appear.
 
-4. Click in a user and select unlock user
+4. Moderator: toggle one of the lock setting (it becomes "Locked"), click "Apply".
 
-- You can completely unlock a specific student and let the others locked yet
+5. Moderator: click on a vewer's user name in the user list, then select "Unlock User [user name]".
 
-- The unlocked user must have all features unlocked and other users must keep locked
+6. Unlocked user: should be able to use the features that were previously unlocked.
+
+7. Locked user: should still see the features locked.
 
 ## Chat (Public/Private)
 
 ### Public message
 
-1. Click on Public Chat Tab
+1. Join meeting with viewers and moderators.
 
-2. Type a message in the text box
+2. Click on "Public Chat" tab (if the public chat tab was closed).
 
-3. Press Enter key or click the send button
+3. Type a message in the public chat's textbox.
 
-A message should be sent to the public channel and can be seen by any type of user.
+4. Press Enter key or click "Send message" button.
+
+5. All users should see the message.
 
 ### Private message
 
-1. Click on any available user
+1. Join meeting with viewers and moderators.
 
-2. Click on Start a Private Chat
+2. Click on any available user's user name in the user list, then select "Start a private chat".
 
-3. Type a message in private chat text box
+3. Private chat message panel should open.
 
-4. Press enter or click on send button.
+4. Type a message in the textbox.
 
-A private message will be sent to the user we chose from the online users, and its been sent in a new message tab with the name of the selected user.
+5. Press Enter key or click "Send message" button.
+
+6. Another user should see the private chat message tab and a message counter notification. After clicking on the tab, user should see the private message. 
 
 ### Chat Character Limit
 
-1. Click on public chat tab
+1. Join meeting.
 
-2. Enter max number of characters (max message length is 5000 per single message)
+2. Enter maximum number of characters in the public chat textbox (the limit is 5,000 characters per single message).
 
-A Warning message should appear to inform user message is over max limit.
+3. Warning should appear to inform about the character limit and you shouldn't be able to send the message.
 
 ### Sending Empty chat message
 
-1. Click on public chat tab
+1. Join meeting.
 
-2. Hit enter or select send
+2. Focus on the public chat textbox. Press Enter or click "Send message" button.
 
-3. Type in public chat and erase
-
-4. Press enter or select send button.
-
-Message will not be send and a warning message will be displayed "The message is 1 characters(s) too short"
+3. You shouldn't be able to send an empty chat message.
 
 Note :
 
@@ -946,52 +1197,70 @@ Note :
 
 ## Polling
 
-### Starting a Polling
+### Start a single-choice poll
 
-(Presenter feature)
+1. Join meeting
 
-1. As a presenter, click on the presenter menu (+) button in the bottom left corner of the screen
+2. Presenter: click on the presenter menu ("+" icon) button, select "Start a poll".
 
-2. click Start Poll
+3. Presenter: Select one of the response types.
 
-3. Choose one of the Poll options
+4. Presenter: you can edit the responses (modify, add new one, delete).
 
-4. wait for Poll votes by the users.
+4. Poll popup should appear for all users except the presenter. Sound effect notification should play. Make the selection.
 
-5. Click on Publish Poll Results
+5. Presenter: live poll results panel should show up, indicating the overall results and how each user responded.
 
-- A Poll will show up for all of the available
-  users except the Presenter
-- A sound effect notification is heard to notify all of the available Viewers/Moderators that there is a Live Poll and the options to vote
-  on it are available.
-- A live Poll Results Tab will show up to the presenter.
+5. Presenter: click "Publish poll".
 
-### Sending Poll votes
+6. Poll results will show up in public chat and presentation area for all users.
 
-(Moderator/viewer feature)
+### Start a multiple-choice poll
 
-1. As a viewer/user, Click one of the available Poll options
-   from the Poll Options Card showing in the Bottom Left corner of the Presentation.
+1. Join meeting
 
-- After hearing the Notification sound effect, Poll Vote Options are shown in the bottom right corner of the screen.
+2. Presenter: click on the presenter menu ("+" icon) button, select "Start a poll".
 
-### Publishing Poll Results
+3. Presenter: Select one of the response types.
 
-(Presenter feature)
+4. Presenter: you can edit the responses.
 
-1. As a presenter, wait for the submissions of the Poll votes
+5. Presenter: enable the "Allow multiple answers per" checkbox.
 
-2. click on Publish polling results.
+6. Poll popup should appear for all users except the presenter. Sound effect notification should play. Each user should be able to make multiple selections.
 
-- Poll Results displays in the live results table will show in the presentation to all of the available Viewers/Moderators in the bottom right corner of the presentation.
+7. Presenter: live poll results panel should show up, indicating the overall results and how each user responded (each of the user's multiple responses should be counted).
+
+8. Presenter: click "Publish poll".
+
+9. Poll results will show up in public chat and presentation area for all users.
+
+### Start an anonymous poll
+
+1. Join meeting
+
+2. Presenter: click on the presenter menu ("+" icon) button, select "Start a poll".
+
+3. Presenter: Select one of the response types.
+
+4. Presenter: you can edit the responses.
+
+5. Presenter: enable "Anonymous Poll".
+
+4. Poll popup should appear for all users except the presenter. Sound effect notification should play. Make the selection.
+
+5. Presenter: live poll results panel should show up, without the information on how each user responded.
+
+5. Presenter: click "Publish poll".
+
+6. Poll results will show up in public chat and presentation area for all users.
+
 
 ### Custom Poll
 
-(Presenter feature)
+1. Click on the options (+) button in the bottom left corner of the whiteboard area.
 
-1. Click on the highlighting (+) button in the bottom left corner of the screen
-
-2. click Start Poll
+2. Click "Start a poll".
 
 3. select Custom Poll
 
@@ -1003,21 +1272,6 @@ Note :
 - A sound effect notification is heard to notify all of the available Viewers/Moderators that there is a Live Poll and the options to vote
   on it are available
 - A live Poll Results Tab will show up to the presenter.
-
-### Loading Poll from files
-
-(Presenter feature)
-
-1. Click on the highlighting (+) button in the bottom left corner of the presentation screen
-
-2. Click upload a Presentation
-
-3. Load your Quick Poll file
-
-4. Click upload
-
-- The custom Quick Poll file uploaded is displaying in the Presentation screen
-- A Quick Poll button is highlighting in the bottom left corner of the Presentation screen.
 
 ### Quick Poll Option
 
@@ -1047,49 +1301,41 @@ Note :
 
 ## User list settings
 
-### Set status
+### Set status / Raise hand
 
-(Viewer: Set Status/Raise hand)
-
-1. As a viewer, select your user icon from user list
+1. Viewer: select your user icon from user list
 
 2. From menu options choose set status
 
 3. Set a status/raise hand.
 
-- Icon in the users list will update to display emoticon chosen by the user, when status is set by a user the moderator will see their user icon move to the top of the list.
+4. Icon in the users list should update to display emoticon chosen by the user, when status is set by a user the moderator will see their user icon move to the top of the list.
 
 ### Clear status
 
-(Moderator: Clear all status icon)
-
-1. Select manage users icon (cog wheel in users list)
+1. Select manage users icon (cog wheel icon in users list)
 
 2. choose clear all status icons.
 
-- All status icons in the users list will clear.
+3. All status icons in the users list should clear.
 
 ### Mute users
 
-(Moderator: Mute all Users)
-
-1. Select manage users icon (cog wheel in users list)
+1. Moderator: select manage users icon (cog wheel icon in users list)
 
 2. In lock viewers, select share microphone is locked.
 
 3. Click apply.
 
-- All users (moderator/presenter included) who are already joined in the client with a functioning mic will be muted (if unmuted) and unable to unmute their mics. All users (moderator/presenter included) who join after setting is applied will be automatically joined listen only with no mic options available.
+4. All users (moderator/presenter included) who are already joined in the client with a functioning mic will be muted (if unmuted) and unable to unmute their mics. All users (moderator/presenter included) who join after setting is applied will be automatically joined listen only with no mic options available.
 
 ### Unmute users
 
-(Moderator: Undo mute all users)
-
-1. Select manage users icon (cog wheel in users list)
+1. Moderator: select manage users icon (cog wheel in users list)
 
 2. In lock viewers, click share microphone to unlock in the status and click apply.
 
-- All users will remain muted until they unmute themselves. All users who enter after the meeting mute is removed will have the option to join with a mic
+3. All users will remain muted until they unmute themselves. All users who enter after the meeting mute is removed will have the option to join with a mic
 
 ### Mute and unmute users except Presenter
 
@@ -1107,62 +1353,60 @@ Note :
 
 2. Choose lock viewers and selecting shared microphone is unlocked and undo meeting mute.
 
-- All users will remain muted until they unmute themselves. All users who enter after the meeting mute is removed will have the option to join with a mic
+3. All users will remain muted until they unmute themselves. All users who enter after the meeting mute is removed will have the option to join with a mic
 
 ### Saving Usernames
 
-(Moderator: Save user names)
+1. Moderator: Select manage users icon (cog wheel in users list)
 
-1. Select manage users icon (cog wheel in users list)
+2. Moderator: Choose save user names.
 
-2. Choose save user names.
-
-- Users list names will download as a TXT based document to local device.
+3. Users list names will download as a TXT based document to local device.
 
 ### Shared Notes
 
-As a moderator:
+1. Moderator: Select manage users icon (cog wheel in users list).
 
-1. Select manage users icon (cog wheel in users list)
+2. Moderator: Choose lock viewers.
 
-2. Choose lock viewers
+3. Moderator: Lock shared notes.
 
-3. Lock shared notes
+4. Moderator: exit menu.
 
-4. exit menu
+5. Viewer: Open shared notes panel.
 
-As a viewer:
-
-1. Open shared notes panel
-
-2. Attempt to contribute to shared notes to confirm if it's locked.
+6. Viewer: Attempt to contribute to shared notes to confirm if it's locked.
 
 ## Options menu
 
 ### Access Options Menu
 
-1. Clicking on Option Menu in top right (three dots)
+1. Join meeting.
 
-- A dropdown list appears with a list of
-  available commands.
+2. Click on the "Options" button in the top-right corver of the client (three dots icon).
+
+3. Dropdown list should appear with a list of available options.
 
 ### Make Full screen
 
-1. Click on Make Full-screen in the Options Menu
+1. Click "Make fullscreen".
 
-- The Presentation goes in Full Screen Mode
+2. The client should got to full screen mode.
 
 ### Settings
 
-1. Click on Settings in the Options Menu
+1. Click "Settings" in the Options dropdown menu.
 
-- Settings screen appears with serval options.
+2. Settings modal should appear.
 
 ### Application Settings
 
 #### A. Animations
 
-1.  click on the [On/Off] the switch button
+(Inside the Settings modal)
+
+1. Click on the [On/Off] the switch button
+
 2.  Enable/Disable Animations
 3.  click Save to Validate your new Settings
 
@@ -1170,61 +1414,71 @@ As a viewer:
 
 #### B. Audio Alerts for Chat
 
-1.  Click on the [On/Off] the switch button to Enable/Disable Audio Alerts for Chat
+(Inside the Settings modal)
 
-2.  Click Save to Validate your new Settings.
+1. Click on the [On/Off] the switch button to Enable/Disable Audio Alerts for Chat
 
-- The beeps alerts for chat are now Disabled/Enabled
+2. Click Save to Validate your new Settings.
+
+3. The beeps alerts for chat are now Disabled/Enabled
 
 #### C. Popup Alerts for Chat
 
-1.  click on the [On/Off] the switch button to Enable/Disable Popup alerts for Chat
+(Inside the Settings modal)
 
-2.  click Save to Validate your new Settings.
+1. Click on the [On/Off] the switch button to Enable/Disable Popup alerts for Chat
 
-- The Popup Alerts for Chat are now Disabled/Enabled.
+2. Click Save to Validate your new Settings.
+
+3. The Popup Alerts for Chat are now Disabled/Enabled.
 
 #### D. Application Language
 
-1.  click on the Application Language Options List
+(Inside "Application" section of the Settings modal)
 
-2.  choose a language from the dropdown list
+1. Click on the Application Language Options List
 
-3.  click Save to Validate your new Settings
+2. Choose a language from the dropdown list
 
-- The screen quickly reloads to apply the language change action
+3. Click Save to Validate your new Settings
+
+4. The screen quickly reloads to apply the language change action
 
 #### E. Font Size
 
-1.  click on (+) or (-) buttons to increase or decrease the font size of Presentation
+(Inside the Settings modal)
 
-2.  click Save to Validate your new Settings
+1. Click on (+) or (-) buttons to increase or decrease the font size of Presentation.
 
-- The font size increases/decreases according to the set percentage
+2. Click Save to Validate your new Settings.
+
+3. The font size increases/decreases according to the set percentage.
 
 ### Data Savings Settings
 
+(Inside the Settings modal)
+
 #### A. Enable/Disable Webcams
 
-1.  click on the [On/Off] the switch button to Enable/Disable Webcams
+1. Click on the [On/Off] the switch button to enable/disable Webcams.
 
-2.  click Save to Validate your new Settings
+2. Click Save to Validate your new Settings.
 
-- The Webcams are now Disabled/Enabled
+3. The Webcams should now be disabled/enabled.
 
 #### B. Enable/Disable Desktop Sharing
 
-1.  click on the [On/Off] the switch button to Enable/Disable Desktop Sharing
+1. Click on the [On/Off] the switch button to enable/disable desktop sharing.
 
-2.  click Save to Validate your new Settings.
+2. Click Save to Validate your new Settings.
 
-- Desktop Sharing is Disabled/Enabled
+3. Desktop Sharing is disabled/enabled.
 
 ### Shortcut keys
 
 #### Keyboard Shortcuts
 
-1. click on the Keyboard Shortcuts in the options menu.
+1. Click on the Keyboard Shortcuts in the options menu.
 
 2. Press the below keys to get the desired results.
 
@@ -1244,24 +1498,90 @@ As a viewer:
 - Right Arrow ------> Next slide (Presenter)
 - Left Arrow ------> Previous slide (Presenter)
 
-### Log out
+### Leave meeting
 
-1.  Click on Options Menu in top right (three dots)
+1. Join meeting.
 
-2.  Select log out.
+2. Click "Options" button in top-right corner (three dots icon).
 
-- User who selects log out is only user who is disconnected from the meeting and a feedback should prompt to the user
+3. Select "Leave meeting".
 
-#### (For Moderator) : End meeting on log out
+4. You should be disconnected from the meeting and a feedback should prompt should be displayed.
 
-1. Click on Options Menu in top right (three dots)
+### End meeting
 
-2. Select end meeting and choose yes.
+1. Join meeting as moderator.
 
-   - All users kicked from meeting, meeting feedback form appears and meeting ends
+2. Click "Options" button in top-right corner (three dots icon).
 
-## Guest Management
+3. Select "End meeting" and choose "Yes".
+
+4. All users should be kicked from meeting, meeting feedback form should appear and meeting should end.
+
+## Guest Policy
+
+### Always deny
+
+1. Join meeting as moderator.
+
+2. Moderator: click on the cog wheel icon in the user list, select "Guest policy".
+
+3. Moderator: "Guest policy" modal should appear.
+
+4. Moderator: choose "Always deny".
+
+5. Try to join the meeting as moderator. Moderators should be able to join.
+
+6. Try to join the meeting as viewer. Viewers should be denied and redirected to home page.
+
+7. Moderator: click on the cog wheel icon in the user list, select "Guest policy".
+
+8. Moderator: "Guest policy" modal should appear.
+
+9. Moderator: choose "Always accept".
+
+10. Try to join the meeting with moderator and with viewer. All users should be able to join.
+
+### Ask moderator
+
+1. Join meeting as moderator.
+
+2. Moderator: click on the cog wheel icon in the user list, select "Guest policy".
+
+3. Moderator: "Guest policy" modal should appear.
+
+4. Moderator: choose "Ask moderator".
+
+5. "Waiting Users" tab should appear above the user list for all moderators.
+
+6. Moderator: click "Waiting Users" tab, the waiting users panel should open and include "Currently no pending users..." label.
+
+7. Try to join the meeting as moderator. Moderators should be able to join bypassing lobby.
+
+8. Try to join the meeting as viewer. You should get into a lobby screen indicating your position in the queue.
+
+9. Moderator: the waiting users panel should be populated with the list of pending viewers and options of how to proceed (if the panel is closed, the pending users counter should appear on top of the "Waiting Users" tab).
+
+10. Moderator: type in the textbox, press Enter or click "Send" button. The message should be visible to all waiting viewers on their lobby screens (as well as in the moderator's waiting users panel).
+
+11. Moderator: click "Message" for a specific viewer in the list, type in the textbox, press Enter or click "Send" button. The message should appear only for that cpecific viewer.
+
+- Click "Deny everyone". All the waiting viewers should see the message "Guest denied of joining the meeting" and should soon be redirected to the home page. All new viewers should not be effected by this, but instead they should be placed in the waiting lobby.
+
+- Select "Remember choice" and click "Deny everyone". All the waiting viewers should see the message "Guest denied of joining the meeting" and should soon be redirected to the home page. "Always deny" option should become current in the waiting users modal and all new viewers should be redirected to the home page.
+
+- Click "Allow everyone". All the waiting viewers should successfully join the meeting. All new viewers should not be effected by this, but instead they should be placed in the waiting lobby.
+
+- Select "Remember choice" and click "Allow everyone". All the waiting viewers should successfully join the meeting. "Always allow" option should become current in the waiting users modal and all new viewers should be able to join bypassing the waiting lobby.
+
+- Click "Accept" for the specific user in the waiting users panel. That viewer should be accepted into the meeting.
+
+- Click "Deny" for the specific user in teh waiting users panel. That viewer should see the message "Guest denied of joining the meeting" and should soon be redirected to the home page.
 
 ## Custom Parameters
 
+Client should apply custom parameters according to the descriptions from [here](https://docs.bigbluebutton.org/admin/customize.html#application-parameters).
+
 ## iFrame
+
+## Learning Dashboard

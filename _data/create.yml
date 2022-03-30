@@ -77,7 +77,7 @@
   required: "Optional(Breakout Room)"
   type: "Boolean"
   default: "true"
-  description: "If set to false, breakout rooms will be disabled."
+  description: "<b>[DEPRECATED]</b> Removed in 2.5, temporarily still handled, please transition to disabledFeatures.<br><br>If set to false, breakout rooms will be disabled."
 
 - name: "breakoutRoomsPrivateChatEnabled"
   required: "Optional(Breakout Room)"
@@ -182,7 +182,13 @@
   required: false
   type: "Boolean"
   default: "false"
-  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">lockSettingsLockOnJoinConfigurable=true` will allow applying of `lockSettingsLockOnJoin</code>."
+  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will allow applying of <code class=\"language-plaintext highlighter-rouge\">lockSettingsLockOnJoin</code>."
+
+- name: "lockSettingsHideViewersCursor"
+  required: false
+  type: "Boolean"
+  default: "false"
+  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will prevent viewers to see other viewers cursor when multi-user whiteboard is on. (added 2.5)"
 
 - name: "guestPolicy"
   required: false
@@ -218,7 +224,7 @@
 - name: "learningDashboardEnabled"
   type: "Boolean"
   default: "true"
-  description: "Default <code class=\"language-plaintext highlighter-rouge\">learningDashboardEnabled=true</code>. When this option is enabled BigBlueButton generates a Dashboard where moderators can view a summary of the activities of the meeting. (added 2.4)"
+  description: "<b>[DEPRECATED]</b> Removed in 2.5, temporarily still handled, please transition to disabledFeatures.<br><br>Default <code class=\"language-plaintext highlighter-rouge\">learningDashboardEnabled=true</code>. When this option is enabled BigBlueButton generates a Dashboard where moderators can view a summary of the activities of the meeting. (added 2.4)"
 
 - name: "learningDashboardCleanupDelayInMinutes"
   type: "Number"
@@ -241,4 +247,26 @@
   required: false
   type: "Boolean"
   default: "false"
-  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will disable Virtual Backgrounds for all users in the meeting. (added 2.4.3)"
+  description: "<b>[DEPRECATED]</b> Removed in 2.5, temporarily still handled, please transition to disabledFeatures.<br><br>Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will disable Virtual Backgrounds for all users in the meeting. (added 2.4.3)"
+
+- name: "userCameraCap"
+  required: false
+  type: "Number"
+  default: "3"
+  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">0</code> will disable this threshold. Defines the max number of webcams a single user can share simultaneously. (added 2.4.5)"
+
+- name: "meetingCameraCap"
+  required: false
+  type: "Number"
+  default: "0"
+  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">0</code> will disable this threshold. Defines the max number of webcams a meeting can have simultaneously. (added 2.5.0)"
+
+- name: "groups"
+  required: false
+  type: "String"
+  description: "Pre-defined groups to automatically assign the students to a given breakout room. (added 2.5)<br><br><b>Expected value:</b> Json with Array of groups.<br><b>Group properties:</b><br><ul><li><code class=\"language-plaintext highlighter-rouge\">id</code> - String with group unique id.</li><li><code class=\"language-plaintext highlighter-rouge\">name</code> - String with name of the group <i>(optional)</i>.</li><li><code class=\"language-plaintext highlighter-rouge\">roster</code> - Array with IDs of the users.</li></ul><br>E.g:<br><code class=\"language-json highlighter-rouge\">[<br>{id:'1',name:'GroupA',roster:['1235']},<br>{id:'2',name:'GroupB',roster:['2333','2335']},<br>{id:'3',roster:[]}<br>]</code>"
+
+- name: "disabledFeatures"
+  required: false
+  type: "String"
+  description: "List (comma-separated) of features to disable in a particular meeting. (added 2.5)<br><br>Available options to disable:<br><ul><li><code class=\"language-plaintext highlighter-rouge\">breakoutRooms</code>- <b>Breakout Rooms</b> </li><li><code class=\"language-plaintext highlighter-rouge\">captions</code>- <b>Closed Caption</b> </li><li><code class=\"language-plaintext highlighter-rouge\">chat</code>- <b>Chat</b></li><li><code class=\"language-plaintext highlighter-rouge\">externalVideos</code>- <b>Share an external video</b> </li><li><code class=\"language-plaintext highlighter-rouge\">layouts</code>- <b>Layouts</b> (allow only default layout)</li><li><code class=\"language-plaintext highlighter-rouge\">learningDashboard</code>- <b>Learning Analytics Dashboard</b></li><li><code class=\"language-plaintext highlighter-rouge\">polls</code>- <b>Polls</b> </li><li><code class=\"language-plaintext highlighter-rouge\">screenshare</code>- <b>Screen Sharing</b></li><li><code class=\"language-plaintext highlighter-rouge\">sharedNotes</code>- <b>Shared Notes</b></li><li><code class=\"language-plaintext highlighter-rouge\">virtualBackgrounds</code>- <b>Virtual Backgrounds</b></li></ul>"

@@ -24,10 +24,10 @@ If you find that the problem still persists or you have any other questions, you
 
 # Help using BigBlueButton
 
-If your BigBlueButton server itself is running fine -- that is, many users are using it without issue -- and the problem is related to understanding how a particular feature works (such as how to put users into breakout rooms), then check the [tutorial videos](https://bigbluebutton.org/videos/), especially the following two videos:
+If your BigBlueButton server itself is running fine -- that is, many users are using it without issue -- and the problem is related to understanding how a particular feature works (such as how to put users into breakout rooms), then check the [tutorial videos](https://bigbluebutton.org/html5/), especially the following two videos:
 
-- [Viewer overview](https://www.youtube.com/watch?v=uYYnryIM0Uw)
-- [Moderator/Presenter overview](https://www.youtube.com/watch?v=Q2tG2SS4gXA)
+- [Viewer overview](https://www.youtube.com/watch?v=Aw3Ajuy3kyk)
+- [Moderator/Presenter overview](https://www.youtube.com/watch?v=oz9SUisurrA)
 
 Also, check the frequently asked questions on [using BigBlueButton](/support/faq.html#using-bigbluebutton).
 
