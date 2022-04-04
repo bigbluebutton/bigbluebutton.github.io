@@ -211,4 +211,4 @@ See also
 * [Install](/greenlight/gl-install.html)
 * [Admin Guide](/greenlight/gl-admin.html)
 * [Customize](/greenlight/gl-customize.html)
-* [Configure](/greenlight/gl-configure.html)
+* [Configure](/greenlight/gl-config.html)

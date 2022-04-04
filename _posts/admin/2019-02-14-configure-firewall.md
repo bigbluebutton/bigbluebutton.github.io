@@ -15,7 +15,7 @@ If you are a developer setting up BigBlueButton on a local VM for testing, you c
 
 # Overview
 
-The easiest network configuration for installing BigBlueButton is on a server that has a single external IP address and the server is on the public Internet (and thus directly accessible by your users). Port-based access firewalling is implemented using [UFW](admin/customize.html#secure-your-system--restrict-access-to-specific-ports). Here is an example of such a setup with the BigBlueButton server having a (fictional) IP address 203.0.113.1 with hostname `bigbluebutton.example.com`.
+The easiest network configuration for installing BigBlueButton is on a server that has a single external IP address and the server is on the public Internet (and thus directly accessible by your users). Port-based access firewalling is implemented using [UFW](/admin/customize.html#setup-a-firewall). Here is an example of such a setup with the BigBlueButton server having a (fictional) IP address 203.0.113.1 with hostname `bigbluebutton.example.com`.
 
 ![Install](/images/11-install-net0.png)
 
