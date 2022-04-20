@@ -25,6 +25,8 @@ Starting with BigBlueButton 2.3 many of the configuration files have local overr
 | /usr/share/meteor/bundle/bbb-html5-with-roles.conf                      | /etc/bigbluebutton/bbb-html5-with-roles.conf     |                                                                                  |
 | /usr/share/bbb-web/WEB-INF/classes/spring/turn-stun-servers.xml         | /etc/bigbluebutton/turn-stun-servers.xml         | Replaces the original file                                                       |
 | /usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml              | /etc/bigbluebutton/bbb-webrtc-sfu/production.yml | Arrays are merged by replacement                                                 |
+| /etc/bigbluebutton/recording/recording.yml                              | /usr/local/bigbluebutton/core/scripts/bigbluebutton.yml | 
+| /etc/bigbluebutton/recording/presentation.yml                           | /usr/local/bigbluebutton/core/scripts/presentation.yml/presentation.yml |
 
 <br /><br />
 
@@ -231,3 +233,15 @@ Setup voice conference properties.
 /opt/freeswitch/conf/dialplan/default
 /opt/freeswitch/conf/dialplan/public
 ```
+
+# Recording
+
+## Log files
+
+For each workflow and meeting we have a different logfile, they come in the form: `<workflow>-<meetingId>.log`, as specified below:
+
+| Log                      | Description                                                  |
+| :----------------------- | :----------------------------------------------------------- |
+| `/var/log/bigbluebutton/archive-<meetingId>.log`  | All logs for archive phase              |
+| `/var/log/bigbluebutton/presentation/process-<meetingId>.log`  | All logs for process phase              |
+| `/var/log/bigbluebutton/presentation/publish-<meetingId>.log`  | All logs for publish phase              |
