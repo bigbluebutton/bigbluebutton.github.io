@@ -1242,7 +1242,7 @@ For now, to enable HTML5 users to join, change it to `ALWAYS_ACCEPT` and restart
 
 ## Show a custom logo on the client
 
-Set `displayBrandingArea: true` in `settings.yml`, restart BigBlueButton server with `sudo bbb-conf --restart` and pass `logo=<image-url>` in Custom parameters when creating the meeting.
+Ensure that the parameter `displayBrandingArea` is set to `true` in bbb-html5's configuration, restart BigBlueButton server with `sudo bbb-conf --restart` and pass `logo=<image-url>` in Custom parameters when creating the meeting.
 
 ## Passing custom parameters to the client on join
 

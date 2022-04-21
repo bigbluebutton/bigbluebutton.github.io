@@ -261,10 +261,27 @@
   default: "0"
   description: "Setting to <code class=\"language-plaintext highlighter-rouge\">0</code> will disable this threshold. Defines the max number of webcams a meeting can have simultaneously. (added 2.5.0)"
 
+- name: "meetingExpireIfNoUserJoinedInMinutes"
+  required: false
+  type: "Number"
+  default: "5"
+  description: "Automatically end meeting if no user joined within a period of time after meeting created. (added 2.5)"
+
+- name: "meetingExpireWhenLastUserLeftInMinutes"
+  required: false
+  type: "Number"
+  default: "1"
+  description: "Number of minutes to automatically end meeting after last user left. (added 2.5)<br>Setting to <code class=\"language-plaintext highlighter-rouge\">0</code> will disable this function."
+
 - name: "groups"
   required: false
   type: "String"
   description: "Pre-defined groups to automatically assign the students to a given breakout room. (added 2.5)<br><br><b>Expected value:</b> Json with Array of groups.<br><b>Group properties:</b><br><ul><li><code class=\"language-plaintext highlighter-rouge\">id</code> - String with group unique id.</li><li><code class=\"language-plaintext highlighter-rouge\">name</code> - String with name of the group <i>(optional)</i>.</li><li><code class=\"language-plaintext highlighter-rouge\">roster</code> - Array with IDs of the users.</li></ul><br>E.g:<br><code class=\"language-json highlighter-rouge\">[<br>{id:'1',name:'GroupA',roster:['1235']},<br>{id:'2',name:'GroupB',roster:['2333','2335']},<br>{id:'3',roster:[]}<br>]</code>"
+
+- name: "logo"
+  required: false
+  type: "String"
+  description: "Pass a URL to an image which will then be visible in the area above the participants list if `displayBrandingArea` is set to `true` in bbb-html5's configuration"
 
 - name: "disabledFeatures"
   required: false
