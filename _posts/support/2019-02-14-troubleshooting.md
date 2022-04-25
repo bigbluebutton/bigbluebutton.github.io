@@ -565,7 +565,7 @@ When you attempt to join a BigBlueButton session, the client looks for supported
 
 states that `Mobile Safari` version 11.1 or later is supported (notice the first letter is lower case and concatenated with the remainder of the browser name).
 
-To add a browser to the list, first open the following page [https://test.bigbluebutton.org/html5client/useragent](https://demo.bigbluebutton.org/html5client/useragent) with the browser, which will print its useragent string. For example, with the Vivaldi browser you might see
+To add a browser to the list, first find your browser's useragent. You could use a tool like https://wtools.io/check-my-user-agent as well. For example, with the Vivaldi browser you might see
 
 ```log
 Vivaldi 2.8.1664 / Linux 0.0.0
