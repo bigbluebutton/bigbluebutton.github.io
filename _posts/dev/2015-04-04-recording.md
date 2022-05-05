@@ -156,6 +156,14 @@ Administration:
                                        (Only for Matterhorn Integration)
 ```
 
+### Usefull Configs
+
+| Name                    | Path (file)                                                 | Description |
+| :-----------------------| :-----------------------------------------------------------| :-----------|
+| webcamsOnlyForModerator | /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties | If true, only the moderator's cam will be showed in playback depending on how the `show_moderator_viewpoint`. It can be changed in the ongoing meeting|
+| show_moderator_viewpoint | /usr/local/bigbluebutton/core/scripts/bigbluebutton.yml | If false, the viewer's point of view will be showed, meaning that if the above property is set to true, only the moderator's camera will be displayed. |
+
+
 ### Useful terms
 
 - workflow - is the way a recording is processed, published, and played. In BigBlueButton 2.4 the unique workflow out of the box is the "presentation" format.
@@ -917,9 +925,10 @@ The sections that follow cover the types of events you will encounter in `events
 
 ## Webcam
 
-| Event                 | Attributes                                             |
-| :-------------------- | :----------------------------------------------------- |
-| StartWebcamShareEvent | - stream                                               |
-| StopWebcamShareEvent  | - stream <br/>- duration                               |
-| StartWebRTCShareEvent | - timestampUTC<br/> - filename<br/> - meetingId        |
-| StopWebRTCShareEvent  | - timestampUTC<br/> - filename<br/> - meetingId        |
+| Event                     | Attributes                                                |
+| :-------------------------| :---------------------------------------------------------|
+| StartWebcamShareEvent     | - stream                                                  |
+| StopWebcamShareEvent      | - stream <br/>- duration                                  |
+| StartWebRTCShareEvent     | - timestampUTC<br/> - filename<br/> - meetingId           |
+| StopWebRTCShareEvent      | - timestampUTC<br/> - filename<br/> - meetingId           |
+| MeetingConfigurationEvent | - timestampUTC<br/> - date<br/> - webcamsOnlyForModerator |
