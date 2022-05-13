@@ -287,3 +287,9 @@
   required: false
   type: "String"
   description: "List (comma-separated) of features to disable in a particular meeting. (added 2.5)<br><br>Available options to disable:<br><ul><li><code class=\"language-plaintext highlighter-rouge\">breakoutRooms</code>- <b>Breakout Rooms</b> </li><li><code class=\"language-plaintext highlighter-rouge\">captions</code>- <b>Closed Caption</b> </li><li><code class=\"language-plaintext highlighter-rouge\">chat</code>- <b>Chat</b></li><li><code class=\"language-plaintext highlighter-rouge\">externalVideos</code>- <b>Share an external video</b> </li><li><code class=\"language-plaintext highlighter-rouge\">layouts</code>- <b>Layouts</b> (allow only default layout)</li><li><code class=\"language-plaintext highlighter-rouge\">learningDashboard</code>- <b>Learning Analytics Dashboard</b></li><li><code class=\"language-plaintext highlighter-rouge\">polls</code>- <b>Polls</b> </li><li><code class=\"language-plaintext highlighter-rouge\">screenshare</code>- <b>Screen Sharing</b></li><li><code class=\"language-plaintext highlighter-rouge\">sharedNotes</code>- <b>Shared Notes</b></li><li><code class=\"language-plaintext highlighter-rouge\">virtualBackgrounds</code>- <b>Virtual Backgrounds</b></li></ul>"
+
+- name: "preUploadedPresentationOverrideDefault"
+  required: false
+  type: "Boolean"
+  default: "true"
+  description: "If it is true, the `default.pdf` document is not sent along with the other presentations in the /create endpoint, on the other hand, if that's false, the `default.pdf` is sent with the other documents. By default it is true."
