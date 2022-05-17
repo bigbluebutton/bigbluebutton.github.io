@@ -54,6 +54,112 @@ and then to rebuild a recording, use `sudo bbb-record --rebuild <internal_meetin
 $ sudo bbb-record --rebuild 298b06603719217df51c5d030b6e9417cc036476-1559314745219
 ```
 
+## mediasoup
+
+### Webcams/screen sharing aren't working
+
+Certify that appropriate external addresses have been set for mediasoup. When installed via packages, mediasoup IPs are normally misconfigured. If installed via bbb-install, then IPv4 is generally correct, but IPv6 might be absent. 
+
+Nonetheless, we recommend double-checking the instructions in [Updating mediasoup](https://docs.bigbluebutton.org/admin/configure-firewall.html#updating-mediasoup).
+
+### Configure mediasoup to use IPv6
+
+mediasoup (bbb-webrtc-sfu) **does not** come with a IPv6 enabled by default when installed either via packages or bbb-install.
+
+To configure IPv6, bbb-webrtc-sfu's [override configuration file](https://docs.bigbluebutton.org/admin/configuration-files.html) (located in `/etc/bigbluebutton/bbb-webrtc-sfu/production.yml`) should be used. 
+
+See [Updating mediasoup](https://docs.bigbluebutton.org/admin/configure-firewall.html#updating-mediasoup) for instructions and examples on how to do so.
+
+### I'm having troubles seeing webcams or screen sharing in Firefox
+
+That's usually the symptom of a known [Firefox issue](https://bugzilla.mozilla.org/show_bug.cgi?id=1034964) where it doesn't comply with ICE-lite implementations (and mediasoup is one).
+
+This issue can be worked around by forcing TURN usage in Firefox user agents. To achieve that, set the `public.kurento.forceRelayOnFirefox` configuration to `true` in `/etc/bigbluebutton/bbb-html5.yml`. For example:
+
+```yaml
+public:
+  kurento:
+    forceRelayOnFirefox: true
+```
+
+#### How often does this Firefox issue happens?
+
+Short (non) answer: that's difficult to measure.
+
+Every Firefox installation is _prone_ to the lack of ICE-lite spec compliance. However, the issue doesn't manifest itself on _all_ Firefox installations as it is dependent on how the end user's network topology is organized. It's generally a small subset of Firefox users, but that can vary depending on the user base.
+
+#### Where can I track progress on a definitive solution or better workaround?
+
+This is a Firefox bug, so the best place to get an overview on progress and what the issue is about is [Mozilla's issue](https://bugzilla.mozilla.org/show_bug.cgi?id=1034964).
+
+You can also track [BigBlueButton's issue](https://github.com/bigbluebutton/bigbluebutton/issues/13746) for updates on additional workarounds.
+
+#### Why isn't forceRelayOnFirefox enabled by default?
+
+It's not on by default because bigbluebutton does not come with a TURN server by default, and that's what versioned-in-code setting presumes.
+
+### How do I know if mediasoup is being used?
+
+The most direct and precise way to figure out whether mediasoup is being used is checking about:webrtc (Firefox) or chrome://webrtc-internals. For example: open one of those, share a camera. Look for the remote description (SDP); see if it contains mediasoup-client in the SDP header. If it does, you're using mediasoup.
+
+Regardless of that: mediasoup **is the default in 2.5** and should always be used unless default settings were explicitly changed.
+
+### mediasoup is the default in 2.5. Why is Kurento still around?
+
+Because Kurento is still used for stream recording. It should be removed as a dependency as soon as [this issue](https://github.com/bigbluebutton/bigbluebutton/issues/13999) is addressed.
+
+### Is single-core performance still important with mediasoup?
+
+Yes.
+
+### How can I control the number of mediasoup workers?
+
+To control the number of mediasoup workers, bbb-webrtc-sfu's [override configuration file](https://docs.bigbluebutton.org/admin/configuration-files.html) (located in `/etc/bigbluebutton/bbb-webrtc-sfu/production.yml`) should be used.
+
+There are a couple of configurations of interest here:
+
+#### mediasoup.workers
+
+This configuration controls the number of mediasoup workers intended for general use (media type agnostic, shared pool).
+
+Accepted values are:
+   * `"auto"` (default): creates `ceil((min(nproc,32) * 0.8) + (max(0, nproc - 32) / 2))` workers;
+   * `"cores"`: creates workers up to the host's core count (as provided by os.cpus().length);
+   * \<Number\>: overrides the number of workers with a fixed value;
+   * The default and fallback values are `auto`.
+
+For example:
+   * To set the number of workers to `cores`: `yq w -i /etc/bigbluebutton/bbb-webrtc-sfu/production.yml mediasoup.workers "cores"`
+
+#### mediasoup.dedicatedMediaTypeWorkers
+
+This configuration controls the number of mediasoup workers to be used by specific media types.
+If a dedicated pool is set, streams of its media type will always land on it. Otherwise, they will use the shared pool.
+
+The configuration is an object of the following format:
+```
+mediasoup.dedicatedMediaTypeWorkers:
+   audio: "auto"|"cores"|<Number>
+   main: "auto"|"cores"|<Number>
+   content: "auto"|"cores"|<Number>
+```
+
+The semantics of `auto`, `cores` and `Number` are the same as in the `mediasoup.workers` configuration. Default values for all media types are `0` (no dedicated workers).
+
+The media types semantics are:
+   * `audio`: audio (listen only, microphone) streams;
+   * `main`: webcam video streams;
+   * `content`: screen sharing streams (audio and video).
+
+For example:
+  * To set the number of dedicated audio workers to `auto`: `yq w -i /etc/bigbluebutton/bbb-webrtc-sfu/production.yml mediasoup.dedicatedMediaTypeWorkers.audio "auto"`
+
+### Can I scale the number of streams up indefinitely with mediasoup?
+
+No. Scalability improves a lot with mediasoup, but there are still a couple of bottlenecks that can be hit as far  **as far as the media stack is concerned**. Namely:
+  - The signaling server (bbb-webrtc-sfu): it does not scale vertically indefinitely. There's always work ongoing on this area that can be tracked in [this issue](https://github.com/mconf/mconf-tracker/issues/238);
+  - The mediasoup worker balancing algorithm implemented by bbb-webrtc-sfu is still focused on multiparty meetings with a restrained number of users. If your goal is thousand-user 1-N (streaming-like) meetings, you may max out CPU usage on certain mediasoup workers even though there are other idle oworkers free.
+
 ## Kurento
 
 ### WebRTC video not working with Kurento
