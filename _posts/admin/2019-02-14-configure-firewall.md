@@ -142,6 +142,37 @@ At this point, proceed with the [installation of BigBlueButton](/2.2/install.htm
 
 # Configure BigBlueButton to work with your firewall
 
+## Updating mediasoup
+
+In BigBlueButton 2.5 or later, the HTML5 client uses **mediasoup** to send/receive WebRTC streams. If you are installing on a BigBlueButton server behind a firewall that uses network address translation (NAT), you need to make sure mediasoup has its external addresses properly configured.
+
+Keep in mind the following steps should already be done by bbb-install in an IPv4 environment.
+
+To configure appropriate external addresses, bbb-webrtc-sfu's [override configuration file](https://docs.bigbluebutton.org/admin/configuration-files.html) (located in `/etc/bigbluebutton/bbb-webrtc-sfu/production.yml`) should be used. If `production.yml` or `/etc/bigbluebutton/bbb-webrtc-sfu/` aren't present, it's sufficient to just create them with appropriate permissions and ownership rules.
+
+For example: in a BigBlueButton server with a public IPv4 address `192.0.2.0`, the configuration responsible for specifying the external addresses in mediasoup should be of the following format (YAML syntax, `/etc/bigbluebutton/bbb-webrtc-sfu/production.yml`):
+
+```yaml
+mediasoup:
+  webrtc:
+    listenIps:
+      - ip: 0.0.0.0
+        announcedIp: 192.0.2.0
+```
+
+Notice the `listenIps` key is an **array**. If you need mediasoup to work with **IPv6** as well, don't forget to add another entry to that array with it. For example: in a BigBlueButton server with a public IPv4 `192.0.2.0` and IPv6 `2001:db8::`, the configuration should be of the following format (YAML syntax, `/etc/bigbluebutton/bbb-webrtc-sfu/production.yml`):
+
+```yaml
+mediasoup:
+  webrtc:
+    listenIps:
+      - ip: 0.0.0.0
+        announcedIp: 192.0.2.0
+      - ip: 2001:db8::
+```
+
+Restart BigBlueButton to apply the changes.
+
 ## Updating Kurento
 
 ### Extra steps when server is behind NAT
