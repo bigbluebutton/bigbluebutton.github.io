@@ -11,7 +11,7 @@
 - name: "password"
   required: true
   type: "String"
-  description: "This password value is used to determine the role of the user based on whether it matches the moderator or attendee password.  Note: This parameter is *not* required when the role parameter is passed."
+  description: "This password value is used to determine the role of the user based on whether it matches the moderator or attendee password.  Note: This parameter is <b>not</b> required when the role parameter is passed."
 
 - name: "role"
   required: true
