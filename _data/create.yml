@@ -10,11 +10,11 @@
 
 - name: "attendeePW"
   type: "String"
-  description: "The password that the <a href=\"#join\">join</a> URL can later provide as its <code class=\"language-plaintext highlighter-rouge\">password</code> parameter to indicate the user will join as a viewer.  If no <code class=\"language-plaintext highlighter-rouge\">attendeePW</code> is provided, the <code class=\"language-plaintext highlighter-rouge\">create</code> call will return a randomly generated <code class=\"language-plaintext highlighter-rouge\">attendeePW</code> password for the meeting."
+  description: "<b>[DEPRECATED]</b> The password that the <a href=\"#join\">join</a> URL can later provide as its <code class=\"language-plaintext highlighter-rouge\">password</code> parameter to indicate the user will join as a viewer.  If no <code class=\"language-plaintext highlighter-rouge\">attendeePW</code> is provided, the <code class=\"language-plaintext highlighter-rouge\">create</code> call will return a randomly generated <code class=\"language-plaintext highlighter-rouge\">attendeePW</code> password for the meeting."
 
 - name: "moderatorPW"
   type: "String"
-  description: "The password that will <a href=\"#join\">join</a> URL can later provide as its <code class=\"language-plaintext highlighter-rouge\">password</code> parameter to indicate the user will as a moderator.  if no <code class=\"language-plaintext highlighter-rouge\">moderatorPW</code> is provided, <code class=\"language-plaintext highlighter-rouge\">create</code> will return a randomly generated <code class=\"language-plaintext highlighter-rouge\">moderatorPW</code> password for the meeting."
+  description: "<b>[DEPRECATED]</b> The password that will <a href=\"#join\">join</a> URL can later provide as its <code class=\"language-plaintext highlighter-rouge\">password</code> parameter to indicate the user will as a moderator.  if no <code class=\"language-plaintext highlighter-rouge\">moderatorPW</code> is provided, <code class=\"language-plaintext highlighter-rouge\">create</code> will return a randomly generated <code class=\"language-plaintext highlighter-rouge\">moderatorPW</code> password for the meeting."
 
 - name: "welcome"
   required: false
