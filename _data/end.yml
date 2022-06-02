@@ -5,4 +5,4 @@
 - name: "password"
   required: true
   type: "String"
-  description: "The moderator password for this meeting. You can not end a meeting using the attendee password."
+  description: "<b>[DEPRECATED]</b> The moderator password for this meeting. You can not end a meeting using the attendee password."

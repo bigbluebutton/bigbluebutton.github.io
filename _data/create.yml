@@ -9,14 +9,12 @@
   description: "A meeting ID that can be used to identify this meeting by the 3rd-party application. <br><br> This must be unique to the server that you are calling: different active meetings can not have the same meeting ID. <br><br> If you supply a non-unique meeting ID (a meeting is already in progress with the same meeting ID), then if the other parameters in the create call are identical, the create call will succeed (but will receive a warning message in the response). The create call is idempotent: calling multiple times does not have any side effect.  This enables a 3rd-party applications to avoid checking if the meeting is running and always call create before joining each user.<br><br> Meeting IDs should only contain upper/lower ASCII letters, numbers, dashes, or underscores.  A good choice for the meeting ID is to generate a <a href=\"http://en.wikipedia.org/wiki/Globally_unique_identifier\">GUID</a> value as this all but guarantees that different meetings will not have the same meetingID."
 
 - name: "attendeePW"
-  required: "(recommended)"
   type: "String"
-  description: "The password that the <a href=\"#join\">join</a> URL can later provide as its <code class=\"language-plaintext highlighter-rouge\">password</code> parameter to indicate the user will join as a viewer.  If no <code class=\"language-plaintext highlighter-rouge\">attendeePW</code> is provided, the <code class=\"language-plaintext highlighter-rouge\">create</code> call will return a randomly generated <code class=\"language-plaintext highlighter-rouge\">attendeePW</code> password for the meeting."
+  description: "<b>[DEPRECATED]</b> The password that the <a href=\"#join\">join</a> URL can later provide as its <code class=\"language-plaintext highlighter-rouge\">password</code> parameter to indicate the user will join as a viewer.  If no <code class=\"language-plaintext highlighter-rouge\">attendeePW</code> is provided, the <code class=\"language-plaintext highlighter-rouge\">create</code> call will return a randomly generated <code class=\"language-plaintext highlighter-rouge\">attendeePW</code> password for the meeting."
 
 - name: "moderatorPW"
-  required: "(recommended)"
   type: "String"
-  description: "The password that will <a href=\"#join\">join</a> URL can later provide as its <code class=\"language-plaintext highlighter-rouge\">password</code> parameter to indicate the user will as a moderator.  if no <code class=\"language-plaintext highlighter-rouge\">moderatorPW</code> is provided, <code class=\"language-plaintext highlighter-rouge\">create</code> will return a randomly generated <code class=\"language-plaintext highlighter-rouge\">moderatorPW</code> password for the meeting."
+  description: "<b>[DEPRECATED]</b> The password that will <a href=\"#join\">join</a> URL can later provide as its <code class=\"language-plaintext highlighter-rouge\">password</code> parameter to indicate the user will as a moderator.  if no <code class=\"language-plaintext highlighter-rouge\">moderatorPW</code> is provided, <code class=\"language-plaintext highlighter-rouge\">create</code> will return a randomly generated <code class=\"language-plaintext highlighter-rouge\">moderatorPW</code> password for the meeting."
 
 - name: "welcome"
   required: false
