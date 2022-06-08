@@ -17,7 +17,7 @@ all of these tests.
 
 ## Presentation
 
-### Uploading a Presentation
+### Uploading a Presentation [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/presentation/presentation.spec.js)
 
 1. As a moderator, select Moderator/Presenter Action menu (+)
 
@@ -32,7 +32,7 @@ all of these tests.
 
 5. Presentation should appear on All Clients in sync with updates, and All Clients should see the notification with the new presentation name
 
-### Enabling and Disabling Presentation Download
+### Enabling and Disabling Presentation Download [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/presentation/presentation.spec.js)
 
 1. Select Moderator/Presenter Action menu
 
@@ -44,7 +44,7 @@ all of these tests.
 
    3.2 Removing presentation for download will no loner allow users to download current file.
 
-### Deleting Presentation
+### Deleting Presentation [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/presentation/presentation.spec.js)
 
 1. Select Moderator/Presenter Action menu
 
@@ -54,7 +54,7 @@ all of these tests.
 
 4. Choose confirm
 
-### Uploading multiple presentations
+### Uploading multiple presentations [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/presentation/presentation.spec.js)
 
 1. Select Moderator/Presenter Action menu
 
@@ -70,7 +70,7 @@ all of these tests.
 
 7. Current selected file should appear for all clients
 
-### Navigation
+### Navigation [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/presentation/presentation.spec.js)
 
 1. Locate slide navigation bar
 
@@ -99,7 +99,7 @@ all of these tests.
 4. Hold down the space while moving mouse to pan.
 
 
-### Minimize/Restore Presentation
+### Minimize/Restore Presentation [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/presentation/presentation.spec.js)
 
 1. Clicking on Share webcam.
 
@@ -151,7 +151,7 @@ all of these tests.
 
 4. Presentation should return to normal view
 
-### Make viewer a presenter
+### Make viewer a presenter [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/user/user.spec.js)
 
 1. Click viewer icon from users list
 
@@ -159,7 +159,7 @@ all of these tests.
 
 3. Viewer selected should have all presenter capabilities and presenter Icon should appear over user icon in the users list.
 
-### Taking presenter status back
+### Taking presenter status back [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/user/user.spec.js)
 
 1. In order to take back the presenter, can be done in following ways:
 
@@ -177,7 +177,7 @@ You should now have presenter capabilities and presenter icon should appear over
 
 ## Webcams
 
-### Joining Webcam
+### Joining Webcam [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/webcam/webcam.spec.js)
 
 1. Click on "Share webcam" icon
 
@@ -309,7 +309,7 @@ The webcams should be resized as per the size we want.
 
 ## Screenshare
 
-### Sharing screen in Full Screen mode
+### Sharing screen in Full Screen mode [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/screenshare/screenshare.spec.js)
 
 1. Clicking on share screen icon
 
@@ -350,7 +350,7 @@ The screen sharing stops, a sound effect of disconnection is heard and the prese
 
 ## Breakout rooms
 
-### Moderators creating breakout rooms and assiging users
+### Moderators creating breakout rooms and assiging users [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/breakout/breakout.spec.js)
 
 1. Click "Manage users" (cog wheel icon in the user list).
 
@@ -394,7 +394,7 @@ The screen sharing stops, a sound effect of disconnection is heard and the prese
 
 10. Public chats in all the breakout rooms should get the message highlighted by a special background color.
 
-### Viewers choosing the breakout rooms
+### Viewers choosing the breakout rooms [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/breakout/breakout.spec.js)
 
 1. Click "Manage users" (cog wheel icon in the user list).
 
@@ -448,7 +448,7 @@ The screen sharing stops, a sound effect of disconnection is heard and the prese
 
 ## Audio
 
-### Join audio
+### Join audio [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/audio/audio.spec.js)
 
 1. Join a meeting.
 
@@ -490,7 +490,7 @@ The screen sharing stops, a sound effect of disconnection is heard and the prese
 
 3. You should be redirected to the meeting and your microphone button should not be highlighted.
 
-### Listen Only Mode
+### Listen Only Mode [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/audio/audio.spec.js)
 
 1. Join a meeting.
 
@@ -643,7 +643,7 @@ Enable Microphone : This will cause a user name to appear on left top corner of 
 
 7. All clients should see the drawing and the drawing should be colored accordingly.
 
-### Use shape tools
+### Use shape tools [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/whiteboard/whiteboard.spec.js)
 
 1. Join meeting with two or more users.
 
@@ -697,7 +697,7 @@ Enable Microphone : This will cause a user name to appear on left top corner of 
 
 5. Both annotations should disappear for all clients.
 
-### Multi-user whiteboard
+### Multi-user whiteboard [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/whiteboard/whiteboard.spec.js)
 
 1. Join meeting with two or more users.
 
@@ -1143,7 +1143,7 @@ Share notes should export and download in the chosen format.
 
 ## Chat (Public/Private)
 
-### Public message
+### Public message [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/chat/chat.spec.js)
 
 1. Join meeting with viewers and moderators.
 
@@ -1155,7 +1155,7 @@ Share notes should export and download in the chosen format.
 
 5. All users should see the message.
 
-### Private message
+### Private message [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/chat/chat.spec.js)
 
 1. Join meeting with viewers and moderators.
 
@@ -1169,7 +1169,7 @@ Share notes should export and download in the chosen format.
 
 6. Another user should see the private chat message tab and a message counter notification. After clicking on the tab, user should see the private message. 
 
-### Chat Character Limit
+### Chat Character Limit [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/chat/chat.spec.js)
 
 1. Join meeting.
 
@@ -1177,7 +1177,7 @@ Share notes should export and download in the chosen format.
 
 3. Warning should appear to inform about the character limit and you shouldn't be able to send the message.
 
-### Sending Empty chat message
+### Sending Empty chat message [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/chat/chat.spec.js)
 
 1. Join meeting.
 
@@ -1197,7 +1197,7 @@ Note :
 
 ## Polling
 
-### Start a single-choice poll
+### Start a single-choice poll [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/polling/polling.spec.js)
 
 1. Join meeting
 
@@ -1235,7 +1235,7 @@ Note :
 
 9. Poll results will show up in public chat and presentation area for all users.
 
-### Start an anonymous poll
+### Start an anonymous poll [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/polling/polling.spec.js)
 
 1. Join meeting
 
@@ -1256,7 +1256,7 @@ Note :
 6. Poll results will show up in public chat and presentation area for all users.
 
 
-### Custom Poll
+### Custom Poll [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/polling/polling.spec.js)
 
 1. Click on the options (+) button in the bottom left corner of the whiteboard area.
 
@@ -1273,7 +1273,7 @@ Note :
   on it are available
 - A live Poll Results Tab will show up to the presenter.
 
-### Quick Poll Option
+### Quick Poll Option [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/polling/polling.spec.js)
 
 (Presenter feature : Choosing Quick Poll Options from the current Slide which is loaded from the Quick Poll file)
 
@@ -1301,7 +1301,7 @@ Note :
 
 ## User list settings
 
-### Set status / Raise hand
+### Set status / Raise hand [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/user/user.spec.js)
 
 1. Viewer: select your user icon from user list
 
@@ -1432,7 +1432,7 @@ Note :
 
 3. The Popup Alerts for Chat are now Disabled/Enabled.
 
-#### D. Application Language
+#### D. Application Language [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/settings/settings.spec.js)
 
 (Inside "Application" section of the Settings modal)
 
@@ -1578,7 +1578,7 @@ Note :
 
 - Click "Deny" for the specific user in teh waiting users panel. That viewer should see the message "Guest denied of joining the meeting" and should soon be redirected to the home page.
 
-## Custom Parameters
+## Custom Parameters [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/customparameters/customparameters.spec.js)
 
 Client should apply custom parameters according to the descriptions from [here](https://docs.bigbluebutton.org/admin/customize.html#application-parameters).
 
