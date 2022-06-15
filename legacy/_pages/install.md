@@ -1,1 +1,0 @@
-../_posts/2018-06-03-install.md
