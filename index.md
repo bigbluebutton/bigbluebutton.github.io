@@ -10,15 +10,15 @@ title: 'BigBlueButton'
 
 BigBlueButton is an open source web conferencing system for online learning. This means
 
-- **Open source** - you have full access to BigBlueButton's [source code](https://github.com/bigbluebutton/bigbluebutton) under an [open source license](https://bigbluebutton.org/open-source-license/). With the source code, you can [install](/2.3/install.html), [customize](admin/customize.html), [develop](/2.3/dev.html), [scale](https://github.com/blindsidenetworks/scalelite), and [integrate](/dev/api.html) it into your products and services with help from the [community](https://bigbluebutton.org/support/). Cool.
+- **Open source** - you have full access to BigBlueButton's [source code](https://github.com/bigbluebutton/bigbluebutton) under an [open source license](https://bigbluebutton.org/open-source-license/). With the source code, you can [install](/install/install.html), [customize](admin/customize.html), [develop](/setup/dev.html), [scale](https://github.com/blindsidenetworks/scalelite), and [integrate](/dev/api.html) it into your products and services with help from the [community](https://bigbluebutton.org/support/). Cool.
 
 - **Web conferencing system** - BigBluebutton provides you all the core features you would expect from a commercial web conferencing system (but under an open source license) including real-time sharing of audio, video, presentation, and screen -- along with collaboration tools such as chat (public and private), whiteboard, shared notes, polling, and breakout rooms. BigBlueButton can record your sessions for later playback.
 
 - **Online learning** - BigBlueButton extends these core features for online learning. For example, a tutor can enable multi-user whiteboard to directly work with a student on solving a math problem. BigBlueButton has [deep integrations](https://bigbluebutton.org/schools/integrations/) with all the major learning management systems (LMS). It also supports Learning Tools Interoperability (LTI) 1.0 for integration with other LMS systems.
 
-Want to try out BigBlueButton? Visit our demo server at [https://demo.bigbluebutton.org](https://demo.bigbluebutton.org) and setup a free account. The demo server also runs [Greenlight](https://github.com/bigbluebutton/greenlight), an easy-to-use front-end for creating rooms, starting meetings, inviting others, and managing recordings. Greenlight is open source as well.
+Want to try out BigBlueButton? Visit our demo server at [https://demo.bigbluebutton.org](https://demo.bigbluebutton.org) and set up a free account. The demo server also runs [Greenlight](https://github.com/bigbluebutton/greenlight), an easy-to-use front-end for creating rooms, starting meetings, inviting others, and managing recordings. Greenlight is open source as well.
 
-Want to setup your own BigBlueButton server? If you have a server that meets the [minimum requirements](/2.3/install.html#minimum-server-requirements) and have a domain name pointing to its public IP address, then you can use [bbb-install.sh](https://github.com/bigbluebutton/bbb-install) to install the latest version of BigBlueButton, configure the server with SSL (thanks to Let's Encrypt), setup Greenlight, and have all ready in under 15 minutes. Very cool.
+Want to set up your own BigBlueButton server? If you have a server that meets the [minimum requirements](/install/install.html#minimum-server-requirements) and have a domain name pointing to its public IP address, then you can use [bbb-install.sh](https://github.com/bigbluebutton/bbb-install) to install the latest version of BigBlueButton, configure the server with SSL (thanks to Let's Encrypt), set up Greenlight, and have all ready in under 15 minutes. Very cool.
 
 Want to learn more about BigBlueButton? Read on. The documentation covers all details on how to install, configure, and customize BigBlueButton to your needs. We'll start below with brief overview of how BigBlueButton works. If you find any issues with these docs, [please let us know](https://github.com/bigbluebutton/bigbluebutton.github.io/).
 
@@ -110,7 +110,7 @@ If you are an administrator interested in setting up your own BigBlueButton serv
 1. Watch the [overview videos](https://bigbluebutton.org/html5) to better understand the capabilities of viewer, moderator, and presenter.
 2. Set up a free account to use BigBlueButton on our [demo server](https://demo.bigbluebutton.org/).
 3. Join the [BigBlueButton community](https://bigbluebutton.org/support/community/) for help and, as you become an expert, help others.
-4. Setup your own BigBlueButton server using [bbb-install.sh](https://github.com/bigbluebutton/bbb-install).
+4. Set up your own BigBlueButton server using [bbb-install.sh](https://github.com/bigbluebutton/bbb-install).
 5. Follow us on social media: [Twitter](https://twitter.com/bigbluebutton), [Facebook](https://www.facebook.com/bigbluebutton), and [YouTube](https://www.youtube.com/user/bigbluebuttonshare).
 
 If you are a developer, we recommend you:
@@ -118,13 +118,13 @@ If you are a developer, we recommend you:
 1. Follow the above guidelines for administrator
 2. Explore the options to [customize BigBlueButton](/admin/customize.html)
 3. Checkout the [BigBlueButton API](/dev/api.html)
-4. [Setup a development environment](/dev/setup.html) to modify and extend BigBlueButton itself.
+4. [Set up a development environment](/dev/setup.html) to modify and extend BigBlueButton itself.
 
 If your interested in using BigBlueButton in a production environment, there are a [number of companies that offer commercial support](https://bigbluebutton.org/commercial-support/) hosting and customizing BigBlueButton.
 
 ## Latest release
 
-The latest version of BigBlueButton is BigBlueButton 2.4. See [install BigBlueButton](/2.4/install.html).
+The latest version of BigBlueButton is BigBlueButton 2.5. See [install BigBlueButton](/2.5/install.html).
 
 Overview for Viewers (click image below to watch YouTube video):
 
