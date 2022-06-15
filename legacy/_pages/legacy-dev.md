@@ -1,1 +1,0 @@
-../_posts/2019-07-29-22-legacy-dev.md
