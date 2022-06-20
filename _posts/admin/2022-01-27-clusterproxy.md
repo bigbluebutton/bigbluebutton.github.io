@@ -7,7 +7,7 @@ date: 2022-01-27 00:42:00
 
 # Motivation
 
-In a traditional cluster setup, a scaler such as Scalite is responsible for
+In a traditional cluster setup, a scaler such as Scalelite is responsible for
 distributing new meetings and the joining users to one of the available
 BigBlueButton servers. While this setup is simple, it requires users to grant
 permissions for the access to microphones, videos and screensharing whenever a
@@ -29,7 +29,7 @@ is not:
 
 * It is *not* a full reverse proxy for all BigBlueButton-related traffic. Browser
   and BigBlueButton server will still exchange most of the traffic directly.
-* It is also *not* tied to Scalite. You can choose any other BigBlueButton
+* It is also *not* tied to Scalelite. You can choose any other BigBlueButton
   loadbalancer of your choice.
 
 **Note:** The cluster proxy setup requires BigBlueButton 2.4.0 or later!
@@ -43,7 +43,7 @@ a flow diagram.
 
 Once a user starts or joins a meeting (1), Greenlight or another BigBlueButton
 frontend will initiate a new meeting by calling the `create` and `join` API
-calls on Scalite respectively (2). Scalite in turn will forward the API calls
+calls on Scalelite respectively (2). Scalelite in turn will forward the API calls
 to one of the BigBlueButton servers (3). The BigBlueButton server will advise
 the browser to fetch the HTML5 client UI via the cluster proxy address. Thus,
 the BigBlueButton server will appear as if it was hidden behind the cluster
@@ -181,6 +181,6 @@ has connection tracking disabled in its firewall settings and the web server is
 configured to handle enough connections. Those optimizations however are rather
 specific to individual setups and thus out of the scope of this document.
 
-For the same reason, it is advisable to keep Scalite on a different machine and
+For the same reason, it is advisable to keep Scalelite on a different machine and
 to provide a HA setup for the proxy server (i.e. using IP failover or Anycast).
 Please monitor your setup carefully.
