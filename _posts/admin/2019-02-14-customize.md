@@ -1163,29 +1163,6 @@ After restart, if you open the lock settings you'll see `Share webcam` lock enab
   <img src="/images/html5-lock-webcam.png"/>
 </p><br>
 
-### Make the HTML5 client default
-
-To make the HTML5 client the default client (and no longer load the Flash client), edit `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties` and set both `attendeesJoinViaHTML5Client` and `moderatorsJoinViaHTML5Client` to `true`, as in
-
-```properties
-# Force all attendees to join the meeting using the HTML5 client
-attendeesJoinViaHTML5Client=true
-
-# Force all moderators to join the meeting using the HTML5 client
-moderatorsJoinViaHTML5Client=true
-```
-
-In BigBlueButton 2.2-beta-10, you can also decrease the slide conversion time by disabling creation of SWF files by setting `swfSlidesRequired=false`.
-
-```properties
-#----------------------------------------------------
-# Conversion of the presentation slides to SWF to be
-# used in the Flash client
-swfSlidesRequired=false
-```
-
-The SWF files are not needed by the HTML5 client.
-
 ### Change the default path for HTML5 client
 
 The default URL path for the client is `/html5client`, and it can be changed to match your preferences.
@@ -1432,7 +1409,7 @@ The last line gives a link API-Mate, an excellent tool provided by [Mconf Techno
 
 To validate incoming API calls, all external applications making API calls must checksum their API call using the same secret as configured in the BigBlueButton server.
 
-You’ll find the shared secret in `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties`
+You’ll find the shared secret in `/etc/bigbluebutton/bbb-web.properties`
 
 ```properties
 beans.dynamicConferenceService.securitySalt=<value_of_salt>
