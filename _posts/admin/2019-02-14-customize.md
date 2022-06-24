@@ -1278,6 +1278,8 @@ yq w -i $HTML5_CONFIG public.clientLog.external.url     "$PROTOCOL://$HOST/html5
 yq w -i $HTML5_CONFIG public.app.askForFeedbackOnLogout true
 chown meteor:meteor $HTML5_CONFIG
 
+mkdir -p /etc/bigbluebutton/nginx/
+
 cat > /etc/bigbluebutton/nginx/html5-client-log.nginx << HERE
 location /html5log {
         access_log /var/log/nginx/html5-client.log postdata;
