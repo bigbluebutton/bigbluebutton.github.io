@@ -93,7 +93,7 @@ Add these options to `/etc/bigbluebutton/bbb-web.properties`:
 defaultHTML5ClientUrl=https://bbb-proxy.example.com/bbb-01/html5client/join
 presentationBaseURL=https://bbb-01.example.com/bigbluebutton/presentation
 accessControlAllowOrigin=https://bbb-proxy.example.com
-defaultGuestWaitURL=https://bbb-proxy.example.com/bbb-01/html5client/guestWait
+defaultGuestWaitURL=https://bbb-01.example.com/bbb-01/html5client/guestWait
 ```
 
 Add the following options to `/etc/bigbluebutton/bbb-html5.yml`:
@@ -147,6 +147,16 @@ location /bbb-01/html5client/locales {
 
 **Note:** It is important that the location configuration is equal between the
 BigBlueButton server and the proxy.
+
+Add a route for the locales handler for the guest lobby. The guest lobby is served directly from the BBB node.
+
+```
+# /etc/bigbluebutton/nginx/bbb-html5.nginx
+location =/html5client/locale {
+  return 301 /bbb-01$request_uri;
+}
+```
+
 
 Restart BigBlueButton:
 
