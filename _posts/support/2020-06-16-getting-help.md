@@ -41,17 +41,17 @@ If you don't find a solution, then post a description of the issue to [bigbluebu
 
 If you have encountered a problem with installing or running your BigBlueButton server, then this section will guide you through systematically narrowing down the source of your problem.
 
-First, check -- and double-check -- that your server meets the [minimum requirements](/2.2/install.html#minimum-server-requirements). If it does not, then one (or more) of the BigBlueButton components may be failing in unpredictable ways when they encounter a resource constraint (such as insufficient memory). Before going further, set up a server that meets (or exceeds) the minimum requirements and try installing again.
+First, check -- and double-check -- that your server meets the [minimum requirements](/2.5/install.html#minimum-server-requirements). If it does not, then one (or more) of the BigBlueButton components may be failing in unpredictable ways when they encounter a resource constraint (such as insufficient memory). Before going further, set up a server that meets (or exceeds) the minimum requirements and try installing again.
 
 Next, check the output of `sudo bbb-conf --check`. The [bbb-conf](/admin/bbb-conf.html) script has a lot of built-in checks to look for configuration errors on a BigBlueButton server.
 
-If you installed BigBlueButton using the step-by-step instructions, try using the [bbb-install.sh](https://github.com/bigbluebutton/bbb-install) script. This script automates much of the [step-by-step](/2.2/install.html#before-you-install) commands to install/upgrade a BigBlueButton server. Alternatively, try one of the community-sourced Ansible roles.
+If you installed BigBlueButton using the step-by-step instructions, try using the [bbb-install*.sh](https://github.com/bigbluebutton/bbb-install) script. This script automates much of the [step-by-step](/2.5/install.html#before-you-install) commands to install/upgrade a BigBlueButton server. Alternatively, try one of the community-sourced Ansible roles.
 
-**Note:** `bbb-install.sh` cannot automate the configuration of your firewall, so there may still be some manual steps for you to do (read the `bbb-install.sh` docs for more information). Nonetheless, if your server is on the internet, has a public IP address and a fully qualified domain name (FQDN), such as `bbb.example.com`, then `bbb-instal.sh` can usually install and configure the latest version of BigBlueButton for you in under 15 minutes.
+**Note:** `bbb-install.sh` cannot automate all steps, so there may still be some manual steps for you to do (read the `bbb-install.sh` docs for more information). Nonetheless, if your server is on the internet, has a public IP address and a fully qualified domain name (FQDN), such as `bbb.example.com`, then `bbb-instal.sh` can usually install and configure the latest version of BigBlueButton for you in under 15 minutes.
 
 Next, read through the following documentation:
 
-1. [Install Guide](/2.2/install.html#before-you-install) (do this even if you have used `bbb-install.sh` as it will help you understand the various components of BigBlueButton)
+1. [Install Guide](/2.5/install.html#before-you-install) (do this even if you have used `bbb-install.sh` as it will help you understand the various components of BigBlueButton)
 2. [Troubleshooting installation issues](/support/troubleshooting.html)
 3. [Troubleshooting recordings](/dev/recording.html#troubleshooting) (if your issue is related to recordings)
 4. [Frequently Asked Questions](/support/faq.html)
@@ -64,9 +64,9 @@ Include the following information in your post:
 
 1. What version of BigBlueButton are you installing/running?
 2. Did you get any errors during the install?
-3. What [installation method](/2.2/install.html#installation-choices) did you follow?
+3. What [installation method](/2.5/install.html#installation-choices) did you follow?
 4. Did the problem appear after initial install, after an upgrade, or after running BigBlueButton for a while?
-5. Did you make any changes to BigBlueButton outside of using [bbb-conf](/admin/bbb-conf.html) or the [bbb-install.sh](/2.2/install.html#bbb-installsh) script?
+5. Did you make any changes to BigBlueButton outside of using [bbb-conf](/admin/bbb-conf.html) or the [bbb-install.sh](/2.5/install.html#bbb-installsh) script?
 6. Are you running BigBlueButton within a development environment?
 7. Post the output of `sudo bbb-conf --check`
 
@@ -90,7 +90,7 @@ There are many members of the BigBlueButton community that have been using and s
 
 # Help developing BigBlueButton
 
-BigBlueButton is a very customizable system, see [customizable options](/admin/customize). If you don't see an option to customize BigBlueButton to your needs and have some experience with software development, you can [set up a development environment](/2.4/dev.html) and modify BigBlueButton to your needs. If you end up designing new functionality, we encourage you to upstream the changes via a pull request so that others can seek benefit from it too.
+BigBlueButton is a very customizable system, see [customizable options](/admin/customize). If you don't see an option to customize BigBlueButton to your needs and have some experience with software development, you can set up a development environment and modify BigBlueButton to your needs. If you end up designing new functionality, we encourage you to upstream the changes via a pull request so that others can seek benefit from it too.
 
 Post as much information as you can about your development problem to [bigbluebutton-dev](https://groups.google.com/forum/#!forum/bigbluebutton-dev).
 

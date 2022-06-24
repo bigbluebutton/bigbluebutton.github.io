@@ -582,33 +582,6 @@ Next, to add this as a supported browser, append to `settings.yml`
 
 save the updated `settings.yml` file, and then restart your BigBlueButton server with `sudo bbb-conf --restart`. Note any browser you add must support WebRTC libraries (not all do), so be sure to check it first with [https://test.webrtc.org/](https://test.webrtc.org/).
 
-### Tomcat shows "Cannot assign requested address on startup"
-
-If your server has multiple IP addresses, Tomcat might not pick the right address to bind. This could throw an error on installation when tomcat is attempting to install.
-
-Check `/var/log/tomcat7/catalina.out` for the following error
-
-```log
-Jan 30, 2018 9:17:37 AM org.apache.catalina.core.StandardServer await
-SEVERE: StandardServer.await: create[localhost:8005]:
-java.net.BindException: Cannot assign requested address (Bind failed)
- at java.net.PlainSocketImpl.socketBind(Native Method)
-```
-
-If you see this, first ensure that there isn't another copy of tomcat running by doing `ps -aef | grep tomcat7`. If you do see another copy running, try killing it and then restarting tomcat.
-
-If you still see the same error in `catalina.out`, then `/etc/tomcat7/server.xml` and change
-
-```xml
-<Server port="8005" shutdown="SHUTDOWN">
-```
-
-```xml
-<Server address="0.0.0.0" port="8005" shutdown="SHUTDOWN">
-```
-
-Restart tomcat7 again and it should start normally.
-
 ### nginx not running
 
 The common reasons for nginx not running are inability to bind to port 80 and configuration errors. To check if port 80 is already in use, use
@@ -642,36 +615,7 @@ and see if it reports any errors. You can also check the error.log file for ngin
 ```bash
 $ sudo cat /var/log/nginx/error.log
 ```
-
-### "Welcome to nginx"
-
-During installation of BigBlueButton the packaging scripts attempt to assign the correct IP address during setup. However, if the IP address changes (such as when rebooting a VM), or the first IP address was not the correct IP address for the server, you may see a "Welcome to nginx" page.
-
-To reconfigure the BigBlueButton to use the correct IP address or hostname, see [BigBlueButton does not load](#bigbluebutton-does-not-load).
-
 ## bbb-web
-
-### 404 Error when loading the client
-
-BigBlueButton 2.2 requires Java 8 as the default Java. Recently, some Ubuntu 16.04 distributions have switched the default version of Java to Java 9 (or later).
-
-Use `java -version` to check that the default version of `1.8.0`.
-
-```bash
-~/dev$ java -version
-openjdk version "1.8.0_242"
-OpenJDK Runtime Environment (build 1.8.0_242-8u242-b08-0ubuntu3~16.04-b08)
-OpenJDK 64-Bit Server VM (build 25.242-b08, mixed mode)
-```
-
-If not, do the following
-
-```bash
-sudo apt-get install openjdk-8-jre
-update-alternatives --config java  # Choose java-8 as default
-```
-
-Run `java -version` and confirm it now shows the default as `1.8.0`, and then restart BigBlueButton with `sudo bbb-conf --restart`
 
 ### Blank presentation area on create or upload
 
@@ -719,56 +663,7 @@ $ sudo apt-get install haveged
 
 For more information see [How to Setup Additional Entropy for Cloud Servers Using Haveged](https://www.digitalocean.com/community/tutorials/how-to-setup-additional-entropy-for-cloud-servers-using-haveged).
 
-### Error installing bbb-web
-
-If you get the following error during upgrade to BigBlueButton
-
-````bash
-Unpacking bbb-web (1:2.2.0-67) over (1:2.2.0-66) ...
-dpkg: error processing archive /var/cache/apt/archives/bbb-web_1%3a2.2.0-67_amd64.deb (--unpack):
- trying to overwrite '/etc/bigbluebutton/nginx/web', which is also in package bbb-client 1:2.2.0-28
-dpkg-deb: error: subprocess paste was killed by signal (Broken pipe)
-Errors were encountered while processing:
- /var/cache/apt/archives/bbb-web_1%3a2.2.0-67_amd64.deb
-E: Sub-process /usr/bin/dpkg returned an error code (1)```
-````
-
-Then first uninstall `bbb-client`
-
-```bash
-$ sudo apt-get purge bbb-client
-```
-
-and try installing BigBlueButton again.
-
 ## Other errors
-
-### Root partition too small
-
-If the root partition on your BigBlueButton server is too small (for disk space requirements see [Before you install](/2.2/install.html#before-you-install)), we recommend moving the following directories to an external partition with sufficient disk space.
-
-BigBlueButton processing and storage of recordings:
-
-Location of all media directories on disk [available here](/dev/recording.html#media-storage).
-
-To make the move, we'll first stop BigBlueButton, then move the above directories to a new location on the external partition, create symbolic links from the original locations to the new locations, and restart BigBlueButton.
-
-In the following example, the external partition is mounted on `/mnt`.
-
-```bash
-$ sudo bbb-conf --stop
-
-$ sudo mv /var/freeswitch/meetings /mnt
-$ sudo ln -s /mnt/recordings /var/freeswitch/meetings
-
-$ sudo mv /usr/share/red5/webapps/video/streams /mnt
-$ sudo ln -s /mnt/streams /usr/share/red5/webapps/video/streams
-
-$ sudo /var/bigbluebutton /mnt
-$ sudo ln -s /mnt/bigbluebutton /var/bigbluebutton
-
-$ sudo bbb-conf --start
-```
 
 ### BigBlueButton does not load
 
