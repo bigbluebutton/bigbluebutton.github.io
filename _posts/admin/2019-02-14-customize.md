@@ -170,7 +170,7 @@ This change will increase the processing time and storage size of recordings wit
 
 By default, the BigBlueButton server will produce a recording when (1) the meeting has been created with `record=true` in the create API call and (2) a moderator has clicked the Start/Stop Record button (at least once) during the meeting.
 
-However, you can configure a BigBlueButton server to record every meeting, edit `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties` and change
+However, you can configure a BigBlueButton server to record every meeting, edit `/etc/bigbluebutton/bbb-web.properties` and set
 
 ```properties
 # Start recording when first user joins the meeting.
@@ -198,14 +198,6 @@ To apply the changes, restart the BigBlueButton server using the command
 
 ```bash
 $ sudo bbb-conf --restart
-```
-
-To [always record every meeting](#always-record-every-meeting), add the following to `apply-config.sh`.
-
-```bash
-echo "  - Prevent viewers from sharing webcams"
-sed -i 's/autoStartRecording=.*/autoStartRecording=true/g' /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
-sed -i 's/allowStartStopRecording=.*/allowStartStopRecording=false/g' /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
 ```
 
 ### Transfer recordings
@@ -567,7 +559,7 @@ package.
 
 ### Mute all users on startup
 
-If you want to have all users join muted, you can modify `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties` and set this as a server-wide configuration.
+If you want to have all users join muted, you can add an overwrite in `/etc/bigbluebutton/bbb-web.properties` and set this as a server-wide configuration.
 
 ```properties
 # Mute the meeting on start
@@ -736,7 +728,7 @@ $ sudo systemctl restart freeswitch
 
 Try calling the phone number. It should connect to FreeSWITCH and you should hear a voice prompting you to enter the five digit PIN number for the conference. Please note, that dialin will currently only work if at least one web participant has joined with their microphone.
 
-To always show users the phone number along with the 5-digit PIN number within BigBlueButton, not only while selecting the microphone participation, edit `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties` and change 613-555-1234 to the phone number provided by your Internet Telephone Service Provider
+To always show users the phone number along with the 5-digit PIN number within BigBlueButton, not only while selecting the microphone participation, edit `/etc/bigbluebutton/bbb-web.properties` and set the phone number provided by your Internet Telephone Service Provider
 
 ```properties
 #----------------------------------------------------
@@ -744,13 +736,13 @@ To always show users the phone number along with the 5-digit PIN number within B
 defaultDialAccessNumber=613-555-1234
 ```
 
-and change `defaultWelcomeMessageFooter` to
+and set `defaultWelcomeMessageFooter` to
 
 ```properties
 defaultWelcomeMessageFooter=<br><br>To join this meeting by phone, dial:<br>  %%DIALNUM%%<br>Then enter %%CONFNUM%%# as the conference PIN number.
 ```
 
-Save `bigbluebutton.properties` and restart BigBlueButton again. Each user that joins a session will see a message in the chat similar to.
+Save `/etc/bigbluebutton/bbb-web.properties` and restart BigBlueButton again. Each user that joins a session will see a message in the chat similar to.
 
 ```text
 To join this meeting by phone, dial:
@@ -786,80 +778,13 @@ You need to restart BigBlueButton between each change. For more information, see
 $ sudo bbb-conf --restart
 ```
 
-## Connect BigBlueButton to an external FreeSWITCH Server
-
-BigBlueButton bundles in FreeSWITCH, but you can configure BigBlueButton to use an external FreeSWITCH server.
-
-First, edit `/usr/share/red5/webapps/bigbluebutton/WEB-INF/bigbluebutton.properties`
-
-```properties
-freeswitch.esl.host=127.0.0.1
-freeswitch.esl.port=8021
-freeswitch.esl.password=ClueCon
-```
-
-Change `freeswitch.esl.host` to point to your external FreeSWITCH IP address. Change the default `freeswitch.esl.password` to the ESL password for your server.
-
-You can use http://strongpasswordgenerator.com/ to generate passwords.
-
-In your external FreeSWITCH server, edit `/opt/freeswitch/conf/autoload_configs/event_socket.conf.xml`.
-
-```xml
-<configuration name="event_socket.conf" description="Socket Client">
-  <settings>
-    <param name="nat-map" value="false"/>
-    <param name="listen-ip" value="127.0.0.1"/>
-    <param name="listen-port" value="8021"/>
-    <param name="password" value="ClueCon"/>
-    <!-- param name="apply-inbound-acl" value="localnet.auto"/ -->
-  </settings>
-</configuration>
-```
-
-Change the `listen-ip` to your external FreeSWITCH server IP and also change the `password` to be the same as `freeswitch.esl.password`.
-
-Edit `/usr/share/red5/webapps/sip/WEB-INF/bigbluebutton-sip.properties`
-
-```properties
-bbb.sip.app.ip=127.0.0.1
-bbb.sip.app.port=5070
-
-sip.server.username=bbbuser
-sip.server.password=secret
-
-freeswitch.ip=127.0.0.1
-freeswitch.port=5060
-```
-
-Change `bbb.sip.app.ip` to your BigBlueButton server ip.
-
-Change `sip.server.password` to something else.
-
-Change `freeswitch.ip` to your external FreeSWITCH ip.
-
-In your external FreeSWITCH server.
-
-Edit `/opt/freeswitch/conf/directory/default/bbbuser.xml`
-
-```xml
-  <user id="bbbuser">
-    <params>
-      <!-- omit password for authless registration -->
-      <param name="password" value="secret"/>
-      <!-- What this user is allowed to access -->
-      <!--<param name="http-allowed-api" value="jsapi,voicemail,status"/> -->
-    </params>
-```
-
-Change `password` to match the password you set in `sip.server.password`.
-
 ## Presentation
 
 ### Change the default presentation
 
 When a new meeting starts, BigBlueButton displays a default presentation. The file for the default presentation is located in `/var/www/bigbluebutton-default/default.pdf`. You can replace the contents of this file with your presentation. Whenever a meeting is created, BigBlueButton will automatically load, convert, and display this presentation for all users.
 
-Alternatively, you can change the global default by editing `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties` and changing the URL for `beans.presentationService.defaultUploadedPresentation`.
+Alternatively, you can change the global default by adding an overwriting rule in `/etc/bigbluebutton/bbb-web.properties` specifying the URL for `beans.presentationService.defaultUploadedPresentation`.
 
 ```properties
 # Default Uploaded presentation file
@@ -872,7 +797,7 @@ If you want to specify the default presentation for a given meeting, you can als
 
 ### Increase the 200 page limit for uploads
 
-BigBlueButton, by default, restricts uploads to 200 pages. To increase this value, open `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties` and change the `maxNumPages` value:
+BigBlueButton, by default, restricts uploads to 200 pages. To increase this value, add an overwrite rule in `/etc/bigbluebutton/bbb-web.properties` and set the `maxNumPages` value:
 
 ```properties
 #----------------------------------------------------
@@ -880,7 +805,7 @@ BigBlueButton, by default, restricts uploads to 200 pages. To increase this valu
 maxNumPages=200
 ```
 
-After you save the changes to `bigbluebutton.properties`, restart the BigBlueButton server with
+After you save the changes to `/etc/bigbluebutton/bbb-web.properties`, restart the BigBlueButton server with
 
 ```bash
 $ sudo bbb-conf --restart
@@ -908,14 +833,14 @@ The first step is to change the size restriction in nginx. Edit `/etc/bigbluebut
        }
 ```
 
-Next change the restriction in bbb-web. Edit `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties` and modify the value `maxFileSizeUpload`.
+Next change the restriction in bbb-web. Add an overwrite rule in `/etc/bigbluebutton/bbb-web.properties` and set the value `maxFileSizeUpload`.
 
 ```properties
 # Maximum file size for an uploaded presentation (default 30MB).
 maxFileSizeUpload=30000000
 ```
 
-The next changes are for the client-side checks and it depends on which clients you have it use. To increase the size for the Flash client, edit `/var/www/bigbluebutton/client/conf/config.xml` and modify `maxFileSize` to the new value (note: if you have the development environment you need to edit `~/dev/bigbluebutton/bigbluebutton-client/src/conf/config.xml` and then rebuild the client). To increase the size for the HTML5 client, edit `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml` and modify `uploadSizeMax`.
+You will have to additionally increase the size for the HTML5 client, edit `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml` and modify `uploadSizeMax`.
 
 Restart BigBlueButton with `sudo bbb-conf --restart`. You should now be able to upload larger presentations within the new limit.
 
@@ -1107,7 +1032,7 @@ When a front-end creates a BigBlueButton session, it may also pass a `welcome` p
 
 The final welcome message shown to the user (as blue text in the Chat window) is a composite of `welcome` + `defaultWelcomeMessage` + `defaultWelcomeMessageFooter`.
 
-The welcome message is fixed for the duration of a meeting. If you want to see the effect of changing the `welcome` parameter, you must [end](/dev/api.html#end) the current meeting or wait until the BigBlueButton server removes it from memory (which occurs about two minutes after the last person has left). If you change the parameters in `bigbluebutton.properties`, you must restart BigBlueButton with `sudo bbb-conf --restart` for the new values to take effect.
+The welcome message is fixed for the duration of a meeting. If you want to see the effect of changing the `welcome` parameter, you must [end](/dev/api.html#end) the current meeting or wait until the BigBlueButton server removes it from memory (which occurs about two minutes after the last person has left). You can overwrite these values in file `/etc/bigbluebutton/bbb-web.properties`, just remember to restart BigBlueButton with `sudo bbb-conf --restart` for the new values to take effect.
 
 ### Change the default locale
 
@@ -1150,11 +1075,11 @@ $ chown meteor:meteor $TARGET
 
 ### Apply lock settings to restrict webcams
 
-To enable lock settings for `Share webcam` by default (viewers are unable to share their webcam), add the following to `apply-config.sh`.
+To enable lock settings for `Share webcam` by default (viewers are unable to share their webcam), add the following to `/etc/bigbluebutton/bbb-web.properties`.
 
-```bash
-echo "  - Prevent viewers from sharing webcams"
-sed -i 's/lockSettingsDisableCam=.*/lockSettingsDisableCam=true/g' /usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties
+```properties
+# Prevent viewers from sharing webcams
+lockSettingsDisableCam=true
 ```
 
 After restart, if you open the lock settings you'll see `Share webcam` lock enabled.
@@ -1202,9 +1127,8 @@ All changes to global HTML5 client settings are done in the file above. So to ch
 
 ### Configure guest policy
 
-There is work underway to add the ability for moderators to approve incoming viewers in the HTML5 client (see [#5979](https://github.com/bigbluebutton/bigbluebutton/issues/5979); however, this feature is not yet implemented.
-
-The policy for guest management on the server is is set in the properties file for `bbb-web`, which is at `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties`.
+The policy for guest management on the server is is set in the properties file for `bbb-web`, which is located at `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties`.
+You can overwrite the default guest policy in `/etc/bigbluebutton/bbb-web.properties`. Just add the value you prefer, save the file and restart BigBlueButton.
 
 ```properties
 # Default Guest Policy
@@ -1212,11 +1136,6 @@ The policy for guest management on the server is is set in the properties file f
 #
 defaultGuestPolicy=ALWAYS_ACCEPT
 ```
-
-Currently, if this value is set as `ASK_MODERATOR` (which may occur in some upgrades from 2.0 to 2.2), it will prevent HTML5 users from joining the session.
-
-For now, to enable HTML5 users to join, change it to `ALWAYS_ACCEPT` and restart BigBlueButton server with `sudo bbb-conf --restart`.
-
 ## Show a custom logo on the client
 
 Ensure that the parameter `displayBrandingArea` is set to `true` in bbb-html5's configuration, restart BigBlueButton server with `sudo bbb-conf --restart` and pass `logo=<image-url>` in Custom parameters when creating the meeting.
