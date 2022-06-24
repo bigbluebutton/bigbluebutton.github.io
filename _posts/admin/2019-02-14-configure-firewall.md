@@ -142,53 +142,79 @@ At this point, proceed with the [installation of BigBlueButton](/2.2/install.htm
 
 # Configure BigBlueButton to work with your firewall
 
+## Updating mediasoup
+
+In BigBlueButton 2.5 or later, the HTML5 client uses **mediasoup** to send/receive WebRTC streams. If you are installing on a BigBlueButton server behind a firewall that uses network address translation (NAT), you need to make sure mediasoup has its external addresses properly configured.
+
+Keep in mind the following steps should already be done by bbb-install in an IPv4 environment.
+
+To configure appropriate external addresses, bbb-webrtc-sfu's [override configuration file](https://docs.bigbluebutton.org/admin/configuration-files.html) (located in `/etc/bigbluebutton/bbb-webrtc-sfu/production.yml`) should be used. If `production.yml` or `/etc/bigbluebutton/bbb-webrtc-sfu/` aren't present, it's sufficient to just create them with appropriate permissions and ownership rules.
+
+For example: in a BigBlueButton server with a public IPv4 address `192.0.2.0`, the configuration responsible for specifying the external addresses in mediasoup should be of the following format (YAML syntax, `/etc/bigbluebutton/bbb-webrtc-sfu/production.yml`):
+
+```yaml
+mediasoup:
+  webrtc:
+    listenIps:
+      - ip: 0.0.0.0
+        announcedIp: 192.0.2.0
+```
+
+Notice the `listenIps` key is an **array**. If you need mediasoup to work with **IPv6** as well, don't forget to add another entry to that array with it. For example: in a BigBlueButton server with a public IPv4 `192.0.2.0` and IPv6 `2001:db8::`, the configuration should be of the following format (YAML syntax, `/etc/bigbluebutton/bbb-webrtc-sfu/production.yml`):
+
+```yaml
+mediasoup:
+  webrtc:
+    listenIps:
+      - ip: 0.0.0.0
+        announcedIp: 192.0.2.0
+      - ip: 2001:db8::
+```
+
+Restart BigBlueButton to apply the changes.
+
 ## Updating Kurento
 
 ### Extra steps when server is behind NAT
 
-The HTML5 client uses the kurento media server to send/receive WebRTC video streams. If you are installing on a BigBlueButton server behind a firewall that uses network address translation (NAT), you need to give kurento access to an external STUN server (which stans for Session Traversal of UDP through NAT). A STUN server will help Kurento determine its external address when behind NAT.
+In BigBlueButton 2.4 or lower, the HTML5 client uses Kurento Media Server to send/receive WebRTC video streams. If you are installing on a BigBlueButton server behind a firewall that uses network address translation (NAT), you need to make sure Kurento has its external address properly configured.
 
-You'll find a list of publicly available STUN servers at the [kurento documentation](https://kurento.readthedocs.io/en/stable/doc/admin_guide.html#installation).  
-To configure Kurento to use a STUN server from the above list, you need to edit `/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini` and uncomment and assign values for `stunServerAddress` and `stunServerPort`. Here's the default configuration.
+Keep in mind the following steps should already be done by bbb-install.
+
+To configure an appropriate external address in Kurento, you need to edit `/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini` and uncomment and assign values for `externalIPv4`. Here's the relevant section in the default configuration.
 
 ```ini
 # cat /etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
-; Only IP address are supported, not domain names for addresses
-; You have to find a valid stun server. You can check if it works
-; usin this tool:
-;   http://webrtc.github.io/samples/src/content/peerconnection/trickle-ice/
-; stunServerAddress=<serverAddress>
-; stunServerPort=<serverPort>
-
-; turnURL gives the necessary info to configure TURN for WebRTC.
-;    'address' must be an IP (not a domain).
-;    'transport' is optional (UDP by default).
-; turnURL=user:password@address:port(?transport=[udp|tcp|tls])
-
-;pemCertificate is deprecated. Please use pemCertificateRSA instead
-;pemCertificate=<path>
-;pemCertificateRSA=<path>
-;pemCertificateECDSA=<path>
+[...]
+;; External IPv4 and IPv6 addresses of the media server.
+;;
+;; Forces all local IPv4 and/or IPv6 ICE candidates to have the given address.
+;; This is really nothing more than a hack, but it's very effective to force a
+;; public IP address when one is known in advance for the media server. In doing
+;; so, KMS will not need a STUN or TURN server, but remote peers will still be
+;; able to contact it.
+;;
+;; You can try using these settings if KMS is deployed on a publicly accessible
+;; server, without NAT, and with a static public IP address. But if it doesn't
+;; work for you, just go back to configuring a STUN or TURN server for ICE.
+;;
+;; Only set this parameter if you know what you're doing, and you understand
+;; 100% WHY you need it. For the majority of cases, you should just prefer to
+;; configure a STUN or TURN server.
+;;
+;; <externalIPv4> is a single IPv4 address.
+;; <externalIPv6> is a single IPv6 address.
+;;
+;externalIPv4=198.51.100.1
+;externalIPv6=2001:0db8:85a3:0000:0000:8a2e:0370:7334
+[...]
 ```
 
-For example, to use the STUN server at 172.217.212.127 (the IP address for stun.l.google.com) with port 19302, edit the lines with `stunServerAddress` and `stunServerPort` as follows:
+For example, in a BigBlueButton server with a public IPv4 address of 192.0.2.0, edit the line with `externalIPv4` as follows:
 
 ```ini
-stunServerAddress=172.217.212.127
-stunServerPort=19302
+externalIPv4=192.0.2.0
 ```
-
-To verify that the STUN server is accessible and working, use `stunclient` from the `stuntman-client` package.
-
-```bash
-# sudo apt install stuntman-client
-# stunclient 172.217.212.127 19302
-Binding test: success
-Local address: 10.128.0.8:41870
-Mapped address: 104.155.132.199:41870
-```
-
-(The port 41870 is a random example. Different runs of this command will choose different example ports.)
 
 ## Update FreeSWITCH
 
