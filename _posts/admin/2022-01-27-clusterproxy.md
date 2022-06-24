@@ -148,6 +148,16 @@ location /bbb-01/html5client/locales {
 **Note:** It is important that the location configuration is equal between the
 BigBlueButton server and the proxy.
 
+Add a route for the locales handler for the guest lobby. The guest lobby is served directly from the BBB node.
+
+```
+# /etc/bigbluebutton/nginx/bbb-html5.nginx
+location =/html5client/locale {
+  return 301 /bbb-01$request_uri;
+}
+```
+
+
 Restart BigBlueButton:
 
 ```shell
