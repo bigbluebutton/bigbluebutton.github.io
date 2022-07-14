@@ -2,3 +2,13 @@
   required: true
   type: "String"
   description: "A single recording ID to retrieve the available captions for. (Unlike other recording APIs, you cannot provide a comma-separated list of recordings.)"
+
+- name: "page"
+  required: false
+  type: "Integer"
+  description: "The page number that you wish to retrieve. By default the first page (page 0) is returned." 
+
+- name: "size"
+  required: false
+  type: "Integer"
+  description: "The maximum number of recording text tracks that should be returned per page. By default at most 25 recording text tracks are included in each page." 
