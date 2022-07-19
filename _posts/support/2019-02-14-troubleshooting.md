@@ -58,7 +58,7 @@ $ sudo bbb-record --rebuild 298b06603719217df51c5d030b6e9417cc036476-15593147452
 
 ### Webcams/screen sharing aren't working
 
-Certify that appropriate external addresses have been set for mediasoup. When installed via packages, mediasoup IPs are normally misconfigured. If installed via bbb-install, then IPv4 is generally correct, but IPv6 might be absent. 
+Certify that appropriate external addresses have been set for mediasoup. When installed via packages, mediasoup IPs are normally misconfigured. If installed via bbb-install, then IPv4 is generally correct, but IPv6 might be absent.
 
 Nonetheless, we recommend double-checking the instructions in [Updating mediasoup](https://docs.bigbluebutton.org/admin/configure-firewall.html#updating-mediasoup).
 
@@ -66,7 +66,7 @@ Nonetheless, we recommend double-checking the instructions in [Updating mediasou
 
 mediasoup (bbb-webrtc-sfu) **does not** come with a IPv6 enabled by default when installed either via packages or bbb-install.
 
-To configure IPv6, bbb-webrtc-sfu's [override configuration file](https://docs.bigbluebutton.org/admin/configuration-files.html) (located in `/etc/bigbluebutton/bbb-webrtc-sfu/production.yml`) should be used. 
+To configure IPv6, bbb-webrtc-sfu's [override configuration file](https://docs.bigbluebutton.org/admin/configuration-files.html) (located in `/etc/bigbluebutton/bbb-webrtc-sfu/production.yml`) should be used.
 
 See [Updating mediasoup](https://docs.bigbluebutton.org/admin/configure-firewall.html#updating-mediasoup) for instructions and examples on how to do so.
 
@@ -538,7 +538,7 @@ Then do `systemctl daemon-reload` and restart BigBlueButton.
 
 When installing the latest build of BigBlueButton, the package `bbb-conf` now uses `yq` to manage YAML files.
 
-You need to add the repository `ppa:rmescandon/yq` to your server. For steps on how to do this, see [Update your server](http://docs.bigbluebutton.org/2.2/install.html#1-update-your-server) in the BigBlueButton 2.2 install guide.
+You need to add the repository `ppa:rmescandon/yq` to your server. For steps on how to do this, see [Update your server](https://docs.bigbluebutton.org/2.2/install.html#1-update-your-server) in the BigBlueButton 2.2 install guide.
 
 Alternatively, if you have not made any customizations to BigBlueButton (outside of using `bbb-conf`), you can use [bbb-install.sh](https://github.com/bigbluebutton/bbb-install) to install/upgrade to the latest version (the `bbb-install.sh` script will automatically install the repository for `yq`).
 
@@ -598,9 +598,9 @@ You should now see each command in `bbb-conf.postinst` as it executes upto the l
 Some hosting providers do not provide a complete `/etc/apt/source.list`. If you are finding your are unable to install a package, try replacing your `/etc/apt/sources.list` with the following
 
 ```bash
-deb http://archive.ubuntu.com/ubuntu xenial main restricted universe multiverse
-deb http://archive.ubuntu.com/ubuntu xenial-updates main restricted universe multiverse
-deb http://security.ubuntu.com/ubuntu xenial-security main restricted universe multiverse
+deb https://archive.ubuntu.com/ubuntu xenial main restricted universe multiverse
+deb https://archive.ubuntu.com/ubuntu xenial-updates main restricted universe multiverse
+deb https://security.ubuntu.com/ubuntu xenial-security main restricted universe multiverse
 ```
 
 then do
@@ -627,7 +627,7 @@ Here are the following lists the possible WebRTC error messages that a user may 
 - **1003: Browser version not supported** - Browser doesn’t implement the necessary WebRTC API methods. Possible Causes:
   - Out of date browser
 - **1004: Failure on call** - The call was attempted, but failed. Possible Causes:
-  - For a full list of causes refer [here](http://sipjs.com/api/0.6.0/causes/)
+  - For a full list of causes refer [here](https://sipjs.com/api/0.6.0/causes/)
   - There are 24 different causes so I don’t really want to list all of them
   - Solution for this issue [outlined here](https://groups.google.com/forum/#!msg/bigbluebutton-setup/F2MlW6Voj-0/ZXDq5_-uEQAJ).
 - **1005: Call ended unexpectedly** - The call was successful, but ended without user requesting to end the session. Possible Causes:
@@ -723,7 +723,7 @@ The common reasons for nginx not running are inability to bind to port 80 and co
 $ sudo netstat -ant
 ```
 
-to see if any process is currently bound to port 80. If so, check to see if another web server is installed. If so, then stop the web server and try to restart nginx. One of the server requirements before you install BigBlueButton is that port 80 is not in use by another application (such as Apache). For details on why this is a requirements, see [We recommend running BigBlueButton on port 80](http://docs.bigbluebutton.org/support/faq.html#we-recommend-running-bigbluebutton-on-port-80443).
+to see if any process is currently bound to port 80. If so, check to see if another web server is installed. If so, then stop the web server and try to restart nginx. One of the server requirements before you install BigBlueButton is that port 80 is not in use by another application (such as Apache). For details on why this is a requirements, see [We recommend running BigBlueButton on port 80](https://docs.bigbluebutton.org/support/faq.html#we-recommend-running-bigbluebutton-on-port-80443).
 
 If port 80 is free, check if your nginx configuration file has errors. Try a restart of nginx
 
@@ -1008,7 +1008,7 @@ The script `bbb-install` now creates these overrides by default.
 
 It is most likely an error on GreenLight. Check the log file according to [Troubleshooting Greenlight](/greenlight/gl-install.html#troubleshooting-greenlight).
 
-If this error occurrs on just a small number of PCs accessing a BigBlueButton server within a LAN through a proxy server and you find the description "Error::Unsafe Host Error (x.x.x.x is not a safe host)" (where x.x.x.x is an IP address) in the log file, check if the "Don't use the proxy server for local (intranet) addresses" (in the Windows proxy setting) is ticked. 
+If this error occurrs on just a small number of PCs accessing a BigBlueButton server within a LAN through a proxy server and you find the description "Error::Unsafe Host Error (x.x.x.x is not a safe host)" (where x.x.x.x is an IP address) in the log file, check if the "Don't use the proxy server for local (intranet) addresses" (in the Windows proxy setting) is ticked.
 
 ## Legacy errors
 

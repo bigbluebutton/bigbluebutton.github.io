@@ -25,7 +25,7 @@ Starting with BigBlueButton 2.3 many of the configuration files have local overr
 | /usr/share/meteor/bundle/bbb-html5-with-roles.conf                      | /etc/bigbluebutton/bbb-html5-with-roles.conf     |                                                                                  |
 | /usr/share/bbb-web/WEB-INF/classes/spring/turn-stun-servers.xml         | /etc/bigbluebutton/turn-stun-servers.xml         | Replaces the original file                                                       |
 | /usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml              | /etc/bigbluebutton/bbb-webrtc-sfu/production.yml | Arrays are merged by replacement                                                 |
-| /etc/bigbluebutton/recording/recording.yml                              | /usr/local/bigbluebutton/core/scripts/bigbluebutton.yml | 
+| /etc/bigbluebutton/recording/recording.yml                              | /usr/local/bigbluebutton/core/scripts/bigbluebutton.yml |
 | /etc/bigbluebutton/recording/presentation.yml                           | /usr/local/bigbluebutton/core/scripts/presentation.yml/presentation.yml |
 
 <br /><br />
@@ -181,7 +181,7 @@ Here's a sample log entry
 
 Located in `/etc/nginx/sites-enabled/bigbluebutton`
 
-This configures nginx to use `/var/www/bigbluebutton-default` as the default site. ([src](http://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-client/config/bigbluebutton.nginx))
+This configures nginx to use `/var/www/bigbluebutton-default` as the default site. ([src](https://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-client/config/bigbluebutton.nginx))
 
 ## Log files
 

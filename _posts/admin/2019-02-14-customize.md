@@ -1326,11 +1326,11 @@ Any front-end to BigBlueButton needs two pieces of information: the hostname for
 ```bash
 $ bbb-conf --secret
 
-       URL: http://bigbluebutton.example.com/bigbluebutton/
+    URL: https://bigbluebutton.example.com/bigbluebutton/
     Secret: 577fd5f05280c10fb475553d200f3322
 
-      Link to the API-Mate:
-      http://mconf.github.io/api-mate/#server=http://10.0.3.132/bigbluebutton/&sharedSecret=577fd5f05280c10fb475553d200f3322
+    Link to the API-Mate:
+    https://mconf.github.io/api-mate/#server=https://10.0.3.132/bigbluebutton/&sharedSecret=577fd5f05280c10fb475553d200f3322
 ```
 
 The last line gives a link API-Mate, an excellent tool provided by [Mconf Technologies](https://mconf.com/) (a company that has made many contributions to the BigBlueButton project over the years) that makes it easy to create API calls.

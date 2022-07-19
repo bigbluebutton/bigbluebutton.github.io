@@ -33,7 +33,7 @@ We host a public, absolutely free, demo version of Greenlight and BigBlueButton 
 
 Greenlight is a feature rich application that aims to address all your BigBlueButton users needs.  We are constantly expanding Greenlight, and if you have any suggestions, you can open one on the [official Greenlight repo](https://github.com/bigbluebutton/Greenlight).
 
-As BigBlueButton and Greenlight are open-source projects, we encourage other developers to contribute. If you want to implement a new feature and submit a pull request, you are more than welcome to do so! For information on contributing to BigBlueButton projects, see [Contributing to BigBlueButton](http://docs.bigbluebutton.org/support/faq.html#contributing-to-bigbluebutton).
+As BigBlueButton and Greenlight are open-source projects, we encourage other developers to contribute. If you want to implement a new feature and submit a pull request, you are more than welcome to do so! For information on contributing to BigBlueButton projects, see [Contributing to BigBlueButton](https://docs.bigbluebutton.org/support/faq.html#contributing-to-bigbluebutton).
 
 ## Accounts and Profile
 
@@ -125,7 +125,7 @@ Afterwards, clicking **Update Room** will save the changes.
 
 ### Manage Access
 
-In the Room actions dropdown, there is a setting that allows users to share rooms. 
+In the Room actions dropdown, there is a setting that allows users to share rooms.
 
 ![Greenlight Room Shared Access](/images/greenlight/room_shared_access.png)
 
@@ -147,7 +147,7 @@ You can unshare a room with a user by clicking the **x** icon. Again, no changes
 
 Once a room is shared, the users that it is shared with will have access to that room in their Room List. They will be able to view/start the meeting and view the recordings. Note that only the room owner can edit/delete the room and the recordings.
 
-For the User that has the room shared with them, the room will now appear in their room list with a share icon and the name of the user that shared the room with them. 
+For the User that has the room shared with them, the room will now appear in their room list with a share icon and the name of the user that shared the room with them.
 
 ![Greenlight Room Shared](/images/greenlight/room_share.png)
 
