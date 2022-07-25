@@ -114,7 +114,7 @@ To make sure that we have met these guidelines, there are numerous tools availab
 
 ![Image showing contrast ratio calculator](/images/accessibility_colorchecker.jpg)
 
-http://webaim.org/resources/contrastchecker/
+https://webaim.org/resources/contrastchecker/
 
 ### Currently implemented colors:
 
@@ -148,15 +148,15 @@ The HTML5 client uses the WAI-ARIA (Web Accessibility Initiative – Accessible 
 
 #### Links
 
-HTML5 ARIA spec - http://www.w3.org/TR/aria-in-html/
+HTML5 ARIA spec - https://www.w3.org/TR/aria-in-html/
 
-ARIA spec - http://www.w3.org/WAI/PF/aria/
+ARIA spec - https://www.w3.org/WAI/PF/aria/
 
-Roles - http://www.w3.org/TR/wai-aria/roles
+Roles - https://www.w3.org/TR/wai-aria/roles
 
-States and Properties - http://www.w3.org/TR/wai-aria/states_and_properties
+States and Properties - https://www.w3.org/TR/wai-aria/states_and_properties
 
-Design Patterns - http://www.w3.org/TR/wai-aria-practices/#aria_ex
+Design Patterns - https://www.w3.org/TR/wai-aria-practices/#aria_ex
 
 ### Testing
 
@@ -185,6 +185,6 @@ Both of these extensions provide the ability to scan the DOM and report on any a
 
 ## Training
 
-We recommend checking out this [free online accessibility course](http://www.udacity.com/course/web-accessibility--ud891) which can provide a very good understanding of the basics of dealing with web accessibility for both developers and designers.
+We recommend checking out this [free online accessibility course](https://www.udacity.com/course/web-accessibility--ud891) which can provide a very good understanding of the basics of dealing with web accessibility for both developers and designers.
 
 In the event you do not need to take the course but would still like access to the information as reference, the course is also found in [full document form](https://developers.google.com/web/fundamentals/accessibility) . It is a live document which is updated by the developers over at Google.
