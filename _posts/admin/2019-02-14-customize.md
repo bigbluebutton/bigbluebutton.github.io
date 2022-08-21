@@ -815,7 +815,7 @@ $ sudo bbb-conf --restart
 
 The default maximum file upload size for an uploaded presentation is 30 MB.
 
-The first step is to change the size restriction in nginx. Edit `/etc/bigbluebutton/nginx/web.nginx` and modify the values for `client_max_body_size`.
+The first step is to change the size restriction in nginx. Edit `/etc/bigbluebutton/nginx/web.nginx` (2.4) or `/usr/share/bigbluebutton/nginx/web.nginx` (2.5) and modify the values for `client_max_body_size`.
 
 ```nginx
        location ~ "^\/bigbluebutton\/presentation\/(?<prestoken>[a-zA-Z0-9_-]+)/upload$" {
