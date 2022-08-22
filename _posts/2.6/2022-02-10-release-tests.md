@@ -1590,6 +1590,40 @@ Note :
 
 - Click "Deny" for the specific user in teh waiting users panel. That viewer should see the message "Guest denied of joining the meeting" and should soon be redirected to the home page.
 
+## Recording
+
+### Start recording notification: not in audio [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.6.x-release/bigbluebutton-tests/playwright/notifications/notifications.spec.js)
+
+1. Create a recorded meeting and join the meeting without joining audio.
+
+2. Click on the recording indicator.
+
+3. Verify that the toast notification about no active mic appears.
+
+### Start recording notification: in listen only [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.6.x-release/bigbluebutton-tests/playwright/notifications/notifications.spec.js)
+
+1. Create a recorded meeting and join the meeting in listen only mode.
+
+2. Click on the recording indicator.
+
+3. Verify that the toast notification about no active mic appears.
+
+### No start recording notification: in audio [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.6.x-release/bigbluebutton-tests/playwright/notifications/notifications.spec.js)
+
+1. Create a recorded meeting and join the meeting with microphone.
+
+2. Click on the recording indicator.
+
+3. Verify that the toast notification about no active mic doesn't appear.
+
+### Start recording modal [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.6.x-release/bigbluebutton-tests/playwright/notifications/notifications.spec.js)
+
+1. Create a recorded meeting and join it.
+
+2. Click on the recording indicator.
+
+3. Verify that the start recording modal appears.
+
 ## Custom Parameters [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.6.x-release/bigbluebutton-tests/playwright/customparameters/customparameters.spec.js)
 
 Client should apply custom parameters according to the descriptions from [here](https://docs.bigbluebutton.org/admin/customize.html#application-parameters).
