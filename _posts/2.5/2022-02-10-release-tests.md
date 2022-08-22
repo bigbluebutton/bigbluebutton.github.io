@@ -70,6 +70,18 @@ all of these tests.
 
 7. Current selected file should appear for all clients
 
+### Deleting previously uploaded presentations
+
+1. Presenter: open "Manage presentations" modal, upload two new presentations.
+
+3. Presenter: open "Manage presentations" modal, delete two recently uploaded presentations.
+
+4. Presenter: open "Manage presentations" modal, verify that there's only the default presentation name visible.
+
+5. Another user: become a presenter.
+
+6. New presenter: open "Manage presentations" modal, verify that there's only the default presentation name visible.
+
 ### Navigation [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.5.x-release/bigbluebutton-tests/playwright/presentation/presentation.spec.js)
 
 1. Locate slide navigation bar
