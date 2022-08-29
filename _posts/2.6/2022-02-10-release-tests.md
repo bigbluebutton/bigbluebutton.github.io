@@ -70,6 +70,18 @@ all of these tests.
 
 7. Current selected file should appear for all clients
 
+### Deleting previously uploaded presentations
+
+1. Presenter: open "Manage presentations" modal, upload two new presentations.
+
+3. Presenter: open "Manage presentations" modal, delete two recently uploaded presentations.
+
+4. Presenter: open "Manage presentations" modal, verify that there's only the default presentation name visible.
+
+5. Another user: become a presenter.
+
+6. New presenter: open "Manage presentations" modal, verify that there's only the default presentation name visible.
+
 ### Navigation [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.6.x-release/bigbluebutton-tests/playwright/presentation/presentation.spec.js)
 
 1. Locate slide navigation bar
@@ -1577,6 +1589,40 @@ Note :
 - Click "Accept" for the specific user in the waiting users panel. That viewer should be accepted into the meeting.
 
 - Click "Deny" for the specific user in teh waiting users panel. That viewer should see the message "Guest denied of joining the meeting" and should soon be redirected to the home page.
+
+## Recording
+
+### Start recording notification: not in audio [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.6.x-release/bigbluebutton-tests/playwright/notifications/notifications.spec.js)
+
+1. Create a recorded meeting and join the meeting without joining audio.
+
+2. Click on the recording indicator.
+
+3. Verify that the toast notification about no active mic appears.
+
+### Start recording notification: in listen only [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.6.x-release/bigbluebutton-tests/playwright/notifications/notifications.spec.js)
+
+1. Create a recorded meeting and join the meeting in listen only mode.
+
+2. Click on the recording indicator.
+
+3. Verify that the toast notification about no active mic appears.
+
+### No start recording notification: in audio [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.6.x-release/bigbluebutton-tests/playwright/notifications/notifications.spec.js)
+
+1. Create a recorded meeting and join the meeting with microphone.
+
+2. Click on the recording indicator.
+
+3. Verify that the toast notification about no active mic doesn't appear.
+
+### Start recording modal [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.6.x-release/bigbluebutton-tests/playwright/notifications/notifications.spec.js)
+
+1. Create a recorded meeting and join it.
+
+2. Click on the recording indicator.
+
+3. Verify that the start recording modal appears.
 
 ## Custom Parameters [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.6.x-release/bigbluebutton-tests/playwright/customparameters/customparameters.spec.js)
 
