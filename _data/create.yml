@@ -297,3 +297,13 @@
   type: "Boolean"
   default: "false"
   description: "If it is true, a modal will be displayed to collect recording consent from users when meeting recording starts (only if <code class=\"language-plaintext highlighter-rouge\">remindRecordingIsOn=true</code>). By default it is false. (added 2.6)"
+
+- name: "uploadExternalUrl"
+  required: false
+  type: "String"
+  description: "Pass a URL to a specific page in external application to select files for inserting documents into a live presentation. Only works if `uploadExternalDescription` is also set. (added 2.6)"
+
+- name: "uploadExternalDescription"
+  required: false
+  type: "String"
+  description: "Message to be displayed in presentation uploader modal describing how to use an external application to upload presentation files. Only works if `uploadExternalUrl` is also set. (added 2.6)"
