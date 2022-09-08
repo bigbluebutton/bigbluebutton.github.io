@@ -27,6 +27,7 @@ Starting with BigBlueButton 2.3 many of the configuration files have local overr
 | /usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml              | /etc/bigbluebutton/bbb-webrtc-sfu/production.yml | Arrays are merged by replacement                                                 |
 | /etc/bigbluebutton/recording/recording.yml                              | /usr/local/bigbluebutton/core/scripts/bigbluebutton.yml |
 | /etc/bigbluebutton/recording/presentation.yml                           | /usr/local/bigbluebutton/core/scripts/presentation.yml/presentation.yml |
+| /usr/share/bigbluebutton/nginx/                                         | /etc/bigbluebutton/nginx/ | Make sure to read the instructions in /etc/bigbluebutton/nginx/include_default.nginx to avoid duplicated definitions |
 
 <br /><br />
 
@@ -179,9 +180,7 @@ Here's a sample log entry
 
 ## Configuration files
 
-Located in `/etc/nginx/sites-enabled/bigbluebutton`
-
-This configures nginx to use `/var/www/bigbluebutton-default` as the default site. ([src](https://github.com/bigbluebutton/bigbluebutton/blob/master/bigbluebutton-client/config/bigbluebutton.nginx))
+The defaults are located in `/usr/share/bigbluebutton/nginx/` and are included via `/etc/bigbluebutton/nginx/include_default.nginx`. You can comment out some or all of the inclusions in `/etc/bigbluebutton/nginx/include_default.nginx` and include your own overrides in `/etc/bigbluebutton/nginx/`. Make sure to reload via `sudo systemctl reload nginx` to ensure you are using the modified configuration.
 
 ## Log files
 
