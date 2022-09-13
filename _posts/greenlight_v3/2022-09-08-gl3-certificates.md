@@ -12,9 +12,9 @@ order: 2
 
 ***If you ALREADY have valid SSL certificates to your FQDNs or a wildcard certificate that you’re willing to use for your deployment, please skip to [Custom Certificates](#custom-certificates).***
 
-Now we have two public FQDNs that points to our system with the web ports opened for inbound traffic one for Greenlight and another for Keycloak.
+At this point, there should be two public FQDNs that points to our system with the web ports opened for inbound traffic one for Greenlight and another for Keycloak.
 
-Run the `init-letsencrypt.sh` script which will automate the issuing of the certificates for our FQDNs:
+Run the `init-letsencrypt.sh` script which will automate the issuing of the certificates for the FQDNs:
 
 ```bash
 sudo ./init-letsencrypt.sh
@@ -22,7 +22,7 @@ sudo ./init-letsencrypt.sh
 
 The script will load the environmental variables and request a certificate from Letsencrypt for each defined FQDN.
 
-If there’s no issues you should be prompted that **Existing data found . Continue and replace existing certificate? (y/N).**
+If there’s no issues you should be prompted the following: **Existing data found. Continue and replace existing certificate? (y/N).**
 
 ![Lets Encrpyt](/images/greenlight/v3/certificates/init-letsencrypt.png)
 
