@@ -82,53 +82,7 @@ sudo ./init-letsencrypt.sh
 
 ***NOTE:* Replacing existing *staging certificates is expected.***
 
-We now need to update our nginx configuration file to open **HTTPS** traffic, you can do so manually by going to **./data/nginx/sites.template-*** files ****and uncommenting (Removing the **#** prefix on) all lines for the HTTPS binding and SSL certificate files locations.
-
-Or, for your convenience you can run:
-
-```bash
-sed -i "/#listen.*/s/#//g" ./data/nginx/sites.template-*
-sed -i "/#ssl_certificate.*/s/#//g" ./data/nginx/sites.template-*
-sed -i "/#.*\/data\/certbot\/conf\/live\/.*/s/#//g" docker-compose.yml
-```
-
-Now we restart the services:
-
-```bash
-sudo docker compose down && sudo docker compose up -d
-```
-
-Accessing your Greenlight and Keycloak instances through their HTTPS enabled URLs should be possible now.
-
-So for a **DOMAIN_NAME=xlab.bigbluebutton.org, GL_HOSTNAME=gl and KC_HOSTNAME=kc.**
-
-You can access Greenlight through:  [https://gl.xlab.bigbluebutton.org/](http://gl.xlab.bigbluebutton.org/) and Keycloak through [https://kc.xlab.bigbluebutton.org](http://gl.xlab.bigbluebutton.org/).
-
-When encountering any issues with nginx you can restart it by:
-
-```bash
-sudo docker compose restart nginx
-```
-
-You can verify the validity of your SSL certificates through your browser, when accessing your URLs you should have a valid SSL status:
-
-![HTTPS](/images/greenlight/v3/certificates/https.png)
-
-**Congratulations** on following the steps until this point, now you have a production ready setup with our recommended configuration set and apt for using.
-
----
-
-**Greenlight is still in its Alpha version.**
-
-For any suggestions, notes or any encountered issues please refer to the official repository and the community group:
-
-***GitHub Repository:*** [https://github.com/bigbluebutton/greenlight/](https://github.com/bigbluebutton/greenlight/)
-
-***Community Group:*** [https://groups.google.com/g/bigbluebutton-greenlight](https://groups.google.com/g/bigbluebutton-greenlight)
-
----
-
-If have **not** followed **Greenlight without Keycloak** guide, please follow this guide ***Greenlight with Keycloak*** to make a minimal configuration for Keycloak and integrate it with your Greenlight instance.
+Once you're finished, you can skip to [Updating NGINX and Starting Greenlight](#updating-nginx-and-starting-greenlight)
 
 ---
 ## Custom Certificates
@@ -209,8 +163,8 @@ Then you’d create a **relative** symbolic link named after Keycloak FQDN that 
 
 For that please edit the following command and run it:
 
-- **<YOUR_GL_FQDN>**: is a placeholder for your Greenlight FQDN, in our example that would be ‘**gl.xlab.bigbluebutton.org**’, for your deployment that should match ‘**$GL_HOSTNAME.$DOMAIN_NAME’**.
-- **<YOUR_KC_FQDN>**: is a placeholder for your Keycloak FQDN, in our example that would be ‘**kc.xlab.bigbluebutton.org**’, for your deployment that should match ‘**$KC_HOSTNAME.$DOMAIN_NAME’.**
+- **\<YOUR_GL_FQDN\>**: is a placeholder for your Greenlight FQDN, in our example that would be ‘**gl.xlab.bigbluebutton.org**’, for your deployment that should match ‘**$GL_HOSTNAME.$DOMAIN_NAME’**.
+- **\<YOUR_KC_FQDN\>**: is a placeholder for your Keycloak FQDN, in our example that would be ‘**kc.xlab.bigbluebutton.org**’, for your deployment that should match ‘**$KC_HOSTNAME.$DOMAIN_NAME’.**
 
 
 
@@ -257,7 +211,7 @@ sudo ls -R greenlight-run/data/certbot/conf/live/
 
 *If you have followed the guides to remove Keycloak it’s expected to not having its certificate directory.*
 
-Once you're finished, you can skip to [Updating NGINX and Starting Greenlight](#updating-nginx-and-starting-greenlight)
+Once you're finished, you can continue to [Updating NGINX and Starting Greenlight](#updating-nginx-and-starting-greenlight)
 
 ---
 ## Updating NGINX and Starting Greenlight
