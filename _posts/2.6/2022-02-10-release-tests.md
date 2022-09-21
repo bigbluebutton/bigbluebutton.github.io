@@ -1444,7 +1444,7 @@ Note :
 
 3. The Popup Alerts for Chat are now Disabled/Enabled.
 
-#### D. Application Language [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.6.x-release/bigbluebutton-tests/playwright/settings/settings.spec.js)
+#### D. Application Language [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.6.x-release/bigbluebutton-tests/playwright/options/options.spec.js)
 
 (Inside "Application" section of the Settings modal)
 
