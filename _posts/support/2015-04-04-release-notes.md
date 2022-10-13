@@ -11,7 +11,7 @@ Starting with BigBlueButton 2.2.1 we publish our Release Notes in [GitHub's BigB
 
 # Release 2.2
 
-Released: November 6, 2019 ([Installation Instructions](/2.2/install.html))
+Released: November 6, 2019 ([Installation Instructions](/install/install.html))
 
 We made it!
 
@@ -21,7 +21,7 @@ Enjoy!
 
 # Release 2.2-beta
 
-Released: March 19, 2019 ([Installation Instructions](/2.2/install.html))
+Released: March 19, 2019 ([Installation Instructions](/install/install.html))
 
 This release completes the development of the new HTML5 client.  BigBlueButton 2.2 supports real-time sharing of audio/video/screen using the browser's (recommend FireFox and Chrome) built-in web real-time communication (WebRTC) libraries.
 
@@ -35,7 +35,7 @@ Major features in this release include:
 
 * **Increased engagement** - The presenter can now share YouTube videos live in the session.
 
-This release is under active development: see [BigBlueButton 2.2 Project Board](https://github.com/bigbluebutton/bigbluebutton/projects/2).  For more details see [video overview](https://bigbluebutton.org/html5https://bigbluebutton.org/html5) and [installation](/2.2/install.html).
+This release is under active development: see [BigBlueButton 2.2 Project Board](https://github.com/bigbluebutton/bigbluebutton/projects/2).  For more details see [video overview](https://bigbluebutton.org/html5https://bigbluebutton.org/html5) and [installation](/install/install.html).
 
 # Release 2.0
 
@@ -45,11 +45,11 @@ Major features in this release include:
 
 * **UI Improvements** - Multiple UI improvements that include enable users to choose a breakout room, restrict viewers to only seeing the moderator's webcams, enabling download of presentation, and smoothing of whiteboard strokes.
 
-* **Multi-user Whiteboard** - The presenter can now let all users write on the whitebaord at the same time. 
+* **Multi-user Whiteboard** - The presenter can now let all users write on the whitebaord at the same time.
 
 * **Shared Notes** - Added a new layout that enables all users to collaborate together on shared notes.
 
-* **HTML5 mobile client** - Users on Android and iOS 11+ devices can participate in online sessions.  The HTML5 client enables two-way sharing of audio, chat, viewing presentation, responding to polls, sharing emoji, and viewing WebRTC screen sharing.  
+* **HTML5 mobile client** - Users on Android and iOS 11+ devices can participate in online sessions.  The HTML5 client enables two-way sharing of audio, chat, viewing presentation, responding to polls, sharing emoji, and viewing WebRTC screen sharing.
 
 There were a lot of smaller updates to improve existing features and fix issues.  See [detailed list of new features](/insall/overview.html) and [issues fixed in BigBlueButton 2.0](https://github.com/bigbluebutton/bigbluebutton/issues?utf8=%E2%9C%93&q=milestone%3A%22Release+2.0%22+is%3Aclosed+).
 
@@ -69,7 +69,7 @@ Major features in this release include:
 
 * **Ubuntu 16.04 packages** - This release installs on Ubuntu 16.04 64-bit (the most recent long-term support release from Canonical) and uses `systemd` for new start/stop scripts for individual components.
 
-For more information on this release see [detailed list of new features](/overview/overview.html) and [issues fixed in BigBlueButton 1.1](https://github.com/bigbluebutton/bigbluebutton/issues?q=milestone%3A%22Release+1.1.0%22+is%3Aclosed).  
+For more information on this release see [detailed list of new features](/overview/overview.html) and [issues fixed in BigBlueButton 1.1](https://github.com/bigbluebutton/bigbluebutton/issues?q=milestone%3A%22Release+1.1.0%22+is%3Aclosed).
 
 # Release 1.0
 
@@ -91,11 +91,11 @@ This release focused on increasing the interactivity between instructors and stu
 
 For details of these updates and others (with screen shots) see [overview](/overview/overview.html).
 
-See [issues fixed in BigBlueButton 1.0](https://github.com/bigbluebutton/bigbluebutton/issues?q=milestone%3A%22Release+1.0.0%22+is%3Aclosed).  
+See [issues fixed in BigBlueButton 1.0](https://github.com/bigbluebutton/bigbluebutton/issues?q=milestone%3A%22Release+1.0.0%22+is%3Aclosed).
 
 # Release 0.9.1
 
-Released: June 29, 2015 
+Released: June 29, 2015
 
 This was a maintenance release to 0.9 to fix issue [2701](https://github.com/bigbluebutton/bigbluebutton/issues/2701)
 with FireFox and Desktop Sharing.
@@ -126,7 +126,7 @@ See [issues fixed in BigBlueButton 0.9.0](https://code.google.com/p/bigbluebutto
 
 # Release 0.81
 
-Released: November 7, 2013 
+Released: November 7, 2013
 
 This is our eleventh release of BigBlueButton.  For a quick summary of what's new since the previous release, see this [overview video](http://youtu.be/4C-rOd8bi6s).
 
@@ -160,7 +160,7 @@ See [issues fixed in BigBlueButton 0.81](https://code.google.com/p/bigbluebutton
 
 _Code named in honor of [Tony Bailetti](http://www.sce.carleton.ca/faculty/bailetti.html), head of the Technology Information Management program (Carleton University) who inspired the creation of BigBlueButton.  For more information, see [History of the BigBlueButton Project](http://www.bigbluebutton.org/history/)._
 
-Released: June 18, 2012 
+Released: June 18, 2012
 
 ## Major Features
 
@@ -176,13 +176,13 @@ Released: June 18, 2012
 
 ## Usability Updates
 
-* **Audio Settings dialog** -  To assist users in checking their audio setup **before** joining the voice conference, BigBlueButton now displays an Audio Settings dialog box to enable the user to verify that audio and microphone are correctly configured for a headset. 
+* **Audio Settings dialog** -  To assist users in checking their audio setup **before** joining the voice conference, BigBlueButton now displays an Audio Settings dialog box to enable the user to verify that audio and microphone are correctly configured for a headset.
 
-* **Video Dock** -  To help users view webcams from multiple sources, a new video dock window now 'docks' all the webcams.  The user can drag individual windows in and out of the dock.  
+* **Video Dock** -  To help users view webcams from multiple sources, a new video dock window now 'docks' all the webcams.  The user can drag individual windows in and out of the dock.
 
-* **Fit-to-Width for layout of portrait documents** -  Presentation module now enables presenter to switch between fit-to-width and fit-to-page layout for best viewing of  portrait and landscape documents.  
+* **Fit-to-Width for layout of portrait documents** -  Presentation module now enables presenter to switch between fit-to-width and fit-to-page layout for best viewing of  portrait and landscape documents.
 
-* **Push to Talk** -  Remote students can now mute/unmute themselves with a 'push to talk' button.  
+* **Push to Talk** -  Remote students can now mute/unmute themselves with a 'push to talk' button.
 
 ## Configuration Updates
 
@@ -194,7 +194,7 @@ Released: June 18, 2012
 
 * **Auto-translate disabled** -  Google Translate APIs are [no longer free](http://code.google.com/apis/language/translate/overview.html) so the auto translate feature is now disabled by default until we can determine the best way to support their new model (see [1833](https://github.com/bigbluebutton/bigbluebutton/issues/1833))
 
-* **bbb-conf now Installs development tools** - To make it easier to develop BigBlueButton, `bbb-conf` can now install a build environment on a BigBlueButton server within any account with sudo privileges.  
+* **bbb-conf now Installs development tools** - To make it easier to develop BigBlueButton, `bbb-conf` can now install a build environment on a BigBlueButton server within any account with sudo privileges.
 
 * **Under the hood** -  Replaced activemq with redis.  Updated red5 to RC1.  Updated FreeSWITCH to a snapshot of 1.0.7.  BigBlueButton no longer requires installation of mysql.
 
@@ -206,7 +206,7 @@ See [detailed list of issues fixed in BigBlueButton 0.8](http://code.google.com/
 
 Released: January 13, 2011
 
-* **Maintenance Release** - We spent six weeks profiling and testing the server code to speed handling of VoIP packets and lower memory usage on the server.  
+* **Maintenance Release** - We spent six weeks profiling and testing the server code to speed handling of VoIP packets and lower memory usage on the server.
 
 ## Fixed Issues
 
@@ -252,7 +252,7 @@ _Code named in honor of the Nobel prize winning physicist Richard Feynman._
 
 Released: July 15, 2010
 
-* **Whiteboard** - Yes, BigBlueButton 0.7 comes with an integrated whiteboard. The whiteboard is overlaid over the presentation, and enables the presenter to draw freehand as well as simple shapes on top of the presentation slides. Each slide has it's own whiteboard instance, which is persistent as the presenter moves across the slides. Everything drawn on the whiteboard is synchronized in real time across all the conference participants.  
+* **Whiteboard** - Yes, BigBlueButton 0.7 comes with an integrated whiteboard. The whiteboard is overlaid over the presentation, and enables the presenter to draw freehand as well as simple shapes on top of the presentation slides. Each slide has it's own whiteboard instance, which is persistent as the presenter moves across the slides. Everything drawn on the whiteboard is synchronized in real time across all the conference participants.
 
 * **Desktop Sharing** - The mouse pointer is now visible to the viewers when the presenter is sharing their desktop.  The presenter also has 'b' system tray icon when desktop sharing is active.
 
@@ -268,7 +268,7 @@ Released: July 15, 2010
 
 * **Source code moved to Github** - As the developer community grows, better source code control becomes more important. The entire source code repository has been moved to [Github](http://github.com/bigbluebutton/bigbluebutton). This enables developers to more easily branch and merge the BigBlueButton source, and maintain feature branches.
 
-* **API Updates** - Removed the redundant meetingToken parameter. 
+* **API Updates** - Removed the redundant meetingToken parameter.
 
 * **Improved Documentation** - There is a new, simpler, [Developer documentation](/dev/setup.html) has been updated to reflect the move to git.
 
@@ -353,7 +353,7 @@ Released: November 11, 2009
 
 * **Better Desktop Sharing!** - We've made our Desktop Sharing much better by reverse engineering the Adobe Screen Codec from specs.  The result is much faster, platform independent implementation for desktop sharing.   To share their desktop, the presenter must have Java (1.6) installed to run a Java applet.   There is no changes required for the viewers to view the presenter's desktop.  We've also simplified the user interface for both presenter and viewer
 
-* **Full built-in development environment** - The BigBlueButton VM makes it easier to modify and build your own versions of BigBlueButton.  
+* **Full built-in development environment** - The BigBlueButton VM makes it easier to modify and build your own versions of BigBlueButton.
 
 * **Updated command-line tools** - The command-line tools `bbb-setip` and `bbb-setupdev` have been consolidated into a single script `bbb-conf`. If you modify your setup, typing `bbb-conf --check` will perform some checks on your setup to look for common configuration problems with running BigBlueButton
 
@@ -416,7 +416,7 @@ In preparation for schools and universities that are using BigBlueButton for the
 * **Refactored slide conversion** - We went deep into the slide conversion process and fixed a number of bugs.
 
 * **Desktop Sharing and Xuggler** - The sharing capture applet now divides the presenter's screen into distinct tiles and only sends to the server the tiles that have changed since the last frame.  The desktop sharing also uses Xuggler re-assemble the tiles and compress the images into a flash video stream.  Because desktop sharing incorporates Xuggler, which is licensed under the AGPL, we've had to make desktop sharing a separate module (don't worry, you can install it with a single command).
-  
+
   However, if you choose to incorporate desktop sharing into BigBlueButton, you must accept the AGPL license for BigBlueButton. This has similar implications for any web application that, in turn, incorporates BigBlueButton.
 
 ## To upgrade your installation
