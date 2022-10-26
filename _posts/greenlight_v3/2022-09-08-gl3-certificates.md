@@ -67,7 +67,8 @@ sudo ls -R data/certbot/conf/live
 
 ![Lets Encrpyt](/images/greenlight/v3/certificates/init-letsencrypt-6.png)
 
-Both of the directories should exist, and have their names fully matching the FQDNs. Otherwise, **nginx will fail** due to trying to load inexistent files in the upcoming steps.
+
+Both the directories should exist, and have their names fully matching the FQDNs. Otherwise, **nginx will fail** due to trying to load inexistent files in the upcoming steps.
 
 We have fully generated SSL certificates for our FQDNs. However, if the **LETSENCRYPT_STAGING** default value has not been changed, the staging certificates will be used instead of the production ones.
 

@@ -156,7 +156,7 @@ Administration:
                                        (Only for Matterhorn Integration)
 ```
 
-### Usefull Configs
+### Useful settings
 
 | Name                    | Path (file)                                                 | Description |
 | :-----------------------| :-----------------------------------------------------------| :-----------|

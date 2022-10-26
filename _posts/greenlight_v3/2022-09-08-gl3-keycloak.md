@@ -81,7 +81,6 @@ After making the changes, validate the OpenID client creation by clicking **Save
 Go to **Credentials** and store the **Secret** key, as **it will be needed later**:
 
 
-
 ![Client Creds](/images/greenlight/v3/keycloak/client-credentials.png)
 
 We are left to create users and roles if we are willing to use Keycloak local authentication or we can integrate it with an identity provider to act as a broker or with a user federation.
