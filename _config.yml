@@ -25,7 +25,7 @@ sections:
     ['dev', 'Develop'],
     ['admin', 'Administration'],
     ['greenlight', 'Greenlight'],
-    ['greenlight_v3', 'Greenlight v3 Alpha'],
+    ['greenlight_v3', 'Greenlight v3 Beta'],
     ['support', 'Support'],
     ['2.4', '2.4 Legacy'],
     ['2.6', '2.6 In the works'],
