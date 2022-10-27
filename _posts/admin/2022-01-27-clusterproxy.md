@@ -133,7 +133,7 @@ set $bbb_loadbalancer_node https://bbb-proxy.example.com
 ```
 
 Prepend the mount point of bbb-html5 in all location sections except from the
-`location @html5client` section in `/etc/bigbluebutton/nginx/bbb-html5.nginx`:
+`location @html5client` section in `/usr/share/bigbluebutton/nginx/bbb-html5.nginx`:
 
 ```
 location @html5client {
@@ -151,7 +151,7 @@ BigBlueButton server and the proxy.
 Add a route for the locales handler for the guest lobby. The guest lobby is served directly from the BBB node.
 
 ```
-# /etc/bigbluebutton/nginx/bbb-html5.nginx
+# /usr/share/bigbluebutton/nginx/bbb-html5.nginx
 location =/html5client/locale {
   return 301 /bbb-01$request_uri;
 }

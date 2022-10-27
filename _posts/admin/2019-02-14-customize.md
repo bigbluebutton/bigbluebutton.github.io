@@ -1101,7 +1101,7 @@ After restart, if you open the lock settings you'll see `Share webcam` lock enab
 
 The default URL path for the client is `/html5client`, and it can be changed to match your preferences.
 
-Edit nginx configuration file (`/etc/bigbluebutton/nginx/bbb-html5.nginx`), replacing all instances of `/html5client` with the new path;
+Edit nginx configuration file (`/usr/share/bigbluebutton/nginx/bbb-html5.nginx`), replacing all instances of `/html5client` with the new path;
 
 Do the same in `/usr/share/bbb-web/WEB-INF/classes/bigbluebutton.properties` in the following lines:
 
