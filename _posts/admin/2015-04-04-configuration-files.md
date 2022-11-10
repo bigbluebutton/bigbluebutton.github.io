@@ -27,6 +27,7 @@ Starting with BigBlueButton 2.3 many of the configuration files have local overr
 | /usr/local/bigbluebutton/bbb-webrtc-sfu/config/default.yml              | /etc/bigbluebutton/bbb-webrtc-sfu/production.yml | Arrays are merged by replacement                                                 |
 | /etc/bigbluebutton/recording/recording.yml                              | /usr/local/bigbluebutton/core/scripts/bigbluebutton.yml |
 | /etc/bigbluebutton/recording/presentation.yml                           | /usr/local/bigbluebutton/core/scripts/presentation.yml/presentation.yml |
+| /usr/local/bigbluebutton/bbb-pads/config/settings.json                  | /etc/bigbluebutton/bbb-pads.json                 | Arrays are merged by replacement                                                 |
 
 <br /><br />
 
