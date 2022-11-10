@@ -1149,6 +1149,45 @@ defaultGuestPolicy=ALWAYS_ACCEPT
 
 Ensure that the parameter `displayBrandingArea` is set to `true` in bbb-html5's configuration, restart BigBlueButton server with `sudo bbb-conf --restart` and pass `logo=<image-url>` in Custom parameters when creating the meeting.
 
+## Other meeting configs available
+These configs can be set in `/etc/bigbluebutton/bbb-web.properties`
+
+| Parameter                                | Description                                                                                   | Options                                                      | Default value                  |
+|------------------------------------------|-----------------------------------------------------------------------------------------------|--------------------------------------------------------------|--------------------------------|
+| `defaultMeetingLayout`                   | Default Meeting Layout                                                                        | CUSTOM_LAYOUT, SMART_LAYOUT, PRESENTATION_FOCUS, VIDEO_FOCUS | CUSTOM_LAYOUT _`overwritable`_ |  
+| `defaultMaxUsers`                        | Maximum number of users a meeting can have                                                    | Integer `(0=disable)`                                        | 0 _`overwritable`_             |  
+| `maxUserConcurrentAccesses`              | Maximum number of sessions that each user (extId) can open simultaneously in the same meeting | Integer (0=disable)                                          | 3                              |
+| `defaultMeetingDuration`                 | Duration of the meeting in minutes                                                            | Integer (0=disable)                                          | 0 _`overwritable`_             |
+| `clientLogoutTimerInMinutes`             | Number of minutes to logout client if user isn't responsive                                   | Integer (0=disable)                                          | 0                              |
+| `meetingExpireIfNoUserJoinedInMinutes`   | End meeting if no user joined within a period of time after meeting created                   | Integer                                                      | 5                              |
+| `meetingExpireWhenLastUserLeftInMinutes` | Number of minutes to end meeting when the last user left                                      | Integer (0=disable)                                          | 1                              |
+| `endWhenNoModerator`                     | End meeting when there are no moderators after a certain period of time                       | true/false                                                   | false _`overwritable`_         |
+| `endWhenNoModeratorDelayInMinutes`       | Number of minutes to wait for moderator rejoin before end meeting                             | Integer                                                      | 1 _`overwritable`_             |
+| `userInactivityInspectTimerInMinutes`    | User inactivity audit timer interval                                                          | Integer (0=disable)                                          | 0                              |
+| `userInactivityThresholdInMinutes`       | Number of minutes to consider a user inactive.                                                | Integer                                                      | 30                             |
+| `userActivitySignResponseDelayInMinutes` | Number of minutes for user to respond to inactivity warning before being logged out           | Integer                                                      | 5                              |
+| `webcamsOnlyForModerator`                | Allow webcams streaming reception only to and from moderators                                 | true/false                                                   | false  _`overwritable`_        |
+| `meetingCameraCap`                       | Per meeting camera share limit                                                                | Integer (0=disable)                                          | 0  _`overwritable`_            |
+| `userCameraCap`                          | Per user camera share limit                                                                   | Integer (0=disable)                                          | 3 _`overwritable`_             |
+| `maxPinnedCameras`                       | Maximum number of cameras pinned simultaneously                                               | Integer (0=disable)                                          | 3                              |
+| `muteOnStart`                            | Mute the meeting on start                                                                     | true/false                                                   | false _`overwritable`_         |
+| `allowModsToUnmuteUsers`                 | Gives moderators permission to unmute other users                                             | true/false                                                   | false _`overwritable`_         |
+| `allowModsToEjectCameras`                | Gives moderators permission to close other users' webcams                                     | true/false                                                   | false _`overwritable`_         |
+| `usersTimeout`                           | Timeout (millis) to remove a joined user after her/him left meeting without a rejoin          | Integer                                                      | 60000 (60s)                    |
+| `waitingGuestUsersTimeout`               | Timeout (millis) to remove guest users that stopped fetching for her/his status               | Integer                                                      | 30000 (30s)                    |
+| `enteredUsersTimeout`                    | Timeout (millis) to remove users that called the enter API but did not join                   | Integer                                                      | 45000 (45s)                    |
+| `breakoutRoomsRecord`                    | Enable Recordings in Breakout Rooms                                                           | true/false                                                   | false _`overwritable`_         |
+| `breakoutRoomsPrivateChatEnabled`        | Enable private chat in Breakout Rooms                                                         | true/false                                                   | true _`overwritable`_          |
+| `notifyRecordingIsOn`                    | Notify users that recording is on                                                             | true/false                                                   | false _`overwritable`_         |
+| `learningDashboardCleanupDelayInMinutes` | Number of minutes that Learning Dashboard will be available after the end of the meeting      | Integer (0=disable)                                          | 2 _`overwritable`_             |
+| `serviceEnabled`                         | API enabled                                                                                   | true/false                                                   | true                           |
+| `allowRequestsWithoutSession`            | Allow requests without JSESSIONID to be handled                                               | true/false                                                   | false                          |
+| `supportedChecksumAlgorithms`            | List of supported hash algorithms for validating checksums                                    | sha1, sha256, sha384, sha512                                 | sha1, sha256, sha384, sha512   |
+| `allowRevealOfBBBVersion`                | Allow endpoint with current BigBlueButton version                                             | true/false                                                   | false                          |
+
+- _`overwritable`_: Config will be overwritten if the param is present in the API `/create` request
+
+
 ## Passing custom parameters to the client on join
 
 The HTML5 client supports a list of parameters that can be added to the `join` API call which modify the look and default behaviour of the client. This list is accurate as of BigBlueButton version 2.2.17 (build 937). These parameters override the global defaults set in `settings.yml`. As the parameters are passed on call to join, it allows for some powerful customization that can vary depending on which user is joining the session.
