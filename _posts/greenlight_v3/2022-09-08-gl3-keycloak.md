@@ -24,11 +24,11 @@ Select the administration console:
 
 ![Admin Console](/images/greenlight/v3/keycloak/admin-console.png)
 
-The default *Username* is **admin** and *password* is whatever you have on **KEYCLOAK_PASSWORD** in the **~/greenlight-run/.env** file**:**
+The default *username* is **admin** and *password* is whatever you have on **KEYCLOAK_PASSWORD** in the **~/greenlight-run/.env** file**:**
 
 ![Credentials](/images/greenlight/v3/keycloak/credentials.png)
 
-Start by creating a new realm for Greenlight by hovering over the **Master** realm on the top left corner and clicking on **Add realm:**
+Start by creating a new realm for Greenlight by hovering over the **Master** realm on the top left corner, and clicking on **Add realm:**
 
 ![Realm](/images/greenlight/v3/keycloak/realm.png)
 
@@ -36,9 +36,11 @@ Call the realm **greenlight** and click on **create**:
 
 ![Add Realm](/images/greenlight/v3/keycloak/add-realm.png)
 
-Now that the **greenlight** realm has been created, make a minimal configuration for it to become ready for use:
+Now that the **greenlight** realm has been created, make a minimal configuration for it to become ready to use.
 
-However, this default configuration is only for testing purposes and shouldn not be used as is for production environments. We highly recommend checking the official documentations for Keycloak to check the available options and how to change the default configurations to suit your needs and increase security.
+However, this default configuration is only for testing purposes and should not be used as is for production environments. 
+
+It is recommended to follow the official documentations from Keycloak to check the available options and change the default configurations to suit your needs and increase security.
 
 ![Realm Settings](/images/greenlight/v3/keycloak/realm-settings.png)
 
@@ -62,22 +64,21 @@ Make sure to set Access Type to **Confidential:**
 
 And the redirect URI pattern:
 
-Kindly change **<YOUR_GREENLIGHT_FQDN>** to whatever you have as “**$GL_HOSTNAME.$DOMAIN_NAME**”.
+Change `<YOUR_GREENLIGHT_FQDN>` to whatever you have as “$GL_HOSTNAME.$DOMAIN_NAME”.
 
-For a **DOMAIN_NAME=xlab.bigbluebutton.org, and GL_HOSTNAME=gl.**
-
-Type in **https://gl.xlab.bigbluebutton.org/***.
+For **DOMAIN_NAME=xlab.bigbluebutton.org**, and **GL_HOSTNAME=gl**, type in **https://gl.xlab.bigbluebutton.org/***.
 
 ![Valid Redirect](/images/greenlight/v3/keycloak/valid-redirect.png)
 
-All required options should be already set for you, you can still configure the rest of the OpenID client options as you wish - *for the configuration, we highly recommend that you check the official OpenID documentations.*
+All required options should be already set for you.
 
-After making the changes, we will validate the OpenID client creation by clicking **Save** at the end of the form:
+You can still configure the rest of the OpenID client options as you wish - *for the configuration, it is recommended that you check the official OpenID documentations.*
+
+After making the changes, validate the OpenID client creation by clicking **Save** at the end of the form:
 
 ![Save Client](/images/greenlight/v3/keycloak/save-client.png)
 
-Kindly go to **Credentials** and store the **Secret** key, as we will need to use it later:
-
+Go to **Credentials** and store the **Secret** key, as **it will be needed later**:
 
 
 ![Client Creds](/images/greenlight/v3/keycloak/client-credentials.png)
@@ -96,11 +97,11 @@ Click on **Add provider…** on the select menu and choose the provider you like
 
 We need the OpenID client credentials: the **Client ID** and **secret**.
 
-For Google, follow this guide to obtain the credentials [https://developers.google.com/identity/protocols/oauth2/openid-connect](https://developers.google.com/identity/protocols/oauth2/openid-connect).
+For Google, follow this guide to obtain the credentials: [https://developers.google.com/identity/protocols/oauth2/openid-connect](https://developers.google.com/identity/protocols/oauth2/openid-connect).
 
 Feel free to use different providers and refer to their documentations on how to create and obtain OpenID credentials.
 
-You need to copy the Redirect URI and paste it when asked for, while configuring your OpenID provider:
+You need to copy the Redirect URI and paste it when asked while configuring your OpenID provider.
 
 This is an example coming from creating the Google OAuth2 credentials:
 
@@ -116,9 +117,9 @@ After filling in the credentials, please **save** changes.
 
 ![Save](/images/greenlight/v3/keycloak/save.png)
 
-Since we have one Identity provider and we do not want the local authentication, let's make it the default authentication option.
+Since there is only one Identity provider, and local authentication is not desired, make it the default authentication option.
 
-For that, go to, **Configure>Authentication:**
+For that, go to **Configure>Authentication:**
 
 ![Authentication](/images/greenlight/v3/keycloak/auth.png)
 
@@ -138,7 +139,9 @@ You should have something similar to this:
 
 Google is now the default authentication option to use.
 
-Connect Greenlight to Keycloak, for that we need the realm issuer URL and secret.
+Now, connect Greenlight to Keycloak.
+
+For that, the realm issuer URL and secret is needed.
 
 We already have stored the secret so, we only need the URL.
 
@@ -158,15 +161,15 @@ In **data/greenlight/.env** uncomment all OpenID connect variables (those prefix
 
 And fill in the credentials as follow:
 
-- **<YOUR_SECRET>:** is a placeholder for your OpenID client secret.
-- **<ISSUER_URL>:** is a placeholder for your Keycloak issuer (realm) URL.
-- **<YOUR_GREENLIGHT_DOMAIN>:** is a placeholder for your Greenlight FQDN. It should match what you have as “**$DOMAIN_NAME.$GL_HOSTNAME**”.
+- `<YOUR_SECRET>` is a placeholder for your OpenID client secret.
+- `<ISSUER_URL>` is a placeholder for your Keycloak issuer (realm) URL.
+- `<YOUR_GREENLIGHT_DOMAIN>` is a placeholder for your Greenlight FQDN. It should match what you have as “**$DOMAIN_NAME.$GL_HOSTNAME**”.
 
 ```bash
 OPENID_CONNECT_CLIENT_ID=greenlight
-OPENID_CONNECT_CLIENT_SECRET=**<YOUR_SECRET>**
-OPENID_CONNECT_ISSUER=**<ISSUER_URL>**
-OPENID_CONNECT_REDIRECT=https://**<YOUR_GREENLIGHT_DOMAIN>**/
+OPENID_CONNECT_CLIENT_SECRET=<YOUR_SECRET>
+OPENID_CONNECT_ISSUER=<ISSUER_URL>
+OPENID_CONNECT_REDIRECT=https://<YOUR_GREENLIGHT_DOMAIN>/
 ```
 
 ---
@@ -191,14 +194,14 @@ You can now further configure Keycloak realm to use other social networks (ident
 
 ## Connecting to Another OpenID Provider
 
-If you have an OpenID connect provider that you want to use, it’s only a matter of filling these environmental variables to match your configuration:
+If you have an OpenID connect provider that you want to use, fill these environmental variables to match your configuration:
 
-| Variable Name | Description                                                                                          |
-| --- |------------------------------------------------------------------------------------------------------|
-| OPENID_CONNECT_CLIENT_ID | The client ID of the OpenID issuer.                                                                  |
-| OPENID_CONNECT_CLIENT_SECRET | The secret to use to authenticate to the OpenID issuer.                                              |
-| OPENID_CONNECT_ISSUER | The URL for the OpenID issuer. It’s required to be HTTPS URL using the default HTTPS port (TCP 443). |
-| OPENID_CONNECT_REDIRECT | The Redirect URI after successful authentication. It will be the URL to Greenlight.                  |
+| Variable Name | Description                                                                                           |
+| --- |-------------------------------------------------------------------------------------------------------|
+| OPENID_CONNECT_CLIENT_ID | The client ID of the OpenID issuer.                                                                   |
+| OPENID_CONNECT_CLIENT_SECRET | The secret to use to authenticate to the OpenID issuer.                                               |
+| OPENID_CONNECT_ISSUER | The URL for the OpenID issuer. It is required to be HTTPS URL using the default HTTPS port (TCP 443). |
+| OPENID_CONNECT_REDIRECT | The Redirect URI after successful authentication. It will be the URL to Greenlight.                   |
 
 The Redirect URI pattern should be: **https://\<YOUR_GREENLIGHT_FQDN\>/*** where **\<YOUR_GREENLIGHT_FQDN\>** is a placeholder for your Greenlight FQDN matching “**$GL_HOSTNAME.$DOMAIN_NAME**”
 
@@ -210,11 +213,11 @@ The only constraint, however, is to have the OpenID provider accessible through 
 
 ## Removing Keycloak
 
-Some deployments may not require having Keycloak installed.
+Some deployments do not require having Keycloak installed.
 
-These steps will document what to change in order to set and run Greenlight v3 without Keycloak.
+The following steps will indicate what to change in order to set and run Greenlight v3 without Keycloak.
 
-*Please note that your users will have to authenticate only through Greenlight v3 local accounts.*
+*Please note that your users will have to authenticate through Greenlight v3 local accounts.*
 
 You can still connect Greenlight v3 to any OpenID connect provider by updating the OpenID connect environmental variables, as documented in **Greenlight with Keycloak.**
 
@@ -247,7 +250,7 @@ Remove the lines starting from  “**#### For <$KC_HOSTNAME.$NGINX_DOMAIN>”** 
 
 ![Remove Nginx](/images/greenlight/v3/keycloak/remove-nginx.png)
 
-Kindly **save** the changes.
+**Save** the changes.
 
 Remove the **KC_HOSTNAME** value:
 
