@@ -163,7 +163,7 @@ And fill in the credentials as follow:
 
 - `<YOUR_SECRET>` is a placeholder for your OpenID client secret.
 - `<ISSUER_URL>` is a placeholder for your Keycloak issuer (realm) URL.
-- `<YOUR_GREENLIGHT_DOMAIN>` is a placeholder for your Greenlight FQDN. It should match what you have as “**$DOMAIN_NAME.$GL_HOSTNAME**”.
+- `<YOUR_GREENLIGHT_DOMAIN>` is a placeholder for your Greenlight FQDN. It should match what you have as “**$GL_HOSTNAME.$DOMAIN_NAME**”.
 
 ```bash
 OPENID_CONNECT_CLIENT_ID=greenlight
@@ -184,14 +184,11 @@ sudo docker compose down && sudo docker compose up -d
 
 Once Greenlight restarts, you should be able to use the Keycloak realm client that you have created instead of the local authentication:
 
-Open Greenlight in your browser and click on **Sign In**. You should be redirected to Google authentication consent screen:
+1. Open Greenlight in your browser and click on **Sign In**. You should be redirected to Google authentication page.
 
-![Signin](/images/greenlight/v3/keycloak/google-signin.png)
+2. After Authenticating to Google, you should be redirected back to Greenlight and be logged in.
 
-After Authenticating on Google, you should be redirected back to Greenlight and have your account created and be logged in.
-
-You can now further configure Keycloak realm to use other social networks (identity providers) or other authentication systems such as SAML, LDAP and many more.
-
+You can now further configure the Keycloak realm to use other identity providers (social networks, ...) and authentication systems (LDAP, SAML, ...).
 ## Connecting to Another OpenID Provider
 
 If you have an OpenID connect provider that you want to use, fill these environmental variables to match your configuration:
@@ -232,23 +229,52 @@ cd ~/greenlight-run
 sudo docker compose down
 ```
 
-Then, remove the Keycloak service from the **docker-compose.yaml** file as follow by removing all of the highlighted lines:
+Then, remove the Keycloak service from the **docker-compose.yaml** by removing these lines:
 
-![Remove Compose](/images/greenlight/v3/keycloak/remove-compose.png)
+```yaml
+keycloak:
+    ...
+    container_name: keycloak
+    restart: unless-stopped
+    ...
+    depends_on:
+      - postgres
+```
+
 
 Also, all of the other services dependencies need to be updated.
 
-On the nginx service object, remove the highlighted line:
+On the nginx service object, remove Keycloak from its dependencies list:
 
-![Remove Compose 2](/images/greenlight/v3/keycloak/remove-compose-2.png)
+```yaml
+nginx:
+    ...
+    container_name: nginx
+    restart: unless-stopped
+    ...
+    depends_on:
+      - greenlight
+      - keycloak # REMOVE THIS LINE ONLYs
+    command: ...
+```
 
 **Save** the changes.
 
 And update the nginx templates as follow:
 
-Remove the lines starting from  “**#### For <$KC_HOSTNAME.$NGINX_DOMAIN>”** on **data/nginx/sites.template-docker and data/nginx/sites.template-local**
+Remove the Keycloak configuration for nginx by deleting the following lines on **data/nginx/sites.template-docker and data/nginx/sites.template-local**:
 
-![Remove Nginx](/images/greenlight/v3/keycloak/remove-nginx.png)
+```nginx
+#### For <$KC_HOSTNAME.$DOMAIN_NAME>
+
+upstream keycloak-server {
+    ...
+}
+
+server {
+    ...
+}
+```
 
 **Save** the changes.
 
@@ -258,9 +284,7 @@ Remove the **KC_HOSTNAME** value:
 sed -i "s/KC_HOSTNAME=.*/KC_HOSTNAME=/" .env
 ```
 
-If you have followed the guide **Greenlight with Keycloak** and already set Keycloak and integrated it with Greenlight, you have to comment out the OpenID client configuration for Keycloak:
-
-For that, please run:
+If you have Greenlight configured to use Keycloak, you have to comment out the OpenID client configuration:
 
 ```bash
 sed -i "/^OPENID_CONNECT.*/s/OPENID/#OPENID/g" data/greenlight/.env
@@ -270,10 +294,9 @@ Then, restart Greenlight:
 
 ```bash
 sudo docker compose up -d
-sudo docker compose restart nginx
 ```
 
-You can remove any data related to the Keycloak containers such as the docker image, certificates, etc.
+> You can remove any data related to the Keycloak containers such as the docker image, certificates, etc.
 
 At this point, you should have Greenlight services up and running without Keycloak.
 
@@ -282,8 +305,6 @@ You can verify that by running:
 ```bash
 sudo docker container ls
 ```
-
-![Remove Containers](/images/greenlight/v3/keycloak/remove-containers.png)
 
 You should not have a Keycloak container.
 
