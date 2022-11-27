@@ -8,7 +8,7 @@ order: 4
 
 ---
 
-As described in the **Install** chapter of this documentation, Greenlight v3 is a completely new software application built from the ground up while keeping the same values of the project, while changing the design and architecture.
+As described in the [install chapter](/greenlight_v3/gl3-install.html) of this documentation, Greenlight v3 is a completely new software application built from the ground up while keeping the same values of the project, while changing the design and architecture.
 
 Greenlight v3's database design, technology and relational modeling is different to that of v2, making both versions running on the same data tier with the same state impossible to achieve.
 
@@ -18,7 +18,7 @@ To solve this challenge, we have developed a migration system in Greenlight that
 
 *The migration system spans both Greenlight v2 and Greenlight v3 and requires both systems to be deployed, running and accessible through a network.*
 
-***Therefore, we kindly invite you to follow the installation steps to deploy Greenlight v3 with our recommended configuration and ensure that it is operational.***
+***Therefore, we kindly invite you to follow the [installation steps](/greenlight_v3/gl3-install.html) to deploy Greenlight v3 with our recommended configuration and ensure that it is operational.***
 
 ### System Design
 
@@ -36,6 +36,7 @@ For summarization, you’d need to:
 4. Edit Greenlight v2 **.env** file configuring it to point to Greenlight v3 instance (More on this later).
 5. Run the migration task(s) that you need (More on this later).
 6. The migration system will take the rest, time for a coffee or a tea maybe?
+
 
 ### Architecture
 
@@ -77,24 +78,24 @@ To summarize, as long that the shared secret is secured:
 
 We **highly** recommend carrying this process out over HTTPS.
 
-## Running the Migrations
 
-### Prerequisites
+## Prerequisites
 
 The migration system requires:
 
 1. Both Greenlight v3 and v2 instances to be running.
 2. Both systems to be accessible to each other through a TCP/IP network via HTTP/HTTPS protocol.
-3. Greenlight v3 ingress web traffic allowed on its listening port as defined in **V3_ENDPOINT** (e.g. for [https://v3.greenlight.test:8080/](https://v3.greenlight.test/=), ingress HTTPS traffic to v3 on port 8080 should be allowed from v2).
+3. Greenlight v3 ingress web traffic allowed on its listening port as defined in **V3_ENDPOINT** (e.g. for [https://v3.greenlight.test/](https://v3.greenlight.test/), ingress HTTPS traffic to v3 on port 443 should be allowed from v2).
 4. v3 **SECRET_KEY_BASE** to be securely placed in v2 **.env** file using the **V3_SECRET_KEY_BASE** variable.
 5. v3 URL (e.g. [https://v3.greenlight.test/](https://v3.greenlight.test/)) that is accessible from v2 to be placed in v2 **.env** file using the **V3_ENDPOINT** variable.
 6. The rake tasks file to be placed under the **/lib/tasks** subtree on the running v2 instance directory.
 
 Follow the steps below to ensure that these requirements are met before beginning the migrations. 
 
+
 ### Configuring the Environment
 
-#### .env Changes
+#### Updating the .env file
 
 So, now we have both systems up, running and accessible to each other from a networking perspective.
 
@@ -106,40 +107,33 @@ We’d have to:
     - **V3_ENDPOINT**, which will have the v3 URL.
     - **V3_SECRET_KEY_BASE** , which will have the v3 secret key base (which can be found in v3's  **.env** file).
 
-![Untitled](/images/greenlight/v3/migration/Untitled.png)
-
 2. Save the changes.
+
 
 #### Deploying the rake tasks
 
-If your deployment is aligned with the official release, simply update Greenlight v2 and skip to [Running the migrations](#running the migrations),
+If your deployment is aligned with the official release, simply [Update Greenlight V2](/greenlight/gl-install.html#updating-greenlight) and skip to [Running the migrations](/greenlight_v3/gl3-migration.html#running-the-migrations).
 
 
 For all other deployments, we need to load the rake migration tasks file into the running system.
 
 For that:
 
-1. First, place ourselves under the Greenlight v2
+*Make sure you're under the Greenlight v2 directory.*
 
-```bash
-cd ~/greenlight
-```
+Then, download the migration rake tasks to the hosting machine of the running v2 instance.
 
-2. Download the migration rake tasks to the hosting machine of the running v2 instance.
-
-For that you can do it manually or run this command for your convenience:
+That you can do manually or run this command for your convenience:
 
 ```bash
 wget -P lib/tasks/migrations https://raw.githubusercontent.com/bigbluebutton/greenlight/master/lib/tasks/migrations/migrations.rake
 ```
 
-Now we should have the file **migrations.rake** downloaded in **/lib/tasks/migrations** directory.
-
-![Untitled](/images/greenlight/v3/migration/Untitled%203.png)
+Now we should have the file **migrations.rake** downloaded in **./lib/tasks/migrations** directory.
 
 To include our changes directly in the Docker container:
 
-1. Bind mount the **/lib/tasks/migrations** directory by editting the **docker-compose.yaml** as follow:
+Bind mount the **./lib/tasks/migrations** directory by editing the **docker-compose.yaml** as follow:
 
 Change the volumes list of the **app** service from:
 
@@ -162,28 +156,22 @@ services:
       - ./lib/tasks/migrations:/usr/src/app/lib/tasks/migrations
 ```
 
-
-The result should match:
-
-![Untitled](/images/greenlight/v3/migration/Untitled%204.png)
-
 Save the changes and simply restart Greenlight v2 by running:
 
 ```bash
 sudo docker-compose down && sudo docker-compose up -d
 ```
 
-You can verify the deployment by running the command below and verifying that the `migrations.rake` file is returned
+You can verify the deployment by running the command below and verifying that the `migrations.rake` file exists on the container
 
 ```bash
 sudo docker exec -it greenlight-v2 ls lib/tasks/migrations
 ```
 
-![Untitled](/images/greenlight/v3/migration/Untitled%205.png)
 
-### Things to Note
+### Running the Migrations
 
-Things to note:
+#### Things to Note
 
 - It’s **required** to run migrations in the following order: Roles > Users > Rooms.
 - The migrations tasks will migrate one whole class of resources by default or a portion if configured otherwise.
@@ -198,7 +186,8 @@ The logs will indicate the failing and successfully migrated resources in real-t
 - Re-running a migration task will try to resolve any failed resources migration.
 - Re-running a migration task is safe and will have less cost of operation as the initial migration and is an expected operation.
 
-### Roles Migration
+
+#### Roles Migration
 
 Important notes:
 
@@ -229,7 +218,8 @@ Here, role One failed to be migrated but roles Two and Three successfully propag
 
 Re-running the process can help resolve the issue.
 
-### Users Migration
+
+#### Users Migration
 
 Important notes:
 
@@ -260,17 +250,18 @@ Here, users User and User1 failed to migrate to v3 but the rest of users success
 
 Re-running the process can help resolve the issue.
 
-To migrate only a portion of users starting from **START_ID** to **END_ID,** consider running this command instead**:**
+To migrate only a portion of users starting from **START_ID** to **END_ID** consider running this command instead**:**
 
 ```bash
-sudo docker exec -it greenlight-v2 bundle exec rake migrations:users[**START_ID, END_ID**]
+sudo docker exec -it greenlight-v2 bundle exec rake migrations:users[<START_ID>, <END_ID>]
 ```
 
-*Note: The partitioning is based on resources id value and not their position in the database, so calling **rake migrations:users[1, 100]** will not migrate the first 100 active users but rather active users having an id of 1 to 100 if existed.*
+>Note: The partitioning is based on resources id value and not their position in the database, so calling **rake migrations:users[1, 100]** will not migrate the first 100 active users but rather active users having an id of 1 to 100 if existed.
 
-*Administrators can leverage the current design to migrate resources in parallel, the same migration task can be run in separate processes each migrating a portion of the resources class simultaneously.*
+>Administrators can leverage the current design to migrate resources in parallel, the same migration task can be run in separate processes each migrating a portion of the resources class simultaneously.
 
-### Rooms Migration
+
+#### Rooms Migration
 
 Important notes:
 
@@ -297,12 +288,12 @@ Here, all rooms successfully migrated to v3 except room “**Three”** and “*
 
 Re-running the process can help resolve the issue.
 
-To migrate only a portion of users starting from **START_ID** to **END_ID,** consider running this command instead**:**
+To migrate only a portion of users starting from **START_ID** to **END_ID** consider running this command instead**:**
 
 ```bash
-sudo docker exec -it greenlight-v2 bundle exec rake migrations:rooms[**START_ID, END_ID**]
+sudo docker exec -it greenlight-v2 bundle exec rake migrations:rooms[<START_ID>, <END_ID>]
 ```
 
-*Note: The partitioning is based on resources id value and not there position in the database, so calling **rake migrations:rooms[1, 100]** will not migrate the first 100 active users rooms but rather active users rooms having an id of 1 to 100 if existed.*
+>Note: The partitioning is based on resources id value and not there position in the database, so calling **rake migrations:rooms[1, 100]** will not migrate the first 100 active users rooms but rather active users rooms having an id of 1 to 100 if existed.*
 
-*Administrators can leverage the current design to migrate resources in parallel, the same migration task can be run in separate processes each migrating a portion of the resources class simultaneously.*
+>Administrators can leverage the current design to migrate resources in parallel, the same migration task can be run in separate processes each migrating a portion of the resources class simultaneously.
