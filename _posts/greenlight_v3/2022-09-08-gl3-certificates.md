@@ -8,246 +8,77 @@ order: 2
 
 ---
 
-## Creating Letsencrypt SSL certificates
+As mentioned in the [Generating SSL certificates](/greenlight_v3/gl3-install.html#generating-ssl-certificates) section of the greenlight v3 install chapter.
+Greenlight in its third edition requires to be used through a secure connection via HTTPS.
+That dependency may be hard to meet for some organizations that are willing to use the new version of Greenlight.
+For that, we've introduced an automated script to simplify the automatic issuing of valid publicly signed and trusted SSL certificates for your system by Letsencrypt.
+The deployment was designed to be responsible also for the auto renewal of Greenlight certificates.
+However, some deployments may already been having certificates and willing to use it for Greenlight.
+This chapter will document the details about SSL certificates on Greenlight v3 and our recommendation on how to meet your environment requirements.
+## Prerequisites
+Assuming that you're on `greenlight-run` directory and that you've followed the [Installation Steps](/greenlight_v3/gl3-install.html#installation-steps).
+The deployment design expects that:
+1. All of the certificates data is hosted on **./data/certbot/conf**.
+2. For simplicity, there's one SSL certificate for all supported FQDNs and not one per each (a certificate can be a multi-domain (SAN) or a wildcard when having both of Greenlight and Keycloak).
+3. The certificate full chain will be hosted on **./data/certbot/conf/live/$GL_HOSTNAME.$DOMAIN_NAME/fullchain.pem**.
+4. The certificate private key will be hosted on **./data/certbot/conf/live/$GL_HOSTNAME.$DOMAIN_NAME/privkey.pem**.
+5. The certificate file will be hosted on **./data/certbot/conf/live/$GL_HOSTNAME.$DOMAIN_NAME/cert.pem**.
+6. The certificate files (**cert.pem**, **fullchain.pem** and **privkey.pem**) can be regular files or symbolic links that points to any file on the **./data/certbot/conf**.
 
-***If you ALREADY have valid SSL certificates for your FQDNs or a wildcard certificate that you are willing to use for the deployment, please skip to [Custom Certificates](#custom-certificates).***
-
-There should be two public FQDNs that points to our system with the web ports open for inbound traffic: one for Greenlight, one for Keycloak.
-
-Run the `init-letsencrypt.sh` script which will automate the issuing of the certificates for the FQDNs:
-
-```bash
-sudo ./init-letsencrypt.sh
-```
-
-The script will load the environmental variables and request a certificate from Letsencrypt for each defined FQDN.
-
-If there are no issues, you should be prompted the following: **Existing data found. Continue and replace existing certificate? (y/N).**
-
-![Lets Encrpyt](/images/greenlight/v3/certificates/init-letsencrypt.png)
-
-This is to avoid overwriting any existing certificates by re-running the script. Since this is the first time a certificate is generated, the directory content can be overwritten by typing “**y”.**
-
-After generating the certificates, please be aware that accepting the replacement will replace the previously created certificates.
-
-After continuing, the script will download the required TLS configurations and initiate the generation process for each FQDN.
-
-![Lets Encrpyt](/images/greenlight/v3/certificates/init-letsencrypt-2.png)
-
-Then, the script will load the required ACME challenges and ask you to complete the challenge:
-
-![Lets Encrpyt](/images/greenlight/v3/certificates/init-letsencrypt-3.png)
-
-At this step, you may notice the new files that were loaded into your system under the **./data/certbot/www** directory. Those are the challenge files which are part of the process:
-
-![Lets Encrpyt](/images/greenlight/v3/certificates/init-letsencrypt-4.png)
-
-Press **ENTER** to continue the challenge:
-
-![Lets Encrpyt](/images/greenlight/v3/certificates/init-letsencrypt-5.png)
-
-At this step, you have successfully created a valid SSL certificate for your first FQDN.
-
-You will be prompted to repeat the process for the remaining FQDN.
-
-***If you have removed Keycloak, you will not be prompted to generate a second certificate.***
-
-The certificates files will be placed under **data/certbot/conf/live/** in a directory named after their FQDN. This is required for nginx.
-
-For example, for ***DOMAIN_NAME=xlab.bigbluebutton.org, GL_HOSTNAME=gl and KC_HOSTNAME=kc***, there would be two directories: **data/certbot/conf/live/gl.xlab.bigbluebutton.org/** and **data/certbot/conf/live/kc.xlab.bigbluebutton.org/**.
-
-***NOTE: Since there are different FQDNs, there will be different directory names.
-However, the directory names should match their FQDNs.***
-
-You can verify that the directories were created by listing them:
-
-```bash
-sudo ls -R data/certbot/conf/live
-```
-
-![Lets Encrpyt](/images/greenlight/v3/certificates/init-letsencrypt-6.png)
-
-
-Both the directories should exist, and have their names fully matching the FQDNs. Otherwise, **nginx will fail** due to trying to load inexistent files in the upcoming steps.
-
-We have fully generated SSL certificates for our FQDNs. However, if the **LETSENCRYPT_STAGING** default value has not been changed, the staging certificates will be used instead of the production ones.
-
-***We enable staging by default to avoid reaching the rate limits because of any encountered issues.***
-
-To generate valid SSL certificates for the FQDNs after this successful test, please change the **LETSENCRYPT_STAGING** default value to **0** and re-run the script while redoing the same steps**.**
-
-```bash
-sed -i "s/LETSENCRYPT_STAGING**=1**/LETSENCRYPT_STAGING=0/" .env
-sudo ./init-letsencrypt.sh
-```
-
-***NOTE:* It is expected to *replace existing staging certificates.***
-
-Once you are finished, you can skip to [Updating NGINX and Starting Greenlight](#updating-nginx-and-starting-greenlight)
-
----
-## Custom Certificates
-### Custom Letsencrypt certificates
-
-If your custom certificates were generated by letsencrypt (certbot) for each of your FQDNs, you can copy the certificates data and cache (renewal configurations, archive files, live files,…) or the whole letsencrypt directory ‘**/etc/letsencrypt/**’ into ‘**~/greenlight-run/data/certbot/conf**’ (make sure that it does not contain any other irrelevant certificates).
-
-However, the only constraint is that you had generated two standalone certificates, one for each of your FQDNs matching what you have as “**$GL_HOSTNAME.$DOMAIN_NAME**” **and** “**$KC_HOSTNAME.$DOMAIN_NAME**”.
-
-```bash
-cd ~
-sudo mkdir -p greenlight-run/data/certbot/conf/live/
-sudo cp -r /etc/letsencrypt/ greenlight-run/data/certbot/conf
-```
+So placing your certificate files in the expected location will enable you to use your custom certificates.
+The `init-letencrypt.sh` script itself makes usage of this design and build upon it.
+The rest of the sections of this chapter should give more direction and information for some common use cases.
 
 ---
 
-#### Renewing Certificates
+## Deploying Custom Certificates
+If you don't plan on using Letsencrypt then you'd need to align with the prerequisites.
+When issuing the certificate make sure it supports both of Greenlight and Keycloak FQDNs (you can generate a standalone certificate for Greenlight only when followed the guides on [Removing Keycloak](/greenlight_v3/gl3-keycloak.html#removing-keycloak)).
 
-By default, Greenlight has a **certbot** service that is responsible for automatically renewing the certificates, storing your existing Letsencrypt certificates to ‘**~/greenlight-run/data/certbot/conf**’ with a **certbot** service in place to manage the renewal.
+We'd expect you to have a **fullchain.pem**, a **privkey.pem** and a **cert.pem** files that respectively represents the full chain, private key and certificate files.
+The files need to be placed in **./data/certbot/conf/live/$GL_HOSTNAME.$DOMAIN_NAME/** directory.
 
-However, if you have not used Letsencrypt to issue the certificates, you will be responsible for the renewals.
+For a `DOMAIN_NAME=xlab.bigbluebutton.org` and a `GL_HOSTNAME=gl`:
+- The full chain file should be placed in **./data/certbot/conf/live/gl.xlab.bigbluebutton.org/fullchain.pem**.
+- The private key file should be placed in **./data/certbot/conf/live/gl.xlab.bigbluebutton.org/privkey.pem**.
+- The certificate file should be placed in **./data/certbot/conf/live/gl.xlab.bigbluebutton.org/cert.pem**.
 
-For that, you may need to remove the certbot service, since you won’t need it.
+Please note that the deployment auto renewal feature will not handle the expiry of your certificate and therefore you're required to handle that responsibility on your own.
+To disable the renewal feature please go to [Renewing Certificates](#renewing-certificates).
 
-To disable the **certbot** service, please remove the highlighted lines in the image below on **~/greenlight-run/docker-compose.yaml**:
+---
 
-Before, please stop Greenlight:
+## Renewing Certificates
+
+By default, Greenlight has a **certbot** service that is responsible for automatically renewing Letsencrypt certificates hosted on **./data/certbot/conf**.
+
+If you have generated your certificates with the `init-letsencrypt.sh` script or if you have copied the adequate Letsencrypt files to **./data/certbot/conf** this feature will further simplify the management of your certificates by handling the renewal process for you.
+
+However, if you have not used Letsencrypt to issue the certificates or willing to disable this feature.
+
+This section will help achieving that.
+
+To disable the **certbot** service, please make sure to stop Greenlight services if running:
 
 ```bash
 cd ~/greenlight-run
 sudo docker compose down
 ```
 
-![Certbot Dockercompose](/images/greenlight/v3/certificates/certbot-dockercompose.png)
+And remove the following lines on **docker-compose.yaml**:
 
-And **save** the changes.
+```yaml
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    ...
+    depends_on:
+      - nginx
+```
 
-Once you are finished, you can skip to [Updating NGINX and Starting Greenlight](#updating-nginx-and-starting-greenlight)
+**Save** the changes.
+
+Once finished, you can follow the rest of the [Installation Steps](/greenlight_v3/gl3-install.html#starting-greenlight).
 
 ---
 
-### Custom External Certficates
-
-Go to the home directory:
-
-```bash
-cd ~
-```
-
-Nginx expects two directories named after each FQDN located under **~/greenlight-run/data/certbot/conf/live** having the following certificates files each: the full chain **fullchain.pem** and the private key **privkey.pem**.
-
-Keycloak instance will also expect the certificate file to be present in a **cert.pem** named file under the Keycloak certificate directroy.
-
-***If you have followed the Greenlight without Keycloak guide, you are required to create a single directory named after Greenlight FQDN containing the fullchain.pem and privkey.pem files.***
-
-For the custom certificates, there should be two directories named after each FQDN.
-
-For a **DOMAIN_NAME=xlab.bigbluebutton.org, GL_HOSTNAME=gl** and **KC_HOSTNAME=kc**, there should be two directories: **gl.xlab.bigbluebutton.org** and **kc.xlab.bigbluebutton.org**.
-
-Assign the certificates directories under the home directory and store the **fullchain.pem and privkey.pem** of each certificate under its directory along with the **cert.pem** of Keycloak under its certificate directory. 
-
-Make sure that the directories names matches those on the **.env as: ‘$GL_HOSTNAME.$DOMAIN_NAME’** and **‘$KC_HOSTNAME.$DOMAIN_NAME’** (required only if Keycloak is enabled).
-
-Once you are finished, you can skip to [Updating NGINX and Starting Greenlight](#updating-nginx-and-starting-greenlight)
-
----
-
-### Multi domain and wildcard certificates
-
-The following guide is expecting two standalone certificates, each targeting one FQDN. One for Greenlight and another for Keycloak.
-
-However, those assertions may be redundant for some deployments using a none standalone certificate for both FQDNs.
-
-***For that, you only need to do this extra step before proceeding:***
-
-Copy the composite certificate files **fullchain.pem, privkey.pem and cert.pem** in your home directory in a directory named after Greenlight FQDN that would match what you have on **.env** file as ‘**$GL_HOSTNAME.$DOMAIN_NAME’**.
-
-Then, create a **relative** symbolic link named after Keycloak FQDN that links to the composite certificate directory (the directory named after Greenlight FQDN).
-
-Edit the following command and run it:
-
-- **\<YOUR_GL_FQDN\>**: is a placeholder for your Greenlight FQDN, in our example that would be ‘**gl.xlab.bigbluebutton.org**’, for your deployment that should match ‘**$GL_HOSTNAME.$DOMAIN_NAME’**.
-- **\<YOUR_KC_FQDN\>**: is a placeholder for your Keycloak FQDN, in our example that would be ‘**kc.xlab.bigbluebutton.org**’, for your deployment that should match ‘**$KC_HOSTNAME.$DOMAIN_NAME’.**
-
-
-
-```bash
-sudo ln -s ./<YOUR_GL_FQDN> <YOUR_KC_FQDN>
-```
-
-Following the example, you should have something similar to:
-
-![Fullchain](/images/greenlight/v3/certificates/fullchain.png)
-
-Now, you can follow the rest of the guide and have the expected outcome while using a composite certificate.
-
----
-
-Following the example, we should have something like:
-
-![Fullchain](/images/greenlight/v3/certificates/fullchain-2.png)
-
-*If you are using a composite certificate, it is expected that both directories have the same content.*
-
-Now, please copy the certificates directories in their expected location:
-
-- **\<YOUR_GL_FQDN\>**: is a placeholder for your Greenlight FQDN, in our example that would be ‘**gl.xlab.bigbluebutton.org**’, for your deployment that should match ‘**$GL_HOSTNAME.$DOMAIN_NAME’**.
-- **\<YOUR_KC_FQDN\>**: is a placeholder for your Keycloak FQDN, in our example that would be ‘**kc.xlab.bigbluebutton.org**’, for your deployment that should match ‘**$KC_HOSTNAME.$DOMAIN_NAME’.**
-
-```bash
-sudo mkdir -p greenlight-run/data/certbot/conf/live/
-sudo cp -r <YOUR_GL_FQDN>/ greenlight-run/data/certbot/conf/live/
-sudo cp -r <YOUR_KC_FQDN>/ greenlight-run/data/certbot/conf/live/ # Only, if you use Keycloak
-```
-
- ******
-
-You can verify that your certificates were copied by listing them:
-
-```bash
-sudo ls -R greenlight-run/data/certbot/conf/live/
-```
-
-![Fullchain](/images/greenlight/v3/certificates/fullchain-3.png)
-
-*If you are using a composite certificate, it is expected that both directories will have the same content.*
-
-*If you have followed the guides to remove Keycloak it’s expected to not having its certificate directory.*
-
-Once you're finished, you can continue to [Updating NGINX and Starting Greenlight](#updating-nginx-and-starting-greenlight)
-
----
-## Updating NGINX and Starting Greenlight
-
-We now need to update our nginx configuration file to open **HTTPS** traffic. You can do so manually by going to **./data/nginx/sites.template-*** files and uncommenting all lines for the HTTPS binding and SSL certificate files locations.
-
-Or, for your convenience, run:
-
-```bash
-cd ~/greenlight-run
-sed -i "/#listen.*/s/#//g" ./data/nginx/sites.template-*
-sed -i "/#ssl_certificate.*/s/#//g" ./data/nginx/sites.template-*
-sed -i "/#.*\/data\/certbot\/conf\/live\/.*/s/#//g" docker-compose.yml
-```
-
-Now, restart the services:
-
-```bash
-sudo docker compose down && sudo docker compose up -d
-```
-
-Accessing your Greenlight and Keycloak instances through their HTTPS enabled URLs should be possible now.
-
-So, for a **DOMAIN_NAME=xlab.bigbluebutton.org, GL_HOSTNAME=gl and KC_HOSTNAME=kc.**, Greenlight is accessible at [https://gl.xlab.bigbluebutton.org/](http://gl.xlab.bigbluebutton.org/) and Keycloak at [https://kc.xlab.bigbluebutton.org](http://gl.xlab.bigbluebutton.org/).
-
-When encountering any issues with nginx, you can restart the server with the following command:
-
-```bash
-sudo docker compose restart nginx
-```
-
-You can verify the validity of your SSL certificates with your browser. When accessing your URLs, you should have a valid SSL status:
-
-![HTTPS](/images/greenlight/v3/certificates/https.png)
-
-**Congratulations** on following the steps until this point! Now, you should have a production ready setup with our recommended configuration set and apt for using.
