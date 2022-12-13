@@ -199,7 +199,7 @@ You should now have presenter capabilities and presenter icon should appear over
 
 4. Choose the video quality from the available option
 
-5. Select the virtual background setting
+5. Select one of the default virtual backgrounds. You can also upload your own background image by clicking on the plus sign to the right of the default backgrounds and selecting a file. Change the brightness of the background by using the brightness control below the list of background images.
 
 6. Click "Start sharing"
 
@@ -318,6 +318,24 @@ The webcams should be resized as per the size we want.
 6. Click "Stop sharing".
 
 7. The webcam sharing should stop.
+
+### Pin webcams
+
+1. Join meeting with at least 3 webcams.
+
+2. Hover over the webcam's user name.
+
+3. Select dropdown and choose "Pin".
+
+4. That particular webcam should move to the first place among the webcams and stay there.
+
+5. Pin another webcam and verify that it sticks to the second place among the webcams.
+
+6. Hover over the webcam's user name.
+
+7. Select dropdown and choose "Unpin". Alternatively, you can choose to click the pin icon that is in the top-left corner of the webcam.
+
+8. That particular webcam should unpin.
 
 ## Screenshare
 
@@ -466,11 +484,15 @@ The screen sharing stops, a sound effect of disconnection is heard and the prese
 
 2. Click microphone and allow for browser permissions (if applicable).
 
-3. Verify if you can hear yourself in the echo test.
+3. Verify if you can hear yourself in the echo test. Audio stream volume bar should indicate the volume of your voice.
 
-4. Click "Yes".
+4. Change the microphone and speaker using the dropdowns (if applicable).
 
-5. You should be redirected to the meeting and your microphone button and avatar in the in the user list should indicate the you are unmuted.
+5. Press "Stop audio feedback button" and verify that you dont hear your audio anymore, while the audio stream volume bar is still functional. Clicking that button again should turn on the audio feedback again.
+
+6. Click "Yes".
+
+7. You should be redirected to the meeting and your microphone button and avatar in the in the user list should indicate the you are unmuted.
 
 ### Mute/unmute
 
@@ -1456,6 +1478,22 @@ Note :
 
 4. The screen quickly reloads to apply the language change action
 
+#### D. Dark Mode [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.6.x-release/bigbluebutton-tests/playwright/options/options.spec.js)
+
+(Inside "Application" section of the Settings modal)
+
+1. Click on the [On/Off] the switch button to Enable Dark Mode
+
+2. Click Save to Validate your new Settings.
+
+3. Verify that the color scheme of the client changed to the dark one.
+
+4. Click on the [On/Off] the switch button to Disable Dark Mode
+
+5. Click Save to Validate your new Settings.
+
+6. Verify that the color scheme of the client changed back to the default one.
+
 #### E. Font Size
 
 (Inside the Settings modal)
@@ -1631,3 +1669,21 @@ Client should apply custom parameters according to the descriptions from [here](
 ## iFrame
 
 ## Learning Dashboard
+
+## Layout Manager
+
+### Choose a layout
+
+1. Join a meeting with a webcam and at least 2 users.
+
+2. Choose "Layout Settings Modal" in the actions dropdown.
+
+3. Enable "Keep pushing to everyone". Select a new layout. Press "Confirm".
+
+4. Verify that the layout changes for both you and another user.
+
+5. Choose "Layout Settings Modal" in the actions dropdown.
+
+6. Disable "Keep pushing to everyone". Select a new layout. Press "Confirm".
+
+7. Verify that the layout only changes for you, but stays the same for another user.
