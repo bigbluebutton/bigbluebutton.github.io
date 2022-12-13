@@ -32,17 +32,21 @@ all of these tests.
 
 5. Presentation should appear on All Clients in sync with updates, and All Clients should see the notification with the new presentation name
 
-### Enabling and Disabling Presentation Download [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.6.x-release/bigbluebutton-tests/playwright/presentation/presentation.spec.js)
+### Sending presentation download link to the chat [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.6.x-release/bigbluebutton-tests/playwright/presentation/presentation.spec.js)
 
-1. Select Moderator/Presenter Action menu
+1. Join a meeting and draw some annotations on the slide.
 
-2. Choose "Manage presentations"
+2. Select Moderator/Presenter Action menu
 
-3. Set current file as enabled/disabled for download:
+3. Choose "Manage presentations"
 
-   3.1 Setting current file as enabled for download will allow users to download current file.
+4. Click on "Send to chat" button.
 
-   3.2 Removing presentation for download will no loner allow users to download current file.
+5. Verify that the link was sent to the chat and the link works.
+
+6. Draw some annotations on the whiteboard.
+
+7. Send the download link to the chat again. This time, the presentation downloaded through the link should include the annotation.
 
 ### Deleting Presentation [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.6.x-release/bigbluebutton-tests/playwright/presentation/presentation.spec.js)
 
@@ -476,6 +480,30 @@ The screen sharing stops, a sound effect of disconnection is heard and the prese
 
 4. The duration of the breakout room should reset. Public chats in all of the breakout rooms should get the message saying "Breakout time is now N minutes" (N - new duration).
 
+### Moving of users between breakout rooms
+
+1. Create a breakout room. Click on the three dots icon and choose "Manage Users".
+
+2. Draw and drop a user to a different breakout room. Click "Apply".
+
+3. The user should be notified about the removal and the prompt to confirm the joining of the new breakout room should appear.
+
+### Exporting the breakout room's shared notes to the main room
+
+1. Create a breakout room with enabling "Capture shared notes when breakout rooms end".
+
+2. Join a breakout room. Type something in the shared notes. End the breakout room.
+
+3. Breakout room's shared notes should be converted to a pdf and that pdf should be available for uploading to the whiteboard.
+
+### Exporting the breakout room's whiteboard annotations to the main room
+
+1. Create a breakout room with enabling "Capture whiteboard when breakout rooms end".
+
+2. Join a breakout room. Draw something on the whiteboard. End the breakout room.
+
+3. Breakout room's annotations should be converted to a pdf and that pdf should be available for uploading to the whiteboard.
+
 ## Audio
 
 ### Join audio [(Automated)](https://github.com/bigbluebutton/bigbluebutton/blob/v2.6.x-release/bigbluebutton-tests/playwright/audio/audio.spec.js)
@@ -630,6 +658,14 @@ Enable Microphone : This will cause a user name to appear on left top corner of 
 9. User: click the closed captions button.
 
 10. User: closed captions button should not be highlighted anymore, the closed captions should disappear.
+
+### Live Automatic Closed Captions
+
+1. Join a meeting with at least two viewers using Chrome, Edge or Safari. Automatic transcription language selector needs to be enabled in the settings file.
+
+2. In the audio modal, choose the language for the automatic transcription. Join the audio. Talking indicator should include the "CC" icon for the user who selected the language.
+
+3. All other users should see the "CC" button in the whiteboard area. When you click the button, you should see the transcription.
 
 ## Whiteboard
 
@@ -852,6 +888,20 @@ Enable Microphone : This will cause a user name to appear on left top corner of 
 3. Save as to local device
 
 Share notes should export and download in the chosen format.
+
+### Pin notes onto whiteboard
+
+1. Open shared notes, write something. Click the three dots icon. Choose "Pin notes onto whiteboard".
+
+2. Shared notes should appear on top of the whiteboard. Shared Notes button should become disabled.
+
+3. Click "Unpin notes". Shared notes should disappear from the whiteboard. You should be able to open Shared Notes again.
+
+### Convert notes to presentation
+
+1. Open shared notes, write something. Click the three dots icon. Choose "Convert notes to presentation".
+
+2. Shared notes should be converted to a presentation file and that file should be uploaded to the whiteboard
 
 ### Using shared notes formatting tools
 
