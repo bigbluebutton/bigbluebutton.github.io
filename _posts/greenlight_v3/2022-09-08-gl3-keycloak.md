@@ -163,7 +163,7 @@ And fill in the credentials as follow:
 
 - `<YOUR_SECRET>` is a placeholder for your OpenID client secret.
 - `<ISSUER_URL>` is a placeholder for your Keycloak issuer (realm) URL.
-- `<YOUR_GREENLIGHT_DOMAIN>` is a placeholder for your Greenlight FQDN. It should match what you have as “**$DOMAIN_NAME.$GL_HOSTNAME**”.
+- `<YOUR_GREENLIGHT_DOMAIN>` is a placeholder for your Greenlight FQDN. It should match what you have as “**$GL_HOSTNAME.$DOMAIN_NAME**”.
 
 ```bash
 OPENID_CONNECT_CLIENT_ID=greenlight
