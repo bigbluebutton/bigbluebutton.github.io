@@ -47,7 +47,7 @@ For documentation and transparency purposes, we will be documenting the general 
 
 The migration system was built with these goals in mind:
 
-1. Resources (e.g. a rooms) are migrated one at a time.
+1. Resources (e.g. rooms) are migrated one at a time.
 2. Administrators can migrate a maximum of one class of resources (e.g rooms) per task.
 3. The migration system should be fail safe, where a failing migration of one resource (e.g. a room) shouldn’t impact the overall migration process (the rest of the rooms migration should be carried).
 4. The migration system should be auto repairable. Re-running a migration process (e.g. rooms migration) will migrate any failed resource migrations (e.g. a failed to migrate room because of a network issue can be migrated when re-run).
