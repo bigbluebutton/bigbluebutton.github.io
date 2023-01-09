@@ -64,7 +64,7 @@ In this example, we will be using the following host names:
 ## Proxy Cluster Server
 
 In this example, we will use a simple nginx based setup. For each BigBlueButton
-server, add a new location directive. For the first node, this would be:
+server, add three new location directives. For the first node, this would be:
 
 ```
 location /bbb-01/html5client/ {
@@ -73,9 +73,32 @@ location /bbb-01/html5client/ {
   proxy_set_header Upgrade $http_upgrade;
   proxy_set_header Connection "Upgrade";
 }
+
+location /bbb-01/learning-analytics-dashboard/ {
+  proxy_pass https://bbb-01.example.com/learning-analytics-dashboard/;
+  proxy_http_version 1.1;
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection "Upgrade";
+  proxy_set_header Accept-Encoding "";
+
+  sub_filter_types  text/html text/css text/xml application/javascript;
+  sub_filter        'src="/learning' 'src="/bbb-01/learning';
+  sub_filter        'href="/learning' 'href"/bbb-01/learning';
+  sub_filter        'href="/favicon' 'href="/bbb-01/favicon';
+  sub_filter        '/html5client' 'https://bbb-01.example.com/bbb-01/html5client';
+  sub_filter        '/bigbluebutton/api/learningDashboard' 'https://bbb-01.example.com/bigbluebutton/api/learningDashboard';
+  sub_filter_once   off;
+}
+
+location /bbb-01/favicon.ico {
+  proxy_pass https://bbb-01.example.com/favicon.ico;
+  proxy_http_version 1.1;
+  proxy_set_header Upgrade $http_upgrade;
+  proxy_set_header Connection "Upgrade";
+}
 ```
 
-Repeat this `location` directive for every BigBlueButton server.
+Repeat these three `location` directives for every BigBlueButton server.
 
 You are free to choose any other HTTP reverse proxy software to fill the role
 of the reverse proxy in this setup.
@@ -103,7 +126,7 @@ public:
   app:
     basename: '/bbb-01/html5client'
     bbbWebBase: 'https://bbb-01.example.com/bigbluebutton'
-    learningDashboardBase: 'https://bbb-01.example.com/learning-dashboard'
+    learningDashboardBase: 'https://bbb-proxy.example.com/bbb-01/learning-dashboard'
   media:
     stunTurnServersFetchAddress: 'https://bbb-01.example.com/bigbluebutton/api/stuns'
     sip_ws_host: 'bbb-01.example.com'
@@ -157,6 +180,14 @@ location =/html5client/locale {
 }
 ```
 
+Add the following piece into the `location /bbb-01/html5client/locales` directive in `/usr/share/bigbluebutton/nginx/bbb-html5.nginx`:
+
+```
+if ($bbb_loadbalancer_node) {
+  add_header 'Access-Control-Allow-Origin' $bbb_loadbalancer_node always;
+  add_header 'Access-Control-Allow-Credentials' 'true' always;
+}
+```
 
 Restart BigBlueButton:
 
