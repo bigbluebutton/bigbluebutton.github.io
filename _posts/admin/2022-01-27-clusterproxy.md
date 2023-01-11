@@ -111,10 +111,10 @@ public:
     uploadEndpoint: 'https://bbb-01.example.com/bigbluebutton/presentation/upload'
 ```
 
-Create the these unit file overrides:
+Create (or edit if it already exists) these unit file overrides:
 
-* `/etc/systemd/system/bbb-html5-frontend@.service.d/cluster.conf`
-* `/etc/systemd/system/bbb-html5-backend@.service.d/cluster.conf`
+* `/usr/lib/systemd/system/bbb-html5-frontend@.service`
+* `/usr/lib/systemd/system/bbb-html5-backend@.service`
 
 Each should have the following content:
 
@@ -125,15 +125,15 @@ Environment=DDP_DEFAULT_CONNECTION_URL=https://bbb-01.example.com/bbb-01/html5cl
 ```
 
 Change the nginx `$bbb_loadbalancer_node` variable to the name of the load
-balancer node in `/etc/bigbluebutton/nginx/loadbalancer.nginx` to allow CORS
+balancer node in `/usr/share/bigbluebutton/nginx/loadbalancer.nginx` to allow CORS
 requests:
 
 ```
-set $bbb_loadbalancer_node https://bbb-proxy.example.com
+set $bbb_loadbalancer_node https://bbb-proxy.example.com;
 ```
 
-Prepend the mount point of bbb-html5 in all location sections except from the
-`location @html5client` section in `/etc/bigbluebutton/nginx/bbb-html5.nginx`:
+Prepend the mount point of bbb-html5 in all location sections except for the
+`location @html5client` section in `/usr/share/bigbluebutton/nginx/bbb-html5.nginx`:
 
 ```
 location @html5client {
@@ -151,7 +151,7 @@ BigBlueButton server and the proxy.
 Add a route for the locales handler for the guest lobby. The guest lobby is served directly from the BBB node.
 
 ```
-# /etc/bigbluebutton/nginx/bbb-html5.nginx
+# /usr/share/bigbluebutton/nginx/bbb-html5.nginx
 location =/html5client/locale {
   return 301 /bbb-01$request_uri;
 }
