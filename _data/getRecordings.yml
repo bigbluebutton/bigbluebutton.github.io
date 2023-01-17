@@ -21,9 +21,9 @@
 - name: "page"
   required: false
   type: "Integer"
-  description: "The page number that you wish to retrieve. By default the first page (page 0) is returned."
+  description: "The page number that you wish to retrieve. By default the first page (page 0) is returned. Added in 2.6."
 
 - name: "size"
   required: false
   type: "Integer"
-  description: "The maximum number of recordings that should be returned per page. By default at most 25 recordings are included in each page." 
+  description: "The maximum number of recordings that should be returned per page. By default at most 25 recordings are included in each page. Added in 2.6." 
