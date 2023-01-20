@@ -18,12 +18,12 @@
   type: "String"
   description: "You can pass one or more metadata values to filter the recordings returned. The format of these parameters is the same as the metadata passed to the <code class=\"language-plaintext highlighter-rouge\">create</code> call. For more information see <a href=\"https://docs.bigbluebutton.org/dev/api.html#create\">the docs for the create call</a>."
 
-- name: "page"
+- name: "offset"
   required: false
   type: "Integer"
-  description: "The page number that you wish to retrieve. By default the first page (page 0) is returned. Added in 2.6."
+  description: "The starting index for returned recordings. Number must greater than or equal to 0."
 
-- name: "size"
+- name: "limit"
   required: false
   type: "Integer"
-  description: "The maximum number of recordings that should be returned per page. By default at most 25 recordings are included in each page. Added in 2.6." 
+  description: "The maximum number of recordings to be returned. Number must be between 1 and 100." 
