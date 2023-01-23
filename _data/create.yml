@@ -168,7 +168,7 @@
   required: false
   type: "Boolean"
   default: "false"
-  description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will lock the layout in the meeting. (added 2.2)"
+  description: "**DEPRECATED** - use `defaultMeetingLayout` instead; Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will lock the layout in the meeting. (added 2.2)"
 
 - name: "lockSettingsLockOnJoin"
   required: false
