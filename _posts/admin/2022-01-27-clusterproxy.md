@@ -107,8 +107,16 @@ public:
   media:
     stunTurnServersFetchAddress: 'https://bbb-01.example.com/bigbluebutton/api/stuns'
     sip_ws_host: 'bbb-01.example.com'
+  kurento:
+    wsUrl: wss://bbb-01.example.com/bbb-webrtc-sfu
   presentation:
     uploadEndpoint: 'https://bbb-01.example.com/bigbluebutton/presentation/upload'
+  # for BBB 2.4:
+  note:
+    url: 'https://bbb-01.example.com/pad'
+  # for BBB 2.5 or later
+  pads:
+    url: 'https://bbb-01.example.com/pad'
 ```
 
 Create (or edit if it already exists) these unit file overrides:
@@ -154,6 +162,16 @@ Add a route for the locales handler for the guest lobby. The guest lobby is serv
 # /usr/share/bigbluebutton/nginx/bbb-html5.nginx
 location =/html5client/locale {
   return 301 /bbb-01$request_uri;
+}
+```
+
+Create the file `/etc/bigbluebutton/etherpad.json` with the following content:
+
+```json
+{
+	"cluster_proxies": [
+		"https://bbb-proxy.example.org"
+	]
 }
 ```
 
