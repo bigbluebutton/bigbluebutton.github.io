@@ -6,7 +6,7 @@ date: 2022-01-30 19:06:09
 order: 3
 ---
 
-BigBlueButton has many configuration files that offer you opportunities to customize your installation. This document covers common customizations of BigBlueButton 2.6.
+BigBlueButton has many configuration files that offer you opportunities to customize your installation. This document covers common customizations of BigBlueButton 2.6. For customizations that apply to multiple versions of BigBlueButton, including 2.6, check out the [admin customizations page](/admin/customize.html).
 
 # Preserving customizations using apply-conf.sh
 
