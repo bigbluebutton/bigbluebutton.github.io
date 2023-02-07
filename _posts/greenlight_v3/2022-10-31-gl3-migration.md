@@ -8,6 +8,8 @@ order: 4
 
 ---
 
+## Migration
+
 Greenlight v3 (GLv3) is a completely new software application with an updated design and architecture.
 A migration system has been created to move resources from your Greenlight v2 instance to GLv3.
 
@@ -16,7 +18,7 @@ A migration system has been created to move resources from your Greenlight v2 in
 The process intends to migrate the following resources:
 - Users
 - Roles & Role Permissions
-- Rooms & Room Settings
+- Rooms & Rooms Settings
 - Shared Accesses
 - Rooms Configuration
 - Site Settings
@@ -25,7 +27,7 @@ The process intends to migrate the following resources:
 
 The migration system consists of multiples **rake tasks** and **a restful API**:
 
-- **The rake tasks are to be executed on the Greenlight v2 deployment.**
+- **The rake tasks are to be executed from the Greenlight v2 deployment.**
 - The rake tasks will send the data to the deployed Greenlight v3 server.
 - There are four rake tasks: roles, users, rooms and settings. Maintaining this order during the migration is necessary.
 
@@ -40,11 +42,13 @@ Before the migration process, make sure that the GLv3 server is running and acce
 
 In Greenlight v2 **.env** file, add the following variables:
 - **V3_ENDPOINT**, which points to your GLv3 URL.
-- **V3_SECRET_KEY_BASE**, a copy from GLv3 SECRET_KEY_BASE
+- **V3_SECRET_KEY_BASE**, a copy from GLv3 SECRET_KEY_BASE. It is needed for the encryption process.
+
+![env_migration_endpoints.png](/images/greenlight/v3/migration/env_migration_endpoints.png)
 
 ### The rake migration task file
 
-**If your Greenlight v2 deployment is up to date with the official latest version, you can skip to [Migration](#migration).**
+**If your Greenlight v2 deployment is up to date with the official latest release, you can skip to [Migration Steps](#migration-steps).**
 
 Else, you will need to to load the rake migration task file into your directory. 
 
@@ -80,24 +84,25 @@ services:
 sudo docker-compose down && sudo docker-compose up -d
 ```
 
-## Migration
+## Migration Steps
 
 **It is required to run the migrations in the following order: roles, users, rooms, settings.**
 
-The migrations tasks are designed to be fail safe, so a failing resource to migrate should not hinder the whole migration process.
+The logs will indicate the status of the migrated resources in real-time, in the console.
 
-A migration task that had at least one failed resource migration will be declared as failed.
+Upon the successful migration of a resource, a green success message will be displayed in the console.
 
-The logs will indicate the failing and migrated resources in real-time.
+![success_migration.png](/images/greenlight/v3/migration/success_migration.png)
 
-However, a failed migration does not mean that the process completely failed for all resources.
+In case of an error, a red error message will be displayed in the console.
+
+![error_migration.png](/images/greenlight/v3/migration/error_migration.png)
+
+However, a failed migration resource should not hinder the whole migration process - the process should not have failed for all the resources.
 
 **If you have an error, try re-running the migration task to resolve any failed resources migration.**
 
-
-
-
-
+**If re-running the migration does not solve the issue, the error message should give you a clue of what went wrong.**
 
 ### Roles Migration
 
@@ -112,12 +117,14 @@ Please note that:
 sudo docker exec -it greenlight-v2 bundle exec rake migrations:roles
 ```
 
+**If you have an error, try re-running the migration task to resolve any failed resources migration.**
+**Also, make sure that the GLv3 server is running and accessible through your network.**
 
 ### Users Migration
 The Users will be migrated with their corresponding role.
 
 Important notes:
-- **Migrated users will be prompted to reset their password via an automated email.**
+- **Once the Users migration is completed, the migrated users will be prompted to reset their password via an automated email. The accounts passwords can't be migrated from Greenlight v2.**
 - Pending, denied and deleted users will not be migrated to GLv3.
 - Both local and external users will be migrated.
 
@@ -133,6 +140,9 @@ sudo docker exec -it greenlight-v2 bundle exec rake migrations:users[**FIRST_USE
 ```
 
 *Administrators can use the last command to migrate resources in parallel, the same migration task can be run in separate processes each migrating a portion of the resources class simultaneously.*
+
+**If you have an error, try re-running the migration task to resolve any failed resources migration.**
+**Also, make sure that the Roles migration has been successful.**
 
 ### Rooms Migration
 The Rooms will be migrated with their corresponding Room Settings. Also, the Shared Accesses will be migrated.
@@ -159,17 +169,19 @@ sudo docker exec -it greenlight-v2 bundle exec rake migrations:rooms[**FIRST_ROO
 
 *Administrators can use the last command to migrate resources in parallel, the same migration task can be run in separate processes each migrating a portion of the resources class simultaneously.*
 
+**If you have an error, try re-running the migration task to resolve any failed resources migration.**
+**Also, make sure that the Users migration has been successful.**
 
 ### Settings Migration
 The Site Settings and the Rooms Configuration will be migrated.
 
-The Site Settings are customisable settings related to the Greenlight application, such as the Brand colors, the Brand image, the Registration method, the Terms & Conditions.
+- The *Site Settings* are customisable settings related to the Greenlight application, such as the Brand colors, the Brand image, the Registration method, the Terms & Conditions.
 
-The Rooms Configuration are the settings that are related to the default configuration of all the rooms, such as *Allow Room to be Recorded*, *Allow any User to Start a Meeting*, *Access Codes*.
+- The *Rooms Configuration* are the settings that are related to the default configuration of all the rooms, such as *Allow Room to be Recorded*, *Allow any User to Start a Meeting*, *Access Codes*.
 
 Please note that:
 - The Brand image will not be migrated - it will have to be re-uploaded to GLv3 by the administrator. 
-- The administrator will need to reassign the Room Limit as a Role Permission - on a per role - basis instead of a global Site Setting.
+- The administrator will need to reassign the Room Limit as a Role Permission (on a per role basis) instead of as a global Site Setting.
 
 **To migrate the settings, run the following command:**
 
@@ -177,4 +189,4 @@ Please note that:
 sudo docker exec -it greenlight-v2 bundle exec rake migrations:settings
 ```
 
-## Migration Errors
+**If you have an error, try re-running the migration task to resolve any failed resources migration.**
