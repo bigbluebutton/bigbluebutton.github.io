@@ -266,6 +266,20 @@ to
     <param name="ext-sip-ip" value="$${external_sip_ip}"/>
 ```
 
+In the same file make sure to change
+
+```xml
+    <param name="local-network-acl" value="localnet.auto"/>
+```
+
+to
+
+```xml
+    <param name="local-network-acl" value="none"/>
+```
+
+so that FreeSWITCH announces the external IP address when a connection is established.
+
 Check `/etc/bigbluebutton/nginx/sip.nginx` to ensure its binding to the external IP address of the firewall [Configure FreeSWITCH for using SSL](/install/install.html#configure-freeswitch-for-using-ssl).
 
 Check that `enableListenOnly` is set to true in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml`, as in
