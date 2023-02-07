@@ -17,3 +17,13 @@
   required: false
   type: "String"
   description: "You can pass one or more metadata values to filter the recordings returned. The format of these parameters is the same as the metadata passed to the <code class=\"language-plaintext highlighter-rouge\">create</code> call. For more information see <a href=\"https://docs.bigbluebutton.org/dev/api.html#create\">the docs for the create call</a>."
+
+- name: "offset"
+  required: false
+  type: "Integer"
+  description: "The starting index for returned recordings. Number must greater than or equal to 0."
+
+- name: "limit"
+  required: false
+  type: "Integer"
+  description: "The maximum number of recordings to be returned. Number must be between 1 and 100." 

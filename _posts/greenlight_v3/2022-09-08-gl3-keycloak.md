@@ -78,7 +78,7 @@ After making the changes, validate the OpenID client creation by clicking **Save
 
 ![Save Client](/images/greenlight/v3/keycloak/save-client.png)
 
-Go to **Credentials** and store the **Secret** key, as **it will be needed later**:
+Go to **Credentials** and store the **Secret** key, as **it will be needed later** for OPENID_CONNECT_CLIENT_SECRET variable in data/greenlight/.env file:
 
 
 ![Client Creds](/images/greenlight/v3/keycloak/client-credentials.png)
@@ -161,9 +161,9 @@ In **data/greenlight/.env** uncomment all OpenID connect variables (those prefix
 
 And fill in the credentials as follow:
 
-- `<YOUR_SECRET>` is a placeholder for your OpenID client secret.
+- `<YOUR_SECRET>` is a placeholder for your OpenID client secret that you stored before.
 - `<ISSUER_URL>` is a placeholder for your Keycloak issuer (realm) URL.
-- `<YOUR_GREENLIGHT_DOMAIN>` is a placeholder for your Greenlight FQDN. It should match what you have as “**$DOMAIN_NAME.$GL_HOSTNAME**”.
+- `<YOUR_GREENLIGHT_DOMAIN>` is a placeholder for your Greenlight FQDN. It should match what you have as “**$GL_HOSTNAME.$DOMAIN_NAME**”.
 
 ```bash
 OPENID_CONNECT_CLIENT_ID=greenlight
