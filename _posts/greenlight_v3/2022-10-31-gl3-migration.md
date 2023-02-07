@@ -94,7 +94,7 @@ Upon the successful migration of a resource, a green success message will be dis
 
 ![success_migration.png](/images/greenlight/v3/migration/success_migration.png)
 
-In case of an error, a red error message will be displayed in the console.
+In case of an error, a red error message will be displayed in the console and should provide some details concerning the error.
 
 ![error_migration.png](/images/greenlight/v3/migration/error_migration.png)
 
