@@ -481,7 +481,7 @@ The install scripts now change the default CLI password for FreeSWITCH and the o
 
 If you upgrade using [bbb-install.sh](https://github.com/bigbluebutton/bbb-install), the script will update the FreeSWITCH password using `sudo bbb-conf --setip <hostname>`.
 
-If you upgraded using [manual steps](https://docs.bigbluebutton.org/2.2/install.html#upgrading-from-bigbluebutton-22), be sure to do ao `sudo bbb-conf --setip <hostname>` to sync all the FreeSWITCH passwords.
+If you upgraded using [manual steps](https://docs.bigbluebutton.org/install/install.html#upgrading-from-bigbluebutton-22), be sure to do ao `sudo bbb-conf --setip <hostname>` to sync all the FreeSWITCH passwords.
 
 ### FreeSWITCH using default stun server
 
@@ -538,7 +538,7 @@ Then do `systemctl daemon-reload` and restart BigBlueButton.
 
 When installing the latest build of BigBlueButton, the package `bbb-conf` now uses `yq` to manage YAML files.
 
-You need to add the repository `ppa:rmescandon/yq` to your server. For steps on how to do this, see [Update your server](https://docs.bigbluebutton.org/2.2/install.html#1-update-your-server) in the BigBlueButton 2.2 install guide.
+You need to add the repository `ppa:rmescandon/yq` to your server. For steps on how to do this, see [Update your server](https://docs.bigbluebutton.org/install/install.html#1-update-your-server) in the BigBlueButton 2.2 install guide.
 
 Alternatively, if you have not made any customizations to BigBlueButton (outside of using `bbb-conf`), you can use [bbb-install.sh](https://github.com/bigbluebutton/bbb-install) to install/upgrade to the latest version (the `bbb-install.sh` script will automatically install the repository for `yq`).
 
@@ -656,7 +656,7 @@ If the user attempts to share their microphone and your BigBlueButton sever is n
 
 _WebRTC Audio Failure: Detected the following WebRTC issue: Could not get your microphone for a WebRTC call. Do you want to try flash instead?_
 
-To enable Chrome to access the user's microphone, see [Configure HTTPS on BigBlueButton](/2.2/install.html#configure-ssl-on-your-bigbluebutton-server).
+To enable Chrome to access the user's microphone, see [Configure HTTPS on BigBlueButton](/install/install.html#configure-ssl-on-your-bigbluebutton-server).
 
 ### The browser is not supported
 
@@ -851,7 +851,7 @@ and try installing BigBlueButton again.
 
 ### Root partition too small
 
-If the root partition on your BigBlueButton server is too small (for disk space requirements see [Before you install](/2.2/install.html#before-you-install)), we recommend moving the following directories to an external partition with sufficient disk space.
+If the root partition on your BigBlueButton server is too small (for disk space requirements see [Before you install](/install/install.html#before-you-install)), we recommend moving the following directories to an external partition with sufficient disk space.
 
 BigBlueButton processing and storage of recordings:
 

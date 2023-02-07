@@ -9,7 +9,7 @@ order: 5
 
 This document covers firewall configuration for BigBlueButton 2.2.
 
-You should configure your firewall before [Installing BigBlueButton](/2.2/install.html); otherwise, you may get errors during the installation and will be unable to test BigBlueButton after the installation completes.
+You should configure your firewall before [Installing BigBlueButton](/install/install.html); otherwise, you may get errors during the installation and will be unable to test BigBlueButton after the installation completes.
 
 If you are a developer setting up BigBlueButton on a local VM for testing, you can skip this section.
 
@@ -19,7 +19,7 @@ The easiest network configuration for installing BigBlueButton is on a server th
 
 ![Install](/images/11-install-net0.png)
 
-In this simple network configuration, BigBlueButton should work out-of-the-box after installation. This is because the packaging scripts automatically configure BigBlueButton using the first non-loopback IP address, whereas access to sensitive ports is blocked.  
+In this simple network configuration, BigBlueButton should work out-of-the-box after installation. This is because the packaging scripts automatically configure BigBlueButton using the first non-loopback IP address, whereas access to sensitive ports is blocked.
 A variation of this setup occurs when the server has multiple network interfaces, but the external IP is still the first network interface (such as `eth0`) picked up by the installation scripts.
 
 ![Install](/images/11-install-net1.png)
@@ -138,7 +138,7 @@ where `EXTERNAL_IP_ADDRESS` with the external IP of your firewall and `EXTERNAL_
 172.34.56.78 bigbluebutton.example.com
 ```
 
-At this point, proceed with the [installation of BigBlueButton](/2.2/install.html) and, after the install is finished, configure BigBlueButton to use your firewall using the steps in the next section.
+At this point, proceed with the [installation of BigBlueButton](/install/install.html) and, after the install is finished, configure BigBlueButton to use your firewall using the steps in the next section.
 
 # Configure BigBlueButton to work with your firewall
 
@@ -280,7 +280,7 @@ to
 
 so that FreeSWITCH announces the external IP address when a connection is established.
 
-Check `/etc/bigbluebutton/nginx/sip.nginx` to ensure its binding to the external IP address of the firewall [Configure FreeSWITCH for using SSL](/2.2/install.html#configure-freeswitch-for-using-ssl).
+Check `/etc/bigbluebutton/nginx/sip.nginx` to ensure its binding to the external IP address of the firewall [Configure FreeSWITCH for using SSL](/install/install.html#configure-freeswitch-for-using-ssl).
 
 Check that `enableListenOnly` is set to true in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml`, as in
 
@@ -298,7 +298,7 @@ freeswitch:
   port: 5066
 ```
 
-If your runnig 2.2.29 or later, the value of `sip_ip` depends on whether you have `sipjsHackViaWs` set to true or false in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml` (see [Configure FreeSWITCH for using SSL](/2.2/install.html#configure-freeswitch-for-using-ssl)).
+If your runnig 2.2.29 or later, the value of `sip_ip` depends on whether you have `sipjsHackViaWs` set to true or false in `/usr/share/meteor/bundle/programs/server/assets/app/config/settings.yml` (see [Configure FreeSWITCH for using SSL](/install/install.html#configure-freeswitch-for-using-ssl)).
 
 You also need to [setup Kurento to use a STUN server](#extra-steps-when-server-is-behind-nat).
 
