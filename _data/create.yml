@@ -164,12 +164,6 @@
   default: "false"
   description: "Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will disable notes in the meeting. (added 2.2)"
 
-- name: "lockSettingsLockedLayout"
-  required: false
-  type: "Boolean"
-  default: "false"
-  description: "**DEPRECATED** - use <code class=\"language-plaintext highlighter-rouge\">defaultMeetingLayout</code> instead; Setting to <code class=\"language-plaintext highlighter-rouge\">true</code> will lock the layout in the meeting. (added 2.2)"
-
 - name: "lockSettingsLockOnJoin"
   required: false
   type: "Boolean"
