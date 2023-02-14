@@ -1381,7 +1381,7 @@ To validate incoming API calls, all external applications making API calls must 
 You’ll find the shared secret in `/etc/bigbluebutton/bbb-web.properties`
 
 ```properties
-beans.dynamicConferenceService.securitySalt=<value_of_salt>
+securitySalt=<value_of_salt>
 ```
 
 To change the shared secret, do the following:
