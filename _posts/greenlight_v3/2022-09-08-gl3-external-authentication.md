@@ -9,15 +9,17 @@ order: 3
 ---
 ## OpenID Connect vs Keycloak
 
-Greenlight v3 offers external authentication support through OpenID Connect. If you have an authentication server that supports this protocol, you can easily connect it to Greenlight v3 using environment variables. For more information, refer to the [OpenID Connect Setup](#OpenID Connect Setup) section.
+Greenlight v3 offers external authentication support through OpenID Connect. If you have an authentication server that supports this protocol, you can easily connect it to Greenlight v3 using environment variables. For more information, refer to the [OpenID Connect Setup](/greenlight_v3/gl3-install.html#openid-connect-setup) section.
 
 If you do not have an authentication server, Keycloak is a recommended solution. It supports multiple authentication methods, including Google, Microsoft, SAML, and others. For a complete list of supported identity providers, see [Keycloak Identity Providers](https://www.keycloak.org/docs/latest/server_admin/#_General-idp-config).
 
 ## Installing Keycloak
-Steps coming soon
+
+If you installed Greenlight on a BigBlueButton server, you will not be able to install Keycloak. (Will be fixed in the near future)
+
+If you used the **Greenlight Install Script** without passing the `-k` option, you can simply re-run the install script using the same options as before, this time passing `-k` to install Keycloak on your server. 
 
 ## Configuring Keycloak
-
 ---
 
 Once you've completed the Keycloak installation, you'll need to configure Keycloak to suit your needs. This guide will provide you with an example of how to connect to Google Authentication, but you can adapt these steps to suit your deployment.
@@ -26,33 +28,34 @@ Once you've completed the Keycloak installation, you'll need to configure Keyclo
 
 ---
 
-Start by accessing the administrator panel by visiting the url you configured.
+Start by accessing the administrator panel by `https://<GREENLIGHT_HOSTNAME>/keycloak`
 
 Select `Administration Console` and sign in using the credentials that were printed during the Keycloak Installation process.
 
-Start by creating a new realm for Greenlight by hovering over the `Master` realm on the top left corner, and clicking on `Add realm`.
-
-![Add Realm](/images/greenlight/v3/keycloak/add-realm.png)
+Start by creating a new realm for Greenlight by hovering over the `Master` realm on the top left corner, and clicking on `Create Realm`.
 
 Set the name of the realm to `greenlight` and click create.
 
-Next, create a new client by clicking the `Clients` tab on the left side and then clicking `create`. Set the `Client ID` to `greenlight` and the `Client Protocol` to `openid-connect`. Once you've confirmed the values are correct, click `Save`
+![Add Realm](/images/greenlight/v3/keycloak/add-realm.png)
+
+Next, create a new client by clicking the `Clients` tab on the left side and then clicking `Create Client`. Set the `Client type` to `OpenID Connect` and the `Client ID` to `greenlight`. Once you've confirmed the values are correct, click `Next`
 
 ![Create Clients](/images/greenlight/v3/keycloak/create-client-2.png)
 
-You also need to set `Access Type` to `Confidential` and `Valid Redirect URIs` to `https://<GREENLIGHT_URL>/*`. Make sure to click `Save` once you have set the values.
+Set `Client authentication` to `ON` and  and `Valid Redirect URIs` to `https://<GREENLIGHT_URL>/*`. Make sure to click `Save` once you have set the values.
+
+![Valid Redirect](/images/greenlight/v3/keycloak/client-authentication.png)
+
 
 ![Valid Redirect](/images/greenlight/v3/keycloak/valid-redirect.png)
 
-While staying in the `Clients` tab, click on the `Credentials` tab near the top of the page and store this variable on the side (this will be the `OPENID_CONNECT_CLIENT_SECRET` later in the `.env`).
+While staying in the `Clients` tab, click on the `Credentials` tab near the top of the page and store the `Client secret` variable on the side (this will be the `OPENID_CONNECT_CLIENT_SECRET` later in the `.env`).
 
 ![Client Creds](/images/greenlight/v3/keycloak/client-credentials.png)
 
-To add a Identity Provider, click on `Identity Providers` on the left hand side.
+To add a Identity Provider, click on `Identity Providers` on the left hand side and choose the provider that you would like (we'll be going with Google for this installation).
 
 ![Idp](/images/greenlight/v3/keycloak/idp.png)
-
-Click `Add provider...` and choose the provider that you would like (we'll be going with Google for this installation).
 
 For Google, follow this guide to obtain the credentials:  [Google OAuth Credentials](https://developers.google.com/workspace/guides/create-credentials#oauth-client-id).
 
@@ -64,21 +67,23 @@ Once you've obtained your Google credentials, fill in the `Client ID` and `Clien
 
 Next, we need to make Google our default authentication method to ensure a seamless login process for our users. Click on `Authentication` in the left side menu.
 
-![Authentication](/images/greenlight/v3/keycloak/auth.png)
-
-Find the `Identity Provider Redirector` row and click on `Actions > Config`
+Click on `browser` and then find the  `Identity Provider Redirector` row and click on the settings cog on the far right
 
 ![Auth Actions](/images/greenlight/v3/keycloak/actions.png).
 
+![Auth Actions](/images/greenlight/v3/keycloak/actions-2.png).
+
 Set the `Alias` to `Google` and the `Default Identity Provider` to `google` (or whatever identity provider you chose). Once you're done, click `Save`
+
+![Auth Actions](/images/greenlight/v3/keycloak/actions-3.png).
 
 Finally, we need to connect Greenlight to Keycloak using the OpenID Connect `.env` variables.
 
-Go back to `Realm Settings` in the left side menu.
+Go back to `Realm Settings` in the left side menu and click on `OpenID Endpoint Configuration`
 
 ![Realm Creds](/images/greenlight/v3/keycloak/realm-creds.png)
 
-Click on `OpenID Endpoint Configuration` and copy the url that appears after `issuer`
+Copy the url that appears after `issuer`
 
 ![Issuer](/images/greenlight/v3/keycloak/issuer.png)
 
