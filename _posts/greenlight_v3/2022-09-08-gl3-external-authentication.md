@@ -15,7 +15,7 @@ If you do not have an authentication server, Keycloak is a recommended solution.
 
 ## Installing Keycloak
 
-If you installed Greenlight on a BigBlueButton server, you will not be able to install Keycloak. (Will be fixed in the near future)
+If you used the **BigBlueButton Install Script** without passing the `-k` option, you can simply re-run the install script using the same options as before, this time passing `-k` to install Keycloak on your server.
 
 If you used the **Greenlight Install Script** without passing the `-k` option, you can simply re-run the install script using the same options as before, this time passing `-k` to install Keycloak on your server. 
 
