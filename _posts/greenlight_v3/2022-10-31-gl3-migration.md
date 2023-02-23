@@ -152,6 +152,7 @@ Important notes:
 - Only the Rooms of the active users will be migrated
 - The migrated rooms will be assigned to their respective migrated users on v3
 - The presentations will not be migrated - the presentations will need to be re-uploaded to v3 by the room owner or shared access user.
+- The recordings will appear by clicking 'Re-Sync Recording' button for each room at the Server Rooms setting in the Administrator Panel if Greenlight version 2 is running in the same server as version 3. If they are running in different servers, you need to transfer the recordings before the re-synchronization (https://docs.bigbluebutton.org/admin/customize.html#transfer-published-recordings-from-another-server). 
 
 **To migrate the rooms, run the following command:**
 
