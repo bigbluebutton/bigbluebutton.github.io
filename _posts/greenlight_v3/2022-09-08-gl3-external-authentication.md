@@ -4,7 +4,7 @@ layout: page
 title: "External Authentication"
 category: greenlight_v3
 date: 2022-09-08 16:28:25
-order: 3
+order: 2
 
 ---
 ## OpenID Connect vs Keycloak
