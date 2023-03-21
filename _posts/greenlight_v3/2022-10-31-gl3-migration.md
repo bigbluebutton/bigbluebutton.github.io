@@ -10,8 +10,8 @@ order: 4
 
 ## Migration
 
-Greenlight v3 is a completely new software application with an updated design and architecture.
-A migration system has been created to move resources from your Greenlight v2 instance to v3.
+Greenlight v3 (GLv3) is a completely new software application with an updated design and architecture.
+A migration system has been created to move resources from your Greenlight v2 instance to GLv3.
 
 **The migration system requires both Greenlight v2 and Greenlight v3 and to be deployed, running and accessible through a network.**
 
@@ -36,13 +36,13 @@ The migration system consists of multiples **rake tasks** and **a restful API**:
 
 ## Prerequisites
 
-Before the migration process, make sure that the Greenlight v3 server is running and accessible through your network.
+Before the migration process, make sure that the GLv3 server is running and accessible through your network.
 
 ### Configuring the Environment
 
 In Greenlight v2 **.env** file, add the following variables:
-- **V3_ENDPOINT**, which points to your Greenlight v3 URL.
-- **V3_SECRET_KEY_BASE**, a copy from Greenlight v3 SECRET_KEY_BASE. It is needed for the encryption process.
+- **V3_ENDPOINT**, which points to your GLv3 URL.
+- **V3_SECRET_KEY_BASE**, a copy from GLv3 SECRET_KEY_BASE. It is needed for the encryption process.
 
 ![env_migration_endpoints.png](/images/greenlight/v3/migration/env_migration_endpoints.png)
 
@@ -109,7 +109,7 @@ However, a failed migration resource should not hinder the whole migration proce
 The custom Roles and the corresponding Role Permissions will be migrated.
 
 Please note that:
-- The default Roles (user, moderator, guest) will not be migrated as they are already present in Greenlight v3.
+- The default Roles (user, moderator, guest) will not be migrated as they are already present in GLv3.
 - The role color will not be migrated as this feature is not implemented in v3.
 
 **To migrate the Roles & the Role Permissions, run the following command:**
@@ -118,14 +118,14 @@ sudo docker exec -it greenlight-v2 bundle exec rake migrations:roles
 ```
 
 **If you have an error, try re-running the migration task to resolve any failed resources migration.**
-**Also, make sure that the Greenlight v3 server is running and accessible through your network.**
+**Also, make sure that the GLv3 server is running and accessible through your network.**
 
 ### Users Migration
 The Users will be migrated with their corresponding role.
 
 Important notes:
-- **Once the Users migration is completed, the migrated users will be prompted to reset their password via an automated email. The accounts passwords can't be migrated from Greenlight v2.**
-- Pending, denied and deleted users will not be migrated to Greenlight v3.
+- **The accounts passwords can't be migrated from Greenlight v2. A rake task that sends an email to all the users and prompts them to reset their password is provided for Greenlight v3. When the migration is completed, please jump to [After the Migration](#after-the-migration). Please note that if you are using external accounts, like Google or Microsoft, this is not applicable.**
+- Pending, denied and deleted users will not be migrated to GLv3.
 - Both local and external users will be migrated.
 
 **To migrate all of your v2 users to v3, run the following command:**
@@ -136,7 +136,7 @@ sudo docker exec -it greenlight-v2 bundle exec rake migrations:users
 **To migrate only a portion of the users starting from *FIRST_USER_ID* to *LAST_USER_ID*, run this command instead:**
 
 ```bash
-sudo docker exec -it greenlight-v2 bundle exec rake migrations:users[**FIRST_USER_ID, LAST_USER_ID**]
+sudo docker exec -it greenlight-v2 bundle exec rake migrations:users\[<FIRST_USER_ID>,<LAST_USER_ID>]
 ```
 
 *Administrators can use the last command to migrate resources in parallel, the same migration task can be run in separate processes each migrating a portion of the resources class simultaneously.*
@@ -162,7 +162,7 @@ sudo docker exec -it greenlight-v2 bundle exec rake migrations:rooms
 **To migrate only a portion of users starting from **FIRST_ROOM_ID** to **LAST_ROOM_ID**, run this command instead**:**
 
 ```bash
-sudo docker exec -it greenlight-v2 bundle exec rake migrations:rooms[**FIRST_ROOM_ID, LAST_ROOM_ID**]
+sudo docker exec -it greenlight-v2 bundle exec rake migrations:rooms\[<FIRST_ROOM_ID>,<LAST_ROOM_ID>]
 ```
 
 *Note: The partitioning is based on resources id value and not there position in the database, so calling **rake migrations:rooms[1, 100]** will not migrate the first 100 active users rooms but rather active users rooms having an id of 1 to 100 if existed.*
@@ -180,7 +180,7 @@ The Site Settings and the Rooms Configuration will be migrated.
 - The *Rooms Configuration* are the settings that are related to the default configuration of all the rooms, such as *Allow Room to be Recorded*, *Allow any User to Start a Meeting*, *Access Codes*.
 
 Please note that:
-- The Brand image will not be migrated - it will have to be re-uploaded to Greenlight v3 by the administrator. 
+- The Brand image will not be migrated - it will have to be re-uploaded to GLv3 by the administrator. 
 - The administrator will need to reassign the Room Limit as a Role Permission (on a per role basis) instead of as a global Site Setting.
 
 **To migrate the settings, run the following command:**
@@ -190,3 +190,17 @@ sudo docker exec -it greenlight-v2 bundle exec rake migrations:settings
 ```
 
 **If you have an error, try re-running the migration task to resolve any failed resources migration.**
+
+## After the Migration
+Having completed the migration successfully, it is now imperative to inform users of the need to reset their Greenlight account passwords. 
+This can be achieved through the utilization of the rake task available in Greenlight v3. 
+**It is important to note, however, that this is not applicable for users who utilize external accounts such as Google or Microsoft.**
+
+To send a reset password email to all your users, run the following command:
+
+```bash
+sudo docker exec -it greenlight-v3 bundle exec rake migration:reset_password_email\[<BASE URL>]
+```
+
+The &lt;BASE URL&gt; in the command above should be replaced with your Greenlight domain name.
+
