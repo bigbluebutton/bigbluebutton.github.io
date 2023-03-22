@@ -1,11 +1,11 @@
 
-# BigBlueButton Docs are transitioning to a new home (edited March 21, 2023)
+# BigBlueButton Docs have transitioned to a new home (starting March 22, 2023)
 
-### The source of the documentation: https://github.com/bigbluebutton/bigbluebutton/tree/v2.6.x-release/docs
+### The source of the documentation: https://github.com/bigbluebutton/bigbluebutton/tree/develop/docs (branch v2.6.x-release for BBB version 2.6, etc)
 
-### The URL of the documentation: https://docs.bigbluebutton.org/bigbluebutton/
+### The docs website URL remains https://docs.bigbluebutton.org/
 
-#### Please send any edits/report issues to the new source of the docs; this repository will remain available for some time to ensure a smooth transition.
+#### Please send any edits/report issues to the new source of the docs; this repository will remain available (in read-only form) for some time to ensure a smooth transition.
 #### For the latest docs starting with BigBlueButton 2.6.0, please use the new documentation (linked above)
 
 ---
